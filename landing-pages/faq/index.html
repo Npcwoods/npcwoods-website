@@ -111,7 +111,7 @@
       {
         "@type": "Question",
         "name": "How is NPCWoods different from Teladoc or other telehealth?",
-        "acceptedAnswer": {"@type": "Answer", "text": "NPCWoods differs from large telehealth platforms in several key ways: (1) Same provider every time — you always see Chris Woods, not a random rotating doctor. (2) Text-based — no video call required. (3) $59 flat with no subscription or membership fee, while Teladoc charges $75-95 and PlushCare charges $129 plus a monthly membership. (4) No AI or chatbot — every case is reviewed by a real clinician. (5) Personal relationship — Chris knows your history and follows up directly."}
+        "acceptedAnswer": {"@type": "Answer", "text": "NPCWoods differs from large telehealth platforms in several key ways: (1) Same provider every time — you always see Chris Woods, not a random rotating clinician. (2) Text-based — no video call required. (3) $59 flat with no subscription or membership fee, while Teladoc charges $75-95 and PlushCare charges $129 plus a monthly membership. (4) No AI or chatbot — every case is reviewed by a real clinician. (5) Personal relationship — Chris knows your history and follows up directly."}
       },
       {
         "@type": "Question",
@@ -208,23 +208,24 @@
 
   <!-- JSON-LD: Person -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://npcwoods.com/#chris-woods",
-    "name": "Chris Woods",
-    "credential": "MSN, APRN, FNP-C",
-    "jobTitle": "Double Board-Certified Family Nurse Practitioner",
-    "url": "https://npcwoods.com/about/",
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "worksFor": {
-      "@type": "MedicalBusiness",
-      "@id": "https://npcwoods.com/#medical-business",
-      "name": "NPCWoods Telemedicine",
-      "url": "https://npcwoods.com"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://npcwoods.com/#chris-woods",
+  "name": "Chris Woods",
+  "jobTitle": "Licensed Nurse Practitioner",
+  "url": "https://npcwoods.com/about/",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+  "worksFor": {
+    "@id": "https://npcwoods.com/#medical-business"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "license",
+    "name": "MSN, APRN, FNP-C"
   }
-  </script>
+}
+</script>
 
   <style>
   /* ===== CSS VARIABLES ===== */
@@ -543,6 +544,8 @@
     main { padding: 40px 16px 80px; }
   }
   </style>
+<!-- NPCWoods Tracking: Ahrefs Analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
 <!-- GTM noscript -->

@@ -25,7 +25,11 @@ META_DESC_RE = re.compile(
 
 TITLE_MAX = 60
 DESC_MAX = 160
-BANNED = ["doctor", "insurance", "appointment", "board-certified", "Text a Doctor"]
+# Bare "board-certified" is banned (corporate-sounding per VOICE.md).
+# But "double board-certified" IS allowed (Chris's specific credential claim — updated 2026-04-14).
+BANNED = ["doctor", "insurance", "appointment", "Text a Doctor"]
+# This pattern matches "board-certified" ONLY when NOT preceded by "double " (case-insensitive).
+BOARD_CERT_BARE = re.compile(r"(?<!double\s)board-certified", re.IGNORECASE)
 
 
 def html_escape_amp(text: str) -> str:
@@ -48,6 +52,10 @@ def validate(title: str, desc: str, path: str) -> list[str]:
     for word in BANNED:
         if word.lower() in haystack:
             errors.append(f"banned word found: {word!r}")
+    # Block bare "board-certified" but allow "double board-certified"
+    combined = f"{title} {desc}"
+    if BOARD_CERT_BARE.search(combined):
+        errors.append("banned phrase: bare 'board-certified' (use 'double board-certified' or 'Licensed NP' instead)")
     return errors
 
 

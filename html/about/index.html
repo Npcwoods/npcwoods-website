@@ -19,62 +19,98 @@
 
   <!-- Schema: Person (canonical) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://npcwoods.com/#chris-woods",
-    "name": "Chris Woods",
-    "credential": "MSN, APRN, FNP-C",
-    "jobTitle": "Nurse Practitioner",
-    "description": "Chris Woods is the licensed nurse practitioner behind NPCWoods Telemedicine. He personally reviews every patient case and every medical guide published on the site.",
-    "url": "https://npcwoods.com/about/",
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "worksFor": {"@id": "https://npcwoods.com/#medical-business"}
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://npcwoods.com/#chris-woods",
+  "name": "Chris Woods",
+  "jobTitle": "Nurse Practitioner",
+  "description": "Chris Woods is the licensed nurse practitioner behind NPCWoods Telemedicine. He personally reviews every patient case and every medical guide published on the site.",
+  "url": "https://npcwoods.com/about/",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+  "worksFor": {
+    "@id": "https://npcwoods.com/#medical-business"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "license",
+    "name": "MSN, APRN, FNP-C"
   }
-  </script>
+}
+</script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "@id": "https://npcwoods.com/#medical-business",
-    "name": "NPCWoods Telemedicine",
-    "url": "https://npcwoods.com",
-    "description": "$59 text-based telemedicine visits personally reviewed by Chris Woods, MSN, APRN, FNP-C.",
-    "telephone": "+14806394722",
-    "email": "cwoods@npcwoods.com",
-    "priceRange": "$59",
-    "medicalSpecialty": "Family Practice",
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "founder": {"@id": "https://npcwoods.com/#chris-woods"},
-    "employee": {"@id": "https://npcwoods.com/#chris-woods"},
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "4030 Wake Forest Rd, Ste 349",
-      "addressLocality": "Raleigh",
-      "addressRegion": "NC",
-      "postalCode": "27609",
-      "addressCountry": "US"
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://npcwoods.com/#medical-business",
+  "name": "NPCWoods Telemedicine",
+  "url": "https://npcwoods.com",
+  "description": "$59 text-based telemedicine visits personally reviewed by Chris Woods, MSN, APRN, FNP-C.",
+  "telephone": "+14806394722",
+  "email": "cwoods@npcwoods.com",
+  "priceRange": "$59",
+  "medicalSpecialty": "https://schema.org/FamilyPractice",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+  "founder": {
+    "@id": "https://npcwoods.com/#chris-woods"
+  },
+  "employee": {
+    "@id": "https://npcwoods.com/#chris-woods"
+  },
+  "sameAs": [
+    "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
+    "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com",
+    "https://share.google/XlmNvRT4vihOJ8KBH"
+  ],
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Arizona"
     },
-    "sameAs": [
-      "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
-      "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
-    ],
-    "areaServed": [
-      {"@type": "State", "name": "Arizona"},
-      {"@type": "State", "name": "Colorado"},
-      {"@type": "State", "name": "Georgia"},
-      {"@type": "State", "name": "Idaho"},
-      {"@type": "State", "name": "Iowa"},
-      {"@type": "State", "name": "Montana"},
-      {"@type": "State", "name": "Nevada"},
-      {"@type": "State", "name": "New Mexico"},
-      {"@type": "State", "name": "North Carolina"},
-      {"@type": "State", "name": "Oregon"},
-      {"@type": "State", "name": "Utah"}
-    ]
-  }
-  </script>
+    {
+      "@type": "State",
+      "name": "Colorado"
+    },
+    {
+      "@type": "State",
+      "name": "Georgia"
+    },
+    {
+      "@type": "State",
+      "name": "Idaho"
+    },
+    {
+      "@type": "State",
+      "name": "Iowa"
+    },
+    {
+      "@type": "State",
+      "name": "Montana"
+    },
+    {
+      "@type": "State",
+      "name": "Nevada"
+    },
+    {
+      "@type": "State",
+      "name": "New Mexico"
+    },
+    {
+      "@type": "State",
+      "name": "North Carolina"
+    },
+    {
+      "@type": "State",
+      "name": "Oregon"
+    },
+    {
+      "@type": "State",
+      "name": "Utah"
+    }
+  ]
+}
+</script>
 
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">
@@ -478,6 +514,8 @@
       }
     }
   </style>
+<!-- NPCWoods Tracking: Ahrefs Analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
 
@@ -617,7 +655,6 @@
           <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
         </div>
       </li>
-      <li><a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a></li>
       <li><a href="https://npcwoods.com/blog/">Blog</a></li>
       <li>
         <a href="sms:4806394722" class="npc-nav-cta">
@@ -858,6 +895,8 @@
 <footer class="npc-site-footer">
   <div class="npc-footer-inner">
     <div class="npc-footer-grid">
+
+      <!-- Brand Column -->
       <div class="npc-footer-brand">
         <div class="npc-footer-brand-name">
           <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
@@ -866,6 +905,8 @@
         <p>Text-based telehealth visits — $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
         <a href="sms:4806394722" class="npc-footer-cta">Text (480) 639-4722</a>
       </div>
+
+      <!-- Conditions Column -->
       <div class="npc-footer-col">
         <h4>Conditions We Treat</h4>
         <ul>
@@ -880,6 +921,8 @@
           <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
         </ul>
       </div>
+
+      <!-- States Column -->
       <div class="npc-footer-col">
         <h4>States We Serve</h4>
         <ul>
@@ -896,30 +939,35 @@
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
         </ul>
       </div>
+
+      <!-- Quick Links Column -->
       <div class="npc-footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
-          <li><a href="https://npcwoods.com/about/">About Chris</a></li>
-          <li><a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a></li>
-          <li><a href="https://npcwoods.com/pharmacy-partners/">Pharmacy Partners</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing &mdash; $59</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
           <li><a href="https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/">Affordable Care</a></li>
           <li><a href="https://npcwoods.com/blog/">Blog</a></li>
           <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
         </ul>
       </div>
+
     </div>
+
     <hr class="npc-footer-divider">
+
     <div class="npc-footer-bottom">
       <span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>
       <span><a href="https://npcwoods.com">npcwoods.com</a></span>
     </div>
+
     <div class="npc-footer-trust">
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
         <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
       </a><br>
-      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Licensed Nurse Practitioner<br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
       NPI: 1285125468 &bull; <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a><br>
       <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>

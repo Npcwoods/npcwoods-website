@@ -247,10 +247,13 @@ There's a full deployment skill at `skills/npcwoods-deploy/SKILL.md` — read it
 **The rule:** For any batch of >3 meta-tag edits, add rows to a new TSV and run the script. Don't open N files with Edit. The script's validation catches banned words and length violations before they hit the CDN.
 **Delimiter gotcha:** Titles contain `|` (brand suffix). Use TSV, not pipe-delimited CSV.
 
-### WL-004 — "Board-certified" is banned in on-site copy (2026-04-13)
-**What happened:** /about/ and /faq/ had copy saying "Board-certified FNP-C" and "double board-certified NP". That conflicts with VOICE.md's explicit ban on "board-certified" for on-site SEO copy.
-**The rule:** On NPCWoods.com (landing pages, meta descriptions, about page), use "Licensed Nurse Practitioner." Reserve "double board-certified Nurse Practitioner" for outreach, bios, and press where there's room to explain. The auto-memory note `user_double_board_certified.md` applies to marketing/outreach, NOT to on-site SEO.
-**Enforcement:** The update-meta-descriptions.py script now blocks `board-certified` in any rewrite.
+### WL-004 — Generic "board-certified" is banned; "double board-certified" is OK (2026-04-13, updated 2026-04-14)
+**What happened:** /about/ and /faq/ had copy saying "Board-certified FNP-C" and "double board-certified NP". Original VOICE.md rule banned "board-certified" across the board. On April 14 Chris clarified: the plain phrase "board-certified" sounds corporate and stays banned, but "double board-certified" is his specific credential claim and IS allowed site-wide (blog meta, landing pages, about page, anywhere).
+**The rule:**
+- ❌ Never: "board-certified provider," "board-certified NP," "board-certified Nurse Practitioner" (generic corporate)
+- ✅ OK: "double board-certified Nurse Practitioner" (his specific credential — adds authority)
+- ✅ Also OK: "Licensed Nurse Practitioner" (cleaner for some contexts)
+**Enforcement:** The update-meta-descriptions.py script blocks the bare phrase "board-certified" but allows "double board-certified" via a negative-lookbehind check.
 
 ### WL-001 — Blog preview CSS does NOT carry to WordPress (2026-04-01)
 **What happened:** Built a beautiful local HTML preview with custom CSS classes for the hero image, comparison table colors, and CTA boxes. When pushed to WordPress via REST API, all custom CSS was lost — WordPress posts only render the content HTML inside the theme's existing styles. The hero image disappeared (relied on `featured_media` which the theme doesn't render on single posts), table column colors vanished (relied on CSS classes), and CTA boxes lost some styling.
@@ -261,6 +264,14 @@ There's a full deployment skill at `skills/npcwoods-deploy/SKILL.md` — read it
 4. Always verify the rendered content via the REST API after publishing
 5. The NPCWoods block theme does NOT display `featured_media` as a hero on single post pages
 
+### WL-005 — For patient-growth audits, review reach + conversion + trust together (2026-04-20)
+**What happened:** Ran a growth audit to find the top 3 priorities for getting more patients. Reviewed the homepage, `how-it-works`, a core condition hub (`/uti-treatment/`), a state hub (`/arizona-telemedicine/`), the conditions index, tracking setup, and the indexing/sitemap notes. The key insight was that the site's next big gains are not mainly visual polish. The offer is already strong: $59, same day, real clinician, no waiting room. The bigger levers are (1) local-intent reach via city + condition pages, (2) lower-friction conversion on high-intent pages, and (3) more specific trust proof at decision points.
+**The rule:** When asked how to get more patients, do not default to "redesign the homepage." Audit in this order:
+1. **Reach:** Check sitemap strategy, excluded city pages, hub-and-spoke internal linking, and whether city-condition pages exist for the highest-value conditions.
+2. **Conversion:** Review the homepage plus 1 condition hub, 1 state hub, and `how-it-works` for CTA specificity, objection handling, and ease of starting a text visit.
+3. **Trust:** Check whether reviews, credentials, NPI/license proof, and "real human / no chatbot" proof are specific to the page intent, not just generic site-wide claims.
+**Shift outcome:** Prioritize SEO/discoverability for city-condition pages first, conversion tightening on high-intent pages second, and more condition-specific/local trust proof third.
+
 ---
 
-*Last updated: April 13, 2026 — added WL-002 (CF cache verification), WL-003 (meta-rewrite batch script), WL-004 (board-certified banned on site)*
+*Last updated: April 20, 2026 — added WL-005 (patient-growth audit framework)*

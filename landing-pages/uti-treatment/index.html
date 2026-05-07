@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- NPCWoods Tracking: GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Same-Day UTI Treatment Online — $59 | NPCWoods</title>
@@ -36,28 +22,52 @@ gtag('config', 'AW-610222919');
 
   <!-- Schema: MedicalBusiness -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "NPCWoods Telemedicine",
-    "description": "Online UTI treatment via text-based telemedicine. $59 flat fee, $59 flat fee. No paperwork.",
-    "telephone": "+14806394722",
-    "url": "https://npcwoods.com/uti-treatment/",
-    "priceRange": "$59",
-    "areaServed": [
-      { "@type": "State", "name": "Arizona" },
-      { "@type": "State", "name": "New Mexico" },
-      { "@type": "State", "name": "Georgia" },
-      { "@type": "State", "name": "North Carolina" }
-    ],
-    "medicalSpecialty": "Family Practice",
-    "availableService": {
-      "@type": "MedicalTherapy",
-      "name": "UTI Treatment",
-      "description": "Async text-based telemedicine consultation for urinary tract infections with prescription antibiotics"
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "NPCWoods Telemedicine",
+  "description": "Online UTI treatment via text-based telemedicine. $59 flat fee, $59 flat fee. No paperwork.",
+  "telephone": "+14806394722",
+  "url": "https://npcwoods.com/uti-treatment/",
+  "priceRange": "$59",
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Arizona"
+    },
+    {
+      "@type": "State",
+      "name": "New Mexico"
+    },
+    {
+      "@type": "State",
+      "name": "Georgia"
+    },
+    {
+      "@type": "State",
+      "name": "North Carolina"
     }
-  }
-  </script>
+  ],
+  "medicalSpecialty": "https://schema.org/FamilyPractice",
+  "availableService": {
+    "@type": "Service",
+    "name": "UTI Treatment",
+    "description": "Async text-based telemedicine consultation for urinary tract infections with prescription antibiotics",
+    "relevantSpecialty": {
+      "@id": "https://npcwoods.com/#medical-business"
+    },
+    "code": {
+      "@type": "MedicalCode",
+      "codingSystem": "ICD-10",
+      "code": "N39.0",
+      "name": "Urinary tract infection"
+    }
+  },
+  "sameAs": [
+    "https://share.google/XlmNvRT4vihOJ8KBH"
+  ]
+}
+</script>
 
   <!-- Schema: FAQPage -->
   <script type="application/ld+json">
@@ -104,6 +114,14 @@ gtag('config', 'AW-610222919');
           "@type": "Answer",
           "text": "Most people hear back within a few hours. Chris personally reads every text — no call centers, no chatbots. If antibiotics are appropriate, your prescription gets sent electronically to whichever pharmacy is closest to you. Many people pick up same-day."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get a UTI prescription online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Text Chris at (480) 639-4722 with what's going on — burning, urgency, frequency, anything you've already tried. He asks follow-up questions to rule out anything that needs in-person care. If antibiotics are the right call, your online UTI prescription is sent electronically to the pharmacy of your choice. Most people pick up same day. The whole thing — text, history, prescription — is $59 flat."
+        }
       }
     ]
   }
@@ -139,26 +157,30 @@ gtag('config', 'AW-610222919');
 
   <!-- Schema: Person -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://npcwoods.com/#chris-woods",
-    "url": "https://npcwoods.com/about/",
-    "name": "Chris Woods",
-    "credential": "MSN, APRN, FNP-C",
-    "jobTitle": "Nurse Practitioner",
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "worksFor": {
-      "@type": "MedicalBusiness",
-      "name": "NPCWoods Telehealth",
-      "url": "https://npcwoods.com"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://npcwoods.com/#chris-woods",
+  "url": "https://npcwoods.com/about/",
+  "name": "Chris Woods",
+  "jobTitle": "Nurse Practitioner",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+  "worksFor": {
+    "@id": "https://npcwoods.com/#medical-business"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "license",
+    "name": "MSN, APRN, FNP-C"
   }
-  </script>
+}
+</script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://npcwoods.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"></noscript>
@@ -638,6 +660,8 @@ fbq("track", "PageView");
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<!-- NPCWoods Tracking: Ahrefs Analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
 <!-- NPCWoods Tracking: GTM noscript -->
@@ -1287,6 +1311,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="https://npcwoods.com/how-it-works/">How It Works</a>
       </li>
       <li>
+        <a href="https://npcwoods.com/pricing/">Pricing</a>
+      </li>
+      <li>
         <a href="#">States <span class="nav-arrow">&#9662;</span></a>
         <div class="npc-dropdown">
           <a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
@@ -1303,10 +1330,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </li>
       <li>
-        <a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a>
+        <a href="https://npcwoods.com/blog/">Blog</a>
       </li>
       <li>
-        <a href="https://npcwoods.com/blog/">Blog</a>
+        <a href="https://npcwoods.com/credentials/">Credentials</a>
       </li>
       <li>
         <a href="sms:4806394722" class="npc-nav-cta">
@@ -1347,6 +1374,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
+      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee &mdash; one price, one promise</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
         <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
@@ -1364,12 +1401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <a href="https://npcwoods.com/about/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
-        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C &mdash; Board Certified</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/about/#licenses" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Licenses &amp; Credentials<div class="npc-panel-link-sub">Verified in 11 states</div></div>
+        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C &mdash; double board-certified</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
     </div>
@@ -1559,7 +1591,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== SCROLLING REVIEWS BANNER ===== -->
 <section class="reviews-banner">
 <div class="reviews-banner-header">
-<p class="reviews-banner-title">Over 50 Five Star Ratings <span class="reviews-banner-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></p>
+<p class="reviews-banner-title">50+ 5-Star Ratings on Google <span class="reviews-banner-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></p>
 </div>
 <p class="reviews-banner-subtitle">Real patients. Real reviews. From Facebook &amp; Google.</p>
 <div class="scroll-container">
@@ -1778,6 +1810,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Most people hear back within a few hours. Chris personally reads every text &mdash; no call centers, no chatbots. If antibiotics are appropriate, your prescription gets sent electronically to whichever pharmacy is closest to you. Many people pick up same-day.</p>
         </div>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I get a UTI prescription online?
+        </div>
+        <div class="faq-answer">
+          <p>Text Chris at <a href="sms:4806394722">(480) 639-4722</a> with what's going on &mdash; burning, urgency, frequency, anything you've already tried. He asks follow-up questions to rule out anything that needs in-person care. If antibiotics are the right call, your online UTI prescription is sent electronically to the pharmacy of your choice. Most people pick up same day. The whole thing &mdash; text, history, prescription &mdash; is $59 flat.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1796,42 +1837,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="https://npcwoods.com/scottsdale-uti-treatment/">Scottsdale</a></li>
           <li><a href="https://npcwoods.com/surprise-uti-treatment/">Surprise</a></li>
           <li><a href="https://npcwoods.com/phoenix-uti-treatment/">Phoenix</a></li>
-          <li><a href="https://npcwoods.com/tucson-uti-treatment/">Tucson</a></li>
+          <!-- Tucson city page not shipped yet; avoid sending users/bots to a 404 -->
         </ul>
       </div>
 
-      <div class="city-group">
-        <h3>New Mexico</h3>
-        <ul>
-          <li><a href="https://npcwoods.com/albuquerque-uti-treatment/">Albuquerque</a></li>
-          <li><a href="https://npcwoods.com/santa-fe-uti-treatment/">Santa Fe</a></li>
-          <li><a href="https://npcwoods.com/las-cruces-uti-treatment/">Las Cruces</a></li>
-          <li><a href="https://npcwoods.com/rio-rancho-uti-treatment/">Rio Rancho</a></li>
-          <li><a href="https://npcwoods.com/farmington-uti-treatment/">Farmington</a></li>
-        </ul>
-      </div>
-
-      <div class="city-group">
-        <h3>Georgia</h3>
-        <ul>
-          <li><a href="https://npcwoods.com/athens-uti-treatment/">Athens</a></li>
-          <li><a href="https://npcwoods.com/atlanta-uti-treatment/">Atlanta</a></li>
-          <li><a href="https://npcwoods.com/augusta-uti-treatment/">Augusta</a></li>
-          <li><a href="https://npcwoods.com/gainesville-ga-uti-treatment/">Gainesville</a></li>
-          <li><a href="https://npcwoods.com/dalton-uti-treatment/">Dalton</a></li>
-        </ul>
-      </div>
-
-      <div class="city-group">
-        <h3>North Carolina</h3>
-        <ul>
-          <li><a href="https://npcwoods.com/asheville-uti-treatment/">Asheville</a></li>
-          <li><a href="https://npcwoods.com/charlotte-uti-treatment/">Charlotte</a></li>
-          <li><a href="https://npcwoods.com/hendersonville-uti-treatment/">Hendersonville</a></li>
-          <li><a href="https://npcwoods.com/hickory-uti-treatment/">Hickory</a></li>
-          <li><a href="https://npcwoods.com/boone-uti-treatment/">Boone</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -2060,7 +2069,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
           NPCWoods Telemedicine
         </div>
-        <p>Text-based telehealth visits for $59. $59 flat fee. No paperwork. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
+        <p>Text-based telehealth visits — $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
         <a href="sms:4806394722" class="npc-footer-cta">Text (480) 639-4722</a>
       </div>
 
@@ -2104,9 +2113,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
-          <li><a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a></li>
-          <li><a href="https://npcwoods.com/pharmacy-partners/">Pharmacy Partners</a></li>
-          <li><a href="https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/">$59 Flat Fee — No Hassle</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing &mdash; $59</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
+          <li><a href="https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/">Affordable Care</a></li>
+          <li><a href="https://npcwoods.com/blog/">Blog</a></li>
           <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
         </ul>
       </div>
@@ -2124,7 +2134,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
         <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
       </a><br>
-      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Licensed Nurse Practitioner<br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
       NPI: 1285125468 &bull; <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a><br>
       <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
@@ -2481,5 +2491,20 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 })();
 </script>
 <!-- END NPCWoods Contact Save -->
+
+<!-- NPCWoods CWV: GTM relocated to end of <body> by cwv-batch-fixes.py -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EFFRQMG8TC');
+gtag('config', 'AW-610222919');
+</script>
 </body>
 </html>

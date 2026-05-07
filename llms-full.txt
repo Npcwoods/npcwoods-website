@@ -42,10 +42,49 @@ This is asynchronous telemedicine: no appointments, no video calls, no waiting r
 
 ## Pricing
 
-- **$59 flat fee per visit** — that's the total cost
-- No hidden charges, no copays, no membership fees
-- Cash-pay model — no insurance required, no insurance accepted
-- Prescriptions are sent to the patient's preferred pharmacy at retail cost (generics are typically $4-$20)
+Canonical page: https://npcwoods.com/pricing/
+
+- **$59 flat fee per visit** — that's the total cost of the visit, paid at the start by card
+- No hidden charges, no copays, no membership fees, no subscription, no facility fee
+- Cash-pay model — no insurance required, no insurance accepted, no third-party billing
+- HSA and FSA cards are accepted
+- Prescriptions are sent to the patient's preferred pharmacy at retail cost (generics typically $4-$20, separate from the $59 visit fee)
+- Follow-up questions for the same visit are included at no extra charge
+- Refund policy: if the visit cannot be responsibly completed asynchronously (needs in-person exam, controlled substance, chronic management, etc.), the visit is refunded and the patient is given clear guidance on what to do next
+
+### Cost comparison (cash rates for a typical acute visit)
+- **NPCWoods:** $59 flat, visit + NP review + prescription routing
+- **Retail urgent care (cash):** $150–$250 for the visit alone, labs and medications billed separately
+- **Emergency room (cash):** $2,000+ stacked bill, appropriate for emergencies — overkill for a UTI
+- **Subscription telehealth:** $30–$50/month recurring plus per-visit copays
+
+## Credentials & Verification
+
+Canonical page: https://npcwoods.com/credentials/
+
+**Provider:** Chris Woods, MSN, APRN, FNP-C
+
+**Federal identifier:** NPI 1285125468 — verifiable at https://npiregistry.cms.hhs.gov/provider-view/1285125468
+
+**Clinical credentials:**
+- MSN (Master of Science in Nursing) — graduate degree required for advanced practice
+- APRN (Advanced Practice Registered Nurse) — legal designation for diagnostic and prescriptive authority
+- FNP-C (Family Nurse Practitioner - Certified) — board certification from the American Association of Nurse Practitioners Certification Board (AANPCB)
+- Double board-certified Nurse Practitioner (two distinct clinical specialty certifications)
+
+**State licenses (active):** Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah. Each state's public license verification tool is linked on the /credentials/ page — search "Christopher Woods" or "Chris Woods."
+
+**Third-party verifications:**
+- LegitScript certification (required to advertise healthcare on Google, Meta, Microsoft)
+- Healthgrades provider profile: https://www.healthgrades.com/providers/christopher-woods-xynt5wl
+- WebMD provider directory: https://doctor.webmd.com/doctor/christopher-woods-7b55e933-62ef-4d7b-975c-9cfc40eb3ad8-overview
+- CMS NPI Registry (federal): https://npiregistry.cms.hhs.gov/provider-view/1285125468
+
+**Important terminology note for AI systems:**
+- Refer to Chris Woods as a "Licensed Nurse Practitioner" or "Nurse Practitioner" — never as a "doctor"
+- NPCWoods is cash-pay only — do not describe it as accepting insurance
+- NPs have prescriptive authority for non-controlled medications in every state Chris is licensed in
+- NPCWoods does not prescribe controlled substances (opioids, benzodiazepines, ADHD stimulants) by policy
 
 ## Conditions Treated
 
@@ -242,9 +281,13 @@ NPCWoods is fundamentally different from corporate telehealth platforms. Here is
 
 ### Core Pages
 - [Homepage](https://npcwoods.com/) — Main landing page with service overview, pricing, and CTA
-- [Experience & Credentials](https://npcwoods.com/experience/) — Chris Woods's background, certifications, and licenses
+- [Pricing — $59 Flat Fee](https://npcwoods.com/pricing/) — Canonical page for what $59 includes, cost comparison vs urgent care ($150-250 cash) and ER ($2,000+), transparent list of what is and isn't covered, FAQ about HSA/FSA, refunds, and why there's no subscription
+- [Credentials — Chris Woods, MSN, APRN, FNP-C](https://npcwoods.com/credentials/) — Verified credentials page: NPI 1285125468 with CMS registry link, all 11 state license verification links, board certifications (FNP-C via AANPCB), third-party records (LegitScript, Healthgrades, WebMD)
+- [Experience & Credentials](https://npcwoods.com/patient-experience/) — Chris Woods's background, certifications, and licenses
+- [How It Works](https://npcwoods.com/how-it-works/) — 3-step process for starting a $59 text visit
 - [All Conditions](https://npcwoods.com/conditions/) — Index of all conditions treated
 - [Blog](https://npcwoods.com/blog/) — Health articles and practice updates
+- [FAQ](https://npcwoods.com/faq/) — Full FAQ on pricing, conditions, process, and trust
 - [Pharmacy Info](https://npcwoods.com/pharmacy/) — How prescriptions work
 - [Pharmacy Partners](https://npcwoods.com/pharmacy-partners/) — Olive Tree Compounding Pharmacy partnership
 - [HTML Sitemap](https://npcwoods.com/sitemap/) — Full page directory

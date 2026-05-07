@@ -57,9 +57,13 @@ How it works: You text (480) 639-4722 with your symptoms, upload a photo if need
 
 ### Core Pages
 - [Homepage](https://npcwoods.com/)
-- [Experience & Credentials](https://npcwoods.com/experience/)
+- [Pricing — $59 Flat Fee](https://npcwoods.com/pricing/)
+- [Credentials — Chris Woods, MSN, APRN, FNP-C](https://npcwoods.com/credentials/)
+- [Experience & Credentials](https://npcwoods.com/patient-experience/)
+- [How It Works](https://npcwoods.com/how-it-works/)
 - [All Conditions](https://npcwoods.com/conditions/)
 - [Blog](https://npcwoods.com/blog/)
+- [FAQ](https://npcwoods.com/faq/)
 - [Pharmacy](https://npcwoods.com/pharmacy/)
 - [Pharmacy Partners](https://npcwoods.com/pharmacy-partners/)
 - [Sitemap](https://npcwoods.com/sitemap/)

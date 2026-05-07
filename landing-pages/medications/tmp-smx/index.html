@@ -89,27 +89,25 @@
 
   <!-- Schema: Person (Chris Woods) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://npcwoods.com/#chris-woods",
-    "url": "https://npcwoods.com/about/",
-    "name": "Chris Woods",
-    "credential": "MSN, APRN, FNP-C",
-    "jobTitle": "Double Board-Certified Family Nurse Practitioner",
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "description": "Chris Woods is a double board-certified Family Nurse Practitioner and founder of NPCWoods Telemedicine. He personally reviews every medication guide on the site.",
-    "worksFor": {
-      "@type": "MedicalBusiness",
-      "@id": "https://npcwoods.com/#medical-business",
-      "name": "NPCWoods Telemedicine",
-      "url": "https://npcwoods.com",
-      "priceRange": "$59",
-      "telephone": "+14806394722",
-      "medicalSpecialty": "Family Practice"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://npcwoods.com/#chris-woods",
+  "url": "https://npcwoods.com/about/",
+  "name": "Chris Woods",
+  "jobTitle": "Licensed Nurse Practitioner",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+  "description": "Chris Woods is a double board-certified Family Nurse Practitioner and founder of NPCWoods Telemedicine. He personally reviews every medication guide on the site.",
+  "worksFor": {
+    "@id": "https://npcwoods.com/#medical-business"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "license",
+    "name": "MSN, APRN, FNP-C"
   }
-  </script>
+}
+</script>
 
 
   <script type="application/ld+json">
@@ -830,6 +828,8 @@
       }
     }
   </style>
+<!-- NPCWoods Tracking: Ahrefs Analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
 
@@ -1475,6 +1475,9 @@
         <a href="https://npcwoods.com/how-it-works/">How It Works</a>
       </li>
       <li>
+        <a href="https://npcwoods.com/pricing/">Pricing</a>
+      </li>
+      <li>
         <a href="#">States <span class="nav-arrow">&#9662;</span></a>
         <div class="npc-dropdown">
           <a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
@@ -1491,10 +1494,10 @@
         </div>
       </li>
       <li>
-        <a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a>
+        <a href="https://npcwoods.com/blog/">Blog</a>
       </li>
       <li>
-        <a href="https://npcwoods.com/blog/">Blog</a>
+        <a href="https://npcwoods.com/credentials/">Credentials</a>
       </li>
       <li>
         <a href="sms:4806394722" class="npc-nav-cta">
@@ -1535,6 +1538,16 @@
         <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
+      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee &mdash; one price, one promise</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
         <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
@@ -1552,12 +1565,7 @@
       </a>
       <a href="https://npcwoods.com/about/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
-        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C &mdash; Board Certified</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/about/#licenses" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Licenses &amp; Credentials<div class="npc-panel-link-sub">Verified in 11 states</div></div>
+        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C &mdash; double board-certified</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
     </div>
@@ -2131,334 +2139,7 @@
 <a href="sms:4806394722" class="floating-cta">Text for $59 Visit</a>
 
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
-<!-- Copy this block into every page before <!-- NPCWoods Contact Save -->
-<style>
-  /* ===== SAVE CONTACT FLOATING BUTTON ===== */
-  .npc-save-wrap {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 998;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .npc-save-wrap.npc-save-visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .npc-save-wrap.npc-save-hidden {
-    display: none !important;
-  }
-
-  /* Collapsed: circle icon button */
-  .npc-save-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 100px;
-    background: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    transition: all 0.2s ease;
-    position: relative;
-    padding: 0;
-  }
-  .npc-save-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37,99,235,0.25);
-  }
-  .npc-save-btn svg {
-    width: 26px;
-    height: 26px;
-    color: #2563EB;
-    flex-shrink: 0;
-  }
-  .npc-save-btn .npc-save-dot {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 10px;
-    height: 10px;
-    background: #2563EB;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
-    animation: npc-save-pulse 2s infinite;
-  }
-
-  /* Expanded card */
-  .npc-save-card {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
-    padding: 24px;
-    opacity: 0;
-    transform: scale(0.9) translateY(8px);
-    transform-origin: bottom right;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-    visibility: hidden;
-  }
-  .npc-save-card.npc-save-card-open {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  .npc-save-card-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 28px;
-    height: 28px;
-    border: none;
-    background: #F3F4F6;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    transition: background 0.15s ease;
-  }
-  .npc-save-card-close:hover {
-    background: #E5E7EB;
-  }
-  .npc-save-card-close svg {
-    width: 14px;
-    height: 14px;
-    color: #6B7280;
-  }
-
-  .npc-save-card-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .npc-save-card-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 2px solid #EFF6FF;
-  }
-  .npc-save-card-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1A1A2E;
-    line-height: 1.2;
-  }
-  .npc-save-card-title {
-    font-size: 0.75rem;
-    color: #6B7280;
-    margin-top: 2px;
-  }
-
-  .npc-save-card-msg {
-    font-size: 0.9rem;
-    color: #4A4A5A;
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-  .npc-save-card-msg strong {
-    color: #1A1A2E;
-  }
-
-  .npc-save-card-dl {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
-    box-sizing: border-box;
-  }
-  .npc-save-card-dl:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
-  }
-  .npc-save-card-dl svg {
-    width: 16px;
-    height: 16px;
-    vertical-align: -3px;
-    margin-right: 6px;
-  }
-
-  .npc-save-card-hint {
-    text-align: center;
-    font-size: 0.7rem;
-    color: #9CA3AF;
-    margin-top: 10px;
-    line-height: 1.4;
-  }
-
-  /* Pulse animation for the notification dot */
-  @keyframes npc-save-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .npc-save-wrap { transition: none; }
-    .npc-save-card { transition: none; }
-    .npc-save-btn { transition: none; }
-    .npc-save-btn .npc-save-dot { animation: none; }
-  }
-
-  /* Mobile: shift above floating CTA bar */
-  @media (max-width: 640px) {
-    .npc-save-wrap {
-      bottom: 84px;
-      right: 16px;
-    }
-    .npc-save-card {
-      width: 280px;
-      padding: 20px;
-    }
-  }
-
-  /* Very small screens */
-  @media (max-width: 360px) {
-    .npc-save-card {
-      width: 260px;
-      right: -8px;
-    }
-  }
-</style>
-
-<div class="npc-save-wrap" id="npcSaveWrap">
-  <!-- Collapsed: circle icon button -->
-  <button class="npc-save-btn" id="npcSaveBtn" aria-label="Save contact info">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
-    <span class="npc-save-dot"></span>
-  </button>
-
-  <!-- Expanded card -->
-  <div class="npc-save-card" id="npcSaveCard">
-    <button class="npc-save-card-close" id="npcSaveDismiss" aria-label="Dismiss">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-    </button>
-    <div class="npc-save-card-profile">
-      <img class="npc-save-card-avatar" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods" width="48" height="48" loading="lazy">
-      <div>
-        <div class="npc-save-card-name">Chris Woods, NP</div>
-        <div class="npc-save-card-title">NPCWoods Telemedicine</div>
-      </div>
-    </div>
-    <div class="npc-save-card-msg"><strong>Not sick right now?</strong> Save my number for later — just search "sick guy" in your contacts when you need me.</div>
-    <a class="npc-save-card-dl" id="npcSaveDownload" href="/chris-woods.vcf" download="Chris Woods - NPCWoods.vcf">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>Save Contact
-    </a>
-    <div class="npc-save-card-hint">Saves to your phone contacts — search "sick guy" or "urgent care" anytime</div>
-  </div>
-</div>
-
-<script>
-(function() {
-  var wrap = document.getElementById('npcSaveWrap');
-  var btn = document.getElementById('npcSaveBtn');
-  var card = document.getElementById('npcSaveCard');
-  var dismiss = document.getElementById('npcSaveDismiss');
-  var dl = document.getElementById('npcSaveDownload');
-
-  if (!wrap || !btn || !card) return;
-
-  // Check if dismissed this session
-  try {
-    if (sessionStorage.getItem('npc-contact-dismissed') === '1') {
-      wrap.classList.add('npc-save-hidden');
-      return;
-    }
-  } catch(e) {}
-
-  var hasSeenExpanded = false;
-  try { hasSeenExpanded = sessionStorage.getItem('npc-contact-seen') === '1'; } catch(e) {}
-
-  // Show after 3 second delay
-  setTimeout(function() {
-    wrap.classList.add('npc-save-visible');
-
-    // Auto-expand on first view, stay collapsed on subsequent pages
-    if (!hasSeenExpanded) {
-      setTimeout(function() {
-        card.classList.add('npc-save-card-open');
-        btn.style.opacity = '0';
-        btn.style.pointerEvents = 'none';
-        // Auto-collapse after 5 seconds
-        setTimeout(function() {
-          card.classList.remove('npc-save-card-open');
-          btn.style.opacity = '1';
-          btn.style.pointerEvents = 'auto';
-          try { sessionStorage.setItem('npc-contact-seen', '1'); } catch(e) {}
-        }, 5000);
-      }, 200);
-    }
-  }, 3000);
-
-  // Toggle on click
-  btn.addEventListener('click', function() {
-    card.classList.add('npc-save-card-open');
-    btn.style.opacity = '0';
-    btn.style.pointerEvents = 'none';
-  });
-
-  // Dismiss
-  dismiss.addEventListener('click', function() {
-    card.classList.remove('npc-save-card-open');
-    wrap.classList.remove('npc-save-visible');
-    try { sessionStorage.setItem('npc-contact-dismissed', '1'); } catch(e) {}
-    setTimeout(function() { wrap.classList.add('npc-save-hidden'); }, 400);
-  });
-
-  // Close card when clicking outside
-  document.addEventListener('click', function(e) {
-    if (card.classList.contains('npc-save-card-open') && !wrap.contains(e.target)) {
-      card.classList.remove('npc-save-card-open');
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  });
-
-  // Track download
-  dl.addEventListener('click', function() {
-    // Google Analytics / Ads
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'save_contact_vcard',
-        value: 0
-      });
-    }
-    // Facebook Pixel
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'save_contact_vcard' });
-    }
-  });
-})();
-</script>
-<!-- END NPCWoods Contact Save -->
-</body> -->
+<!-- Copy this block into every page before </body> -->
 <!-- Last updated: March 2026 -->
 
 <style>
@@ -2596,6 +2277,29 @@
   line-height: 1.5;
 }
 
+.npc-footer-trust a {
+  color: #9EB8FF;
+  text-decoration: none;
+}
+
+.npc-footer-trust a:hover {
+  color: #FFFFFF;
+}
+
+.npc-footer-hipaa-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.18);
+  color: #D9E7FF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 768px) {
   .npc-footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -2669,8 +2373,8 @@
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
-          <li><a href="https://npcwoods.com/pharmacy/">Pharmacy Info</a></li>
-          <li><a href="https://npcwoods.com/pharmacy-partners/">Pharmacy Partners</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing &mdash; $59</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
           <li><a href="https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/">Affordable Care</a></li>
           <li><a href="https://npcwoods.com/blog/">Blog</a></li>
           <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
@@ -2690,7 +2394,7 @@
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
         <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
       </a><br>
-      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Licensed Nurse Practitioner<br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
       NPI: 1285125468 &bull; <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a><br>
       <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
