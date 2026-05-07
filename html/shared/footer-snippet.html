@@ -1,0 +1,264 @@
+<!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
+<!-- Copy this block into every page before </body> -->
+<!-- Last updated: March 2026 -->
+
+<style>
+/* ===== SITE FOOTER ===== */
+.npc-site-footer {
+  background: #1A1A2E;
+  color: #B0B0C0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 56px 20px 32px;
+  margin-top: 0;
+}
+
+.npc-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.npc-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.npc-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.npc-footer-brand-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.npc-footer-brand-name img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.npc-footer-brand p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #8E8E9A;
+  margin: 0;
+  max-width: 280px;
+}
+
+.npc-footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.npc-footer-cta:hover {
+  background: #1D4ED8;
+}
+
+.npc-footer-col h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+}
+
+.npc-footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.npc-footer-col li {
+  margin-bottom: 8px;
+}
+
+.npc-footer-col a {
+  font-size: 0.875rem;
+  color: #B0B0C0;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.npc-footer-col a:hover {
+  color: #FFFFFF;
+}
+
+.npc-footer-divider {
+  border: none;
+  border-top: 1px solid #2A2A3E;
+  margin: 0 0 24px;
+}
+
+.npc-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #6B6B80;
+}
+
+.npc-footer-bottom a {
+  color: #6B6B80;
+  text-decoration: none;
+}
+
+.npc-footer-bottom a:hover {
+  color: #B0B0C0;
+}
+
+.npc-footer-trust {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6B6B80;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.npc-footer-trust a {
+  color: #9EB8FF;
+  text-decoration: none;
+}
+
+.npc-footer-trust a:hover {
+  color: #FFFFFF;
+}
+
+.npc-footer-hipaa-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.18);
+  color: #D9E7FF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .npc-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .npc-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .npc-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+</style>
+
+<footer class="npc-site-footer">
+  <div class="npc-footer-inner">
+    <div class="npc-footer-grid">
+
+      <!-- Brand Column -->
+      <div class="npc-footer-brand">
+        <div class="npc-footer-brand-name">
+          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
+          NPCWoods Telemedicine
+        </div>
+        <p>Text-based telehealth visits — $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
+        <a href="sms:4806394722" class="npc-footer-cta">Text (480) 639-4722</a>
+      </div>
+
+      <!-- Conditions Column -->
+      <div class="npc-footer-col">
+        <h4>Conditions We Treat</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
+          <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
+          <li><a href="https://npcwoods.com/dental-pain/">Dental Pain</a></li>
+          <li><a href="https://npcwoods.com/ear-infection/">Ear Infection</a></li>
+          <li><a href="https://npcwoods.com/conditions/">Cold &amp; Flu</a></li>
+          <li><a href="https://npcwoods.com/conditions/">Allergies</a></li>
+          <li><a href="https://npcwoods.com/conditions/">Skin Rashes</a></li>
+          <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
+          <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
+        </ul>
+      </div>
+
+      <!-- States Column -->
+      <div class="npc-footer-col">
+        <h4>States We Serve</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
+          <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
+          <li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li>
+          <li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li>
+          <li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li>
+          <li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li>
+          <li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li>
+          <li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li>
+          <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
+          <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
+          <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="npc-footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/">Home</a></li>
+          <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing &mdash; $59</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
+          <li><a href="https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/">Affordable Care</a></li>
+          <li><a href="https://npcwoods.com/blog/">Blog</a></li>
+          <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="npc-footer-divider">
+
+    <div class="npc-footer-bottom">
+      <span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>
+      <span><a href="https://npcwoods.com">npcwoods.com</a></span>
+    </div>
+
+    <div class="npc-footer-trust">
+      <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
+        <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
+      </a><br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      NPI: 1285125468 &bull; <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a><br>
+      <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
+    </div>
+  </div>
+</footer>
+<!-- ===== END SITE FOOTER ===== -->

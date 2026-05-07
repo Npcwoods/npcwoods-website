@@ -1,0 +1,12 @@
+[
+  {"cond":"UTI","city":"Phoenix, AZ","min":4},
+  {"cond":"Sinus infection","city":"Salt Lake City, UT","min":12},
+  {"cond":"Strep throat","city":"Reno, NV","min":7},
+  {"cond":"Pink eye","city":"Boise, ID","min":18},
+  {"cond":"Dental pain","city":"Raleigh, NC","min":9},
+  {"cond":"UTI","city":"Tucson, AZ","min":22},
+  {"cond":"Cold sore","city":"Missoula, MT","min":14},
+  {"cond":"Ear infection","city":"Des Moines, IA","min":11},
+  {"cond":"Sinus infection","city":"Atlanta, GA","min":6},
+  {"cond":"Skin infection","city":"Albuquerque, NM","min":19}
+]
