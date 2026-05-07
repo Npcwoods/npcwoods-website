@@ -1,0 +1,349 @@
+selector	line_range	verdict	evidence	bytes	inside_media
+:root	41-75	KEEP	:root custom properties used by v2	800	
+*, *::before, *::after	80-80	KEEP	tag-only selector — base styling, retain	73	
+html	82-86	KEEP	base element reset (used by all markup)	108	
+body	88-98	KEEP	base element reset (used by all markup)	323	
+img	100-100	KEEP	base element reset (used by all markup)	40	
+a	101-101	KEEP	base element reset (used by all markup)	44	
+:focus-visible	104-108	KEEP	page-wide focus/scrollbar/selection styles	98	
+:focus:not(:focus-visible)	109-109	KEEP	page-wide focus/scrollbar/selection styles	45	
+.skip-link	112-123	KEEP	accessibility skip-link is rendered outside .home-v2	228	
+.skip-link:focus	124-124	KEEP	accessibility skip-link is rendered outside .home-v2	28	
+html	128-128	KEEP	base element reset (used by all markup)	31	@media (prefers-reduced-motion: reduce)
+.reveal	129-129	DELETE	JS targets ['reveal'] but class has zero markup anywhere -> JS+CSS both dead	91	@media (prefers-reduced-motion: reduce)
+*	130-130	KEEP	base element reset (used by all markup)	84	@media (prefers-reduced-motion: reduce)
+::-webkit-scrollbar	134-134	KEEP	page-wide focus/scrollbar/selection styles	35	
+::-webkit-scrollbar-track	135-135	KEEP	page-wide focus/scrollbar/selection styles	59	
+::-webkit-scrollbar-thumb	136-136	KEEP	page-wide focus/scrollbar/selection styles	70	
+::-webkit-scrollbar-thumb:hover	137-137	KEEP	page-wide focus/scrollbar/selection styles	56	
+.container	146-150	DELETE	no markup or JS reference anywhere in file	82	
+section	152-154	KEEP	base element reset (used by all markup)	58	
+h1, h2, h3	159-164	KEEP	tag-only selector — base styling, retain	128	
+h1	166-171	KEEP	base element reset (used by all markup)	104	
+h2	173-176	KEEP	base element reset (used by all markup)	77	
+h3	178-181	KEEP	base element reset (used by all markup)	55	
+.overline	183-191	DELETE	no markup or JS reference anywhere in file	181	
+.section-header	193-197	DELETE	no markup or JS reference; v1-only legacy class ['section-header']	84	
+.section-header p	199-203	DELETE	no markup or JS reference; v1-only legacy class ['section-header']	98	
+.btn-primary	208-222	KEEP	production system: classes=btn-primary	374	
+.btn-primary:hover	223-227	KEEP	production system: classes=btn-primary	133	
+.btn-secondary	229-243	DELETE	no markup or JS reference; v1-only legacy class ['btn-secondary']	371	
+.btn-secondary:hover	244-247	DELETE	no markup or JS reference; v1-only legacy class ['btn-secondary']	89	
+.btn-ghost	249-258	DELETE	no markup or JS reference; v1-only legacy class ['btn-ghost']	195	
+.btn-ghost:hover	259-259	DELETE	no markup or JS reference; v1-only legacy class ['btn-ghost']	31	
+.btn-inverted	261-275	DELETE	no markup or JS reference; v1-only legacy class ['btn-inverted']	353	
+.btn-inverted:hover	276-279	DELETE	no markup or JS reference; v1-only legacy class ['btn-inverted']	102	
+.icon-brand	281-281	DELETE	no markup or JS reference anywhere in file	36	
+.badge	286-297	DELETE	only used inside .home-v2 (markup classes=['badge']); v2 has scoped .home-v2 selectors that win on specificity	246	
+.card	302-308	DELETE	no markup or JS reference anywhere in file	196	
+.card:hover	309-313	DELETE	no markup or JS reference anywhere in file	129	
+.reveal	318-322	DELETE	JS targets ['reveal'] but class has zero markup anywhere -> JS+CSS both dead	110	
+.reveal.visible	323-326	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	61	
+.reveal.visible .stagger:nth-child(1)	329-329	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	64	
+.reveal.visible .stagger:nth-child(2)	330-330	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	65	
+.reveal.visible .stagger:nth-child(3)	331-331	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(4)	332-332	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(5)	333-333	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(6)	334-334	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(7)	335-335	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(8)	336-336	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.reveal.visible .stagger:nth-child(9)	337-337	DELETE	JS targets ['reveal', 'visible'] but class has zero markup anywhere -> JS+CSS both dead	66	
+.npc-nav	343-351	KEEP	production system: classes=npc-nav	228	
+.npc-nav-inner	353-361	KEEP	production system: classes=npc-nav-inner	166	
+.npc-nav-logo	363-371	KEEP	production system: classes=npc-nav-logo	152	
+.npc-nav-logo img	373-377	KEEP	production system: classes=npc-nav-logo	74	
+.npc-nav-links	379-386	KEEP	production system: classes=npc-nav-links	117	
+.npc-nav-links > li	388-390	KEEP	production system: classes=npc-nav-links	45	
+.npc-nav-links > li > a	392-401	KEEP	production system: classes=npc-nav-links	219	
+.npc-nav-links > li > a:hover	403-406	KEEP	production system: classes=npc-nav-links	74	
+.npc-nav-links > li > a .nav-arrow	409-414	KEEP	production system: classes=nav-arrow,npc-nav-links	135	
+.npc-dropdown	417-430	KEEP	production system: classes=npc-dropdown	271	
+.npc-nav-links > li:hover > .npc-dropdown, .npc-nav-links > li:focus-within > .npc-dropdown	432-435	KEEP	production system: classes=npc-dropdown,npc-nav-links	113	
+.npc-dropdown a	437-446	KEEP	production system: classes=npc-dropdown	197	
+.npc-dropdown a:hover	448-451	KEEP	production system: classes=npc-dropdown	66	
+.npc-nav-cta	454-467	KEEP	production system: classes=npc-nav-cta	294	
+.npc-nav-cta:hover	469-472	KEEP	production system: classes=npc-nav-cta	74	
+.npc-nav-toggle	475-486	KEEP	production system: classes=npc-nav-toggle	224	
+.npc-nav-toggle:hover	488-491	KEEP	production system: classes=npc-nav-toggle	73	
+.npc-nav-toggle span	493-501	KEEP	production system: classes=npc-nav-toggle	203	
+.npc-nav-toggle.active	503-506	KEEP	production system: classes=npc-nav-toggle	74	
+.npc-nav-toggle.active span	508-508	KEEP	production system: classes=npc-nav-toggle	52	
+.npc-nav-toggle.active span:nth-child(1)	509-509	KEEP	production system: classes=npc-nav-toggle	90	
+.npc-nav-toggle.active span:nth-child(2)	510-510	KEEP	production system: classes=npc-nav-toggle	78	
+.npc-nav-toggle.active span:nth-child(3)	511-511	KEEP	production system: classes=npc-nav-toggle	92	
+.npc-menu-overlay	514-524	KEEP	production system: classes=npc-menu-overlay	243	
+.npc-menu-overlay.active	526-529	KEEP	production system: classes=npc-menu-overlay	66	
+.npc-slide-panel	531-547	KEEP	production system: classes=npc-slide-panel	441	
+.npc-slide-panel.active	549-551	KEEP	production system: classes=npc-slide-panel	39	
+.npc-panel-header	554-564	KEEP	production system: classes=npc-panel-header	220	
+.npc-panel-logo	566-573	KEEP	production system: classes=npc-panel-logo	129	
+.npc-panel-logo img	575-579	KEEP	production system: classes=npc-panel-logo	76	
+.npc-panel-close	581-593	KEEP	production system: classes=npc-panel-close	254	
+.npc-panel-close:hover	595-599	KEEP	production system: classes=npc-panel-close	92	
+.npc-panel-close svg	601-604	KEEP	production system: classes=npc-panel-close	55	
+.npc-panel-body	606-608	KEEP	production system: classes=npc-panel-body	46	
+.npc-panel-section	611-613	KEEP	production system: classes=npc-panel-section	44	
+.npc-panel-section-label	615-622	KEEP	production system: classes=npc-panel-section-label	168	
+.npc-panel-link	625-636	KEEP	production system: classes=npc-panel-link	226	
+.npc-panel-link:hover	638-640	KEEP	production system: classes=npc-panel-link	48	
+.npc-panel-link-icon	642-653	KEEP	production system: classes=npc-panel-link-icon	240	
+.npc-panel-link:hover .npc-panel-link-icon	655-658	KEEP	production system: classes=npc-panel-link,npc-panel-link-icon	94	
+.npc-panel-link-icon svg	660-664	KEEP	production system: classes=npc-panel-link-icon	77	
+.npc-panel-link-text	666-668	KEEP	production system: classes=npc-panel-link-text	35	
+.npc-panel-link-sub	670-675	KEEP	production system: classes=npc-panel-link-sub	102	
+.npc-panel-link:hover .npc-panel-link-sub	677-680	KEEP	production system: classes=npc-panel-link,npc-panel-link-sub	79	
+.npc-panel-link-arrow	682-687	KEEP	production system: classes=npc-panel-link-arrow	112	
+.npc-panel-link:hover .npc-panel-link-arrow	689-693	KEEP	production system: classes=npc-panel-link,npc-panel-link-arrow	107	
+.npc-states-grid	696-701	KEEP	referenced in markup outside .home-v2: ['npc-states-grid']	101	
+.npc-state-link	703-714	KEEP	production system: classes=npc-state-link	232	
+.npc-state-link:hover	716-719	KEEP	production system: classes=npc-state-link	66	
+.npc-state-dot	721-728	KEEP	referenced in markup outside .home-v2: ['npc-state-dot']	143	
+.npc-state-link:hover .npc-state-dot	730-733	KEEP	production system: classes=npc-state-link	96	
+.npc-panel-divider	736-740	KEEP	production system: classes=npc-panel-divider	84	
+.npc-panel-cta	743-759	KEEP	production system: classes=npc-panel-cta	348	
+.npc-panel-cta:hover	761-766	KEEP	production system: classes=npc-panel-cta	142	
+.npc-panel-cta svg	768-771	KEEP	production system: classes=npc-panel-cta	53	
+.npc-panel-phone	774-786	KEEP	production system: classes=npc-panel-phone	241	
+.npc-panel-phone:hover	788-790	KEEP	production system: classes=npc-panel-phone	49	
+.npc-panel-phone-icon	792-802	KEEP	referenced in markup outside .home-v2: ['npc-panel-phone-icon']	229	
+.npc-panel-phone-icon svg	804-808	KEEP	referenced in markup outside .home-v2: ['npc-panel-phone-icon']	78	
+.npc-slide-panel.active .npc-panel-link, .npc-slide-panel.active .npc-state-link, .npc-slide-panel.active .npc-panel-cta, .npc-slide-panel.active .npc-panel-phone	811-817	KEEP	production system: classes=npc-panel-cta,npc-panel-link,npc-panel-phone,npc-slide-panel,npc-state-link	229	
+.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(2)	819-819	KEEP	production system: classes=npc-panel-link,npc-panel-section,npc-slide-panel	112	
+.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(3)	820-820	KEEP	production system: classes=npc-panel-link,npc-panel-section,npc-slide-panel	112	
+.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(4)	821-821	KEEP	production system: classes=npc-panel-link,npc-panel-section,npc-slide-panel	112	
+.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(5)	822-822	KEEP	production system: classes=npc-panel-link,npc-panel-section,npc-slide-panel	112	
+.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(6)	823-823	KEEP	production system: classes=npc-panel-link,npc-panel-section,npc-slide-panel	112	
+@keyframes npcFadeSlideIn	825-828	KEEP	keyframes (cheap; may animate v2)	128	
+.npc-slide-panel, .npc-menu-overlay, .npc-nav-toggle span, .npc-panel-link, .npc-state-link, .npc-panel-cta, .npc-panel-phone	832-841	KEEP	production system: classes=npc-menu-overlay,npc-nav-toggle,npc-panel-cta,npc-panel-link,npc-panel-phone,npc-slide-panel,npc-state-link	228	@media (prefers-reduced-motion: reduce)
+.npc-nav-links	845-845	KEEP	production system: classes=npc-nav-links	33	@media (max-width: 768px)
+.npc-nav-toggle	846-846	KEEP	production system: classes=npc-nav-toggle	34	@media (max-width: 768px)
+.npc-nav	851-856	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	187	
+.npc-nav.scrolled	857-861	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	118	
+.npc-nav:not(.scrolled) .npc-nav-links > li > a	862-862	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	82	
+.npc-nav:not(.scrolled) .npc-nav-links > li > a:hover	863-863	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	73	
+.npc-nav:not(.scrolled) .npc-nav-logo	864-864	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	57	
+.npc-nav:not(.scrolled) .npc-nav-toggle span	865-865	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	69	
+.npc-nav:not(.scrolled) .npc-nav-toggle	866-866	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	80	
+.npc-nav:not(.scrolled) .npc-nav-toggle:hover	867-867	INVESTIGATE	transparent-over-hero rule (lines ~850-867); v1 blue gradient hero is dead, v2 reset at ~2651-2657 forces .npc-nav to white !important. Likely safe to delete alongside the JS .scrolled toggle, but verify the v2 reset truly wins.	121	
+.hero	872-882	DELETE	v1 styling shadowed by v2 !important reset (classes=['hero']); no markup outside .home-v2	284	
+.hero-trendline	885-893	DELETE	no markup or JS reference anywhere in file	131	
+.hero-trendline svg	894-897	DELETE	no markup or JS reference anywhere in file	54	
+.hero-photo-wrap	900-907	DELETE	no markup or JS reference; v1-only legacy class ['hero-photo-wrap']	145	
+.hero-photo-wrap img	908-916	DELETE	no markup or JS reference; v1-only legacy class ['hero-photo-wrap']	214	
+.hero-pills	919-925	DELETE	no markup or JS reference; v1-only legacy class ['hero-pills']	110	
+.hero-pill	926-939	DELETE	no markup or JS reference; v1-only legacy class ['hero-pill']	335	
+.hero-pill:hover	940-942	DELETE	no markup or JS reference; v1-only legacy class ['hero-pill']	58	
+.hero-pill svg	943-947	DELETE	no markup or JS reference; v1-only legacy class ['hero-pill']	76	
+.hero-overlay	950-957	DELETE	no markup or JS reference; v1-only legacy class ['hero-overlay']	150	
+.hero-overlay-inner	958-962	DELETE	no markup or JS reference anywhere in file	98	
+.hero-badge	964-978	DELETE	no markup or JS reference; v1-only legacy class ['hero-badge']	352	
+.hero-badge .pulse-dot	979-985	DELETE	no markup or JS reference; v1-only legacy class ['hero-badge']	132	
+@keyframes pulse	986-989	KEEP	keyframes (cheap; may animate v2)	115	
+.hero h1	991-995	DELETE	v1 styling shadowed by v2 !important reset (classes=['hero']); no markup outside .home-v2	102	
+.hero-sub	997-1003	DELETE	no markup or JS reference; v1-only legacy class ['hero-sub']	137	
+.hero-sub strong	1004-1007	DELETE	no markup or JS reference; v1-only legacy class ['hero-sub']	63	
+.hero-bottom	1010-1018	DELETE	no markup or JS reference; v1-only legacy class ['hero-bottom']	211	
+.hero-bottom-inner	1019-1023	DELETE	no markup or JS reference anywhere in file	97	
+.hero-actions	1024-1030	DELETE	no markup or JS reference; v1-only legacy class ['hero-actions']	116	
+.hero-actions .btn-primary	1031-1034	DELETE	selector references ['btn-primary'] but is gated by dead ancestor(s) ['hero-actions'] with no markup	81	
+.hero-actions .btn-primary:hover	1035-1038	DELETE	selector references ['btn-primary'] but is gated by dead ancestor(s) ['hero-actions'] with no markup	88	
+.hero-actions .btn-secondary	1039-1042	DELETE	no markup or JS reference; v1-only legacy class ['btn-secondary', 'hero-actions']	94	
+.hero-actions .btn-secondary:hover	1043-1046	DELETE	no markup or JS reference; v1-only legacy class ['btn-secondary', 'hero-actions']	106	
+.hero-trust	1048-1053	DELETE	no markup or JS reference; v1-only legacy class ['hero-trust']	91	
+.trust-item	1054-1061	DELETE	no markup or JS reference anywhere in file	149	
+.cta-trust-micro	1062-1071	DELETE	no markup or JS reference anywhere in file	210	
+.trust-item svg	1072-1075	DELETE	no markup or JS reference anywhere in file	69	
+.proof-bar	1080-1084	DELETE	no markup or JS reference; v1-only legacy class ['proof-bar']	97	
+.proof-bar-inner	1085-1093	DELETE	no markup or JS reference; v1-only legacy class ['proof-bar-inner']	172	
+.proof-bar span	1094-1100	DELETE	no markup or JS reference; v1-only legacy class ['proof-bar']	140	
+.proof-bar .dot	1101-1107	DELETE	only used inside .home-v2 (markup classes=['dot']); v2 has scoped .home-v2 selectors that win on specificity	125	
+.answer-first	1112-1115	DELETE	no markup or JS reference anywhere in file	78	
+.answer-first-inner	1116-1119	DELETE	no markup or JS reference anywhere in file	76	
+.answer-first-label	1120-1128	DELETE	no markup or JS reference anywhere in file	195	
+.answer-first-title	1129-1135	DELETE	no markup or JS reference anywhere in file	159	
+.answer-grid	1136-1140	DELETE	no markup or JS reference anywhere in file	109	
+.answer-card	1141-1147	DELETE	no markup or JS reference anywhere in file	152	
+.answer-card:hover	1148-1151	DELETE	no markup or JS reference anywhere in file	103	
+.answer-card-label	1152-1159	DELETE	no markup or JS reference anywhere in file	171	
+.answer-card p	1160-1165	DELETE	no markup or JS reference anywhere in file	107	
+.answer-first	1167-1169	DELETE	no markup or JS reference anywhere in file	61	@media (max-width: 768px)
+.answer-first-title	1170-1172	DELETE	no markup or JS reference anywhere in file	48	@media (max-width: 768px)
+.answer-grid	1173-1175	DELETE	no markup or JS reference anywhere in file	61	@media (max-width: 768px)
+.answer-grid	1178-1180	DELETE	no markup or JS reference anywhere in file	50	@media (max-width: 480px)
+.pain-section	1186-1188	DELETE	no markup or JS reference anywhere in file	49	
+.pain-grid	1190-1194	DELETE	no markup or JS reference; v1-only legacy class ['pain-grid']	85	
+.pain-card	1196-1202	DELETE	no markup or JS reference anywhere in file	206	
+.pain-card:hover	1203-1207	DELETE	no markup or JS reference anywhere in file	134	
+.pain-icon	1209-1218	DELETE	no markup or JS reference anywhere in file	192	
+.pain-icon svg	1219-1223	DELETE	no markup or JS reference anywhere in file	72	
+.pain-card h3	1225-1227	DELETE	no markup or JS reference anywhere in file	40	
+.pain-card p	1229-1233	DELETE	no markup or JS reference anywhere in file	94	
+.pain-solution	1235-1243	DELETE	no markup or JS reference anywhere in file	169	
+.compare-section	1248-1250	DELETE	no markup or JS reference anywhere in file	48	
+.compare-grid	1252-1259	DELETE	no markup or JS reference; v1-only legacy class ['compare-grid']	145	
+.compare-column	1261-1264	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	64	
+.compare-column.before	1266-1269	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	93	
+.compare-column.after	1271-1274	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	87	
+.compare-label	1276-1285	DELETE	no markup or JS reference anywhere in file	196	
+.compare-column.before .compare-label	1287-1289	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	69	
+.compare-column.after .compare-label	1290-1292	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	72	
+.compare-steps	1294-1299	DELETE	no markup or JS reference anywhere in file	93	
+.compare-step	1301-1307	DELETE	no markup or JS reference anywhere in file	115	
+.compare-step-num	1309-1321	DELETE	no markup or JS reference anywhere in file	244	
+.compare-column.before .compare-step-num	1323-1327	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	135	
+.compare-column.after .compare-step-num	1329-1332	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	103	
+.compare-step-text	1334-1338	DELETE	no markup or JS reference anywhere in file	93	
+.compare-column.before .compare-step-text	1340-1342	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	72	
+.compare-column.after .compare-step-text	1343-1345	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	67	
+.compare-step:not(:last-child)::after	1348-1355	DELETE	no markup or JS reference anywhere in file	136	
+.compare-column.before .compare-step:not(:last-child)::after	1356-1358	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	93	
+.compare-column.after .compare-step:not(:last-child)::after	1359-1361	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	100	
+.compare-bottom	1363-1366	DELETE	no markup or JS reference anywhere in file	60	
+.compare-column.before .compare-bottom	1367-1369	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	81	
+.compare-column.after .compare-bottom	1370-1372	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	89	
+.compare-result	1374-1380	DELETE	no markup or JS reference anywhere in file	121	
+.compare-column.before .compare-result	1381-1383	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	70	
+.compare-column.after .compare-result	1384-1386	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	64	
+.compare-vs	1389-1394	DELETE	no markup or JS reference; v1-only legacy class ['compare-vs']	101	
+.compare-vs span	1395-1408	DELETE	no markup or JS reference; v1-only legacy class ['compare-vs']	316	
+.how-section	1413-1415	DELETE	no markup or JS reference anywhere in file	44	
+.steps	1417-1424	DELETE	v1 styling shadowed by v2 !important reset (classes=['steps']); no markup outside .home-v2	142	
+.step	1426-1426	DELETE	v1 styling shadowed by v2 !important reset (classes=['step']); no markup outside .home-v2	29	
+.step-num	1428-1442	DELETE	no markup or JS reference anywhere in file	292	
+.step h3	1444-1446	DELETE	v1 styling shadowed by v2 !important reset (classes=['step']); no markup outside .home-v2	35	
+.step p	1448-1452	DELETE	v1 styling shadowed by v2 !important reset (classes=['step']); no markup outside .home-v2	89	
+.how-cta	1454-1457	DELETE	no markup or JS reference anywhere in file	54	
+.how-cta p	1458-1462	DELETE	no markup or JS reference anywhere in file	91	
+.how-cta a.text-link	1463-1466	DELETE	no markup or JS reference anywhere in file	67	
+.pricing-section	1471-1473	DELETE	no markup or JS reference anywhere in file	52	
+.pricing-card	1475-1484	DELETE	no markup or JS reference; v1-only legacy class ['pricing-card']	226	
+.pricing-amount	1486-1493	DELETE	no markup or JS reference; v1-only legacy class ['pricing-amount']	155	
+.pricing-amount .dollar	1494-1499	DELETE	no markup or JS reference; v1-only legacy class ['pricing-amount']	116	
+.pricing-label	1501-1508	DELETE	no markup or JS reference anywhere in file	173	
+.pricing-divider	1510-1514	DELETE	no markup or JS reference anywhere in file	93	
+.pricing-list	1516-1522	DELETE	no markup or JS reference anywhere in file	116	
+.pricing-item	1524-1529	DELETE	no markup or JS reference anywhere in file	101	
+.pricing-item .icon-circle	1531-1539	DELETE	no markup or JS reference anywhere in file	168	
+.pricing-item .icon-circle.green	1540-1542	DELETE	no markup or JS reference anywhere in file	72	
+.pricing-item .icon-circle.green svg	1543-1543	DELETE	no markup or JS reference anywhere in file	63	
+.pricing-item .icon-circle.muted	1544-1546	DELETE	no markup or JS reference anywhere in file	68	
+.pricing-item .icon-circle.muted svg	1547-1547	DELETE	no markup or JS reference anywhere in file	66	
+.pricing-item.included	1549-1549	DELETE	no markup or JS reference anywhere in file	72	
+.pricing-item.none-needed	1550-1554	DELETE	no markup or JS reference anywhere in file	130	
+.pricing-tagline	1556-1562	DELETE	no markup or JS reference anywhere in file	141	
+.pricing-cta	1564-1564	DELETE	no markup or JS reference anywhere in file	34	
+.pricing-btn	1565-1565	DELETE	no markup or JS reference anywhere in file	54	
+.conditions-section	1570-1572	DELETE	no markup or JS reference anywhere in file	55	
+.conditions-grid	1574-1578	DELETE	no markup or JS reference; v1-only legacy class ['conditions-grid']	91	
+.condition-card	1580-1589	DELETE	no markup or JS reference; v1-only legacy class ['condition-card']	249	
+.condition-card:hover	1590-1594	DELETE	no markup or JS reference; v1-only legacy class ['condition-card']	139	
+.condition-icon	1596-1605	DELETE	no markup or JS reference anywhere in file	192	
+.condition-icon svg	1606-1610	DELETE	no markup or JS reference anywhere in file	77	
+.condition-card span	1612-1616	DELETE	no markup or JS reference; v1-only legacy class ['condition-card']	105	
+.conditions-note	1618-1624	DELETE	no markup or JS reference anywhere in file	141	
+.about-section	1629-1631	DELETE	no markup or JS reference anywhere in file	51	
+.about-grid	1633-1640	DELETE	no markup or JS reference; v1-only legacy class ['about-grid']	155	
+.about-text .overline	1642-1642	DELETE	no markup or JS reference anywhere in file	46	
+.about-text h2	1643-1643	DELETE	no markup or JS reference anywhere in file	39	
+.about-text p	1644-1649	DELETE	no markup or JS reference anywhere in file	117	
+.about-quote	1651-1659	DELETE	no markup or JS reference anywhere in file	199	
+.about-card	1661-1667	DELETE	no markup or JS reference anywhere in file	158	
+.about-card-name	1669-1674	DELETE	no markup or JS reference anywhere in file	122	
+.about-card-title	1676-1681	DELETE	no markup or JS reference anywhere in file	118	
+.about-creds	1683-1688	DELETE	no markup or JS reference anywhere in file	95	
+.cred	1690-1696	DELETE	JS targets ['cred'] but class has zero markup anywhere -> JS+CSS both dead	120	
+.cred-dot	1698-1704	DELETE	no markup or JS reference anywhere in file	110	
+.reviews-banner	1709-1709	DELETE	no markup or JS reference; v1-only legacy class ['reviews-banner']	126	
+.reviews-banner-header	1710-1710	DELETE	no markup or JS reference anywhere in file	41	
+.reviews-banner-header h2	1711-1711	DELETE	no markup or JS reference anywhere in file	200	
+.reviews-banner-stars	1712-1712	DELETE	no markup or JS reference anywhere in file	50	
+.reviews-banner-stars svg	1713-1713	DELETE	no markup or JS reference anywhere in file	62	
+.reviews-banner-subtitle	1714-1714	DELETE	no markup or JS reference anywhere in file	108	
+.scroll-container	1715-1715	DELETE	no markup or JS reference anywhere in file	219	
+.scroll-track	1716-1716	DELETE	no markup or JS reference anywhere in file	98	
+.scroll-track:hover	1717-1717	DELETE	no markup or JS reference anywhere in file	48	
+@keyframes scrollReviews	1718-1718	KEEP	keyframes (cheap; may animate v2)	85	
+.review-card	1719-1719	DELETE	no markup or JS reference; v1-only legacy class ['review-card']	175	
+.review-card:hover	1720-1720	DELETE	no markup or JS reference; v1-only legacy class ['review-card']	105	
+.review-card-stars	1721-1721	DELETE	no markup or JS reference anywhere in file	59	
+.review-card-stars svg	1722-1722	DELETE	no markup or JS reference anywhere in file	59	
+.review-card-text	1723-1723	DELETE	no markup or JS reference anywhere in file	220	
+.review-card-footer	1724-1724	DELETE	no markup or JS reference anywhere in file	82	
+.review-card-author	1725-1725	DELETE	no markup or JS reference anywhere in file	100	
+.review-card-source	1726-1726	DELETE	no markup or JS reference anywhere in file	176	
+@media(max-width:768px)	1727-1727	KEEP	tag-only selector — base styling, retain	153	
+.testimonials-section	1732-1734	DELETE	no markup or JS reference anywhere in file	53	
+.testimonials-grid	1736-1740	DELETE	no markup or JS reference; v1-only legacy class ['testimonials-grid']	93	
+.testimonial-card	1742-1747	DELETE	no markup or JS reference anywhere in file	142	
+.testimonial-card:hover	1748-1751	DELETE	no markup or JS reference anywhere in file	104	
+.stars	1753-1757	DELETE	v1 styling shadowed by v2 !important reset (classes=['stars']); no markup outside .home-v2	62	
+.stars svg	1758-1762	DELETE	v1 styling shadowed by v2 !important reset (classes=['stars']); no markup outside .home-v2	66	
+.testimonial-text	1764-1770	DELETE	no markup or JS reference anywhere in file	144	
+.testimonial-author	1772-1776	DELETE	no markup or JS reference anywhere in file	102	
+.testimonial-location	1778-1782	DELETE	no markup or JS reference anywhere in file	101	
+.faq-section	1787-1789	DELETE	no markup or JS reference anywhere in file	48	
+.faq-list	1791-1794	DELETE	no markup or JS reference anywhere in file	51	
+.faq-item	1796-1798	DELETE	JS targets ['faq-item'] but class has zero markup anywhere -> JS+CSS both dead	55	
+.faq-question	1800-1816	DELETE	JS targets ['faq-question'] but class has zero markup anywhere -> JS+CSS both dead	348	
+.faq-chevron	1818-1824	DELETE	no markup or JS reference; v1-only legacy class ['faq-chevron']	128	
+.faq-item.open .faq-chevron	1826-1828	DELETE	JS targets ['faq-item', 'open'] but class has zero markup anywhere -> JS+CSS both dead	60	
+.faq-answer	1830-1838	DELETE	no markup or JS reference; v1-only legacy class ['faq-answer']	213	
+.faq-item.open .faq-answer	1840-1843	DELETE	JS targets ['faq-item', 'open'] but class has zero markup anywhere -> JS+CSS both dead	75	
+.cta-section	1848-1851	DELETE	no markup or JS reference anywhere in file	66	
+.cta-inner	1853-1856	DELETE	no markup or JS reference anywhere in file	52	
+.cta-inner h2	1858-1861	DELETE	no markup or JS reference anywhere in file	63	
+.cta-inner p	1863-1868	DELETE	no markup or JS reference anywhere in file	121	
+.cta-phone	1870-1874	DELETE	no markup or JS reference anywhere in file	95	
+.cta-phone a	1875-1880	DELETE	no markup or JS reference anywhere in file	119	
+.site-footer	1885-1888	KEEP	production system: classes=site-footer	89	
+.footer-grid	1890-1897	KEEP	production system: classes=footer-grid	160	
+.footer-brand .nav-logo	1899-1904	KEEP	production system: classes=footer-brand	112	
+.footer-brand p	1906-1910	KEEP	production system: classes=footer-brand	100	
+.footer-links h4	1912-1918	KEEP	production system: classes=footer-links	141	
+.footer-links ul	1920-1925	KEEP	production system: classes=footer-links	96	
+.footer-links a	1927-1931	KEEP	production system: classes=footer-links	106	
+.footer-links a:hover	1932-1932	KEEP	production system: classes=footer-links	46	
+.footer-contact h4	1934-1940	KEEP	production system: classes=footer-contact	143	
+.footer-contact p, .footer-contact a	1942-1947	KEEP	production system: classes=footer-contact	121	
+.footer-contact a:hover	1948-1948	KEEP	production system: classes=footer-contact	48	
+.footer-site	1949-1949	KEEP	production system: classes=footer-site	33	
+.footer-logo-img	1950-1950	KEEP	production system: classes=footer-logo-img	127	
+.footer-bottom	1952-1958	KEEP	production system: classes=footer-bottom	162	
+.footer-bottom p	1959-1963	KEEP	production system: classes=footer-bottom	102	
+.mobile-sticky-cta	1968-1979	KEEP	production system: classes=mobile-sticky-cta	242	
+.mobile-sticky-cta .btn-primary	1980-1984	KEEP	production system: classes=btn-primary,mobile-sticky-cta	99	
+.hero-photo-wrap img	1994-1997	DELETE	no markup or JS reference; v1-only legacy class ['hero-photo-wrap']	65	@media (max-width: 1024px)
+.hero-pills	1998-1998	DELETE	no markup or JS reference; v1-only legacy class ['hero-pills']	25	@media (max-width: 1024px)
+.hero-pill	1999-1999	DELETE	no markup or JS reference; v1-only legacy class ['hero-pill']	60	@media (max-width: 1024px)
+.compare-grid	2001-2004	DELETE	no markup or JS reference; v1-only legacy class ['compare-grid']	66	@media (max-width: 1024px)
+.compare-vs	2005-2007	DELETE	no markup or JS reference; v1-only legacy class ['compare-vs']	33	@media (max-width: 1024px)
+.compare-vs span	2008-2011	DELETE	no markup or JS reference; v1-only legacy class ['compare-vs']	57	@media (max-width: 1024px)
+.about-grid	2013-2016	DELETE	no markup or JS reference; v1-only legacy class ['about-grid']	64	@media (max-width: 1024px)
+.steps	2018-2022	DELETE	v1 styling shadowed by v2 !important reset (classes=['steps']); no markup outside .home-v2	81	@media (max-width: 1024px)
+.testimonials-grid	2024-2027	DELETE	no markup or JS reference; v1-only legacy class ['testimonials-grid']	71	@media (max-width: 1024px)
+.footer-grid	2029-2032	KEEP	production system: classes=footer-grid	65	@media (max-width: 1024px)
+:root	2037-2040	KEEP	:root custom properties used by v2	58	@media (max-width: 640px)
+.nav	2042-2045	DELETE	no markup or JS reference anywhere in file	49	@media (max-width: 640px)
+:root	2046-2046	KEEP	:root custom properties used by v2	29	@media (max-width: 640px)
+.hero	2048-2051	DELETE	v1 styling shadowed by v2 !important reset (classes=['hero']); no markup outside .home-v2	58	@media (max-width: 640px)
+.hero-photo-wrap img	2052-2055	DELETE	no markup or JS reference; v1-only legacy class ['hero-photo-wrap']	65	@media (max-width: 640px)
+.hero-overlay	2056-2058	DELETE	no markup or JS reference; v1-only legacy class ['hero-overlay']	71	@media (max-width: 640px)
+.hero h1	2059-2059	DELETE	v1 styling shadowed by v2 !important reset (classes=['hero']); no markup outside .home-v2	51	@media (max-width: 640px)
+.hero-sub	2060-2060	DELETE	no markup or JS reference; v1-only legacy class ['hero-sub']	42	@media (max-width: 640px)
+.hero-pills	2061-2061	DELETE	no markup or JS reference; v1-only legacy class ['hero-pills']	25	@media (max-width: 640px)
+.hero-pill	2062-2062	DELETE	no markup or JS reference; v1-only legacy class ['hero-pill']	52	@media (max-width: 640px)
+.hero-bottom	2063-2065	DELETE	no markup or JS reference; v1-only legacy class ['hero-bottom']	47	@media (max-width: 640px)
+.hero-actions	2066-2069	DELETE	no markup or JS reference; v1-only legacy class ['hero-actions']	72	@media (max-width: 640px)
+.hero-actions .btn-primary, .hero-actions .btn-secondary	2070-2074	DELETE	selector references ['btn-primary'] but is gated by dead ancestor(s) ['btn-secondary', 'hero-actions'] with no markup	110	@media (max-width: 640px)
+.hero-trust	2075-2079	DELETE	no markup or JS reference; v1-only legacy class ['hero-trust']	85	@media (max-width: 640px)
+.compare-column	2081-2083	DELETE	no markup or JS reference; v1-only legacy class ['compare-column']	45	@media (max-width: 640px)
+.pain-grid	2085-2087	DELETE	no markup or JS reference; v1-only legacy class ['pain-grid']	48	@media (max-width: 640px)
+.conditions-grid	2089-2092	DELETE	no markup or JS reference; v1-only legacy class ['conditions-grid']	72	@media (max-width: 640px)
+.condition-card	2094-2097	DELETE	no markup or JS reference; v1-only legacy class ['condition-card']	55	@media (max-width: 640px)
+.condition-card span	2098-2098	DELETE	no markup or JS reference; v1-only legacy class ['condition-card']	51	@media (max-width: 640px)
+.pricing-card	2100-2102	DELETE	no markup or JS reference; v1-only legacy class ['pricing-card']	43	@media (max-width: 640px)
+.pricing-amount	2104-2106	DELETE	no markup or JS reference; v1-only legacy class ['pricing-amount']	42	@media (max-width: 640px)
+.proof-bar-inner	2108-2110	DELETE	no markup or JS reference; v1-only legacy class ['proof-bar-inner']	36	@media (max-width: 640px)
+.proof-bar span	2111-2113	DELETE	no markup or JS reference; v1-only legacy class ['proof-bar']	52	@media (max-width: 640px)
+.mobile-sticky-cta	2116-2116	KEEP	production system: classes=mobile-sticky-cta	38	@media (max-width: 640px)
+.site-footer	2119-2119	KEEP	production system: classes=site-footer	38	@media (max-width: 640px)

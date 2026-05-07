@@ -1,0 +1,20 @@
+# NPCWoods 301 Redirects — Add to .htaccess on the server
+# These fix the 404 errors flagged in Google Search Console
+#
+# How to add:
+# 1. Connect via SFTP to the server
+# 2. Open .htaccess in the WordPress root directory
+# 3. Add these lines ABOVE the "# BEGIN WordPress" block
+# 4. Save and test each URL (curl -I https://npcwoods.com/gilbert-az-strep/)
+# 5. Go to Search Console → Indexing → Pages → click "Validate Fix"
+
+# Old city-specific pages that no longer exist
+Redirect 301 /gilbert-az-strep/ https://npcwoods.com/arizona-telemedicine/
+Redirect 301 /tucson-az-uti/ https://npcwoods.com/uti-treatment/
+
+# Junk/test blog URL
+Redirect 301 /blog/blog-ry https://npcwoods.com/
+
+# Note: For the wp-content/plugins/* 404, check which specific plugin URL
+# Google is crawling. If you find it in Search Console, add a redirect like:
+# Redirect 301 /wp-content/plugins/old-plugin-name/ https://npcwoods.com/

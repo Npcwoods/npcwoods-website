@@ -1,0 +1,32 @@
+# NPCWoods HTTPS Enforcement & Security Headers
+# ================================================
+# Add these rules to the server's .htaccess file ABOVE the "# BEGIN WordPress" block.
+# Connect via SFTP → navigate to public_html → edit .htaccess
+#
+# NOTE: GoDaddy Managed WordPress uses nginx as a reverse proxy.
+# .htaccess rules may not apply to all requests. The primary HTTPS enforcement
+# should be configured at the GoDaddy/Cloudflare level:
+#   1. GoDaddy dashboard → Enable "Force HTTPS"
+#   2. Cloudflare → SSL mode: "Full (strict)" + "Always Use HTTPS" enabled
+#
+# The PHP mu-plugin (npcwoods-security-headers.php) handles HTTPS redirect
+# as a safety net for requests that reach WordPress.
+
+# --- Force HTTPS ---
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# --- Security Headers ---
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- Existing 301 Redirects ---
+Redirect 301 /gilbert-az-strep/ https://npcwoods.com/arizona-telemedicine/
+Redirect 301 /tucson-az-uti/ https://npcwoods.com/uti-treatment/
+Redirect 301 /blog/blog-ry https://npcwoods.com/

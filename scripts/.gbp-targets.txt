@@ -1,0 +1,23 @@
+# GBP sameAs injection targets. Run: python3 scripts/add-gbp-sameas.py
+# Format: <MODE> <relative-path>
+#   INSERT = MedicalBusiness has no sameAs yet
+#   APPEND = MedicalBusiness already has sameAs (dedup GBP URL before appending)
+# Paths are relative to the website root (npcwoods-website/).
+
+INSERT landing-pages/arizona-telemedicine/index.html
+INSERT landing-pages/colorado-telemedicine/index.html
+INSERT landing-pages/idaho-telemedicine/index.html
+INSERT landing-pages/iowa-telemedicine/index.html
+INSERT landing-pages/montana-telemedicine/index.html
+INSERT landing-pages/nevada-telemedicine/index.html
+INSERT landing-pages/new-mexico-telemedicine/index.html
+INSERT landing-pages/oregon-telemedicine/index.html
+INSERT landing-pages/utah-telemedicine/index.html
+INSERT landing-pages/uti-treatment/index.html
+INSERT landing-pages/sinus-infection-treatment/index.html
+INSERT landing-pages/dental-pain/index.html
+INSERT landing-pages/ed-treatment/index.html
+INSERT landing-pages/glp1-weight-loss/index.html
+INSERT landing-pages/credentials/index.html
+APPEND landing-pages/pricing/index.html
+APPEND html/about/index.html

@@ -1,0 +1,13 @@
+landing-pages/arizona-telemedicine/index.html
+landing-pages/colorado-telemedicine/index.html
+landing-pages/idaho-telemedicine/index.html
+landing-pages/iowa-telemedicine/index.html
+landing-pages/montana-telemedicine/index.html
+landing-pages/nevada-telemedicine/index.html
+landing-pages/new-mexico-telemedicine/index.html
+landing-pages/oregon-telemedicine/index.html
+landing-pages/utah-telemedicine/index.html
+landing-pages/uti-treatment/albuquerque-nm/index.html
+landing-pages/uti-treatment/mesa-az/index.html
+landing-pages/uti-treatment/surprise-az/index.html
+landing-pages/conditions/index.html
