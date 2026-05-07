@@ -1,0 +1,399 @@
+<!-- ===== PATIENT EDUCATION LIBRARY SECTION ===== -->
+<!-- INSERT THIS SECTION ON THE HOMEPAGE AFTER THE CONDITIONS SECTION -->
+<!-- Paste the <style> block into the existing <style> tag, and the HTML where it should appear -->
+
+<style>
+/* ===== EDUCATION LIBRARY SECTION ===== */
+.education-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #FAF8F5 0%, #FFFFFF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.education-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563EB, #60a5fa);
+  border-radius: 2px;
+}
+
+.education-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.education-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.education-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  color: #2563EB;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(37,99,235,0.15);
+}
+
+.education-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  color: #1A1A2E;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.education-header p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #4A4A5A;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Education cards grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 2.5rem;
+}
+
+.edu-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+  border-color: #DBEAFE;
+}
+
+.edu-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #EFF6FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+}
+
+.edu-card:hover .edu-card-icon {
+  background: #DBEAFE;
+}
+
+.edu-card-text {
+  flex: 1;
+}
+
+.edu-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 2px;
+}
+
+.edu-card-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: #8E8E9A;
+}
+
+.edu-card-arrow {
+  color: #D1D5DB;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.edu-card:hover .edu-card-arrow {
+  color: #2563EB;
+  transform: translateX(3px);
+}
+
+/* Medications row */
+.education-meds {
+  margin-top: 1.5rem;
+}
+
+.education-meds-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8E8E9A;
+  margin-bottom: 12px;
+}
+
+.med-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.med-pill {
+  display: inline-block;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  color: #4A4A5A;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.med-pill:hover {
+  background: #EFF6FF;
+  border-color: #DBEAFE;
+  color: #2563EB;
+}
+
+/* Hub CTA */
+.education-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.education-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.25);
+}
+
+.education-cta a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37,99,235,0.35);
+}
+
+.education-cta a svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+  .education-section {
+    padding: 3.5rem 1.25rem;
+  }
+}
+</style>
+
+<!-- SECTION HTML — Place after the Conditions section on the homepage -->
+<section class="education-section" id="learn">
+  <div class="education-inner">
+
+    <div class="education-header">
+      <div class="education-badge">Patient Education Library</div>
+      <h2>After Your Visit</h2>
+      <p>Your visit doesn't end when we hang up. We've built guides for every condition we treat and every medication we prescribe — so you always know what's going on, what to expect, and when to worry.</p>
+    </div>
+
+    <!-- Condition Cards -->
+    <div class="education-grid">
+      <a href="https://npcwoods.com/learn/strep-throat/" class="edu-card">
+        <div class="edu-card-icon">🦠</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Strep Throat</div>
+          <div class="edu-card-sub">Antibiotics, recovery & red flags</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/uti/" class="edu-card">
+        <div class="edu-card-icon">💧</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">UTI</div>
+          <div class="edu-card-sub">Treatment, prevention & hydration</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/sinus-infection/" class="edu-card">
+        <div class="edu-card-icon">🫁</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Sinus Infection</div>
+          <div class="edu-card-sub">When antibiotics help & when they don't</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/tooth-infection/" class="edu-card">
+        <div class="edu-card-icon">🦷</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Tooth Infection</div>
+          <div class="edu-card-sub">Pain management & antibiotic guide</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/ear-infection/" class="edu-card">
+        <div class="edu-card-icon">👂</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Ear Infection</div>
+          <div class="edu-card-sub">Treatment & when to watch and wait</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/stomach-bug/" class="edu-card">
+        <div class="edu-card-icon">🤢</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Stomach Bug</div>
+          <div class="edu-card-sub">Hydration plan & recovery timeline</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/pink-eye/" class="edu-card">
+        <div class="edu-card-icon">👁️</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Pink Eye</div>
+          <div class="edu-card-sub">Drops, care & contagion timeline</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/bronchitis/" class="edu-card">
+        <div class="edu-card-icon">😮‍💨</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Bronchitis</div>
+          <div class="edu-card-sub">Why antibiotics usually aren't the answer</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/skin-infection/" class="edu-card">
+        <div class="edu-card-icon">🩹</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Skin Infection</div>
+          <div class="edu-card-sub">Cellulitis, impetigo & wound care</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/allergic-reaction/" class="edu-card">
+        <div class="edu-card-icon">🫨</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Allergic Reaction</div>
+          <div class="edu-card-sub">Hives, swelling & emergency signs</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/cold-sores/" class="edu-card">
+        <div class="edu-card-icon">💋</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Cold Sores</div>
+          <div class="edu-card-sub">Antiviral treatment & prevention</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/yeast-infection/" class="edu-card">
+        <div class="edu-card-icon">💊</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Yeast Infection</div>
+          <div class="edu-card-sub">One pill, fast relief & prevention</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/ingrown-toenail/" class="edu-card">
+        <div class="edu-card-icon">🦶</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">Ingrown Toenail</div>
+          <div class="edu-card-sub">Home care & when to get help</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a href="https://npcwoods.com/learn/covid-flu/" class="edu-card">
+        <div class="edu-card-icon">🤒</div>
+        <div class="edu-card-text">
+          <div class="edu-card-name">COVID & Flu</div>
+          <div class="edu-card-sub">Antivirals & symptom management</div>
+        </div>
+        <svg class="edu-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <!-- Medication Pills -->
+    <div class="education-meds">
+      <div class="education-meds-label">Medication Guides</div>
+      <div class="med-pills">
+        <a href="https://npcwoods.com/medications/amoxicillin/" class="med-pill">Amoxicillin</a>
+        <a href="https://npcwoods.com/medications/azithromycin/" class="med-pill">Azithromycin</a>
+        <a href="https://npcwoods.com/medications/doxycycline/" class="med-pill">Doxycycline</a>
+        <a href="https://npcwoods.com/medications/augmentin/" class="med-pill">Augmentin</a>
+        <a href="https://npcwoods.com/medications/cephalexin/" class="med-pill">Cephalexin</a>
+        <a href="https://npcwoods.com/medications/nitrofurantoin/" class="med-pill">Nitrofurantoin</a>
+        <a href="https://npcwoods.com/medications/tmp-smx/" class="med-pill">Bactrim</a>
+        <a href="https://npcwoods.com/medications/fluconazole/" class="med-pill">Fluconazole</a>
+        <a href="https://npcwoods.com/medications/valacyclovir/" class="med-pill">Valacyclovir</a>
+        <a href="https://npcwoods.com/medications/ondansetron/" class="med-pill">Zofran</a>
+        <a href="https://npcwoods.com/medications/prednisone/" class="med-pill">Prednisone</a>
+        <a href="https://npcwoods.com/medications/clindamycin/" class="med-pill">Clindamycin</a>
+        <a href="https://npcwoods.com/medications/hydroxyzine/" class="med-pill">Hydroxyzine</a>
+        <a href="https://npcwoods.com/medications/oseltamivir/" class="med-pill">Tamiflu</a>
+        <a href="https://npcwoods.com/medications/paxlovid/" class="med-pill">Paxlovid</a>
+        <a href="https://npcwoods.com/medications/penicillin/" class="med-pill">Penicillin V</a>
+        <a href="https://npcwoods.com/medications/metronidazole/" class="med-pill">Metronidazole</a>
+        <a href="https://npcwoods.com/medications/mupirocin/" class="med-pill">Mupirocin</a>
+        <a href="https://npcwoods.com/medications/benzonatate/" class="med-pill">Benzonatate</a>
+        <a href="https://npcwoods.com/medications/polytrim/" class="med-pill">Polytrim</a>
+        <a href="https://npcwoods.com/medications/erythromycin-ophthalmic/" class="med-pill">Erythromycin Eye</a>
+      </div>
+    </div>
+
+    <!-- View All CTA -->
+    <div class="education-cta">
+      <a href="https://npcwoods.com/learn/">
+        View Full Patient Library
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- ===== END PATIENT EDUCATION LIBRARY SECTION ===== -->
