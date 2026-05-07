@@ -1,3 +1,85 @@
+# =====================================================================
+# NPCWoods Website — .gitignore
+# =====================================================================
+# Goal: keep deployable source code in git, exclude editing-session noise.
+# Patterns are intentionally broad on .bak variants because parallel
+# editing scripts (sync-footer-snippet.py, fix-schema-*, impeccable-*,
+# etc.) generate dated snapshot files that should never be committed.
+# =====================================================================
+
+# --- Secrets ---------------------------------------------------------
 .env
 .env.*
+
+# --- macOS / OS noise ------------------------------------------------
 .DS_Store
+**/.DS_Store
+Thumbs.db
+
+# --- Backup snapshots from editing scripts ---------------------------
+# Generic suffix patterns
+*.bak
+*.bak-*
+*.bak.*
+
+# Specific named backup variants produced by various scripts
+*.ahrefs-bak
+*.cwv-bak
+*.em-dash-bak
+*.footer-synced.bak
+*.live-snapshot-*
+*.meta-bak
+*.pharmacy-bak
+*.precrawl-bak-*
+*.schema-bak-*
+*.synced.bak
+
+# Dated/scoped pre-edit snapshots (e.g. pre-impeccable, pre-receipt,
+# pre-doctor-scrub, pre-faq6, pre-title-fix, pre-anti-slop, pre-gbp-flip,
+# pre-cta-fix, pre-css-cleanup, pre-jsonld-dedupe, pre-mockup-port,
+# pre-insurance-fix, pre-split, pre-top3)
+*.pre-*.bak
+*.pre-*-bak
+*.pre-*
+
+# Deprecated files (renamed to .DEPRECATED-YYYYMMDD before deletion)
+*.DEPRECATED-*
+
+# --- Backup directories ----------------------------------------------
+backups/
+scripts/.backups/
+scripts/wp-backups/
+
+# --- iPhone / camera screenshots dropped into the repo ---------------
+IMG_*.PNG
+IMG_*.png
+IMG_*.JPG
+IMG_*.jpg
+IMG_*.JPEG
+IMG_*.jpeg
+
+# --- Homepage draft / preview files (not deployable artifacts) -------
+homepage-preview*.html
+homepage-updates-draft.html
+homepage-backup-*.json
+
+# --- Python artifacts -------------------------------------------------
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# --- Editor / IDE noise ----------------------------------------------
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# --- Logs / temp -----------------------------------------------------
+*.log
+.tmp/
+tmp/
