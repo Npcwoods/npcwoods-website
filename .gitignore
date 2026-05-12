@@ -26,6 +26,7 @@ Thumbs.db
 *.ahrefs-bak
 *.cwv-bak
 *.em-dash-bak
+*.em-dash-bak-*
 *.footer-synced.bak
 *.live-snapshot-*
 *.meta-bak
