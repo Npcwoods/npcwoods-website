@@ -30,6 +30,6 @@ add_action('wp_head', function () {
 add_action('wp_footer', function () {
     ?>
     <!-- NPCWoods Tracking: tracking.js -->
-    <script src="/tracking.js"></script>
+    <script src="/tracking.js?v=20260523-2241"></script>
     <?php
 }, 99);

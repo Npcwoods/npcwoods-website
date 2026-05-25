@@ -6,6 +6,7 @@
 add_action( "template_redirect", function() {
     $page_map = array(
         "arizona-telemedicine" => "arizona-telemedicine/index.html",
+        "arizona-uti-treatment" => "arizona-uti-treatment/index.html",
         "conditions"             => "conditions/index.html",
         "sitemap"                => "sitemap/index.html",
         "uti-treatment"          => "uti-treatment/index.html",
@@ -19,6 +20,7 @@ add_action( "template_redirect", function() {
         "north-carolina-telemedicine" => "north-carolina-telemedicine/index.html",
         "oregon-telemedicine"    => "oregon-telemedicine/index.html",
         "utah-telemedicine"      => "utah-telemedicine/index.html",
+        "trust-video"            => "trust-video/index.html",
         "ed-treatment"           => "ed-treatment/index.html",        "pricing"                    => "pricing/index.html",        "credentials"                => "credentials/index.html",
 
 

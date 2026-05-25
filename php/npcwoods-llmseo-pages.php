@@ -12,6 +12,12 @@ add_action( 'template_redirect', function() {
         'surprise-az'                           => 'uti-treatment/surprise-az/index.html',
         'scottsdale-az'                         => 'uti-treatment/scottsdale-az/index.html',
         'albuquerque-nm'                        => 'uti-treatment/albuquerque-nm/index.html',
+        // UTI Treatment intent pages (children of /uti-treatment/)
+        'burning-when-i-pee'                    => 'uti-treatment/burning-when-i-pee/index.html',
+        'uti-antibiotics-online'                 => 'uti-treatment/uti-antibiotics-online/index.html',
+        'how-fast-do-uti-antibiotics-work'       => 'uti-treatment/how-fast-do-uti-antibiotics-work/index.html',
+        'is-my-uti-getting-worse'                => 'uti-treatment/is-my-uti-getting-worse/index.html',
+        'no-video-uti-treatment'                 => 'uti-treatment/no-video-uti-treatment/index.html',
         // Condition hubs (split from former /strep-throat-ear-infection/ on 2026-05-02)
         'strep-throat-treatment'                => 'strep-throat-treatment/index.html',
         'ear-infection-treatment'               => 'ear-infection-treatment/index.html',
