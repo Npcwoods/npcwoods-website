@@ -31,9 +31,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://npcwoods.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600;1,8..60,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600;1,8..60,700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600;1,8..60,700&display=swap"></noscript>
 <style>
 /* ========================================
    CSS CUSTOM PROPERTIES
@@ -1351,7 +1351,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </li>
       <li>
-        <a href="sms:4806394722" class="npc-nav-cta">$59 · Text Us</a>
+        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-nav-cta">$59 · Text Us</a>
       </li>
     </ul>
 
@@ -1609,6 +1609,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .home-v2 h1 em{color:var(--v2-brand);font-weight:700;font-style:normal}
   .home-v2 .lede{font-size:20px;color:var(--v2-ink-soft);max-width:560px;margin:0 0 30px;line-height:1.5}
   .home-v2 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:34px}
+  .home-v2 .hero-start-strip{max-width:640px;margin:8px 0 22px;padding:16px 18px;background:#fff;border:1px solid var(--v2-line);border-radius:16px;box-shadow:0 16px 42px -28px rgba(26,26,46,.28)}
+  .home-v2 .hero-start-strip .strip-label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--v2-muted);margin-bottom:10px}
+  .home-v2 .hero-condition-links{display:flex;gap:8px;flex-wrap:wrap}
+  .home-v2 .hero-condition-links a{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;background:var(--v2-brand-soft);border:1px solid #DBE8FF;color:var(--v2-brand-ink);font-size:13.5px;font-weight:700;text-decoration:none;transition:background .16s ease,color .16s ease,transform .16s ease,border-color .16s ease}
+  .home-v2 .hero-condition-links a:hover{background:var(--v2-brand);border-color:var(--v2-brand);color:#fff;transform:translateY(-1px)}
+  .home-v2 .hero-condition-links a::after{content:"→";font-size:12px;opacity:.75}
 
   .home-v2 .trust-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-top:22px;border-top:1px solid var(--v2-line)}
   .home-v2 .trust-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--v2-line);font-size:13.5px;color:var(--v2-ink-soft);font-weight:500}
@@ -1867,8 +1873,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .v2-ticker{left:12px;right:12px;bottom:12px;max-width:none}
     .home-v2 .tile-map{max-width:100%}
   }
+  @media(max-width:640px){
+    .home-v2 .hero-start-strip{padding:14px 14px;margin-top:0}
+    .home-v2 .hero-condition-links a{flex:1 1 calc(50% - 8px);justify-content:center}
+  }
 
   /* Preview-only placeholder footer */
+</style>
+
+<style id="v2-motion">
+/* ===== V2 MOTION POLISH — editorial, restrained, scoped to .home-v2 ===== */
+
+/* Reveal primitives (IntersectionObserver toggles .is-revealed) */
+.home-v2 [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+.home-v2 [data-reveal].is-revealed{opacity:1;transform:none}
+
+/* Stagger children */
+.home-v2 [data-reveal-stagger] > [data-reveal-child]{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*80ms)}
+.home-v2 [data-reveal-stagger].is-revealed > [data-reveal-child]{opacity:1;transform:none}
+
+/* Hero load-in (CSS-only, runs once on load; no scroll trigger on hero) */
+.home-v2 .hero .eyebrow,
+.home-v2 .hero h1,
+.home-v2 .hero .lede,
+.home-v2 .hero .hero-cta,
+.home-v2 .hero .hero-start-strip,
+.home-v2 .hero .trust-row,
+.home-v2 .hero .hero-refund,
+.home-v2 .hero .cred-card,
+.home-v2 .hero .status-chip{opacity:0;transform:translateY(12px);animation:v2HeroIn .9s cubic-bezier(.2,.7,.2,1) forwards}
+.home-v2 .hero .cred-card{animation-delay:.16s}
+.home-v2 .hero .eyebrow{animation-delay:.08s}
+.home-v2 .hero h1{animation-delay:.22s}
+.home-v2 .hero .lede{animation-delay:.38s}
+.home-v2 .hero .hero-cta{animation-delay:.54s}
+.home-v2 .hero .status-chip{animation-delay:.66s}
+.home-v2 .hero .hero-refund{animation-delay:.70s}
+.home-v2 .hero .hero-start-strip{animation-delay:.76s}
+.home-v2 .hero .trust-row{animation-delay:.86s}
+@keyframes v2HeroIn{to{opacity:1;transform:none}}
+
+/* Hero portrait tilt — JS sets --rx/--ry on mousemove */
+.home-v2 .hero .portrait-slot{perspective:1400px}
+.home-v2 .hero .portrait-slot img{transition:transform .45s cubic-bezier(.2,.7,.2,1);transform:rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg));transform-style:preserve-3d;will-change:transform;backface-visibility:hidden}
+
+/* Pricing card stamp-in */
+.home-v2 .price-card{opacity:0;transform:scale(.965) rotate(-.4deg);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.34,1.36,.4,1)}
+.home-v2 .price-card.is-revealed{opacity:1;transform:scale(1) rotate(0)}
+
+/* Coverage map cascade — JS sets --i per tile after build */
+.home-v2 .tile-map .tile{opacity:0;transform:translateY(5px);transition:opacity .42s cubic-bezier(.2,.7,.2,1),transform .42s cubic-bezier(.2,.7,.2,1),background-color .15s ease,border-color .15s ease;transition-delay:calc(var(--i,0)*22ms)}
+.home-v2 .tile-map.is-revealed .tile{opacity:1;transform:none}
+
+/* Step connecting line (desktop only; SVG path injected by JS) */
+.home-v2 .steps-grid{position:relative}
+.home-v2 .steps-line{position:absolute;left:0;right:0;top:38%;height:2px;pointer-events:none;z-index:0;overflow:visible}
+.home-v2 .steps-line svg{display:block;width:100%;height:6px;overflow:visible}
+.home-v2 .steps-line path{fill:none;stroke:var(--v2-brand,#2563EB);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:5 9;opacity:0;transform:translateY(2px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.home-v2 .steps-line.is-revealed path{opacity:.38;transform:none}
+.home-v2 .step{position:relative;z-index:1}
+@media (max-width:860px){.home-v2 .steps-line{display:none}}
+
+/* Final CTA — very slow gradient drift, desktop only, only when in view */
+.home-v2 .final{background-size:200% 200%}
+.home-v2 .final.is-in-view{animation:v2Drift 22s ease-in-out infinite}
+@keyframes v2Drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media (max-width:640px){.home-v2 .final.is-in-view{animation:none}}
+
+/* Refined hover lifts — unified easing on interactive surfaces */
+.home-v2 .step,
+.home-v2 .broken-card,
+.home-v2 .quote,
+.home-v2 .elig-card,
+.home-v2 .price-card{transition:transform .28s cubic-bezier(.34,1.36,.4,1),box-shadow .28s cubic-bezier(.2,.7,.2,1),border-color .2s ease,background-color .2s ease}
+.home-v2 .step:hover,
+.home-v2 .broken-card:hover,
+.home-v2 .quote:hover{transform:translateY(-3px);box-shadow:0 18px 38px -22px rgba(26,26,46,.28),0 4px 10px -6px rgba(26,26,46,.12)}
+.home-v2 .elig-card:hover{transform:translateY(-2px)}
+
+/* Step photos — gentle scale on hover */
+.home-v2 .step .photo{overflow:hidden;border-radius:inherit}
+.home-v2 .step .photo img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.home-v2 .step:hover .photo img{transform:scale(1.025)}
+
+/* CTA button polish */
+.home-v2 .btn-cta{transition:transform .22s cubic-bezier(.34,1.36,.4,1),box-shadow .26s cubic-bezier(.2,.7,.2,1),background-color .2s ease,color .2s ease}
+.home-v2 .btn-cta:hover{transform:translateY(-1px) scale(1.015)}
+
+/* Eligibility list items: micro-fade-in when card reveals */
+.home-v2 .elig-card.is-revealed li{animation:v2LiIn .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--li,0)*45ms + 220ms)}
+@keyframes v2LiIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* Testimonial star stagger — JS splits ★★★★★ into spans, sets --s */
+.home-v2 .quote .stars span{display:inline-block;opacity:0;transform:translateY(2px);transition:opacity .35s ease,transform .35s ease}
+.home-v2 .quote.is-revealed .stars span{opacity:1;transform:none;transition-delay:calc(var(--s,0)*60ms + 260ms)}
+
+/* Compliance — underline-on-hover, refined */
+.home-v2 .compliance .comp-item{transition:transform .2s ease,color .15s ease}
+.home-v2 .compliance .comp-item:hover{transform:translateY(-1px)}
+.home-v2 .compliance .comp-item b{background-image:linear-gradient(currentColor,currentColor);background-position:0 100%;background-repeat:no-repeat;background-size:0 1px;transition:background-size .35s cubic-bezier(.2,.7,.2,1)}
+.home-v2 .compliance .comp-item:hover b{background-size:100% 1px}
+
+/* FAQ summary — gentle hover affordance (no transform clash with existing ::after rotation) */
+.home-v2 .faq-v2-item summary{transition:color .18s ease}
+.home-v2 .faq-v2-item summary:hover{color:var(--v2-brand,#2563EB)}
+
+/* Meet Chris — gentle photo parallax (JS sets --py) */
+.home-v2 .meet .meet-portrait img{transform:translate3d(0,var(--py,0px),0);transition:transform .15s linear;will-change:transform}
+
+/* Final-CTA button: subtle inner shine when section is in view */
+.home-v2 .final.is-in-view .btn-cta{position:relative;overflow:hidden}
+.home-v2 .final.is-in-view .btn-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);transform:translateX(-100%);animation:v2Sheen 5.5s ease-in-out 1.2s infinite}
+@keyframes v2Sheen{0%,18%{transform:translateX(-100%)}28%,100%{transform:translateX(120%)}}
+@media (max-width:640px){.home-v2 .final.is-in-view .btn-cta::before{animation:none}}
+
+/* Reduced motion — globally disable everything new */
+@media (prefers-reduced-motion:reduce){
+  .home-v2 [data-reveal],
+  .home-v2 [data-reveal-stagger] > [data-reveal-child],
+  .home-v2 .price-card,
+  .home-v2 .tile-map .tile,
+  .home-v2 .quote .stars span,
+  .home-v2 .elig-card li{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important}
+  .home-v2 .hero .eyebrow,
+  .home-v2 .hero h1,
+  .home-v2 .hero .lede,
+  .home-v2 .hero .hero-cta,
+  .home-v2 .hero .hero-start-strip,
+  .home-v2 .hero .trust-row,
+  .home-v2 .hero .hero-refund,
+  .home-v2 .hero .cred-card,
+  .home-v2 .hero .status-chip{opacity:1 !important;transform:none !important;animation:none !important}
+  .home-v2 .steps-line path{opacity:.38 !important;transform:none !important;transition:none !important}
+  .home-v2 .final.is-in-view,
+  .home-v2 .final.is-in-view .btn-cta::before{animation:none !important}
+  .home-v2 .meet .meet-portrait img,
+  .home-v2 .hero .portrait-slot img{transform:none !important}
+  .home-v2 .step .photo img{transition:none !important}
+}
 </style>
 
 <script>window.NPC_DATA_BASE = "/wp-content/uploads/npc-data";</script>
@@ -1880,18 +2022,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="dot"></span> Async telemedicine · 11 states</div>
+      <div class="eyebrow"><span class="dot"></span> Text-based urgent care · $59 flat fee</div>
       <h1>Real healthcare.<br>A real clinician.<br><em>$59, same day.</em></h1>
-      <p class="lede">Text your symptoms to a double board-certified Nurse Practitioner. Get evaluated, treated, and prescribed, without a waiting room, a video call, or an appointment.</p>
+      <p class="lede">Start by secure text. Chris reviews your symptoms himself, sends next steps, and gets prescriptions to your pharmacy when treatment fits.</p>
       <div class="hero-cta">
-        <a href="#cta" class="btn btn-cta">Text your symptoms · $59 →</a>
+        <a href="#cta" class="btn btn-cta">Start my $59 text visit →</a>
         <a href="#how" class="btn btn-outline">How it works</a>
         <span class="status-chip" id="statusChip">
           <span class="status-dot"></span>
           <span class="status-text">Checking status…</span>
         </span>
       </div>
-      <p class="micro hero-refund">If we can't safely treat you with a text visit, you won't be charged. Don't be shy — shoot us a text!</p>
+      <p class="micro hero-refund">No app download. No video call. If a text visit is not the right fit, you are not charged.</p>
+      <div class="hero-start-strip" aria-label="Common reasons patients start with NPCWoods">
+        <div class="strip-label">Most patients start here</div>
+        <div class="hero-condition-links">
+          <a href="https://npcwoods.com/uti-treatment/">UTI</a>
+          <a href="https://npcwoods.com/sinus-infection-treatment/">Sinus</a>
+          <a href="https://npcwoods.com/strep-throat-treatment/">Strep</a>
+          <a href="https://npcwoods.com/dental-pain/">Dental pain</a>
+        </div>
+      </div>
       <div class="trust-row">
         <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Double board-certified NP</span>
         <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 50+ five-star reviews</span>
@@ -1990,7 +2141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="broken-card"><div class="x">✕</div><h3>3-hour urgent care waits</h3><div class="strike">Half your day, gone.</div></div>
       <div class="broken-card"><div class="x">✕</div><h3>$200+ for a $20 antibiotic</h3><div class="strike">Surprise bills, weeks later.</div></div>
       <div class="broken-card"><div class="x">✕</div><h3>No clinic nearby</h3><div class="strike">Or the only one closed at 5pm.</div></div>
-      <div class="broken-card"><div class="x">✕</div><h3>Paperwork &amp; denials</h3><div class="strike">Fight the plan to get care.</div></div>
+      <div class="broken-card"><div class="x">✕</div><h3>Paperwork &amp; runaround</h3><div class="strike">You just needed care.</div></div>
     </div>
   </div>
 </section>
@@ -2007,15 +2158,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="calc-controls">
         <label>
           <span class="lbl"><span>Visits per year</span><span class="val" id="svVisitsV">4</span></span>
-          <input type="range" min="1" max="12" value="4" id="svVisits">
+          <input type="range" min="1" max="12" value="4" id="svVisits" name="visits-per-year">
         </label>
         <label>
           <span class="lbl"><span>Family members</span><span class="val" id="svFamV">2</span></span>
-          <input type="range" min="1" max="6" value="2" id="svFam">
+          <input type="range" min="1" max="6" value="2" id="svFam" name="family-members">
         </label>
         <label>
           <span class="lbl"><span>Avg urgent-care bill</span><span class="val" id="svBillV">$180</span></span>
-          <input type="range" min="50" max="500" step="10" value="180" id="svBill">
+          <input type="range" min="50" max="500" step="10" value="180" id="svBill" name="average-urgent-care-bill">
         </label>
       </div>
       <div class="calc-output">
@@ -2099,7 +2250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="msg np">Hey, I'm Chris. Tell me what's going on and I'll take a look.</div>
       </div>
       <div class="phone-input">
-        <input id="smsInput" type="text" placeholder="Describe your symptoms…" autocomplete="off">
+        <input id="smsInput" name="symptom-preview" type="text" placeholder="Describe your symptoms…" aria-label="Describe your symptoms" autocomplete="off">
         <button id="smsSend" type="button">Send</button>
       </div>
       <div class="phone-suggest">
@@ -2136,8 +2287,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap price-wrap">
     <div class="price-copy">
       <div class="kicker">One price. One promise.</div>
-      <h2>$59. That's it.<br><em>No billing.</em> No surprises.</h2>
-      <p>One flat fee per visit. Pay after you're treated. HSA/FSA receipt on request.</p>
+      <h2>$59. That's it.<br><em>Simple pricing.</em> No surprises.</h2>
+      <p>One flat fee per visit. Pay after your care is reviewed. HSA/FSA receipt on request.</p>
       <a href="#cta" class="btn btn-cta">Start a visit →</a>
     </div>
     <div class="price-card">
@@ -2208,8 +2359,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Most visits get a first response in under 30 minutes during operating hours. If it's after hours, we pick up first thing in the morning.</p>
       </details>
       <details class="faq-v2-item">
-        <summary>Is $59 the total cost? Any hidden fees or co-pays?</summary>
-        <p>We're a flat-fee cash-pay practice. $59 per visit, no billing. Many patients find that's less than a typical co-pay. We'll send a receipt you can submit to HSA/FSA.</p>
+        <summary>Is $59 the total cost? Any hidden fees?</summary>
+        <p>Yes. It is $59 per visit, flat. You pay after your care is reviewed, and if a text visit is not the right fit, you are not charged. We can send an HSA/FSA receipt on request.</p>
       </details>
       <details class="faq-v2-item">
         <summary>What can you treat?</summary>
@@ -2497,6 +2648,167 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       hideTicker();
     });
   }).catch(() => {});
+})();
+</script>
+
+<script id="v2-motion-js">
+/* ===== V2 MOTION POLISH — vanilla, scoped to .home-v2 ===== */
+(() => {
+  const root = document.querySelector('.home-v2');
+  if (!root) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = matchMedia('(min-width: 861px)').matches && matchMedia('(pointer: fine)').matches;
+  const $$ = (sel, ctx = root) => Array.from(ctx.querySelectorAll(sel));
+
+  /* ---------- Tag sections for reveal (no markup edits in HTML) ---------- */
+  const tag = (sel, attr, children = null) => {
+    $$(sel).forEach(el => {
+      el.setAttribute(attr, '');
+      if (children) {
+        $$(children, el).forEach((c, i) => {
+          c.setAttribute('data-reveal-child', '');
+          c.style.setProperty('--i', i);
+        });
+      }
+    });
+  };
+
+  /* Stagger groups */
+  tag('.eligibility .elig-grid', 'data-reveal-stagger', '.elig-card');
+  tag('.broken .broken-grid', 'data-reveal-stagger', '.broken-card');
+  tag('.steps .steps-grid', 'data-reveal-stagger', '.step');
+  tag('.testi .quote-grid', 'data-reveal-stagger', '.quote');
+  tag('.compliance .comp-row', 'data-reveal-stagger', '.comp-item');
+  tag('.faq-v2 .faq-v2-wrap', 'data-reveal-stagger', '.faq-v2-item');
+
+  /* Simple reveals (whole-block fade-up) */
+  $$('.eligibility .elig-head, .broken .section-head, .savings .section-head, .savings .calc-grid, .steps .section-head, .meet .meet-grid, .sms .section-head, .sms .phone, .coverage .section-head, .price .price-copy, .testi .kicker, .testi h2, .testi .testi-cta-row, .compliance, .faq-v2 .section-head, .final h2, .final p, .final .btn-cta, .final .ps')
+    .forEach(el => el.setAttribute('data-reveal', ''));
+
+  /* Tag eligibility list items with --li for staggered fade-in inside cards */
+  $$('.elig-card').forEach(card => {
+    $$('li', card).forEach((li, i) => li.style.setProperty('--li', i));
+  });
+
+  /* Split testimonial stars into spans for stagger */
+  $$('.quote .stars').forEach(s => {
+    const txt = (s.textContent || '').trim();
+    if (!txt) return;
+    s.innerHTML = '';
+    Array.from(txt).forEach((ch, i) => {
+      const sp = document.createElement('span');
+      sp.textContent = ch;
+      sp.style.setProperty('--s', i);
+      s.appendChild(sp);
+    });
+  });
+
+  /* ---------- IntersectionObserver: flip .is-revealed once ---------- */
+  const revealTargets = $$('[data-reveal], [data-reveal-stagger], .price-card, .tile-map, .quote, .elig-card');
+  if (reduce) {
+    revealTargets.forEach(el => el.classList.add('is-revealed'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    revealTargets.forEach(el => io.observe(el));
+  }
+
+  /* ---------- Coverage tile cascade: tag --i on each tile post-render ---------- */
+  /* The existing script creates tiles synchronously above; they exist now. */
+  $$('.tile-map .tile').forEach((t, i) => t.style.setProperty('--i', i));
+
+  /* ---------- Final CTA in-view drift ---------- */
+  if (!reduce) {
+    const finalSec = root.querySelector('.final');
+    if (finalSec) {
+      const ioFinal = new IntersectionObserver((entries) => {
+        entries.forEach(e => finalSec.classList.toggle('is-in-view', e.isIntersecting));
+      }, { threshold: 0.15 });
+      ioFinal.observe(finalSec);
+    }
+  }
+
+  /* ---------- Hero portrait tilt (desktop, pointer:fine, no reduce) ---------- */
+  if (isDesktop && !reduce) {
+    const slot = root.querySelector('.hero .portrait-slot');
+    const img = slot && slot.querySelector('img');
+    if (slot && img) {
+      let raf = 0, lastX = 0, lastY = 0;
+      const onMove = (e) => {
+        const r = slot.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        lastX = Math.max(-1, Math.min(1, x));
+        lastY = Math.max(-1, Math.min(1, y));
+        if (!raf) raf = requestAnimationFrame(apply);
+      };
+      const apply = () => {
+        img.style.setProperty('--rx', (lastX * 3).toFixed(2) + 'deg');
+        img.style.setProperty('--ry', (-lastY * 2.2).toFixed(2) + 'deg');
+        raf = 0;
+      };
+      const onLeave = () => {
+        img.style.setProperty('--rx', '0deg');
+        img.style.setProperty('--ry', '0deg');
+      };
+      slot.addEventListener('mousemove', onMove);
+      slot.addEventListener('mouseleave', onLeave);
+    }
+  }
+
+  /* ---------- Meet Chris portrait parallax (desktop only) ---------- */
+  if (isDesktop && !reduce) {
+    const portrait = root.querySelector('.meet .meet-portrait img');
+    const meetSec = root.querySelector('.meet');
+    if (portrait && meetSec) {
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const r = meetSec.getBoundingClientRect();
+          const vh = window.innerHeight || 800;
+          /* Only when section is roughly in view */
+          if (r.bottom > 0 && r.top < vh) {
+            const progress = (vh - r.top) / (vh + r.height); /* 0 → 1 across viewport */
+            const offset = (progress - 0.5) * 28; /* px range ~ -14 to +14 */
+            portrait.style.setProperty('--py', offset.toFixed(1) + 'px');
+          }
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
+  /* ---------- Step connecting line (desktop only) ---------- */
+  if (isDesktop) {
+    const stepsGrid = root.querySelector('.steps .steps-grid');
+    if (stepsGrid && !stepsGrid.querySelector('.steps-line')) {
+      const line = document.createElement('div');
+      line.className = 'steps-line';
+      line.setAttribute('aria-hidden', 'true');
+      line.innerHTML = '<svg viewBox="0 0 100 6" preserveAspectRatio="none"><path d="M 4 3 Q 25 0, 50 3 T 96 3"/></svg>';
+      stepsGrid.insertBefore(line, stepsGrid.firstChild);
+      if (reduce) {
+        line.classList.add('is-revealed');
+      } else {
+        const ioLine = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { line.classList.add('is-revealed'); ioLine.unobserve(line); }
+          });
+        }, { threshold: 0.35 });
+        ioLine.observe(line);
+      }
+    }
+  }
 })();
 </script>
 
