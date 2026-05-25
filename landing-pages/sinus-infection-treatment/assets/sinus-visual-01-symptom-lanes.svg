@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Allergy, cold, and sinus symptom lanes</title>
+  <desc id="desc">A warm medical illustration showing three overlapping sinus symptom lanes: allergies, viral cold, and sinus infection pattern.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.45" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#fff8ed"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0f3fbd"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#17356f" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#bg)"/>
+  <circle cx="1000" cy="125" r="210" fill="#dbeafe" opacity="0.8"/>
+  <circle cx="215" cy="655" r="240" fill="#fff1d6" opacity="0.75"/>
+  <g transform="translate(88 78)">
+    <rect x="0" y="0" width="1024" height="604" rx="36" fill="#ffffff" opacity="0.93" filter="url(#soft)"/>
+    <text x="58" y="76" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#2563eb" letter-spacing="4">SAME START, DIFFERENT LANE</text>
+    <text x="58" y="132" font-family="Georgia, serif" font-size="58" font-weight="700" fill="#151625">What kind of pattern is it?</text>
+    <text x="60" y="178" font-family="Inter, Arial, sans-serif" font-size="24" fill="#596174">Congestion can start the same. The direction over the next few days matters.</text>
+    <g transform="translate(58 238)">
+      <rect x="0" y="0" width="278" height="278" rx="30" fill="#ecfdf5" stroke="#9ee7c6" stroke-width="2"/>
+      <circle cx="66" cy="76" r="34" fill="#10b981" opacity="0.14"/>
+      <path d="M54 77c22-30 48-18 50 6 2 24-32 42-55 30-25-13-9-31 5-36z" fill="#10b981"/>
+      <text x="36" y="151" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#0f5132">Allergy Lane</text>
+      <text x="36" y="192" font-family="Inter, Arial, sans-serif" font-size="18" fill="#3f5f50">Itchy, sneezy, clear.</text>
+      <text x="36" y="244" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f8a55">Support first.</text>
+    </g>
+    <g transform="translate(373 238)">
+      <rect x="0" y="0" width="278" height="278" rx="30" fill="#fff7e8" stroke="#f2d19b" stroke-width="2"/>
+      <circle cx="66" cy="76" r="34" fill="#d4933f" opacity="0.16"/>
+      <path d="M45 88c22-42 66-48 90-20 23 28 3 68-37 72-49 5-73-16-53-52z" fill="#d4933f"/>
+      <path d="M85 52c10 38 44 50 74 36" fill="none" stroke="#b7791f" stroke-width="8" stroke-linecap="round"/>
+      <text x="36" y="151" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#704411">Cold Lane</text>
+      <text x="36" y="192" font-family="Inter, Arial, sans-serif" font-size="18" fill="#6b5a44">Peaks early, slowly improves.</text>
+      <text x="36" y="244" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#b7791f">Watch the curve.</text>
+    </g>
+    <g transform="translate(688 238)">
+      <rect x="0" y="0" width="278" height="278" rx="30" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+      <circle cx="66" cy="76" r="34" fill="#2563eb" opacity="0.14"/>
+      <path d="M78 42c55 15 83 58 69 102-14 44-68 56-109 23-41-33-17-102 40-125z" fill="url(#blue)"/>
+      <path d="M78 75c29 12 45 32 42 61" fill="none" stroke="#bfdbfe" stroke-width="9" stroke-linecap="round"/>
+      <text x="36" y="151" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#17356f">Sinus Lane</text>
+      <text x="36" y="192" font-family="Inter, Arial, sans-serif" font-size="18" fill="#4f5f79">Day 5-7, pressure, rebound.</text>
+      <text x="36" y="244" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#2563eb">Text Chris.</text>
+    </g>
+  </g>
+</svg>

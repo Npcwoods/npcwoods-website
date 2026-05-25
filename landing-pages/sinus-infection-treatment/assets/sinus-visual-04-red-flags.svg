@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sinus red flags for in-person care</title>
+  <desc id="desc">A clear red flag checklist showing symptoms that need in-person or emergency care instead of a text visit.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="0.45" stop-color="#fff1f1"/>
+      <stop offset="1" stop-color="#eef5ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#4a1511" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#bg)"/>
+  <g transform="translate(92 76)">
+    <text x="0" y="46" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#b42318" letter-spacing="4">WHEN NOT TO TEXT</text>
+    <text x="0" y="112" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#151625">Some symptoms need hands-on care.</text>
+    <text x="0" y="160" font-family="Inter, Arial, sans-serif" font-size="24" fill="#596174">This page should help people choose the right door, not just the easiest door.</text>
+    <g transform="translate(0 218)" filter="url(#shadow)">
+      <rect x="0" y="0" width="1016" height="392" rx="34" fill="#ffffff"/>
+      <g transform="translate(58 48)">
+        <rect x="0" y="0" width="276" height="130" rx="24" fill="#fef2f2" stroke="#fecaca"/>
+        <circle cx="46" cy="48" r="24" fill="#b42318"/>
+        <text x="46" y="57" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle">!</text>
+        <text x="88" y="44" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#8a1c14">Eye symptoms</text>
+        <text x="88" y="78" font-family="Inter, Arial, sans-serif" font-size="18" fill="#6e231d">Swelling, vision change, severe eye pain.</text>
+      </g>
+      <g transform="translate(370 48)">
+        <rect x="0" y="0" width="276" height="130" rx="24" fill="#fef2f2" stroke="#fecaca"/>
+        <circle cx="46" cy="48" r="24" fill="#b42318"/>
+        <text x="46" y="57" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle">!</text>
+        <text x="88" y="44" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#8a1c14">Neck or confusion</text>
+        <text x="88" y="78" font-family="Inter, Arial, sans-serif" font-size="18" fill="#6e231d">Stiff neck, confusion, worst headache.</text>
+      </g>
+      <g transform="translate(682 48)">
+        <rect x="0" y="0" width="276" height="130" rx="24" fill="#fef2f2" stroke="#fecaca"/>
+        <circle cx="46" cy="48" r="24" fill="#b42318"/>
+        <text x="46" y="57" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle">!</text>
+        <text x="88" y="44" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#8a1c14">Breathing or chest</text>
+        <text x="88" y="78" font-family="Inter, Arial, sans-serif" font-size="18" fill="#6e231d">Chest pain or trouble breathing.</text>
+      </g>
+      <g transform="translate(58 214)">
+        <rect x="0" y="0" width="900" height="112" rx="26" fill="#fffdf8" stroke="#efe2cf"/>
+        <text x="36" y="47" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#151625">If the story sounds serious, we say that clearly.</text>
+        <text x="36" y="82" font-family="Inter, Arial, sans-serif" font-size="20" fill="#596174">The goal is right care, right place, right timing.</text>
+      </g>
+    </g>
+  </g>
+</svg>

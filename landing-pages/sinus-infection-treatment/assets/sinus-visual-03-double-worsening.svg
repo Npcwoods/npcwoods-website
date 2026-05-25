@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Double worsening sinus pattern</title>
+  <desc id="desc">A visual chart showing symptoms improving and then worsening again, which can be a reason to text Chris for review.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#eef5ff"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f8a55"/>
+      <stop offset="0.54" stop-color="#d4933f"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#17356f" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="44" fill="url(#bg)"/>
+  <g transform="translate(92 78)">
+    <text x="0" y="46" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#2563eb" letter-spacing="4">THE REBOUND PATTERN</text>
+    <text x="0" y="112" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#151625">Better, then worse again?</text>
+    <text x="0" y="160" font-family="Inter, Arial, sans-serif" font-size="24" fill="#596174">That “I thought I was over it” turn is worth telling us about.</text>
+    <g transform="translate(0 220)" filter="url(#shadow)">
+      <rect x="0" y="0" width="1016" height="378" rx="34" fill="#ffffff"/>
+      <line x1="82" y1="292" x2="930" y2="292" stroke="#e5e7eb" stroke-width="3"/>
+      <line x1="82" y1="70" x2="82" y2="292" stroke="#e5e7eb" stroke-width="3"/>
+      <text x="64" y="57" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#747487" text-anchor="middle">Worse</text>
+      <text x="64" y="322" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#747487" text-anchor="middle">Better</text>
+      <path d="M100 92 C178 118 216 178 286 218 C352 255 414 246 478 188 C553 121 631 135 705 189 C790 252 841 240 934 103" fill="none" stroke="url(#line)" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="478" cy="188" r="24" fill="#fff7e8" stroke="#d4933f" stroke-width="8"/>
+      <circle cx="934" cy="103" r="24" fill="#eff6ff" stroke="#2563eb" stroke-width="8"/>
+      <g transform="translate(330 36)">
+        <rect x="0" y="0" width="250" height="76" rx="18" fill="#fff7e8" stroke="#f2d19b"/>
+        <text x="22" y="31" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#9a5a10">You improved</text>
+        <text x="22" y="58" font-family="Inter, Arial, sans-serif" font-size="17" fill="#6b5a44">Then pressure came back.</text>
+      </g>
+      <g transform="translate(718 34)">
+        <rect x="0" y="0" width="232" height="88" rx="18" fill="#eff6ff" stroke="#bfdbfe"/>
+        <text x="22" y="32" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#17356f">Tell us this</text>
+        <text x="22" y="60" font-family="Inter, Arial, sans-serif" font-size="17" fill="#4f5f79">The curve matters.</text>
+      </g>
+    </g>
+    <g transform="translate(0 642)">
+      <rect x="0" y="-36" width="1016" height="74" rx="22" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="34" y="11" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#17356f">Good text prompt:</text>
+      <text x="236" y="11" font-family="Inter, Arial, sans-serif" font-size="22" fill="#4f5f79">“I got better for a day or two, then the sinus pressure came back harder.”</text>
+    </g>
+  </g>
+</svg>
