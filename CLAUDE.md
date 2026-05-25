@@ -272,6 +272,11 @@ There's a full deployment skill at `skills/npcwoods-deploy/SKILL.md` — read it
 3. **Trust:** Check whether reviews, credentials, NPI/license proof, and "real human / no chatbot" proof are specific to the page intent, not just generic site-wide claims.
 **Shift outcome:** Prioritize SEO/discoverability for city-condition pages first, conversion tightening on high-intent pages second, and more condition-specific/local trust proof third.
 
+### WL-006 — Screenshot handoffs must be viewable, not just file links (2026-05-16)
+**What happened:** After a local sinus page makeover, screenshots were handed off as local file links to PNGs. On Chris's phone, one opened as a generic "data" file instead of an image preview, so the visual review failed even though the PNG itself was valid locally.
+**The rule:** When Chris asks for screenshots, provide a reviewable handoff, not only raw local paths. Create an HTML contact sheet under `content-output/reports/.../screenshot-review.html` with embedded images, include JPG copies alongside PNGs for broad preview compatibility, and use inline image embeds in the response when possible. Verify the files with `file` and visually inspect at least the desktop and mobile screenshot before saying they are ready.
+**Why:** Chris often reviews from mobile. A screenshot that only works on the Mac filesystem is not a screenshot handoff.
+
 ---
 
-*Last updated: April 20, 2026 — added WL-005 (patient-growth audit framework)*
+*Last updated: May 16, 2026 — added WL-006 (screenshot handoff must be reviewable on mobile)*

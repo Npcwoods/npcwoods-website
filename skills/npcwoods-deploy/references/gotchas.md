@@ -72,7 +72,23 @@ search_url = f'{WP_URL}?slug={slug}&per_page=10'
 ```
 If duplicates exist, you may need to change the old page's slug or set it to draft.
 
-## 7. SFTP Directory Creation
+## 7. Paramiko Install And Deploy Script Guards
+
+**State:** Paramiko 5.0.0 is installed for the default Homebrew `python3` user site on the macmini Chris-HQ machine as of 2026-05-23.
+
+**Problem:** Some one-off deploy scripts do not implement `--help` or dry-run behavior, so a harmless-looking usage check can read `.env` and start a live SFTP upload.
+
+**Fix:** Use guarded helpers like `scripts/sftp-upload.py` for routine uploads. If a one-off script is needed, add argument handling before credential loading:
+```python
+if "--help" in sys.argv or "-h" in sys.argv:
+    print("Usage: ...")
+    raise SystemExit(0)
+if "--execute" not in sys.argv:
+    print("[dry-run] add --execute and Chris approval phrase to upload")
+    raise SystemExit(0)
+```
+
+## 8. SFTP Directory Creation
 
 **Problem:** `sftp.mkdir()` throws an error if the directory already exists.
 
@@ -85,7 +101,7 @@ def mkdir_safe(sftp, path):
         pass
 ```
 
-## 8. Homepage Backup Before Modification
+## 9. Homepage Backup Before Modification
 
 **Problem:** You modify the homepage PHP and something breaks.
 

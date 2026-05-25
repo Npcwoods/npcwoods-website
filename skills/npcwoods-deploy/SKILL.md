@@ -1,15 +1,6 @@
 ---
 name: npcwoods-deploy
-description: >
-  Deploy static HTML pages to the live NPCWoods.com website hosted on GoDaddy Managed WordPress.
-  Handles the full pipeline: SFTP upload of HTML files, mu-plugin creation/upload for route interception,
-  WordPress page stub creation via REST API, and homepage modification.
-  Use this skill whenever Chris asks to publish, deploy, push live, update the website, upload pages,
-  add new pages to the site, or make anything go live on npcwoods.com. Also trigger when he says
-  "put this on the site", "make it live", "push it", "deploy it", "upload to GoDaddy", or any
-  variation of getting content onto the production website. This skill is essential because NPCWoods
-  uses a specific static-HTML-bypass pattern on GoDaddy Managed WordPress that requires exact steps
-  to work — skipping any step results in 404s or broken routing.
+description: Use when Chris explicitly approves publishing, deploying, uploading, or pushing website changes live to NPCWoods.com via GoDaddy Managed WordPress static HTML bypass pages, mu-plugins, WordPress page stubs, or homepage updates.
 ---
 
 # NPCWoods Website Deployment
@@ -75,7 +66,9 @@ The `<< 'PYEOF'` heredoc with **single-quoted** delimiter prevents shell variabl
 
 ## Step 1: Upload HTML Files via SFTP
 
-Use Python's `paramiko` library (already installed on Chris's Mac) to connect and upload.
+Use Python's `paramiko` library to connect and upload. On the macmini Chris-HQ machine, Paramiko 5.0.0 is installed for the default Homebrew `python3` user site as of 2026-05-23.
+
+**Safety rule:** Prefer the guarded `npcwoods-website/scripts/sftp-upload.py` helper for normal uploads. One-off deploy scripts must have an explicit dry-run/help guard before they read `.env` or open SFTP, and live upload still requires Chris's explicit approval.
 
 **Remote directory structure:** The web root is `html/`. So a page at `npcwoods.com/learn/strep-throat/` lives at `html/learn/strep-throat/index.html` on the server.
 
@@ -270,6 +263,16 @@ After deploying, always verify at least 3 pages:
 - The homepage (if modified)
 
 Use `WebFetch` to confirm each page loads with the correct content. If a page still shows a 404 or old content, GoDaddy's edge cache might be stale — it usually clears within a few minutes, but Chris can force-clear from the GoDaddy dashboard.
+
+## Output Format
+
+End every deployment run with this concise report:
+
+- Approval: quote the exact Chris approval that authorized live work.
+- Changed: list local files, remote paths, mu-plugin names, and WordPress page IDs touched.
+- Verification: list each checked URL, status code, expected content proof, and cache caveat.
+- Safety: state whether `.env` values stayed unprinted and whether any deploy/post/send/spend action occurred.
+- Next action: state the one remaining manual step or `none`.
 
 ## Existing mu-plugins on the server
 
