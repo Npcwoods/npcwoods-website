@@ -34,6 +34,8 @@ Thumbs.db
 *.precrawl-bak-*
 *.schema-bak-*
 *.synced.bak
+*.tracking-bak
+*.seo-rebuild-bak*
 
 # Dated/scoped pre-edit snapshots (e.g. pre-impeccable, pre-receipt,
 # pre-doctor-scrub, pre-faq6, pre-title-fix, pre-anti-slop, pre-gbp-flip,
@@ -84,3 +86,10 @@ venv/
 *.log
 .tmp/
 tmp/
+
+# --- Generated output / local-only assets ----------------------------
+automation-output/
+content-output/
+mockups/
+html/review/
+landing-pages/test-*.html
