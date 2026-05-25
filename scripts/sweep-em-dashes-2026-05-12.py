@@ -20,8 +20,9 @@ Usage:
 """
 
 import re, os, sys, shutil
+from pathlib import Path
 
-REPO_ROOT = "/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website"
+REPO_ROOT = str(Path(__file__).resolve().parent.parent)
 
 # What to exclude
 EXCLUDED_DIRS = [

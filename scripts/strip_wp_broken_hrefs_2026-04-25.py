@@ -31,7 +31,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 VERIFY_SSL = False
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = ROOT.parent / ".env"
 SITE = "https://npcwoods.com"
 
 # slug-or-(slug,parent_id) → list of broken-target href substrings to strip

@@ -11,7 +11,7 @@ from pathlib import Path
 import paramiko
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = ROOT.parent / ".env"
 LOCAL = ROOT / "landing-pages" / "north-carolina-telemedicine" / "index.html"
 REMOTE = "html/north-carolina-telemedicine/index.html"
 

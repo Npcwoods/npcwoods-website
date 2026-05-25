@@ -27,7 +27,7 @@ except ImportError:
     sys.exit(2)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = REPO_ROOT.parent / ".env"
 MANIFEST = REPO_ROOT / "scripts" / "modified-files.txt"
 CACHE = REPO_ROOT / "scripts" / "page-ids-2026-04-22.json"
 

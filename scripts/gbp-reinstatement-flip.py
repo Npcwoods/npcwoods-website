@@ -32,7 +32,7 @@ from pathlib import Path
 
 REPO = Path(os.environ.get(
     "NPCWOODS_WEBSITE_REPO",
-    "/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website",
+    str(Path(__file__).resolve().parent.parent),
 ))
 HOMEPAGE = REPO / "homepage" / "page-npcwoods-home.php"
 BACKUP = REPO / "homepage" / "page-npcwoods-home.php.pre-gbp-flip.bak"

@@ -28,7 +28,7 @@ import shutil
 import sys
 from dataclasses import dataclass, field
 
-REPO = pathlib.Path("/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website")
+REPO = pathlib.Path(__file__).resolve().parent.parent
 
 TARGETS = [
     REPO / "homepage/page-npcwoods-home.php",

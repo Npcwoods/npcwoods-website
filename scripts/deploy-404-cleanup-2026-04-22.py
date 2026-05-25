@@ -23,7 +23,7 @@ import urllib.error
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = ROOT.parent / ".env"
 PLUGIN_LOCAL = ROOT / "php" / "npcwoods-redirects-404-cleanup.php"
 PLUGIN_REMOTE = "html/wp-content/mu-plugins/npcwoods-redirects-404-cleanup.php"
 HOMEPAGE_STUB_ID = 63

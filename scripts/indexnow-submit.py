@@ -22,7 +22,7 @@ import paramiko
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = ROOT.parent / ".env"
 HOST = "npcwoods.com"
 
 URLS_TO_SUBMIT = [

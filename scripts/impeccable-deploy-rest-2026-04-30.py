@@ -8,7 +8,7 @@ Impeccable deploy — WP REST API leg
    355 (arizona-telemedicine) by re-publishing each (per memory
    reference_godaddy_cache_purge.md).
 
-Reads creds from /Users/chriswoods/Desktop/Chris-HQ/.env. WordPress REST
+Reads creds from the Chris-HQ root .env. WordPress REST
 auth is application-password basic auth.
 """
 import json
@@ -18,7 +18,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = ROOT.parent / ".env"
 WP_BASE = "https://npcwoods.com/wp-json/wp/v2"
 BLOG_FILE = ROOT / "blog" / "no-insurance-no-problem.html"
 

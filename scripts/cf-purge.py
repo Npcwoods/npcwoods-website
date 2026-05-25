@@ -16,7 +16,7 @@ import sys
 import urllib.request
 import urllib.error
 
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 
 
 def load_env():

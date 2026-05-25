@@ -29,7 +29,7 @@ except ImportError:
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TSV = REPO_ROOT / "scripts" / "schema-validate-urls-2026-04-22.tsv"
-DEFAULT_OUT = Path("/Users/chriswoods/Desktop/Chris-HQ/npcwoods-business/reports/schema-validate-2026-04-22-pre.json")
+DEFAULT_OUT = REPO_ROOT.parent / "npcwoods-business" / "reports" / "schema-validate-2026-04-22-pre.json"
 
 UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "

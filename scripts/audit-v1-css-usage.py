@@ -21,14 +21,14 @@ Idempotent. Re-running overwrites only the TSV. No mutation of source.
 
 from __future__ import annotations
 
-import os
 import re
 import sys
 from dataclasses import dataclass
+from pathlib import Path
 
-ROOT = "/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website"
-HOMEPAGE = os.path.join(ROOT, "homepage", "page-npcwoods-home.php")
-TSV_OUT  = os.path.join(ROOT, "scripts", "v1-css-cleanup-manifest-2026-04-30.tsv")
+ROOT = Path(__file__).resolve().parent.parent
+HOMEPAGE = ROOT / "homepage" / "page-npcwoods-home.php"
+TSV_OUT = ROOT / "scripts" / "v1-css-cleanup-manifest-2026-04-30.tsv"
 
 
 # ----------------------------------------------------------------------
@@ -36,7 +36,7 @@ TSV_OUT  = os.path.join(ROOT, "scripts", "v1-css-cleanup-manifest-2026-04-30.tsv
 # ----------------------------------------------------------------------
 
 def load_lines() -> list[str]:
-    with open(HOMEPAGE, "r", encoding="utf-8") as f:
+    with HOMEPAGE.open("r", encoding="utf-8") as f:
         return f.readlines()
 
 

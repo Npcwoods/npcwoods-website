@@ -20,7 +20,7 @@ Banned-word grep + size-shrink guard before any push.
 import argparse, json, os, re, sys, time, urllib.request, urllib.error, base64
 from pathlib import Path
 
-REPO = Path('/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website')
+REPO = Path(__file__).resolve().parent.parent
 OUT = Path('/tmp/blog-rollout')
 WP_BASE = 'https://npcwoods.com/wp-json/wp/v2'
 
@@ -413,7 +413,7 @@ def fetch_post(post_id):
 
 def auth_header():
     env = {}
-    for line in open('/Users/chriswoods/Desktop/Chris-HQ/.env'):
+    for line in (REPO.parent / '.env').open():
         line = line.strip()
         if '=' not in line or line.startswith('#'): continue
         k, _, v = line.partition('=')

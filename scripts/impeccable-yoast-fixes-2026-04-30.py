@@ -21,7 +21,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-ENV_PATH = Path("/Users/chriswoods/Desktop/Chris-HQ/.env")
+ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 WP_BASE = "https://npcwoods.com/wp-json/wp/v2"
 
 UA = (

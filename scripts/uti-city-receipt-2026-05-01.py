@@ -24,7 +24,7 @@ import shutil
 import sys
 from pathlib import Path
 
-ROOT = Path("/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website")
+ROOT = Path(__file__).resolve().parent.parent
 BACKUP_SUFFIX = ".pre-receipt-2026-05-01.bak"
 
 CITIES = [

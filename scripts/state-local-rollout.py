@@ -20,7 +20,7 @@ Usage:
 import argparse, os, re, sys, shutil
 from pathlib import Path
 
-REPO = Path('/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website')
+REPO = Path(__file__).resolve().parent.parent
 LANDING = REPO / 'landing-pages'
 
 # ───────────────────────────── per-state config ──────────────────────────────
@@ -905,7 +905,7 @@ def splice_state(state_code, dry_run=False):
 def sftp_push(local_path, slug):
     import paramiko
     env={}
-    for line in open('/Users/chriswoods/Desktop/Chris-HQ/.env'):
+    for line in (REPO.parent / '.env').open():
         line=line.strip()
         if '=' not in line or line.startswith('#'): continue
         k,_,v=line.partition('=')
