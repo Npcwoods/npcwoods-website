@@ -344,6 +344,90 @@ a { text-decoration: none; color: inherit; }
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== CLINICIAN CARD & TELEHEALTH DISCLOSURE ===== */
+.clinician-card-section {
+  padding: 48px 0;
+  background: var(--off-white);
+}
+.clinician-card {
+  display: flex;
+  gap: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+}
+.clinician-card-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--brand-light);
+  flex-shrink: 0;
+}
+.clinician-card-meta {
+  flex-grow: 1;
+}
+.clinician-card-meta .name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.clinician-card-meta .cred {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--brand);
+  margin-bottom: 8px;
+}
+.clinician-card-meta .trust {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.clinician-card-meta .trust a {
+  color: var(--brand);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.telehealth-disclosure-card {
+  max-width: 600px;
+  margin: 24px auto 0;
+  padding: 24px;
+  background: rgba(37, 99, 235, 0.03);
+  border-left: 4px solid var(--brand);
+  border-radius: 4px 12px 12px 4px;
+}
+.telehealth-disclosure-card h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.telehealth-disclosure-card p {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .clinician-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+  .clinician-card-photo {
+    margin: 0 auto;
+  }
+}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1551,6 +1635,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
+<!-- CLINICIAN CARD -->
+<section class="clinician-card-section" aria-label="Your clinician">
+  <div class="clinician-card">
+    <img class="clinician-card-photo"
+         src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp"
+         alt="Chris Woods, FNP-C, double board-certified Nurse Practitioner"
+         width="96" height="96" loading="lazy">
+    <div class="clinician-card-meta">
+      <p class="name">Chris Woods, MSN, APRN, FNP-C</p>
+      <p class="cred">Double Board-Certified Nurse Practitioner &middot; Advanced Practice Registered Nurse</p>
+      <p class="trust">Licensed in Georgia &middot; NPI 1285125468 &middot; <a href="https://verify.sos.ga.gov/verification/" target="_blank" rel="noopener">GA SOS Verifiable</a> &middot; Collaborative Agreement with GA-Licensed Physician</p>
+    </div>
+  </div>
+  <div class="telehealth-disclosure-card">
+    <h4>Georgia Telehealth Disclosure &amp; Limitations</h4>
+    <p>This page serves as informational marketing content. Asynchronous (text-based) telemedicine visits at NPCWoods have unique clinical limitations compared to in-person consultations. Visits do not involve real-time audio/video or a physical examination. If your symptoms require an in-person diagnostic test, physical assessment, or fall outside the safe boundaries of asynchronous care, you will be referred to an in-person provider, and your visit fee will be fully refunded. Controlled substances are never prescribed. Chris Woods is an APRN and verbally identifies as such during patient encounters; he is not a physician.</p>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="how-it-works fade-in">
   <div class="container">
