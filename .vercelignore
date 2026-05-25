@@ -1,0 +1,17 @@
+.env
+.env.*
+.git
+.vercel
+.tmp
+automation-output
+backups
+node_modules
+__pycache__
+**/__pycache__
+*.bak
+*.bak-*
+*.bak.*
+*.pyc
+*.pyo
+*.pyd
+*.log
