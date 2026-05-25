@@ -1,0 +1,3 @@
+mkdir html/affordable-telemedicine-arizona-no-insurance
+put npcwoods-website/landing-pages/affordable-telemedicine-arizona-no-insurance/index.html html/affordable-telemedicine-arizona-no-insurance/index.html
+put npcwoods-website/php/npcwoods-affordable-arizona-page.php html/wp-content/mu-plugins/npcwoods-affordable-arizona-page.php
