@@ -222,7 +222,7 @@ gtag('config', 'AW-610222919');
   --warning-soft: #FEF2F2;
   --white: #FFFFFF;
   --font-serif: 'DM Serif Display', serif;
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-signature: 'Caveat', cursive;
 }
 
@@ -324,7 +324,7 @@ p { color: var(--text-body); font-size: 1rem; line-height: 1.75; }
   align-items: center;
   justify-content: center;
   min-height: 54px;
-  border-radius: 10px;
+  border-radius: 100px;
   font-weight: 800;
   font-size: 1rem;
   text-decoration: none;
@@ -363,11 +363,12 @@ p { color: var(--text-body); font-size: 1rem; line-height: 1.75; }
 .hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 18% 20%, rgba(255,255,255,0.24), transparent 26%),
-    linear-gradient(150deg, #123CA3 0%, #2563EB 40%, #74A8FF 100%);
+  background: 
+    radial-gradient(circle at 90% 10%, rgba(217, 119, 6, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.24) 0%, transparent 55%),
+    linear-gradient(145deg, #091535 0%, #122456 50%, #070e24 100%);
   color: var(--white);
-  padding: 78px 0 86px;
+  padding: 86px 0 94px;
 }
 
 .hero::after {
@@ -959,7 +960,7 @@ p { color: var(--text-body); font-size: 1rem; line-height: 1.75; }
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  border-radius: 10px;
+  border-radius: 100px;
   background: var(--primary);
   color: var(--white);
   font-weight: 900;
@@ -1021,10 +1022,12 @@ p { color: var(--text-body); font-size: 1rem; line-height: 1.75; }
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(120deg, rgba(12, 32, 82, 0.92), rgba(20, 87, 180, 0.78)),
+    radial-gradient(circle at 90% 10%, rgba(217, 119, 6, 0.26) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.28) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(9, 21, 53, 0.94) 0%, rgba(7, 14, 36, 0.96) 100%),
     url('/sinus-infection-treatment/assets/sinus-photo-02-day-threshold.webp') center/cover;
   color: var(--white);
-  padding: clamp(58px, 8vw, 92px) 0 44px;
+  padding: clamp(64px, 8vw, 98px) 0 48px;
 }
 
 .short-hero::after {
