@@ -233,6 +233,7 @@ There's a full deployment skill at `skills/npcwoods-deploy/SKILL.md` — read it
 - **Read the deploy skill** before pushing anything to the server (`skills/npcwoods-deploy/SKILL.md`)
 - **After completing work**, update `SHIFT-LOG.md` in the `npcwoods-business` repo
 - **HIPAA** — no patient data anywhere in this repo, ever
+- **🚨 BLACK BOX RECORDER (INCIDENT POST-MORTEMS)** — When a major failure, messaging loop, webhook misconfiguration, or compliance bug occurs, immediately log a post-mortem inside `.agents/incidents/` following `INCIDENT_TEMPLATE.md` to ensure prevention and systemic learning.
 
 ---
 
