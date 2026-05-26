@@ -1609,6 +1609,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .home-v2 h1 em{color:var(--v2-brand);font-weight:700;font-style:normal}
   .home-v2 .lede{font-size:20px;color:var(--v2-ink-soft);max-width:560px;margin:0 0 30px;line-height:1.5}
   .home-v2 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:34px}
+  .home-v2 .hero-cta-trust{display:flex;gap:8px 16px;flex-wrap:wrap;align-items:center;margin-top:-22px;margin-bottom:34px;font-size:13.5px;color:var(--v2-muted);font-weight:500}
+  .home-v2 .hero-cta-trust span{display:inline-flex;align-items:center;gap:6px}
+  .home-v2 .hero-cta-trust .bullet{color:var(--v2-line-2);font-weight:700}
   .home-v2 .hero-start-strip{max-width:640px;margin:8px 0 22px;padding:16px 18px;background:#fff;border:1px solid var(--v2-line);border-radius:16px;box-shadow:0 16px 42px -28px rgba(26,26,46,.28)}
   .home-v2 .hero-start-strip .strip-label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--v2-muted);margin-bottom:10px}
   .home-v2 .hero-condition-links{display:flex;gap:8px;flex-wrap:wrap}
@@ -1897,6 +1900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .home-v2 .hero h1,
 .home-v2 .hero .lede,
 .home-v2 .hero .hero-cta,
+.home-v2 .hero .hero-cta-trust,
 .home-v2 .hero .hero-start-strip,
 .home-v2 .hero .trust-row,
 .home-v2 .hero .hero-refund,
@@ -1907,6 +1911,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .home-v2 .hero h1{animation-delay:.22s}
 .home-v2 .hero .lede{animation-delay:.38s}
 .home-v2 .hero .hero-cta{animation-delay:.54s}
+.home-v2 .hero .hero-cta-trust{animation-delay:.58s}
 .home-v2 .hero .status-chip{animation-delay:.66s}
 .home-v2 .hero .hero-refund{animation-delay:.70s}
 .home-v2 .hero .hero-start-strip{animation-delay:.76s}
@@ -1999,6 +2004,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .home-v2 .hero h1,
   .home-v2 .hero .lede,
   .home-v2 .hero .hero-cta,
+  .home-v2 .hero .hero-cta-trust,
   .home-v2 .hero .hero-start-strip,
   .home-v2 .hero .trust-row,
   .home-v2 .hero .hero-refund,
@@ -2032,6 +2038,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="status-dot"></span>
           <span class="status-text">Checking status…</span>
         </span>
+      </div>
+      <div class="hero-cta-trust">
+        <span>🔒 HIPAA-Compliant &amp; Secure</span>
+        <span class="bullet">•</span>
+        <span>⭐ 50+ Five-Star Google Reviews</span>
+        <span class="bullet">•</span>
+        <span>💊 Sent to your local pharmacy</span>
       </div>
       <p class="micro hero-refund">No app download. No video call. If a text visit is not the right fit, you are not charged.</p>
       <div class="hero-start-strip" aria-label="Common reasons patients start with NPCWoods">
@@ -2388,7 +2401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>Care that<br><em>shows up for you.</em></h2>
     <p>Start a visit now. Text your symptoms and a real NP will be with you in under 30 minutes.</p>
     <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn btn-cta">Text your symptoms · $59 →</a>
-    <div class="ps">No forms. No waiting room. No surprises.</div>
+    <div class="ps">No forms. No waiting room. No surprises. HSA/FSA accepted. Sent same-day to your local pharmacy.</div>
   </div>
 </section>
 </div><!-- /.home-v2 -->
