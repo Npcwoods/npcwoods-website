@@ -12,6 +12,7 @@ add_action( "template_redirect", function() {
         "uti-treatment"          => "uti-treatment/index.html",
         "sinus-infection-treatment" => "sinus-infection-treatment/index.html",
         "colorado-telemedicine"  => "colorado-telemedicine/index.html",
+        "georgia-telemedicine"   => "georgia-telemedicine/index.html",
         "idaho-telemedicine"     => "idaho-telemedicine/index.html",
         "iowa-telemedicine"      => "iowa-telemedicine/index.html",
         "montana-telemedicine"   => "montana-telemedicine/index.html",
