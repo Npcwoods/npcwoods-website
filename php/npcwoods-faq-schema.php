@@ -304,6 +304,7 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         406,  // states (redirects to homepage)
         407,  // faq (redirects to /#faq)
         408,  // about (redirects to /#about)
+        8,    // /strep-throat-ear-infection/ (legacy hub, redirects to /strep-throat-treatment/)
         // Duplicate pages (canonical points elsewhere)
         189,  // /uti/ → canonical to /uti-treatment/
         190,  // /sinus/ → canonical to /sinus-infection-treatment/
@@ -317,16 +318,18 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         63,   // home/front page duplicate
         // Noindexed pages (shouldn't be in sitemap)
         3,    // privacy-policy (noindexed)
+        654,  // /review/ (noindexed review funnel)
+        674,  // /pay/ (noindexed payment handoff)
 
         // ============================================================
         // CITY PAGES — temporarily excluded to focus crawl budget
         // on 66 core pages. Re-add once domain authority grows.
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
-        // UTI Treatment city pages (AZ) - Mesa (11), Scottsdale (17), Surprise (20) re-added
-        12, 13, 14, 15, 16, 18, 19,
-        // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (272), Albuquerque (411) re-added
-        268, 276, 280, 284, 288, 292, 296, 300,
+        // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20) re-added
+        11, 12, 14, 15, 16, 18, 19,
+        // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
+        268, 272, 276, 280, 288, 292, 296, 300,
         // Sinus Infection Treatment city pages (AZ) - Phoenix (21), Mesa (23) re-added
         22, 24, 25, 26, 27, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
