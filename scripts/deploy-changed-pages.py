@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
-"""Deploy any index.html that has a .synced.bak or .footer-synced.bak (= touched today).
+"""Plan or deploy pages that have a .synced.bak or .footer-synced.bak.
 
-Idempotent. Run after sync-header-snippet.py / sync-footer-snippet.py to push the
-batch update. Uses paramiko with banner_timeout=auth_timeout=60 (per
-feedback_paramiko_godaddy_timeout, 30s is not always enough).
+Dry-run is the default. Live upload requires Chris's explicit approval and the
+standard confirmation phrase. Run after sync-header-snippet.py /
+sync-footer-snippet.py to review or push the batch update.
 """
+import argparse
 import sys
 from pathlib import Path
 
-import paramiko
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from deploy_guard import (  # noqa: E402
+    DeployPlanItem,
+    LIVE_DEPLOY_CONFIRMATION,
+    require_live_deploy_confirmation,
+    summarize_plan,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 ENV_PATH = ROOT.parent / ".env"
@@ -52,17 +62,54 @@ def remote_path_for(local: Path) -> str:
     raise ValueError(f"Unexpected local path: {local}")
 
 
-def main() -> int:
-    env = load_env()
+def build_deploy_plan(targets: list[Path]) -> list[DeployPlanItem]:
+    return [
+        DeployPlanItem(local=target.relative_to(ROOT), remote=remote_path_for(target))
+        for target in targets
+    ]
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Plan or upload pages touched by header/footer snippet sync. Dry-run is the default."
+    )
+    parser.add_argument("--execute", action="store_true", help="Actually upload files after approval")
+    parser.add_argument(
+        "--confirm-live-deploy",
+        help=f'Exact phrase required with --execute: "{LIVE_DEPLOY_CONFIRMATION}"',
+    )
+    args = parser.parse_args((argv or sys.argv)[1:])
+
     targets = find_changed()
     if not targets:
         print("[noop] no changed pages found")
         return 0
+
     print(f"[deploy] {len(targets)} changed pages to upload")
     for t in targets[:5]:
         print(f"  - {t.relative_to(ROOT)}")
     if len(targets) > 5:
         print(f"  ... +{len(targets) - 5} more")
+
+    print()
+    print(summarize_plan(build_deploy_plan(targets)))
+
+    try:
+        require_live_deploy_confirmation(args.execute, args.confirm_live_deploy)
+    except RuntimeError as exc:
+        print(f"[blocked] {exc}", file=sys.stderr)
+        return 2
+
+    if not args.execute:
+        print()
+        print(
+            '[dry-run] No credentials loaded and no files uploaded. '
+            f'After Chris approves, add --execute --confirm-live-deploy "{LIVE_DEPLOY_CONFIRMATION}".'
+        )
+        return 0
+
+    env = load_env()
+    import paramiko
 
     print(f"\n[sftp] connecting to {env['SFTP_HOST']}:{env['SFTP_PORT']}")
     transport = paramiko.Transport((env["SFTP_HOST"], int(env["SFTP_PORT"])))
@@ -118,4 +165,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv))

@@ -10,6 +10,9 @@
 add_action('wp_footer', 'npcwoods_compliance_footer', 99);
 
 function npcwoods_compliance_footer() {
+    if (!empty($GLOBALS['npcwoods_shared_footer_rendered'])) {
+        return;
+    }
     ?>
     <style>
         .npcwoods-compliance-footer {

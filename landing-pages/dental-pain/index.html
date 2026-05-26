@@ -1485,6 +1485,57 @@ gtag('config', 'AW-610222919');
     script[type="application/ld+json"] {
       display: none;
     }
+
+    /* ===== SYMPTOM CHECKER WIDGET ===== */
+    .uti-check { background: linear-gradient(180deg, #f8fbff 0%, #fff7ed 100%); border-top: 1px solid #dbeafe; border-bottom: 1px solid #fed7aa; padding: 4rem 2rem; }
+    .uti-check-shell { max-width: 720px; margin: 0 auto; background: #ffffff; border: 1px solid rgba(24,33,45,.1); border-radius: 8px; padding: 28px; box-shadow: 0 22px 54px rgba(24,33,45,.1); position: relative; overflow: hidden; scroll-margin-top: 88px; }
+    .uti-check-shell::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--primary), var(--success), var(--amber)); }
+    .uti-check-eyebrow { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: var(--primary-light); color: var(--primary); font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .uti-check-title { margin: 0 0 8px; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.08; letter-spacing: 0; font-family: var(--font-serif); color: var(--primary); }
+    .uti-check-subtitle { margin: 0 0 22px; color: var(--text-muted); font-size: 1rem; }
+    .uti-check-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 24px; }
+    .uti-check-progress span { height: 4px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+    .uti-check-progress span.active { background: var(--primary); }
+    .uti-check-step { display: none; }
+    .uti-check-step.active { display: block; animation: uti-check-fade .22s ease; }
+    @keyframes uti-check-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .uti-check-question { margin: 0 0 4px; font-size: 1.25rem; line-height: 1.25; font-weight: 900; color: var(--charcoal); }
+    .uti-check-hint { margin: 0 0 16px; color: var(--text-muted); font-size: .92rem; }
+    .uti-check-options { display: grid; gap: 10px; margin-bottom: 18px; }
+    .uti-check-option { display: flex; align-items: center; gap: 12px; min-height: 54px; padding: 12px 14px; border: 1px solid #dbe3ed; border-radius: 8px; background: #fff; color: var(--charcoal); font: inherit; font-weight: 800; text-align: left; cursor: pointer; transition: border-color .15s ease, background .15s ease, color .15s ease, transform .15s ease; }
+    .uti-check-option:hover { border-color: #93c5fd; background: #f8fbff; transform: translateY(-1px); }
+    .uti-check-option.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary-hover); }
+    .uti-check-option .mark { width: 22px; height: 22px; border: 2px solid #cbd5e1; border-radius: 999px; flex: 0 0 22px; position: relative; background: #fff; }
+    .uti-check-option[data-multi] .mark { border-radius: 6px; }
+    .uti-check-option.selected .mark { border-color: var(--primary); background: var(--primary); }
+    .uti-check-option.selected .mark::after { content: ""; position: absolute; left: 6px; top: 2px; width: 6px; height: 11px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .uti-check-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .uti-check-btn { min-height: 50px; border-radius: 8px; border: 0; padding: 0 18px; font: inherit; font-weight: 900; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+    .uti-check-btn.primary { flex: 1; background: var(--primary); color: #fff; box-shadow: 0 12px 22px rgba(37, 99, 235, 0.18); }
+    .uti-check-btn.primary:disabled { background: #cbd5e1; color: #64748b; cursor: not-allowed; box-shadow: none; }
+    .uti-check-btn.secondary { background: #fff; color: var(--charcoal); border: 1px solid #dbe3ed; }
+    .uti-check-btn.cta { width: 100%; background: var(--amber); color: #fff; margin-top: 12px; box-shadow: 0 12px 24px rgba(217, 119, 6, 0.2); }
+    .uti-check-btn.cta:hover { color: #ffffff; background: var(--primary-hover); }
+    .uti-check-badge { display: inline-flex; align-items: center; min-height: 30px; padding: 0 11px; border-radius: 999px; font-size: .78rem; font-weight: 900; margin-bottom: 12px; }
+    .uti-check-badge.good { background: #dcfce7; color: #166534; }
+    .uti-check-badge.warn { background: #ffedd5; color: #9a3412; }
+    .uti-check-badge.info { background: #e0f2fe; color: #075985; }
+    .uti-check-result h3 { margin: 0 0 10px; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.12; font-family: var(--font-serif); color: var(--primary); }
+    .uti-check-result p { margin: 0 0 14px; color: var(--text-muted); }
+    .uti-check-price { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0; }
+    .uti-check-price div { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 8px; text-align: center; background: #f8fafc; }
+    .uti-check-price div:last-child { border-color: #bbf7d0; background: #f0fdf4; }
+    .uti-check-price span { display: block; color: #64748b; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+    .uti-check-price strong { display: block; color: var(--charcoal); font-size: 1.2rem; line-height: 1; }
+    .uti-check-trust { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: #475569; font-size: .84rem; font-weight: 800; }
+    .uti-check-trust span { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: #f8fafc; border: 1px solid #e2e8f0; }
+    .uti-check-alert { background: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid var(--amber); border-radius: 8px; padding: 14px; color: #7c2d12; margin: 14px 0; }
+    @media (max-width: 860px) {
+      .uti-check-shell { padding: 22px 16px; }
+      .uti-check-price { grid-template-columns: 1fr; }
+      .uti-check-actions { flex-direction: column-reverse; }
+      .uti-check-btn { width: 100%; }
+    }
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1506,6 +1557,7 @@ src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
+<link rel="stylesheet" href="/assets/css/site.css">
 <!-- NPCWoods Tracking: GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1531,599 +1583,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </defs>
 </svg>
 
-<style>
-/* ===== SITE NAV ===== */
-.npc-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(229, 231, 235, 0.7);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  transition: box-shadow 0.3s ease;
-}
-
-.npc-nav.scrolled {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-}
-
-.npc-nav-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-
-.npc-nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #1A1A2E;
-  transition: opacity 0.2s;
-}
-
-.npc-nav-logo:hover {
-  opacity: 0.85;
-  text-decoration: none;
-}
-
-.npc-nav-logo img {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.npc-nav-logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.npc-nav-logo-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #1A1A2E;
-  letter-spacing: -0.3px;
-}
-
-.npc-nav-logo-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: #2563EB;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-
-.npc-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.npc-nav-links > li {
-  position: relative;
-}
-
-.npc-nav-links > li > a {
-  display: block;
-  padding: 8px 14px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #4A4A5A;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.15s, color 0.15s;
-}
-
-.npc-nav-links > li > a:hover {
-  background: #EFF6FF;
-  color: #2563EB;
-  text-decoration: none;
-}
-
-/* Dropdown trigger arrow */
-.npc-nav-links > li > a .nav-arrow {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.65rem;
-  transition: transform 0.2s;
-}
-
-/* Dropdown panel */
-.npc-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-  padding: 8px;
-  margin-top: 4px;
-  z-index: 10000;
-}
-
-.npc-nav-links > li:hover > .npc-dropdown,
-.npc-nav-links > li:focus-within > .npc-dropdown {
-  display: block;
-}
-
-.npc-dropdown a {
-  display: block;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #4A4A5A;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-
-.npc-dropdown a:hover {
-  background: #EFF6FF;
-  color: #2563EB;
-}
-
-/* ===== CTA BUTTON — Premium redesign ===== */
-.npc-nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  color: #FFFFFF !important;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 12px;
-  text-decoration: none !important;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.npc-nav-cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: left 0.5s ease;
-}
-
-.npc-nav-cta:hover::before {
-  left: 100%;
-}
-
-.npc-nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37,99,235,0.4);
-  color: #FFFFFF !important;
-  text-decoration: none !important;
-}
-
-.npc-nav-cta svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.npc-cta-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ADE80;
-  flex-shrink: 0;
-  animation: npcPulse 2s ease-in-out infinite;
-  box-shadow: 0 0 0 0 rgba(74,222,128,0.4);
-}
-
-@keyframes npcPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
-  50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
-}
-
-/* Mobile hamburger button */
-.npc-nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: 1px solid #E5E7EB;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 10002;
-  transition: all 0.2s;
-}
-
-.npc-nav-toggle:hover {
-  background: #F7F8FA;
-  border-color: #D1D5DB;
-}
-
-.npc-nav-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: #1A1A2E;
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-origin: center;
-}
-
-.npc-nav-toggle.active {
-  border-color: #2563EB;
-  background: #EFF6FF;
-}
-
-.npc-nav-toggle.active span { background: #2563EB; }
-.npc-nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.npc-nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.npc-nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-/* ===== SLIDE-OUT PANEL ===== */
-.npc-menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(26,26,46,0.3);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.npc-menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.npc-slide-panel {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 400px;
-  max-width: 92vw;
-  height: 100vh;
-  height: 100dvh;
-  background: #FFFFFF;
-  z-index: 10001;
-  transition: right 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  box-shadow: -12px 0 40px rgba(0,0,0,0.08);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-.npc-slide-panel.active {
-  right: 0;
-}
-
-/* Panel header */
-.npc-panel-header {
-  position: sticky;
-  top: 0;
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 28px;
-  border-bottom: 1px solid #E5E7EB;
-  z-index: 2;
-}
-
-.npc-panel-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
-  font-size: 1.15rem;
-  color: #1A1A2E;
-}
-
-.npc-panel-logo img {
-  height: 36px;
-  width: 36px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.npc-panel-close {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  border: 1px solid #E5E7EB;
-  background: #FFFFFF;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8E8E9A;
-  transition: all 0.2s;
-}
-
-.npc-panel-close:hover {
-  background: #F7F8FA;
-  border-color: #D1D5DB;
-  color: #1A1A2E;
-}
-
-.npc-panel-close svg {
-  width: 16px;
-  height: 16px;
-}
-
-.npc-panel-body {
-  padding: 8px 20px 120px;
-}
-
-/* Panel sections */
-.npc-panel-section {
-  margin-bottom: 8px;
-}
-
-.npc-panel-section-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #8E8E9A;
-  padding: 16px 12px 8px;
-}
-
-/* Panel nav links */
-.npc-panel-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #1A1A2E;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
-}
-
-.npc-panel-link:hover {
-  background: #EFF6FF;
-}
-
-.npc-panel-link-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: #F7F8FA;
-  border: 1px solid #E5E7EB;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.15s;
-}
-
-.npc-panel-link:hover .npc-panel-link-icon {
-  background: #EFF6FF;
-  border-color: #DBEAFE;
-}
-
-.npc-panel-link-icon svg {
-  width: 18px;
-  height: 18px;
-  color: #2563EB;
-}
-
-.npc-panel-link-text {
-  flex: 1;
-}
-
-.npc-panel-link-sub {
-  font-size: 0.75rem;
-  color: #8E8E9A;
-  font-weight: 400;
-  margin-top: 1px;
-}
-
-.npc-panel-link:hover .npc-panel-link-sub {
-  color: #2563EB;
-  opacity: 0.7;
-}
-
-.npc-panel-link-arrow {
-  color: #D1D5DB;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: all 0.2s;
-}
-
-.npc-panel-link:hover .npc-panel-link-arrow {
-  opacity: 1;
-  transform: translateX(0);
-  color: #2563EB;
-}
-
-/* States grid */
-.npc-states-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  padding: 0 4px;
-}
-
-.npc-state-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #1A1A2E;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
-}
-
-.npc-state-link:hover {
-  background: #EFF6FF;
-  color: #2563EB;
-}
-
-.npc-state-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #16A34A;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 2px #DCFCE7;
-}
-
-.npc-state-link:hover .npc-state-dot {
-  background: #2563EB;
-  box-shadow: 0 0 0 2px #DBEAFE;
-}
-
-/* Panel divider */
-.npc-panel-divider {
-  height: 1px;
-  background: #E5E7EB;
-  margin: 8px 12px 4px;
-}
-
-/* Panel CTA */
-.npc-panel-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  color: #FFFFFF;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 14px;
-  text-decoration: none;
-  transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
-  margin: 4px 0;
-}
-
-.npc-panel-cta:hover {
-  background: linear-gradient(135deg, #1D4ED8 0%, #1e3a8a 100%);
-  color: #FFFFFF;
-  box-shadow: 0 6px 24px rgba(37,99,235,0.4);
-  transform: translateY(-1px);
-}
-
-.npc-panel-cta svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Panel phone link */
-.npc-panel-phone {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #1A1A2E;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.15s;
-  margin-top: 4px;
-}
-
-.npc-panel-phone:hover {
-  background: #F7F8FA;
-}
-
-.npc-panel-phone-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: #DCFCE7;
-  border: 1px solid rgba(22,163,74,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.npc-panel-phone-icon svg {
-  width: 18px;
-  height: 18px;
-  color: #16A34A;
-}
-
-/* Panel animations */
-.npc-slide-panel.active .npc-panel-link,
-.npc-slide-panel.active .npc-state-link,
-.npc-slide-panel.active .npc-panel-cta,
-.npc-slide-panel.active .npc-panel-phone {
-  animation: npcFadeSlideIn 0.35s ease forwards;
-  opacity: 0;
-}
-
-.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(2) { animation-delay: 0.06s; }
-.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(3) { animation-delay: 0.09s; }
-.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(4) { animation-delay: 0.12s; }
-.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(5) { animation-delay: 0.15s; }
-.npc-slide-panel.active .npc-panel-section:nth-child(1) .npc-panel-link:nth-child(6) { animation-delay: 0.18s; }
-
-@keyframes npcFadeSlideIn {
-  from { opacity: 0; transform: translateX(12px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .npc-slide-panel,
-  .npc-menu-overlay,
-  .npc-nav-toggle span,
-  .npc-panel-link,
-  .npc-state-link,
-  .npc-panel-cta,
-  .npc-panel-phone,
-  .npc-cta-dot {
-    transition-duration: 0.1s !important;
-    animation-duration: 0.01ms !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .npc-nav-links { display: none; }
-  .npc-nav-toggle { display: flex; }
-  .npc-nav-inner { height: 56px; }
-  .npc-nav-logo img { width: 32px; height: 32px; }
-  .npc-nav-logo-name { font-size: 1.05rem; }
-}
-</style>
+<!-- nav CSS: now in /assets/css/site.css -->
 
 
 <nav class="npc-nav" aria-label="Main navigation">
@@ -2312,99 +1772,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script>
-(function() {
-  var hamburger = document.getElementById('npcHamburger');
-  var panel = document.getElementById('npcSlidePanel');
-  var overlay = document.getElementById('npcOverlay');
-  var panelClose = document.getElementById('npcPanelClose');
-  var nav = document.querySelector('.npc-nav');
-  if (!hamburger || !panel || !overlay || !panelClose) return;
+<!-- nav JS: now in /assets/js/site.js -->
 
-  // Scroll shadow effect
-  if (nav) {
-    window.addEventListener('scroll', function() {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-  }
-
-  function openMenu() {
-    panel.classList.add('active');
-    overlay.classList.add('active');
-    hamburger.classList.add('active');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    panelClose.focus();
-  }
-
-  function closeMenu() {
-    panel.classList.remove('active');
-    overlay.classList.remove('active');
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    hamburger.focus();
-  }
-
-  hamburger.addEventListener('click', function() {
-    panel.classList.contains('active') ? closeMenu() : openMenu();
-  });
-
-  overlay.addEventListener('click', closeMenu);
-  panelClose.addEventListener('click', closeMenu);
-
-  // Close on link click
-  var links = panel.querySelectorAll('.npc-panel-link, .npc-state-link, .npc-panel-cta, .npc-panel-phone');
-  for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', closeMenu);
-  }
-
-  // Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && panel.classList.contains('active')) closeMenu();
-  });
-})();
-</script>
-
-<!-- ===== Core Web Vitals field reporter (sends LCP/CLS/INP/FCP/TTFB to GA4 via dataLayer) ===== -->
-<script>
-(function() {
-  if (window.__npcCwvLoaded) return;
-  window.__npcCwvLoaded = true;
-  window.dataLayer = window.dataLayer || [];
-  function report(metric) {
-    try {
-      window.dataLayer.push({
-        event: 'web_vitals',
-        metric_name: metric.name,
-        metric_value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-        metric_rating: metric.rating,
-        metric_id: metric.id,
-        page_path: location.pathname
-      });
-    } catch (e) {}
-  }
-  function load() {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
-    s.async = true;
-    s.onload = function() {
-      if (!window.webVitals) return;
-      window.webVitals.onLCP(report);
-      window.webVitals.onCLS(report);
-      window.webVitals.onINP(report);
-      window.webVitals.onFCP(report);
-      window.webVitals.onTTFB(report);
-    };
-    document.head.appendChild(s);
-  }
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(load, { timeout: 3000 });
-  } else {
-    setTimeout(load, 2000);
-  }
-})();
-</script>
+<!-- CWV JS: now in /assets/js/site.js -->
 <!-- ===== END SITE HEADER ===== -->
 
 <!-- ===== MOBILE FLOATING CTA ===== -->
@@ -3036,6 +2406,110 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ol>
 </section>
 
+  <section class="uti-check" id="dental-check">
+    <div class="wrap">
+      <div class="uti-check-shell" data-dental-check>
+        <span class="uti-check-eyebrow">Dental Infection Symptom Check</span>
+        <h2 class="uti-check-title">Got severe tooth or jaw pain? Check your next step in under a minute.</h2>
+        <p class="uti-check-subtitle">This does not diagnose you. It helps you decide whether texting Chris is a reasonable next step or whether in-person care is safer.</p>
+
+        <div class="uti-check-progress" aria-hidden="true">
+          <span class="active" data-progress="1"></span>
+          <span data-progress="2"></span>
+          <span data-progress="3"></span>
+        </div>
+
+        <!-- Step 1: Location Check -->
+        <div class="uti-check-step active" data-step="1">
+          <p class="uti-check-question">Are you currently located in an active state?</p>
+          <p class="uti-check-hint">Chris can only treat you when you are in a state where NPCWoods is licensed.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-single="location" data-value="eligible"><span class="mark"></span><span>Yes, I am in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, or UT</span></button>
+            <button type="button" class="uti-check-option" data-single="location" data-value="other"><span class="mark"></span><span>No, I am in another state</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn primary" data-next="1" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Dental Symptoms -->
+        <div class="uti-check-step" data-step="2">
+          <p class="uti-check-question">What symptoms are you experiencing?</p>
+          <p class="uti-check-hint">Select all that apply.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="throbbing"><span class="mark"></span><span>Deep, throbbing tooth or jaw pain</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="swelling_gum"><span class="mark"></span><span>Localized swelling of the gum near a tooth (abscess)</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="sensitivity"><span class="mark"></span><span>Extreme sensitivity to hot or cold temperatures</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="drainage"><span class="mark"></span><span>Foul taste or pus draining from the gum line</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn secondary" data-back="2">Back</button>
+            <button type="button" class="uti-check-btn primary" data-next="2" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Safety Flags -->
+        <div class="uti-check-step" data-step="3">
+          <p class="uti-check-question">Any warning signs or safety flags?</p>
+          <p class="uti-check-hint">Select all that apply.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="swelling_face"><span class="mark"></span><span>Swelling spreading to your face, cheek, eye, or neck</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="airway"><span class="mark"></span><span>Difficulty swallowing, speaking, or breathing</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="fever"><span class="mark"></span><span>Systemic fever (>101°F) or severe chills</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="none"><span class="mark"></span><span>None of the above</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn secondary" data-back="3">Back</button>
+            <button type="button" class="uti-check-btn primary" data-next="3" disabled>See my next step</button>
+          </div>
+        </div>
+
+        <!-- Outcome 1: Good Fit (Antibiotic Bridge) -->
+        <div class="uti-check-step uti-check-result" data-step="result-good">
+          <span class="uti-check-badge good">Text-based review may be a fit</span>
+          <h3>This localized infection is a fit for an antibiotic bridge.</h3>
+          <p>Because your infection is localized without emergency spreading swelling or airway risk, Chris can write a same-day generic antibiotic prescription (like Amoxicillin, Augmentin, or Clindamycin) to act as a **clinical bridge** to manage the infection *until you can see a local dentist* for a permanent procedure.</p>
+          <div class="uti-check-price" aria-label="Dental care price comparison">
+            <div><span>ER visit</span><strong>$1,400+</strong></div>
+            <div><span>Urgent care</span><strong>$160+</strong></div>
+            <div><span>NPCWoods</span><strong>$59</strong></div>
+          </div>
+          <a class="uti-check-btn cta" data-dental-sms="good" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20symptom%20checker%20and%20would%20like%20to%20start%20a%20%2459%20Dental%20Pain%20bridge%20visit.">Text Chris to start my $59 bridge</a>
+          <div class="uti-check-trust">
+            <span>Licensed Nurse Practitioner</span>
+            <span>Same-Day Prescriptions</span>
+            <span>$59 flat fee</span>
+          </div>
+        </div>
+
+        <!-- Outcome 2: Red Flag Referral (Ludwig's Angina / Sepsis Risk) -->
+        <div class="uti-check-step uti-check-result" data-step="result-flag">
+          <span class="uti-check-badge warn">In-person care is immediately required</span>
+          <h3>Spreading facial swelling is a medical emergency.</h3>
+          <div class="uti-check-alert"><strong>Why this is urgent:</strong> Spreading swelling in the cheek, jaw, or neck (Ludwig's angina) can quickly expand to compress your airway, making breathing impossible. High fever indicates the infection may be entering your bloodstream.</div>
+          <p>Please visit a local Emergency Room immediately for IV antibiotics and surgical drainage. Do not wait on a telemedicine review.</p>
+          <a class="uti-check-btn cta" data-dental-sms="flag" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Dental%20checker%20and%20got%20an%20airway%2Fswelling%20warning.%20Can%20you%20confirm%20if%20I%20need%20the%20ER%3F">Text Chris a safety question</a>
+        </div>
+
+        <!-- Outcome 3: Location Check -->
+        <div class="uti-check-step uti-check-result" data-step="result-state">
+          <span class="uti-check-badge info">Location check needed</span>
+          <h3>Tell Chris what state you are in before starting.</h3>
+          <p>NPCWoods is licensed in multiple states, but treatment is strictly limited to where you are physically located during the visit. Text your state first so Chris can confirm the right next step.</p>
+          <a class="uti-check-btn cta" data-dental-sms="state" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Dental%20checker%20but%20am%20located%20outside%20your%20default%20states.%20Can%20you%20help%20me%3F">Text Chris my state</a>
+        </div>
+
+        <!-- Outcome 4: Mild/Supportive pain care -->
+        <div class="uti-check-step uti-check-result" data-step="result-mild">
+          <span class="uti-check-badge info">Supportive Dental Care</span>
+          <h3>Your answers do not clearly indicate an active bacterial infection.</h3>
+          <p>While you may still have dental discomfort or temperature sensitivity, minor tooth sensitivity does not always require prescription antibiotics. Text Chris if you'd like a nurse practitioner review of your dental symptoms, or seek a local dentist for physical dental x-rays and care.</p>
+          <a class="uti-check-btn cta" data-dental-sms="mild" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Dental%20checker%20and%20my%20symptoms%20are%20unclear.%20Can%20you%20help%20me%20figure%20out%20if%20I%20need%20antibiotics%3F">Text Chris about my symptoms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <!-- ===== FINAL CTA ===== -->
 <section class="final-cta">
   <div class="final-cta-content">
@@ -3061,182 +2535,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Copy this block into every page before </body> -->
 <!-- Last updated: March 2026 -->
 
-<style>
-/* ===== SITE FOOTER ===== */
-.npc-site-footer {
-  background: #1A1A2E;
-  color: #B0B0C0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  padding: 56px 20px 32px;
-  margin-top: 0;
-}
-
-.npc-footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.npc-footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.npc-footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.npc-footer-brand-name {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-.npc-footer-brand-name img {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-}
-
-.npc-footer-brand p {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #8E8E9A;
-  margin: 0;
-  max-width: 280px;
-}
-
-.npc-footer-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #2563EB;
-  color: #FFFFFF;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background 0.15s;
-  margin-top: 4px;
-  width: fit-content;
-}
-
-.npc-footer-cta:hover {
-  background: #1D4ED8;
-}
-
-.npc-footer-col h4 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #FFFFFF;
-  margin: 0 0 16px;
-}
-
-.npc-footer-col ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.npc-footer-col li {
-  margin-bottom: 8px;
-}
-
-.npc-footer-col a {
-  font-size: 0.875rem;
-  color: #B0B0C0;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.npc-footer-col a:hover {
-  color: #FFFFFF;
-}
-
-.npc-footer-divider {
-  border: none;
-  border-top: 1px solid #2A2A3E;
-  margin: 0 0 24px;
-}
-
-.npc-footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.8rem;
-  color: #6B6B80;
-}
-
-.npc-footer-bottom a {
-  color: #6B6B80;
-  text-decoration: none;
-}
-
-.npc-footer-bottom a:hover {
-  color: #B0B0C0;
-}
-
-.npc-footer-trust {
-  text-align: center;
-  font-size: 0.8rem;
-  color: #6B6B80;
-  margin-top: 20px;
-  line-height: 1.5;
-}
-
-.npc-footer-trust a {
-  color: #9EB8FF;
-  text-decoration: none;
-}
-
-.npc-footer-trust a:hover {
-  color: #FFFFFF;
-}
-
-.npc-footer-hipaa-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: rgba(37, 99, 235, 0.18);
-  color: #D9E7FF;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
-  .npc-footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .npc-footer-brand {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 480px) {
-  .npc-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
-</style>
+<!-- footer CSS: now in /assets/css/site.css -->
 
 <footer class="npc-site-footer">
   <div class="npc-footer-inner">
@@ -3512,223 +2811,136 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 </script>
 
+<script>
+(function () {
+  var root = document.querySelector('[data-dental-check]');
+  if (!root) return;
+
+  var state = {
+    location: '',
+    symptoms: [],
+    flags: []
+  };
+
+  function sendWidgetEvent(name, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', name, Object.assign({
+        event_category: 'engagement',
+        page_path: window.location.pathname,
+        transport_type: 'beacon'
+      }, params || {}));
+    }
+  }
+
+  function selectedValues(group) {
+    return state[group] || [];
+  }
+
+  function setProgress(step) {
+    root.querySelectorAll('[data-progress]').forEach(function (bar) {
+      bar.classList.toggle('active', Number(bar.dataset.progress) <= step);
+    });
+  }
+
+  function showStep(stepName) {
+    root.querySelectorAll('.uti-check-step').forEach(function (step) {
+      step.classList.toggle('active', step.dataset.step === String(stepName));
+    });
+    if (String(stepName).indexOf('result-') === 0) {
+      setProgress(3);
+      sendWidgetEvent('dental_checker_result', { result_type: stepName.replace('result-', '') });
+      root.scrollIntoView({ block: 'start' });
+    } else {
+      setProgress(Number(stepName));
+    }
+  }
+
+  root.querySelectorAll('[data-single]').forEach(function (option) {
+    option.addEventListener('click', function () {
+      var group = option.dataset.single;
+      root.querySelectorAll('[data-single="' + group + '"]').forEach(function (sibling) {
+        sibling.classList.remove('selected');
+      });
+      option.classList.add('selected');
+      state[group] = option.dataset.value;
+      var step = option.closest('.uti-check-step').dataset.step;
+      root.querySelector('[data-next="' + step + '"]').disabled = false;
+      sendWidgetEvent('dental_checker_answer', { step: step, answer_group: group });
+    });
+  });
+
+  root.querySelectorAll('[data-multi]').forEach(function (option) {
+    option.addEventListener('click', function () {
+      var group = option.dataset.multi;
+      var value = option.dataset.value;
+      state[group] = selectedValues(group);
+
+      if (value === 'none') {
+        root.querySelectorAll('[data-multi="' + group + '"]').forEach(function (sibling) {
+          sibling.classList.remove('selected');
+        });
+        option.classList.add('selected');
+        state[group] = ['none'];
+      } else {
+        var none = root.querySelector('[data-multi="' + group + '"][data-value="none"]');
+        if (none) none.classList.remove('selected');
+        state[group] = state[group].filter(function (item) { return item !== 'none'; });
+        option.classList.toggle('selected');
+        if (option.classList.contains('selected')) {
+          if (state[group].indexOf(value) === -1) state[group].push(value);
+        } else {
+          state[group] = state[group].filter(function (item) { return item !== value; });
+        }
+      }
+
+      var step = option.closest('.uti-check-step').dataset.step;
+      root.querySelector('[data-next="' + step + '"]').disabled = state[group].length === 0;
+      sendWidgetEvent('dental_checker_answer', { step: step, answer_group: group });
+    });
+  });
+
+  root.querySelectorAll('[data-next]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var current = Number(button.dataset.next);
+      if (current === 1 && state.location === 'other') {
+        showStep('result-state');
+        return;
+      }
+      if (current === 3) {
+        var hasFlag = state.flags.some(function (flag) { return flag !== 'none'; });
+        var hasSymptoms = state.symptoms.length > 0;
+        
+        if (hasFlag) {
+          showStep('result-flag');
+        } else if (hasSymptoms) {
+          showStep('result-good');
+        } else {
+          showStep('result-mild');
+        }
+        return;
+      }
+      showStep(current + 1);
+    });
+  });
+
+  root.querySelectorAll('[data-back]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      showStep(Number(button.dataset.back) - 1);
+    });
+  });
+
+  root.querySelectorAll('[data-dental-sms]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      sendWidgetEvent('dental_checker_sms_click', { result_type: link.dataset.dentalSms || 'unknown' });
+    });
+  });
+})();
+</script>
+
 <!-- NPCWoods Tracking: tracking.js -->
 <script src="/tracking.js"></script>
 <!-- NPCWoods Contact Save -->
-<style>
-  /* ===== SAVE CONTACT FLOATING BUTTON ===== */
-  .npc-save-wrap {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 998;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .npc-save-wrap.npc-save-visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .npc-save-wrap.npc-save-hidden {
-    display: none !important;
-  }
-
-  /* Collapsed: circle icon button */
-  .npc-save-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 100px;
-    background: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    transition: all 0.2s ease;
-    position: relative;
-    padding: 0;
-  }
-  .npc-save-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37,99,235,0.25);
-  }
-  .npc-save-btn svg {
-    width: 26px;
-    height: 26px;
-    color: #2563EB;
-    flex-shrink: 0;
-  }
-  .npc-save-btn .npc-save-dot {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 10px;
-    height: 10px;
-    background: #2563EB;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
-    animation: npc-save-pulse 2s infinite;
-  }
-
-  /* Expanded card */
-  .npc-save-card {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
-    padding: 24px;
-    opacity: 0;
-    transform: scale(0.9) translateY(8px);
-    transform-origin: bottom right;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-    visibility: hidden;
-  }
-  .npc-save-card.npc-save-card-open {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  .npc-save-card-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 28px;
-    height: 28px;
-    border: none;
-    background: #F3F4F6;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    transition: background 0.15s ease;
-  }
-  .npc-save-card-close:hover {
-    background: #E5E7EB;
-  }
-  .npc-save-card-close svg {
-    width: 14px;
-    height: 14px;
-    color: #6B7280;
-  }
-
-  .npc-save-card-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .npc-save-card-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 2px solid #EFF6FF;
-  }
-  .npc-save-card-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1A1A2E;
-    line-height: 1.2;
-  }
-  .npc-save-card-title {
-    font-size: 0.75rem;
-    color: #6B7280;
-    margin-top: 2px;
-  }
-
-  .npc-save-card-msg {
-    font-size: 0.9rem;
-    color: #4A4A5A;
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-  .npc-save-card-msg strong {
-    color: #1A1A2E;
-  }
-
-  .npc-save-card-dl {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
-    box-sizing: border-box;
-  }
-  .npc-save-card-dl:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
-  }
-  .npc-save-card-dl svg {
-    width: 16px;
-    height: 16px;
-    vertical-align: -3px;
-    margin-right: 6px;
-  }
-
-  .npc-save-card-hint {
-    text-align: center;
-    font-size: 0.7rem;
-    color: #9CA3AF;
-    margin-top: 10px;
-    line-height: 1.4;
-  }
-
-  /* Pulse animation for the notification dot */
-  @keyframes npc-save-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .npc-save-wrap { transition: none; }
-    .npc-save-card { transition: none; }
-    .npc-save-btn { transition: none; }
-    .npc-save-btn .npc-save-dot { animation: none; }
-  }
-
-  /* Mobile: shift above floating CTA bar */
-  @media (max-width: 640px) {
-    .npc-save-wrap {
-      bottom: 84px;
-      right: 16px;
-    }
-    .npc-save-card {
-      width: 280px;
-      padding: 20px;
-    }
-  }
-
-  /* Very small screens */
-  @media (max-width: 360px) {
-    .npc-save-card {
-      width: 260px;
-      right: -8px;
-    }
-  }
-</style>
+<!-- save-contact CSS: now in /assets/css/site.css -->
 
 <div class="npc-save-wrap" id="npcSaveWrap">
   <!-- Collapsed: circle icon button -->
@@ -3757,89 +2969,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script>
-(function() {
-  var wrap = document.getElementById('npcSaveWrap');
-  var btn = document.getElementById('npcSaveBtn');
-  var card = document.getElementById('npcSaveCard');
-  var dismiss = document.getElementById('npcSaveDismiss');
-  var dl = document.getElementById('npcSaveDownload');
-
-  if (!wrap || !btn || !card) return;
-
-  // Check if dismissed this session
-  try {
-    if (sessionStorage.getItem('npc-contact-dismissed') === '1') {
-      wrap.classList.add('npc-save-hidden');
-      return;
-    }
-  } catch(e) {}
-
-  var hasSeenExpanded = false;
-  try { hasSeenExpanded = sessionStorage.getItem('npc-contact-seen') === '1'; } catch(e) {}
-
-  // Show after 3 second delay
-  setTimeout(function() {
-    wrap.classList.add('npc-save-visible');
-
-    // Auto-expand on first view, stay collapsed on subsequent pages
-    if (!hasSeenExpanded) {
-      setTimeout(function() {
-        card.classList.add('npc-save-card-open');
-        btn.style.opacity = '0';
-        btn.style.pointerEvents = 'none';
-        // Auto-collapse after 5 seconds
-        setTimeout(function() {
-          card.classList.remove('npc-save-card-open');
-          btn.style.opacity = '1';
-          btn.style.pointerEvents = 'auto';
-          try { sessionStorage.setItem('npc-contact-seen', '1'); } catch(e) {}
-        }, 5000);
-      }, 200);
-    }
-  }, 3000);
-
-  // Toggle on click
-  btn.addEventListener('click', function() {
-    card.classList.add('npc-save-card-open');
-    btn.style.opacity = '0';
-    btn.style.pointerEvents = 'none';
-  });
-
-  // Dismiss
-  dismiss.addEventListener('click', function() {
-    card.classList.remove('npc-save-card-open');
-    wrap.classList.remove('npc-save-visible');
-    try { sessionStorage.setItem('npc-contact-dismissed', '1'); } catch(e) {}
-    setTimeout(function() { wrap.classList.add('npc-save-hidden'); }, 400);
-  });
-
-  // Close card when clicking outside
-  document.addEventListener('click', function(e) {
-    if (card.classList.contains('npc-save-card-open') && !wrap.contains(e.target)) {
-      card.classList.remove('npc-save-card-open');
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  });
-
-  // Track download
-  dl.addEventListener('click', function() {
-    // Google Analytics / Ads
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'save_contact_vcard',
-        value: 0
-      });
-    }
-    // Facebook Pixel
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'save_contact_vcard' });
-    }
-  });
-})();
-</script>
+<!-- save-contact JS: now in /assets/js/site.js -->
 <!-- END NPCWoods Contact Save -->
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

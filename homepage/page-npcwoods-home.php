@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #f5f5f7;
@@ -1058,9 +1058,26 @@ h1 {
   ]
 }
 </script>
+<?php if (function_exists('wp_head')) { wp_head(); } ?>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<?php
+$npcwoods_header_rendered = false;
+$npcwoods_header_candidates = array();
+if (defined('ABSPATH')) {
+  $npcwoods_header_candidates[] = rtrim(ABSPATH, '/\\') . '/shared/header-snippet.html';
+}
+$npcwoods_header_candidates[] = __DIR__ . '/../html/shared/header-snippet.html';
+foreach ($npcwoods_header_candidates as $npcwoods_header_path) {
+  if (is_readable($npcwoods_header_path)) {
+    readfile($npcwoods_header_path);
+    $npcwoods_header_rendered = true;
+    break;
+  }
+}
+if (!$npcwoods_header_rendered):
+?>
 <nav class="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a class="brand" href="/" aria-label="NPCWoods homepage">
@@ -1076,6 +1093,7 @@ h1 {
     </div>
   </div>
 </nav>
+<?php endif; ?>
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
@@ -1278,6 +1296,23 @@ h1 {
   </section>
 </main>
 
+<?php
+$npcwoods_footer_rendered = false;
+$npcwoods_footer_candidates = array();
+if (defined('ABSPATH')) {
+  $npcwoods_footer_candidates[] = rtrim(ABSPATH, '/\\') . '/shared/footer-snippet.html';
+}
+$npcwoods_footer_candidates[] = __DIR__ . '/../html/shared/footer-snippet.html';
+foreach ($npcwoods_footer_candidates as $npcwoods_footer_path) {
+  if (is_readable($npcwoods_footer_path)) {
+    $GLOBALS['npcwoods_shared_footer_rendered'] = true;
+    readfile($npcwoods_footer_path);
+    $npcwoods_footer_rendered = true;
+    break;
+  }
+}
+if (!$npcwoods_footer_rendered):
+?>
 <footer class="footer" aria-label="Footer">
   <div class="footer-inner">
     <div>
@@ -1300,6 +1335,7 @@ h1 {
     </div>
   </div>
 </footer>
+<?php endif; ?>
 
 <script>
 (function () {
@@ -1319,7 +1355,6 @@ h1 {
   items.forEach(function (item) { observer.observe(item); });
 })();
 </script>
-<!-- NPCWoods Tracking: tracking.js -->
-<script src="/tracking.js"></script>
+<?php if (function_exists('wp_footer')) { wp_footer(); } ?>
 </body>
 </html>
