@@ -10,7 +10,7 @@
   var EVENT_VALUE = 59;
   var ATTRIBUTION_TTL_MS = 90 * 24 * 60 * 60 * 1000;
   // These GA4 destinations were verified to emit sms_click on 2026-05-23.
-  var GA4_EVENT_DESTINATIONS = ['G-7HW238T9FM', 'G-0VCC0Z4FD7'];
+  var GA4_EVENT_DESTINATIONS = ['G-EFFRQMG8TC', 'G-7HW238T9FM', 'G-0VCC0Z4FD7'];
 
   var params = new URLSearchParams(window.location.search);
 

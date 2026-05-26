@@ -113,12 +113,58 @@ gtag('config', 'AW-610222919');
     .final h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 3.5vw, 2.7rem); line-height: 1.05; }
     .final p { margin: 0; color: #cbd5e1; max-width: 720px; }
     .fine { color: #6b7280; font-size: .86rem; margin-top: 14px; }
+    .uti-check { background: linear-gradient(180deg, #f8fbff 0%, #fff7ed 100%); border-top: 1px solid #dbeafe; border-bottom: 1px solid #fed7aa; }
+    .uti-check-shell { max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid rgba(24,33,45,.1); border-radius: 8px; padding: 28px; box-shadow: 0 22px 54px rgba(24,33,45,.1); position: relative; overflow: hidden; scroll-margin-top: 88px; }
+    .uti-check-shell::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--blue), var(--green), var(--orange)); }
+    .uti-check-eyebrow { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .uti-check-title { margin: 0 0 8px; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.08; letter-spacing: 0; }
+    .uti-check-subtitle { margin: 0 0 22px; color: var(--muted); font-size: 1rem; }
+    .uti-check-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 24px; }
+    .uti-check-progress span { height: 4px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+    .uti-check-progress span.active { background: var(--blue); }
+    .uti-check-step { display: none; }
+    .uti-check-step.active { display: block; animation: uti-check-fade .22s ease; }
+    @keyframes uti-check-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .uti-check-question { margin: 0 0 4px; font-size: 1.25rem; line-height: 1.25; font-weight: 900; color: #172033; }
+    .uti-check-hint { margin: 0 0 16px; color: var(--muted); font-size: .92rem; }
+    .uti-check-options { display: grid; gap: 10px; margin-bottom: 18px; }
+    .uti-check-option { display: flex; align-items: center; gap: 12px; min-height: 54px; padding: 12px 14px; border: 1px solid #dbe3ed; border-radius: 8px; background: #fff; color: var(--ink); font: inherit; font-weight: 800; text-align: left; cursor: pointer; transition: border-color .15s ease, background .15s ease, color .15s ease, transform .15s ease; }
+    .uti-check-option:hover { border-color: #93c5fd; background: #f8fbff; transform: translateY(-1px); }
+    .uti-check-option.selected { border-color: var(--blue); background: #eff6ff; color: #1d4ed8; }
+    .uti-check-option .mark { width: 22px; height: 22px; border: 2px solid #cbd5e1; border-radius: 999px; flex: 0 0 22px; position: relative; background: #fff; }
+    .uti-check-option[data-multi] .mark { border-radius: 6px; }
+    .uti-check-option.selected .mark { border-color: var(--blue); background: var(--blue); }
+    .uti-check-option.selected .mark::after { content: ""; position: absolute; left: 6px; top: 2px; width: 6px; height: 11px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .uti-check-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .uti-check-btn { min-height: 50px; border-radius: 8px; border: 0; padding: 0 18px; font: inherit; font-weight: 900; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+    .uti-check-btn.primary { flex: 1; background: var(--blue); color: #fff; box-shadow: 0 12px 22px rgba(37,99,235,.18); }
+    .uti-check-btn.primary:disabled { background: #cbd5e1; color: #64748b; cursor: not-allowed; box-shadow: none; }
+    .uti-check-btn.secondary { background: #fff; color: var(--ink); border: 1px solid #dbe3ed; }
+    .uti-check-btn.cta { width: 100%; background: var(--orange); color: #fff; margin-top: 12px; box-shadow: 0 12px 24px rgba(217,119,6,.2); }
+    .uti-check-badge { display: inline-flex; align-items: center; min-height: 30px; padding: 0 11px; border-radius: 999px; font-size: .78rem; font-weight: 900; margin-bottom: 12px; }
+    .uti-check-badge.good { background: #dcfce7; color: #166534; }
+    .uti-check-badge.warn { background: #ffedd5; color: #9a3412; }
+    .uti-check-badge.info { background: #e0f2fe; color: #075985; }
+    .uti-check-result h3 { margin: 0 0 10px; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.12; }
+    .uti-check-result p { margin: 0 0 14px; color: var(--muted); }
+    .uti-check-price { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0; }
+    .uti-check-price div { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 8px; text-align: center; background: #f8fafc; }
+    .uti-check-price div:last-child { border-color: #bbf7d0; background: #f0fdf4; }
+    .uti-check-price span { display: block; color: #64748b; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+    .uti-check-price strong { display: block; color: #172033; font-size: 1.2rem; line-height: 1; }
+    .uti-check-trust { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: #475569; font-size: .84rem; font-weight: 800; }
+    .uti-check-trust span { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: #f8fafc; border: 1px solid #e2e8f0; }
+    .uti-check-alert { background: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid var(--orange); border-radius: 8px; padding: 14px; color: #7c2d12; margin: 14px 0; }
     @media (max-width: 860px) {
       .hero-grid, .warning-grid, .final .wrap { grid-template-columns: 1fr; }
       .clinician-card { order: -1; }
       .cards, .steps { grid-template-columns: 1fr; }
       .locations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-actions .btn { width: 100%; }
+      .uti-check-shell { padding: 22px 16px; }
+      .uti-check-price { grid-template-columns: 1fr; }
+      .uti-check-actions { flex-direction: column-reverse; }
+      .uti-check-btn { width: 100%; }
     }
   </style>
 </head>
@@ -1124,6 +1170,106 @@ gtag('config', 'AW-610222919');
     </div>
   </section>
 
+  <section class="uti-check" id="uti-check">
+    <div class="wrap">
+      <div class="uti-check-shell" data-uti-check>
+        <span class="uti-check-eyebrow">Arizona UTI symptom check</span>
+        <h2 class="uti-check-title">Think you have a UTI? Check the next step in under a minute.</h2>
+        <p class="uti-check-subtitle">This does not diagnose you. It helps you decide whether texting Chris is a reasonable next step or whether in-person care is safer.</p>
+
+        <div class="uti-check-progress" aria-hidden="true">
+          <span class="active" data-progress="1"></span>
+          <span data-progress="2"></span>
+          <span data-progress="3"></span>
+        </div>
+
+        <div class="uti-check-step active" data-step="1">
+          <p class="uti-check-question">Are you currently in Arizona?</p>
+          <p class="uti-check-hint">Chris can only treat you when you are in a state where NPCWoods is licensed.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-single="location" data-value="az"><span class="mark"></span><span>Yes, I am in Arizona</span></button>
+            <button type="button" class="uti-check-option" data-single="location" data-value="other"><span class="mark"></span><span>No, I am somewhere else</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn primary" data-next="1" disabled>Continue</button>
+          </div>
+        </div>
+
+        <div class="uti-check-step" data-step="2">
+          <p class="uti-check-question">Which symptoms are you dealing with?</p>
+          <p class="uti-check-hint">Select all that apply.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="burning"><span class="mark"></span><span>Burning or pain when peeing</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="frequency"><span class="mark"></span><span>Frequent urge to pee</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="cloudy"><span class="mark"></span><span>Cloudy or strong-smelling urine</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="pressure"><span class="mark"></span><span>Pelvic pressure or discomfort</span></button>
+            <button type="button" class="uti-check-option" data-multi="symptoms" data-value="blood"><span class="mark"></span><span>Blood in urine</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn secondary" data-back="2">Back</button>
+            <button type="button" class="uti-check-btn primary" data-next="2" disabled>Continue</button>
+          </div>
+        </div>
+
+        <div class="uti-check-step" data-step="3">
+          <p class="uti-check-question">Any safety flags?</p>
+          <p class="uti-check-hint">These symptoms may need hands-on evaluation.</p>
+          <div class="uti-check-options">
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="fever"><span class="mark"></span><span>Fever over 101 F</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="backpain"><span class="mark"></span><span>Severe back or side pain</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="nausea"><span class="mark"></span><span>Nausea or vomiting</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="pregnant"><span class="mark"></span><span>I am currently pregnant</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="male"><span class="mark"></span><span>I am male</span></button>
+            <button type="button" class="uti-check-option" data-multi="flags" data-value="none"><span class="mark"></span><span>None of the above</span></button>
+          </div>
+          <div class="uti-check-actions">
+            <button type="button" class="uti-check-btn secondary" data-back="3">Back</button>
+            <button type="button" class="uti-check-btn primary" data-next="3" disabled>See my next step</button>
+          </div>
+        </div>
+
+        <div class="uti-check-step uti-check-result" data-step="result-good">
+          <span class="uti-check-badge good">Text-based review may be a fit</span>
+          <h3>This sounds like a UTI visit Chris can review by text.</h3>
+          <p>If your answers are accurate and symptoms stay straightforward, text Chris to start the $59 visit. If anything sounds unsafe, he will tell you to go in person.</p>
+          <div class="uti-check-price" aria-label="UTI care price comparison">
+            <div><span>ER visit</span><strong>$1,500+</strong></div>
+            <div><span>Urgent care</span><strong>$175+</strong></div>
+            <div><span>NPCWoods</span><strong>$59</strong></div>
+          </div>
+          <a class="uti-check-btn cta" data-uti-sms="good" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Arizona%20UTI%20checker%20and%20would%20like%20to%20start%20a%20%2459%20UTI%20visit.">Text Chris to start my $59 visit</a>
+          <div class="uti-check-trust">
+            <span>Licensed Nurse Practitioner</span>
+            <span>LegitScript certified</span>
+            <span>$59 flat fee</span>
+          </div>
+        </div>
+
+        <div class="uti-check-step uti-check-result" data-step="result-flag">
+          <span class="uti-check-badge warn">In-person care may be safer</span>
+          <h3>Some of your answers need a hands-on exam or testing.</h3>
+          <div class="uti-check-alert"><strong>Why this matters:</strong> fever, severe back pain, vomiting, pregnancy, male UTI symptoms, or blood in urine can point to something more serious than a simple UTI.</div>
+          <p>If symptoms are worsening or severe, use urgent care or an ER today. If you are unsure, you can text Chris, but do not wait on text-based care for emergency symptoms.</p>
+          <a class="uti-check-btn cta" data-uti-sms="flag" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Arizona%20UTI%20checker%20and%20it%20flagged%20a%20safety%20concern.%20Can%20you%20tell%20me%20if%20I%20need%20in-person%20care%3F">Text Chris a safety question</a>
+        </div>
+
+        <div class="uti-check-step uti-check-result" data-step="result-state">
+          <span class="uti-check-badge info">Location check needed</span>
+          <h3>Tell Chris what state you are in before starting.</h3>
+          <p>NPCWoods is licensed in multiple states, but treatment depends on where you are physically located during the visit. Text your state first so Chris can confirm the right next step.</p>
+          <a class="uti-check-btn cta" data-uti-sms="state" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20UTI%20checker%20but%20I%20am%20not%20currently%20in%20Arizona.%20Can%20you%20confirm%20whether%20NPCWoods%20can%20help%20in%20my%20state%3F">Text Chris my state</a>
+        </div>
+
+        <div class="uti-check-step uti-check-result" data-step="result-mild">
+          <span class="uti-check-badge info">Symptoms are unclear</span>
+          <h3>Your answers do not clearly point to a simple UTI.</h3>
+          <p>That does not mean nothing is wrong. It means a quick text review may help decide whether this is UTI-related or something else.</p>
+          <a class="uti-check-btn cta" data-uti-sms="mild" href="sms:4806394722?body=Hi%20Chris%2C%20I%20used%20the%20Arizona%20UTI%20checker%20and%20my%20symptoms%20are%20unclear.%20Can%20you%20help%20me%20figure%20out%20the%20next%20step%3F">Text Chris about my symptoms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="final">
     <div class="wrap">
       <div>
@@ -1134,6 +1280,130 @@ gtag('config', 'AW-610222919');
     </div>
   </section>
 </main>
+<script>
+(function () {
+  var root = document.querySelector('[data-uti-check]');
+  if (!root) return;
+
+  var state = {
+    location: '',
+    symptoms: [],
+    flags: []
+  };
+
+  function sendWidgetEvent(name, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', name, Object.assign({
+        event_category: 'engagement',
+        page_path: window.location.pathname,
+        transport_type: 'beacon'
+      }, params || {}));
+    }
+  }
+
+  function selectedValues(group) {
+    return state[group] || [];
+  }
+
+  function setProgress(step) {
+    root.querySelectorAll('[data-progress]').forEach(function (bar) {
+      bar.classList.toggle('active', Number(bar.dataset.progress) <= step);
+    });
+  }
+
+  function showStep(stepName) {
+    root.querySelectorAll('.uti-check-step').forEach(function (step) {
+      step.classList.toggle('active', step.dataset.step === String(stepName));
+    });
+    if (String(stepName).indexOf('result-') === 0) {
+      setProgress(3);
+      sendWidgetEvent('uti_checker_result', { result_type: stepName.replace('result-', '') });
+      root.scrollIntoView({ block: 'start' });
+    } else {
+      setProgress(Number(stepName));
+    }
+  }
+
+  root.querySelectorAll('[data-single]').forEach(function (option) {
+    option.addEventListener('click', function () {
+      var group = option.dataset.single;
+      root.querySelectorAll('[data-single="' + group + '"]').forEach(function (sibling) {
+        sibling.classList.remove('selected');
+      });
+      option.classList.add('selected');
+      state[group] = option.dataset.value;
+      var step = option.closest('.uti-check-step').dataset.step;
+      root.querySelector('[data-next="' + step + '"]').disabled = false;
+      sendWidgetEvent('uti_checker_answer', { step: step, answer_group: group });
+    });
+  });
+
+  root.querySelectorAll('[data-multi]').forEach(function (option) {
+    option.addEventListener('click', function () {
+      var group = option.dataset.multi;
+      var value = option.dataset.value;
+      state[group] = selectedValues(group);
+
+      if (value === 'none') {
+        root.querySelectorAll('[data-multi="' + group + '"]').forEach(function (sibling) {
+          sibling.classList.remove('selected');
+        });
+        option.classList.add('selected');
+        state[group] = ['none'];
+      } else {
+        var none = root.querySelector('[data-multi="' + group + '"][data-value="none"]');
+        if (none) none.classList.remove('selected');
+        state[group] = state[group].filter(function (item) { return item !== 'none'; });
+        option.classList.toggle('selected');
+        if (option.classList.contains('selected')) {
+          if (state[group].indexOf(value) === -1) state[group].push(value);
+        } else {
+          state[group] = state[group].filter(function (item) { return item !== value; });
+        }
+      }
+
+      var step = option.closest('.uti-check-step').dataset.step;
+      root.querySelector('[data-next="' + step + '"]').disabled = state[group].length === 0;
+      sendWidgetEvent('uti_checker_answer', { step: step, answer_group: group });
+    });
+  });
+
+  root.querySelectorAll('[data-next]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var current = Number(button.dataset.next);
+      if (current === 1 && state.location === 'other') {
+        showStep('result-state');
+        return;
+      }
+      if (current === 3) {
+        var hasFlag = state.flags.some(function (flag) { return flag !== 'none'; });
+        var hasSymptoms = state.symptoms.length > 0;
+        if (hasFlag) {
+          showStep('result-flag');
+        } else if (hasSymptoms) {
+          showStep('result-good');
+        } else {
+          showStep('result-mild');
+        }
+        return;
+      }
+      showStep(current + 1);
+    });
+  });
+
+  root.querySelectorAll('[data-back]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      showStep(Number(button.dataset.back) - 1);
+    });
+  });
+
+  root.querySelectorAll('[data-uti-sms]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      sendWidgetEvent('uti_checker_sms_click', { result_type: link.dataset.utiSms || 'unknown' });
+    });
+  });
+})();
+</script>
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
 <!-- Copy this block into every page before </body> -->
 <!-- Last updated: March 2026 -->
@@ -1416,6 +1686,6 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 <!-- NPCWoods Tracking: sms_click / phone_call_click / gclid capture -->
-<script src="/tracking.js?v=20260523-2241"></script>
+<script src="/tracking.js?v=20260525-1256"></script>
 </body>
 </html>

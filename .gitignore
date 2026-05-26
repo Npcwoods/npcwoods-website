@@ -75,6 +75,12 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
 
 # --- Editor / IDE noise ----------------------------------------------
 *.swp
@@ -93,3 +99,8 @@ content-output/
 mockups/
 html/review/
 landing-pages/test-*.html
+
+# --- Local-only config / scratch -------------------------------------
+*.local.json
+*.local.md
+scratch/
