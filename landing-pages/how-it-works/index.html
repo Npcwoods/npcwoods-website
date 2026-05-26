@@ -152,25 +152,40 @@ gtag('config', 'AW-610222919');
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to Start a Text-Based Telehealth Visit",
-  "description": "Consult a licensed Nurse Practitioner same-day entirely by secure text message for $59 flat fee.",
+  "description": "Three-text process to consult a licensed Nurse Practitioner same-day entirely by secure text message for a flat $59 fee.",
+  "totalTime": "PT4H",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "59"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Mobile phone for text messaging"
+    }
+  ],
   "step": [
     {
       "@type": "HowToStep",
+      "position": 1,
       "name": "Text Your Symptoms",
       "text": "Text your symptoms and any photos to (480) 639-4722 to initiate your visit.",
-      "url": "https://npcwoods.com/how-it-works/"
+      "url": "https://npcwoods.com/how-it-works/#step-text"
     },
     {
       "@type": "HowToStep",
+      "position": 2,
       "name": "Clinical Review",
       "text": "Licensed Nurse Practitioner Chris Woods personally reviews your case within hours.",
-      "url": "https://npcwoods.com/how-it-works/"
+      "url": "https://npcwoods.com/how-it-works/#step-review"
     },
     {
       "@type": "HowToStep",
+      "position": 3,
       "name": "Get Prescribed",
       "text": "If treatment is appropriate, your care plan and prescriptions are sent directly to your local pharmacy.",
-      "url": "https://npcwoods.com/how-it-works/"
+      "url": "https://npcwoods.com/how-it-works/#step-rx"
     }
   ]
 }
