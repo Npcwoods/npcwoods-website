@@ -23,13 +23,14 @@ add_action( "template_redirect", function() {
         "utah-telemedicine"      => "utah-telemedicine/index.html",
         "trust-video"            => "trust-video/index.html",
         "ed-treatment"           => "ed-treatment/index.html",        "pricing"                    => "pricing/index.html",        "credentials"                => "credentials/index.html",
+        "do-i-need-antibiotics-sinus-infection" => "do-i-need-antibiotics-sinus-infection/index.html",
 
 
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
 
-    if ( is_page() && isset( $page_map[ $slug ] ) ) {
+    if ( ( is_page() || is_single() ) && isset( $page_map[ $slug ] ) ) {
         $html_file = ABSPATH . $page_map[ $slug ];
         if ( file_exists( $html_file ) ) {
             header( "Content-Type: text/html; charset=UTF-8" );

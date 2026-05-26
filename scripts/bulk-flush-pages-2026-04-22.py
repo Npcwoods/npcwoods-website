@@ -49,6 +49,7 @@ KNOWN_IDS: dict[str, int] = {
     "/uti-treatment/surprise-az/": 20,
     "/uti-treatment/scottsdale-az/": 17,
     "/uti-treatment/albuquerque-nm/": 411,
+    "/do-i-need-antibiotics-sinus-infection/": 454,
 }
 
 
@@ -114,34 +115,40 @@ def lookup_page_id(slug: str, auth: str) -> int | None:
 
 
 def touch_page(page_id: int, auth: str) -> bool:
-    """POST a no-op update to /wp-json/wp/v2/pages/{id} to trigger cache purge."""
-    url = f"https://npcwoods.com/wp-json/wp/v2/pages/{page_id}"
-    # Re-send current content to trigger save hook -> GoDaddy cache purge
-    try:
-        # Fetch current content first
-        r = requests.get(
-            f"{url}?_fields=id,content,title,status",
-            headers={"Authorization": auth, "User-Agent": UA},
-            timeout=20,
-        )
-        r.raise_for_status()
-        current = r.json()
-        payload = {
-            "title": current.get("title", {}).get("raw") or current.get("title", {}).get("rendered", ""),
-            "content": current.get("content", {}).get("raw") or current.get("content", {}).get("rendered", ""),
-            "status": current.get("status", "publish"),
-        }
-        r2 = requests.post(
-            url,
-            headers={"Authorization": auth, "User-Agent": UA, "Content-Type": "application/json"},
-            data=json.dumps(payload),
-            timeout=30,
-        )
-        r2.raise_for_status()
-        return True
-    except Exception as e:
-        print(f"  [touch fail] id={page_id}: {e}")
-        return False
+    """POST a no-op update to WordPress pages/posts to trigger Varnish cache purge."""
+    for post_type in ["pages", "posts"]:
+        url = f"https://npcwoods.com/wp-json/wp/v2/{post_type}/{page_id}"
+        try:
+            r = requests.get(
+                f"{url}?_fields=id,content,title,status",
+                headers={"Authorization": auth, "User-Agent": UA},
+                timeout=20,
+            )
+            if r.status_code == 404:
+                continue
+            r.raise_for_status()
+            current = r.json()
+            payload = {
+                "title": current.get("title", {}).get("raw") or current.get("title", {}).get("rendered", ""),
+                "content": current.get("content", {}).get("raw") or current.get("content", {}).get("rendered", ""),
+                "status": current.get("status", "publish"),
+            }
+            r2 = requests.post(
+                url,
+                headers={"Authorization": auth, "User-Agent": UA, "Content-Type": "application/json"},
+                data=json.dumps(payload),
+                timeout=30,
+            )
+            r2.raise_for_status()
+            return True
+        except Exception as e:
+            # If we hit 404 or other errors on pages, we try posts.
+            # If it's posts and it fails, then log the final failure.
+            if post_type == "pages":
+                continue
+            print(f"  [touch fail] id={page_id}: {e}")
+            return False
+    return False
 
 
 def main():

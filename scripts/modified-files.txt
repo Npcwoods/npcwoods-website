@@ -1,1 +1,2 @@
-html/about/index.html
+landing-pages/do-i-need-antibiotics-sinus-infection/index.html
+php/npcwoods-static-pages.php
