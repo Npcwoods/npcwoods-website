@@ -78,6 +78,40 @@ gtag('config', 'AW-610222919');
 }
 </script>
 
+  <!-- Conversational FAQ Schema (AEO-optimized) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can a Utah Nurse Practitioner prescribe antibiotics online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, a licensed Family Nurse Practitioner in Utah can prescribe antibiotics online. Chris Woods at NPCWoods reviews symptoms via secure text consults and sends appropriate prescriptions same-day to your preferred local pharmacy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is text-based telemedicine legal in Utah?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, text-based asynchronous telemedicine is fully legal and regulated in Utah. NPCWoods operates in complete compliance with state medical board guidelines, providing secure, HIPAA-compliant consults without requiring video appointments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does an online urgent care visit take in Utah?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A text-based urgent care consult in Utah takes under five minutes to start. Once submitted, our double board-certified Nurse Practitioner reviews your symptoms and sends your prescription within hours."
+        }
+      }
+    ]
+  }
+  </script>
+
 <!-- Schema: Person -->
 <script type="application/ld+json">
 {
@@ -155,6 +189,16 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .breadcrumb { padding: 16px 0; font-size: 0.8rem; color: var(--text-muted); }
 .breadcrumb a { color: var(--brand); } .breadcrumb a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: no-preference) { .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; } .fade-in.visible { opacity: 1; transform: translateY(0); } }
+
+/* ===== CUSTOM FAQ ACCORDION STYLES ===== */
+.faq-item.open .faq-answer {
+  max-height: 250px !important;
+  padding-top: 10px;
+}
+.faq-item.open .faq-question .faq-icon {
+  transform: rotate(45deg);
+}
+
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1574,6 +1618,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 <!-- CROSS LINKS -->
+
+<!-- ===== CONVERSATIONAL FAQ (AEO & Voice Search Optimized) ===== -->
+<section class="section fade-in" style="background: var(--white); border-top: 1px solid var(--border); padding: 60px 0;">
+  <div class="container" style="max-width: 680px; margin: 0 auto;">
+    <div class="section-label" style="text-align: center; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand); margin-bottom: 12px;">Got Questions?</div>
+    <h2 class="section-title" style="text-align: center; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 40px; line-height: 1.2;">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item" style="border-bottom: 1px solid var(--border); padding: 20px 0;">
+        <div class="faq-question" style="font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+          Can a Utah Nurse Practitioner prescribe antibiotics online?
+          <span class="faq-icon" style="font-size: 1.5rem; color: var(--brand); transition: transform 0.2s; font-weight: 400;">+</span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-top: 0;">
+          <p style="margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-body);">
+            Yes, a licensed Family Nurse Practitioner in Utah can prescribe antibiotics online. Chris Woods at NPCWoods reviews symptoms via secure text consults and sends appropriate prescriptions same-day to your preferred local pharmacy.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom: 1px solid var(--border); padding: 20px 0;">
+        <div class="faq-question" style="font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+          Is text-based telemedicine legal in Utah?
+          <span class="faq-icon" style="font-size: 1.5rem; color: var(--brand); transition: transform 0.2s; font-weight: 400;">+</span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-top: 0;">
+          <p style="margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-body);">
+            Yes, text-based asynchronous telemedicine is fully legal and regulated in Utah. NPCWoods operates in complete compliance with state medical board guidelines, providing secure, HIPAA-compliant consults without requiring video appointments.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom: 1px solid var(--border); padding: 20px 0;">
+        <div class="faq-question" style="font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('open')">
+          How long does an online urgent care visit take in Utah?
+          <span class="faq-icon" style="font-size: 1.5rem; color: var(--brand); transition: transform 0.2s; font-weight: 400;">+</span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-top: 0;">
+          <p style="margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-body);">
+            A text-based urgent care consult in Utah takes under five minutes to start. Once submitted, our double board-certified Nurse Practitioner reviews your symptoms and sends your prescription within hours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cross-links fade-in">
   <div class="container">
     <div class="section-label">Also Licensed In</div>
@@ -1619,7 +1707,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
           NPCWoods Telemedicine
         </div>
-        <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No wait times. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
+        <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
         <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-footer-cta">Text (480) 639-4722</a>
       </div>
 
@@ -1686,10 +1774,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
-      NPI: 1285125468 &bull; <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a><br>
-      <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
+      NPI: 1285125468 &bull; Address: 125 Medical Park Ln Ste F, Murphy, NC 28906 &bull; Phone: (480) 639-4722<br>
+      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
     </div>
   </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": "https://npcwoods.com/#medical-business",
+    "name": "NPCWoods",
+    "alternateName": "NPCWoods Telemedicine",
+    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+    "telephone": "+14806394722",
+    "url": "https://npcwoods.com",
+    "logo": "https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg",
+    "priceRange": "$59",
+    "sameAs": [
+      "https://share.google/XlmNvRT4vihOJ8KBH",
+      "https://www.facebook.com/npcwoods",
+      "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "125 Medical Park Ln Ste F",
+      "addressLocality": "Murphy",
+      "addressRegion": "NC",
+      "postalCode": "28906",
+      "addressCountry": "US"
+    }
+  }
+  </script>
 </footer>
 
 <script>

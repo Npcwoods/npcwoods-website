@@ -13,6 +13,7 @@ First-run flow:
 
 Subsequent runs reuse the same key.
 """
+import argparse
 import json
 import secrets
 import sys
@@ -75,7 +76,75 @@ def append_to_env(key: str, value: str):
     print(f"[env] appended {key} to .env")
 
 
+def resolve_path_to_url(path_str: str) -> str | None:
+    """Resolve a public URL or local repository file path to a public npcwoods.com URL."""
+    if path_str.startswith("http://") or path_str.startswith("https://"):
+        url = path_str
+        if url.startswith("http://"):
+            url = "https://" + url[7:]
+        # Normalize index.html or index.php endings
+        if url.endswith("/index.html"):
+            url = url[:-10]
+        elif url.endswith("/index.php"):
+            url = url[:-9]
+        elif url.endswith("index.html"):
+            url = url[:-10]
+        return url
+
+    # Resolve local path relative to root
+    try:
+        p = Path(path_str).resolve()
+    except Exception:
+        return None
+
+    # Ensure path is relative to the repo ROOT
+    try:
+        p.relative_to(ROOT)
+    except ValueError:
+        try:
+            # Try relative to ROOT if passed as a relative path
+            p = (ROOT / path_str).resolve()
+            p.relative_to(ROOT)
+        except ValueError:
+            return None
+
+    rel = p.relative_to(ROOT).as_posix()
+    if rel == "homepage/page-npcwoods-home.php":
+        return "https://npcwoods.com/"
+    if rel.startswith("homepage/"):
+        return None
+    if rel.startswith("landing-pages/"):
+        slug = rel[len("landing-pages/"):]
+        if slug.endswith("index.html"):
+            slug = slug[:-10]
+        if slug and not slug.endswith("/"):
+            if "." not in slug.split("/")[-1]:
+                slug += "/"
+        return f"https://npcwoods.com/{slug}"
+    if rel.startswith("html/"):
+        slug = rel[len("html/"):]
+        if slug.endswith("index.html"):
+            slug = slug[:-10]
+        if slug and not slug.endswith("/"):
+            if "." not in slug.split("/")[-1]:
+                slug += "/"
+        return f"https://npcwoods.com/{slug}"
+    return None
+
+
 def upload_key_file(env, key: str) -> bool:
+    """Check if the key is already live. If not, upload it via SFTP and verify."""
+    verify_url = f"https://{HOST}/{key}.txt"
+    
+    # Optimization Check: If the key is already retrievable over HTTPS, bypass SFTP
+    try:
+        r = requests.get(verify_url, timeout=5)
+        if r.status_code == 200 and r.text.strip() == key:
+            print(f"[ok] key file already live at {verify_url} (skipped SFTP upload)")
+            return True
+    except Exception:
+        pass
+
     remote = f"html/{key}.txt"
     local = ROOT / f"_indexnow-key-{key[:8]}.txt"
     local.write_text(key, encoding="utf-8")
@@ -93,8 +162,7 @@ def upload_key_file(env, key: str) -> bool:
         transport.close()
         local.unlink()
 
-    # Verify the key file is publicly retrievable
-    verify_url = f"https://{HOST}/{key}.txt"
+    # Verify the key file is publicly retrievable after upload
     r = requests.get(verify_url, timeout=30)
     if r.status_code != 200 or r.text.strip() != key:
         print(f"[err] key file not retrievable from {verify_url} (status={r.status_code})")
@@ -103,14 +171,19 @@ def upload_key_file(env, key: str) -> bool:
     return True
 
 
-def submit_urls(key: str) -> bool:
+def submit_urls(key: str, urls: list[str]) -> bool:
     payload = {
         "host": HOST,
         "key": key,
         "keyLocation": f"https://{HOST}/{key}.txt",
-        "urlList": URLS_TO_SUBMIT,
+        "urlList": urls,
     }
-    print(f"\n[indexnow] submitting {len(URLS_TO_SUBMIT)} URLs to api.indexnow.org")
+    print(f"\n[indexnow] submitting {len(urls)} URLs to api.indexnow.org")
+    for u in urls[:5]:
+        print(f"  - {u}")
+    if len(urls) > 5:
+        print(f"  ... +{len(urls) - 5} more")
+
     r = requests.post(
         "https://api.indexnow.org/indexnow",
         json=payload,
@@ -124,7 +197,31 @@ def submit_urls(key: str) -> bool:
     return r.status_code in (200, 202)
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    if argv is None:
+        argv = sys.argv[1:]
+
+    parser = argparse.ArgumentParser(description="Submit URLs to IndexNow (Bing + partners).")
+    parser.add_argument("targets", nargs="*", help="Optional specific URLs or local paths to submit. If omitted, submits the default set.")
+    args = parser.parse_args(argv)
+
+    urls = []
+    if args.targets:
+        for t in args.targets:
+            url = resolve_path_to_url(t)
+            if url:
+                urls.append(url)
+            else:
+                print(f"[skip] cannot resolve to a public URL: {t}")
+        # Remove duplicates while keeping order
+        seen = set()
+        urls = [x for x in urls if not (x in seen or seen.add(x))]
+        if not urls:
+            print("[abort] no valid URLs resolved from targets")
+            return 1
+    else:
+        urls = URLS_TO_SUBMIT
+
     env = load_env()
     key = env.get("INDEXNOW_KEY")
     if not key:
@@ -136,9 +233,9 @@ def main() -> int:
         print("[abort] key file verification failed — IndexNow submission would be rejected")
         return 2
 
-    ok = submit_urls(key)
+    ok = submit_urls(key, urls)
     if ok:
-        print("\n[done] URLs submitted to IndexNow (Bing + partners). Indexing happens within hours-to-days.")
+        print(f"\n[done] {len(urls)} URLs submitted to IndexNow (Bing + partners). Indexing happens within hours.")
         return 0
     print("\n[warn] IndexNow returned non-success status")
     return 1

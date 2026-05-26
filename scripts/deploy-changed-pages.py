@@ -94,6 +94,26 @@ def main() -> int:
     sftp.close()
     transport.close()
     print(f"\n[done] uploaded {uploaded}/{len(targets)} pages")
+
+    # Trigger IndexNow pinger for uploaded files
+    if uploaded > 0:
+        import subprocess
+        uploaded_paths = [str(local) for local in targets]
+        if uploaded_paths:
+            print("\n[indexnow] Triggering instant indexing for uploaded files...")
+            indexnow_script = ROOT / "scripts" / "indexnow-submit.py"
+            try:
+                result = subprocess.run(
+                    [sys.executable, str(indexnow_script)] + uploaded_paths,
+                    capture_output=True,
+                    text=True,
+                    check=False
+                )
+                print(result.stdout)
+                if result.stderr:
+                    print(result.stderr, file=sys.stderr)
+            except Exception as e:
+                print(f"[indexnow] failed to trigger IndexNow submit: {e}", file=sys.stderr)
     return 0
 
 

@@ -180,6 +180,26 @@ def main(argv):
         print()
         print(f"  uploaded: {uploaded}")
         print(f"  skipped:  {skipped}")
+
+        # Trigger IndexNow pinger for uploaded files
+        if uploaded > 0:
+            import subprocess
+            uploaded_paths = [str(local) for local in files if remote_path_for(local) is not None]
+            if uploaded_paths:
+                print("\n[indexnow] Triggering instant indexing for uploaded files...")
+                indexnow_script = SCRIPT_DIR / "indexnow-submit.py"
+                try:
+                    result = subprocess.run(
+                        [sys.executable, str(indexnow_script)] + uploaded_paths,
+                        capture_output=True,
+                        text=True,
+                        check=False
+                    )
+                    print(result.stdout)
+                    if result.stderr:
+                        print(result.stderr, file=sys.stderr)
+                except Exception as e:
+                    print(f"[indexnow] failed to trigger IndexNow submit: {e}", file=sys.stderr)
     finally:
         transport.close()
     return 0
