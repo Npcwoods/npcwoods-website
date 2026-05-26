@@ -1251,17 +1251,17 @@ h1 {
       <h2 id="states-title" class="section-title reveal">Licensed across 11 states.</h2>
       <p class="section-copy reveal">Text-based urgent care is available for patients physically located in the states below at the time of the visit.</p>
       <div class="state-strip reveal" aria-label="State landing pages">
-        <a href="/arizona-telemedicine/">Arizona</a>
-        <a href="/colorado-telemedicine/">Colorado</a>
-        <a href="/georgia-telemedicine/">Georgia</a>
-        <a href="/idaho-telemedicine/">Idaho</a>
-        <a href="/iowa-telemedicine/">Iowa</a>
-        <a href="/montana-telemedicine/">Montana</a>
-        <a href="/nevada-telemedicine/">Nevada</a>
-        <a href="/new-mexico-telemedicine/">New Mexico</a>
-        <a href="/north-carolina-telemedicine/">North Carolina</a>
-        <a href="/oregon-telemedicine/">Oregon</a>
-        <a href="/utah-telemedicine/">Utah</a>
+        <a href="/arizona-telemedicine/">AZ - Arizona</a>
+        <a href="/colorado-telemedicine/">CO - Colorado</a>
+        <a href="/georgia-telemedicine/">GA - Georgia</a>
+        <a href="/idaho-telemedicine/">ID - Idaho</a>
+        <a href="/iowa-telemedicine/">IA - Iowa</a>
+        <a href="/montana-telemedicine/">MT - Montana</a>
+        <a href="/nevada-telemedicine/">NV - Nevada</a>
+        <a href="/new-mexico-telemedicine/">NM - New Mexico</a>
+        <a href="/north-carolina-telemedicine/">NC - North Carolina</a>
+        <a href="/oregon-telemedicine/">OR - Oregon</a>
+        <a href="/utah-telemedicine/">UT - Utah</a>
       </div>
     </div>
   </section>
