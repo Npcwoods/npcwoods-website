@@ -323,12 +323,12 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // on 66 core pages. Re-add once domain authority grows.
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
-        // UTI Treatment city pages (AZ)
-        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        // UTI Treatment city pages (GA/NC) + Albuquerque
-        264, 268, 272, 276, 280, 284, 288, 292, 296, 300, 411,
-        // Sinus Infection Treatment city pages (AZ)
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        // UTI Treatment city pages (AZ) - Mesa (11), Scottsdale (17), Surprise (20) re-added
+        12, 13, 14, 15, 16, 18, 19,
+        // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (272), Albuquerque (411) re-added
+        268, 276, 280, 284, 288, 292, 296, 300,
+        // Sinus Infection Treatment city pages (AZ) - Phoenix (21), Mesa (23) re-added
+        22, 24, 25, 26, 27, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
         265, 269, 273, 277, 281, 285, 289, 293, 297, 301,
         // Strep Throat/Ear Infection city pages (AZ)

@@ -101,6 +101,8 @@ add_action('wp_head', function() {
             '@type' => 'AggregateRating',
             'ratingValue' => '5.0',
             'reviewCount' => 54,
+            'bestRating' => '5',
+            'worstRating' => '1',
         ),
     );
 
