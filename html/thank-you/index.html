@@ -808,6 +808,7 @@
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
+<link rel="stylesheet" href="/assets/css/site.css">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -980,40 +981,7 @@
 </main>
 
 <!-- ===== FOOTER (shared) ===== -->
-<style>
-/* ===== SITE FOOTER ===== */
-.npc-site-footer {
-  background: #1A1A2E;
-  color: #B0B0C0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  padding: 56px 20px 32px;
-  margin-top: 0;
-}
-.npc-footer-inner { max-width: 1100px; margin: 0 auto; }
-.npc-footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.npc-footer-brand { display: flex; flex-direction: column; gap: 12px; }
-.npc-footer-brand-name { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; color: #FFFFFF; }
-.npc-footer-brand-name img { width: 36px; height: 36px; border-radius: 8px; }
-.npc-footer-brand p { font-size: 0.875rem; line-height: 1.6; color: #8E8E9A; margin: 0; max-width: 280px; }
-.npc-footer-cta { display: inline-flex; align-items: center; gap: 8px; background: #2563EB; color: #FFFFFF; font-size: 0.9rem; font-weight: 600; padding: 10px 24px; border-radius: 100px; text-decoration: none; transition: background 0.15s; margin-top: 4px; width: fit-content; }
-.npc-footer-cta:hover { background: #1D4ED8; }
-.npc-footer-col h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #FFFFFF; margin: 0 0 16px; }
-.npc-footer-col ul { list-style: none; margin: 0; padding: 0; }
-.npc-footer-col li { margin-bottom: 8px; }
-.npc-footer-col a { font-size: 0.875rem; color: #B0B0C0; text-decoration: none; transition: color 0.15s; }
-.npc-footer-col a:hover { color: #FFFFFF; }
-.npc-footer-divider { border: none; border-top: 1px solid #2A2A3E; margin: 0 0 24px; }
-.npc-footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: 0.8rem; color: #6B6B80; }
-.npc-footer-bottom a { color: #6B6B80; text-decoration: none; }
-.npc-footer-bottom a:hover { color: #B0B0C0; }
-.npc-footer-trust { text-align: center; font-size: 0.8rem; color: #6B6B80; margin-top: 20px; line-height: 1.5; }
-.npc-footer-trust a { color: #9EB8FF; text-decoration: none; }
-.npc-footer-trust a:hover { color: #FFFFFF; }
-.npc-footer-hipaa-badge { display: inline-flex; align-items: center; justify-content: center; padding: 3px 9px; border-radius: 999px; background: rgba(37, 99, 235, 0.18); color: #D9E7FF; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-@media (max-width: 768px) { .npc-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } .npc-footer-brand { grid-column: 1 / -1; } }
-@media (max-width: 480px) { .npc-footer-grid { grid-template-columns: 1fr; gap: 28px; } }
-</style>
+<!-- footer CSS: now in /assets/css/site.css -->
 
 <footer class="npc-site-footer">
   <div class="npc-footer-inner">
@@ -1248,220 +1216,7 @@ function showThanks() {
 </script>
 
 <!-- NPCWoods Contact Save -->
-<style>
-  /* ===== SAVE CONTACT FLOATING BUTTON ===== */
-  .npc-save-wrap {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 998;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .npc-save-wrap.npc-save-visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .npc-save-wrap.npc-save-hidden {
-    display: none !important;
-  }
-
-  /* Collapsed: circle icon button */
-  .npc-save-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 100px;
-    background: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    transition: all 0.2s ease;
-    position: relative;
-    padding: 0;
-  }
-  .npc-save-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37,99,235,0.25);
-  }
-  .npc-save-btn svg {
-    width: 26px;
-    height: 26px;
-    color: #2563EB;
-    flex-shrink: 0;
-  }
-  .npc-save-btn .npc-save-dot {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 10px;
-    height: 10px;
-    background: #2563EB;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
-    animation: npc-save-pulse 2s infinite;
-  }
-
-  /* Expanded card */
-  .npc-save-card {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
-    padding: 24px;
-    opacity: 0;
-    transform: scale(0.9) translateY(8px);
-    transform-origin: bottom right;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-    visibility: hidden;
-  }
-  .npc-save-card.npc-save-card-open {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  .npc-save-card-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 28px;
-    height: 28px;
-    border: none;
-    background: #F3F4F6;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    transition: background 0.15s ease;
-  }
-  .npc-save-card-close:hover {
-    background: #E5E7EB;
-  }
-  .npc-save-card-close svg {
-    width: 14px;
-    height: 14px;
-    color: #6B7280;
-  }
-
-  .npc-save-card-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .npc-save-card-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 2px solid #EFF6FF;
-  }
-  .npc-save-card-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1A1A2E;
-    line-height: 1.2;
-  }
-  .npc-save-card-title {
-    font-size: 0.75rem;
-    color: #6B7280;
-    margin-top: 2px;
-  }
-
-  .npc-save-card-msg {
-    font-size: 0.9rem;
-    color: #4A4A5A;
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-  .npc-save-card-msg strong {
-    color: #1A1A2E;
-  }
-
-  .npc-save-card-dl {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
-    box-sizing: border-box;
-  }
-  .npc-save-card-dl:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
-  }
-  .npc-save-card-dl svg {
-    width: 16px;
-    height: 16px;
-    vertical-align: -3px;
-    margin-right: 6px;
-  }
-
-  .npc-save-card-hint {
-    text-align: center;
-    font-size: 0.7rem;
-    color: #9CA3AF;
-    margin-top: 10px;
-    line-height: 1.4;
-  }
-
-  /* Pulse animation for the notification dot */
-  @keyframes npc-save-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .npc-save-wrap { transition: none; }
-    .npc-save-card { transition: none; }
-    .npc-save-btn { transition: none; }
-    .npc-save-btn .npc-save-dot { animation: none; }
-  }
-
-  /* Mobile: shift above floating CTA bar */
-  @media (max-width: 640px) {
-    .npc-save-wrap {
-      bottom: 84px;
-      right: 16px;
-    }
-    .npc-save-card {
-      width: 280px;
-      padding: 20px;
-    }
-  }
-
-  /* Very small screens */
-  @media (max-width: 360px) {
-    .npc-save-card {
-      width: 260px;
-      right: -8px;
-    }
-  }
-</style>
+<!-- save-contact CSS: now in /assets/css/site.css -->
 
 <div class="npc-save-wrap" id="npcSaveWrap">
   <!-- Collapsed: circle icon button -->
@@ -1490,72 +1245,10 @@ function showThanks() {
   </div>
 </div>
 
-<script>
-(function() {
-  var wrap = document.getElementById('npcSaveWrap');
-  var btn = document.getElementById('npcSaveBtn');
-  var card = document.getElementById('npcSaveCard');
-  var dismiss = document.getElementById('npcSaveDismiss');
-  var dl = document.getElementById('npcSaveDownload');
-
-  if (!wrap || !btn || !card) return;
-
-  // Check if dismissed this session
-  try {
-    if (sessionStorage.getItem('npc-contact-dismissed') === '1') {
-      wrap.classList.add('npc-save-hidden');
-      return;
-    }
-  } catch(e) {}
-
-  // Show quietly after the page has had a moment to land.
-  setTimeout(function() {
-    wrap.classList.add('npc-save-visible');
-  }, 7000);
-
-  // Toggle on click
-  btn.addEventListener('click', function() {
-    card.classList.add('npc-save-card-open');
-    btn.style.opacity = '0';
-    btn.style.pointerEvents = 'none';
-  });
-
-  // Dismiss
-  dismiss.addEventListener('click', function() {
-    card.classList.remove('npc-save-card-open');
-    wrap.classList.remove('npc-save-visible');
-    try { sessionStorage.setItem('npc-contact-dismissed', '1'); } catch(e) {}
-    setTimeout(function() { wrap.classList.add('npc-save-hidden'); }, 400);
-  });
-
-  // Close card when clicking outside
-  document.addEventListener('click', function(e) {
-    if (card.classList.contains('npc-save-card-open') && !wrap.contains(e.target)) {
-      card.classList.remove('npc-save-card-open');
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  });
-
-  // Track download
-  dl.addEventListener('click', function() {
-    // Google Analytics / Ads
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'save_contact_vcard',
-        value: 0
-      });
-    }
-    // Facebook Pixel
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'save_contact_vcard' });
-    }
-  });
-})();
-</script>
+<!-- save-contact JS: now in /assets/js/site.js -->
 <!-- END NPCWoods Contact Save -->
 <!-- NPCWoods Tracking: tracking.js -->
 <script src="/tracking.js?v=20260523-2241"></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
