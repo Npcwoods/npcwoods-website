@@ -1376,7 +1376,8 @@ gtag('config', 'AW-610222919');
         return;
       }
       if (current === 3) {
-        var hasFlag = state.flags.some(function (flag) { return flag !== 'none'; });
+        // Clinical safety check: "Blood in urine" is an automatic safety flag that requires hands-on/in-person care
+        var hasFlag = state.flags.some(function (flag) { return flag !== 'none'; }) || state.symptoms.indexOf('blood') !== -1;
         var hasSymptoms = state.symptoms.length > 0;
         if (hasFlag) {
           showStep('result-flag');
