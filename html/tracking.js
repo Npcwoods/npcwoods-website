@@ -549,4 +549,59 @@
       });
     }
   }, 30000);
+
+  // --- Custom Engagement Listeners (pricing, faq, pharmacy) ---
+  if (window.location.pathname.indexOf('/pharmacy') !== -1) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'pharmacy_page_viewed', {
+        event_category: 'engagement',
+        page_path: window.location.pathname,
+        trigger_type: 'page_view',
+        transport_type: 'beacon'
+      });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var faqTarget = e.target.closest('.faq-question');
+    if (faqTarget) {
+      var questionText = (faqTarget.textContent || faqTarget.innerText || '').trim();
+      if (typeof gtag === 'function') {
+        gtag('event', 'faq_expanded', {
+          event_category: 'engagement',
+          faq_question: questionText,
+          page_path: window.location.pathname,
+          transport_type: 'beacon'
+        });
+      }
+    }
+
+    var linkTarget = e.target.closest('a');
+    if (linkTarget) {
+      var href = linkTarget.getAttribute('href') || '';
+      
+      if (href.indexOf('pricing') !== -1) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'pricing_viewed', {
+            event_category: 'engagement',
+            page_path: window.location.pathname,
+            link_url: href,
+            transport_type: 'beacon'
+          });
+        }
+      }
+
+      if (href.indexOf('/pharmacy') !== -1) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'pharmacy_page_viewed', {
+            event_category: 'engagement',
+            page_path: window.location.pathname,
+            link_url: href,
+            trigger_type: 'click',
+            transport_type: 'beacon'
+          });
+        }
+      }
+    }
+  });
 })();
