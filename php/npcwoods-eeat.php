@@ -110,7 +110,7 @@ add_action('wp_head', function() {
         'review' => array(
             array(
                 '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Mary White'),
+                'author' => array('@type' => 'Person', 'name' => 'Mary W.'),
                 'datePublished' => '2026-05-26',
                 'reviewRating' => array(
                     '@type' => 'Rating',
@@ -123,7 +123,7 @@ add_action('wp_head', function() {
             ),
             array(
                 '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Dana Hamby'),
+                'author' => array('@type' => 'Person', 'name' => 'Dana H.'),
                 'datePublished' => '2026-05-06',
                 'reviewRating' => array(
                     '@type' => 'Rating',
@@ -136,7 +136,7 @@ add_action('wp_head', function() {
             ),
             array(
                 '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Tori Dockery'),
+                'author' => array('@type' => 'Person', 'name' => 'Tori D.'),
                 'datePublished' => '2026-04-22',
                 'reviewRating' => array(
                     '@type' => 'Rating',
