@@ -100,9 +100,53 @@ add_action('wp_head', function() {
         'aggregateRating' => array(
             '@type' => 'AggregateRating',
             'ratingValue' => '5.0',
-            'reviewCount' => '54',
+            'reviewCount' => '58',
             'bestRating' => '5',
             'worstRating' => '1',
+        ),
+        // Individual Reviews are required for Google to render review snippets on medical entities.
+        // Bare aggregateRating without Review items gets silently rejected. Source: GBP screenshots 2026-05-27.
+        // Keep in sync with npcwoods-business/data/google-reviews-2026-05-27.json
+        'review' => array(
+            array(
+                '@type' => 'Review',
+                'author' => array('@type' => 'Person', 'name' => 'Mary White'),
+                'datePublished' => '2026-05-26',
+                'reviewRating' => array(
+                    '@type' => 'Rating',
+                    'ratingValue' => '5',
+                    'bestRating' => '5',
+                    'worstRating' => '1',
+                ),
+                'reviewBody' => 'Even though the visit was online, I felt that all of my concerns were addressed, and the response time was so quick. Thank you NP Wood for your compassion and care!',
+                'itemReviewed' => array('@id' => $profile['organization_id']),
+            ),
+            array(
+                '@type' => 'Review',
+                'author' => array('@type' => 'Person', 'name' => 'Dana Hamby'),
+                'datePublished' => '2026-05-06',
+                'reviewRating' => array(
+                    '@type' => 'Rating',
+                    'ratingValue' => '5',
+                    'bestRating' => '5',
+                    'worstRating' => '1',
+                ),
+                'reviewBody' => 'Quick, professional and convenient. No sitting in a waiting room with other sick people. I highly recommend and will definitely use this again.',
+                'itemReviewed' => array('@id' => $profile['organization_id']),
+            ),
+            array(
+                '@type' => 'Review',
+                'author' => array('@type' => 'Person', 'name' => 'Tori Dockery'),
+                'datePublished' => '2026-04-22',
+                'reviewRating' => array(
+                    '@type' => 'Rating',
+                    'ratingValue' => '5',
+                    'bestRating' => '5',
+                    'worstRating' => '1',
+                ),
+                'reviewBody' => 'This is AMAZING! We loved it!!! I would do it all over again in a heartbeat! It was so simple and doing it from my house with a sick kid is even better!!',
+                'itemReviewed' => array('@id' => $profile['organization_id']),
+            ),
         ),
     );
 
@@ -132,6 +176,7 @@ add_action('wp_head', function() {
         );
     } elseif ($is_home) {
         // Homepage gets WebSite schema with SpeakableSpecification for voice/AI surfaces
+        // and a SearchAction so Google can render the sitelinks search box for branded queries.
         $graph[] = array(
             '@type' => 'WebSite',
             '@id' => home_url('/#website'),
@@ -139,6 +184,14 @@ add_action('wp_head', function() {
             'name' => 'NPCWoods Telemedicine',
             'description' => 'Text-based urgent care from a licensed Nurse Practitioner. Flat $59. No paperwork. Same-day response.',
             'publisher' => array('@id' => $profile['organization_id']),
+            'potentialAction' => array(
+                '@type' => 'SearchAction',
+                'target' => array(
+                    '@type' => 'EntryPoint',
+                    'urlTemplate' => home_url('/?s={search_term_string}'),
+                ),
+                'query-input' => 'required name=search_term_string',
+            ),
             'speakable' => array(
                 '@type' => 'SpeakableSpecification',
                 'cssSelector' => array('h1', 'h2', '.hero-subtitle'),

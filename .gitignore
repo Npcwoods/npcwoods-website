@@ -36,6 +36,9 @@ Thumbs.db
 *.synced.bak
 *.tracking-bak
 *.seo-rebuild-bak*
+*.review-count-bak
+*.offers-bak
+*.indication-bak
 
 # Dated/scoped pre-edit snapshots (e.g. pre-impeccable, pre-receipt,
 # pre-doctor-scrub, pre-faq6, pre-title-fix, pre-anti-slop, pre-gbp-flip,
