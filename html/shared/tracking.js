@@ -178,10 +178,17 @@
     enhanceSmsLinks();
   }
 
+  function safeInteractionLabel(target) {
+    var href = target.getAttribute('href') || '';
+    if (href.indexOf('sms:') === 0) return 'sms_cta_click';
+    if (href.indexOf('tel:') === 0) return 'phone_cta_click';
+    return 'cta_click';
+  }
+
   function baseEventParams(target) {
     return {
       event_category: 'engagement',
-      event_label: target.getAttribute('href'),
+      event_label: safeInteractionLabel(target),
       value: EVENT_VALUE,
       currency: 'USD',
       transport_type: 'beacon',

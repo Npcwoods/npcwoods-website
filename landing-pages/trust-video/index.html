@@ -1418,8 +1418,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('qp1').classList.remove('active');
       document.getElementById('qp1').classList.add('done');
       document.getElementById('qp2').classList.add('active');
-      // Fire GA event
-      if (window.gtag) gtag('event', 'quiz_symptom', { symptom: quizState.symptom });
+      // Fire only neutral progress, never symptom values.
+      if (window.gtag) gtag('event', 'quiz_symptom', { event_category: 'engagement', event_label: 'quiz_step_1_completed' });
     }, 300);
   };
 
@@ -1437,8 +1437,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('qp3').classList.add('active');
       document.getElementById('qp3').classList.add('done');
       showQuizResult();
-      // Fire GA event
-      if (window.gtag) gtag('event', 'quiz_complete', { symptom: quizState.symptom, duration: quizState.duration });
+      // Fire only neutral completion, never symptom or duration values.
+      if (window.gtag) gtag('event', 'quiz_complete', { event_category: 'engagement', event_label: 'quiz_completed' });
     }, 300);
   };
 

@@ -24,6 +24,21 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 
+  <!-- Strip checkout identifiers before analytics libraries read the page URL. -->
+  <script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const checkoutIdentifier = params.get('session_id') ||
+      params.get('checkout_session_id') ||
+      params.get('payment_intent');
+    if (!checkoutIdentifier) return;
+    window.NPC_CHECKOUT_IDENTIFIER = checkoutIdentifier;
+    try {
+      history.replaceState(null, document.title, window.location.pathname);
+    } catch (error) {}
+  })();
+  </script>
+
   <!-- Google Analytics & GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -58,9 +73,10 @@
 
   <!-- NPCWoods Post-Checkout Conversion Events -->
   <script>
-  (function() {
+  (async function() {
     const params = new URLSearchParams(window.location.search);
-    const transactionId = params.get('session_id') ||
+    const transactionId = window.NPC_CHECKOUT_IDENTIFIER ||
+      params.get('session_id') ||
       params.get('checkout_session_id') ||
       params.get('payment_intent');
     if (!transactionId) {
@@ -71,16 +87,36 @@
       });
       return;
     }
+
+    async function hashCheckoutIdentifier(value) {
+      try {
+        if (!window.crypto || !window.crypto.subtle || typeof TextEncoder === 'undefined') {
+          return 'checkout-present';
+        }
+        const encoded = new TextEncoder().encode(String(value));
+        const digest = await window.crypto.subtle.digest('SHA-256', encoded);
+        return 'checkout-' + Array.from(new Uint8Array(digest))
+          .map(function(byte) { return byte.toString(16).padStart(2, '0'); })
+          .join('')
+          .slice(0, 32);
+      } catch (error) {
+        return 'checkout-present';
+      }
+    }
+
+    const safeTransactionId = await hashCheckoutIdentifier(transactionId);
+    const sanitizedPageUrl = window.location.origin + window.location.pathname;
+
     const eventPayload = {
       value: 59.0,
       currency: 'USD',
-      transaction_id: transactionId,
+      transaction_id: safeTransactionId,
       event_category: 'checkout',
       event_label: 'thank_you_page'
     };
 
     try {
-      const storageKey = 'npc-thank-you-checkout-fired:' + transactionId;
+      const storageKey = 'npc-thank-you-checkout-fired:' + safeTransactionId;
       if (sessionStorage.getItem(storageKey)) return;
       sessionStorage.setItem(storageKey, '1');
     } catch (error) {}
@@ -108,18 +144,18 @@
         value: eventPayload.value,
         currency: eventPayload.currency,
         content_name: 'NPCWoods visit',
-        order_id: eventPayload.transaction_id
+        order_id: safeTransactionId
       });
     }
 
     const metaParams = new URLSearchParams({
       id: '1558261907814968',
       ev: 'Purchase',
-      dl: window.location.href,
+      dl: sanitizedPageUrl,
       'cd[value]': String(eventPayload.value),
       'cd[currency]': eventPayload.currency,
       'cd[content_name]': 'NPCWoods visit',
-      'cd[order_id]': eventPayload.transaction_id
+      'cd[order_id]': safeTransactionId
     });
     const metaPixel = new Image(1, 1);
     metaPixel.alt = '';
