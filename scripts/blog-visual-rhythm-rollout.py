@@ -238,7 +238,7 @@ POST_DATA = {
     'can-nurse-practitioner-prescribe-antibiotics': {
         'tldr': [
             'Yes &mdash; nurse practitioners prescribe antibiotics in all 50 states.',
-            'I&rsquo;m double board-certified (FNP-C, PMHNP-BC) and licensed in 11 states.',
+            'I&rsquo;m double board-certified (FNP-C, ACNP-BC) and licensed in 11 states.',
             'Same prescribing authority as a physician for most outpatient conditions.',
             'No supervision needed in independent-practice states.',
         ],
@@ -298,7 +298,7 @@ def build_quote(quote_text):
   <p style="font-family:Georgia,serif;font-style:italic;font-size:21px;line-height:1.45;color:#1A1A2E;margin:0 0 14px">&ldquo;{quote_text}&rdquo;</p>
   <p style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#6B6B7B;margin:0;font-family:Inter,-apple-system,sans-serif">
     <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="" width="28" height="28" style="border-radius:50%" />
-    <span><b style="color:#1A1A2E">Chris Woods</b>, FNP-C, PMHNP-BC</span>
+    <span><b style="color:#1A1A2E">Chris Woods</b>, FNP-C, ACNP-BC</span>
   </p>
 </blockquote>
 '''
