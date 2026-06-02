@@ -1058,12 +1058,13 @@ h1 {
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .npc-qr-phone {
-    color: #1d1d1f;
+  .npc-qr-cta a.npc-qr-phone {
+    color: #1d1d1f !important; /* beat the theme's global teal `a` rule */
     font-size: 27px;
     font-weight: 900;
     letter-spacing: -0.03em;
     line-height: 1.05;
+    text-decoration: none;
   }
   .npc-qr-sub { color: var(--muted); font-size: 13px; font-weight: 700; }
 }
