@@ -837,6 +837,58 @@ img{display:block;max-width:100%}
   .scroll-track{animation:none}
   *{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
+
+/* ── DESKTOP QR + PHONE CTA (sms: links fail on desktop) ── */
+.npc-qr-cta{display:none}
+@media(min-width:769px){
+  .npc-sms-cta{display:none!important}
+  .npc-qr-cta{
+    display:inline-flex;align-items:center;gap:18px;
+    padding:16px 20px;border-radius:var(--radius);
+    background:var(--panel-3);
+    border:1px solid var(--line);
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+    text-align:left;
+  }
+  .npc-qr-code{
+    width:118px;height:118px;padding:8px;border-radius:14px;background:#fff;flex-shrink:0;
+  }
+  .npc-qr-code img,.npc-qr-code canvas{display:block;width:100%!important;height:100%!important}
+  .npc-qr-meta{display:flex;flex-direction:column;gap:3px}
+  .npc-qr-label{color:var(--blue-bright);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .npc-qr-phone{color:#fff;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.05}
+  .npc-qr-sub{color:var(--muted);font-size:13px;font-weight:600}
+}
+
+/* ── NPC WOODS vs BIG TELEHEALTH ── */
+.vs-section{padding:52px 24px;background:var(--panel);border-bottom:1px solid var(--line)}
+.vs-inner{max-width:720px;margin:0 auto}
+.vs-head{text-align:center;margin-bottom:26px}
+.vs-head .section-kicker{margin-bottom:10px}
+.vs-head h2{font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:-0.045em;margin-bottom:8px}
+.vs-head p{color:var(--muted);font-size:14px}
+.vs-grid{
+  display:grid;grid-template-columns:1.1fr 1fr 1fr;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:var(--panel-2);box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
+.vs-cell{padding:13px 14px;border-bottom:1px solid var(--line);font-size:14px;display:flex;align-items:center;line-height:1.35}
+.vs-grid > .vs-cell:nth-last-child(-n+3){border-bottom:none}
+.vs-corner{background:var(--panel-3)}
+.vs-us-head,.vs-them-head{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;justify-content:center;text-align:center}
+.vs-us-head{background:var(--blue);color:#fff}
+.vs-them-head{background:var(--panel-3);color:var(--body)}
+.vs-feature{font-weight:700;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;background:var(--panel-3)}
+.vs-us{background:rgba(0,113,227,.10);color:#fff;font-weight:700}
+.vs-them{color:var(--muted)}
+.vs-check{color:var(--green);margin-right:7px;font-weight:800;flex-shrink:0}
+@media(max-width:600px){
+  .vs-section{padding:40px 16px}
+  .vs-cell{padding:11px 9px;font-size:12px}
+  .vs-feature{font-size:10px}
+  .vs-us-head,.vs-them-head{font-size:10px}
+  .vs-check{margin-right:4px}
+}
 </style>
 </head>
 <body>
@@ -861,7 +913,15 @@ img{display:block;max-width:100%}
       <h1>Burning when you pee? Antibiotics, today.</h1>
       <p class="hero-sub">Text a double board-certified Nurse Practitioner. Prescription sent to your pharmacy same day. No video call. No waiting room. No paperwork.</p>
       <div class="hero-actions">
-        <a href="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" class="btn-primary">Text Us Now: (480) 639-4722</a>
+        <a href="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" class="btn-primary npc-sms-cta">Text Us Now: (480) 639-4722</a>
+        <div class="npc-qr-cta" role="group" aria-label="Scan to text NPCWoods">
+          <div class="npc-qr-code" data-sms="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" aria-hidden="true"></div>
+          <div class="npc-qr-meta">
+            <span class="npc-qr-label">Scan to Text Us</span>
+            <a class="npc-qr-phone" href="tel:+14806394722">(480) 639-4722</a>
+            <span class="npc-qr-sub">$59 flat fee &middot; text to start</span>
+          </div>
+        </div>
         <a href="#how-it-works" class="btn-ghost">See how it works</a>
       </div>
       <div class="hero-trust">
@@ -904,6 +964,42 @@ img{display:block;max-width:100%}
     <div class="stat"><div class="stat-n">Same day</div><div class="stat-l">Prescription to pharmacy</div></div>
   </div>
 </div>
+
+<!-- NPC WOODS vs BIG TELEHEALTH -->
+<section class="vs-section" id="npc-vs-telehealth" aria-label="NPC Woods compared to big telehealth services">
+  <div class="vs-inner">
+    <div class="vs-head">
+      <span class="section-kicker">The honest comparison</span>
+      <h2>NPC Woods vs. Big Telehealth</h2>
+      <p>Same prescription, sent same day. None of the games.</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-cell vs-corner"></div>
+      <div class="vs-cell vs-us-head">NPC Woods</div>
+      <div class="vs-cell vs-them-head">Big Telehealth</div>
+
+      <div class="vs-cell vs-feature">Price</div>
+      <div class="vs-cell vs-us"><span class="vs-check">✓</span>$59 flat fee</div>
+      <div class="vs-cell vs-them">$19.99/mo + consultation fees</div>
+
+      <div class="vs-cell vs-feature">Subscription</div>
+      <div class="vs-cell vs-us"><span class="vs-check">✓</span>None</div>
+      <div class="vs-cell vs-them">Required</div>
+
+      <div class="vs-cell vs-feature">Hidden fees</div>
+      <div class="vs-cell vs-us"><span class="vs-check">✓</span>No hidden fees</div>
+      <div class="vs-cell vs-them">Lab fees, follow-ups extra</div>
+
+      <div class="vs-cell vs-feature">Wait time</div>
+      <div class="vs-cell vs-us"><span class="vs-check">✓</span>Same day, usually hours</div>
+      <div class="vs-cell vs-them">Days for an opening</div>
+
+      <div class="vs-cell vs-feature">Paperwork</div>
+      <div class="vs-cell vs-us"><span class="vs-check">✓</span>No paperwork — just text</div>
+      <div class="vs-cell vs-them">Forms &amp; account setup</div>
+    </div>
+  </div>
+</section>
 
 <!-- REVIEWS -->
 <section class="reviews">
@@ -1209,7 +1305,15 @@ img{display:block;max-width:100%}
   <div class="bottom-cta-inner">
     <h2>Ready to get this handled?</h2>
     <p>Text us what's going on. $59 flat, no paperwork, no hassle. A real nurse practitioner — not a chatbot — reads every message.</p>
-    <a href="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" class="btn-primary" style="font-size:16px;padding:16px 32px">Text Us Now: (480) 639-4722</a>
+    <a href="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" class="btn-primary npc-sms-cta" style="font-size:16px;padding:16px 32px">Text Us Now: (480) 639-4722</a>
+    <div class="npc-qr-cta" role="group" aria-label="Scan to text NPCWoods">
+      <div class="npc-qr-code" data-sms="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" aria-hidden="true"></div>
+      <div class="npc-qr-meta">
+        <span class="npc-qr-label">Scan to Text Us</span>
+        <a class="npc-qr-phone" href="tel:+14806394722">(480) 639-4722</a>
+        <span class="npc-qr-sub">$59 flat fee &middot; text to start</span>
+      </div>
+    </div>
     <div class="bottom-trust-line">
       <span>🔒 HIPAA-Compliant &amp; Secure</span>
       <span>💳 HSA/FSA accepted</span>
@@ -1287,6 +1391,31 @@ document.querySelectorAll('.faq-q').forEach(q => {
     if (!isOpen) item.classList.add('open');
   });
 });
+</script>
+<!-- QR codes for desktop sms: CTAs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script>
+(function () {
+  function buildQRs() {
+    if (typeof QRCode === 'undefined') { return setTimeout(buildQRs, 120); }
+    document.querySelectorAll('.npc-qr-code').forEach(function (el) {
+      if (el.dataset.rendered) { return; }
+      var sms = el.getAttribute('data-sms');
+      if (!sms) { return; }
+      new QRCode(el, {
+        text: sms,
+        width: 118,
+        height: 118,
+        colorDark: '#0a0a0a',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+      el.dataset.rendered = '1';
+    });
+  }
+  if (document.readyState !== 'loading') { buildQRs(); }
+  else { document.addEventListener('DOMContentLoaded', buildQRs); }
+})();
 </script>
 <!-- NPCWoods Tracking: tracking.js -->
 <script src="/tracking.js?v=20260528-no-phi"></script>
