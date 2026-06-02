@@ -1018,6 +1018,120 @@ h1 {
     font-size: clamp(42px, 14vw, 66px);
   }
 }
+
+/* ── Desktop QR + phone CTA (sms: links fail on desktop) ── */
+.npc-qr-cta { display: none; }
+@media (min-width: 769px) {
+  .npc-sms-cta { display: none !important; }
+  .npc-qr-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px);
+    text-align: left;
+  }
+  .npc-qr-code {
+    width: 118px;
+    height: 118px;
+    padding: 8px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+  .npc-qr-code img,
+  .npc-qr-code canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .npc-qr-meta { display: flex; flex-direction: column; gap: 3px; }
+  .npc-qr-label {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .npc-qr-phone {
+    color: #1d1d1f;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .npc-qr-sub { color: var(--muted); font-size: 13px; font-weight: 700; }
+}
+
+/* ── NPCWoods vs Big Telehealth comparison ── */
+.cmp {
+  margin-top: 48px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(24px);
+}
+.cmp-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.05fr 1.05fr;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+.cmp-row:last-child { border-bottom: 0; }
+.cmp-head {
+  background: rgba(0, 0, 0, 0.02);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.cmp-head .cmp-npc { color: var(--blue); }
+.cmp-head .cmp-big { color: var(--muted); }
+.cmp-feature { color: var(--muted); font-size: 15px; font-weight: 800; }
+.cmp-col { font-size: 16px; font-weight: 750; }
+.cmp-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+.cmp-yes,
+.cmp-no { display: inline-flex; align-items: flex-start; gap: 9px; line-height: 1.35; }
+.cmp-yes { color: #1d1d1f; font-weight: 800; }
+.cmp-no { color: #6e6e73; font-weight: 700; }
+.cmp-yes::before,
+.cmp-no::before {
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 900;
+}
+.cmp-yes::before { content: "\2713"; background: rgba(25, 164, 99, 0.14); color: var(--green); }
+.cmp-no::before { content: "\2715"; background: rgba(229, 72, 77, 0.12); color: var(--red); }
+@media (max-width: 640px) {
+  .cmp-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 20px; }
+  .cmp-head { display: none; }
+  .cmp-feature { color: var(--blue); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1103,7 +1217,15 @@ if (!$npcwoods_header_rendered):
         <h1 id="hero-title">Urgent care, reimagined for <span class="blue-word">your phone.</span></h1>
         <p class="lede">A $59 text visit with Chris Woods, MSN, APRN, FNP-C. Clear next steps from home, without the waiting room spiral.</p>
         <div class="hero-actions">
-          <a class="button primary" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start my $59 visit</a>
+          <a class="button primary npc-sms-cta" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start my $59 visit</a>
+          <div class="npc-qr-cta" role="group" aria-label="Scan to text NPCWoods">
+            <div class="npc-qr-code" data-sms="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit." aria-hidden="true"></div>
+            <div class="npc-qr-meta">
+              <span class="npc-qr-label">Scan to Text Us</span>
+              <a class="npc-qr-phone" href="tel:+14806394722">(480) 639-4722</a>
+              <span class="npc-qr-sub">$59 flat fee &middot; text to start</span>
+            </div>
+          </div>
           <a class="button secondary" href="#how">See how it works</a>
         </div>
         <div class="hero-fineprint">Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</div>
@@ -1142,6 +1264,47 @@ if (!$npcwoods_header_rendered):
     <div class="proof-item"><strong>11</strong><span>States served</span></div>
     <div class="proof-item"><strong>50+</strong><span>Common concerns</span></div>
     <div class="proof-item"><strong>NPI</strong><span>Real clinician care</span></div>
+  </section>
+
+  <section id="compare" class="section" aria-labelledby="compare-title">
+    <div class="section-inner">
+      <div class="section-kicker reveal">The honest comparison</div>
+      <h2 id="compare-title" class="section-title reveal">NPCWoods vs. Big Telehealth.</h2>
+      <p class="section-copy reveal">Same goal, very different experience. Here is how a $59 flat-fee text visit stacks up against the big subscription apps.</p>
+
+      <div class="cmp reveal" role="table" aria-label="NPCWoods compared to big telehealth services">
+        <div class="cmp-row cmp-head" role="row">
+          <div class="cmp-feature" role="columnheader">&nbsp;</div>
+          <div class="cmp-col cmp-npc" role="columnheader">NPCWoods <span class="cmp-tag">You are here</span></div>
+          <div class="cmp-col cmp-big" role="columnheader">Big Telehealth</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="cmp-feature" role="rowheader">Price</div>
+          <div class="cmp-col cmp-npc"><span class="cmp-yes">$59 flat fee</span></div>
+          <div class="cmp-col cmp-big"><span class="cmp-no">$19.99/mo + consultation fees</span></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="cmp-feature" role="rowheader">Subscription</div>
+          <div class="cmp-col cmp-npc"><span class="cmp-yes">None</span></div>
+          <div class="cmp-col cmp-big"><span class="cmp-no">Required</span></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="cmp-feature" role="rowheader">Hidden fees</div>
+          <div class="cmp-col cmp-npc"><span class="cmp-yes">None</span></div>
+          <div class="cmp-col cmp-big"><span class="cmp-no">Lab fees, follow-ups extra</span></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="cmp-feature" role="rowheader">Wait time</div>
+          <div class="cmp-col cmp-npc"><span class="cmp-yes">Same day, by text</span></div>
+          <div class="cmp-col cmp-big"><span class="cmp-no">Scheduled slots, variable</span></div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="cmp-feature" role="rowheader">Paperwork</div>
+          <div class="cmp-col cmp-npc"><span class="cmp-yes">No paperwork</span></div>
+          <div class="cmp-col cmp-big"><span class="cmp-no">Forms and portal setup</span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="how" class="section dark">
@@ -1199,7 +1362,15 @@ if (!$npcwoods_header_rendered):
           <span class="price-number">$59</span>
           <h2 id="price-title">One clear price before you start.</h2>
           <p>No surprise bills. No confusing checkout story. Just a flat visit fee for text-based urgent care when NPCWoods is an appropriate fit.</p>
-          <a class="button primary" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Text NPCWoods</a>
+          <a class="button primary npc-sms-cta" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Text NPCWoods</a>
+          <div class="npc-qr-cta" role="group" aria-label="Scan to text NPCWoods">
+            <div class="npc-qr-code" data-sms="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit." aria-hidden="true"></div>
+            <div class="npc-qr-meta">
+              <span class="npc-qr-label">Scan to Text Us</span>
+              <a class="npc-qr-phone" href="tel:+14806394722">(480) 639-4722</a>
+              <span class="npc-qr-sub">$59 flat fee &middot; text to start</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1289,7 +1460,15 @@ if (!$npcwoods_header_rendered):
       <h2 id="final-title">This is what urgent care should feel like.</h2>
       <p>A simple text visit, a clear $59 fee, and a real clinician helping you decide the next right move.</p>
       <div class="hero-actions" style="justify-content:center">
-        <a class="button primary" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start my $59 visit</a>
+        <a class="button primary npc-sms-cta" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start my $59 visit</a>
+        <div class="npc-qr-cta" role="group" aria-label="Scan to text NPCWoods">
+          <div class="npc-qr-code" data-sms="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit." aria-hidden="true"></div>
+          <div class="npc-qr-meta">
+            <span class="npc-qr-label">Scan to Text Us</span>
+            <a class="npc-qr-phone" href="tel:+14806394722">(480) 639-4722</a>
+            <span class="npc-qr-sub">$59 flat fee &middot; text to start</span>
+          </div>
+        </div>
         <a class="button secondary" href="/conditions/">Browse conditions</a>
       </div>
     </div>
@@ -1353,6 +1532,32 @@ if (!$npcwoods_footer_rendered):
     });
   }, { threshold: 0.14 });
   items.forEach(function (item) { observer.observe(item); });
+})();
+</script>
+
+<!-- QR codes for desktop sms: CTAs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<script>
+(function () {
+  function buildQRs() {
+    if (typeof QRCode === 'undefined') { return setTimeout(buildQRs, 120); }
+    document.querySelectorAll('.npc-qr-code').forEach(function (el) {
+      if (el.dataset.rendered) { return; }
+      var sms = el.getAttribute('data-sms');
+      if (!sms) { return; }
+      new QRCode(el, {
+        text: sms,
+        width: 118,
+        height: 118,
+        colorDark: '#0a0a0a',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+      el.dataset.rendered = '1';
+    });
+  }
+  if (document.readyState !== 'loading') { buildQRs(); }
+  else { document.addEventListener('DOMContentLoaded', buildQRs); }
 })();
 </script>
 <?php if (function_exists('wp_footer')) { wp_footer(); } ?>

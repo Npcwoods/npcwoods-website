@@ -451,6 +451,25 @@ a { color: inherit; text-decoration: none; }
 .cta-band p { font-size: 1.08rem; opacity: 0.92; max-width: 620px; margin: 0 auto 28px; }
 .cta-phone { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.78); margin-top: 16px; }
 .cta-phone a { color: #FFFFFF; font-weight: 700; }
+
+/* NPCWoods vs Big Telehealth comparison */
+.vscmp { max-width: 980px; margin: 0 auto; background: #FFFFFF; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+.vscmp-row { display: grid; grid-template-columns: 0.9fr 1.05fr 1.05fr; gap: 16px; padding: 20px 28px; align-items: center; border-bottom: 1px solid var(--border); }
+.vscmp-row:last-child { border-bottom: none; }
+.vscmp-row.header { background: var(--off-white); font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+.vscmp-row.header .vs-npc { color: var(--brand); }
+.vscmp-feature { font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--text-primary); font-size: 0.95rem; }
+.vscmp-row.header .vscmp-feature { color: var(--text-muted); }
+.vs-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; background: var(--brand); color: #FFFFFF; border-radius: 100px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: middle; }
+.vs-val { font-size: 0.98rem; color: var(--text-body); display: flex; align-items: flex-start; gap: 10px; line-height: 1.45; }
+.vs-val.yes { color: var(--text-primary); font-weight: 600; }
+.vs-val.yes::before { content: ''; display: inline-block; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--success-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316A34A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat; }
+.vs-val.no::before { content: ''; display: inline-block; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--danger-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23DC2626' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E") center/12px no-repeat; }
+@media (max-width: 720px) {
+  .vscmp-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 22px; }
+  .vscmp-row.header { display: none; }
+  .vscmp-feature { color: var(--brand); }
+}
 </style>
 </head>
 <body>
@@ -690,6 +709,49 @@ a { color: inherit; text-decoration: none; }
     <p style="margin-top:24px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.78);">
       NPI 1285125468 &nbsp;&middot;&nbsp; LegitScript certified &nbsp;&middot;&nbsp; Licensed in 11 states
     </p>
+  </div>
+</section>
+
+<!-- NPCWOODS vs BIG TELEHEALTH -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Why patients switch</div>
+      <h2 class="section-heading">NPCWoods vs. Big Telehealth</h2>
+      <p class="section-sub">Same goal &mdash; get you better, fast. Very different experience. Here's how a flat-fee text visit compares to the big subscription apps.</p>
+    </div>
+    <div class="vscmp" role="table" aria-label="NPCWoods compared to big telehealth services">
+      <div class="vscmp-row header" role="row">
+        <div class="vscmp-feature" role="columnheader">&nbsp;</div>
+        <div class="vs-npc" role="columnheader">NPCWoods <span class="vs-tag">You're here</span></div>
+        <div role="columnheader">Big Telehealth</div>
+      </div>
+      <div class="vscmp-row" role="row">
+        <div class="vscmp-feature" role="rowheader">Price</div>
+        <div class="vs-val yes" role="cell">$59 flat fee</div>
+        <div class="vs-val no" role="cell">$19.99/mo + consultation fees</div>
+      </div>
+      <div class="vscmp-row" role="row">
+        <div class="vscmp-feature" role="rowheader">Subscription</div>
+        <div class="vs-val yes" role="cell">None</div>
+        <div class="vs-val no" role="cell">Required</div>
+      </div>
+      <div class="vscmp-row" role="row">
+        <div class="vscmp-feature" role="rowheader">Hidden fees</div>
+        <div class="vs-val yes" role="cell">None</div>
+        <div class="vs-val no" role="cell">Lab fees, follow-ups extra</div>
+      </div>
+      <div class="vscmp-row" role="row">
+        <div class="vscmp-feature" role="rowheader">Wait time</div>
+        <div class="vs-val yes" role="cell">Same-day, by text</div>
+        <div class="vs-val no" role="cell">Scheduled slots, variable</div>
+      </div>
+      <div class="vscmp-row" role="row">
+        <div class="vscmp-feature" role="rowheader">Paperwork</div>
+        <div class="vs-val yes" role="cell">No paperwork</div>
+        <div class="vs-val no" role="cell">Forms and portal setup</div>
+      </div>
+    </div>
   </div>
 </section>
 
