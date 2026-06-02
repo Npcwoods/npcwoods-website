@@ -24,13 +24,13 @@ function npcwoods_setup_canonicals() {
 }
 
 // ============================================================
-// 0b. BLOG META REWRITES v2 (2026-04-14 — added post 534 yeast)
+// 0b. BLOG META REWRITES v3 (2026-06-01 — added recent sitemap audit gaps)
 // Sets Yoast SEO title + meta description for blog posts.
 // Titles ≤ 60 chars, descriptions ≤ 160 chars, no banned words.
 // ============================================================
 add_action('init', 'npcwoods_setup_blog_metas_v1');
 function npcwoods_setup_blog_metas_v1() {
-    if (get_option('npcwoods_blog_metas_set_v2')) return;
+    if (get_option('npcwoods_blog_metas_set_v3')) return;
     $meta_map = array(
         // 15 existing blog posts
         432 => array('title' => 'Spring Allergies or Sinus Infection? How to Tell', 'desc' => "Pressure, drainage, or itchy eyes — how to tell allergies from a sinus infection. Text a licensed NP for \$59 flat when you're done guessing."),
@@ -56,12 +56,18 @@ function npcwoods_setup_blog_metas_v1() {
         527 => array('title' => "Can I Get Strep Antibiotics Online? What's Legit", 'desc' => 'Short answer: yes, in a lot of cases. When text telehealth fits strep, when it does not, and the typical antibiotics used. $59 flat at NPCWoods.'),
         // Added 2026-04-14 — Tier 1 #2 from audit (yeast infection)
         534 => array('title' => 'Yeast Infection Treatment by Text: $59 Flat', 'desc' => 'Itching, burning, thick white discharge? A double board-certified NP can prescribe fluconazole same-day for $59 flat. When telehealth fits — and when it does not.'),
+        // Added 2026-06-01 — recent sitemap audit gaps
+        696 => array('title' => 'Red Eye After Swimming: Pink Eye or Irritation?', 'desc' => 'Red, irritated eye after swimming? How to tell pool irritation from pink eye, when to use drops, and when to text an NP for $59 flat.'),
+        673 => array('title' => "Ear Pain After Swimming? Swimmer's Ear Signs", 'desc' => "Ear pain after swimming? Learn swimmer's ear signs, red flags, and when a $59 text visit with a licensed NP may fit."),
+        668 => array('title' => 'Allergies or Sinus Infection? How to Tell', 'desc' => 'Congestion, pressure, sneezing, or drainage? How to tell allergies from sinus infection and when to text a licensed NP for $59 flat.'),
+        730 => array('title' => 'Wet Bathing Suit Irritation or Yeast Infection?', 'desc' => 'Irritation after a wet bathing suit? Learn yeast infection clues, what else can mimic it, and when text-based care may fit for $59 flat.'),
+        700 => array('title' => 'Hot Tub Rash After a Cabin Weekend?', 'desc' => 'Bumpy itchy rash after a hot tub or cabin weekend? What hot tub rash usually looks like, what to avoid, and when to get checked.'),
     );
     foreach ($meta_map as $pid => $m) {
         update_post_meta($pid, '_yoast_wpseo_title', $m['title']);
         update_post_meta($pid, '_yoast_wpseo_metadesc', $m['desc']);
     }
-    update_option('npcwoods_blog_metas_set_v2', true);
+    update_option('npcwoods_blog_metas_set_v3', true);
 }
 
 // ============================================================
@@ -302,8 +308,7 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         328,  // albuquerque-uti-treatment (redirects to /uti-treatment/albuquerque-nm/)
         405,  // pharmacy-info (redirects to /pharmacy/)
         406,  // states (redirects to homepage)
-        407,  // faq (redirects to /#faq)
-        408,  // about (redirects to /#about)
+        192,  // /ear-infection/ redirects to /ear-infection-treatment/
         8,    // /strep-throat-ear-infection/ (legacy hub, redirects to /strep-throat-treatment/)
         // Duplicate pages (canonical points elsewhere)
         189,  // /uti/ → canonical to /uti-treatment/
@@ -313,6 +318,7 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // Orphan/junk pages
         56,   // /home/phoenix-telemedicine/ (orphan, not linked anywhere)
         58,   // /tucson-telemedicine/ (orphan, no redirect configured)
+        329,  // /blog-burning-when-you-pee-albuquerque/ static orphan with mismatched canonical
         // Front page is already emitted separately by Yoast, so exclude the page object
         // to prevent https://npcwoods.com/ from appearing twice in page-sitemap.xml.
         63,   // home/front page duplicate
@@ -320,6 +326,7 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         3,    // privacy-policy (noindexed)
         654,  // /review/ (noindexed review funnel)
         674,  // /pay/ (noindexed payment handoff)
+
 
         // ============================================================
         // CITY PAGES — temporarily excluded to focus crawl budget
@@ -330,8 +337,8 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         11, 12, 14, 15, 16, 18, 19,
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         268, 272, 276, 280, 288, 292, 296, 300,
-        // Sinus Infection Treatment city pages (AZ) - Phoenix (21), Mesa (23) re-added
-        22, 24, 25, 26, 27, 28, 29, 30,
+        // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Mesa (23) excluded until served correctly
+        22, 23, 24, 25, 26, 27, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
         265, 269, 273, 277, 281, 285, 289, 293, 297, 301,
         // Strep Throat/Ear Infection city pages (AZ)
