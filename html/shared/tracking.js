@@ -79,13 +79,14 @@
     var referrer = inferReferrerSource();
     var clickId = cleanRef(params.get('gclid') || params.get('gbraid') || params.get('wbraid'));
     var clickIdType = params.get('gclid') ? 'gclid' : (params.get('gbraid') ? 'gbraid' : (params.get('wbraid') ? 'wbraid' : ''));
-    var source = cleanTag(params.get('utm_source')) || (clickId ? 'google' : cleanTag(referrer.source));
-    var medium = cleanTag(params.get('utm_medium')) || (clickId ? 'cpc' : cleanTag(referrer.medium));
+    var fbclid = cleanRef(params.get('fbclid'));
+    var source = cleanTag(params.get('utm_source')) || (clickId ? 'google' : (fbclid ? 'facebook' : cleanTag(referrer.source)));
+    var medium = cleanTag(params.get('utm_medium')) || (clickId ? 'cpc' : (fbclid ? 'paid_social' : cleanTag(referrer.medium)));
     var campaign = cleanTag(params.get('utm_campaign'));
     var content = cleanTag(params.get('utm_content'));
     var term = cleanTag(params.get('utm_term'));
 
-    var hasNewSignal = !!(clickId || source || medium || campaign || content || term || referrer.referrer);
+    var hasNewSignal = !!(clickId || fbclid || source || medium || campaign || content || term || referrer.referrer);
     var firstTouch = storageGet('npc_attribution_first');
     var lastTouch = storageGet('npc_attribution_last');
 
@@ -98,6 +99,7 @@
         term: term || '',
         click_id: clickId,
         click_id_type: clickIdType,
+        fbclid: fbclid,
         referrer: cleanTag(referrer.referrer),
         landing_path: window.location.pathname,
         captured_at: new Date().toISOString()
@@ -121,6 +123,7 @@
   // Store ad attribution for 90 days so SMS taps and later /pay/ visits keep a readable trail.
   var attribution = captureAttribution();
   var gclid = touchValue(attribution, 'click_id_type') === 'gclid' ? touchValue(attribution, 'click_id') : '';
+  var fbclid = touchValue(attribution, 'fbclid');
 
   window.NPCWoodsAttribution = attribution;
 
@@ -129,12 +132,68 @@
   var medium = touchValue(attribution, 'medium');
   var isFromGoogle = source.toLowerCase() === 'google' || !!touchValue(attribution, 'click_id');
 
+  // --- sms_click_source derivation (added 2026-05-28) ---
+  // Distinguishes paid vs organic at the conversion-event level so Google Ads, Facebook Ads,
+  // and organic SMS clicks are cleanly separable in GA4 + Stripe/Spruce reconciliation.
+  // Only paid-click identifiers count as paid — a referral from facebook.com without fbclid
+  // is still organic (someone shared the link, no ad spend behind it).
+  var smsClickSource = 'organic';
+  if (gclid) {
+    smsClickSource = 'google';
+  } else if (fbclid) {
+    smsClickSource = 'facebook';
+  }
+  var isPaidSurface = window.NPCWoodsPaidSurface === true;
+
+  function appendPaidSurfaceMarker(body) {
+    var cleanBody = String(body || '').trim();
+    if (!isPaidSurface || /(?:^|\s)->(?:\s|$)/.test(cleanBody)) {
+      return cleanBody;
+    }
+    return (cleanBody + ' ->').trim();
+  }
+
+  function smsBodyForAttribution(existingBody) {
+    var body = String(existingBody || '').trim();
+    var strippedBody = body
+      .replace(/\s*\((src|med|cmp|ad|from Google):?[^)]*\)/gi, '')
+      .replace(/\s*\(adref:[^)]*\)/gi, '')
+      .replace(/\s*\(from ad\)/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    var genericBody = !strippedBody
+      || /^hi (chris|npcwoods),? i('d| would)? like to (start|ask about) a \$59/i.test(strippedBody)
+      || /^hi,? i think i have a uti\.?$/i.test(strippedBody);
+
+    if (!genericBody) {
+      return appendPaidSurfaceMarker(strippedBody);
+    }
+
+    if (gclid || (source === 'google' && /^(cpc|paid|paid-search|ppc)$/i.test(medium))) {
+      return appendPaidSurfaceMarker('Hi NPCWoods, I need help starting a $59 text visit.');
+    }
+    if (fbclid || (source === 'facebook' && /^(paid-social|paid_social|cpc|paid)$/i.test(medium))) {
+      return appendPaidSurfaceMarker('Hi! I have a question and want to start a $59 text visit.');
+    }
+    if (source === 'facebook' || source === 'instagram' || source === 'threads') {
+      return appendPaidSurfaceMarker('Hi Chris! I saw your page and need to start a $59 text visit.');
+    }
+    if (source === 'google' || source === 'bing') {
+      return appendPaidSurfaceMarker("Hi NPCWoods, I'd like to start a $59 text visit.");
+    }
+    return appendPaidSurfaceMarker("Hi NPCWoods, I'd like to get started.");
+  }
+
+  function buildSmsHref(number, bodyParams, body) {
+    bodyParams.delete('body');
+    var extra = bodyParams.toString();
+    return number + '?' + (extra ? extra + '&' : '') + 'body=' + encodeURIComponent(body);
+  }
+
   // --- SMS Link Enhancement ---
-  // Ensure every sms: link has a ?body= and append attribution tags.
-  //
-  // Why: Many pages historically used bare href="sms:4806394722". In that case,
-  // we still want a readable attribution trail (gclid/from Google/etc) to be
-  // present in the prefilled SMS body.
+  // Ensure every sms: link has a clean, human-looking ?body=.
+  // Attribution stays in analytics event parameters; the patient-facing SMS
+  // uses sentence families instead of raw source tags.
   function enhanceSmsLinks() {
     var links = document.querySelectorAll('a[href^="sms:"]');
     for (var i = 0; i < links.length; i++) {
@@ -146,28 +205,8 @@
       var number = qmark === -1 ? href : href.slice(0, qmark);
       var queryStr = qmark === -1 ? '' : href.slice(qmark + 1);
       var bodyParams = new URLSearchParams(queryStr);
-      var body = bodyParams.get('body') || '';
-
-      // If the link has no body, add a sensible default so attribution tags
-      // have a place to live.
-      if (!body) {
-        body = "Hi Chris, I'd like to start a $59 visit";
-      }
-
-      // Append attribution tags
-      var tags = [];
-      if (source && body.indexOf('(src:') === -1) tags.push('(src:' + cleanTag(source) + ')');
-      if (medium && body.indexOf('(med:') === -1) tags.push('(med:' + cleanTag(medium) + ')');
-      if (touchValue(attribution, 'campaign') && body.indexOf('(cmp:') === -1) tags.push('(cmp:' + cleanTag(touchValue(attribution, 'campaign')) + ')');
-      if (touchValue(attribution, 'content') && body.indexOf('(ad:') === -1) tags.push('(ad:' + cleanTag(touchValue(attribution, 'content')) + ')');
-      if (touchValue(attribution, 'click_id') && body.indexOf('(adref:') === -1) {
-        tags.push('(adref:' + cleanTag(touchValue(attribution, 'click_id_type') || 'click') + ':' + cleanRef(touchValue(attribution, 'click_id')) + ')');
-      }
-      if (isFromGoogle && body.indexOf('(from Google)') === -1) tags.push('(from Google)');
-
-      if (tags.length > 0) body = (body + ' ' + tags.join(' ')).trim();
-      bodyParams.set('body', body);
-      link.setAttribute('href', number + '?' + bodyParams.toString());
+      var body = smsBodyForAttribution(bodyParams.get('body') || '');
+      link.setAttribute('href', buildSmsHref(number, bodyParams, body));
     }
   }
 
@@ -194,6 +233,8 @@
       transport_type: 'beacon',
       page_path: window.location.pathname,
       gclid: gclid || '',
+      fbclid: fbclid || '',
+      sms_click_source: smsClickSource,
       traffic_source: source || '',
       traffic_medium: medium || '',
       traffic_campaign: touchValue(attribution, 'campaign')

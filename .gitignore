@@ -107,3 +107,4 @@ landing-pages/test-*.html
 *.local.json
 *.local.md
 scratch/
+.superpowers/

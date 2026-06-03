@@ -327,6 +327,10 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         654,  // /review/ (noindexed review funnel)
         674,  // /pay/ (noindexed payment handoff)
 
+        // ============================================================
+        // PAID-ONLY NOINDEX CLONES (not in sitemap; only paid traffic lands here)
+        // ============================================================
+        698,  // /uti-care/ paid Google + Facebook clone (noindexed)
 
         // ============================================================
         // CITY PAGES — temporarily excluded to focus crawl budget
