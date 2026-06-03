@@ -1183,7 +1183,9 @@ $npcwoods_header_candidates = array();
 if (defined('ABSPATH')) {
   $npcwoods_header_candidates[] = rtrim(ABSPATH, '/\\') . '/shared/header-snippet.html';
 }
-$npcwoods_header_candidates[] = __DIR__ . '/../html/shared/header-snippet.html';
+$npcwoods_header_candidates[] = __DIR__ . '/../../../shared/header-snippet.html';
+$npcwoods_header_candidates[] = __DIR__ . '/../../../../shared/header-snippet.html';
+$npcwoods_header_candidates[] = __DIR__ . '/../shared/header-snippet.html';
 foreach ($npcwoods_header_candidates as $npcwoods_header_path) {
   if (is_readable($npcwoods_header_path)) {
     readfile($npcwoods_header_path);
