@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -19,6 +20,34 @@ def sitemap_exclusion_block() -> str:
     )
     assert match, "Yoast sitemap exclusion block not found"
     return match.group(1)
+
+
+def json_ld_objects(rel: str) -> list[dict]:
+    html = read(rel)
+    blocks = re.findall(
+        r'<script\s+type="application/ld\+json"\s*>(.*?)</script>',
+        html,
+        re.I | re.S,
+    )
+    return [json.loads(block) for block in blocks]
+
+
+def graph_nodes(rel: str) -> list[dict]:
+    nodes = []
+    for obj in json_ld_objects(rel):
+        graph = obj.get("@graph")
+        if isinstance(graph, list):
+            nodes.extend(node for node in graph if isinstance(node, dict))
+        else:
+            nodes.append(obj)
+    return nodes
+
+
+def node_has_type(node: dict, schema_type: str) -> bool:
+    node_type = node.get("@type")
+    if isinstance(node_type, list):
+        return schema_type in node_type
+    return node_type == schema_type
 
 
 class SeoAuditFixTests(unittest.TestCase):
@@ -133,6 +162,19 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn('<link rel="canonical" href="https://npcwoods.com/pricing/">', html)
         self.assertIn('content="0; url=https://npcwoods.com/pricing/"', html)
         self.assertNotIn("insurance", html.lower())
+
+    def test_pricing_schema_uses_service_not_product_markup(self):
+        nodes = graph_nodes("landing-pages/pricing/index.html")
+        product_nodes = [node for node in nodes if node_has_type(node, "Product")]
+        service_nodes = [node for node in nodes if node_has_type(node, "Service")]
+
+        self.assertEqual([], product_nodes)
+        self.assertEqual(1, len(service_nodes))
+
+        offer = service_nodes[0].get("offers", {})
+        self.assertEqual("Offer", offer.get("@type"))
+        self.assertEqual("59.00", offer.get("price"))
+        self.assertEqual("USD", offer.get("priceCurrency"))
 
     def test_public_source_has_no_banned_word_copy(self):
         offenders = []
