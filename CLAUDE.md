@@ -74,6 +74,42 @@ Exclusions are managed in `php/npcwoods-faq-schema.php` via the `wpseo_exclude_f
 
 ## Deployment
 
+### Vercel Preview Review Lane
+
+Vercel is now the default phone-review lane for NPCWoods website drafts. Use it for previews only unless Chris explicitly approves a production deploy, domain change, or promotion.
+
+Do **not** deploy this repo root directly to Vercel. It contains scripts, PHP helpers, backups, reports, and local-only workflow files. Build a sanitized preview bundle first:
+
+```bash
+python3 scripts/build-vercel-preview-site.py
+vercel deploy content-output/previews/vercel-review-site -y --no-wait
+```
+
+After deploy, use the deployment URL returned by Vercel as the source of truth. If Vercel Authentication protects that URL, create a temporary share link from the Vercel dashboard or Vercel app connector for Chris's phone review. Temporary share links can expire, so generate a fresh one for each review handoff instead of reusing an old link.
+
+The dedicated review project also has a public fallback alias:
+
+```text
+https://vercel-review-site.vercel.app/
+```
+
+This is not `npcwoods.com`, does not change GoDaddy, and must not receive custom production domains. Treat it as a fallback only: it can lag behind the latest protected deployment unless it is explicitly refreshed and verified.
+
+For a narrow review, limit the bundle to one or more routes:
+
+```bash
+python3 scripts/build-vercel-preview-site.py --page pricing --page uti-care
+```
+
+The generated preview bundle:
+- Copies only public static page files and public assets.
+- Converts the homepage PHP template into static `index.html`.
+- Writes `robots.txt` and Vercel `X-Robots-Tag` headers to block indexing.
+- Replaces production `tracking.js` with a preview no-op stub by default.
+- Lives under ignored `content-output/previews/vercel-review-site/`.
+
+Production still follows the GoDaddy workflow unless Chris explicitly approves a production migration: SFTP/static HTML, mu-plugin routing, WP page stub/cache touch, and Playwright verification on the real live URL.
+
 ### Standard pages (WordPress content)
 Push content via WordPress REST API. Always draft first, get Chris's approval, then publish.
 
@@ -230,6 +266,7 @@ There's a full deployment skill at `skills/npcwoods-deploy/SKILL.md` — read it
 ## Rules
 - **Always draft before publishing** — never push live without Chris's OK
 - **Back up current content** before making changes
+- **Use Vercel previews for phone review by default** — build the sanitized preview bundle first; never deploy the raw repo root to Vercel.
 - **Read the deploy skill** before pushing anything to the server (`skills/npcwoods-deploy/SKILL.md`)
 - **After completing work**, update `SHIFT-LOG.md` in the `npcwoods-business` repo
 - **HIPAA** — no patient data anywhere in this repo, ever
