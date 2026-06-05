@@ -497,7 +497,7 @@ h1 {
 .dark {
   overflow: hidden;
   background:
-    radial-gradient(circle at 22% 0%, rgba(41, 151, 255, 0.2), transparent 28%),
+    linear-gradient(135deg, rgba(41, 151, 255, 0.18) 0%, transparent 34%),
     linear-gradient(180deg, #05060a 0%, #11131a 100%);
   color: #fff;
 }
@@ -505,6 +505,93 @@ h1 {
 .dark .section-kicker { color: #7cc0ff; }
 .dark .section-title { color: #fff; }
 .dark .section-copy { color: #c7c7ce; }
+
+.how-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.how-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 76px 76px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  opacity: 0.54;
+}
+
+#how .section-kicker {
+  color: #9bd4ff !important;
+}
+
+#how .section-title,
+#how .glass-panel h3,
+#how .how-signal strong,
+#how .step b {
+  color: #ffffff !important;
+  text-wrap: balance;
+}
+
+#how .section-copy,
+#how .glass-panel p,
+#how .how-signal em {
+  color: #e5e9f2 !important;
+  overflow-wrap: break-word;
+}
+
+.how-rail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.how-signal {
+  min-height: 126px;
+  padding: 20px;
+  border: 1px solid rgba(155, 212, 255, 0.24);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.07));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 18px 46px rgba(0, 0, 0, 0.24);
+}
+
+.how-signal span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 34px;
+  margin-bottom: 16px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #07111f;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.how-signal strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.how-signal em {
+  display: block;
+  color: #d7deea;
+  font-size: 14px;
+  line-height: 1.42;
+  font-style: normal;
+  font-weight: 650;
+}
 
 .experience-grid {
   display: grid;
@@ -514,34 +601,48 @@ h1 {
 }
 
 .glass-panel {
+  position: relative;
   min-height: 430px;
   padding: 34px;
-  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.075));
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(24px);
 }
 
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #9bd4ff, rgba(25, 164, 99, 0.9), rgba(245, 165, 36, 0.88));
+}
+
 .glass-panel h3 {
-  margin-bottom: 14px;
+  margin: 0 0 14px;
   color: #fff;
   font-size: 31px;
   line-height: 1.04;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .glass-panel p {
   margin-bottom: 0;
-  color: #c7c7ce;
+  color: #e5e9f2;
   font-size: 16px;
   font-weight: 600;
 }
 
 .timeline {
   display: grid;
-  gap: 15px;
   margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .step {
@@ -549,10 +650,12 @@ h1 {
   grid-template-columns: 40px 1fr;
   gap: 14px;
   align-items: start;
-  padding: 16px;
-  border: 1px solid var(--line-soft);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.07);
+  padding: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.step:last-child {
+  border-bottom: 0;
 }
 
 .step-number {
@@ -570,11 +673,15 @@ h1 {
   display: block;
   margin-bottom: 3px;
   color: #fff;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 900;
 }
 
 .step span {
-  color: #b7bac5;
+  color: #d8deea !important;
   font-size: 14px;
+  line-height: 1.48;
   font-weight: 600;
 }
 
@@ -974,6 +1081,18 @@ h1 {
   .section-copy {
     font-size: 18px;
   }
+  .how-rail {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .how-signal {
+    min-height: auto;
+    padding: 18px;
+  }
+  .how-signal span {
+    margin-bottom: 12px;
+  }
   .experience-grid,
   .conditions-grid,
   .trust-layout {
@@ -983,6 +1102,25 @@ h1 {
   .glass-panel {
     min-height: auto;
     padding: 24px;
+  }
+  .glass-panel h3 {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+  .step {
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+  .step-number {
+    width: 42px;
+    height: 42px;
+  }
+  .step b {
+    font-size: 17px;
+  }
+  .step span {
+    font-size: 15px;
   }
   .price-reveal {
     min-height: 560px;
@@ -1315,6 +1453,24 @@ if (!$npcwoods_header_rendered):
       <div class="section-kicker reveal">The new patient experience</div>
       <h2 class="section-title reveal">It feels too simple because healthcare usually is not.</h2>
       <p class="section-copy reveal">NPCWoods is designed around the part patients actually need first: a fast, clear answer from a real clinician about what to do next.</p>
+
+      <div class="how-rail reveal" aria-label="NPCWoods visit safeguards">
+        <div class="how-signal">
+          <span>$59</span>
+          <strong>Clear price</strong>
+          <em>You know the visit fee before the text visit starts.</em>
+        </div>
+        <div class="how-signal">
+          <span>FIT</span>
+          <strong>Clinician fit check</strong>
+          <em>Chris screens whether telemedicine makes sense for the concern.</em>
+        </div>
+        <div class="how-signal">
+          <span>NEXT</span>
+          <strong>Practical next step</strong>
+          <em>Guidance, pharmacy coordination, or in-person direction when needed.</em>
+        </div>
+      </div>
 
       <div class="experience-grid">
         <article class="glass-panel reveal">
