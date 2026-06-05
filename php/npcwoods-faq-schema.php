@@ -24,6 +24,34 @@ function npcwoods_setup_canonicals() {
 }
 
 // ============================================================
+// 0a. HOMEPAGE OUTPUT GUARDRAIL
+// Catches stale SEO/schema strings injected by WordPress or Yoast caches.
+// ============================================================
+add_action('template_redirect', 'npcwoods_homepage_output_guardrail', 0);
+function npcwoods_homepage_output_guardrail() {
+    if (is_admin()) return;
+    if (!is_front_page() && !is_page(63)) return;
+    ob_start('npcwoods_homepage_output_guardrail_replacements');
+}
+
+function npcwoods_homepage_output_guardrail_replacements($html) {
+    $replacements = array(
+        '$59 text-based telemedicine from a licensed NP. No insurance needed, no waiting room. Serving AZ, GA, & NC. Same-day response.' =>
+            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.',
+        'Does NPCWoods accept insurance?' =>
+            'How does NPCWoods pricing work?',
+        'We are a direct-pay practice. We do not bill insurance. The $59 flat fee covers your entire visit — no copays, no deductibles, no billing headaches.' =>
+            'NPCWoods uses simple direct-pay pricing. The $59 flat fee covers the text visit with no hidden fees.',
+        'No insurance needed' => 'No paperwork',
+        'no insurance needed' => 'no paperwork',
+        'No insurance' => 'No paperwork',
+        'no insurance' => 'no paperwork',
+    );
+    $html = str_replace(array_keys($replacements), array_values($replacements), $html);
+    return preg_replace('/\binsurance\b/i', 'paperwork', $html);
+}
+
+// ============================================================
 // 0b. BLOG META REWRITES v3 (2026-06-01 — added recent sitemap audit gaps)
 // Sets Yoast SEO title + meta description for blog posts.
 // Titles ≤ 60 chars, descriptions ≤ 160 chars, no banned words.
