@@ -99,6 +99,7 @@ tmp/
 # --- Generated output / local-only assets ----------------------------
 automation-output/
 content-output/
+graphify-out/
 mockups/
 html/review/
 landing-pages/test-*.html
