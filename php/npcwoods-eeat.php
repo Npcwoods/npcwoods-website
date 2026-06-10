@@ -61,11 +61,24 @@ add_action('wp_head', function() {
         'name' => $profile['short_name'],
         'url' => $profile['about_url'],
         'description' => 'Chris Woods is a Licensed Nurse Practitioner and founder of NPCWoods Telemedicine. He personally reviews every case and every medical article on the site.',
+        'honorificSuffix' => 'MSN, APRN, FNP-C',
         'hasCredential' => array(
             '@type' => 'EducationalOccupationalCredential',
-            'credentialCategory' => 'license',
+            'credentialCategory' => 'certification',
             'name' => 'MSN, APRN, FNP-C',
         ),
+        'identifier' => array(
+            '@type' => 'PropertyValue',
+            'propertyID' => 'NPI',
+            'value' => isset($profile['npi']) ? $profile['npi'] : '1285125468',
+        ),
+        'sameAs' => array(
+            'https://npiregistry.cms.hhs.gov/provider-view/1285125468',
+            'https://www.healthgrades.com/providers/christopher-woods-xynt5wl',
+            'https://doctor.webmd.com/doctor/christopher-woods-7b55e933-62ef-4d7b-975c-9cfc40eb3ad8-overview',
+            'https://www.facebook.com/npcwoods',
+        ),
+        'medicalSpecialty' => 'FamilyPractice',
         'jobTitle' => 'Licensed Nurse Practitioner',
         'image' => $profile['headshot'],
         'worksFor' => array('@id' => $profile['organization_id']),
@@ -97,56 +110,19 @@ add_action('wp_head', function() {
             array('@type' => 'State', 'name' => 'Oregon'),
             array('@type' => 'State', 'name' => 'Utah'),
         ),
-        'aggregateRating' => array(
-            '@type' => 'AggregateRating',
-            'ratingValue' => '5.0',
-            'reviewCount' => '58',
-            'bestRating' => '5',
-            'worstRating' => '1',
+        // Ratings live on the Google Business Profile — self-hosted review markup violates Google policy
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'addressLocality' => 'Scottsdale',
+            'addressRegion' => 'AZ',
+            'addressCountry' => 'US',
         ),
-        // Individual Reviews are required for Google to render review snippets on medical entities.
-        // Bare aggregateRating without Review items gets silently rejected. Source: GBP screenshots 2026-05-27.
-        // Keep in sync with npcwoods-business/data/google-reviews-2026-05-27.json
-        'review' => array(
-            array(
-                '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Mary W.'),
-                'datePublished' => '2026-05-26',
-                'reviewRating' => array(
-                    '@type' => 'Rating',
-                    'ratingValue' => '5',
-                    'bestRating' => '5',
-                    'worstRating' => '1',
-                ),
-                'reviewBody' => 'Even though the visit was online, I felt that all of my concerns were addressed, and the response time was so quick. Thank you NP Wood for your compassion and care!',
-                'itemReviewed' => array('@id' => $profile['organization_id']),
-            ),
-            array(
-                '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Dana H.'),
-                'datePublished' => '2026-05-06',
-                'reviewRating' => array(
-                    '@type' => 'Rating',
-                    'ratingValue' => '5',
-                    'bestRating' => '5',
-                    'worstRating' => '1',
-                ),
-                'reviewBody' => 'Quick, professional and convenient. No sitting in a waiting room with other sick people. I highly recommend and will definitely use this again.',
-                'itemReviewed' => array('@id' => $profile['organization_id']),
-            ),
-            array(
-                '@type' => 'Review',
-                'author' => array('@type' => 'Person', 'name' => 'Tori D.'),
-                'datePublished' => '2026-04-22',
-                'reviewRating' => array(
-                    '@type' => 'Rating',
-                    'ratingValue' => '5',
-                    'bestRating' => '5',
-                    'worstRating' => '1',
-                ),
-                'reviewBody' => 'This is AMAZING! We loved it!!! I would do it all over again in a heartbeat! It was so simple and doing it from my house with a sick kid is even better!!',
-                'itemReviewed' => array('@id' => $profile['organization_id']),
-            ),
+        'paymentAccepted' => 'Cash, Credit Card, HSA, FSA',
+        'makesOffer' => array(
+            '@type' => 'Offer',
+            'name' => 'Async telemedicine visit',
+            'price' => '59.00',
+            'priceCurrency' => 'USD',
         ),
     );
 

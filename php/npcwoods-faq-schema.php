@@ -11,16 +11,16 @@
 // ============================================================
 add_action('init', 'npcwoods_setup_canonicals');
 function npcwoods_setup_canonicals() {
-    if (get_option('npcwoods_canonicals_set_v5')) return;
+    if (get_option('npcwoods_canonicals_set_v6')) return;
     $canonical_map = array(
         189 => 'https://npcwoods.com/uti-treatment/',
         190 => 'https://npcwoods.com/sinus-infection-treatment/',
-        191 => 'https://npcwoods.com/strep-throat-ear-infection/'
+        191 => 'https://npcwoods.com/strep-throat-treatment/'
     );
     foreach ($canonical_map as $pid => $url) {
         update_post_meta($pid, '_yoast_wpseo_canonical', $url);
     }
-    update_option('npcwoods_canonicals_set_v5', true);
+    update_option('npcwoods_canonicals_set_v6', true);
 }
 
 // ============================================================
@@ -214,7 +214,7 @@ function npcwoods_canonical_overrides($canonical) {
     $map = array(
         189 => 'https://npcwoods.com/uti-treatment/',
         190 => 'https://npcwoods.com/sinus-infection-treatment/',
-        191 => 'https://npcwoods.com/strep-throat-ear-infection/'
+        191 => 'https://npcwoods.com/strep-throat-treatment/'
     );
     return isset($map[$post->ID]) ? $map[$post->ID] : $canonical;
 }
@@ -233,7 +233,7 @@ function npcwoods_replace_canonical($html) {
     $map = array(
         189 => 'https://npcwoods.com/uti-treatment/',
         190 => 'https://npcwoods.com/sinus-infection-treatment/',
-        191 => 'https://npcwoods.com/strep-throat-ear-infection/'
+        191 => 'https://npcwoods.com/strep-throat-treatment/'
     );
     if (!$post || !isset($map[$post->ID])) return $html;
     $target = $map[$post->ID];

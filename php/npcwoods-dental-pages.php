@@ -6,7 +6,6 @@
 add_action( 'template_redirect', function() {
     $page_map = array(
         'dental-pain' => 'dental-pain/index.html',
-        'arizona-telemedicine' => 'arizona-telemedicine/index.html',
     );
 
     $slug = get_post_field( 'post_name', get_queried_object_id() );

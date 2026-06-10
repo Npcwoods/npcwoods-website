@@ -1,0 +1,22 @@
+<?php
+/**
+ * Plugin Name: NPCWoods About Page
+ * Description: Serves static HTML for /about/ page, bypassing the theme.
+ */
+
+add_action( 'template_redirect', function() {
+    $page_map = array(
+        'about' => 'about/index.html',
+    );
+
+    $slug = get_post_field( 'post_name', get_queried_object_id() );
+
+    if ( is_page() && isset( $page_map[ $slug ] ) ) {
+        $html_file = ABSPATH . $page_map[ $slug ];
+        if ( file_exists( $html_file ) ) {
+            header( 'Content-Type: text/html; charset=UTF-8' );
+            readfile( $html_file );
+            exit;
+        }
+    }
+}, 1 );

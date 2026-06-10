@@ -1,0 +1,43 @@
+<?php
+/**
+ * Plugin Name: NPCWoods 301 Redirects
+ * Description: Redirects old/removed pages + disables author archives
+ */
+
+// 301 redirects for removed pages and old URLs
+add_action("init", function() {
+    $redirects = [
+        "/scottsdale-uti-treatment/" => "/uti-treatment/scottsdale-az/",
+        "/mesa-uti-treatment/"       => "/uti-treatment/mesa-az/",
+        "/sample-page/"              => "/",
+        "/hello-world/"              => "/",
+        "/my-account/"               => "/",
+        "/checkout/"                 => "/",
+        "/cart/"                     => "/",
+        "/shop/"                     => "/",
+        "/author/admin/"             => "/",
+        "/author/chris/"             => "/",
+        "/author/npcwoods/"          => "/",
+        "/gilbert-az-strep/"         => "/arizona-telemedicine/",
+        "/tucson-az-uti/"            => "/uti-treatment/",
+        "/blog/blog-ry/"             => "/",
+        "/blog/blog-ry"              => "/",
+    ];
+
+    $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $path = rtrim($path, "/") . "/";
+
+    if (isset($redirects[$path])) {
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Location: " . home_url($redirects[$path]), true, 301);
+        exit;
+    }
+});
+
+// Disable ALL author archives — redirect to homepage
+add_action("template_redirect", function() {
+    if (is_author()) {
+        wp_redirect(home_url("/"), 301);
+        exit;
+    }
+});

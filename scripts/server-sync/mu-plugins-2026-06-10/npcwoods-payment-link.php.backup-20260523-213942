@@ -1,0 +1,104 @@
+<?php
+/**
+ * Plugin Name: NPCWoods Payment Link
+ * Description: Redirects /pay/ to the active Stripe Payment Link with safe attribution labels.
+ */
+
+add_action( 'template_redirect', function() {
+    if ( ! is_page() ) {
+        return;
+    }
+
+    $slug = get_post_field( 'post_name', get_queried_object_id() );
+    if ( 'pay' !== $slug ) {
+        return;
+    }
+
+    $stripe_url = 'https://buy.stripe.com/8x2eVcevF2M4cWzcf2dQQ03';
+
+    $defaults = array(
+        'utm_source'   => 'spruce',
+        'utm_medium'   => 'text',
+        'utm_campaign' => 'manual-payment',
+    );
+
+    $aliases = array(
+        'client_reference_id' => array( 'client_reference_id', 'ref' ),
+        'utm_source'          => array( 'utm_source', 'source', 'src' ),
+        'utm_medium'          => array( 'utm_medium', 'medium' ),
+        'utm_campaign'        => array( 'utm_campaign', 'campaign', 'cmp' ),
+        'utm_content'         => array( 'utm_content', 'content', 'ad' ),
+        'utm_term'            => array( 'utm_term', 'term' ),
+    );
+
+    $request_params = $_GET;
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '';
+    $query_string = parse_url( $request_uri, PHP_URL_QUERY );
+    if ( is_string( $query_string ) && '' !== $query_string ) {
+        $raw_params = array();
+        parse_str( $query_string, $raw_params );
+        if ( is_array( $raw_params ) ) {
+            $request_params = array_merge( $request_params, $raw_params );
+        }
+    }
+
+    $params = $defaults;
+    $explicit_reference = false;
+    foreach ( $aliases as $target_key => $input_keys ) {
+        foreach ( $input_keys as $input_key ) {
+            if ( isset( $request_params[ $input_key ] ) ) {
+                $clean_value = npcwoods_pay_clean_tracking_value( wp_unslash( $request_params[ $input_key ] ) );
+                if ( '' !== $clean_value ) {
+                    $params[ $target_key ] = $clean_value;
+                    if ( 'client_reference_id' === $target_key ) {
+                        $explicit_reference = true;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    if ( $explicit_reference ) {
+        $params['client_reference_id'] = npcwoods_pay_clean_tracking_value( $params['client_reference_id'] );
+    } elseif (
+        'spruce' === $params['utm_source']
+        && 'text' === $params['utm_medium']
+        && 'manual-payment' === $params['utm_campaign']
+    ) {
+        $params['client_reference_id'] = 'spruce-manual-payment';
+    } else {
+        $params['client_reference_id'] = npcwoods_pay_build_reference_id( $params );
+    }
+
+    $redirect_url = add_query_arg( $params, $stripe_url );
+
+    nocache_headers();
+    header( 'X-Robots-Tag: noindex, nofollow', true );
+    header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0', true );
+    header( 'Surrogate-Control: no-store', true );
+    header( 'Pragma: no-cache', true );
+    wp_redirect( $redirect_url, 302 );
+    exit;
+}, 1 );
+
+function npcwoods_pay_clean_tracking_value( $value ) {
+    $value = is_scalar( $value ) ? (string) $value : '';
+    $value = strtolower( trim( $value ) );
+    $value = preg_replace( '/[^a-z0-9_.-]+/', '-', $value );
+    $value = trim( $value, '-_.' );
+
+    return substr( $value, 0, 80 );
+}
+
+function npcwoods_pay_build_reference_id( $params ) {
+    $parts = array(
+        isset( $params['utm_source'] ) ? $params['utm_source'] : 'unknown',
+        isset( $params['utm_medium'] ) ? $params['utm_medium'] : 'unknown',
+        isset( $params['utm_campaign'] ) ? $params['utm_campaign'] : 'payment',
+    );
+
+    $reference_id = npcwoods_pay_clean_tracking_value( implode( '-', $parts ) );
+
+    return '' !== $reference_id ? $reference_id : 'npcwoods-payment';
+}

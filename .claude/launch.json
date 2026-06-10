@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "preview-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/tmp/npc-serve-preview.py"],
+      "port": 8765
+    }
+  ]
+}
