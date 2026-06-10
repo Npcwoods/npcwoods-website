@@ -68,6 +68,33 @@
 
 
 /* ============================================================
+ * 1.5 MOBILE NAV CTA ("Text · $59" pill in the top bar)
+ * ------------------------------------------------------------
+ * The desktop nav links (including the CTA) are hidden under
+ * 768px, leaving phones with no persistent way to text. Static
+ * pages carry pasted copies of the header snippet, so the pill
+ * is injected here instead of editing ~80 HTML files. The
+ * matchMedia guard keeps it off desktop even if site.css is
+ * served stale from cache. tracking.js enhances the sms: href
+ * on DOMContentLoaded, after deferred scripts run.
+ * ============================================================ */
+
+(function() {
+  if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
+  var inner = document.querySelector('.npc-nav-inner');
+  if (!inner || inner.querySelector('.npc-nav-cta-mobile')) return;
+  var toggle = inner.querySelector('.npc-nav-toggle');
+  if (!toggle) return;
+
+  var cta = document.createElement('a');
+  cta.className = 'npc-nav-cta-mobile';
+  cta.setAttribute('href', 'sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit');
+  cta.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Text · $59';
+  inner.insertBefore(cta, toggle);
+})();
+
+
+/* ============================================================
  * 2. CORE WEB VITALS REPORTER (sends LCP/CLS/INP/FCP/TTFB to GA4)
  * ============================================================ */
 
