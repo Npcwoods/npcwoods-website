@@ -15,7 +15,16 @@ gtag('js', new Date());
 gtag('config', 'G-EFFRQMG8TC');
 gtag('config', 'AW-610222919');
 </script>
-<!-- Meta Pixel removed 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there (design: plans/2026-06-10-conversion-bridge-design.md) -->
+<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
+     The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
+     so predefining a no-op fbq means fbevents.js never loads on this page. -->
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burning When You Pee? UTI Help | NPCWoods</title>
