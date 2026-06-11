@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
+     The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
+     so predefining a no-op fbq means fbevents.js never loads on this page. -->
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
 <!-- NPCWoods Tracking: GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -1630,22 +1640,6 @@ p { color: var(--text-body); font-size: 1rem; line-height: 1.75; }
   }
 }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,"script",
-"https://connect.facebook.net/en_US/fbevents.js");
-fbq("init", "1558261907814968");
-fbq("track", "PageView");
-</script>
-<noscript><img alt="" height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
 <!-- NPCWoods Tracking: Ahrefs Analytics -->
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>

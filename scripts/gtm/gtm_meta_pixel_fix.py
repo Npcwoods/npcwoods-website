@@ -29,11 +29,17 @@ import sys
 
 ENV_PATH = os.path.expanduser("~/Desktop/Chris-HQ/.env")
 
-# Pages where Meta must NOT fire (no BAA with Meta). This regex covers the whole
-# UTI family: the hub, all city subpages, every condition subpage, and the
-# Arizona landing page. It deliberately does NOT match /uti-treatment-online
-# (the comparison page) — narrow or widen here if Chris wants a different scope.
-BLOCK_REGEX = r"^/(arizona-uti-treatment|uti-treatment)(/|$)"
+# Pages where Meta must NOT fire (no BAA with Meta). Covers ALL health-condition
+# surfaces: the whole UTI family (hub + city + condition subpages + arizona +
+# uti-care + uti-treatment-online) and the non-UTI condition pages. Longer slugs
+# are listed before their prefixes so the (/|$) boundary resolves correctly.
+# Non-health pages (geo/state, how-it-works, pharmacy, thank-you, homepage) are
+# intentionally excluded so Meta ads keep working there.
+BLOCK_REGEX = (
+    r"^/(arizona-uti-treatment|uti-treatment-online|uti-treatment|uti-care|"
+    r"dental-pain|ear-infection-treatment|ed-treatment|glp1-weight-loss|"
+    r"sinus-infection-treatment|strep-throat-treatment|conditions)(/|$)"
+)
 TRIGGER_NAME = "Block — UTI / Health Pages (no Meta BAA)"
 META_PIXEL_ID = "1558261907814968"
 VERSION_NAME = "Scope Meta pixel off UTI health pages"
