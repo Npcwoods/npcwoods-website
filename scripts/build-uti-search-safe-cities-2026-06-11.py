@@ -210,6 +210,21 @@ gtag('config', 'AW-610222919');
 .section-white.dark-to-light {{
   background-image: linear-gradient(to bottom, #cfd2da 0%, #e9eaef 140px);
 }}
+/* Differential-diagnosis table readability on light sections (Chris 2026-06-11):
+   first-column condition names were hardcoded white -> invisible on gray;
+   orange/muted status cells were too faint. Darken all for contrast. */
+.section-light .compare-table td:first-child,
+.section-white .compare-table td:first-child {{ color: #15151a; }}
+.section-light .compare-table td,
+.section-white .compare-table td {{ color: #2c2c33; }}
+.section-light .compare-table .treat-us,
+.section-white .compare-table .treat-us,
+.section-light .compare-table .treat-us-also,
+.section-white .compare-table .treat-us-also {{ color: #0a6b3b !important; }}
+.section-light .compare-table .treat-maybe,
+.section-white .compare-table .treat-maybe {{ color: #8a5200 !important; }}
+.section-light .compare-table .treat-er,
+.section-white .compare-table .treat-er {{ color: #474750 !important; }}
 </style>
 </head>
 """
