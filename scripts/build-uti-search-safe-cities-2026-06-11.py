@@ -183,6 +183,34 @@ gtag('config', 'AW-610222919');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 {css}
+<style>
+/* Softened light sections (Chris 2026-06-11): ease the black-hero -> bright-white jump.
+   Light areas become a calm muted gray instead of glare-white. */
+.section-light {{ background: #e2e4e9; }}
+.section-white {{ background: #e9eaef; }}
+.local-scene {{ background: #e2e4e9; }}
+.local-scene h2 {{ color: #1b1b21; }}
+.local-scene p {{ color: #3a3a40; }}
+.section-light,
+.section-white {{
+  --panel: #eef0f4;
+  --panel-2: #e6e8ee;
+  --panel-3: #dcdee5;
+  --ink: #1b1b21;
+  --body: #3a3a40;
+  --muted: #63636a;
+  --line: rgba(0,0,0,0.08);
+  color: #1b1b21;
+}}
+/* Gentle fade into each light block instead of a hard edge */
+.section-light.dark-to-light,
+.section-white.dark-to-light {{
+  background-image: linear-gradient(to bottom, #c9ccd4 0%, #e2e4e9 140px);
+}}
+.section-white.dark-to-light {{
+  background-image: linear-gradient(to bottom, #cfd2da 0%, #e9eaef 140px);
+}}
+</style>
 </head>
 """
 
