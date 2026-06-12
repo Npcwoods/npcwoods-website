@@ -26,6 +26,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
 # slug -> WP stub ID for cache flush (None = brand-new URL, nothing cached)
 PAGES = {
+    "mesa-az": 13,
     "scottsdale-az": 17,
     "surprise-az": 20,
     "albuquerque-nm": 411,
@@ -52,7 +53,11 @@ FORBIDDEN = [
     "trimethoprim",
     "macrobid",
     "bactrim",
+    "cephalexin",
+    "phenazopyridine",
+    "nystatin",
     "antibiotic",
+    "prescription",
     "insurance",
 ]
 
