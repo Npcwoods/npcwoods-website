@@ -1,0 +1,867 @@
+{
+  "base_url": "https://npcwoods.com",
+  "generated_by": "tests/guardian/build_manifest.py",
+  "summary": {
+    "total": 95,
+    "health_pages": 66,
+    "paid_lps": 9,
+    "other": 29
+  },
+  "pages": [
+    {
+      "url": "https://npcwoods.com/",
+      "local_source": "homepage/page-npcwoods-home.php",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "manual:wordpress-template"
+    },
+    {
+      "url": "https://npcwoods.com/about/",
+      "local_source": "html/about/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-about-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/affordable-telemedicine-arizona-no-insurance/",
+      "local_source": "landing-pages/affordable-telemedicine-arizona-no-insurance/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-affordable-arizona-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/arizona-telemedicine/",
+      "local_source": "landing-pages/arizona-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/arizona-uti-treatment/",
+      "local_source": "landing-pages/arizona-uti-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/blairsville-ga/",
+      "local_source": "landing-pages/blairsville-ga/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-ga-nc-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/blog-burning-when-you-pee-albuquerque/",
+      "local_source": "landing-pages/llmseo/blog-burning-when-you-pee-albuquerque.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/blue-ridge-ga/",
+      "local_source": "landing-pages/blue-ridge-ga/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-ga-nc-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/colorado-telemedicine/",
+      "local_source": "landing-pages/colorado-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/conditions/",
+      "local_source": "landing-pages/conditions/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/credentials/",
+      "local_source": "landing-pages/credentials/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/dental-pain/",
+      "local_source": "landing-pages/dental-pain/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/do-i-need-antibiotics-sinus-infection/",
+      "local_source": "landing-pages/do-i-need-antibiotics-sinus-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/ear-infection-treatment/",
+      "local_source": "landing-pages/ear-infection-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/ed-treatment/",
+      "local_source": "landing-pages/ed-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/faq/",
+      "local_source": "landing-pages/faq/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-faq-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/georgia-telemedicine/",
+      "local_source": "landing-pages/georgia-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/glp1-weight-loss/",
+      "local_source": "landing-pages/glp1-weight-loss/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-glp1-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/how-it-works/",
+      "local_source": "landing-pages/how-it-works/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-experience-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/idaho-telemedicine/",
+      "local_source": "landing-pages/idaho-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/iowa-telemedicine/",
+      "local_source": "landing-pages/iowa-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/",
+      "local_source": "landing-pages/learn/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/allergic-reaction/",
+      "local_source": "landing-pages/learn/allergic-reaction/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/bronchitis/",
+      "local_source": "landing-pages/learn/bronchitis/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/cold-sores/",
+      "local_source": "landing-pages/learn/cold-sores/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/covid-flu/",
+      "local_source": "landing-pages/learn/covid-flu/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/ear-infection/",
+      "local_source": "landing-pages/learn/ear-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/ingrown-toenail/",
+      "local_source": "landing-pages/learn/ingrown-toenail/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/pink-eye/",
+      "local_source": "landing-pages/learn/pink-eye/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/sinus-infection/",
+      "local_source": "landing-pages/learn/sinus-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/skin-infection/",
+      "local_source": "landing-pages/learn/skin-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/stomach-bug/",
+      "local_source": "landing-pages/learn/stomach-bug/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/strep-throat/",
+      "local_source": "landing-pages/learn/strep-throat/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/tooth-infection/",
+      "local_source": "landing-pages/learn/tooth-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/uti/",
+      "local_source": "landing-pages/learn/uti/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/learn/yeast-infection/",
+      "local_source": "landing-pages/learn/yeast-infection/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "education",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/",
+      "local_source": "landing-pages/medications/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/amoxicillin/",
+      "local_source": "landing-pages/medications/amoxicillin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/augmentin/",
+      "local_source": "landing-pages/medications/augmentin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/azithromycin/",
+      "local_source": "landing-pages/medications/azithromycin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/benzonatate/",
+      "local_source": "landing-pages/medications/benzonatate/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/cephalexin/",
+      "local_source": "landing-pages/medications/cephalexin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/clindamycin/",
+      "local_source": "landing-pages/medications/clindamycin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/doxycycline/",
+      "local_source": "landing-pages/medications/doxycycline/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/erythromycin-ophthalmic/",
+      "local_source": "landing-pages/medications/erythromycin-ophthalmic/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/fluconazole/",
+      "local_source": "landing-pages/medications/fluconazole/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/hydroxyzine/",
+      "local_source": "landing-pages/medications/hydroxyzine/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/metronidazole/",
+      "local_source": "landing-pages/medications/metronidazole/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/mupirocin/",
+      "local_source": "landing-pages/medications/mupirocin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/nitrofurantoin/",
+      "local_source": "landing-pages/medications/nitrofurantoin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/ondansetron/",
+      "local_source": "landing-pages/medications/ondansetron/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/oseltamivir/",
+      "local_source": "landing-pages/medications/oseltamivir/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/paxlovid/",
+      "local_source": "landing-pages/medications/paxlovid/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/penicillin/",
+      "local_source": "landing-pages/medications/penicillin/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/polytrim/",
+      "local_source": "landing-pages/medications/polytrim/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/prednisone/",
+      "local_source": "landing-pages/medications/prednisone/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/tmp-smx/",
+      "local_source": "landing-pages/medications/tmp-smx/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/medications/valacyclovir/",
+      "local_source": "landing-pages/medications/valacyclovir/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "medication",
+      "routed_by": "npcwoods-education-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/montana-telemedicine/",
+      "local_source": "landing-pages/montana-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/murphy-nc/",
+      "local_source": "landing-pages/murphy-nc/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-ga-nc-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/nevada-telemedicine/",
+      "local_source": "landing-pages/nevada-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/new-mexico-telemedicine/",
+      "local_source": "landing-pages/new-mexico-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/north-carolina-telemedicine/",
+      "local_source": "landing-pages/north-carolina-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/oregon-telemedicine/",
+      "local_source": "landing-pages/oregon-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/patient-experience/",
+      "local_source": "html/experience/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-experience-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/pharmacy-partners/",
+      "local_source": "html/pharmacy-partners/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-pharmacy-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/pharmacy/",
+      "local_source": "html/pharmacy/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-pharmacy-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/pricing/",
+      "local_source": "landing-pages/pricing/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/review/",
+      "local_source": "review/index.html",
+      "exists_locally": false,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-review-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/sinus-infection-treatment/",
+      "local_source": "landing-pages/sinus-infection-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/sitemap/",
+      "local_source": "landing-pages/sitemap/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/strep-throat-treatment/",
+      "local_source": "landing-pages/strep-throat-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/telehealth-vs-urgent-care/",
+      "local_source": "landing-pages/telehealth-vs-urgent-care/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-comparison-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/trust-video/",
+      "local_source": "landing-pages/trust-video/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/utah-telemedicine/",
+      "local_source": "landing-pages/utah-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-care/",
+      "local_source": "landing-pages/uti-care/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment-online/",
+      "local_source": "landing-pages/uti-treatment-online/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-comparison-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/",
+      "local_source": "landing-pages/uti-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/albuquerque-nm/",
+      "local_source": "landing-pages/uti-treatment/albuquerque-nm/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/albuquerque-nm/search-safe/",
+      "local_source": "landing-pages/uti-treatment/albuquerque-nm/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/burning-when-i-pee/",
+      "local_source": "landing-pages/uti-treatment/burning-when-i-pee/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/chandler-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/chandler-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/gilbert-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/gilbert-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/glendale-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/glendale-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/how-fast-do-uti-antibiotics-work/",
+      "local_source": "landing-pages/uti-treatment/how-fast-do-uti-antibiotics-work/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/is-my-uti-getting-worse/",
+      "local_source": "landing-pages/uti-treatment/is-my-uti-getting-worse/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/mesa-az/",
+      "local_source": "landing-pages/uti-treatment/mesa-az/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/mesa-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/mesa-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/no-video-uti-treatment/",
+      "local_source": "landing-pages/uti-treatment/no-video-uti-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/scottsdale-az/",
+      "local_source": "landing-pages/uti-treatment/scottsdale-az/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/scottsdale-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/scottsdale-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/surprise-az/",
+      "local_source": "landing-pages/uti-treatment/surprise-az/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/surprise-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/surprise-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/tempe-az/search-safe/",
+      "local_source": "landing-pages/uti-treatment/tempe-az/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "filesystem:docroot-static"
+    },
+    {
+      "url": "https://npcwoods.com/uti-treatment/uti-antibiotics-online/",
+      "local_source": "landing-pages/uti-treatment/uti-antibiotics-online/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-llmseo-pages.php"
+    }
+  ]
+}
