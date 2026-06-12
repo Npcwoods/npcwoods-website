@@ -38,15 +38,17 @@ ENV_PATH = os.path.expanduser("~/Desktop/Chris-HQ/.env")
 BLOCK_REGEX = (
     r"^/(arizona-uti-treatment|uti-treatment-online|uti-treatment|uti-care|"
     r"dental-pain|ear-infection-treatment|ed-treatment|glp1-weight-loss|"
-    r"sinus-infection-treatment|strep-throat-treatment|conditions)(/|$)"
+    r"sinus-infection-treatment|strep-throat-treatment|conditions|"
+    r"learn|medications)(/|$)"
 )
 TRIGGER_NAME = "Block — UTI / Health Pages (no Meta BAA)"
 META_PIXEL_ID = "1558261907814968"
-VERSION_NAME = "Scope Meta pixel off UTI health pages"
+VERSION_NAME = "Scope Meta pixel off health + education pages"
 VERSION_NOTES = (
-    "Adds firing exception so the Meta pixel (1558261907814968) does not fire on "
-    "UTI health-condition pages. No BAA with Meta; health pages must not send "
-    "PageView. Pixel remains live on non-health pages."
+    "Extends the firing exception so the Meta pixel (1558261907814968) does not "
+    "fire on health-condition pages OR the /learn/* and /medications/* education "
+    "pages. No BAA with Meta; health pages must not send PageView. Pixel remains "
+    "live on non-health pages."
 )
 
 # Substrings that identify a Meta/Facebook pixel tag when found in its JSON.
