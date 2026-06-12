@@ -28,7 +28,16 @@ All static landing pages must include:
 - Public Review URL fallback: `https://vercel-review-site.vercel.app/`
 
 ## GoDaddy Production Deployment
-1. Upload static HTML via SFTP (paramiko) to `html/{path}/index.html`.
-2. Ensure routing exists in the corresponding mu-plugin PHP file.
-3. Touch/update the matching WordPress page stub ID via the REST API to flush GoDaddy Varnish cache.
-4. Run Playwright pixel/event verification on the live URL to prove `tracking.js` fires.
+**Use `scripts/deploy.py` — do NOT write new dated one-off deploy scripts.** It handles the whole pipeline (remote backup → SFTP upload → WP stub touch/cache flush → live tracking verification). See `scripts/README-deploy.md`.
+```bash
+python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe          # dry-run (default, safe)
+python3 scripts/deploy.py --pages <path> --live                              # deploys; asks for Chris's confirmation phrase
+python3 scripts/deploy.py --pages <path> --verify-only                       # live tracking check only
+```
+Not covered by deploy.py (do manually): first-time page launches (mu-plugin routing + WP stub creation), non-page assets (`tracking.js`, mu-plugins, `llms.txt`), IndexNow ping, sitemap exclusions.
+
+## Search-Safe City Pages (template system)
+The 8 `uti-treatment/<city>/search-safe/` pages are generated from one template. **Never hand-edit the 8 pages** — edit `landing-pages/uti-treatment/_search-safe-template/template.html` (design) or `cities.json` (per-city data), then run `python3 scripts/build-search-safe-pages.py`. New city = one cities.json entry. See the README in that folder. Verify: `python3 -m unittest tests.test_search_safe_template`.
+
+## Site Guardian (nightly compliance sweep)
+`python3 tests/guardian/guardian.py` — read-only sweep of all ~95 live pages: tracking.js/GTM present, zero Meta pixel on health pages, canonical claim wording, forbidden words, noindex on paid LPs, broken links. Report: `content-output/guardian-reports/latest.md`. Refresh page list with `tests/guardian/build_manifest.py` after adding pages. Schedule install (needs Chris's yes): `zsh tests/guardian/install.sh`. Run with `~/Desktop/Chris-HQ/gads-env/bin/python` for Playwright spot-checks (system python lacks playwright).
