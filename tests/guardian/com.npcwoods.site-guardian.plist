@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!--
+    Nightly Site Guardian: read-only compliance/tracking sweep of npcwoods.com.
+
+    TCC workaround (same pattern as com.npcwoods.git-hygiene): launchd jobs
+    cannot read ~/Desktop, so install.sh copies guardian.py + manifest.json to
+    ~/.local/npcwoods/site-guardian/ and builds a dedicated venv there.
+    Reports land in ~/.local/npcwoods/reports/guardian-reports/ via the
+    guardian's built-in PermissionError fallback (temp-file + atomic rename,
+    so a half-written latest.md is never visible).
+  -->
+  <key>Label</key>
+  <string>com.npcwoods.site-guardian</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/macmini/.local/npcwoods/site-guardian/venv/bin/python3</string>
+    <string>/Users/macmini/.local/npcwoods/site-guardian/guardian.py</string>
+    <string>--manifest</string>
+    <string>/Users/macmini/.local/npcwoods/site-guardian/manifest.json</string>
+    <string>--out-dir</string>
+    <string>/Users/macmini/.local/npcwoods/reports/guardian-reports</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>5</integer>
+  </dict>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>/Users/macmini</string>
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/macmini/.local/npcwoods/site-guardian</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/macmini/.local/npcwoods/reports/guardian-reports/launchd-stdout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/macmini/.local/npcwoods/reports/guardian-reports/launchd-stderr.log</string>
+</dict>
+</plist>
