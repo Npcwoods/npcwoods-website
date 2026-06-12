@@ -146,7 +146,14 @@ def normalize_page(raw: str) -> str:
 
 
 def local_path_for(page: str) -> Path:
-    return ROOT / LANDING_DIR / page / "index.html"
+    primary = ROOT / LANDING_DIR / page / "index.html"
+    if primary.exists():
+        return primary
+    # core pages (about, experience, pharmacy-partners, ...) keep their source under html/
+    fallback = ROOT / "html" / page / "index.html"
+    if fallback.exists():
+        return fallback
+    return primary
 
 
 def remote_path_for(page: str) -> str:
