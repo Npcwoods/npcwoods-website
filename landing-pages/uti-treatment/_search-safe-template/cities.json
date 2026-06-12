@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "mesa-az",
+    "city": "Mesa",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "tempe-az",
+    "city": "Tempe",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "chandler-az",
+    "city": "Chandler",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "gilbert-az",
+    "city": "Gilbert",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "glendale-az",
+    "city": "Glendale",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "scottsdale-az",
+    "city": "Scottsdale",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "surprise-az",
+    "city": "Surprise",
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "state_page": "arizona-telemedicine"
+  },
+  {
+    "slug": "albuquerque-nm",
+    "city": "Albuquerque",
+    "state": "New Mexico",
+    "state_abbr": "NM",
+    "state_page": "new-mexico-telemedicine"
+  }
+]
