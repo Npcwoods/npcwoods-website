@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Confirm Details & Pay | NPCWoods</title>
+  <style>
+    :root {
+      --navy-dark: #070e24;
+      --navy-light: #091535;
+      --woods-blue: #2563EB;
+      --woods-blue-hover: #1D4ED8;
+      --amber: #D4933F;
+      --charcoal: #2A2A2A;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, rgba(212, 147, 63, 0.15), transparent 40%), 
+                  linear-gradient(135deg, var(--navy-light), var(--navy-dark));
+      color: #FFFFFF;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    /* Suppress global fixed phone/fax overlays on mobile */
+    #npcSaveWrap { display: none !important; }
+    body::after { content: none !important; display: none !important; }
+
+    .attestation-card {
+      background: var(--bg-card);
+      color: var(--charcoal);
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 32px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .card-header img {
+      border-radius: 50%;
+      border: 3px solid var(--woods-blue);
+      margin-bottom: 12px;
+    }
+
+    .card-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--navy-light);
+    }
+
+    .card-header p {
+      font-size: 0.95rem;
+      color: #64748B;
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--navy-light);
+    }
+
+    .state-select {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border-color);
+      font-size: 1rem;
+      font-weight: 500;
+      background-color: #F8FAFC;
+      color: var(--charcoal);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23091535' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+      background-size: 16px;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    .state-select:focus {
+      border-color: var(--woods-blue);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-color);
+      accent-color: var(--woods-blue);
+      cursor: pointer;
+      margin: 2px 0 0 0;
+      flex-shrink: 0;
+    }
+
+    .checkbox-label {
+      font-size: 0.92rem;
+      line-height: 1.4;
+      color: #475569;
+    }
+
+    .checkbox-label a {
+      color: var(--woods-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .checkbox-label a:hover {
+      text-decoration: underline;
+    }
+
+    .pay-btn {
+      width: 100%;
+      background: #CBD5E1;
+      color: #94A3B8;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 100px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: not-allowed;
+      transition: all 0.2s ease;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .pay-btn.active {
+      background: var(--woods-blue);
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    .pay-btn.active:hover {
+      background: var(--woods-blue-hover);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+
+    .secure-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="attestation-card">
+    <div class="card-header">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods" width="64" height="64">
+      <h1>Confirm Details</h1>
+      <p>Please attest your details to proceed to secure payment.</p>
+    </div>
+
+    <form id="attestationForm">
+      <div class="form-group">
+        <label class="form-label" for="stateSelect">Where are you physically located right now?</label>
+        <select class="state-select" id="stateSelect" required>
+          <option value="" disabled selected>Select your current state</option>
+          <option value="AZ">Arizona</option>
+          <option value="CO">Colorado</option>
+          <option value="GA">Georgia</option>
+          <option value="ID">Idaho</option>
+          <option value="IA">Iowa</option>
+          <option value="MT">Montana</option>
+          <option value="NV">Nevada</option>
+          <option value="NM">New Mexico</option>
+          <option value="NC">North Carolina</option>
+          <option value="OR">Oregon</option>
+          <option value="UT">Utah</option>
+        </select>
+      </div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-item">
+          <input type="checkbox" id="chkLocation" disabled required>
+          <span class="checkbox-label">I confirm that I am physically located in the state selected above at this very moment.</span>
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox" id="chkFee" required>
+          <span class="checkbox-label">I agree to the $59 flat fee for my clinical evaluation (prescriptions are sent to your local pharmacy; cost of medications is separate).</span>
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox" id="chkTerms" required>
+          <span class="checkbox-label">I have read and agree to the NPCWoods <a href="/terms-of-service/" target="_blank">Terms of Service</a>, <a href="/privacy-policy/" target="_blank">Privacy Policy</a>, and <a href="/medical-disclaimer/" target="_blank">Medical Disclaimer</a>.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="pay-btn" id="btnSubmit" disabled>Continue to Secure Payment</button>
+    </form>
+
+    <div class="secure-badge">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      Secure SSL / HIPAA-Compliant Gateway
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const form = document.getElementById('attestationForm');
+      const stateSelect = document.getElementById('stateSelect');
+      const chkLocation = document.getElementById('chkLocation');
+      const chkFee = document.getElementById('chkFee');
+      const chkTerms = document.getElementById('chkTerms');
+      const btnSubmit = document.getElementById('btnSubmit');
+
+      // Stripe checkout base URL (flat $59 product link)
+      const stripeBaseUrl = 'https://buy.stripe.com/8x2eVcevF2M4cWzcf2dQQ03';
+
+      // Enable/disable location checkbox based on state selection
+      stateSelect.addEventListener('change', function() {
+        if (stateSelect.value) {
+          chkLocation.removeAttribute('disabled');
+        } else {
+          chkLocation.setAttribute('disabled', 'true');
+          chkLocation.checked = false;
+        }
+        validateForm();
+      });
+
+      // Listener for validation trigger
+      [chkLocation, chkFee, chkTerms].forEach(chk => {
+        chk.addEventListener('change', validateForm);
+      });
+
+      function validateForm() {
+        const isValid = stateSelect.value && chkLocation.checked && chkFee.checked && chkTerms.checked;
+        if (isValid) {
+          btnSubmit.removeAttribute('disabled');
+          btnSubmit.classList.add('active');
+        } else {
+          btnSubmit.setAttribute('disabled', 'true');
+          btnSubmit.classList.remove('active');
+        }
+      }
+
+      // Intercept submit and append tracking to Stripe URL
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (btnSubmit.hasAttribute('disabled')) return;
+
+        // Save attested state locally (for HIPAA/Spruce verification sync later if needed)
+        try {
+          sessionStorage.setItem('npc_attested_state', stateSelect.value);
+        } catch(err) {}
+
+        // Gather URL parameters from landing page
+        const sourceParams = new URLSearchParams(window.location.search);
+        const outputParams = new URLSearchParams();
+
+        // Map existing UTM and click aliases
+        const aliases = {
+          client_reference_id: ['client_reference_id', 'ref'],
+          utm_source: ['utm_source', 'source', 'src'],
+          utm_medium: ['utm_medium', 'medium'],
+          utm_campaign: ['utm_campaign', 'campaign', 'cmp'],
+          utm_content: ['utm_content', 'content', 'ad'],
+          utm_term: ['utm_term', 'term'],
+          gclid: ['gclid'],
+          gbraid: ['gbraid'],
+          wbraid: ['wbraid']
+        };
+
+        function getFirstParam(keys) {
+          for (const key of keys) {
+            if (sourceParams.has(key)) return sourceParams.get(key);
+          }
+          return '';
+        }
+
+        // Populate outbound parameters
+        for (const [target, keys] of Object.entries(aliases)) {
+          const val = getFirstParam(keys);
+          if (val) outputParams.set(target, val);
+        }
+
+        // Set defaults if missing
+        if (!outputParams.has('utm_source')) outputParams.set('utm_source', 'spruce');
+        if (!outputParams.has('utm_medium')) outputParams.set('utm_medium', 'text');
+        if (!outputParams.has('utm_campaign')) outputParams.set('utm_campaign', 'manual-payment');
+
+        // Build the secure reference ID (Attestation + State + Campaign info)
+        const stateLabel = stateSelect.value;
+        const sourceLabel = outputParams.get('utm_source') || 'direct';
+        const clickRef = outputParams.get('gclid') || outputParams.get('fbclid') || 'none';
+        
+        // Create safe, non-PHI client_reference_id
+        const ref = `state-${stateLabel}-${sourceLabel}-${clickRef}`.replace(/[^a-zA-Z0-9_.-]+/g, '-').slice(0, 180);
+        outputParams.set('client_reference_id', ref);
+
+        // Build final redirect URL
+        const finalUrl = new URL(stripeBaseUrl);
+        finalUrl.search = outputParams.toString();
+
+        // Redirect to Stripe Checkout
+        window.location.replace(finalUrl.toString());
+      });
+    })();
+  </script>
+</body>
+</html>
