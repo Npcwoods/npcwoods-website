@@ -308,8 +308,40 @@
           utm_term: ['utm_term', 'term'],
           gclid: ['gclid'],
           gbraid: ['gbraid'],
-          wbraid: ['wbraid']
+          wbraid: ['wbraid'],
+          fbclid: ['fbclid']
         };
+
+        function cleanTag(value) {
+          return String(value || '')
+            .trim()
+            .replace(/[^a-zA-Z0-9_.-]+/g, '-')
+            .replace(/^[-_.]+|[-_.]+$/g, '')
+            .slice(0, 80);
+        }
+
+        function cleanRef(value) {
+          return String(value || '')
+            .trim()
+            .replace(/[^a-zA-Z0-9_.-]+/g, '')
+            .slice(0, 180);
+        }
+
+        function readStoredAttribution() {
+          try {
+            const keys = ['npc_attribution_last', 'npc_attribution_first'];
+            for (const key of keys) {
+              const raw = window.localStorage && window.localStorage.getItem(key);
+              if (!raw) continue;
+              const parsed = JSON.parse(raw);
+              if (!parsed || (parsed.expiresAt && Date.now() > parsed.expiresAt)) continue;
+              return parsed;
+            }
+          } catch(err) {}
+          return {};
+        }
+
+        const storedAttribution = readStoredAttribution();
 
         function getFirstParam(keys) {
           for (const key of keys) {
@@ -318,10 +350,25 @@
           return '';
         }
 
+        function getStoredParam(target) {
+          if (target === 'utm_source') return storedAttribution.source || '';
+          if (target === 'utm_medium') return storedAttribution.medium || '';
+          if (target === 'utm_campaign') return storedAttribution.campaign || '';
+          if (target === 'utm_content') return storedAttribution.content || '';
+          if (target === 'utm_term') return storedAttribution.term || '';
+          if (target === 'fbclid') return storedAttribution.fbclid || '';
+          if (['gclid', 'gbraid', 'wbraid'].includes(target)) {
+            return storedAttribution.click_id_type === target ? storedAttribution.click_id || '' : '';
+          }
+          return '';
+        }
+
         // Populate outbound parameters
         for (const [target, keys] of Object.entries(aliases)) {
-          const val = getFirstParam(keys);
-          if (val) outputParams.set(target, val);
+          const val = getFirstParam(keys) || getStoredParam(target);
+          if (val) {
+            outputParams.set(target, target.startsWith('utm_') ? cleanTag(val) : cleanRef(val));
+          }
         }
 
         // Set defaults if missing
@@ -329,13 +376,21 @@
         if (!outputParams.has('utm_medium')) outputParams.set('utm_medium', 'text');
         if (!outputParams.has('utm_campaign')) outputParams.set('utm_campaign', 'manual-payment');
 
-        // Build the secure reference ID (Attestation + State + Campaign info)
-        const stateLabel = stateSelect.value;
-        const sourceLabel = outputParams.get('utm_source') || 'direct';
-        const clickRef = outputParams.get('gclid') || outputParams.get('fbclid') || 'none';
-        
-        // Create safe, non-PHI client_reference_id
-        const ref = `state-${stateLabel}-${sourceLabel}-${clickRef}`.replace(/[^a-zA-Z0-9_.-]+/g, '-').slice(0, 180);
+        const sourceLabel = cleanTag(outputParams.get('utm_source')) || 'direct';
+        const mediumLabel = cleanTag(outputParams.get('utm_medium')) || 'unknown';
+        const campaignLabel = cleanTag(outputParams.get('utm_campaign')) || 'unknown';
+        const clickType = outputParams.get('gclid') ? 'gclid' : (outputParams.get('gbraid') ? 'gbraid' : (outputParams.get('wbraid') ? 'wbraid' : ''));
+        const clickRef = cleanRef(outputParams.get(clickType));
+
+        // Create safe, non-PHI client_reference_id in the parser shape:
+        // source-medium-campaign[-gclid|gbraid|wbraid-clickid]
+        const refParts = [sourceLabel, mediumLabel, campaignLabel];
+        if (clickType && clickRef) refParts.push(clickType, clickRef);
+        const ref = (
+          sourceLabel === 'spruce' && mediumLabel === 'text' && campaignLabel === 'manual-payment' && !clickRef
+            ? 'spruce-manual-payment'
+            : refParts.join('-')
+        ).slice(0, 180);
         outputParams.set('client_reference_id', ref);
 
         // Build final redirect URL
