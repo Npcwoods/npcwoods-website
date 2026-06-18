@@ -76,6 +76,7 @@ STUB_IDS = {
     "/uti-treatment/surprise-az/": 20,
     "/uti-treatment/scottsdale-az/": 17,
     "/uti-treatment/albuquerque-nm/": 411,
+    "/uti-care/": 698,
     "/do-i-need-antibiotics-sinus-infection/": 454,
 }
 STUB_SIDECAR = ROOT / "scripts" / "page-ids-2026-04-22.json"
