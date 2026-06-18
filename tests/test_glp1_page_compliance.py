@@ -27,6 +27,7 @@ class Glp1PageComplianceTest(unittest.TestCase):
             r"\bsemaglutide\b|\btirzepatide\b",
             r"\bguarantee(d|s)?\b|\bresults?\b",
             r"\bweight loss\b",
+            r"\bboard-certified\b",
         ]
         for pattern in blocked_patterns:
             self.assertIsNone(re.search(pattern, self.text, re.IGNORECASE), pattern)
