@@ -74,6 +74,7 @@ STUB_IDS = {
     "/pharmacy/": 334,
     "/pharmacy-partners/": 335,
     "/pay/": 674,
+    "/cold-sore-treatment/": 835,
     "/uti-treatment/mesa-az/": 13,
     "/uti-treatment/surprise-az/": 20,
     "/uti-treatment/scottsdale-az/": 17,
