@@ -59,6 +59,7 @@ FORBIDDEN_MARKERS = [
 ]
 WARN_IF_MISSING = ["GTM-59QSWZRC", "tracking.js"]
 WARN_IF_PRESENT = ["insurance"]
+INTENTIONAL_NO_TRACKING_PAGES = {"pay"}
 
 # url path -> WP stub ID for the Varnish cache flush. Search-safe child pages
 # flush their parent city stub (walk-up logic in stub_id_for_page).
@@ -72,6 +73,7 @@ STUB_IDS = {
     "/dental-pain/": 336,
     "/pharmacy/": 334,
     "/pharmacy-partners/": 335,
+    "/pay/": 674,
     "/uti-treatment/mesa-az/": 13,
     "/uti-treatment/surprise-az/": 20,
     "/uti-treatment/scottsdale-az/": 17,
@@ -114,6 +116,72 @@ def backup_path_for(remote: str, now: datetime | None = None) -> Path:
     return backup_root(now) / f"{remote.replace('/', '__')}.remote-backup-{ts}"
 
 
+def deploy_verify_report_dir() -> Path:
+    return hq_root() / "content-output" / "reports" / "deploy-verify"
+
+
+def verification_status_text(result) -> str:
+    return str(result)
+
+
+def verification_result_label(result) -> str:
+    text = verification_status_text(result)
+    if text.startswith("PASS"):
+        return "PASS"
+    if text.startswith("FAIL"):
+        return "FAIL"
+    return text or "unknown"
+
+
+def verification_marker_tracking_text(result) -> str:
+    detail = getattr(result, "marker_tracking_status", "")
+    return detail or verification_status_text(result)
+
+
+def verification_screenshot_paths(result) -> list[str]:
+    return [str(path) for path in (getattr(result, "screenshots", []) or [])]
+
+
+def md_cell(value) -> str:
+    return str(value).replace("|", "\\|").replace("\n", "<br>")
+
+
+def write_verification_proof_report(
+    plan: list[PagePlan],
+    results: dict[str, object],
+    mode: str,
+    now: datetime | None = None,
+) -> Path:
+    now = now or datetime.now()
+    out_dir = deploy_verify_report_dir()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"deploy-verify-{now.strftime('%Y%m%d-%H%M%S')}.md"
+
+    lines = [
+        "# Deploy Verification Proof",
+        "",
+        f"Generated: {now.strftime('%Y-%m-%d %H:%M:%S')}",
+        f"Mode: {mode}",
+        "",
+        "## Page Results",
+        "",
+        "| Page | URL | Result | Marker/tracking status | Screenshots |",
+        "|---|---|---|---|---|",
+    ]
+    for item in plan:
+        result = results.get(item.page, "skipped")
+        screenshots = verification_screenshot_paths(result)
+        screenshot_text = "<br>".join(screenshots) if screenshots else "Screenshots: none"
+        lines.append(
+            f"| `{md_cell(item.page)}` | {md_cell(item.url)} | "
+            f"{md_cell(verification_result_label(result))} | "
+            f"{md_cell(verification_marker_tracking_text(result))} | "
+            f"{md_cell(screenshot_text)} |"
+        )
+    path.write_text("\n".join(lines) + "\n")
+    return path
+
+
 # --------------------------------------------------------------------------
 # Page resolution
 # --------------------------------------------------------------------------
@@ -127,6 +195,23 @@ class PagePlan:
     size: int = 0
     sha256: str = ""
     warnings: list = field(default_factory=list)
+
+
+@dataclass
+class VerificationResult:
+    status: str
+    marker_tracking_status: str = ""
+    screenshots: list[str] = field(default_factory=list)
+
+    def __str__(self) -> str:
+        if not self.marker_tracking_status:
+            return self.status
+        if self.status.startswith("FAIL:"):
+            return self.status
+        return f"{self.status} ({self.marker_tracking_status})"
+
+    def startswith(self, prefix: str) -> bool:
+        return str(self).startswith(prefix)
 
 
 def normalize_page(raw: str) -> str:
@@ -425,6 +510,8 @@ def verify_http(item: PagePlan) -> str | None:
         return "response is not our static HTML page"
     missing = [m for m in WARN_IF_MISSING if m not in html]
     if missing:
+        if item.page in INTENTIONAL_NO_TRACKING_PAGES:
+            return None
         return f"missing markers: {missing}"
     return None
 
@@ -464,7 +551,7 @@ def verify_tracking_playwright(item: PagePlan) -> tuple[bool, str]:
     return ok, f"GTM={gtm} GA4={ga4} MetaPixel={len(bad_hits)}"
 
 
-def run_verification(plan: list[PagePlan]) -> dict[str, str]:
+def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
     """Returns page -> 'PASS'/'FAIL: reason' map."""
     try:
         import playwright  # noqa: F401
@@ -477,18 +564,20 @@ def run_verification(plan: list[PagePlan]) -> dict[str, str]:
     for item in plan:
         problem = verify_http(item)
         if problem:
-            results[item.page] = f"FAIL: {problem}"
+            results[item.page] = VerificationResult(f"FAIL: {problem}", problem)
             print(f"  [verify] {item.page}: FAIL ({problem})")
             continue
         if have_playwright:
             try:
-                ok, detail = verify_tracking_playwright(item)
+                tracking = verify_tracking_playwright(item)
+                ok, detail = tracking[0], tracking[1]
+                screenshots = list(tracking[2]) if len(tracking) > 2 else []
             except Exception as e:  # noqa: BLE001 — verification must never crash the report
-                ok, detail = False, f"playwright error: {e}"
-            results[item.page] = ("PASS" if ok else "FAIL") + f" ({detail})"
+                ok, detail, screenshots = False, f"playwright error: {e}", []
+            results[item.page] = VerificationResult("PASS" if ok else "FAIL", detail, screenshots)
             print(f"  [verify] {item.page}: {'PASS' if ok else 'FAIL'} ({detail})")
         else:
-            results[item.page] = "PASS (HTTP markers only)"
+            results[item.page] = VerificationResult("PASS", "HTTP markers only")
             print(f"  [verify] {item.page}: PASS (HTTP markers only)")
     return results
 
@@ -541,7 +630,9 @@ def main(argv=None) -> int:
     if args.verify_only:
         print(f"[verify-only] checking {len(plan)} live page(s), no upload")
         results = run_verification(plan)
+        proof_report = write_verification_proof_report(plan, results, mode="verify-only")
         failed = [p for p, r in results.items() if r.startswith("FAIL")]
+        print(f"[proof] wrote verification report: {proof_report}")
         print(f"\n[done] {len(plan) - len(failed)}/{len(plan)} pages passed verification")
         return 1 if failed else 0
 
@@ -605,10 +696,13 @@ def main(argv=None) -> int:
 
     # verification
     verify_results = {}
+    proof_report = None
     if uploaded and not args.skip_verify:
         print("\n[verify] waiting 10s for cache to settle, then checking live URLs")
         time.sleep(10)
         verify_results = run_verification(uploaded)
+        proof_report = write_verification_proof_report(uploaded, verify_results, mode="live-post-deploy")
+        print(f"  [proof] wrote verification report: {proof_report}")
 
     # ---- final report ------------------------------------------------------
     print("\n" + "=" * 70)
@@ -621,6 +715,8 @@ def main(argv=None) -> int:
         print(f"      backup:  {bak if bak else '(none — first deploy)'}")
         print(f"      cache:   {flush_results.get(item.page, 'skipped')}")
         print(f"      verify:  {verify_results.get(item.page, 'skipped')}")
+    if proof_report:
+        print(f"  proof:   {proof_report}")
     for page, err in failed_uploads:
         print(f"    {page}: UPLOAD FAILED — {err}")
     failed_verify = [p for p, r in verify_results.items() if r.startswith("FAIL")]

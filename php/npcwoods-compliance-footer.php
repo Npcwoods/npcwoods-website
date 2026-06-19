@@ -113,7 +113,7 @@ function npcwoods_compliance_footer() {
             </div>
 
             <div class="footer-contact">
-                <a href="tel:4806394722">(480) 639-4722</a> &nbsp;|&nbsp;
+                <a href="tel:+14806394722">(480) 639-4722</a> &nbsp;|&nbsp;
                 <a href="mailto:cwoods@npcwoods.com">cwoods@npcwoods.com</a><br>
                 Telehealth service &middot; Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT
             </div>

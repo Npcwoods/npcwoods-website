@@ -48,14 +48,37 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("manual-payment", params["utm_campaign"])
         self.assertEqual("spruce-manual-payment", params["client_reference_id"])
 
+    def test_optional_heard_source_tags_plain_referral_payment(self):
+        redirect = run_pay_submit("", heard_source="friend_family")
+        params = redirect["params"]
 
-def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
+        self.assertEqual("referral", params["utm_source"])
+        self.assertEqual("wordofmouth", params["utm_medium"])
+        self.assertEqual("heard-friend-family", params["utm_campaign"])
+        self.assertEqual("referral-wordofmouth-heard-friend-family", params["client_reference_id"])
+
+    def test_optional_heard_source_does_not_override_google_click_params(self):
+        redirect = run_pay_submit(
+            "?utm_source=google&utm_medium=cpc&utm_campaign=mesa-test&gclid=TESTGCLID",
+            heard_source="friend_family",
+        )
+        params = redirect["params"]
+
+        self.assertEqual("google", params["utm_source"])
+        self.assertEqual("cpc", params["utm_medium"])
+        self.assertEqual("mesa-test", params["utm_campaign"])
+        self.assertEqual("TESTGCLID", params["gclid"])
+        self.assertEqual("google-cpc-mesa-test-gclid-TESTGCLID", params["client_reference_id"])
+
+
+def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: str = "") -> dict:
     runner = textwrap.dedent(
         """
         const fs = require('fs');
         const pagePath = process.argv[1];
         const query = process.argv[2] || '';
         const storedTouch = process.argv[3] ? JSON.parse(process.argv[3]) : null;
+        const heardSource = process.argv[4] || '';
         const html = fs.readFileSync(pagePath, 'utf8');
         const match = html.match(/<script>\\s*(\\(function\\(\\) \\{[\\s\\S]*?\\}\\)\\(\\);)\\s*<\\/script>\\s*<\\/body>/);
         if (!match) throw new Error('pay submit script not found');
@@ -74,6 +97,15 @@ def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
             hasAttribute(name) { return attrs.has(name); },
           };
         }
+        function makeChip(source) {
+          return {
+            dataset: { source },
+            classList: { add() {}, remove() {}, toggle() {} },
+            setAttribute() {},
+            getBoundingClientRect() { return { left: 100, top: 100, width: 80, height: 32 }; },
+            addEventListener(type, fn) { listeners['heardChip:' + source + ':' + type] = fn; },
+          };
+        }
 
         const elements = {
           attestationForm: makeElement('attestationForm'),
@@ -81,8 +113,16 @@ def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
           chkLocation: makeElement('chkLocation', { attrs: ['disabled'] }),
           chkFee: makeElement('chkFee'),
           chkTerms: makeElement('chkTerms'),
+          heardSelect: makeElement('heardSelect'),
           btnSubmit: makeElement('btnSubmit', { attrs: ['disabled'] }),
         };
+        const heardChips = [
+          makeChip('google_search'),
+          makeChip('friend_family'),
+          makeChip('facebook_instagram'),
+          makeChip('returning_visitor'),
+          makeChip('other'),
+        ];
         let redirected = '';
         const storage = {};
         if (storedTouch) {
@@ -91,6 +131,16 @@ def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
 
         global.document = {
           getElementById(id) { return elements[id]; },
+          querySelectorAll(selector) { return selector === '.source-chip' ? heardChips : []; },
+          createElement() {
+            return {
+              style: { setProperty() {} },
+              className: '',
+              addEventListener(_type, fn) { fn(); },
+              remove() {},
+            };
+          },
+          body: { appendChild() {} },
         };
         global.window = {
           location: {
@@ -104,6 +154,10 @@ def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
         global.URLSearchParams = URLSearchParams;
 
         eval(match[1]);
+        if (heardSource) {
+          const chipListener = listeners['heardChip:' + heardSource + ':click'];
+          if (chipListener) chipListener({ preventDefault() {} });
+        }
         elements.stateSelect.value = 'AZ';
         listeners['stateSelect:change']();
         elements.chkLocation.checked = true;
@@ -123,7 +177,7 @@ def run_pay_submit(query: str, stored_touch: dict | None = None) -> dict:
         """
     )
     completed = subprocess.run(
-        ["node", "-e", runner, str(PAY_PAGE), query, json.dumps(stored_touch) if stored_touch else ""],
+        ["node", "-e", runner, str(PAY_PAGE), query, json.dumps(stored_touch) if stored_touch else "", heard_source],
         check=True,
         capture_output=True,
         text=True,

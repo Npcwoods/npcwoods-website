@@ -217,6 +217,74 @@ class VerifyOnlyTest(unittest.TestCase):
     def setUp(self):
         self.m = load_module()
 
+    def test_verify_only_writes_timestamped_proof_report(self):
+        fixed_now = datetime(2026, 6, 18, 8, 45, 12)
+
+        class FixedDatetime:
+            @classmethod
+            def now(cls):
+                return fixed_now
+
+        fake_paramiko = mock.MagicMock()
+        with tempfile.TemporaryDirectory() as tmp, \
+             mock.patch.object(self.m, "hq_root", return_value=Path(tmp)), \
+             mock.patch.object(self.m, "datetime", FixedDatetime), \
+             mock.patch.object(self.m, "load_env") as load_env, \
+             mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}), \
+             mock.patch.object(self.m, "run_verification",
+                               return_value={PAGE: "PASS (HTTP markers only)"}) as rv:
+            out = io.StringIO()
+            with redirect_stdout(out):
+                code = self.m.main(["deploy.py", "--pages", PAGE, "--verify-only"])
+
+            report = (Path(tmp) / "content-output" / "reports" / "deploy-verify" /
+                      "deploy-verify-20260618-084512.md")
+            self.assertEqual(code, 0)
+            load_env.assert_not_called()
+            fake_paramiko.Transport.assert_not_called()
+            rv.assert_called_once()
+            self.assertTrue(report.exists())
+            text = report.read_text()
+            self.assertIn("# Deploy Verification Proof", text)
+            self.assertIn("Mode: verify-only", text)
+            self.assertIn(PAGE, text)
+            self.assertIn(f"https://npcwoods.com/{PAGE}/", text)
+            self.assertIn("PASS (HTTP markers only)", text)
+            self.assertIn("Screenshots: none", text)
+            self.assertIn(str(report), out.getvalue())
+
+    def test_verification_proof_report_includes_playwright_screenshot_paths(self):
+        fixed_now = datetime(2026, 6, 18, 9, 10, 11)
+
+        class FixedDatetime:
+            @classmethod
+            def now(cls):
+                return fixed_now
+
+        plan = [self.m.PagePlan(
+            page=PAGE,
+            local=self.m.ROOT / "landing-pages" / PAGE / "index.html",
+            remote=f"html/{PAGE}/index.html",
+            url=f"https://npcwoods.com/{PAGE}/",
+        )]
+        result = self.m.VerificationResult(
+            "FAIL",
+            "GTM=False GA4=False MetaPixel=0",
+            screenshots=["/tmp/deploy-proof/mobile-before.png", "/tmp/deploy-proof/mobile-after.png"],
+        )
+        with tempfile.TemporaryDirectory() as tmp, \
+             mock.patch.object(self.m, "hq_root", return_value=Path(tmp)), \
+             mock.patch.object(self.m, "datetime", FixedDatetime):
+            report = self.m.write_verification_proof_report(
+                plan, {PAGE: result}, mode="verify-only")
+
+            text = report.read_text()
+        self.assertEqual(report.name, "deploy-verify-20260618-091011.md")
+        self.assertIn("FAIL", text)
+        self.assertIn("GTM=False GA4=False MetaPixel=0", text)
+        self.assertIn("/tmp/deploy-proof/mobile-before.png", text)
+        self.assertIn("/tmp/deploy-proof/mobile-after.png", text)
+
     def test_verify_only_runs_verification_without_sftp_or_credentials(self):
         fake_paramiko = mock.MagicMock()
         with mock.patch.object(self.m, "load_env") as load_env, \

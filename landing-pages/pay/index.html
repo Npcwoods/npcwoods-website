@@ -81,6 +81,81 @@
       color: var(--navy-light);
     }
 
+    .optional-label {
+      font-weight: 500;
+      color: #64748B;
+    }
+
+    .optional-note {
+      margin: -2px 0 10px;
+      font-size: 0.86rem;
+      line-height: 1.4;
+      color: #64748B;
+    }
+
+    .source-chip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .source-chip {
+      border: 1.5px solid var(--border-color);
+      background: #F8FAFC;
+      color: var(--charcoal);
+      border-radius: 100px;
+      min-height: 44px;
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .source-chip:hover,
+    .source-chip:focus-visible {
+      border-color: var(--woods-blue);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .source-chip.selected {
+      border-color: var(--woods-blue);
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--woods-blue);
+    }
+
+    .source-chip.selected::before {
+      content: "✓ ";
+    }
+
+    .confetti-piece {
+      position: fixed;
+      z-index: 9999;
+      width: 7px;
+      height: 10px;
+      border-radius: 2px;
+      pointer-events: none;
+      animation: pay-confetti 760ms ease-out forwards;
+    }
+
+    @keyframes pay-confetti {
+      0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--x), var(--y), 0) rotate(var(--r));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confetti-piece {
+        display: none;
+      }
+    }
+
     .state-select {
       width: 100%;
       padding: 14px 20px;
@@ -219,6 +294,19 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label class="form-label" for="heardSelect">How did you hear about NPCWoods? <span class="optional-label">(optional)</span></label>
+        <p class="optional-note">Answering is totally optional, but it helps us know what avenues or platforms are working so we can help more people.</p>
+        <input type="hidden" id="heardSelect" value="">
+        <div class="source-chip-grid" aria-label="How did you hear about NPCWoods?">
+          <button class="source-chip" type="button" data-source="google_search" aria-pressed="false">Google</button>
+          <button class="source-chip" type="button" data-source="friend_family" aria-pressed="false">Friend / family</button>
+          <button class="source-chip" type="button" data-source="facebook_instagram" aria-pressed="false">Facebook / Instagram</button>
+          <button class="source-chip" type="button" data-source="returning_visitor" aria-pressed="false">Returning visitor</button>
+          <button class="source-chip" type="button" data-source="other" aria-pressed="false">Other</button>
+        </div>
+      </div>
+
       <div class="checkbox-group">
         <label class="checkbox-item">
           <input type="checkbox" id="chkLocation" disabled required>
@@ -252,6 +340,8 @@
       const chkLocation = document.getElementById('chkLocation');
       const chkFee = document.getElementById('chkFee');
       const chkTerms = document.getElementById('chkTerms');
+      const heardSelect = document.getElementById('heardSelect');
+      const sourceChips = Array.from(document.querySelectorAll('.source-chip'));
       const btnSubmit = document.getElementById('btnSubmit');
 
       // Stripe checkout base URL (flat $59 product link)
@@ -272,6 +362,42 @@
       [chkLocation, chkFee, chkTerms].forEach(chk => {
         chk.addEventListener('change', validateForm);
       });
+
+      sourceChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          const nextValue = chip.dataset.source || '';
+          const wasSelected = heardSelect.value === nextValue;
+          heardSelect.value = wasSelected ? '' : nextValue;
+          sourceChips.forEach(item => {
+            const isSelected = item.dataset.source === heardSelect.value;
+            item.classList.toggle('selected', isSelected);
+            item.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+          });
+          if (!wasSelected && heardSelect.value) {
+            launchConfetti(chip);
+          }
+        });
+      });
+
+      function launchConfetti(anchor) {
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || !document.body) return;
+        const rect = anchor.getBoundingClientRect();
+        const colors = ['#2563EB', '#D4933F', '#16A34A', '#EC4899', '#F59E0B'];
+        for (let i = 0; i < 18; i += 1) {
+          const piece = document.createElement('span');
+          piece.className = 'confetti-piece';
+          piece.style.left = `${rect.left + rect.width / 2}px`;
+          piece.style.top = `${rect.top + rect.height / 2}px`;
+          piece.style.backgroundColor = colors[i % colors.length];
+          piece.style.setProperty('--x', `${Math.round((Math.random() - 0.5) * 150)}px`);
+          piece.style.setProperty('--y', `${Math.round(55 + Math.random() * 90)}px`);
+          piece.style.setProperty('--r', `${Math.round((Math.random() - 0.5) * 520)}deg`);
+          piece.style.animationDelay = `${i * 9}ms`;
+          piece.addEventListener('animationend', () => piece.remove(), { once: true });
+          document.body.appendChild(piece);
+        }
+      }
 
       function validateForm() {
         const isValid = stateSelect.value && chkLocation.checked && chkFee.checked && chkTerms.checked;
@@ -363,12 +489,71 @@
           return '';
         }
 
+        function hasExplicitUrlAttribution() {
+          const explicitKeys = [
+            'client_reference_id', 'ref',
+            'utm_source', 'source', 'src',
+            'utm_medium', 'medium',
+            'utm_campaign', 'campaign', 'cmp',
+            'utm_content', 'content', 'ad',
+            'utm_term', 'term',
+            'gclid', 'gbraid', 'wbraid', 'fbclid'
+          ];
+          return explicitKeys.some(key => sourceParams.has(key));
+        }
+
+        function heardAttribution() {
+          const value = heardSelect ? heardSelect.value : '';
+          const choices = {
+            google_search: {
+              source: 'google',
+              medium: 'organic',
+              campaign: 'heard-google-search',
+              content: 'heard-google-search'
+            },
+            friend_family: {
+              source: 'referral',
+              medium: 'wordofmouth',
+              campaign: 'heard-friend-family',
+              content: 'heard-friend-family'
+            },
+            facebook_instagram: {
+              source: 'meta',
+              medium: 'organic_social',
+              campaign: 'heard-facebook-instagram',
+              content: 'heard-facebook-instagram'
+            },
+            returning_visitor: {
+              source: 'npcwoods',
+              medium: 'returning',
+              campaign: 'heard-returning-visitor',
+              content: 'heard-returning-visitor'
+            },
+            other: {
+              source: 'other',
+              medium: 'self_reported',
+              campaign: 'heard-other',
+              content: 'heard-other'
+            }
+          };
+          return choices[value] || null;
+        }
+
         // Populate outbound parameters
         for (const [target, keys] of Object.entries(aliases)) {
           const val = getFirstParam(keys) || getStoredParam(target);
           if (val) {
             outputParams.set(target, target.startsWith('utm_') ? cleanTag(val) : cleanRef(val));
           }
+        }
+
+        const hasGoogleClickId = outputParams.has('gclid') || outputParams.has('gbraid') || outputParams.has('wbraid');
+        const selfReported = heardAttribution();
+        if (selfReported && !hasGoogleClickId && !hasExplicitUrlAttribution()) {
+          outputParams.set('utm_source', cleanTag(selfReported.source));
+          outputParams.set('utm_medium', cleanTag(selfReported.medium));
+          outputParams.set('utm_campaign', cleanTag(selfReported.campaign));
+          outputParams.set('utm_content', cleanTag(selfReported.content));
         }
 
         // Set defaults if missing

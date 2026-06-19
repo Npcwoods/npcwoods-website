@@ -19,6 +19,10 @@ All static landing pages must include:
 - Header: `html/shared/header-snippet.html` (Paste right after `<body>`)
 - Footer: `html/shared/footer-snippet.html` (Paste before `</body>`)
 
+## WordPress Blog Visual Guardrail
+- Do not use social-share images with baked-in promo text as readable hero UI inside WordPress posts. Crop them as background texture only, or use text-free imagery and render the actual message in HTML.
+- WordPress/theme CSS can repaint blog headings and card text. For dark custom blog sections, scope contrast rules to the page wrapper and set both `color` and `-webkit-text-fill-color`, then verify mobile and desktop screenshots.
+
 ## Vercel Review lane (Previews)
 - **Do not deploy the root directly.** Build a sanitized preview bundle first:
   ```bash
