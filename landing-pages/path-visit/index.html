@@ -13,8 +13,8 @@
 <meta http-equiv="content-language" content="en-US">
 <link rel="author" href="https://npcwoods.com/about/">
 <link rel="publisher" href="https://npcwoods.com/">
-<title>The Path Visit | A Different Way to Start Care | NPCWoods</title>
-<meta name="description" content="Walk through a calmer NPCWoods visit experience: a guided path, $59 flat fee, no paperwork, no hidden fees, and provider-led text-based care.">
+<title>Breathe. You're in the Right Place | NPCWoods</title>
+<meta name="description" content="When you feel sick and do not know what to do next, text a real NP for a calmer $59 visit and a clear plan. No portal maze, no app download, no hidden fees.">
 <meta name="theme-color" content="#07111f">
 <link rel="canonical" href="https://npcwoods.com/path-visit/">
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
@@ -23,8 +23,8 @@
 <link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://npcwoods.com/path-visit/">
-<meta property="og:title" content="The Path Visit | NPCWoods">
-<meta property="og:description" content="A calmer way to start care: guided, text-based, provider-led, and $59 flat fee.">
+<meta property="og:title" content="Breathe. You're in the Right Place | NPCWoods">
+<meta property="og:description" content="A calmer way to start care: text-based, provider-led, and $59 flat fee.">
 <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Meta Pixel disabled: no BAA with Meta. This no-op stub also blocks GTM-injected pixel code on this health care page. -->
@@ -99,8 +99,8 @@ gtag('config', 'AW-610222919');
       "@type": "WebPage",
       "@id": "https://npcwoods.com/path-visit/#webpage",
       "url": "https://npcwoods.com/path-visit/",
-      "name": "The Path Visit | NPCWoods",
-      "description": "An immersive walkthrough of the NPCWoods text-based visit experience.",
+      "name": "Breathe. You're in the Right Place | NPCWoods",
+      "description": "A calmer way to start a text-based NPCWoods visit and get a clear next step.",
       "isPartOf": { "@id": "https://npcwoods.com/#website" },
       "about": { "@id": "https://npcwoods.com/#medical-business" },
       "author": { "@id": "https://npcwoods.com/#chris-woods" }
@@ -110,18 +110,18 @@ gtag('config', 'AW-610222919');
       "@id": "https://npcwoods.com/path-visit/#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://npcwoods.com/" },
-        { "@type": "ListItem", "position": 2, "name": "The Path Visit", "item": "https://npcwoods.com/path-visit/" }
+        { "@type": "ListItem", "position": 2, "name": "A Calmer Visit", "item": "https://npcwoods.com/path-visit/" }
       ]
     },
     {
       "@type": "HowTo",
       "@id": "https://npcwoods.com/path-visit/#how-to-start",
-      "name": "How the NPCWoods path visit works",
-      "description": "A guided text-based visit path with provider review and clear next steps.",
+      "name": "How a calmer NPCWoods text visit works",
+      "description": "A text-based visit with provider review, clear next steps, and transparent $59 pricing.",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Start the visit", "text": "Text NPCWoods and answer guided questions." },
-        { "@type": "HowToStep", "position": 2, "name": "Provider review", "text": "Chris Woods reviews the visit and sends clear next steps." },
-        { "@type": "HowToStep", "position": 3, "name": "Use the plan", "text": "Follow the plan, including pharmacy routing when medically appropriate." }
+        { "@type": "HowToStep", "position": 1, "name": "Tell Chris what is going on", "text": "Start a secure text visit and describe what changed, what hurts, and what you are worried about." },
+        { "@type": "HowToStep", "position": 2, "name": "Get provider review", "text": "Chris Woods reviews your symptoms, asks follow-up questions, and helps decide the appropriate next step." },
+        { "@type": "HowToStep", "position": 3, "name": "Leave with a clear plan", "text": "Receive clear guidance, pharmacy routing when medically appropriate, and red-flag instructions when in-person care is needed." }
       ]
     }
   ]
@@ -1022,6 +1022,836 @@ h1 span {
 }
 
 
+/* Clarity story rebuild: worried -> oriented -> helped -> clear next step. */
+.clarity-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(150deg, #071427 0%, #0d1d35 44%, #1b3341 100%);
+}
+
+.clarity-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7, 20, 39, calc(0.78 - var(--progress, 0) * 0.28)), rgba(7, 20, 39, 0.8)),
+    linear-gradient(120deg, rgba(37, 99, 235, 0.14), transparent 34%, rgba(212, 147, 63, 0.13) 64%, rgba(47, 138, 106, 0.13));
+  transition: background 300ms ease;
+}
+
+.story-rail {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  z-index: 80;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 10px;
+}
+
+.rail-step {
+  width: 82px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(7, 20, 39, 0.7);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.rail-step.is-active {
+  color: #071427;
+  background: #d4933f;
+  border-color: #d4933f;
+}
+
+.clarity-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: 156px 0 88px;
+  color: #fff;
+}
+
+.hero-grid,
+.story-grid,
+.trust-grid {
+  display: grid;
+  align-items: center;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 0.98fr) minmax(390px, 0.82fr);
+  gap: 56px;
+}
+
+.section-title {
+  margin: 0;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.96;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.section-title span,
+.clarity-hero h1 span {
+  color: #d4933f;
+}
+
+.hero-copy,
+.section-copy {
+  max-width: 660px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 20px;
+}
+
+.hero-actions,
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.btn,
+.sound-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  gap: 10px;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  touch-action: manipulation;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.btn:hover,
+.sound-button:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: #d4933f;
+  color: #071427;
+  box-shadow: 0 18px 44px rgba(212, 147, 63, 0.3);
+}
+
+.btn-primary:hover {
+  background: #e2a955;
+}
+
+.btn-blue {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.26);
+}
+
+.btn-blue:hover {
+  background: #1d4ed8;
+}
+
+.btn-ghost,
+.sound-button {
+  border-color: rgba(255, 255, 255, 0.26);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sound-button.is-on {
+  background: #dfeade;
+  color: #172033;
+  border-color: #dfeade;
+}
+
+.signal-panel {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    linear-gradient(145deg, rgba(7, 20, 39, 0.95), rgba(24, 56, 75, 0.92));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(12px);
+}
+
+.signal-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 42px),
+    linear-gradient(180deg, transparent 0%, rgba(251, 247, 238, 0.08) 100%);
+  opacity: 0.7;
+}
+
+.phone-story {
+  position: relative;
+  z-index: 2;
+  width: min(360px, calc(100% - 42px));
+  margin: 34px auto;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 26px;
+  background: rgba(250, 248, 245, 0.96);
+  color: #172033;
+  box-shadow: 0 26px 90px rgba(12, 24, 44, 0.18);
+}
+
+.phone-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.1);
+  font-weight: 900;
+}
+
+.phone-top span:last-child {
+  color: #2f8a6a;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.message-stack {
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+
+.message {
+  max-width: 84%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 12px 28px rgba(23, 32, 51, 0.08);
+}
+
+.message.patient {
+  justify-self: end;
+  background: #2563eb;
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+
+.message.chris {
+  justify-self: start;
+  background: #fff;
+  border-bottom-left-radius: 6px;
+}
+
+.clarity-meter {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100% - 42px));
+  margin: 0 auto 34px;
+}
+
+.meter-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.meter-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.meter-fill {
+  width: calc(34% + var(--progress, 0) * 62%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #c8664a, #d4933f, #2f8a6a);
+  transition: width 220ms ease;
+}
+
+.story-section {
+  position: relative;
+  min-height: 132vh;
+  color: #fff;
+}
+
+.story-section.light {
+  color: #172033;
+  background:
+    linear-gradient(180deg, rgba(251, 247, 238, 0), rgba(251, 247, 238, 0.98) 18%, rgba(251, 247, 238, 0.98));
+}
+
+.story-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: 132px 0 76px;
+}
+
+.story-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(390px, 0.82fr);
+  gap: 54px;
+}
+
+.story-section.light .section-copy {
+  color: #566275;
+}
+
+.story-section.light .eyebrow {
+  color: #2f8a6a;
+}
+
+.story-section.light .btn-ghost {
+  border-color: rgba(23, 32, 51, 0.16);
+  color: #172033;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.story-visual {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.light .story-visual {
+  border-color: rgba(23, 32, 51, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 26px 90px rgba(12, 24, 44, 0.18);
+}
+
+.visual-inner {
+  position: absolute;
+  inset: 24px;
+  display: grid;
+  align-content: center;
+  gap: 16px;
+}
+
+.friction-list,
+.decision-board,
+.plan-board {
+  display: grid;
+  gap: 12px;
+}
+
+.friction-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  transform: translateX(calc((1 - var(--progress, 0)) * -18px));
+  opacity: calc(0.42 + var(--progress, 0) * 0.58);
+}
+
+.friction-item i,
+.plan-step i {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(212, 147, 63, 0.18);
+  color: #d4933f;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.friction-item b,
+.plan-step b,
+.question-card b {
+  display: block;
+}
+
+.friction-item span,
+.plan-step span,
+.question-card span {
+  display: block;
+  margin-top: 3px;
+  color: inherit;
+  opacity: 0.78;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.decision-line {
+  position: relative;
+  padding: 16px 16px 16px 54px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: rgba(7, 20, 39, 0.56);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.decision-line::before {
+  content: attr(data-count);
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #2f8a6a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.plan-step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 15px;
+  border: 1px solid rgba(23, 32, 51, 0.14);
+  border-radius: 10px;
+  background: #fff;
+  color: #172033;
+  opacity: 0.56;
+  transform: translateY(14px);
+  transition: opacity 300ms ease, transform 300ms ease, border-color 300ms ease;
+}
+
+.plan-step.is-lit {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: rgba(47, 138, 106, 0.44);
+}
+
+.question-card {
+  padding: 18px;
+  border: 1px solid rgba(23, 32, 51, 0.12);
+  border-radius: 10px;
+  background: #fff;
+  color: #172033;
+}
+
+.question-card.is-answer {
+  margin-left: 42px;
+  background: #dbeafe;
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.trust-section {
+  position: relative;
+  padding: 118px 0;
+  background: #fbf7ee;
+  color: #172033;
+}
+
+.trust-grid {
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
+  gap: 54px;
+}
+
+.chris-portrait {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 26px 90px rgba(12, 24, 44, 0.18);
+}
+
+.chris-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.credential-strip {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #172033;
+  box-shadow: 0 18px 50px rgba(23, 32, 51, 0.16);
+}
+
+.credential-strip b {
+  display: block;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 24px;
+}
+
+.credential-strip span {
+  display: block;
+  margin-top: 3px;
+  color: #657084;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.trust-copy {
+  max-width: 700px;
+}
+
+.trust-copy .section-title {
+  color: #172033;
+}
+
+.trust-copy p {
+  margin: 20px 0 0;
+  color: #536071;
+  font-size: 19px;
+}
+
+.state-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.state-pills span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: #536071;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+}
+
+.final-section {
+  position: relative;
+  padding: 116px 0 90px;
+  color: #fff;
+  background: linear-gradient(180deg, #fbf7ee, #10213a 22%, #071427);
+  text-align: center;
+}
+
+.final-section .section-title,
+.final-section .section-copy {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.care-facts {
+  width: min(760px, 100%);
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.care-fact {
+  min-height: 92px;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.care-fact b {
+  color: #d4933f;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.care-fact span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.safety-note {
+  width: min(760px, 100%);
+  margin: 28px auto 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 1080px) {
+  .hero-grid,
+  .story-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-panel,
+  .story-visual {
+    min-height: 540px;
+  }
+
+  .care-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .concept-nav {
+    display: none;
+  }
+
+  .stage {
+    scroll-margin-top: 74px;
+  }
+
+  .stage-sticky {
+    padding-top: 104px;
+  }
+
+  .story-rail {
+    display: none;
+  }
+
+  .clarity-hero {
+    min-height: auto;
+    padding: 118px 0 56px;
+  }
+
+  .story-section {
+    min-height: auto;
+  }
+
+  .story-sticky {
+    position: relative;
+    min-height: auto;
+    padding: 74px 0;
+  }
+
+  .hero-grid,
+  .story-grid,
+  .trust-grid {
+    gap: 28px;
+  }
+
+  .clarity-hero h1,
+  .section-title {
+    font-size: 42px;
+  }
+
+  .hero-copy,
+  .section-copy,
+  .trust-copy p {
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .hero-actions,
+  .section-actions,
+  .final-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .btn,
+  .sound-button {
+    width: 100%;
+  }
+
+  .signal-panel,
+  .story-visual {
+    min-height: 500px;
+  }
+
+  .visual-inner {
+    inset: 18px;
+  }
+
+  .phone-story,
+  .clarity-meter {
+    width: calc(100% - 28px);
+  }
+
+  .question-card.is-answer {
+    margin-left: 0;
+  }
+
+  .trust-section {
+    padding: 76px 0;
+  }
+
+  .final-section {
+    padding: 82px 0 70px;
+  }
+
+  .care-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clarity-canvas {
+    display: none;
+  }
+}
+
+.forest-canvas {
+  opacity: 0;
+}
+
+.path-light {
+  display: none;
+}
+
+.stage {
+  scroll-margin-top: 92px;
+}
+
+.atmosphere {
+  background:
+    linear-gradient(180deg, rgba(7, 20, 39, calc(0.8 - var(--stage) * 0.08)), rgba(7, 20, 39, calc(0.94 - var(--stage) * 0.08))),
+    linear-gradient(120deg, rgba(37, 99, 235, 0.14), rgba(212, 147, 63, 0.08) 55%, rgba(47, 138, 106, 0.14));
+}
+
+.concept-nav {
+  background: rgba(7, 20, 39, 0.82);
+}
+
+.brand span span {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.path-card,
+.clearing-card,
+.map-card {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    linear-gradient(180deg, rgba(7, 20, 39, 0.94), rgba(24, 56, 75, 0.92));
+}
+
+.path-card::before,
+.clearing-world,
+.breath-orb,
+.cabin-light {
+  display: none;
+}
+
+.path-card {
+  align-items: center;
+}
+
+.guide-bubble {
+  background: rgba(250, 248, 245, 0.94);
+  color: #172033;
+  box-shadow: 0 26px 90px rgba(12, 24, 44, 0.18);
+}
+
+.guide-bubble small {
+  color: #2f8a6a;
+}
+
+.fork-options button {
+  background: #ffffff;
+  color: #172033;
+  border-color: rgba(23, 32, 51, 0.12);
+}
+
+.fork-options button.is-selected {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.path-status {
+  color: #566275;
+}
+
+.clearing-card {
+  place-items: stretch;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
+    linear-gradient(180deg, rgba(23, 32, 51, 0.88), rgba(47, 138, 106, 0.52));
+}
+
+.clearing-card::before {
+  content: "";
+  position: absolute;
+  inset: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 44px);
+}
+
+.clearing-caption {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.cabin-card {
+  background:
+    linear-gradient(90deg, rgba(7, 20, 39, 0.84), rgba(7, 20, 39, 0.22) 56%, rgba(7, 20, 39, 0.78)),
+    url("/assets/homepage-v2/chris-1000.webp") center bottom / cover no-repeat;
+}
+
+.map-card {
+  background:
+    linear-gradient(180deg, rgba(251, 247, 238, 0.96), rgba(251, 247, 238, 0.9)),
+    linear-gradient(145deg, rgba(37, 99, 235, 0.1), rgba(47, 138, 106, 0.08));
+}
+
+.care-step i {
+  background: #2f8a6a;
+}
+
+.final-stage {
+  background: linear-gradient(180deg, rgba(251, 247, 238, 0), rgba(16, 33, 58, 0.96) 22%, #071427);
+}
+
 /* Live page integration with the shared NPCWoods chrome. */
 .npc-nav { background: rgba(7, 17, 31, 0.94) !important; border-bottom: 1px solid rgba(255,255,255,0.12) !important; }
 .npc-nav-logo-name, .npc-nav-logo-tag, .npc-nav-links > li > a { color: #f8f4ec !important; }
@@ -1250,33 +2080,33 @@ h1 span {
 <!-- ===== END SITE HEADER ===== -->
 
 
-<a class="skip-link" href="#main">Skip to concept</a>
+<a class="skip-link" href="#main">Skip to visit story</a>
 <canvas class="forest-canvas" id="forestCanvas" aria-hidden="true"></canvas>
 <div class="atmosphere" aria-hidden="true"></div>
 <div class="path-light" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
-<nav class="concept-nav" aria-label="Concept navigation">
-  <a class="brand" href="#path" aria-label="NPCWoods path concept">
+<nav class="concept-nav" aria-label="Visit story navigation">
+  <a class="brand" href="#path" aria-label="NPCWoods clarity visit">
     <img src="/assets/homepage-v2/chris-400.webp" alt="Chris Woods">
     <span>
       <strong>NPCWoods</strong>
-      <span>Path concept</span>
+      <span>Clarity visit</span>
     </span>
   </a>
   <div class="nav-actions">
-    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">Sound on</button>
-    <a href="#clearing">Clearing</a>
-    <a href="#cabin">Cabin</a>
+    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">Quiet mode</button>
+    <a href="#clearing">How it works</a>
+    <a href="#cabin">Trust</a>
     <a class="nav-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">$59 visit</a>
   </div>
 </nav>
 
 <aside class="journey-rail" aria-label="Visit story stages">
-  <div class="rail-dot is-active" data-rail="path">Path</div>
-  <div class="rail-dot" data-rail="clearing">Clear</div>
-  <div class="rail-dot" data-rail="cabin">Cabin</div>
-  <div class="rail-dot" data-rail="map">Map</div>
+  <div class="rail-dot is-active" data-rail="path">Worry</div>
+  <div class="rail-dot" data-rail="clearing">Sort</div>
+  <div class="rail-dot" data-rail="cabin">Trust</div>
+  <div class="rail-dot" data-rail="map">Plan</div>
 </aside>
 
 <main class="site-shell" id="main">
@@ -1284,34 +2114,34 @@ h1 span {
     <div class="stage-sticky">
       <div class="wrap stage-grid">
         <div data-reveal>
-          <div class="eyebrow">The triage path</div>
-          <h1>Do not show them a form. <span>Give them a path.</span></h1>
+          <div class="eyebrow">A calmer way to start care</div>
+          <h1>Breathe. <span>You're in the right place.</span></h1>
           <p class="stage-copy">
-            The first move is emotional: turn the intake wall into a guided walk. One question at a time.
-            No private details here, just orientation.
+            When you feel sick and do not know what to do next, you should not have to fight a portal,
+            wait in a lobby, or download another app. Text a real NP and get a clear plan for $59.
           </p>
           <div class="stage-actions">
-            <a class="btn btn-primary" href="#clearing">Walk into the clearing</a>
-            <button class="btn btn-ghost" type="button" data-sound-start>Try with sound</button>
+            <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start a $59 Text Visit</a>
+            <button class="btn btn-ghost" type="button" data-sound-start>Quiet mode</button>
           </div>
           <div class="proof-row">
             <span class="proof-pill">$59 flat fee</span>
-            <span class="proof-pill">No paperwork</span>
-            <span class="proof-pill">Provider-led</span>
+            <span class="proof-pill">Text-based care</span>
+            <span class="proof-pill">Real NP, not a chatbot</span>
           </div>
         </div>
 
-        <div class="path-card" data-reveal aria-label="Guided triage path concept">
+        <div class="path-card" data-reveal aria-label="Text visit orientation">
           <div class="guide-bubble">
-            <small>NPC Guide</small>
-            <b id="guideQuestion">What kind of help are you hoping for today?</b>
+            <small>Start with what is true</small>
+            <b id="guideQuestion">Tell me what changed, what hurts, and what you are worried about.</b>
             <div class="fork-options">
-              <button type="button" data-choice="illness">Common illness</button>
+              <button type="button" data-choice="illness">I feel sick</button>
               <button type="button" data-choice="skin">Skin or rash</button>
               <button type="button" data-choice="dental">Dental pain</button>
               <button type="button" data-choice="question">Not sure yet</button>
             </div>
-            <div class="path-status" id="pathStatus">Choose a direction. The path changes without becoming a medical form.</div>
+            <div class="path-status" id="pathStatus">Choose what fits. This is about getting oriented, not self-diagnosing.</div>
           </div>
         </div>
       </div>
@@ -1322,25 +2152,25 @@ h1 span {
     <div class="stage-sticky">
       <div class="wrap stage-grid">
         <div data-reveal>
-          <div class="eyebrow">The clearing</div>
-          <h2 class="stage-title">Replace the waiting room with a place to breathe.</h2>
+          <div class="eyebrow">No portal maze</div>
+          <h2 class="stage-title">First, tell me what's going on.</h2>
           <p class="stage-copy">
-            No spinner. No blank holding cell. The scroll opens into a quiet clearing with a breathing orb,
-            gentle motion, and optional generative sound. It tells the nervous system: you are not stuck.
+            Getting sick is tiring enough. You should not have to prove you are sick through a wall of
+            confusing forms. Start with a simple message, then answer the right follow-up questions.
           </p>
           <div class="stage-actions">
-            <a class="btn btn-primary" href="#cabin">Follow the warm light</a>
+            <a class="btn btn-primary" href="#cabin">See who reviews it</a>
             <a class="btn btn-ghost" href="#map">Skip to the plan</a>
           </div>
         </div>
 
-        <div class="clearing-card" id="clearingCard" data-reveal aria-label="Interactive clearing concept">
+        <div class="clearing-card" id="clearingCard" data-reveal aria-label="Simple intake alternative">
           <div class="clearing-world" aria-hidden="true">
             <div class="breath-orb"></div>
           </div>
           <div class="clearing-caption">
-            <b>Waiting becomes regulation.</b>
-            Move your phone or cursor slightly. The clearing shifts. If sound is on, the tone opens as you pause.
+            <b>Less friction. More signal.</b>
+            No app download. No blank waiting room. No guessing which portal button starts the visit.
           </div>
         </div>
       </div>
@@ -1351,22 +2181,22 @@ h1 span {
     <div class="stage-sticky">
       <div class="wrap stage-grid">
         <div data-reveal>
-          <div class="eyebrow">The guide's cabin</div>
-          <h2 class="stage-title">When care starts, the world narrows to one trusted voice.</h2>
+          <div class="eyebrow">Real clinician review</div>
+          <h2 class="stage-title">Then we sort the next step.</h2>
           <p class="stage-copy">
-            Instead of a sterile jump into a video box, the experience moves toward a warm cabin. Chris stays
-            front-and-center, while the surrounding world fades back.
+            I'm Chris Woods, MSN, APRN, FNP-C. I review what you send, ask the questions that matter,
+            and help decide whether text-based care is appropriate or whether you need a higher level of care.
           </p>
           <div class="stage-actions">
-            <a class="btn btn-primary" href="#map">See the map forward</a>
+            <a class="btn btn-primary" href="#map">See the clear plan</a>
           </div>
         </div>
 
-        <div class="cabin-card" data-reveal aria-label="Cabin encounter concept">
+        <div class="cabin-card" data-reveal aria-label="Chris Woods review">
           <div class="cabin-light" aria-hidden="true"></div>
           <div class="visit-window">
             <b>Chris Woods</b>
-            <span>MSN, APRN, FNP-C. Double board-certified NP.</span>
+            <span>MSN, APRN, FNP-C. Real NP care, not a chatbot.</span>
             <div class="audio-meter" aria-hidden="true">
               <i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i>
               <i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i>
@@ -1375,8 +2205,8 @@ h1 span {
             </div>
           </div>
           <div class="cabin-caption">
-            <b>Trust is the transition.</b>
-            The forest drops away. The clinician signal gets clear. The patient feels held, not processed.
+            <b>Expert care, delivered like a human.</b>
+            I built NPCWoods because basic care should feel simpler, calmer, and more transparent.
           </div>
         </div>
       </div>
@@ -1387,23 +2217,23 @@ h1 span {
     <div class="stage-sticky">
       <div class="wrap stage-grid">
         <div data-reveal>
-          <div class="eyebrow">The map forward</div>
-          <h2 class="stage-title">Do not hand them a dense PDF. Give them a path home.</h2>
+          <div class="eyebrow">Your next move</div>
+          <h2 class="stage-title">You get a clear plan.</h2>
           <p class="stage-copy">
-            After the visit, the plan should reveal in order. Each step lands like progress, not homework.
-            The final chord is relief: I know what to do next.
+            If treatment is appropriate, you know what to do next. If medication is needed, it can be sent
+            to your pharmacy. If something needs in-person care, I tell you that clearly.
           </p>
           <div class="stage-actions">
             <a class="btn btn-blue" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start my $59 visit</a>
           </div>
         </div>
 
-        <div class="map-card" data-reveal aria-label="Sequential care plan concept">
+        <div class="map-card" data-reveal aria-label="Sequential care plan">
           <div class="care-steps">
-            <div class="care-step" data-care-step><i>1</i><div><b>Start the visit</b><span>Text NPCWoods and answer the guided questions.</span></div></div>
-            <div class="care-step" data-care-step><i>2</i><div><b>Chris reviews it</b><span>A clinician looks at the details and sends clear next steps.</span></div></div>
-            <div class="care-step" data-care-step><i>3</i><div><b>Use the plan</b><span>Pharmacy when medically appropriate, plus plain-language guidance.</span></div></div>
-            <div class="care-step" data-care-step><i>4</i><div><b>Get back to your day</b><span>No paperwork. No hidden fees. Just a cleaner path through the problem.</span></div></div>
+            <div class="care-step" data-care-step><i>1</i><div><b>Start with a text</b><span>Tell me what changed, what hurts, and what has you concerned.</span></div></div>
+            <div class="care-step" data-care-step><i>2</i><div><b>Answer the right questions</b><span>No maze. Just the details needed to understand the situation.</span></div></div>
+            <div class="care-step" data-care-step><i>3</i><div><b>Get a clear next step</b><span>Treatment guidance, pharmacy routing when appropriate, or in-person direction when needed.</span></div></div>
+            <div class="care-step" data-care-step><i>4</i><div><b>Ask what you need to ask</b><span>You are not left staring at vague instructions and wondering what they mean.</span></div></div>
           </div>
         </div>
       </div>
@@ -1412,21 +2242,21 @@ h1 span {
 
   <section class="final-stage" data-stage="final" data-stage-index="4">
     <div class="wrap" data-reveal>
-      <div class="eyebrow">The point</div>
-      <h2 class="stage-title">Make the patient feel like they are progressing, not submitting.</h2>
+      <div class="eyebrow">Let's get you unstuck</div>
+      <h2 class="stage-title">Get a clear next step today.</h2>
       <p class="stage-copy">
-        The site becomes a small journey: tension, guidance, clearing, trust, plan. That is where NPCWoods
-        stops feeling like telemedicine and starts feeling like a new door.
+        Text-based care from a real NP. $59 flat fee. No app download. No hidden fees. Available in
+        AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.
       </p>
       <div class="final-card">
         <div class="price">$59</div>
-        <p>Flat fee. Text-based visit. Provider-led care in 11 states.</p>
+        <p>Flat fee. Secure text-based visit. Real clinician review in 11 licensed states.</p>
         <div class="stage-actions" style="justify-content:center;">
-          <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
-          <a class="btn btn-ghost" href="#path">Walk it again</a>
+          <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start My $59 Visit</a>
+          <a class="btn btn-ghost" href="#path">Back to top</a>
         </div>
       </div>
-      <div class="draft-note">This page is a guided preview of the NPCWoods visit experience. Do not send private health details here; start a visit when you are ready.</div>
+      <div class="draft-note">If symptoms feel severe, life-threatening, or rapidly worsening, seek emergency care or call 911.</div>
     </div>
   </section>
 </main>
@@ -1448,10 +2278,10 @@ h1 span {
   const clearingCard = document.getElementById("clearingCard");
 
   const pathCopy = {
-    illness: "Good. The path opens toward common illness care, one simple question at a time.",
-    skin: "Good. The path stays privacy-aware. Photos belong inside the visit flow, not on this page.",
-    dental: "Good. The path explains bridge care clearly and keeps boundaries visible.",
-    question: "Good. The path can orient without forcing someone to self-diagnose."
+    illness: "Good. We can start with symptoms and narrow the next step from there.",
+    skin: "Good. Any photos or private details belong inside the secure visit flow.",
+    dental: "Good. We can talk through what is appropriate for text-based bridge care.",
+    question: "Good. You do not have to know the answer before asking for help."
   };
 
   let width = 0;
@@ -1579,7 +2409,7 @@ h1 span {
       choiceButtons.forEach((item) => item.classList.remove("is-selected"));
       button.classList.add("is-selected");
       pathStatus.textContent = pathCopy[button.dataset.choice];
-      guideQuestion.textContent = "Good. Now the path can narrow without feeling like a clipboard.";
+      guideQuestion.textContent = "Good. Now we can narrow the next step without making this feel like a clipboard.";
       root.style.setProperty("--path-x", button.dataset.choice === "skin" ? "42%" : button.dataset.choice === "dental" ? "60%" : "50%");
       if (audio) playChime(520, 0.07);
     });
@@ -1611,7 +2441,7 @@ h1 span {
       audio.ctx.resume();
       audio.master.gain.setTargetAtTime(0.55, audio.ctx.currentTime, 0.25);
       soundToggle.classList.add("is-on");
-      soundToggle.textContent = "Sound on";
+      soundToggle.textContent = "Quiet on";
       soundToggle.setAttribute("aria-pressed", "true");
       return;
     }
@@ -1649,7 +2479,7 @@ h1 span {
     updateAudioStage(currentStageIndex);
     master.gain.setTargetAtTime(0.55, ctxRef.currentTime, 0.3);
     soundToggle.classList.add("is-on");
-    soundToggle.textContent = "Sound on";
+    soundToggle.textContent = "Quiet on";
     soundToggle.setAttribute("aria-pressed", "true");
     playChime(392, 0.08);
   }
@@ -1658,7 +2488,7 @@ h1 span {
     if (!audio) return;
     audio.master.gain.setTargetAtTime(0.0001, audio.ctx.currentTime, 0.22);
     soundToggle.classList.remove("is-on");
-    soundToggle.textContent = "Sound on";
+    soundToggle.textContent = "Quiet mode";
     soundToggle.setAttribute("aria-pressed", "false");
   }
 
