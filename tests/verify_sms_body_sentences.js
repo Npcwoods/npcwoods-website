@@ -4,9 +4,12 @@ const vm = require('vm');
 const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
-const script = fs.readFileSync(path.join(root, 'html/shared/tracking.js'), 'utf8');
+const trackingFiles = [
+  'html/shared/tracking.js',
+  'html/tracking.js',
+];
 
-function runCase({ search = '', referrer = '', initialBody = "Hi Chris, I'd like to start a $59 visit", paidSurface = false }) {
+function runCase(script, { search = '', referrer = '', initialBody = "Hi Chris, I'd like to start a $59 visit", paidSurface = false }) {
   const link = {
     href: 'sms:4806394722?body=' + encodeURIComponent(initialBody),
     getAttribute(name) {
@@ -129,13 +132,17 @@ const cases = [
   },
 ];
 
-for (const testCase of cases) {
-  const result = runCase(testCase.input);
-  assert.strictEqual(result.body, testCase.expected, testCase.name);
-  assert(!result.href.includes('(src:'), testCase.name + ' leaked src tag');
-  assert(!result.href.includes('(med:'), testCase.name + ' leaked med tag');
-  assert(!result.href.includes('(from%20Google)'), testCase.name + ' leaked Google tag');
-  assert(!result.href.includes('+'), testCase.name + ' encoded spaces as pluses');
+for (const relPath of trackingFiles) {
+  const script = fs.readFileSync(path.join(root, relPath), 'utf8');
+  for (const testCase of cases) {
+    const result = runCase(script, testCase.input);
+    const label = `${relPath}: ${testCase.name}`;
+    assert.strictEqual(result.body, testCase.expected, label);
+    assert(!result.href.includes('(src:'), label + ' leaked src tag');
+    assert(!result.href.includes('(med:'), label + ' leaked med tag');
+    assert(!result.href.includes('(from%20Google)'), label + ' leaked Google tag');
+    assert(!result.href.includes('+'), label + ' encoded spaces as pluses');
+  }
 }
 
-console.log(`ok ${cases.length} sms body sentence cases`);
+console.log(`ok ${cases.length * trackingFiles.length} sms body sentence cases`);

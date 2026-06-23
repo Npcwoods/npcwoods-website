@@ -103,6 +103,7 @@ graphify-out/
 mockups/
 html/review/
 landing-pages/test-*.html
+.playwright-cli/
 
 # --- Local-only config / scratch -------------------------------------
 *.local.json

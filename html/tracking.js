@@ -141,6 +141,15 @@
   } else if (fbclid) {
     smsClickSource = 'facebook';
   }
+  var isPaidSurface = window.NPCWoodsPaidSurface === true;
+
+  function appendPaidSurfaceMarker(body) {
+    var cleanBody = String(body || '').trim();
+    if (!isPaidSurface || /(?:^|\s)->(?:\s|$)/.test(cleanBody)) {
+      return cleanBody;
+    }
+    return (cleanBody + ' ->').trim();
+  }
 
   function smsBodyForAttribution(existingBody) {
     var body = String(existingBody || '').trim();
@@ -155,22 +164,22 @@
       || /^hi,? i think i have a uti\.?$/i.test(strippedBody);
 
     if (!genericBody) {
-      return strippedBody;
+      return appendPaidSurfaceMarker(strippedBody);
     }
 
     if (gclid || (source === 'google' && /^(cpc|paid|paid-search|ppc)$/i.test(medium))) {
-      return 'Hi NPCWoods, I need help starting a $59 text visit.';
+      return appendPaidSurfaceMarker('Hi NPCWoods, I need help starting a $59 text visit.');
     }
     if (fbclid || (source === 'facebook' && /^(paid-social|paid_social|cpc|paid)$/i.test(medium))) {
-      return 'Hi! I have a question and want to start a $59 text visit.';
+      return appendPaidSurfaceMarker('Hi! I have a question and want to start a $59 text visit.');
     }
     if (source === 'facebook' || source === 'instagram' || source === 'threads') {
-      return 'Hi Chris! I saw your page and need to start a $59 text visit.';
+      return appendPaidSurfaceMarker('Hi Chris! I saw your page and need to start a $59 text visit.');
     }
     if (source === 'google' || source === 'bing') {
-      return "Hi NPCWoods, I'd like to start a $59 text visit.";
+      return appendPaidSurfaceMarker("Hi NPCWoods, I'd like to start a $59 text visit.");
     }
-    return "Hi NPCWoods, I'd like to get started.";
+    return appendPaidSurfaceMarker("Hi NPCWoods, I'd like to get started.");
   }
 
   function buildSmsHref(number, bodyParams, body) {

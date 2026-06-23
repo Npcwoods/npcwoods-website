@@ -35,6 +35,7 @@ REQUIRED_MARKERS = [
     "GTM-59QSWZRC",
     "gtag/js?id=G-EFFRQMG8TC",
     "AW-610222919",
+    "window.NPCWoodsPaidSurface = true",
     "tracking.js",
     'content="noindex,follow"',
     "Most patients hear back the same day, usually within a few hours.",

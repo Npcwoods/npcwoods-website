@@ -69,6 +69,14 @@ class SearchSafeTemplateTest(unittest.TestCase):
             sorted(f"{slug}/search-safe/index.html" for slug in EXPECTED_SLUGS),
         )
 
+    def test_search_safe_pages_are_marked_as_paid_surfaces(self):
+        for city in self.cities:
+            slug = city["slug"]
+            with self.subTest(city=slug):
+                generated = (self.out_root / slug / "search-safe" / "index.html").read_text()
+                self.assertIn("window.NPCWoodsPaidSurface = true", generated)
+                self.assertIn("/tracking.js?v=20260622-paid-surface", generated)
+
 
 if __name__ == "__main__":
     unittest.main()

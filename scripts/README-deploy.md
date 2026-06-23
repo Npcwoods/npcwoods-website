@@ -51,6 +51,13 @@ python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe --live
 python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe --verify-only
 ```
 
+For paid attribution specifically, verify the full browser path from paid
+landing page -> SMS marker -> same-browser `/pay` handoff -> Stripe URL params:
+
+```bash
+node scripts/verify-paid-attribution-live.mjs
+```
+
 Big batches go in a manifest file (one page path per line, `#` comments OK):
 
 ```bash
