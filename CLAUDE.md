@@ -23,6 +23,11 @@ All static landing pages must include:
 - Do not use social-share images with baked-in promo text as readable hero UI inside WordPress posts. Crop them as background texture only, or use text-free imagery and render the actual message in HTML.
 - WordPress/theme CSS can repaint blog headings and card text. For dark custom blog sections, scope contrast rules to the page wrapper and set both `color` and `-webkit-text-fill-color`, then verify mobile and desktop screenshots.
 
+## Visual Reference Workflow
+- Before designing or revising a page/blog visual surface, read `../npcwoods-business/swipe-files/README.md`.
+- Name the 1-3 swipes being adapted in the handoff so Chris can see the visual target.
+- Use `../npcwoods-business/swipe-files/website-pages.md` for page patterns and `../npcwoods-business/swipe-files/blog-social.md` for blog/social surfaces.
+
 ## Vercel Review lane (Previews)
 - **Do not deploy the root directly.** Build a sanitized preview bundle first:
   ```bash
