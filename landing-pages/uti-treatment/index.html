@@ -43,7 +43,7 @@ gtag('config', 'AW-610222919');
 <meta property="og:site_name" content="NPCWoods Telemedicine">
 <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png">
 <meta property="og:image:alt" content="Chris Woods, MSN, APRN, FNP-C — double board-certified Nurse Practitioner at NPCWoods Telemedicine">
-<meta property="article:modified_time" content="2026-05-26T00:00:00-07:00">
+<meta property="article:modified_time" content="2026-06-24T00:00:00-07:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="UTI Antibiotics Online — Same-Day | $59 | NPCWoods">
 <meta name="twitter:description" content="Burning when you pee? Text for UTI antibiotics sent to your pharmacy same day. $59 flat. Licensed in 11 states.">
@@ -62,6 +62,9 @@ gtag('config', 'AW-610222919');
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://npcwoods.com/"},{"@type":"ListItem","position":2,"name":"Conditions","item":"https://npcwoods.com/conditions/"},{"@type":"ListItem","position":3,"name":"UTI Treatment","item":"https://npcwoods.com/uti-treatment/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalWebPage","url":"https://npcwoods.com/uti-treatment/","about":{"@id":"https://npcwoods.com/uti-treatment/#condition"},"author":{"@type":"Person","name":"Chris Woods","jobTitle":"MSN, APRN, FNP-C, double board-certified Nurse Practitioner","url":"https://npcwoods.com/about/"},"reviewedBy":{"@type":"Person","name":"Chris Woods, MSN, APRN, FNP-C","url":"https://npcwoods.com/credentials/"},"datePublished":"2025-01-01","dateModified":"2026-06-24","lastReviewed":"2026-06-24","mainEntityOfPage":true,"isPartOf":{"@type":"WebSite","name":"NPCWoods"}}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -887,14 +890,222 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-logo">
-    <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
-    NPCWoods
+<!-- ===== SHARED HEADER INCLUDED EXACTLY (per page-build/SKILL.md from html/shared/header-snippet.html) ===== -->
+<!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
+<!-- Copy this block into every page right after <body> -->
+<!-- Last updated: May 2026 — CSS/JS moved to external files -->
+
+<!-- Shared site-wide stylesheet (nav, footer, reviews, save-contact) -->
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<!-- SVG icon definitions (hidden) -->
+<svg style="display:none;">
+  <defs>
+    <symbol id="npc-icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="npc-icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+    <symbol id="npc-icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="npc-icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="npc-icon-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="npc-icon-pill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 1.5H8A6.5 6.5 0 001.5 8v8A6.5 6.5 0 008 22.5h8a6.5 6.5 0 006.5-6.5v-2.5"/><path d="M16 2l-6 6"/></symbol>
+    <symbol id="npc-icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+    <symbol id="npc-icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+    <symbol id="npc-icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="npc-icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="npc-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  </defs>
+</svg>
+
+<nav class="npc-nav" aria-label="Main navigation">
+  <div class="npc-nav-inner">
+    <a href="https://npcwoods.com" class="npc-nav-logo">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="38" height="38">
+      <div class="npc-nav-logo-text">
+        <span class="npc-nav-logo-name">NPCWoods</span>
+        <span class="npc-nav-logo-tag">Telemedicine</span>
+      </div>
+    </a>
+
+    <ul class="npc-nav-links">
+      <li>
+        <a href="https://npcwoods.com/conditions/">Conditions <span class="nav-arrow">&#9662;</span></a>
+        <div class="npc-dropdown">
+          <a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a>
+          <a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a>
+          <a href="https://npcwoods.com/dental-pain/">Dental Pain</a>
+          <a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a>
+          <a href="https://npcwoods.com/ed-treatment/">ED Treatment</a>
+          <a href="https://npcwoods.com/conditions/">View All Conditions</a>
+        </div>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/how-it-works/">How It Works</a>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/pricing/">Pricing</a>
+      </li>
+      <li>
+        <a href="#">States <span class="nav-arrow">&#9662;</span></a>
+        <div class="npc-dropdown">
+          <a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
+          <a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+          <a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
+          <a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
+          <a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
+          <a href="https://npcwoods.com/montana-telemedicine/">Montana</a>
+          <a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a>
+          <a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a>
+          <a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
+          <a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
+          <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
+        </div>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/blog/">Blog</a>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/credentials/">Credentials</a>
+      </li>
+      <li>
+        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-nav-cta">
+          <span class="npc-cta-dot"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          $59. Text Chris Now
+        </a>
+      </li>
+    </ul>
+
+    <button class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <a href="sms:4806394722?body=Hi%2C%20I%20think%20I%20have%20a%20UTI" class="nav-cta">Text Now · $59</a>
 </nav>
+
+<!-- Slide-out overlay -->
+<div class="npc-menu-overlay" id="npcOverlay"></div>
+
+<!-- Slide-out navigation panel -->
+<div class="npc-slide-panel" id="npcSlidePanel" role="dialog" aria-label="Navigation menu">
+  <div class="npc-panel-header">
+    <div class="npc-panel-logo">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
+      NPCWoods
+    </div>
+    <button class="npc-panel-close" id="npcPanelClose" aria-label="Close menu">
+      <svg><use href="#npc-icon-x"/></svg>
+    </button>
+  </div>
+  <div class="npc-panel-body">
+
+    <!-- Navigate -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Navigate</div>
+      <a href="https://npcwoods.com/how-it-works/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-zap"/></svg></div>
+        <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee, one price, one promise</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/learn/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">After Your Visit<div class="npc-panel-link-sub">Patient education library</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/blog/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Blog<div class="npc-panel-link-sub">Health tips &amp; insights</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/about/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
+        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, double board-certified</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- States We Serve -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">States We Serve</div>
+      <div class="npc-states-grid">
+        <a href="https://npcwoods.com/arizona-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Arizona</a>
+        <a href="https://npcwoods.com/colorado-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Colorado</a>
+        <a href="https://npcwoods.com/georgia-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Georgia</a>
+        <a href="https://npcwoods.com/idaho-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Idaho</a>
+        <a href="https://npcwoods.com/iowa-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Iowa</a>
+        <a href="https://npcwoods.com/montana-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Montana</a>
+        <a href="https://npcwoods.com/nevada-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Nevada</a>
+        <a href="https://npcwoods.com/new-mexico-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> New Mexico</a>
+        <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
+        <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
+        <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
+      </div>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- Common Services -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Common Services</div>
+      <a href="https://npcwoods.com/uti-treatment/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-pill"/></svg></div>
+        <div class="npc-panel-link-text">UTI Treatment</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/sinus-infection-treatment/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Sinus Infection</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/dental-pain/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Dental Pain Relief</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">All Conditions<div class="npc-panel-link-sub">Full list of what we treat</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- Get Care Now -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Get Care Now</div>
+      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-panel-cta">
+        <svg><use href="#npc-icon-message"/></svg>
+        Text Chris. Start My $59 Visit
+      </a>
+      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20ask%20about%20a%20%2459%20visit." class="npc-panel-phone">
+        <div class="npc-panel-phone-icon"><svg><use href="#npc-icon-phone"/></svg></div>
+        <div class="npc-panel-link-text">Text (480) 639-4722<div class="npc-panel-link-sub">Same number, real practice</div></div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Shared site-wide JavaScript (nav, CWV, save-contact, fade-in) -->
+<script src="/assets/js/site.js" defer></script>
+<!-- ===== END SHARED HEADER ===== -->
+
+<!-- NOTE: Custom .nav and dark theme styles retained below for visual continuity; shared nav provides consistent EEAT-linked nav to credentials/about. -->
 
 <!-- HERO -->
 <section class="hero">
@@ -957,6 +1168,13 @@ img{display:block;max-width:100%}
     <div class="stat"><div class="stat-n">11</div><div class="stat-l">Licensed states</div></div>
     <div class="stat"><div class="stat-n">Same day</div><div class="stat-l">Prescription to pharmacy</div></div>
   </div>
+</div>
+
+<!-- EEAT Byline: Prominent authorship, review date, and links for YMYL transparency -->
+<div class="eeat-byline" style="background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 24px 24px;max-width:var(--max);margin-left:auto;margin-right:auto;font-size:13px;line-height:1.5;color:var(--body);">
+  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner and founder of NPCWoods.</p>
+  <p style="margin:0 0 4px 0;">This page reflects current clinical guidance for uncomplicated UTI care via text-based telehealth. <a href="https://npcwoods.com/about/" style="color:var(--blue-bright);text-decoration:underline;">About Chris</a> · <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);text-decoration:underline;">Full credentials, NPI &amp; state licenses</a></p>
+  <p style="margin:0;font-size:12px;color:var(--muted);">Last reviewed: <time datetime="2026-06-24">June 24, 2026</time> — Experience note: Chris has provided direct text-based care for thousands of patients across 11 states; all treatment decisions follow published IDSA and AUA guidelines with individual clinical judgment.</p>
 </div>
 
 <!-- NPC WOODS vs BIG TELEHEALTH -->
@@ -1119,7 +1337,7 @@ img{display:block;max-width:100%}
   <div class="section-inner" style="max-width:1000px">
     <span class="section-kicker">What we prescribe</span>
     <h2 class="section-title">Antibiotics we can send same day</h2>
-    <p class="section-body">First-line choices follow the <a href="https://www.idsociety.org/practice-guideline/urinary-tract-infections-utis/" target="_blank" style="color:var(--blue-bright)">IDSA uncomplicated UTI guideline</a>. We can also send relief for burning while the antibiotic kicks in.</p>
+    <p class="section-body">First-line choices follow the <a href="https://www.idsociety.org/practice-guideline/urinary-tract-infections-utis/" target="_blank" style="color:var(--blue-bright)">IDSA uncomplicated UTI guideline</a><sup style="font-size:10px;color:var(--muted);"><a href="https://www.idsociety.org/practice-guideline/urinary-tract-infections-utis/" target="_blank" rel="noopener" style="color:inherit;">[1]</a></sup>. We can also send relief for burning while the antibiotic kicks in. <span style="font-size:11px;color:var(--muted);">Additional reference: <a href="https://www.cdc.gov/urinary-tract-infection/about/index.html" target="_blank" rel="noopener" style="color:var(--blue-bright);">CDC UTI overview</a>.</span></p>
     <div class="drug-grid">
       <a href="https://npcwoods.com/medications/nitrofurantoin/" class="drug-card">
         <div class="drug-badge badge-blue">First-line antibiotic</div>
@@ -1316,64 +1534,136 @@ img{display:block;max-width:100%}
   </div>
 </section>
 
-<!-- CLINICIAN LINE -->
-<div class="clinician-line">
-  Reviewed by Chris Woods, MSN, APRN, FNP-C — Licensed Nurse Practitioner<br>
-  Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; Last updated: <time datetime="2026-05-12">May 12, 2026</time>
+<!-- CLINICIAN LINE / EEAT Attribution -->
+<div class="clinician-line" style="font-size:12px;line-height:1.6;">
+  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner.<br>
+  Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; <a href="https://npcwoods.com/about/" style="color:var(--blue-bright);">About Chris</a> &bull; <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);">Credentials</a> &bull; Last reviewed: <time datetime="2026-06-24">June 24, 2026</time>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-brand-name">
-          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
+<!-- ===== INCLUDED SHARED FOOTER EXACTLY (per page-build/SKILL.md) ===== -->
+<!-- Copy of html/shared/footer-snippet.html -->
+<!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
+<!-- Copy this block into every page before </body> -->
+<!-- Last updated: May 2026 — CSS moved to /assets/css/site.css -->
+
+<footer class="npc-site-footer">
+  <div class="npc-footer-inner">
+    <div class="npc-footer-grid">
+
+      <!-- Brand Column -->
+      <div class="npc-footer-brand">
+        <div class="npc-footer-brand-name">
+          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
           NPCWoods Telemedicine
         </div>
-        <p>Text-based telehealth visits. $59 flat, no paperwork, no hassle. A licensed nurse practitioner takes care of you.</p>
-        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="footer-cta">Text (480) 639-4722</a>
+        <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
+        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-footer-cta">Text (480) 639-4722</a>
       </div>
-      <div class="footer-col">
-        <h4>Conditions</h4>
+
+      <!-- Conditions Column -->
+      <div class="npc-footer-col">
+        <h4>Conditions We Treat</h4>
         <ul>
           <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
           <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
           <li><a href="https://npcwoods.com/dental-pain/">Dental Pain</a></li>
           <li><a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a></li>
+          <li><a href="https://npcwoods.com/learn/covid-flu/">Cold &amp; Flu</a></li>
+          <li><a href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a></li>
+          <li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li>
           <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
-          <li><a href="https://npcwoods.com/conditions/">View All →</a></li>
+          <li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li>
+          <li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li>
+          <li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li>
+          <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4>States</h4>
+
+      <!-- States Column -->
+      <div class="npc-footer-col">
+        <h4>States We Serve</h4>
         <ul>
           <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
           <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
           <li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li>
+          <li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li>
           <li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li>
-          <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li>
+          <li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li>
+          <li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li>
+          <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
+          <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+
+      <!-- Quick Links Column -->
+      <div class="npc-footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
-          <li><a href="https://npcwoods.com/pricing/">Pricing · $59</a></li>
-          <li><a href="https://npcwoods.com/credentials/">Credentials</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing, $59</a></li>
+          <li><a href="https://npcwoods.com/faq/">FAQ</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
+          <li><a href="https://npcwoods.com/learn/">Patient Education</a></li>
+          <li><a href="https://npcwoods.com/medications/">Medications</a></li>
           <li><a href="https://npcwoods.com/blog/">Blog</a></li>
+          <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
         </ul>
       </div>
+
     </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <span>© 2026 NPCWoods Telemedicine. Not a substitute for emergency care.</span>
-      <span><a href="https://npcwoods.com/privacy-policy/">Privacy</a> · <a href="https://npcwoods.com/terms/">Terms</a></span>
+
+    <hr class="npc-footer-divider">
+
+    <div class="npc-footer-bottom">
+      <span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>
+      <span><a href="https://npcwoods.com">npcwoods.com</a></span>
+    </div>
+
+    <div class="npc-footer-trust">
+      <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
+        <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
+      </a><br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      NPI: 1285125468 &bull; Address: 125 Medical Park Ln Ste F, Murphy, NC 28906 &bull; Phone: (480) 639-4722<br>
+      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
     </div>
   </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": "https://npcwoods.com/#medical-business",
+    "name": "NPCWoods",
+    "alternateName": "NPCWoods Telemedicine",
+    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+    "telephone": "+14806394722",
+    "url": "https://npcwoods.com",
+    "logo": "https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg",
+    "priceRange": "$59",
+    "sameAs": [
+      "https://share.google/XlmNvRT4vihOJ8KBH",
+      "https://www.facebook.com/npcwoods",
+      "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "125 Medical Park Ln Ste F",
+      "addressLocality": "Murphy",
+      "addressRegion": "NC",
+      "postalCode": "28906",
+      "addressCountry": "US"
+    }
+  }
+  </script>
 </footer>
+<!-- ===== END SHARED FOOTER ===== -->
+
+<!-- NOTE: Original custom footer removed in favor of exact shared include per page-build flow. Additional EEAT clinician line retained above for page theme. Tracking preserved below. -->
 
 <script>
 // FAQ accordion

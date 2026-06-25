@@ -4,6 +4,12 @@
  * Description: Strengthens clinician attribution, trust messaging, and entity consistency across medical content.
  * Version: 1.0
  * Author: Chris Woods
+ *
+ * Static landing/condition pages use the reusable snippet instead of this PHP:
+ *   html/shared/eeat-clinician-byline.html (paste near hero or before FAQ)
+ * This keeps "Clinician reviewed" + dates + links + "real Chris, no AI" consistent.
+ * Schema hints (reviewedBy + lastReviewed on MedicalWebPage) also documented in the snippet.
+ * For future: consider a helper that emits the static HTML version from the profile array.
  */
 
 function npcwoods_clinician_profile() {
@@ -20,8 +26,10 @@ function npcwoods_clinician_profile() {
         'email' => 'cwoods@npcwoods.com',
         'headshot' => 'https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png',
         'npi' => '1285125468',
-        'npi_url' => 'https://npiregistry.cms.hhs.gov/',
+        'npi_url' => 'https://npiregistry.cms.hhs.gov/provider-view/1285125468',
         'legitscript_url' => 'https://www.legitscript.com/websites/?checker_keywords=npcwoods.com',
+        'aanp_url' => 'https://www.aanp.org/',
+        'aanpcb_url' => 'https://www.aanpcert.org/',
         'organization_id' => home_url('/#medical-business'),
         'person_id' => home_url('/#chris-woods'),
         'states' => 'AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT',
@@ -63,9 +71,26 @@ add_action('wp_head', function() {
         'description' => 'Chris Woods is a Licensed Nurse Practitioner and founder of NPCWoods Telemedicine. He personally reviews every case and every medical article on the site.',
         'honorificSuffix' => 'MSN, APRN, FNP-C',
         'hasCredential' => array(
-            '@type' => 'EducationalOccupationalCredential',
-            'credentialCategory' => 'certification',
-            'name' => 'MSN, APRN, FNP-C',
+            array(
+                '@type' => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'degree',
+                'name' => 'Master of Science in Nursing (MSN)'
+            ),
+            array(
+                '@type' => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'license',
+                'name' => 'Advanced Practice Registered Nurse (APRN)'
+            ),
+            array(
+                '@type' => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'certification',
+                'name' => 'Family Nurse Practitioner - Certified (FNP-C)',
+                'recognizedBy' => array(
+                    '@type' => 'Organization',
+                    'name' => 'American Association of Nurse Practitioners Certification Board (AANPCB)',
+                    'url' => isset($profile['aanpcb_url']) ? $profile['aanpcb_url'] : 'https://www.aanpcert.org/'
+                )
+            )
         ),
         'identifier' => array(
             '@type' => 'PropertyValue',
@@ -76,6 +101,9 @@ add_action('wp_head', function() {
             'https://npiregistry.cms.hhs.gov/provider-view/1285125468',
             'https://www.healthgrades.com/providers/christopher-woods-xynt5wl',
             'https://doctor.webmd.com/doctor/christopher-woods-7b55e933-62ef-4d7b-975c-9cfc40eb3ad8-overview',
+            'https://www.legitscript.com/websites/?checker_keywords=npcwoods.com',
+            'https://www.aanp.org/',
+            'https://www.aanpcert.org/',
             'https://www.facebook.com/npcwoods',
         ),
         'medicalSpecialty' => 'FamilyPractice',
@@ -389,7 +417,7 @@ add_filter('the_content', function($content) {
     $trust = '<section class="npc-post-trust-block" aria-label="Medical review details">'
         . '<div class="npc-post-trust-header">'
         . '<div class="npc-post-trust-kicker">Clinician reviewed</div>'
-        . '<h2>Written and medically reviewed by ' . esc_html($profile['name']) . '</h2>'
+        . '<h2>Clinically reviewed by ' . esc_html($profile['name']) . '</h2>'
         . '<p>This article reflects Chris\'s real clinical experience treating common urgent-care conditions through NPCWoods Telemedicine. Content is reviewed for accuracy, updated over time, and paired with clear guidance on when text-based care is appropriate and when in-person care matters more.</p>'
         . '</div>'
         . '<div class="npc-post-trust-grid">'

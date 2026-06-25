@@ -1227,29 +1227,60 @@
   "@graph": [
     {
       "@type": "MedicalBusiness",
-      "@id": "https://npcwoods.com/#organization",
+      "@id": "https://npcwoods.com/#medical-business",
       "name": "NPCWoods Telemedicine",
       "url": "https://npcwoods.com/",
       "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
       "priceRange": "$59",
-      "telephone": "+1-480-639-4722",
+      "telephone": "+14806394722",
+      "email": "cwoods@npcwoods.com",
       "founder": { "@id": "https://npcwoods.com/#chris-woods" },
-      "areaServed": ["Arizona", "Colorado", "Georgia", "Idaho", "Iowa", "Montana", "Nevada", "New Mexico", "North Carolina", "Oregon", "Utah"],
-      "medicalSpecialty": "PrimaryCare"
+      "employee": { "@id": "https://npcwoods.com/#chris-woods" },
+      "areaServed": [
+        {"@type": "State", "name": "Arizona"},
+        {"@type": "State", "name": "Colorado"},
+        {"@type": "State", "name": "Georgia"},
+        {"@type": "State", "name": "Idaho"},
+        {"@type": "State", "name": "Iowa"},
+        {"@type": "State", "name": "Montana"},
+        {"@type": "State", "name": "Nevada"},
+        {"@type": "State", "name": "New Mexico"},
+        {"@type": "State", "name": "North Carolina"},
+        {"@type": "State", "name": "Oregon"},
+        {"@type": "State", "name": "Utah"}
+      ],
+      "medicalSpecialty": "https://schema.org/FamilyPractice",
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Async telemedicine visit",
+        "price": "59.00",
+        "priceCurrency": "USD"
+      }
     },
     {
       "@type": "Person",
       "@id": "https://npcwoods.com/#chris-woods",
       "name": "Chris Woods",
-      "jobTitle": "MSN, APRN, FNP-C",
+      "honorificSuffix": "MSN, APRN, FNP-C",
+      "jobTitle": "Licensed Nurse Practitioner",
       "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-      "worksFor": { "@id": "https://npcwoods.com/#organization" }
+      "worksFor": { "@id": "https://npcwoods.com/#medical-business" },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NPI",
+        "value": "1285125468"
+      },
+      "sameAs": [
+        "https://npiregistry.cms.hhs.gov/provider-view/1285125468",
+        "https://www.healthgrades.com/providers/christopher-woods-xynt5wl",
+        "https://doctor.webmd.com/doctor/christopher-woods-7b55e933-62ef-4d7b-975c-9cfc40eb3ad8-overview"
+      ]
     },
     {
       "@type": "Service",
       "@id": "https://npcwoods.com/#text-visit",
       "name": "$59 text-based urgent care visit",
-      "provider": { "@id": "https://npcwoods.com/#organization" },
+      "provider": { "@id": "https://npcwoods.com/#medical-business" },
       "offers": {
         "@type": "Offer",
         "price": "59",

@@ -17,12 +17,12 @@ gtag('config', 'AW-610222919');
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Chris Woods, FNP-C | Founder of NPCWoods</title>
-  <meta name="description" content="Meet Chris Woods, the Licensed Nurse Practitioner behind NPCWoods. $59 text-based telemedicine visits across 11 states. No paperwork, no waiting room.">
+  <title>About Chris Woods, NP | Double Board-Certified Founder of NPCWoods</title>
+  <meta name="description" content="Meet Chris Woods, NP — double board-certified (FNP-C &amp; AGACNP-BC), MSN, APRN. 10+ years primary/urgent/telehealth. Real clinician, $59 text visits, 11 states. No AI. Verify credentials here.">
   <link rel="canonical" href="https://npcwoods.com/about/">
 
-  <meta property="og:title" content="About Chris Woods, NP | NPCWoods Telemedicine">
-  <meta property="og:description" content="Meet the licensed nurse practitioner behind NPCWoods. $59 text-based telemedicine visits across 11 states.">
+  <meta property="og:title" content="About Chris Woods, NP | Double Board-Certified Founder of NPCWoods">
+  <meta property="og:description" content="Chris Woods, NP (MSN, APRN, FNP-C &amp; AGACNP-BC). Over a decade in primary, urgent &amp; telehealth care. Real person, real credentials, $59 text-based visits. No AI. Verify NPI &amp; licenses.">
   <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
   <meta property="og:url" content="https://npcwoods.com/about/">
   <meta property="og:type" content="profile">
@@ -75,7 +75,8 @@ gtag('config', 'AW-610222919');
   "sameAs": [
     "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
     "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com",
-    "https://share.google/XlmNvRT4vihOJ8KBH"
+    "https://share.google/XlmNvRT4vihOJ8KBH",
+    "https://npiregistry.cms.hhs.gov/provider-view/1285125468"
   ],
   "areaServed": [
     {
@@ -681,6 +682,139 @@ gtag('config', 'AW-610222919');
       overflow: hidden;
     }
 
+    /* ===== RICH BIO ADDITIONS: Timeline, Philosophy, Case Studies (EEAT) ===== */
+    .timeline {
+      margin: 32px 0;
+      border-left: 3px solid var(--border-warm);
+      padding-left: 24px;
+    }
+    .timeline-item {
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--sage);
+      border-radius: 50%;
+      border: 3px solid var(--bg-warm);
+    }
+    .timeline-year {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 4px;
+    }
+    .timeline-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-obsidian);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.98rem;
+      color: var(--text-graphite);
+      line-height: 1.6;
+    }
+
+    .philosophy-quote {
+      margin: 32px 0;
+      padding: 32px 36px;
+      background: var(--white);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--editorial-blue);
+      line-height: 1.5;
+      position: relative;
+    }
+    .philosophy-quote::before {
+      content: "“";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--copper);
+      opacity: 0.15;
+      line-height: 1;
+    }
+
+    .case-studies {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow-paper);
+    }
+    .case-card h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+    .case-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-graphite);
+      margin: 0;
+    }
+    .case-meta {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .bio-cta {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .bio-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .bio-cta .primary {
+      background: var(--editorial-blue);
+      color: #fff;
+    }
+    .bio-cta .secondary {
+      background: var(--sage-light);
+      color: var(--sage);
+      border: 1px solid var(--sage-light);
+    }
+    .bio-cta a:hover {
+      transform: translateY(-1px);
+    }
+
     .about-cta-section::before {
       content: "";
       position: absolute;
@@ -925,16 +1059,16 @@ gtag('config', 'AW-610222919');
 <section class="about-hero">
   <div class="about-hero-grid">
     <div class="about-hero-content">
-      <span class="about-hero-badge">Board-Certified Clinician</span>
+      <span class="about-hero-badge">Double Board-Certified NP</span>
       <div class="about-hero-photo-wrapper">
         <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, MSN, APRN, FNP-C" class="about-hero-photo" width="100" height="100">
         <div class="about-hero-name-byline">
-          <h1>Chris Woods</h1>
-          <div class="about-hero-cred">MSN, APRN, FNP-C</div>
+          <h1>Chris Woods, NP</h1>
+          <div class="about-hero-cred">MSN, APRN, FNP-C &amp; AGACNP-BC</div>
         </div>
       </div>
       <hr class="about-hero-divider">
-      <p class="about-hero-sub">I'm the nurse practitioner behind NPCWoods. I built this practice because too many people fall through the cracks of a healthcare system that wasn't designed for them, and I wanted medical advice online to feel personal, accountable, and real.</p>
+      <p class="about-hero-sub">I'm the nurse practitioner behind NPCWoods. With more than a decade of clinical experience across primary care, urgent care, and telehealth, I built this practice so folks could get straightforward medical advice online that feels personal, accountable, and real — the kind of care I'd want for my own family.</p>
     </div>
     
     <div class="video-showcase-frame" aria-label="Chris Woods introduction video">
@@ -961,8 +1095,8 @@ gtag('config', 'AW-610222919');
   <div class="about-inner">
     <div class="section-label">The Short Version</div>
     <h2 class="section-heading">Why NPCWoods Exists</h2>
-    <p class="editorial-dropcap">I worked in urgent care, telemedicine, and primary care for over a decade before starting NPCWoods in 2025. I kept seeing the same thing: people who needed straightforward care—a UTI, a sinus infection, a dental infection they couldn't get treated—but couldn't get it because the system made it too expensive, too slow, or too complicated.</p>
-    <p>So I built something different. NPCWoods is text-based telemedicine at a $59 flat fee. No video call. No waiting room. No paperwork. You text me what's going on, I take a thorough history, and if treatment is appropriate, I send a prescription to your pharmacy. That's it.</p>
+    <p class="editorial-dropcap">I worked in urgent care, primary care, and telemedicine for over a decade before starting NPCWoods in 2025. I kept seeing the same thing: people who needed straightforward care—a UTI, a sinus infection, a dental infection they couldn't get treated right away—but couldn't get it because the system made it too expensive, too slow, or too complicated. Weekends, evenings, travel days — the cracks were everywhere.</p>
+    <p>So I built something different. NPCWoods is text-based telemedicine at a $59 flat fee. No video call. No waiting room. No paperwork. You text me what's going on, I take a thorough history, and if treatment is appropriate, I send a prescription to your pharmacy. That's it. Real clinician, real accountability.</p>
     
     <div class="editorial-pullquote">
       <p>“This isn't a venture-backed tech startup with chatbots and clinical directories. It's one nurse practitioner who answers every text personally.”</p>
@@ -976,7 +1110,7 @@ gtag('config', 'AW-610222919');
   <div class="about-inner">
     <div class="section-label">Credentials</div>
     <h2 class="section-heading">Who You're Texting</h2>
-    <p>I'm a double board-certified Family Nurse Practitioner with a Master of Science in Nursing. I've worked across urgent care, primary care, and telemedicine, and I bring all of that experience to every visit.</p>
+    <p>I'm a double board-certified Family Nurse Practitioner (FNP-C) and Adult-Gerontology Acute Care Nurse Practitioner (AGACNP-BC) with a Master of Science in Nursing (MSN). The MSN is the graduate degree that qualifies advanced practice registered nurses (APRNs) for diagnostic authority, prescriptive authority, and independent clinical decision-making. I've worked across urgent care clinics, primary care practices, and telemedicine settings, and I bring all of that real-world experience to every single visit.</p>
 
     <div class="cred-grid">
       <div class="cred-card">
@@ -984,16 +1118,16 @@ gtag('config', 'AW-610222919');
         <div class="cred-card-value">Master of Science in Nursing (MSN)</div>
       </div>
       <div class="cred-card">
-        <div class="cred-card-label">Certification</div>
-        <div class="cred-card-value">Family Nurse Practitioner (FNP-C)</div>
+        <div class="cred-card-label">Certifications</div>
+        <div class="cred-card-value">FNP-C &amp; AGACNP-BC (Double Board-Certified)</div>
       </div>
       <div class="cred-card">
         <div class="cred-card-label">License Type</div>
         <div class="cred-card-value">Advanced Practice Registered Nurse (APRN)</div>
       </div>
       <div class="cred-card">
-        <div class="cred-card-label">Specialty</div>
-        <div class="cred-card-value">Family Practice &amp; Acute Care</div>
+        <div class="cred-card-label">Clinical Experience</div>
+        <div class="cred-card-value">10+ Years: Primary Care, Urgent Care &amp; Telehealth</div>
       </div>
     </div>
 
@@ -1023,6 +1157,89 @@ gtag('config', 'AW-610222919');
     <div class="trust-note">
       This page is the source-of-truth clinician profile for NPCWoods. Medical guides, medication pages, landing pages, and blog posts on the site should all point back here so patients can clearly see who is behind the advice, what my credentials are, and how this practice actually works.
     </div>
+
+    <div class="bio-cta">
+      <a href="https://npcwoods.com/credentials/" class="primary">View Full Credentials &amp; State Licenses →</a>
+      <a href="#about-video-player" class="secondary">Watch the Intro Video Above</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CLINICAL EXPERIENCE ===== -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="section-label">Hands-On Experience</div>
+    <h2 class="section-heading">More Than a Decade in the Trenches</h2>
+    <p>Numbers on a license don't tell the full story. Here's where I've actually practiced and what I learned along the way.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">10+ Years Total</div>
+        <div class="timeline-role">Urgent Care &amp; Primary Care Settings</div>
+        <div class="timeline-desc">Fast-paced clinics where I saw everything from simple infections to more complex acute issues. Learned to make sound decisions quickly with real people in front of me, not just charts.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Telehealth &amp; Async Care</div>
+        <div class="timeline-role">Text-Based &amp; Remote Practice</div>
+        <div class="timeline-desc">Mastered taking a thorough history without a physical exam in the room. Built systems to keep care safe, personal, and efficient — the foundation for NPCWoods.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Everyday Reality</div>
+        <div class="timeline-role">Real Patients, Real Stakes</div>
+        <div class="timeline-desc">Treated thousands of cases. The common thread: people just want clear answers and a plan they can act on without jumping through hoops.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== EDUCATION ===== -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="section-label">Education &amp; Training</div>
+    <h2 class="section-heading">How I Got Here</h2>
+    <p>The MSN (Master of Science in Nursing) is the standard graduate education for nurse practitioners. It builds on RN training with advanced coursework in pathophysiology, pharmacology, physical assessment, and clinical decision-making across the lifespan. That degree, plus national board certification, is what lets me diagnose, prescribe, and manage care independently in the states where I'm licensed.</p>
+    <p>Beyond the classroom, the real education came from years shoulder-to-shoulder with patients in busy clinics — learning what actually works when someone is scared, in pain, or just needs to get back to work or the kids.</p>
+  </div>
+</section>
+
+
+<!-- ===== PHILOSOPHY ===== -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="section-label">How I Think About Care</div>
+    <h2 class="section-heading">My Personal Philosophy</h2>
+    <div class="philosophy-quote">
+      Treat others how I want to be treated.
+    </div>
+    <p>That simple rule guides everything. When you text me, I picture someone I care about on the other end — my family, my neighbors. No judgment, no runaround, no upselling. If a prescription helps, great. If you need to go in person or to the ER, I'll say so plainly and point you there. No charge for the honesty.</p>
+    <p>I'm not here to replace your regular doctor or manage chronic conditions long-term. I'm here for the straightforward stuff that shouldn't require taking a whole day off or paying urgent-care prices.</p>
+  </div>
+</section>
+
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="section-label">Real Care, Real People</div>
+    <h2 class="section-heading">Two Examples (Anonymized)</h2>
+    <p>These are the kinds of situations I see all the time. Details changed to protect privacy.</p>
+
+    <div class="case-studies">
+      <div class="case-card">
+        <h4>Weekend UTI via Text</h4>
+        <p>A patient texted late on a Saturday night while traveling — classic burning and urgency symptoms. After a quick history (no fever, no back pain, no red flags), I sent a first-line antibiotic to a pharmacy near their hotel for pickup the next morning. They were feeling better before heading home. Simple, private, no waiting room drama.</p>
+        <div class="case-meta">— Text-based visit, same-day response, prescription routed locally</div>
+      </div>
+      <div class="case-card">
+        <h4>Sinus Pressure That Wouldn't Quit</h4>
+        <p>Someone reached out mid-week with facial pressure and thick discharge for over 10 days. Symptoms fit bacterial sinusitis. I reviewed, confirmed no severe symptoms, and sent appropriate treatment to their usual pharmacy. They avoided a long urgent-care wait during a busy work week.</p>
+        <div class="case-meta">— Straightforward case, no video or appointment needed</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 0.95rem; color: var(--text-muted);">Every case is different. I only treat what fits safe text-based care. If it doesn't, I'll tell you.</p>
   </div>
 </section>
 
@@ -1056,9 +1273,9 @@ gtag('config', 'AW-610222919');
   <div class="about-inner">
     <div class="section-label">How I Practice</div>
     <h2 class="section-heading">What to Expect</h2>
-    <p>When you text NPCWoods, you're texting me, not a call center, not a chatbot, not an AI. I personally read every message, take a thorough history, and make the clinical decision.</p>
-    <p>If medication is appropriate, I send a prescription to your pharmacy. If something needs in-person care, I'll tell you straight up, no charge for the honesty. I'd rather lose a $59 visit than put you in a bad spot.</p>
-    <p>My approach is radically transparent. Real talk, no corporate BS. You deserve to know exactly what's going on with your body and exactly what I'm thinking. That's the kind of care I'd want for my own family.</p>
+    <p>When you text NPCWoods, you're texting me — not a call center, not a chatbot, not an AI. I personally read every message, take a thorough history using everything I learned in over a decade of practice, and make the clinical decision myself.</p>
+    <p>If medication is appropriate, I send a prescription to your pharmacy. If something needs in-person care, I'll tell you straight up, no charge for the honesty. I'd rather lose a $59 visit than put you in a bad spot. That's the "treat others how I want to be treated" rule in action.</p>
+    <p>My approach is radically transparent. Real talk, no corporate BS. You deserve to know exactly what's going on with your body and exactly what I'm thinking. Full credentials and verification links are always one click away on the <a href="https://npcwoods.com/credentials/">credentials page</a>.</p>
   </div>
 </section>
 
@@ -1067,7 +1284,7 @@ gtag('config', 'AW-610222919');
 <section class="about-cta-section">
   <div class="about-cta-inner">
     <h2>Ready to Get Treated?</h2>
-    <p>$59 flat. No paperwork. No hassle. Just text me what's going on and I'll take it from there.</p>
+    <p>$59 flat. No paperwork. No hassle. Just text me — Chris Woods, NP — what's going on and I'll take it from there. See my full credentials and verifications on the <a href="https://npcwoods.com/credentials/" style="color: rgba(255,255,255,0.85); text-decoration: underline;">credentials page</a>.</p>
     <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Text Chris. Start My $59 Visit
