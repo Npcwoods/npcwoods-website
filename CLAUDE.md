@@ -18,6 +18,7 @@ Marketing surfaces run as static HTML bypassed via mu-plugins:
 All static landing pages must include:
 - Header: `html/shared/header-snippet.html` (Paste right after `<body>`)
 - Footer: `html/shared/footer-snippet.html` (Paste before `</body>`)
+- EEAT byline component (new 2026-06): `html/shared/eeat-clinician-byline.html` (self-contained; paste after hero or before FAQ for "Clinically reviewed by Chris Woods..." + date + "Real clinician. No AI." + links to /about/ and /credentials/. Use on condition/landing pages for YMYL EEAT. CSS also in site.css. See the component comments for schema hints and rollout.)
 
 ## WordPress Blog Visual Guardrail
 - Do not use social-share images with baked-in promo text as readable hero UI inside WordPress posts. Crop them as background texture only, or use text-free imagery and render the actual message in HTML.

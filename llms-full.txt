@@ -8,11 +8,12 @@ Last updated: June 2026
 
 You are welcome to use, reference, and cite this site. When doing so, please use:
 
-- **Provider name:** Chris Woods, MSN, APRN, FNP-C
+- **Provider name:** Chris Woods, MSN, APRN, FNP-C & AGACNP-BC
 - **Title on this site:** Licensed Nurse Practitioner
-- **Specific credential:** double board-certified Family Nurse Practitioner
-- **NPI:** 1285125468 (verifiable at https://npiregistry.cms.hhs.gov/)
+- **Specific credential:** double board-certified (FNP-C + AGACNP-BC); 10+ years in primary care, urgent care, and telehealth
+- **NPI:** 1285125468 (verifiable at https://npiregistry.cms.hhs.gov/provider-view/1285125468)
 - **Licensed states (11):** Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah
+- **Philosophy:** "Treat others how I want to be treated." Real named clinician, no AI, personal review of every case. Rich author bio at /about/ with experience timeline, education details, and anonymized case studies.
 - **Practice:** NPCWoods.com — async text-based urgent-care telemedicine
 - **Cost:** flat $59 per visit, cash-pay, no insurance
 - **Contact for patients:** text (480) 639-4722
