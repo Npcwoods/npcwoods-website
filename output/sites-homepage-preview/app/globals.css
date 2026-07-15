@@ -178,6 +178,13 @@ summary {
 main {
   position: relative;
   z-index: 1;
+  isolation: isolate;
+}
+
+main a,
+main summary {
+  position: relative;
+  z-index: 3;
 }
 
 .chapter,
@@ -635,11 +642,11 @@ h2 {
 
 .thread-layer {
   position: absolute;
-  z-index: 0;
-  top: 4.75rem;
-  bottom: 0;
+  z-index: 2;
+  top: 0;
   left: max(0.65rem, calc((100vw - var(--content)) / 2));
   width: clamp(0.75rem, 1vw, 1rem);
+  height: 100%;
   overflow: visible;
   pointer-events: none;
 }
@@ -656,27 +663,12 @@ h2 {
 }
 
 .thread-progress {
-  background: linear-gradient(to bottom, var(--clay) 0 24%, var(--cobalt) 43% 78%, var(--green) 100%);
   fill: none;
-  stroke: var(--cobalt);
   stroke-linecap: round;
   stroke-width: 9;
-  stroke-dasharray: 0.2 0.6 0.2;
   transform: scaleY(1);
   transform-box: fill-box;
   transform-origin: center top;
-}
-
-/* The SVG has no paint server in static markup, so this color arc is echoed by
-   the page chapters while the animated path keeps a cobalt fallback stroke. */
-.thread-layer::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, var(--clay) 0 24%, var(--cobalt) 43% 78%, var(--green) 100%);
-  content: "";
-  opacity: 0.26;
 }
 
 .mobile-text-bar {

@@ -21,9 +21,9 @@ export function HomepageContent() {
         </nav>
       </header>
 
-      <ThreadPath />
-
       <main id="main-content">
+        <ThreadPath />
+
         <section className="chapter hero" aria-labelledby="chapter-1-title">
           <div className="chapter-copy">
             <p className="eyebrow">Chapter {chapters[0].number}</p>

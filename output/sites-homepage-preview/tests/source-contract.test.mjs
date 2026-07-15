@@ -108,3 +108,35 @@ test("starter preview is removed from runtime source and retained in the archive
   await access(new URL("archive/starter/SkeletonPreview.tsx", projectRoot));
   await access(new URL("archive/starter/preview.css", projectRoot));
 });
+
+test("thread is contained by the full story and uses one continuous SVG gradient", async () => {
+  const [homepage, threadPath, globals] = await Promise.all([
+    readFile(new URL("app/components/HomepageContent.tsx", projectRoot), "utf8"),
+    readFile(new URL("app/components/ThreadPath.tsx", projectRoot), "utf8"),
+    readFile(new URL("app/globals.css", projectRoot), "utf8"),
+  ]);
+
+  assert.match(
+    homepage,
+    /<main\b[^>]*>[\s\S]*?<ThreadPath\s*\/>/,
+    "Expected the thread to be a descendant of the full-height main story",
+  );
+  assert.match(threadPath, /<linearGradient\b[^>]*\bid=["']thread-story-gradient["']/);
+  assert.match(threadPath, /stopColor=["']#bd5a42["']/);
+  assert.match(threadPath, /stopColor=["']#2855c7["']/);
+  assert.match(threadPath, /stopColor=["']#1c8a5c["']/);
+  assert.match(
+    threadPath,
+    /<path[\s\S]*?className=["']thread-progress["'][\s\S]*?stroke=["']url\(#thread-story-gradient\)["']/,
+  );
+
+  const threadLayerRule = blockAfter(globals, /\.thread-layer\b[^,{]*/);
+  assert.match(threadLayerRule, /\btop\s*:\s*0\s*;/);
+  assert.match(threadLayerRule, /\bheight\s*:\s*100%\s*;/);
+  assert.doesNotMatch(threadLayerRule, /\bbottom\s*:/);
+
+  const threadProgressRule = blockAfter(globals, /\.thread-progress\b[^,{]*/);
+  assert.doesNotMatch(threadProgressRule, /\bbackground(?:-image)?\s*:/);
+  assert.doesNotMatch(threadProgressRule, /\bstroke-dasharray\s*:/);
+  assert.doesNotMatch(globals, /\.thread-layer::before/);
+});
