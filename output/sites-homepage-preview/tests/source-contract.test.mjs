@@ -133,7 +133,20 @@ test("thread is contained by the full story and uses one continuous SVG gradient
   const threadLayerRule = blockAfter(globals, /\.thread-layer\b[^,{]*/);
   assert.match(threadLayerRule, /\btop\s*:\s*0\s*;/);
   assert.match(threadLayerRule, /\bheight\s*:\s*100%\s*;/);
+  assert.match(
+    threadLayerRule,
+    /\bleft\s*:\s*max\([^;]*\bvar\(--gutter\)/,
+    "Expected the desktop thread to be positioned inside the outer gutter",
+  );
+  assert.match(threadLayerRule, /\bpointer-events\s*:\s*none\s*;/);
   assert.doesNotMatch(threadLayerRule, /\bbottom\s*:/);
+
+  const elevatedContentRule = blockAfter(globals, /\.chapter\s*>\s*\*[^,{]*/);
+  assert.match(
+    elevatedContentRule,
+    /\bz-index\s*:\s*3\s*;/,
+    "Expected essential section content to paint above the decorative thread",
+  );
 
   const threadProgressRule = blockAfter(globals, /\.thread-progress\b[^,{]*/);
   assert.doesNotMatch(threadProgressRule, /\bbackground(?:-image)?\s*:/);
