@@ -4,20 +4,65 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function blockAfter(source, marker) {
+  const match = marker.exec(source);
+  assert.ok(match, `Expected ${marker} in source`);
+  const openingBrace = source.indexOf("{", match.index + match[0].length);
+  assert.notEqual(openingBrace, -1, `Expected a block after ${marker}`);
+
+  let depth = 0;
+  for (let index = openingBrace; index < source.length; index += 1) {
+    if (source[index] === "{") depth += 1;
+    if (source[index] === "}") depth -= 1;
+    if (depth === 0) return source.slice(openingBrace + 1, index);
+  }
+
+  assert.fail(`Expected a closing brace after ${marker}`);
+}
+
 test("source includes the cinematic thread and reduced-motion contracts", async () => {
   const [followThread, globals] = await Promise.all([
     readFile(new URL("app/components/FollowThread.tsx", projectRoot), "utf8"),
     readFile(new URL("app/globals.css", projectRoot), "utf8"),
   ]);
 
-  assert.match(followThread, /gsap\/ScrollTrigger/);
-  assert.match(followThread, /gsap\.matchMedia/);
-  assert.match(followThread, /prefers-reduced-motion:\s*reduce/);
-  assert.match(followThread, /\.revert\(\);/);
+  assert.match(followThread, /from\s+["']gsap\/ScrollTrigger["']/);
+  assert.match(followThread, /gsap\.registerPlugin\(ScrollTrigger\)/);
 
-  assert.match(globals, /@media\s*\([^)]*prefers-reduced-motion:\s*reduce[^)]*\)/);
-  assert.match(globals, /\.thread-path\b/);
-  assert.match(globals, /\.mobile-text-bar\b/);
+  const matchMediaDeclaration = followThread.match(
+    /\bconst\s+([A-Za-z_$][\w$]*)\s*=\s*gsap\.matchMedia\(\)\s*;/,
+  );
+  assert.ok(matchMediaDeclaration, "Expected a named gsap.matchMedia instance");
+  const matchMediaName = escapeRegExp(matchMediaDeclaration[1]);
+  assert.match(
+    followThread,
+    new RegExp(
+      `\\b${matchMediaName}\\.add\\(\\s*["']\\(prefers-reduced-motion:\\s*reduce\\)["']`,
+    ),
+  );
+  assert.match(
+    followThread,
+    new RegExp(
+      `return\\s*\\(\\)\\s*=>\\s*(?:\\{\\s*)?${matchMediaName}\\.revert\\(\\)\\s*;?`,
+    ),
+  );
+
+  const reducedMotionCss = blockAfter(
+    globals,
+    /@media\s*\([^)]*prefers-reduced-motion:\s*reduce[^)]*\)/,
+  );
+  assert.match(reducedMotionCss, /\banimation(?:-duration)?\s*:/);
+  assert.match(reducedMotionCss, /\btransition(?:-duration)?\s*:/);
+
+  const threadPathRule = blockAfter(globals, /\.thread-path\b[^,{]*/);
+  assert.match(threadPathRule, /\bstroke(?:-[\w-]+)?\s*:/);
+
+  const mobileTextBarRule = blockAfter(globals, /\.mobile-text-bar\b[^,{]*/);
+  assert.match(mobileTextBarRule, /\bposition\s*:\s*fixed\b/);
 });
 
 test("starter preview is removed from runtime source and retained in the archive", async () => {

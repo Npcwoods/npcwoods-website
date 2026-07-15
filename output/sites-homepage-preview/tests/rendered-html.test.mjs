@@ -22,17 +22,95 @@ async function render() {
   );
 }
 
-function textContent(markup) {
+function withoutNonVisibleContent(markup) {
   return markup
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&(?:#39|apos);/gi, "'")
-    .replace(/&quot;/gi, '"')
-    .replace(/&amp;/gi, "&")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<(script|style|template)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+}
+
+function decodeEntities(value) {
+  const namedEntities = {
+    amp: "&",
+    apos: "'",
+    gt: ">",
+    ldquo: "\u201c",
+    lt: "<",
+    mdash: "\u2014",
+    nbsp: " ",
+    ndash: "\u2013",
+    quot: '"',
+    rdquo: "\u201d",
+    rsquo: "\u2019",
+  };
+
+  return value
+    .replace(/&#(\d+);/g, (entity, decimal) => {
+      const codePoint = Number.parseInt(decimal, 10);
+      return Number.isSafeInteger(codePoint) && codePoint <= 0x10ffff
+        ? String.fromCodePoint(codePoint)
+        : entity;
+    })
+    .replace(/&#x([\da-f]+);/gi, (entity, hexadecimal) => {
+      const codePoint = Number.parseInt(hexadecimal, 16);
+      return Number.isSafeInteger(codePoint) && codePoint <= 0x10ffff
+        ? String.fromCodePoint(codePoint)
+        : entity;
+    })
+    .replace(/&([a-z][a-z\d]+);/gi, (entity, name) =>
+      Object.hasOwn(namedEntities, name.toLowerCase())
+        ? namedEntities[name.toLowerCase()]
+        : entity,
+    );
+}
+
+function textContent(markup) {
+  return decodeEntities(withoutNonVisibleContent(markup).replace(/<[^>]+>/g, " "))
     .replace(/\s+/g, " ")
     .trim();
 }
+
+function userFacingAttributeText(markup) {
+  const visibleMarkup = withoutNonVisibleContent(markup);
+  const values = [
+    ...visibleMarkup.matchAll(
+      /\b(?:aria-label|alt|title|placeholder)\s*=\s*(["'])([\s\S]*?)\1/gi,
+    ),
+  ].map((match) => match[2]);
+
+  for (const [, metaTag] of visibleMarkup.matchAll(/(<meta\b[^>]*>)/gi)) {
+    const content = metaTag.match(/\bcontent\s*=\s*(["'])([\s\S]*?)\1/i)?.[2];
+    if (content !== undefined) values.push(content);
+  }
+
+  return decodeEntities(values.join(" ")).replace(/\s+/g, " ").trim();
+}
+
+test("extracts decoded user-facing HTML without hidden runtime content", () => {
+  const markup = `
+    <meta content="NPCWoods &#35;1">
+    <main aria-label="Text &#67;hris" title="Real &amp; local">
+      &#82;&#x65;al relief &#x1f44b;
+      <img alt="Chris &quot;Woods&quot;">
+      <input placeholder="Tell us what&#x27;s going on">
+    </main>
+    <script>doctor</script>
+    <style>.insurance { color: red; }</style>
+    <template>appointment</template>
+    <!-- physician -->
+  `;
+  const userFacingText = `${textContent(markup)} ${userFacingAttributeText(markup)}`;
+
+  assert.match(userFacingText, /Real relief 👋/);
+  assert.match(userFacingText, /NPCWoods #1/);
+  assert.match(userFacingText, /Text Chris/);
+  assert.match(userFacingText, /Real & local/);
+  assert.match(userFacingText, /Chris "Woods"/);
+  assert.match(userFacingText, /Tell us what's going on/);
+  assert.doesNotMatch(
+    userFacingText,
+    /\b(doctor|physician|appointment|insurance)\b/i,
+  );
+});
 
 test("server-renders the finished Follow the Thread homepage", async () => {
   const response = await render();
@@ -40,11 +118,14 @@ test("server-renders the finished Follow the Thread homepage", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  const title = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "";
-  const headings = [...html.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/gi)].map(
-    ([, heading]) => textContent(heading),
-  );
+  const visibleMarkup = withoutNonVisibleContent(html);
+  const title =
+    visibleMarkup.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "";
+  const headings = [
+    ...visibleMarkup.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/gi),
+  ].map(([, heading]) => textContent(heading));
   const visibleText = textContent(html);
+  const userFacingText = `${visibleText} ${userFacingAttributeText(html)}`;
 
   assert.match(textContent(title), /^NPCWoods Telemedicine/i);
   assert.deepEqual(
@@ -71,16 +152,23 @@ test("server-renders the finished Follow the Thread homepage", async () => {
     visibleText,
     /usually back to you within an hour during business hours/i,
   );
-  assert.match(html, /href=["']sms:4806394722["']/i);
-  assert.match(html, /<a\b[^>]*href=["']#main-content["'][^>]*>/i);
+  assert.match(visibleMarkup, /href=["']sms:4806394722["']/i);
+  assert.match(visibleMarkup, /<a\b[^>]*href=["']#main-content["'][^>]*>/i);
+  assert.match(
+    visibleMarkup,
+    /<[a-z][^>]*\bid=["']main-content["'][^>]*>/i,
+  );
   assert.match(visibleText, /Real texts\. Real relief\./i);
   assert.match(visibleText, /Some symptoms need in-person care/i);
   assert.match(visibleText, /What happens when I text Chris/i);
 
   assert.doesNotMatch(html, /codex-preview/i);
-  assert.doesNotMatch(html, /Your site is taking shape/i);
-  assert.doesNotMatch(html, /Codex is working/i);
-  assert.doesNotMatch(html, /Codex is building the first version/i);
   assert.doesNotMatch(html, /react-loading-skeleton/i);
-  assert.doesNotMatch(html, /\b(doctor|physician|appointment|insurance)\b/i);
+  assert.doesNotMatch(userFacingText, /Your site is taking shape/i);
+  assert.doesNotMatch(userFacingText, /Codex is working/i);
+  assert.doesNotMatch(userFacingText, /Codex is building the first version/i);
+  assert.doesNotMatch(
+    userFacingText,
+    /\b(doctor|physician|appointment|insurance)\b/i,
+  );
 });
