@@ -39,7 +39,7 @@ export function HomepageContent() {
               <a className="button button-secondary" href="#friction">See how it works</a>
             </div>
           </div>
-          <Image src="/chris-1000.webp" alt="Chris Woods, NP" width={768} height={768} priority sizes="(max-width: 720px) 100vw, 50vw" />
+          <Image src="/chris-1000.webp" alt="Chris Woods, NP" width={768} height={768} priority unoptimized sizes="(max-width: 720px) 100vw, 50vw" />
         </section>
 
         <section className="chapter" id="friction" aria-labelledby="chapter-2-title">
@@ -54,7 +54,7 @@ export function HomepageContent() {
         </section>
 
         <section className="chapter guide" aria-labelledby="chapter-3-title">
-          <Image src="/chris-400.webp" alt="Chris Woods, NP" width={400} height={400} sizes="(max-width: 720px) 70vw, 30vw" />
+          <Image src="/chris-400.webp" alt="Chris Woods, NP" width={400} height={400} unoptimized sizes="(max-width: 720px) 70vw, 30vw" />
           <div className="chapter-copy">
             <p className="eyebrow">Chapter {chapters[2].number}</p>
             <h2 id="chapter-3-title">{headingText(chapters[2].title)}</h2>
