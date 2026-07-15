@@ -55,6 +55,10 @@ body::before {
   pointer-events: none;
 }
 
+.follow-thread-root {
+  position: relative;
+}
+
 img {
   display: block;
   max-width: 100%;

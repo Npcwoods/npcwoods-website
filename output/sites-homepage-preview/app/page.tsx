@@ -1,5 +1,10 @@
 import { HomepageContent } from "./components/HomepageContent";
+import { FollowThread } from "./components/FollowThread";
 
 export default function Home() {
-  return <HomepageContent />;
+  return (
+    <FollowThread>
+      <HomepageContent />
+    </FollowThread>
+  );
 }
