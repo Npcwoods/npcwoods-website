@@ -185,7 +185,12 @@ test("social preview is a 1200 by 630 PNG with host-derived metadata", async () 
   assert.match(layout, /export\s+async\s+function\s+generateMetadata\s*\(\s*\)\s*:\s*Promise<Metadata>/);
   assert.match(layout, /await\s+headers\(\)/);
   assert.match(layout, /get\(["']x-forwarded-host["']\)[\s\S]*?get\(["']host["']\)[\s\S]*?localhost:3000/);
-  assert.match(layout, /get\(["']x-forwarded-proto["']\)[\s\S]*?localhost[\s\S]*?http[\s\S]*?https/);
+  assert.match(layout, /split\(\s*["'],["']\s*,\s*1\s*\)\[0\]\?\.trim\(\)/);
+  assert.match(layout, /get\(["']x-forwarded-proto["']\)/);
+  assert.match(layout, /normalizedProtocol\s*===\s*["']http["'][\s\S]*?normalizedProtocol\s*===\s*["']https["']/);
+  assert.match(layout, /isValidHost\(host\)/);
+  assert.match(layout, /catch\s*\{[\s\S]*?return\s+safeMetadataBase/);
+  assert.match(layout, /new\s+URL\(\s*["']http:\/\/localhost:3000["']\s*\)/);
   assert.match(layout, /metadataBase\s*:\s*metadataBase/);
   assert.match(layout, /openGraph\s*:/);
   assert.match(layout, /twitter\s*:/);

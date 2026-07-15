@@ -229,3 +229,73 @@ test("server-renders absolute social images for the incoming request host", asyn
     "Feeling rough? Just text me. $59 flat fee.",
   );
 });
+
+test("uses the first forwarded host and protocol values", async () => {
+  const response = await render({
+    "x-forwarded-host": "first.example.test, proxy.internal",
+    "x-forwarded-proto": "https, http",
+  });
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.equal(
+    metaContent(html, "property", "og:image"),
+    "https://first.example.test/og.png",
+  );
+  assert.equal(
+    metaContent(html, "name", "twitter:image"),
+    "https://first.example.test/og.png",
+  );
+});
+
+test("malformed forwarded hosts do not crash and use the safe fallback", async () => {
+  const malformedHosts = [
+    "attacker.example/path?redirect=bad#fragment",
+    "user@attacker.example",
+    "preview.example.test:99999",
+  ];
+
+  for (const malformedHost of malformedHosts) {
+    const response = await render({
+      "x-forwarded-host": malformedHost,
+      "x-forwarded-proto": "https",
+    });
+    assert.equal(response.status, 200);
+
+    const html = await response.text();
+    assert.equal(
+      metaContent(html, "property", "og:image"),
+      "http://localhost:3000/og.png",
+    );
+    assert.equal(
+      metaContent(html, "name", "twitter:image"),
+      "http://localhost:3000/og.png",
+    );
+  }
+});
+
+test("unsupported forwarded protocols resolve to a safe web protocol", async () => {
+  const response = await render({
+    "x-forwarded-host": "preview.example.test:8443",
+    "x-forwarded-proto": "javascript",
+  });
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  const openGraphImage = metaContent(html, "property", "og:image");
+  const twitterImage = metaContent(html, "name", "twitter:image");
+  assert.equal(openGraphImage, "https://preview.example.test:8443/og.png");
+  assert.equal(twitterImage, "https://preview.example.test:8443/og.png");
+  assert.doesNotMatch(`${openGraphImage} ${twitterImage}`, /javascript/i);
+
+  const localResponse = await render({
+    "x-forwarded-host": "127.0.0.1:3000",
+    "x-forwarded-proto": "javascript",
+  });
+  assert.equal(localResponse.status, 200);
+  const localHtml = await localResponse.text();
+  assert.equal(
+    metaContent(localHtml, "property", "og:image"),
+    "http://127.0.0.1:3000/og.png",
+  );
+});
