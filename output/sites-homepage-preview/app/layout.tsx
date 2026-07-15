@@ -39,7 +39,8 @@ function resolveMetadataBase(host: string, forwardedProtocol: string | null): UR
     const hostname = parsedHost.hostname.toLowerCase();
     const isLocalhost =
       hostname === "localhost" ||
-      hostname.startsWith("127.") ||
+      hostname.endsWith(".localhost") ||
+      hostname === "127.0.0.1" ||
       hostname === "[::1]" ||
       hostname === "::1";
     const normalizedProtocol = forwardedProtocol?.toLowerCase();

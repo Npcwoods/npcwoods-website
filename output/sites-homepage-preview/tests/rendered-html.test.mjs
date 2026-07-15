@@ -298,4 +298,14 @@ test("unsupported forwarded protocols resolve to a safe web protocol", async () 
     metaContent(localHtml, "property", "og:image"),
     "http://127.0.0.1:3000/og.png",
   );
+
+  const lookalikeResponse = await render({
+    "x-forwarded-host": "127.attacker.example",
+    "x-forwarded-proto": "javascript",
+  });
+  assert.equal(lookalikeResponse.status, 200);
+  const lookalikeHtml = await lookalikeResponse.text();
+  const lookalikeImage = metaContent(lookalikeHtml, "property", "og:image");
+  assert.equal(lookalikeImage, "https://127.attacker.example/og.png");
+  assert.doesNotMatch(lookalikeImage ?? "", /^http:\/\//i);
 });
