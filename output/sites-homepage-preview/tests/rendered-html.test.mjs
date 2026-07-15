@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render() {
+async function render(headers = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
     new Request("http://localhost/", {
-      headers: { accept: "text/html" },
+      headers: { accept: "text/html", ...headers },
     }),
     {
       ASSETS: {
@@ -20,6 +20,17 @@ async function render() {
       passThroughOnException() {},
     },
   );
+}
+
+function metaContent(markup, attribute, value) {
+  const escapedValue = value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const tag = markup.match(
+    new RegExp(
+      `<meta\\b(?=[^>]*\\b${attribute}=["']${escapedValue}["'])[^>]*>`,
+      "i",
+    ),
+  )?.[0];
+  return tag?.match(/\bcontent=["']([^"']+)["']/i)?.[1];
 }
 
 function withoutNonVisibleContent(markup) {
@@ -182,4 +193,23 @@ test("server-renders the finished Follow the Thread homepage", async () => {
     userFacingText,
     /\b(doctor|physician|appointment|insurance)\b/i,
   );
+});
+
+test("server-renders absolute social images for the incoming request host", async () => {
+  const response = await render({
+    "x-forwarded-host": "preview.example.test",
+    "x-forwarded-proto": "https",
+  });
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.equal(
+    metaContent(html, "property", "og:image"),
+    "https://preview.example.test/og.png",
+  );
+  assert.equal(
+    metaContent(html, "name", "twitter:image"),
+    "https://preview.example.test/og.png",
+  );
+  assert.equal(metaContent(html, "name", "twitter:card"), "summary_large_image");
 });

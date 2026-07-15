@@ -165,3 +165,31 @@ test("thread is contained by the full story and uses one continuous SVG gradient
   assert.doesNotMatch(threadProgressRule, /\bstroke-dasharray\s*:/);
   assert.doesNotMatch(globals, /\.thread-layer::before/);
 });
+
+test("social preview is a 1200 by 630 PNG with host-derived metadata", async () => {
+  const [layout, socialPreview] = await Promise.all([
+    readFile(new URL("app/layout.tsx", projectRoot), "utf8"),
+    readFile(new URL("public/og.png", projectRoot)),
+  ]);
+
+  assert.deepEqual(
+    [...socialPreview.subarray(0, 8)],
+    [137, 80, 78, 71, 13, 10, 26, 10],
+    "Expected public/og.png to have a PNG signature",
+  );
+  assert.equal(socialPreview.subarray(12, 16).toString("ascii"), "IHDR");
+  assert.equal(socialPreview.readUInt32BE(16), 1200);
+  assert.equal(socialPreview.readUInt32BE(20), 630);
+
+  assert.match(layout, /import\s*\{\s*headers\s*\}\s*from\s*["']next\/headers["']/);
+  assert.match(layout, /export\s+async\s+function\s+generateMetadata\s*\(\s*\)\s*:\s*Promise<Metadata>/);
+  assert.match(layout, /await\s+headers\(\)/);
+  assert.match(layout, /get\(["']x-forwarded-host["']\)[\s\S]*?get\(["']host["']\)[\s\S]*?localhost:3000/);
+  assert.match(layout, /get\(["']x-forwarded-proto["']\)[\s\S]*?localhost[\s\S]*?http[\s\S]*?https/);
+  assert.match(layout, /metadataBase\s*:\s*metadataBase/);
+  assert.match(layout, /openGraph\s*:/);
+  assert.match(layout, /twitter\s*:/);
+  assert.match(layout, /summary_large_image/);
+  assert.match(layout, /new\s+URL\(\s*["']\/og\.png["']\s*,\s*metadataBase\s*\)/);
+  assert.doesNotMatch(layout, /https?:\/\/(?:www\.)?npcwoods\.com/i);
+});
