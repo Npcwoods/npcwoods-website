@@ -212,4 +212,20 @@ test("server-renders absolute social images for the incoming request host", asyn
     "https://preview.example.test/og.png",
   );
   assert.equal(metaContent(html, "name", "twitter:card"), "summary_large_image");
+  assert.equal(metaContent(html, "property", "og:title"), "Feeling rough? Just text me.");
+  assert.match(metaContent(html, "property", "og:description") ?? "", /\$59 flat fee/i);
+  assert.equal(metaContent(html, "property", "og:image:width"), "1200");
+  assert.equal(metaContent(html, "property", "og:image:height"), "630");
+  assert.equal(
+    metaContent(html, "property", "og:image:alt"),
+    "Feeling rough? Just text me. $59 flat fee.",
+  );
+  assert.equal(metaContent(html, "name", "twitter:title"), "Feeling rough? Just text me.");
+  assert.match(metaContent(html, "name", "twitter:description") ?? "", /\$59 flat fee/i);
+  assert.equal(metaContent(html, "name", "twitter:image:width"), "1200");
+  assert.equal(metaContent(html, "name", "twitter:image:height"), "630");
+  assert.equal(
+    metaContent(html, "name", "twitter:image:alt"),
+    "Feeling rough? Just text me. $59 flat fee.",
+  );
 });

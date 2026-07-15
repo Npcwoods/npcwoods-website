@@ -46,7 +46,14 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [socialImage],
+      images: [
+        {
+          url: socialImage,
+          width: 1200,
+          height: 630,
+          alt: "Feeling rough? Just text me. $59 flat fee.",
+        },
+      ],
     },
   };
 }
