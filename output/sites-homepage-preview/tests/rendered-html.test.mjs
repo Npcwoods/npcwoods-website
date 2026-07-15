@@ -79,6 +79,8 @@ test("server-renders the finished Follow the Thread homepage", async () => {
 
   assert.doesNotMatch(html, /codex-preview/i);
   assert.doesNotMatch(html, /Your site is taking shape/i);
+  assert.doesNotMatch(html, /Codex is working/i);
+  assert.doesNotMatch(html, /Codex is building the first version/i);
   assert.doesNotMatch(html, /react-loading-skeleton/i);
   assert.doesNotMatch(html, /\b(doctor|physician|appointment|insurance)\b/i);
 });

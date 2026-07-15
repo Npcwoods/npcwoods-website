@@ -30,7 +30,7 @@ test("starter preview is removed from runtime source and retained in the archive
 
   assert.doesNotMatch(
     runtimeSource,
-    /codex-preview|Your site is taking shape|Codex is working|SkeletonPreview|_sites-preview|react-loading-skeleton|Starter Project|site-creator-vinext-starter/i,
+    /codex-preview|Your site is taking shape|Codex is working|Codex is building the first version|SkeletonPreview|_sites-preview|react-loading-skeleton|Starter Project|site-creator-vinext-starter/i,
   );
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)), {
     code: "ENOENT",
