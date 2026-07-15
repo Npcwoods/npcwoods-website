@@ -18,16 +18,7 @@ export function FollowThread({ children }: { children: ReactNode }) {
     const animated = select(
       ".thread-progress, .obstacles li, .guide > img, .guide-thread-tail, .message, .resolution-ring, .mobile-text-bar",
     );
-
-    mm.add("(prefers-reduced-motion: reduce)", () => {
-      root.dataset.motion = "reduced";
-      gsap.set(animated, { clearProps: "all" });
-      animated.forEach((element) => element.removeAttribute("style"));
-    });
-
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      root.dataset.motion = "full";
-      const compact = window.matchMedia("(max-width: 760px)").matches;
+    const buildMotion = (compact: boolean) => {
       const main = select("main")[0];
       const thread = select(".thread-progress")[0];
       const friction = select("#friction")[0];
@@ -135,7 +126,28 @@ export function FollowThread({ children }: { children: ReactNode }) {
           },
         });
       }
+    };
+
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+      root.dataset.motion = "reduced";
+      gsap.set(animated, { clearProps: "all" });
+      animated.forEach((element) => element.removeAttribute("style"));
     });
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      root.dataset.motion = "full";
+    });
+
+    mm.add(
+      {
+        full: "(prefers-reduced-motion: no-preference)",
+        compact: "(max-width: 760px)",
+      },
+      (context) => {
+        if (!context.conditions?.full) return;
+        buildMotion(Boolean(context.conditions.compact));
+      },
+    );
 
     return () => mm.revert();
   }, []);

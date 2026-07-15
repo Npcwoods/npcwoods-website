@@ -38,6 +38,18 @@ test("source includes the cinematic thread and reduced-motion contracts", async 
   );
   assert.ok(matchMediaDeclaration, "Expected a named gsap.matchMedia instance");
   const matchMediaName = escapeRegExp(matchMediaDeclaration[1]);
+  assert.match(
+    followThread,
+    new RegExp(
+      `\\b${matchMediaName}\\.add\\(\\s*\\{[\\s\\S]*?\\bcompact\\s*:\\s*["']\\(max-width:\\s*760px\\)["']`,
+    ),
+    "Expected the responsive breakpoint to be owned by gsap.matchMedia",
+  );
+  assert.doesNotMatch(
+    followThread,
+    /window\.matchMedia\(/,
+    "Expected responsive motion to rebuild instead of sampling the viewport once",
+  );
   const reducedMotionRegistration = new RegExp(
     `\\b${matchMediaName}\\.add\\(\\s*["']\\(prefers-reduced-motion:\\s*reduce\\)["']\\s*,`,
   );
