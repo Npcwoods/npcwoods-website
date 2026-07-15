@@ -18,7 +18,7 @@ export const smsHref = "sms:4806394722";
 export const smsMessage = "Hi Chris, I’d like to start a $59 visit.";
 export const smsVisitHref = `${smsHref}?&body=${encodeURIComponent(smsMessage)}`;
 
-export const chapters: readonly Chapter[] = [
+export const chapters = [
   {
     number: 1,
     title: "I feel awful.",
@@ -44,7 +44,7 @@ export const chapters: readonly Chapter[] = [
     title: "I know exactly what to do next.",
     body: "One text starts a straightforward conversation about the care that fits your situation.",
   },
-] as const;
+] as const satisfies readonly [Chapter, Chapter, Chapter, Chapter, Chapter];
 
 export const reviews: readonly Review[] = [
   {
