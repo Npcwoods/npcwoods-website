@@ -38,11 +38,20 @@ test("source includes the cinematic thread and reduced-motion contracts", async 
   );
   assert.ok(matchMediaDeclaration, "Expected a named gsap.matchMedia instance");
   const matchMediaName = escapeRegExp(matchMediaDeclaration[1]);
-  assert.match(
+  const reducedMotionRegistration = new RegExp(
+    `\\b${matchMediaName}\\.add\\(\\s*["']\\(prefers-reduced-motion:\\s*reduce\\)["']\\s*,`,
+  );
+  const reducedMotionCallback = blockAfter(
     followThread,
-    new RegExp(
-      `\\b${matchMediaName}\\.add\\(\\s*["']\\(prefers-reduced-motion:\\s*reduce\\)["']`,
-    ),
+    reducedMotionRegistration,
+  );
+  assert.match(
+    reducedMotionCallback,
+    /\broot\.dataset\.motion\s*=\s*["']reduced["']\s*;/,
+  );
+  assert.match(
+    reducedMotionCallback,
+    /\bgsap\.set\([\s\S]*?\{[\s\S]*?\bclearProps\s*:\s*["']all["']/,
   );
   assert.match(
     followThread,
@@ -55,8 +64,24 @@ test("source includes the cinematic thread and reduced-motion contracts", async 
     globals,
     /@media\s*\([^)]*prefers-reduced-motion:\s*reduce[^)]*\)/,
   );
-  assert.match(reducedMotionCss, /\banimation(?:-duration)?\s*:/);
-  assert.match(reducedMotionCss, /\btransition(?:-duration)?\s*:/);
+  assert.match(
+    reducedMotionCss,
+    /\banimation-duration\s*:\s*0?\.01ms\s*!important\s*;/,
+  );
+  assert.match(
+    reducedMotionCss,
+    /\btransition-duration\s*:\s*0?\.01ms\s*!important\s*;/,
+  );
+  const staticThreadPath = blockAfter(
+    reducedMotionCss,
+    /\.thread-path\b[^,{]*/,
+  );
+  assert.match(staticThreadPath, /\btransform\s*:\s*none\s*!important\s*;/);
+  const staticMobileTextBar = blockAfter(
+    reducedMotionCss,
+    /\.mobile-text-bar\b[^,{]*/,
+  );
+  assert.match(staticMobileTextBar, /\btransform\s*:\s*none\s*!important\s*;/);
 
   const threadPathRule = blockAfter(globals, /\.thread-path\b[^,{]*/);
   assert.match(threadPathRule, /\bstroke(?:-[\w-]+)?\s*:/);

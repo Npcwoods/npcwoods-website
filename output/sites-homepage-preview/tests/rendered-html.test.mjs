@@ -71,15 +71,24 @@ function textContent(markup) {
 
 function userFacingAttributeText(markup) {
   const visibleMarkup = withoutNonVisibleContent(markup);
-  const values = [
-    ...visibleMarkup.matchAll(
-      /\b(?:aria-label|alt|title|placeholder)\s*=\s*(["'])([\s\S]*?)\1/gi,
-    ),
-  ].map((match) => match[2]);
+  const values = [];
+  const openingTags = visibleMarkup.matchAll(
+    /<([a-z][\w:-]*)\b(?:[^>"']|"[^"]*"|'[^']*')*>/gi,
+  );
 
-  for (const [, metaTag] of visibleMarkup.matchAll(/(<meta\b[^>]*>)/gi)) {
-    const content = metaTag.match(/\bcontent\s*=\s*(["'])([\s\S]*?)\1/i)?.[2];
-    if (content !== undefined) values.push(content);
+  for (const match of openingTags) {
+    const [openingTag, tagName] = match;
+    const userFacingAttributes = openingTag.matchAll(
+      /[\t\n\f\r ]+(?:aria-label|alt|title|placeholder)\s*=\s*(["'])(.*?)\1/gi,
+    );
+    for (const attribute of userFacingAttributes) values.push(attribute[2]);
+
+    if (tagName.toLowerCase() === "meta") {
+      const content = openingTag.match(
+        /[\t\n\f\r ]+content\s*=\s*(["'])(.*?)\1/i,
+      )?.[2];
+      if (content !== undefined) values.push(content);
+    }
   }
 
   return decodeEntities(values.join(" ")).replace(/\s+/g, " ").trim();
@@ -88,7 +97,9 @@ function userFacingAttributeText(markup) {
 test("extracts decoded user-facing HTML without hidden runtime content", () => {
   const markup = `
     <meta content="NPCWoods &#35;1">
-    <main aria-label="Text &#67;hris" title="Real &amp; local">
+    <main aria-label="Text &#67;hris" title="Real &amp; local"
+      data-title="doctor" data-alt="physician"
+      data-placeholder="appointment" data-aria-label="insurance">
       &#82;&#x65;al relief &#x1f44b;
       <img alt="Chris &quot;Woods&quot;">
       <input placeholder="Tell us what&#x27;s going on">
