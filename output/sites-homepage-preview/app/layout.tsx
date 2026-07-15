@@ -31,6 +31,17 @@ function isValidHost(host: string): boolean {
   );
 }
 
+function isNumericIpv4Loopback(hostname: string): boolean {
+  const octets = hostname.split(".");
+  return (
+    octets.length === 4 &&
+    octets.every(
+      (octet) => /^\d{1,3}$/.test(octet) && Number(octet) <= 255,
+    ) &&
+    Number(octets[0]) === 127
+  );
+}
+
 function resolveMetadataBase(host: string, forwardedProtocol: string | null): URL {
   try {
     if (!isValidHost(host)) return safeMetadataBase;
@@ -40,7 +51,7 @@ function resolveMetadataBase(host: string, forwardedProtocol: string | null): UR
     const isLocalhost =
       hostname === "localhost" ||
       hostname.endsWith(".localhost") ||
-      hostname === "127.0.0.1" ||
+      isNumericIpv4Loopback(hostname) ||
       hostname === "[::1]" ||
       hostname === "::1";
     const normalizedProtocol = forwardedProtocol?.toLowerCase();

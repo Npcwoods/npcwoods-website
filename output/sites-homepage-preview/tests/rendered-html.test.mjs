@@ -299,6 +299,17 @@ test("unsupported forwarded protocols resolve to a safe web protocol", async () 
     "http://127.0.0.1:3000/og.png",
   );
 
+  const numericLoopbackResponse = await render({
+    "x-forwarded-host": "127.0.0.2:3000",
+    "x-forwarded-proto": "javascript",
+  });
+  assert.equal(numericLoopbackResponse.status, 200);
+  const numericLoopbackHtml = await numericLoopbackResponse.text();
+  assert.equal(
+    metaContent(numericLoopbackHtml, "property", "og:image"),
+    "http://127.0.0.2:3000/og.png",
+  );
+
   const lookalikeResponse = await render({
     "x-forwarded-host": "127.attacker.example",
     "x-forwarded-proto": "javascript",
