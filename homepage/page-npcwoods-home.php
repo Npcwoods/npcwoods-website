@@ -1,6 +1,11 @@
 <?php
 /**
  * Template Name: NPCWoods Homepage
+ * Design v3 (2026-06-25): story-driven, photo-rich, Chris's voice. Real portrait anchors hero +
+ * "Meet Chris". Scoped under #main.npc-redesign so it cannot disturb shared nav/footer (site.css)
+ * or theme globals. Tracking (GA4/Ads/GTM/tracking.js) rides on wp_head()/wp_footer().
+ * Reviews intentionally omitted until Chris supplies verified ones. Lifestyle/step images are
+ * temporary stand-ins (wp-content/uploads/2026/06/) pending Chris's real photos.
  */
 ?>
 <!DOCTYPE html>
@@ -8,1289 +13,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NPCWoods Telemedicine offers $59 text-based urgent care from a licensed Nurse Practitioner. No waiting room, no hidden fees, and clear next steps from home.">
-<meta name="theme-color" content="#f5f5f7">
+<meta name="theme-color" content="#FBF7F0">
 <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
-<link rel="canonical" href="https://npcwoods.com/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://npcwoods.com/">
-<meta property="og:title" content="NPCWoods Telemedicine - $59 Text-Based Urgent Care">
-<meta property="og:description" content="A simple text visit with a licensed Nurse Practitioner. $59 flat fee, clear next steps, and care from home.">
-<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
-<meta property="og:site_name" content="NPCWoods Telemedicine">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NPCWoods Telemedicine - $59 Text-Based Urgent Care">
-<meta name="twitter:description" content="A simple text visit with a licensed Nurse Practitioner. $59 flat fee, clear next steps, and care from home.">
-<meta name="twitter:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="apple-touch-icon" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://unpkg.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
-<style>
-    :root {
-      color-scheme: light;
-      --ink: #111827;
-      --body: #354052;
-      --muted: #657286;
-      --paper: #ffffff;
-      --soft: #eef4fb;
-      --blue: #0a74da;
-      --navy: #07111f;
-      --green: #18a36a;
-      --amber: #d78a1f;
-      --red: #c2413a;
-      --line: rgba(15, 23, 42, 0.12);
-      --line-dark: rgba(255, 255, 255, 0.16);
-      --max: 1160px;
-      --radius: 8px;
-      --shadow: 0 18px 55px rgba(15, 23, 42, 0.11);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: #f6f8fb;
-      font-family: Inter, "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      touch-action: manipulation;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    :focus-visible {
-      outline: 3px solid rgba(10, 116, 218, 0.42);
-      outline-offset: 4px;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: 14px;
-      top: -80px;
-      z-index: 1000;
-      padding: 10px 14px;
-      border-radius: 0 0 var(--radius) var(--radius);
-      background: var(--blue);
-      color: #fff;
-      font-weight: 900;
-    }
-    .skip-link:focus { top: 0; }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-      background: rgba(246, 248, 251, 0.9);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav-inner {
-      width: min(var(--max), calc(100% - 28px));
-      min-height: 64px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 900;
-    }
-
-    .brand img {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .brand span {
-      display: block;
-      font-size: 15px;
-      line-height: 1;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 3px;
-      color: var(--blue);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      color: #3c4657;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .nav-links a:hover { color: var(--blue); }
-
-    .btn {
-      display: inline-flex;
-      min-height: 46px;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 12px 18px;
-      border: 0;
-      border-radius: var(--radius);
-      font-weight: 900;
-      text-align: center;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(10, 116, 218, 0.22);
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(15, 23, 42, 0.14);
-      background: #fff;
-      color: var(--ink);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(10, 116, 218, 0.09) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(10, 116, 218, 0.07) 1px, transparent 1px),
-        linear-gradient(180deg, #f6f8fb 0%, #ffffff 100%);
-      background-size: 64px 64px, 64px 64px, auto;
-    }
-
-    .hero-inner {
-      width: min(var(--max), calc(100% - 28px));
-      min-height: 720px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 0.88fr;
-      align-items: center;
-      gap: 52px;
-      padding: 74px 0 56px;
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .kicker::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 5px rgba(24, 163, 106, 0.14);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      max-width: 720px;
-      margin-bottom: 22px;
-      font-size: 76px;
-      line-height: 0.95;
-      letter-spacing: 0;
-      text-wrap: balance;
-    }
-
-    .hero-lede {
-      max-width: 650px;
-      margin-bottom: 28px;
-      color: var(--body);
-      font-size: 22px;
-      line-height: 1.35;
-      font-weight: 750;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
-    .micro-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .micro-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 10px;
-      border: 1px solid rgba(15, 23, 42, 0.1);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.86);
-      color: #263247;
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .visual-stack {
-      display: grid;
-      gap: 16px;
-    }
-
-    .phone-panel {
-      position: relative;
-      min-height: 520px;
-      padding: 22px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .phone-shell {
-      width: min(310px, 100%);
-      margin: 0 auto;
-      border: 10px solid #0b1220;
-      border-radius: 34px;
-      background: #f8fafc;
-      overflow: hidden;
-      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.24);
-    }
-
-    .phone-top {
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b1220;
-    }
-
-    .phone-camera {
-      width: 82px;
-      height: 18px;
-      border-radius: 999px;
-      background: #020617;
-    }
-
-    .chat {
-      display: grid;
-      gap: 10px;
-      padding: 16px;
-    }
-
-    .chat-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    }
-
-    .chat-head img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .chat-head strong,
-    .chat-head span {
-      display: block;
-    }
-
-    .chat-head span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 750;
-    }
-
-    .bubble {
-      max-width: 88%;
-      padding: 10px 12px;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 750;
-      line-height: 1.35;
-    }
-
-    .bubble.patient {
-      justify-self: end;
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .bubble.np {
-      justify-self: start;
-      background: #e9eef5;
-      color: #1d2738;
-    }
-
-    .next-card {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 11px;
-      align-items: center;
-      margin-top: 4px;
-      padding: 12px;
-      border: 1px solid rgba(24, 163, 106, 0.22);
-      border-radius: var(--radius);
-      background: #f0fff7;
-    }
-
-    .next-card i {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius);
-      background: var(--green);
-      color: #fff;
-    }
-
-    .next-card strong,
-    .next-card span {
-      display: block;
-    }
-
-    .next-card span {
-      color: #32604c;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .route-card {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .route-tile {
-      min-height: 112px;
-      padding: 14px;
-      border: 1px solid rgba(15, 23, 42, 0.11);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
-    }
-
-    .route-tile i {
-      color: var(--blue);
-    }
-
-    .route-tile strong {
-      display: block;
-      margin-top: 9px;
-      font-size: 15px;
-      line-height: 1.15;
-    }
-
-    .section {
-      padding: 84px 0;
-    }
-
-    .section.dark {
-      color: #fff;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(180deg, #07111f 0%, #0d1828 100%);
-      background-size: 72px 72px, 72px 72px, auto;
-    }
-
-    .section-inner {
-      width: min(var(--max), calc(100% - 28px));
-      margin: 0 auto;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 0.86fr 1fr;
-      align-items: end;
-      gap: 34px;
-      margin-bottom: 34px;
-    }
-
-    .section h2 {
-      margin-bottom: 0;
-      font-size: 48px;
-      line-height: 1.03;
-      letter-spacing: 0;
-      text-wrap: balance;
-    }
-
-    .section-copy {
-      margin-bottom: 0;
-      color: var(--body);
-      font-size: 18px;
-      font-weight: 750;
-    }
-
-    .dark .section-copy { color: #d8e1ef; }
-
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .proof-box {
-      min-height: 122px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--paper);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-    }
-
-    .proof-box strong {
-      display: block;
-      font-size: 34px;
-      line-height: 1;
-    }
-
-    .proof-box span {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .path {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .path-step {
-      min-height: 245px;
-      display: grid;
-      align-content: start;
-      gap: 18px;
-      padding: 22px;
-      border: 1px solid var(--line-dark);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.09);
-    }
-
-    .icon-block {
-      display: grid;
-      place-items: center;
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius);
-      background: #fff;
-      color: var(--blue);
-    }
-
-    .path-step h3 {
-      margin-bottom: 0;
-      color: #fff;
-      font-size: 26px;
-      line-height: 1.05;
-      text-wrap: balance;
-    }
-
-    .path-step p {
-      margin-bottom: 0;
-      color: #dbe5f2;
-      font-weight: 700;
-    }
-
-    .traffic {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .signal {
-      min-height: 280px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
-    }
-
-    .signal-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .signal-light {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: #fff;
-    }
-
-    .signal.green .signal-light { background: var(--green); }
-    .signal.amber .signal-light { background: var(--amber); }
-    .signal.red .signal-light { background: var(--red); }
-
-    .signal h3 {
-      margin-bottom: 0;
-      font-size: 23px;
-      line-height: 1.05;
-    }
-
-    .signal ul {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: var(--body);
-      font-weight: 750;
-    }
-
-    .signal li {
-      display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 8px;
-    }
-
-    .signal li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      margin-top: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.48;
-    }
-
-    .condition-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .condition {
-      min-height: 148px;
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      gap: 14px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-    }
-
-    .condition i {
-      display: grid;
-      place-items: center;
-      width: 50px;
-      height: 50px;
-      border-radius: var(--radius);
-      background: var(--soft);
-      color: var(--blue);
-    }
-
-    .condition strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 19px;
-      line-height: 1.1;
-    }
-
-    .condition span {
-      display: block;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 750;
-    }
-
-    .price-band {
-      display: grid;
-      grid-template-columns: 0.8fr 1fr;
-      gap: 28px;
-      align-items: center;
-      padding: 34px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .price-number {
-      display: grid;
-      place-items: center;
-      min-height: 260px;
-      border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, rgba(10, 116, 218, 0.92), rgba(24, 163, 106, 0.86)),
-        #0a74da;
-      color: #fff;
-      font-size: 92px;
-      font-weight: 950;
-    }
-
-    .price-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .price-item {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 12px;
-      align-items: center;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #f7fafc;
-      font-weight: 850;
-    }
-
-    .price-item i {
-      color: var(--green);
-    }
-
-    .trust {
-      display: grid;
-      grid-template-columns: 0.72fr 1fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .portrait {
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: #d8e3ef;
-      min-height: 420px;
-    }
-
-    .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .trust-copy {
-      display: grid;
-      align-content: center;
-      padding: 34px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-    }
-
-    .trust-copy h2 {
-      margin-bottom: 16px;
-    }
-
-    .credential-row,
-    .states {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 20px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 10px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      border-radius: var(--radius);
-      background: #fff;
-      color: #263247;
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .final {
-      padding: 80px 0;
-      color: #fff;
-      background: var(--navy);
-    }
-
-    .final-inner {
-      width: min(880px, calc(100% - 28px));
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .final h2 {
-      margin-bottom: 18px;
-      font-size: 52px;
-      line-height: 1.02;
-      text-wrap: balance;
-    }
-
-    .final p {
-      max-width: 660px;
-      margin: 0 auto 26px;
-      color: #d7e1ef;
-      font-size: 19px;
-      font-weight: 760;
-    }
-
-    @media (max-width: 960px) {
-      .hero-inner,
-      .section-head,
-      .price-band,
-      .trust {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-inner {
-        min-height: auto;
-        padding-top: 46px;
-      }
-
-      .proof-grid,
-      .path,
-      .traffic,
-      .condition-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-inner {
-        min-height: 58px;
-      }
-
-      .brand small,
-      .nav-links a:not(.btn) {
-        display: none;
-      }
-
-      .nav-links {
-        gap: 0;
-      }
-
-      .nav-links .btn {
-        min-height: 40px;
-        padding: 10px 12px;
-        font-size: 13px;
-      }
-
-      h1 {
-        font-size: 46px;
-        line-height: 1.01;
-      }
-
-      .hero-lede {
-        font-size: 18px;
-      }
-
-      .hero-actions,
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .micro-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .proof-grid,
-      .path,
-      .traffic,
-      .condition-grid,
-      .route-card {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 62px 0;
-      }
-
-      .section h2,
-      .final h2 {
-        font-size: 36px;
-      }
-
-      .section-head {
-        gap: 16px;
-      }
-
-      .phone-panel {
-        padding: 14px;
-      }
-
-      .path-step,
-      .signal,
-      .price-band,
-      .trust-copy {
-        padding: 18px;
-      }
-
-      .price-number {
-        min-height: 180px;
-        font-size: 64px;
-      }
-
-      .portrait {
-        min-height: 330px;
-      }
-    }
-
-    :root {
-      --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.1);
-      --shadow-deep: 0 60px 120px rgba(0, 0, 0, 0.24);
-    }
-
-    .hero {
-      min-height: calc(100svh - 56px);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 78px 22px 54px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(0, 113, 227, 0.2), transparent 34%),
-        linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 56%, #edf3fb 100%);
-      background-size: auto;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: auto -12% -28% -12%;
-      height: 48%;
-      background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.22), transparent 65%);
-      filter: blur(34px);
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: min(var(--max), 100%);
-      min-height: auto;
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 54px;
-      align-items: center;
-      padding: 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 22px;
-      color: #0071e3;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #18a36a;
-      box-shadow: 0 0 0 6px rgba(25, 164, 99, 0.12);
-    }
-
-    .hero h1 {
-      margin-bottom: 0;
-      max-width: 790px;
-      font-size: clamp(58px, 8.8vw, 118px);
-      line-height: 0.91;
-      letter-spacing: -0.065em;
-      font-weight: 900;
-    }
-
-    .blue-word {
-      background: linear-gradient(100deg, #0071e3, #5e5ce6 48%, #111114);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.07em;
-    }
-
-    .lede {
-      max-width: 590px;
-      margin: 26px 0 0;
-      color: #424245;
-      font-size: clamp(20px, 2.1vw, 28px);
-      line-height: 1.24;
-      letter-spacing: -0.025em;
-      font-weight: 650;
-    }
-
-    .hero .hero-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 34px 0 0;
-    }
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 850;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    .button.primary {
-      background: #0071e3;
-      color: #fff;
-      box-shadow: 0 22px 44px rgba(0, 113, 227, 0.24);
-    }
-
-    .button.secondary {
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      color: #1d1d1f;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-
-    .hero-fineprint {
-      margin-top: 18px;
-      color: #657286;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .stage {
-      position: relative;
-      min-height: 650px;
-      display: grid;
-      place-items: center;
-      perspective: 1200px;
-    }
-
-    .halo {
-      position: absolute;
-      width: 620px;
-      height: 620px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 113, 227, 0.18), rgba(255, 255, 255, 0.04) 46%, transparent 68%);
-    }
-
-    .iphone {
-      width: min(360px, 76vw);
-      aspect-ratio: 9 / 18.6;
-      padding: 13px;
-      border-radius: 54px;
-      background: linear-gradient(145deg, #16181f, #e9ecf3 32%, #101116 62%, #ffffff);
-      box-shadow: var(--shadow-deep), 0 18px 44px rgba(0, 113, 227, 0.15);
-      transform: rotateY(-14deg) rotateX(5deg) rotateZ(1deg);
-      animation: floatPhone 7s ease-in-out infinite;
-    }
-
-    @keyframes floatPhone {
-      0%, 100% { transform: rotateY(-14deg) rotateX(5deg) rotateZ(1deg) translateY(0); }
-      50% { transform: rotateY(-9deg) rotateX(7deg) rotateZ(1deg) translateY(-14px); }
-    }
-
-    .screen {
-      position: relative;
-      height: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.52);
-      border-radius: 43px;
-      background: #f7f8fb;
-    }
-
-    .island {
-      position: absolute;
-      top: 11px;
-      left: 50%;
-      z-index: 4;
-      width: 104px;
-      height: 30px;
-      border-radius: 999px;
-      background: #07070a;
-      transform: translateX(-50%);
-    }
-
-    .screen-content { padding: 58px 20px 22px; }
-
-    .chat-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .chat-head img {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .chat-head b { display: block; color: #1d1d1f; }
-    .chat-head span {
-      display: block;
-      color: #18a36a;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .bubble {
-      width: fit-content;
-      max-width: 88%;
-      margin: 10px 0;
-      padding: 12px 14px;
-      border-radius: 19px;
-      font-size: 14px;
-      line-height: 1.35;
-      font-weight: 700;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    .bubble.me {
-      margin-left: auto;
-      border-bottom-right-radius: 6px;
-      background: #0071e3;
-      color: #fff;
-    }
-
-    .bubble.np {
-      border-bottom-left-radius: 6px;
-      background: #fff;
-      color: #1d1d1f;
-    }
-
-    .reply-card {
-      margin-top: 18px;
-      padding: 18px;
-      border-radius: 24px;
-      background: #111114;
-      color: #fff;
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.2);
-    }
-
-    .reply-card .small {
-      color: #9ecaff;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .reply-card strong {
-      display: block;
-      margin: 8px 0 6px;
-      font-size: 23px;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .reply-card p {
-      margin: 0;
-      color: #c7c7ce;
-      font-size: 12px;
-    }
-
-    .floating-card {
-      position: absolute;
-      padding: 18px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(20px);
-      color: #1d1d1f;
-      font-weight: 850;
-    }
-
-    .floating-card span {
-      display: block;
-      margin-top: 2px;
-      color: #657286;
-      font-size: 12px;
-      font-weight: 750;
-    }
-
-    .float-a { left: 0; top: 88px; }
-    .float-b { right: 6px; bottom: 96px; }
-
-    @media (max-width: 980px) {
-      .hero {
-        min-height: auto;
-        padding-top: 58px;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .stage {
-        min-height: 590px;
-        order: -1;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 34px 16px 38px;
-      }
-
-      .hero-inner {
-        gap: 26px;
-      }
-
-      .hero h1 {
-        font-size: clamp(55px, 15vw, 92px);
-      }
-
-      .stage {
-        min-height: 460px;
-      }
-
-      .iphone {
-        width: min(292px, 76vw);
-        border-radius: 44px;
-      }
-
-      .screen {
-        border-radius: 34px;
-      }
-
-      .screen-content {
-        padding: 52px 16px 18px;
-      }
-
-      .floating-card {
-        padding: 13px 14px;
-        border-radius: 18px;
-        font-size: 13px;
-      }
-
-      .float-a { left: 4px; top: 46px; }
-      .float-b { right: 0; bottom: 40px; }
-
-      .hero .hero-actions {
-        align-items: stretch;
-      }
-
-      .hero .button {
-        width: 100%;
-      }
-    }
-  </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "MedicalBusiness",
-      "@id": "https://npcwoods.com/#medical-business",
-      "name": "NPCWoods Telemedicine",
-      "url": "https://npcwoods.com/",
-      "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-      "priceRange": "$59",
-      "telephone": "+14806394722",
-      "email": "cwoods@npcwoods.com",
-      "founder": { "@id": "https://npcwoods.com/#chris-woods" },
-      "employee": { "@id": "https://npcwoods.com/#chris-woods" },
-      "areaServed": [
-        {"@type": "State", "name": "Arizona"},
-        {"@type": "State", "name": "Colorado"},
-        {"@type": "State", "name": "Georgia"},
-        {"@type": "State", "name": "Idaho"},
-        {"@type": "State", "name": "Iowa"},
-        {"@type": "State", "name": "Montana"},
-        {"@type": "State", "name": "Nevada"},
-        {"@type": "State", "name": "New Mexico"},
-        {"@type": "State", "name": "North Carolina"},
-        {"@type": "State", "name": "Oregon"},
-        {"@type": "State", "name": "Utah"}
-      ],
-      "medicalSpecialty": "https://schema.org/FamilyPractice",
-      "makesOffer": {
-        "@type": "Offer",
-        "name": "Async telemedicine visit",
-        "price": "59.00",
-        "priceCurrency": "USD"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://npcwoods.com/#chris-woods",
-      "name": "Chris Woods",
-      "honorificSuffix": "MSN, APRN, FNP-C",
-      "jobTitle": "Licensed Nurse Practitioner",
-      "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-      "worksFor": { "@id": "https://npcwoods.com/#medical-business" },
-      "identifier": {
-        "@type": "PropertyValue",
-        "propertyID": "NPI",
-        "value": "1285125468"
-      },
-      "sameAs": [
-        "https://npiregistry.cms.hhs.gov/provider-view/1285125468",
-        "https://www.healthgrades.com/providers/christopher-woods-xynt5wl",
-        "https://doctor.webmd.com/doctor/christopher-woods-7b55e933-62ef-4d7b-975c-9cfc40eb3ad8-overview"
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://npcwoods.com/#text-visit",
-      "name": "$59 text-based urgent care visit",
-      "provider": { "@id": "https://npcwoods.com/#medical-business" },
-      "offers": {
-        "@type": "Offer",
-        "price": "59",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      }
-    }
-  ]
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
 </head>
 <body>
@@ -1313,304 +44,302 @@ foreach ($npcwoods_header_candidates as $npcwoods_header_path) {
 }
 if (!$npcwoods_header_rendered):
 ?>
-<nav class="nav" aria-label="Primary navigation">
-  <div class="nav-inner">
-    <a class="brand" href="/" aria-label="NPCWoods homepage">
-      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="" width="28" height="28">
-      <span>NPCWoods</span>
+<nav class="npc-nav" aria-label="Primary navigation">
+  <div class="npc-nav-inner">
+    <a class="npc-nav-logo" href="/" aria-label="NPCWoods homepage">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="" width="38" height="38">
+      <span class="npc-nav-logo-text"><span class="npc-nav-logo-name">NPCWoods</span><span class="npc-nav-logo-tag">Telemedicine</span></span>
     </a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#conditions">Conditions</a>
-      <a href="#states">States</a>
-      <a href="#trust">Chris</a>
-      <a class="nav-cta" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start visit</a>
-    </div>
+    <a class="npc-nav-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris &middot; $59</a>
   </div>
 </nav>
 <?php endif; ?>
 
-<style id="npcwoods-homepage-live-overrides">
-#main .section.dark,
-#main .final {
-  color: #fff;
-}
+<style id="npcwoods-home-redesign">
+  /* ===== NPCWoods homepage v3 (story + photos) : scoped to #main.npc-redesign ===== */
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 2000; padding: 10px 16px; border-radius: 0 0 8px 8px; background: #1B1813; color: #FBF7F0; -webkit-text-fill-color: #FBF7F0; font-family: Inter, sans-serif; font-weight: 600; font-size: 14px; }
+  .skip-link:focus { left: 14px; }
 
-#main .section.dark h2,
-#main .section.dark h3,
-#main .section.dark .path-step h3,
-#main .final h2 {
-  color: #fff !important;
-}
+  #main.npc-redesign {
+    --cream: #FBF7F0; --warm-white: #FDFAF5; --cream-2: #F1EBDF;
+    --ink: #1C1A17; --body: #57524A; --muted: #8C867A; --eyebrow: #6E6A60;
+    --dark: #1B1813; --dark-2: #221E18; --on-dark: #FBF7F0; --on-dark-muted: #A39B8C;
+    --blue: #2563EB; --blue-deep: #1D4ED8; --lav: #A5B4FC;
+    --green: #16A34A; --gold: #E0A106; --red: #C2413A;
+    --hair: rgba(28,26,23,0.12); --hair-dark: rgba(251,247,240,0.15);
+    --rmax: 1180px; --rgut: clamp(20px, 5vw, 56px);
+    background: var(--cream); color: var(--ink);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  body { background: #FBF7F0; }
+  #main.npc-redesign * { box-sizing: border-box; }
+  #main.npc-redesign :where(h1,h2,h3,h4,p,ul,li,figure) { margin: 0; padding: 0; }
+  #main.npc-redesign a { color: inherit; text-decoration: none; -webkit-text-fill-color: currentColor; }
+  #main.npc-redesign img { display: block; max-width: 100%; }
+  #main.npc-redesign ::selection { background: var(--blue); color: #fff; }
 
-#main .section.dark .section-copy,
-#main .section.dark .path-step p,
-#main .final p {
-  color: #dbe5f2 !important;
-}
+  #main.npc-redesign .rwrap { width: min(var(--rmax), 100%); margin: 0 auto; padding-inline: var(--rgut); }
+  #main.npc-redesign .rpad { padding-block: clamp(72px, 11vh, 144px); }
+  #main.npc-redesign section { position: relative; }
+  #main.npc-redesign .dark { background: var(--dark); color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); }
+  #main.npc-redesign .dark :where(h1,h2,h3,p,span,div,li) { color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); }
+  #main.npc-redesign .warm-white { background: var(--warm-white); }
 
-#main .section.dark .kicker,
-#main .final .kicker {
-  color: #35d99b !important;
-}
+  #main.npc-redesign .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eyebrow); -webkit-text-fill-color: var(--eyebrow); display: inline-flex; align-items: center; gap: 9px; }
+  #main.npc-redesign .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+  #main.npc-redesign .dark .eyebrow { color: var(--on-dark-muted); -webkit-text-fill-color: var(--on-dark-muted); }
 
-#main .section.dark .icon-block {
-  background: #fff;
-  color: var(--blue);
-}
+  #main.npc-redesign h1, #main.npc-redesign h2, #main.npc-redesign h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.03; text-wrap: balance; }
+  #main.npc-redesign h1 { font-size: clamp(2.6rem, 6.4vw, 4.5rem); }
+  #main.npc-redesign h2 { font-size: clamp(2rem, 4.5vw, 3.3rem); }
+  #main.npc-redesign .em { color: var(--blue); -webkit-text-fill-color: var(--blue); }
+  #main.npc-redesign .dark .em { color: var(--lav); -webkit-text-fill-color: var(--lav); }
+  #main.npc-redesign .serif-accent { font-family: Newsreader, Georgia, serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em; }
+  #main.npc-redesign .lede { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--body); -webkit-text-fill-color: var(--body); line-height: 1.5; font-weight: 400; }
+  #main.npc-redesign .dark .lede { color: var(--on-dark-muted); -webkit-text-fill-color: var(--on-dark-muted); }
 
-#main .final .btn-primary {
-  color: #fff !important;
-}
+  #main.npc-redesign .rbtn { display: inline-flex; align-items: center; gap: 9px; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 100px; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, background .2s; }
+  #main.npc-redesign .rbtn-primary { background: var(--blue); color: #fff !important; -webkit-text-fill-color: #fff !important; box-shadow: 0 14px 34px rgba(37,99,235,.26); }
+  #main.npc-redesign .rbtn-primary:hover { background: var(--blue-deep); transform: translateY(-2px); box-shadow: 0 18px 42px rgba(37,99,235,.34); }
+  #main.npc-redesign .rbtn-ghost { background: transparent; color: var(--ink); -webkit-text-fill-color: var(--ink); border-color: var(--hair); }
+  #main.npc-redesign .rbtn-ghost:hover { border-color: rgba(28,26,23,.42); transform: translateY(-2px); }
+  #main.npc-redesign .dark .rbtn-ghost { color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); border-color: rgba(251,247,240,.26); }
 
-#main .final .btn-secondary {
-  color: var(--ink) !important;
-}
+  /* HERO */
+  #main.npc-redesign .rhero { min-height: calc(100svh - 64px); display: grid; place-items: center; background: radial-gradient(120% 80% at 82% 0%, rgba(99,102,241,.10), transparent 55%), linear-gradient(180deg, var(--warm-white), var(--cream) 70%); }
+  #main.npc-redesign .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px,5vw,60px); align-items: center; padding-block: clamp(40px,7vh,80px); }
+  #main.npc-redesign .hero-copy { display: grid; gap: 22px; justify-items: start; }
+  #main.npc-redesign .hero-copy h1 { max-width: 13ch; }
+  #main.npc-redesign .hero-copy .lede { max-width: 40ch; }
+  #main.npc-redesign .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  #main.npc-redesign .hero-cred { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .07em; color: var(--eyebrow); -webkit-text-fill-color: var(--eyebrow); }
+  #main.npc-redesign .hero-photo { position: relative; }
+  #main.npc-redesign .hero-photo img { width: 100%; border-radius: 18px; box-shadow: 0 40px 90px rgba(28,26,23,.18); background: var(--cream-2); aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
+  #main.npc-redesign .hero-badge { position: absolute; left: -16px; bottom: 22px; background: #fff; border: 1px solid var(--hair); border-radius: 14px; padding: 12px 16px; box-shadow: 0 18px 40px rgba(28,26,23,.14); display: flex; align-items: center; gap: 10px; }
+  #main.npc-redesign .hero-badge .price { font-size: 1.7rem; font-weight: 700; letter-spacing: -.04em; color: var(--blue); -webkit-text-fill-color: var(--blue); line-height: 1; }
+  #main.npc-redesign .hero-badge .lbl { font-size: 12px; color: var(--body); -webkit-text-fill-color: var(--body); font-weight: 600; line-height: 1.25; }
+  @media (max-width: 860px) { #main.npc-redesign .hero-grid { grid-template-columns: 1fr; padding-top: 40px; } #main.npc-redesign .hero-photo { order: -1; max-width: 340px; } #main.npc-redesign .hero-copy { justify-items: center; text-align: center; } #main.npc-redesign .hero-copy .lede { margin-inline: auto; } }
 
-/* The global save-contact prompt overlaps the homepage hero on small screens. */
-#npcSaveWrap {
-  display: none !important;
-  visibility: hidden !important;
-}
+  /* PROBLEM */
+  #main.npc-redesign .sec-head { display: grid; gap: 16px; max-width: 56ch; margin-bottom: clamp(36px,5vh,64px); }
+  #main.npc-redesign .prob-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  #main.npc-redesign .prob { padding: 26px 22px; border: 1px solid var(--hair); border-radius: 14px; background: var(--cream); display: grid; gap: 10px; align-content: start; }
+  #main.npc-redesign .prob .x { width: 30px; height: 30px; border-radius: 8px; background: rgba(194,65,58,.1); color: var(--red); -webkit-text-fill-color: var(--red); display: grid; place-items: center; font-weight: 700; }
+  #main.npc-redesign .prob h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.15; }
+  #main.npc-redesign .prob p { font-size: .92rem; color: var(--muted); -webkit-text-fill-color: var(--muted); }
+  #main.npc-redesign .prob-foot { margin-top: 32px; font-size: clamp(1.2rem,2.4vw,1.7rem); font-weight: 500; letter-spacing: -.02em; }
+  @media (max-width: 760px) { #main.npc-redesign .prob-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* MEET */
+  #main.npc-redesign .meet { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(28px,5vw,68px); align-items: center; }
+  #main.npc-redesign .meet-photo img { width: 100%; border-radius: 18px; aspect-ratio: 4/5; object-fit: cover; object-position: center top; background: var(--cream-2); box-shadow: 0 36px 80px rgba(0,0,0,.34); }
+  #main.npc-redesign .meet-copy { display: grid; gap: 18px; }
+  #main.npc-redesign .meet-copy p { color: var(--on-dark-muted); -webkit-text-fill-color: var(--on-dark-muted); font-size: 1.06rem; line-height: 1.6; max-width: 52ch; }
+  #main.npc-redesign .meet-copy .big { color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); font-size: 1.2rem; }
+  #main.npc-redesign .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  #main.npc-redesign .chip { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; padding: 8px 13px; border: 1px solid var(--hair-dark); border-radius: 100px; color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); }
+  @media (max-width: 820px) { #main.npc-redesign .meet { grid-template-columns: 1fr; } #main.npc-redesign .meet-photo { max-width: 400px; } }
+
+  /* STEPS */
+  #main.npc-redesign .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  #main.npc-redesign .step { border: 1px solid var(--hair); border-radius: 16px; overflow: hidden; background: var(--warm-white); }
+  #main.npc-redesign .step-img { aspect-ratio: 3/2; overflow: hidden; background: var(--cream-2); }
+  #main.npc-redesign .step-img img { width: 100%; height: 100%; object-fit: cover; }
+  #main.npc-redesign .step-body { padding: 22px 22px 26px; display: grid; gap: 8px; }
+  #main.npc-redesign .step-num { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--blue); -webkit-text-fill-color: var(--blue); }
+  #main.npc-redesign .step h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; }
+  #main.npc-redesign .step p { color: var(--body); -webkit-text-fill-color: var(--body); font-size: .98rem; }
+  @media (max-width: 760px) { #main.npc-redesign .steps { grid-template-columns: 1fr; } }
+
+  /* BAND */
+  #main.npc-redesign .band { min-height: 54vh; display: grid; place-items: center; text-align: center; overflow: hidden; }
+  #main.npc-redesign .band > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #main.npc-redesign .band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27,24,19,.36), rgba(27,24,19,.55)); }
+  #main.npc-redesign .band .rwrap { position: relative; z-index: 1; display: grid; gap: 12px; justify-items: center; }
+  #main.npc-redesign .band h2 { color: #fff; -webkit-text-fill-color: #fff; max-width: 18ch; }
+  #main.npc-redesign .band p { color: rgba(255,255,255,.92); -webkit-text-fill-color: rgba(255,255,255,.92); font-size: 1.1rem; max-width: 44ch; }
+
+  /* PRICE */
+  #main.npc-redesign .price-stage { display: grid; place-items: center; text-align: center; gap: 16px; }
+  #main.npc-redesign .price-num { font-size: clamp(6rem,22vw,16rem); font-weight: 700; line-height: .82; letter-spacing: -.06em; color: var(--on-dark); -webkit-text-fill-color: var(--on-dark); }
+  #main.npc-redesign .price-num .d { color: var(--lav); -webkit-text-fill-color: var(--lav); }
+  #main.npc-redesign .price-copy { max-width: 46ch; }
+  #main.npc-redesign .price-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 6px; }
+
+  /* STATES */
+  #main.npc-redesign .states { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 6px; }
+  #main.npc-redesign .state { font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: .05em; padding: 9px 14px; border: 1px solid var(--hair); border-radius: 100px; color: var(--ink); -webkit-text-fill-color: var(--ink); display: inline-flex; gap: 8px; align-items: center; }
+  #main.npc-redesign .state::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+  /* FINAL */
+  #main.npc-redesign .final { text-align: center; }
+  #main.npc-redesign .final .rwrap { display: grid; justify-items: center; gap: 22px; }
+  #main.npc-redesign .final h2 { color: #fff; -webkit-text-fill-color: #fff; max-width: 14ch; }
+
+  /* reveal */
+  #main.npc-redesign .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  #main.npc-redesign .reveal.in { opacity: 1; transform: none; }
+  #main.npc-redesign .d1 { transition-delay: .07s; } #main.npc-redesign .d2 { transition-delay: .14s; } #main.npc-redesign .d3 { transition-delay: .21s; }
+  @media (prefers-reduced-motion: reduce) { #main.npc-redesign .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* REVIEWS */
+  #main.npc-redesign .rev-head { text-align: center; display: grid; gap: 14px; justify-items: center; margin-bottom: clamp(36px,5vh,64px); }
+  #main.npc-redesign .rev-grid { columns: 3 290px; column-gap: 16px; }
+  #main.npc-redesign .rev { break-inside: avoid; margin: 0 0 16px; padding: 24px; border: 1px solid var(--hair); border-radius: 16px; background: var(--cream); display: grid; gap: 12px; }
+  #main.npc-redesign .stars { color: var(--gold); -webkit-text-fill-color: var(--gold); letter-spacing: 2px; font-size: .95rem; }
+  #main.npc-redesign .rev p { font-size: 1.02rem; line-height: 1.5; color: var(--ink); -webkit-text-fill-color: var(--ink); }
+  #main.npc-redesign .rev .who { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .05em; color: var(--muted); -webkit-text-fill-color: var(--muted); text-transform: uppercase; }
+
+  /* keep shared widgets from intruding on the homepage */
+  #npcSaveWrap { display: none !important; visibility: hidden !important; }
+  #trustedsite-tm-image, [id^="trustedsite"], [id^="trustedbadge"], [class*="trustedsite"] { display: none !important; }
+  body::after { content: none !important; display: none !important; }
 </style>
 
-<main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow"><i></i> Text-based urgent care</div>
-          <h1 id="hero-title">Urgent care, reimagined for <span class="blue-word">your phone.</span></h1>
-          <p class="lede">A $59 text visit with Chris Woods, MSN, APRN, FNP-C. Clear next steps from home, without the waiting room spiral.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">Start my $59 visit</a>
-            <a class="button secondary" href="#how">See how it works</a>
-          </div>
-          <div class="hero-fineprint">Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</div>
-        </div>
+<noscript><style>#main.npc-redesign .reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-        <div class="stage" aria-hidden="true">
-          <div class="halo"></div>
-          <div class="floating-card float-a">$59 flat fee<span>No hidden fees</span></div>
-          <div class="iphone">
-            <div class="screen">
-              <div class="island"></div>
-              <div class="screen-content">
-                <div class="chat-head">
-                  <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="" width="42" height="42">
-                  <div><b>Chris at NPCWoods</b><span>Usually replies by text</span></div>
-                </div>
-                <div class="bubble me">Burning when I pee. Can I do this from home?</div>
-                <div class="bubble np">Yes. Text me what is going on and I will walk you through the next step.</div>
-                <div class="bubble me">How much?</div>
-                <div class="bubble np">$59 flat fee. I will tell you if this needs in-person care instead.</div>
-                <div class="reply-card">
-                  <div class="small">Visit ready</div>
-                  <strong>Simple, human care.</strong>
-                  <p>Text first. Clear guidance. Pharmacy path when appropriate.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="floating-card float-b">Secure text flow<span>Built for real life</span></div>
+<main id="main" class="npc-redesign">
+
+  <!-- HERO -->
+  <header class="rhero" aria-labelledby="hero-title">
+    <div class="rwrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow reveal">NPCWoods Telemedicine &middot; 11 states</div>
+        <h1 id="hero-title" class="reveal d1">$59 text-based<br><span class="em">telemedicine.</span></h1>
+        <p class="lede reveal d1">I'm Chris, a real Nurse Practitioner. Tell me what's going on and I'll get you sorted out. $59 flat, no waiting room, right from your couch.</p>
+        <div class="hero-actions reveal d2">
+          <a class="rbtn rbtn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
+          <a class="rbtn rbtn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="hero-cred reveal d2">MSN, APRN, FNP-C &middot; Licensed in 11 states</div>
+      </div>
+      <div class="hero-photo reveal d2">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="500" height="625" fetchpriority="high">
+        <div class="hero-badge"><span class="price">$59</span><span class="lbl">flat fee<br>pay after care</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROBLEM -->
+  <section class="rpad" aria-labelledby="prob-h">
+    <div class="rwrap">
+      <div class="sec-head">
+        <div class="eyebrow reveal">The old way</div>
+        <h2 id="prob-h" class="reveal d1">Getting better<br>shouldn't be this hard.</h2>
+        <p class="lede reveal d1">You feel awful, and the system makes you work for it. Here is what the waiting-room runaround actually costs you.</p>
+      </div>
+      <div class="prob-grid">
+        <div class="prob reveal"><span class="x">&times;</span><h3>3-hour waits</h3><p>A half-day in an urgent care lobby for a 10-minute problem.</p></div>
+        <div class="prob reveal d1"><span class="x">&times;</span><h3>$200 for a $20 fix</h3><p>Surprise bills for simple care you already knew you needed.</p></div>
+        <div class="prob reveal d2"><span class="x">&times;</span><h3>No clinic close by</h3><p>The nearest option is far, closed, or booked out for days.</p></div>
+        <div class="prob reveal d3"><span class="x">&times;</span><h3>Forms &amp; denials</h3><p>Portals, paperwork, and confusing fine print after the fact.</p></div>
+      </div>
+      <p class="prob-foot reveal">I built NPCWoods to skip <span class="em serif-accent">all of it.</span></p>
+    </div>
+  </section>
+
+  <!-- MEET CHRIS -->
+  <section id="chris" class="dark rpad" aria-labelledby="meet-h">
+    <div class="rwrap meet">
+      <div class="meet-photo reveal"><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Nurse Practitioner and founder of NPCWoods" width="500" height="625" loading="lazy"></div>
+      <div class="meet-copy">
+        <div class="eyebrow reveal">Meet your NP</div>
+        <h2 id="meet-h" class="reveal d1">Hey, I'm Chris.</h2>
+        <p class="big reveal d1">I spent years watching people lose a whole day and a couple hundred bucks over something I could sort out in ten minutes. That never sat right with me.</p>
+        <p class="reveal d2">So I built the practice I would want for my own family: text a real Nurse Practitioner, get actually listened to, and pay one honest price. No runaround. No surprise bills. No pretending a chatbot is care. Faith and family keep me grounded, and they are why I treat every visit like it is someone I love.</p>
+        <div class="chips reveal d2">
+          <span class="chip">MSN, APRN, FNP-C</span>
+          <span class="chip">Real clinician review</span>
+          <span class="chip">Founder, NPCWoods</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" aria-label="NPCWoods proof points">
-      <div class="section-inner">
-        <div class="proof-grid">
-          <div class="proof-box"><strong>$59</strong><span>One visit fee</span></div>
-          <div class="proof-box"><strong>Text</strong><span>Start on phone</span></div>
-          <div class="proof-box"><strong>11</strong><span>Licensed states</span></div>
-          <div class="proof-box"><strong>Chris</strong><span>Real clinician</span></div>
-        </div>
+  <!-- HOW IT WORKS -->
+  <section id="how" class="warm-white rpad" aria-labelledby="how-h">
+    <div class="rwrap">
+      <div class="sec-head">
+        <div class="eyebrow reveal">How it works</div>
+        <h2 id="how-h" class="reveal d1">Three texts from<br>feeling better.</h2>
+        <p class="lede reveal d1">Most visits wrap up in under an hour, from your first text to your prescription.</p>
       </div>
-    </section>
+      <div class="steps">
+        <article class="step reveal"><div class="step-img"><img src="https://npcwoods.com/wp-content/uploads/2026/06/npcwoods-step-text.webp" alt="Texting symptoms from home" loading="lazy"></div><div class="step-body"><span class="step-num">01</span><h3>Text me your symptoms</h3><p>In your own words. No 30-question form, no portal login, no app to download.</p></div></article>
+        <article class="step reveal d1"><div class="step-img"><img src="https://npcwoods.com/wp-content/uploads/2026/06/npcwoods-step-review.webp" alt="Chris reviewing a visit" loading="lazy"></div><div class="step-body"><span class="step-num">02</span><h3>I actually read it</h3><p>I look at your history, ask what I need to, and build a plan for you. Not a template. Not a bot.</p></div></article>
+        <article class="step reveal d2"><div class="step-img"><img src="https://npcwoods.com/wp-content/uploads/2026/06/npcwoods-step-pharmacy.webp" alt="Prescription ready at the pharmacy" loading="lazy"></div><div class="step-body"><span class="step-num">03</span><h3>Pick up and feel better</h3><p>I send your prescription to your pharmacy and a written plan to your inbox. That is it.</p></div></article>
+      </div>
+    </div>
+  </section>
 
-    <section id="how" class="section dark" aria-labelledby="how-title">
-      <div class="section-inner">
-        <div class="section-head">
-          <div>
-            <div class="kicker">How it works</div>
-            <h2 id="how-title">One simple path. Three clear steps.</h2>
-          </div>
-          <p class="section-copy">You can understand the visit at a glance, then read the details only if you want them.</p>
-        </div>
-        <div class="path">
-          <article class="path-step">
-            <div class="icon-block"><i data-lucide="message-square" aria-hidden="true"></i></div>
-            <h3>1. Send a text</h3>
-            <p>Tell NPCWoods what is going on, where you are located, and what you need help with.</p>
-          </article>
-          <article class="path-step">
-            <div class="icon-block"><i data-lucide="stethoscope" aria-hidden="true"></i></div>
-            <h3>2. Chris checks fit</h3>
-            <p>Symptoms, red flags, state rules, and telemedicine fit are reviewed before the next step.</p>
-          </article>
-          <article class="path-step">
-            <div class="icon-block"><i data-lucide="route" aria-hidden="true"></i></div>
-            <h3>3. You get direction</h3>
-            <p>Guidance, pharmacy coordination when appropriate, or a direct in-person recommendation.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+  <!-- BAND -->
+  <section class="band" aria-label="Care from home">
+    <img src="https://npcwoods.com/wp-content/uploads/2026/06/npcwoods-couch.jpg" alt="" loading="lazy">
+    <div class="rwrap">
+      <h2 class="reveal">No waiting room. No fluorescent lights.</h2>
+      <p class="reveal d1">Just help, where you already are.</p>
+    </div>
+  </section>
 
-    <section id="fit" class="section" aria-labelledby="fit-title">
-      <div class="section-inner">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Fit check</div>
-            <h2 id="fit-title">A traffic light for what happens next.</h2>
-          </div>
-          <p class="section-copy">The first job is to decide whether text-based care makes sense. If symptoms sound unsafe, you will be pointed toward in-person care.</p>
-        </div>
-        <div class="traffic">
-          <article class="signal green">
-            <div class="signal-top">
-              <div class="signal-light"><i data-lucide="check" aria-hidden="true"></i></div>
-              <h3>Likely text fit</h3>
-            </div>
-            <ul>
-              <li>Common, lower-risk concerns</li>
-              <li>Clear symptom story</li>
-              <li>You are in a licensed state</li>
-              <li>No urgent red flags</li>
-            </ul>
-          </article>
-          <article class="signal amber">
-            <div class="signal-top">
-              <div class="signal-light"><i data-lucide="search" aria-hidden="true"></i></div>
-              <h3>Needs review</h3>
-            </div>
-            <ul>
-              <li>Symptoms are not straightforward</li>
-              <li>Timing or history matters</li>
-              <li>Photo or detail may help</li>
-              <li>Chris may ask follow-up questions</li>
-            </ul>
-          </article>
-          <article class="signal red">
-            <div class="signal-top">
-              <div class="signal-light"><i data-lucide="triangle-alert" aria-hidden="true"></i></div>
-              <h3>Go in person</h3>
-            </div>
-            <ul>
-              <li>Severe or worsening symptoms</li>
-              <li>Chest pain or trouble breathing</li>
-              <li>Face, throat, or eye danger signs</li>
-              <li>Telemedicine is not the right fit</li>
-            </ul>
-          </article>
-        </div>
+  <!-- PRICE -->
+  <section class="dark rpad" aria-labelledby="price-h">
+    <div class="rwrap price-stage">
+      <div class="eyebrow reveal">One price. One promise.</div>
+      <div class="price-num reveal d1"><span class="d">$</span>59</div>
+      <h2 id="price-h" class="reveal d1" style="font-size:clamp(1.6rem,3.6vw,2.6rem)">That's the whole thing.</h2>
+      <p class="lede price-copy reveal d2">Pay after you're treated. And if I can't safely help you by text, I'll tell you straight up, and you don't pay a dime.</p>
+      <div class="price-chips reveal d2">
+        <span class="chip">Flat fee</span><span class="chip">No hidden fees</span><span class="chip">Pay after treated</span><span class="chip">HSA / FSA receipt on request</span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="conditions" class="section" aria-labelledby="conditions-title">
-      <div class="section-inner">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Common lanes</div>
-            <h2 id="conditions-title">Tap the problem. See the path.</h2>
-          </div>
-          <p class="section-copy">Short labels help you find the right starting point quickly.</p>
-        </div>
-        <div class="condition-grid">
-          <a class="condition" href="/uti-treatment/">
-            <i data-lucide="droplets" aria-hidden="true"></i>
-            <span><strong>UTI symptoms</strong><span>Burning, urgency, bladder infection questions.</span></span>
-          </a>
-          <a class="condition" href="/sinus-infection-treatment/">
-            <i data-lucide="wind" aria-hidden="true"></i>
-            <span><strong>Sinus pressure</strong><span>Congestion, pressure, worsening symptoms.</span></span>
-          </a>
-          <a class="condition" href="/dental-pain/">
-            <i data-lucide="shield-plus" aria-hidden="true"></i>
-            <span><strong>Dental pain</strong><span>Bridge care before dental follow-up.</span></span>
-          </a>
-          <a class="condition" href="/learn/strep-throat/">
-            <i data-lucide="thermometer" aria-hidden="true"></i>
-            <span><strong>Sore throat</strong><span>Strep-like symptoms and red flags.</span></span>
-          </a>
-          <a class="condition" href="/learn/pink-eye/">
-            <i data-lucide="eye" aria-hidden="true"></i>
-            <span><strong>Pink eye</strong><span>Redness, drainage, contact-lens cautions.</span></span>
-          </a>
-          <a class="condition" href="/conditions/">
-            <i data-lucide="layout-grid" aria-hidden="true"></i>
-            <span><strong>More concerns</strong><span>Browse the larger care library.</span></span>
-          </a>
-        </div>
+  <!-- REVIEWS -->
+  <section class="rpad" aria-labelledby="rev-h">
+    <div class="rwrap">
+      <div class="rev-head">
+        <div class="eyebrow reveal">Real people</div>
+        <h2 id="rev-h" class="reveal d1">Real texts. Real relief.</h2>
       </div>
-    </section>
+      <div class="rev-grid reveal d1">
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Very fast and convenient. I first messaged Chris at 10:08am and I was picking up my prescriptions from the pharmacy at 10:52am same day! Cannot recommend enough!"</p><div class="who">A. H.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I texted Chris out of nowhere on a Sunday and he answered straight away, saw me in under an hour! You would be hard pressed to find such a high level of service, especially at lightning-quick speed. He got the medicine I needed refilled and helped me get new labs."</p><div class="who">B. P.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"My grandmother couldn't get a response from her primary care provider and was in so much pain. I texted Chris at 10pm and he responded within 15 minutes. When the pharmacy didn't have it, he called the store himself and we had the prescription within 20 minutes. I could not recommend him more!"</p><div class="who">M. D.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Chris texted me back within seconds and had my prescription over to the pharmacy within minutes. So simple and easy. Definitely beats sitting in a waiting room. Recommend 100%!"</p><div class="who">J. R.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"What a wonderful service to the community. Fast response time, no sitting in the waiting room or waiting hours for a call back. I highly recommend."</p><div class="who">J. D. Q.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Messaged Chris, he responded in a timely manner. Very professional. Easy to talk to about our concerns. It was nice to stay home and get quality care."</p><div class="who">T. P.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Great provider! Great response time! Very thorough!"</p><div class="who">K. K.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Chris was awesome and very professional! Would highly recommend to anyone!"</p><div class="who">Charles N.</div></div>
+        <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"My visit was very pleasant. I was given multiple options that would benefit my diagnosis!"</p><div class="who">R. W.</div></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="section" aria-labelledby="price-title">
-      <div class="section-inner">
-        <div class="price-band">
-          <div class="price-number" aria-label="$59">$59</div>
-          <div>
-            <div class="kicker">Simple pricing</div>
-            <h2 id="price-title">One price before you start.</h2>
-            <p class="section-copy">The visit fee is easy to see before you start, so there is no guessing.</p>
-            <div class="price-list">
-              <div class="price-item"><i data-lucide="check-circle-2" aria-hidden="true"></i><span>Flat visit fee</span></div>
-              <div class="price-item"><i data-lucide="check-circle-2" aria-hidden="true"></i><span>No hidden fees</span></div>
-              <div class="price-item"><i data-lucide="check-circle-2" aria-hidden="true"></i><span>No portal maze to start</span></div>
-            </div>
-          </div>
-        </div>
+  <!-- STATES -->
+  <section class="warm-white rpad" aria-labelledby="st-h">
+    <div class="rwrap">
+      <div class="sec-head">
+        <div class="eyebrow reveal">Where I can help</div>
+        <h2 id="st-h" class="reveal d1">Licensed in 11 states.</h2>
       </div>
-    </section>
+      <div class="states reveal d1">
+        <span class="state">Arizona</span><span class="state">Colorado</span><span class="state">Georgia</span><span class="state">Idaho</span><span class="state">Iowa</span><span class="state">Montana</span><span class="state">Nevada</span><span class="state">New Mexico</span><span class="state">North Carolina</span><span class="state">Oregon</span><span class="state">Utah</span>
+      </div>
+    </div>
+  </section>
 
-    <section class="section" aria-labelledby="trust-title">
-      <div class="section-inner trust">
-        <div class="portrait">
-          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="Chris Woods, MSN, APRN, FNP-C" width="400" height="400" loading="eager" decoding="async">
-        </div>
-        <div class="trust-copy">
-          <div class="kicker">The human part</div>
-          <h2 id="trust-title">Not an app pretending to care.</h2>
-          <p class="section-copy">A real clinician reviews the visit and helps decide the safest next step.</p>
-          <div class="credential-row" aria-label="Credentials and trust markers">
-            <span class="chip"><i data-lucide="badge-check" aria-hidden="true"></i>MSN, APRN, FNP-C</span>
-            <span class="chip"><i data-lucide="shield-check" aria-hidden="true"></i>Clinician review</span>
-            <span class="chip"><i data-lucide="heart-pulse" aria-hidden="true"></i>Red flags matter</span>
-          </div>
-          <div class="states" aria-label="Licensed states">
-            <span class="chip">AZ</span>
-            <span class="chip">CO</span>
-            <span class="chip">GA</span>
-            <span class="chip">ID</span>
-            <span class="chip">IA</span>
-            <span class="chip">MT</span>
-            <span class="chip">NV</span>
-            <span class="chip">NM</span>
-            <span class="chip">NC</span>
-            <span class="chip">OR</span>
-            <span class="chip">UT</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- FINAL -->
+  <section class="dark rpad final" aria-labelledby="f-h">
+    <div class="rwrap">
+      <div class="eyebrow reveal">Ready when you are</div>
+      <h2 id="f-h" class="reveal d1">Text me.<br>I've <span class="em">got you.</span></h2>
+      <p class="lede reveal d2">$59 flat. A real Nurse Practitioner. Right from your couch.</p>
+      <a class="rbtn rbtn-primary reveal d2" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
+    </div>
+  </section>
 
-    <section class="final" aria-labelledby="final-title">
-      <div class="final-inner">
-        <div class="kicker">Ready when you are</div>
-        <h2 id="final-title">Text first. Get clarity fast.</h2>
-        <p>A $59 text visit with a real clinician, a fit check before the next step, and honest direction when in-person care makes more sense.</p>
-        <div class="hero-actions" style="justify-content:center">
-          <a class="btn btn-primary" href="sms:+14806394722?body=Hi%20NPCWoods%2C%20I%27d%20like%20to%20start%20a%20%2459%20text%20visit.">
-            <i data-lucide="message-circle" aria-hidden="true"></i>
-            Start my $59 visit
-          </a>
-          <a class="btn btn-secondary" href="/conditions/">
-            <i data-lucide="layout-grid" aria-hidden="true"></i>
-            Browse conditions
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+</main>
 
 <?php
 $npcwoods_footer_rendered = false;
@@ -1619,6 +348,8 @@ if (defined('ABSPATH')) {
   $npcwoods_footer_candidates[] = rtrim(ABSPATH, '/\\') . '/shared/footer-snippet.html';
 }
 $npcwoods_footer_candidates[] = __DIR__ . '/../html/shared/footer-snippet.html';
+$npcwoods_footer_candidates[] = __DIR__ . '/../../../shared/footer-snippet.html';
+$npcwoods_footer_candidates[] = __DIR__ . '/../../../../shared/footer-snippet.html';
 foreach ($npcwoods_footer_candidates as $npcwoods_footer_path) {
   if (is_readable($npcwoods_footer_path)) {
     $GLOBALS['npcwoods_shared_footer_rendered'] = true;
@@ -1629,61 +360,45 @@ foreach ($npcwoods_footer_candidates as $npcwoods_footer_path) {
 }
 if (!$npcwoods_footer_rendered):
 ?>
-<footer class="footer" aria-label="Footer">
-  <div class="footer-inner">
-    <div>
-      <h2>NPCWoods Telemedicine</h2>
-      <p>$59 text-based urgent care with Chris Woods, MSN, APRN, FNP-C. Available in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</p>
-    </div>
-    <div>
-      <h3>Care</h3>
-      <a href="/conditions/">Conditions</a>
-      <a href="/uti-treatment/">UTI treatment</a>
-      <a href="/sinus-infection-treatment/">Sinus infection</a>
-      <a href="/dental-pain/">Dental pain</a>
-    </div>
-    <div>
-      <h3>Info</h3>
-      <a href="/experience/">Patient experience</a>
-      <a href="/pharmacy/">Pharmacy info</a>
-      <a href="/learn/">After your visit</a>
-      <a href="/sitemap/">Sitemap</a>
-    </div>
-  </div>
+<footer class="npc-site-footer" aria-label="Footer">
+  <div class="npc-footer-inner"><p>$59 text-based urgent care with Chris Woods, MSN, APRN, FNP-C. Available in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</p></div>
 </footer>
 <?php endif; ?>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script>
 (function () {
-  var items = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(function (item) { item.classList.add('in-view'); });
-    return;
-  }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+  function init() {
+    var root = document.querySelector('#main.npc-redesign');
+    if (!root) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lenis = null;
+    try {
+      if (window.Lenis && !reduce) {
+        lenis = new window.Lenis({ duration: 1.1, smoothWheel: true });
+        var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
+        requestAnimationFrame(raf);
       }
-    });
-  }, { threshold: 0.14 });
-  items.forEach(function (item) { observer.observe(item); });
-})();
-</script>
-
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-<script>
-(function () {
-  function renderLucideIcons() {
-    if (!window.lucide) { return; }
-    window.lucide.createIcons({ attrs: { width: 22, height: 22, "stroke-width": 2.5 } });
+    } catch (e) { lenis = null; }
+    try {
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        root.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else { root.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); }); }
+    } catch (e) { root.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); }); }
+    try {
+      root.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href');
+          if (id && id.length > 1) { var t = document.querySelector(id); if (t) { e.preventDefault(); lenis ? lenis.scrollTo(t, { offset: -70 }) : t.scrollIntoView({ behavior: 'smooth' }); } }
+        });
+      });
+    } catch (e) {}
+    setTimeout(function () { root.querySelectorAll('.reveal:not(.in)').forEach(function (el) { el.classList.add('in'); }); }, 2500);
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderLucideIcons);
-  } else {
-    renderLucideIcons();
-  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();
 </script>
 <?php if (function_exists('wp_footer')) { wp_footer(); } ?>

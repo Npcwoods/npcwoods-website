@@ -28,6 +28,26 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("shared/footer-snippet.html", self.text)
         self.assertIn("npcwoods_shared_footer_rendered", self.text)
 
+    def test_homepage_leaves_seo_metadata_to_wordpress(self):
+        """Yoast must be the sole owner of description, canonical, and social tags."""
+        patterns = (
+            r'<meta\b[^>]*name=["\']description["\']',
+            r'<link\b[^>]*rel=["\']canonical["\']',
+            r'<meta\b[^>]*property=["\']og:',
+            r'<meta\b[^>]*name=["\']twitter:',
+        )
+        for pattern in patterns:
+            with self.subTest(pattern=pattern):
+                self.assertIsNone(re.search(pattern, self.text, re.I))
+
+    def test_homepage_has_one_fallback_title(self):
+        """The active WordPress configuration does not emit a title at wp_head()."""
+        self.assertEqual(1, len(re.findall(r"<title\b", self.text, re.I)))
+
+    def test_homepage_has_one_business_entity_owner(self):
+        """The shared footer owns the site-wide MedicalBusiness entity."""
+        self.assertEqual(0, len(re.findall(r'"@type"\s*:\s*"MedicalBusiness"', self.text)))
+
 
 if __name__ == "__main__":
     unittest.main()
