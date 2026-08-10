@@ -103,7 +103,7 @@ function npcwoods_setup_blog_metas_v1() {
 // ============================================================
 add_action('wp_footer', 'npcwoods_faq_schema');
 function npcwoods_faq_schema() {
-    if (!is_singular('page')) return;
+    if (!is_singular(array('page', 'post'))) return;
     global $post;
     $content = $post->post_content;
     if (stripos($content, 'Frequently Asked') === false && stripos($content, 'Common Questions') === false) return;
