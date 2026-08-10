@@ -14,11 +14,11 @@ class CornealAbrasionStaticPageTests(unittest.TestCase):
         self.assertTrue(ROUTER.exists(), "standalone blog route is missing")
         page = PAGE.read_text(encoding="utf-8")
         router = ROUTER.read_text(encoding="utf-8")
-        self.assertIn("scratched-eye-corneal-abrasion-care", router)
+        self.assertIn("corneal-abrasion-scratched-eye-care", router)
         self.assertIn("corneal-abrasion-eye-scratch/index.html", router)
         self.assertIn("ob_start('npcwoods_corneal_remove_meta_pixel')", router)
         self.assertIn("<title>Scratched Your Eye? Here’s What to Do Next | NPCWoods</title>", page)
-        self.assertIn('rel="canonical" href="https://npcwoods.com/scratched-eye-corneal-abrasion-care/"', page)
+        self.assertIn('rel="canonical" href="https://npcwoods.com/corneal-abrasion-scratched-eye-care/"', page)
         self.assertIn('rel="stylesheet" href="https://npcwoods.com/wp-content/uploads/2026/08/corneal-abrasion-eye-scratch.css"', page)
         self.assertIn('data-npcwoods-tracking="enabled"', page)
         self.assertIn('http-equiv="Content-Security-Policy"', page)
@@ -33,6 +33,7 @@ class CornealAbrasionStaticPageTests(unittest.TestCase):
         )
         self.assertGreaterEqual(page.count("sms:4806394722"), 2)
         self.assertIn('"@type":"FAQPage"', page)
+        self.assertLess(page.index("<body>"), page.index('"@type":"FAQPage"'))
         self.assertNotRegex(page, re.compile(r"connect\.facebook\.net|facebook\.com/tr|fbq\s*\(", re.IGNORECASE))
 
 

@@ -12,7 +12,7 @@ add_action('template_redirect', function () {
     if (!is_singular('post')) return;
 
     $post = get_post();
-    if (!$post || $post->post_name !== 'scratched-eye-corneal-abrasion-care') return;
+    if (!$post || $post->post_name !== 'corneal-abrasion-scratched-eye-care') return;
 
     $html_file = ABSPATH . 'corneal-abrasion-eye-scratch/index.html';
     if (!file_exists($html_file)) return;
