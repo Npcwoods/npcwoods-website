@@ -11,6 +11,7 @@ add_action( "template_redirect", function() {
         "conditions"             => "conditions/index.html",
         "sitemap"                => "sitemap/index.html",
         "uti-treatment"          => "uti-treatment/index.html",
+        "pink-eye-treatment"     => "pink-eye-treatment/index.html",
         "sinus-infection-treatment" => "sinus-infection-treatment/index.html",
         "cold-sore-treatment"    => "cold-sore-treatment/index.html",
         "colorado-telemedicine"  => "colorado-telemedicine/index.html",
