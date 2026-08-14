@@ -27,6 +27,7 @@ add_action( "template_redirect", function() {
         "ed-treatment"           => "ed-treatment/index.html",        "pricing"                    => "pricing/index.html",        "credentials"                => "credentials/index.html",
         "do-i-need-antibiotics-sinus-infection" => "do-i-need-antibiotics-sinus-infection/index.html",
 
+        "real-care"              => "real-care/index.html",
 
     );
 

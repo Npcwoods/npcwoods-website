@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="description" content="Text a licensed provider about common health concerns. $59 flat-fee visits from NPCWoods Telemedicine.">
+  <meta name="theme-color" content="#1C2B39">
+  <link rel="canonical" href="https://npcwoods.com/real-care/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NPCWoods Telemedicine">
+  <meta property="og:title" content="Real Care, On Your Time | NPCWoods">
+  <meta property="og:description" content="Text-based care for common health concerns. $59 flat-fee visit.">
+  <meta property="og:url" content="https://npcwoods.com/real-care/">
+  <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Real Care, On Your Time | NPCWoods</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231C2B39'/%3E%3Cpath d='M32 16v32M16 32h32' stroke='%23B7DED0' stroke-width='8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://npcwoods.com/assets/css/site.css">
+  <style>
+    :root { --paper:#F7F8F5; --navy:#1C2B39; --navy-soft:#3A4C5C; --sage:#4F8577; --coral:#E8836B; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:auto; }
+    body { margin:0; overflow-x:hidden; background:var(--navy); color:var(--paper); font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a:focus-visible { outline:2px solid var(--sage); outline-offset:4px; }
+    @media (prefers-reduced-motion:reduce) { .no-motion-hide { display:none!important; } }
+
+    #progress { position:fixed; right:5vw; top:50%; z-index:10; display:flex; flex-direction:column; gap:14px; transform:translateY(-50%); }
+    #progress .dot { width:7px; height:7px; border-radius:50%; background:rgba(247,248,245,.25); transition:background .3s ease,transform .3s ease; }
+    #progress .dot.active { background:var(--sage); transform:scale(1.5); }
+    #scene-pin { position:relative; height:340vh; }
+    .sticky-wrap { position:sticky; top:0; height:100svh; overflow:hidden; }
+    #morph-canvas { position:absolute; inset:0; display:block; }
+    .scene-vignette { position:absolute; inset:0; z-index:2; pointer-events:none; background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(10,16,22,.58) 0%,rgba(10,16,22,.16) 55%,rgba(10,16,22,0) 78%); }
+    .scene-overlay { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 6vw; pointer-events:none; text-align:center; }
+    #headline { max-width:900px; margin:0; color:#fff; font-family:Fraunces,Georgia,serif; font-size:clamp(2.3rem,6vw,4.8rem); font-weight:500; letter-spacing:-.02em; line-height:1.05; text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.6); transition:opacity .25s ease,transform .25s ease; }
+    #headline em { color:#B7DED0; font-style:italic; }
+    .hero-detail { max-width:440px; margin:18px 0 0; color:rgba(255,255,255,.82); font-size:clamp(.86rem,1.5vw,1rem); font-weight:600; line-height:1.5; text-shadow:0 1px 6px rgba(0,0,0,.5); transition:opacity .25s ease,transform .25s ease; }
+    .hero-action { display:inline-flex; align-items:center; justify-content:center; min-height:52px; margin-top:22px; padding:15px 24px; border-radius:100px; background:var(--coral); box-shadow:0 8px 24px rgba(232,131,107,.3); color:var(--paper)!important; font-size:.98rem; font-weight:700; pointer-events:auto; text-decoration:none; transition:opacity .25s ease,transform .2s ease,box-shadow .2s ease; }
+    .hero-action:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(232,131,107,.38); }
+    .stage-label { position:absolute; top:50%; left:50%; width:100%; transform:translate(-50%,calc(-50% + 14px)); color:#fff; font-family:Fraunces,Georgia,serif; font-size:clamp(1.9rem,4.4vw,3.5rem); font-weight:500; letter-spacing:-.01em; opacity:0; text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.65); transition:opacity .4s ease,transform .4s ease; }
+    .stage-label .tag { display:block; margin-bottom:14px; color:var(--coral); font-family:Inter,sans-serif; font-size:.78rem; font-weight:700; letter-spacing:.08em; text-shadow:none; text-transform:uppercase; }
+    .stage-label.active { opacity:1; transform:translate(-50%,-50%); }
+    .scroll-cue { position:absolute; z-index:4; bottom:32px; left:50%; display:flex; flex-direction:column; align-items:center; gap:8px; transform:translateX(-50%); color:rgba(255,255,255,.58); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; transition:opacity .3s ease; }
+    .scroll-cue .line { width:1px; height:30px; background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent); animation:cue-drop 1.8s ease-in-out infinite; }
+    @keyframes cue-drop { 0%,100% { transform:scaleY(.4); transform-origin:top; opacity:.4; } 50% { transform:scaleY(1); transform-origin:top; opacity:1; } }
+
+    #final-cta { position:relative; z-index:5; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8vh 6vw; background:var(--paper); color:var(--navy); text-align:center; }
+    #final-cta .kicker { margin:0 0 20px; color:var(--sage); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    #final-cta h2 { max-width:680px; margin:0 0 14px; font-family:Fraunces,Georgia,serif; font-size:clamp(2.25rem,5vw,4rem); font-weight:500; letter-spacing:-.02em; }
+    #final-cta .price { margin:22px 0; color:var(--sage); font-family:Fraunces,Georgia,serif; font-size:clamp(3.5rem,9vw,7rem); line-height:1; }
+    .btn-primary { display:inline-block; margin-top:10px; padding:18px 40px; border-radius:100px; background:var(--coral); box-shadow:0 8px 24px rgba(232,131,107,.3); color:var(--paper)!important; font-size:1.05rem; font-weight:700; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(232,131,107,.38); }
+    .phone-link { display:inline-block; margin-top:20px; color:var(--navy)!important; font-size:.93rem; font-weight:700; text-decoration:none; }
+    .phone-link span { color:var(--sage); }
+    #final-cta .disclaimer { max-width:400px; margin:32px 0 0; color:var(--navy-soft); font-size:.78rem; opacity:.78; }
+
+    @media (max-width:700px) { #progress { display:none; } #headline { font-size:clamp(2.25rem,11vw,3.4rem); } .hero-detail { max-width:290px; } .hero-action { margin-top:20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="scene-pin" aria-label="How a text visit works">
+      <div class="sticky-wrap">
+        <canvas id="morph-canvas" aria-hidden="true"></canvas>
+        <div class="scene-vignette"></div>
+        <div class="scene-overlay">
+          <h1 id="headline">Real care doesn't need <em>a waiting room.</em></h1>
+          <p class="hero-detail" id="hero-detail">Text-based care for common health concerns · $59 flat-fee visit</p>
+          <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="hero-action" id="hero-action">Text Chris now</a>
+          <div class="stage-label" data-stage="0"><span class="tag">Step one</span>Tell us what's going on</div>
+          <div class="stage-label" data-stage="1"><span class="tag">Step two</span>A provider reviews it</div>
+          <div class="stage-label" data-stage="2"><span class="tag">Step three</span>You get a real plan</div>
+        </div>
+        <div class="scroll-cue no-motion-hide" id="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+      </div>
+    </section>
+
+    <section id="final-cta">
+      <p class="kicker">No paperwork. No hidden fees. Just text.</p>
+      <h2>Start whenever you're ready.</h2>
+      <div class="price">$59</div>
+      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary">Text Chris now</a>
+      <a href="tel:4806394722" class="phone-link">Prefer to call? <span>(480) 639-4722</span></a>
+      <p class="disclaimer">Not for emergencies — call 911 or go to your nearest ER.</p>
+    </section>
+  </main>
+
+  <footer class="npc-site-footer">
+    <div class="npc-footer-inner">
+      <div class="npc-footer-grid">
+        <div class="npc-footer-brand">
+          <div class="npc-footer-brand-name"><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">NPCWoods Telemedicine</div>
+          <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No forms before you can tell us what's going on.</p>
+          <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-footer-cta">Text (480) 639-4722</a>
+        </div>
+        <div class="npc-footer-col"><h4>Conditions We Treat</h4><ul>
+          <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li><li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li><li><a href="https://npcwoods.com/dental-pain/">Dental Pain</a></li><li><a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a></li><li><a href="https://npcwoods.com/learn/covid-flu/">Cold &amp; Flu</a></li><li><a href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a></li><li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li><li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li><li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li><li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li><li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li><li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
+        </ul></div>
+        <div class="npc-footer-col"><h4>States We Serve</h4><ul>
+          <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li><li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li><li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li><li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li><li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li><li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li><li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li><li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li><li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li><li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li><li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+        </ul></div>
+        <div class="npc-footer-col"><h4>Quick Links</h4><ul>
+          <li><a href="https://npcwoods.com/">Home</a></li><li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li><li><a href="https://npcwoods.com/pricing/">Pricing, $59</a></li><li><a href="https://npcwoods.com/faq/">FAQ</a></li><li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li><li><a href="https://npcwoods.com/learn/">Patient Education</a></li><li><a href="https://npcwoods.com/medications/">Medications</a></li><li><a href="https://npcwoods.com/blog/">Blog</a></li><li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
+        </ul></div>
+      </div>
+      <hr class="npc-footer-divider">
+      <div class="npc-footer-bottom"><span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span><span><a href="https://npcwoods.com/">npcwoods.com</a></span></div>
+      <div class="npc-footer-trust">
+        <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" rel="noopener" title="Verify LegitScript approval for NPCWoods" style="display:inline-block;margin-bottom:12px;"><img src="https://static.legitscript.com/seals/45807860.png" alt="Verify approval for NPCWoods" width="73" height="79"></a><br>
+        Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
+        Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+        NPI: 1285125468 &bull; Phone: (480) 639-4722<br>
+        <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
+      </div>
+    </div>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"MedicalBusiness","@id":"https://npcwoods.com/#medical-business","name":"NPCWoods","alternateName":"NPCWoods Telemedicine","image":"https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp","telephone":"+14806394722","url":"https://npcwoods.com","logo":"https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg","priceRange":"$59","sameAs":["https://www.facebook.com/npcwoods","https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"]}
+    </script>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scenePin = document.getElementById('scene-pin');
+    const headline = document.getElementById('headline');
+    const heroDetail = document.getElementById('hero-detail');
+    const heroAction = document.getElementById('hero-action');
+    const stageLabels = document.querySelectorAll('.stage-label');
+    const dots = document.querySelectorAll('#progress .dot');
+    const scrollCue = document.getElementById('scroll-cue');
+    const smoothstep = (t) => t * t * (3 - 2 * t);
+    function updateScroll() {
+      const rect = scenePin.getBoundingClientRect(), total = scenePin.offsetHeight - window.innerHeight;
+      let progress = total > 0 ? -rect.top / total : 0;
+      progress = Math.min(Math.max(progress, 0), 1);
+      const heroOpacity = 1 - smoothstep(Math.min(progress / .30, 1));
+      [headline, heroDetail, heroAction].forEach((element, index) => { element.style.opacity = heroOpacity; element.style.transform = `translateY(${(1 - heroOpacity) * (-16 + index * 3)}px)`; });
+      scrollCue.style.opacity = progress < .06 ? 1 : 0;
+      const stageProgress = Math.min(Math.max((progress - .30) / .70, 0), 1);
+      const zone = Math.min(Math.floor(stageProgress * 3), 2);
+      stageLabels.forEach((element) => element.classList.toggle('active', Number(element.dataset.stage) === zone && progress >= .30));
+      dots.forEach((dot) => dot.classList.toggle('active', Number(dot.dataset.stage) === zone));
+      return { stageProgress };
+    }
+    window.addEventListener('scroll', updateScroll, { passive:true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+    function loadScript(src) { return new Promise((resolve, reject) => { const script = document.createElement('script'); script.src = src; script.onload = resolve; script.onerror = reject; document.head.appendChild(script); }); }
+    async function initScene() {
+      try { if (typeof THREE === 'undefined') await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'); }
+      catch (error) { try { await loadScript('https://unpkg.com/three@0.128.0/build/three.min.js'); } catch (fallbackError) { console.warn('Showing text-only version.', fallbackError); return; } }
+      if (typeof THREE === 'undefined') return;
+      const canvas = document.getElementById('morph-canvas'), renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight);
+      const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, .1, 100); camera.position.z = 9;
+      const count = 1400;
+      function scatterCloud(n) { const points = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const radius = 4.2 * Math.cbrt(Math.random()), theta = Math.random() * Math.PI * 2, phi = Math.acos(2 * Math.random() - 1); points[i * 3] = radius * Math.sin(phi) * Math.cos(theta); points[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta); points[i * 3 + 2] = radius * Math.cos(phi) * .6; } return points; }
+      function ringFocus(n) { const points = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const turn = i / n * Math.PI * 14, radius = 3 + Math.sin(i * .15) * .15, tube = (Math.random() - .5) * .35; points[i * 3] = (radius + tube) * Math.cos(turn); points[i * 3 + 1] = (radius + tube) * Math.sin(turn) * .55; points[i * 3 + 2] = (Math.random() - .5) * .35; } return points; }
+      function crossResolve(n) { const points = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const vertical = i % 2 === 0; points[i * 3] = (Math.random() - .5) * (vertical ? .9 : 6.4); points[i * 3 + 1] = (Math.random() - .5) * (vertical ? 6.4 : .9); points[i * 3 + 2] = (Math.random() - .5) * .7; } return points; }
+      const shapes = [scatterCloud(count), ringFocus(count), crossResolve(count)], colors = [new THREE.Color(0x9DC9BC), new THREE.Color(0xE8836B), new THREE.Color(0x4F8577)], geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(shapes[0]), 3));
+      const spriteCanvas = document.createElement('canvas'); spriteCanvas.width = spriteCanvas.height = 64;
+      const context = spriteCanvas.getContext('2d'), gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32); gradient.addColorStop(0, 'rgba(255,255,255,.95)'); gradient.addColorStop(.4, 'rgba(255,255,255,.35)'); gradient.addColorStop(1, 'rgba(255,255,255,0)'); context.fillStyle = gradient; context.fillRect(0, 0, 64, 64);
+      const material = new THREE.PointsMaterial({ size:.11, map:new THREE.CanvasTexture(spriteCanvas), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, color:colors[0] });
+      const points = new THREE.Points(geometry, material), glowMaterial = material.clone(), glowPoints = new THREE.Points(geometry, glowMaterial); glowMaterial.size = .26; glowMaterial.opacity = .25; scene.add(points, glowPoints);
+      const lerp = (a, b, t) => a + (b - a) * t; let mouseX = 0, mouseY = 0, targetStage = 0, displayedStage = 0;
+      window.addEventListener('mousemove', (event) => { mouseX = event.clientX / innerWidth - .5; mouseY = event.clientY / innerHeight - .5; });
+      window.addEventListener('scroll', () => { targetStage = updateScroll().stageProgress * (shapes.length - 1); }, { passive:true });
+      window.addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+      const clock = new THREE.Clock();
+      function animate() { const elapsed = clock.getElapsedTime(); displayedStage = lerp(displayedStage, targetStage, reduceMotion ? 1 : .07); const index = Math.min(Math.floor(displayedStage), shapes.length - 2), localProgress = smoothstep(Math.min(Math.max(displayedStage - index, 0), 1)), from = shapes[index], to = shapes[index + 1], positions = geometry.attributes.position; for (let i = 0; i < count; i++) { positions.array[i * 3] = lerp(from[i * 3], to[i * 3], localProgress) + Math.sin(elapsed * .3 + i) * .01; positions.array[i * 3 + 1] = lerp(from[i * 3 + 1], to[i * 3 + 1], localProgress) + Math.cos(elapsed * .25 + i) * .01; positions.array[i * 3 + 2] = lerp(from[i * 3 + 2], to[i * 3 + 2], localProgress); } positions.needsUpdate = true; const color = new THREE.Color().lerpColors(colors[index], colors[index + 1], localProgress); material.color = color; glowMaterial.color = color; points.rotation.y = elapsed * .05; points.rotation.x = Math.sin(elapsed * .1) * .05; glowPoints.rotation.copy(points.rotation); camera.position.x += (mouseX * 1.4 - camera.position.x) * .03; camera.position.y += (-mouseY - camera.position.y) * .03; camera.lookAt(0, 0, 0); renderer.render(scene, camera); if (!reduceMotion) requestAnimationFrame(animate); }
+      targetStage = updateScroll().stageProgress * (shapes.length - 1); animate();
+    }
+    initScene();
+  </script>
+</body>
+</html>
