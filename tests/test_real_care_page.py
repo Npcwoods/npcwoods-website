@@ -4,7 +4,8 @@ from pathlib import Path
 
 PAGE = Path(__file__).resolve().parents[1] / "landing-pages" / "real-care" / "index.html"
 ROUTER = Path(__file__).resolve().parents[1] / "php" / "npcwoods-static-pages.php"
-OG_IMAGE = Path(__file__).resolve().parents[1] / "landing-pages" / "real-care" / "assets" / "real-care-og.png"
+OG_IMAGE = Path(__file__).resolve().parents[1] / "landing-pages" / "real-care" / "assets" / "real-care-og-facebook.jpg"
+OG_IMAGE_URL = "https://raw.githubusercontent.com/Npcwoods/npcwoods-website/main/landing-pages/real-care/assets/real-care-og-facebook.jpg"
 
 
 class RealCarePageTests(unittest.TestCase):
@@ -27,7 +28,8 @@ class RealCarePageTests(unittest.TestCase):
         self.assertIn('href="tel:4806394722"', self.html)
         self.assertIn('<link rel="canonical" href="https://npcwoods.com/real-care/">', self.html)
         self.assertIn('<meta property="og:url" content="https://npcwoods.com/real-care/">', self.html)
-        self.assertIn('https://npcwoods.com/real-care/assets/real-care-og.png', self.html)
+        self.assertIn(OG_IMAGE_URL, self.html)
+        self.assertIn('<meta property="og:image:type" content="image/jpeg">', self.html)
         self.assertIn('<meta property="og:image:width" content="1200">', self.html)
         self.assertIn('<meta property="og:image:height" content="630">', self.html)
         self.assertTrue(OG_IMAGE.is_file())
