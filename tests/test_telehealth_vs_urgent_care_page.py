@@ -51,7 +51,7 @@ class TelehealthVsUrgentCarePageTests(unittest.TestCase):
         self.assertIn("prefers-reduced-motion: reduce", self.page)
         self.assertIn(".stage{position:sticky;top:65px", self.page)
         self.assertIn("height:calc(100svh - 65px)", self.page)
-        self.assertIn(".stage{position:relative;top:auto;height:auto", self.page)
+        self.assertIn(".stage{position:sticky;top:57px", self.page)
         self.assertIn('href="sms:4806394722?', self.page)
 
 

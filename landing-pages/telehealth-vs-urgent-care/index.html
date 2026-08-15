@@ -161,20 +161,23 @@
     #npcSaveWrap{display:none!important}
     @media(max-width:720px){
       #care-story .hero{min-height:74svh;padding-top:76px}
-      #care-story .heads,#care-story .lanes{grid-template-columns:1fr}
-      #care-story .heads{gap:18px}
-      #care-story .left-head,#care-story .right-head{padding:0;text-align:left}
-      #care-story .right-head{padding-top:16px;border-top:1px solid rgba(255,255,255,.09)}
-      #care-story .stage{position:relative;top:auto;height:auto;min-height:0;padding:34px 18px}
-      #care-story .lanes{gap:20px}
-      #care-story .lane{justify-content:flex-start;gap:9px;padding:0}
-      #care-story .left-lane,#care-story .right-lane{align-items:stretch;padding:0;text-align:left}
-      #care-story .right-lane{order:-1}
-      #care-story .rail{display:none}
-      #care-story .meters{grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-      #care-story .meters>:nth-child(2){display:none}
-      #care-story .left-meter,#care-story .right-meter{padding:0;text-align:left}
-      #care-story .meter-value{font-size:clamp(22px,9vw,34px)}
+      #care-story .stage{position:sticky;top:57px;height:calc(100svh - 57px);min-height:540px;padding:12px 8px}
+      #care-story .heads,#care-story .lanes,#care-story .meters{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr)}
+      #care-story .heads{padding-bottom:8px}
+      #care-story .head{font-size:7px;letter-spacing:.14em}
+      #care-story .head b{font-size:12px}
+      #care-story .left-head{padding-right:6px}
+      #care-story .right-head{padding-left:6px}
+      #care-story .lane{gap:4px;padding:8px 0}
+      #care-story .left-lane{padding-right:6px}
+      #care-story .right-lane{padding-left:6px}
+      #care-story .event{padding:5px 6px}
+      #care-story .event time{margin-bottom:3px;font-size:7px;letter-spacing:.1em}
+      #care-story .event p{font-size:clamp(10px,2.8vw,12px);line-height:1.22}
+      #care-story .say p{font-size:clamp(11px,3.2vw,14px);line-height:1.16}
+      #care-story .done p{font-size:7.5px;letter-spacing:.12em}
+      #care-story .meter-value{font-size:clamp(17px,6vw,25px)}
+      #care-story .meter-label{font-size:7px;letter-spacing:.12em}
       #care-story .steps,#care-story .cols{grid-template-columns:1fr}
       #care-story .steps{gap:28px}
     }
@@ -659,8 +662,8 @@
     else{left.textContent="Morning gone";right.textContent="Your part is done"}
   }
   function frame(){
-    if(reduced||compact()){split.style.height="auto";showAll();ticking=false;return}
-    split.style.height=(window.innerHeight*4.6)+"px";
+    if(reduced){split.style.height="auto";showAll();ticking=false;return}
+    split.style.height=(window.innerHeight*(compact()?5.4:4.6))+"px";
     var length=Math.max(1,split.offsetHeight-stage.offsetHeight);
     var p=clamp((window.pageYOffset-split.offsetTop)/length);
     events.forEach(function(e){e.classList.toggle("on",p>=parseFloat(e.getAttribute("data-at")))});
