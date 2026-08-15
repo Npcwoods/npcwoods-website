@@ -5,7 +5,7 @@ from pathlib import Path
 PAGE = Path(__file__).resolve().parents[1] / "landing-pages" / "real-care" / "index.html"
 ROUTER = Path(__file__).resolve().parents[1] / "php" / "npcwoods-static-pages.php"
 OG_IMAGE = Path(__file__).resolve().parents[1] / "landing-pages" / "real-care" / "assets" / "real-care-og-facebook.jpg"
-OG_IMAGE_URL = "https://raw.githubusercontent.com/Npcwoods/npcwoods-website/main/landing-pages/real-care/assets/real-care-og-facebook.jpg"
+OG_IMAGE_URL = "https://raw.githubusercontent.com/Npcwoods/npcwoods-website/main/landing-pages/real-care/assets/real-care-og-facebook.jpg?v=20260814-2"
 
 
 class RealCarePageTests(unittest.TestCase):
