@@ -8,6 +8,7 @@ compared byte-wise against the committed file.
 Run: python3 -m unittest tests.test_search_safe_template
 """
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -76,6 +77,18 @@ class SearchSafeTemplateTest(unittest.TestCase):
                 generated = (self.out_root / slug / "search-safe" / "index.html").read_text()
                 self.assertIn("window.NPCWoodsPaidSurface = true", generated)
                 self.assertIn("/tracking.js?v=20260622-paid-surface", generated)
+
+    def test_search_safe_pages_have_no_live_ad_pixels(self):
+        comment_re = re.compile(r"<!--.*?-->", re.S)
+        for city in self.cities:
+            slug = city["slug"]
+            with self.subTest(city=slug):
+                generated = (self.out_root / slug / "search-safe" / "index.html").read_text()
+                live = comment_re.sub("", generated)
+                self.assertNotIn("GTM-59QSWZRC", live)
+                self.assertNotIn("G-EFFRQMG8TC", live)
+                self.assertNotIn("AW-610222919", live)
+                self.assertIn("GTM, GA4, and Google Ads stay off", generated)
 
 
 if __name__ == "__main__":

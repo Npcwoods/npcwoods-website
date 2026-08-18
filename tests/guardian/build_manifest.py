@@ -66,6 +66,7 @@ HEALTH_MARKERS = (
     "antibiotics",
     "/conditions/",
     "poison-ivy",
+    "cold-sore",
 )
 
 # WP slugs whose live URL differs from the slug used in the routing map key.
@@ -117,7 +118,9 @@ def main() -> int:
         if url in pages:
             return
         is_paid = "/search-safe/" in url_path or url_path == "/uti-care/"
-        health = is_health(url_path)
+        health = is_health(url_path) or (
+            bool(local) and is_health("/" + local.replace("\\", "/"))
+        )
         local_path = resolve_local(local) if local else None
         pages[url] = {
             "url": url,

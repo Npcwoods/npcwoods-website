@@ -3,7 +3,8 @@
 <head>
 <!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page. -->
+     so predefining a no-op fbq means fbevents.js never loads on this page.
+     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
 <script>
 window.fbq = function () {};
 window.fbq.queue = [];
@@ -303,7 +304,6 @@ window._fbq = window.fbq;
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://npcwoods.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"></noscript>
@@ -771,9 +771,6 @@ window._fbq = window.fbq;
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 </head>
 <body>
-<!-- NPCWoods Tracking: GTM noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===== SITE HEADER ===== -->
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
@@ -2632,18 +2629,5 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 <!-- END NPCWoods Contact Save -->
 
 <!-- NPCWoods CWV: GTM relocated to end of <body> by cwv-batch-fixes.py -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
-</script>
 </body>
 </html>
