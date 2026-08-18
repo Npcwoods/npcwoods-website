@@ -5,7 +5,8 @@
  */
 add_action( 'template_redirect', function() {
     $page_map = array(
-        'dental-pain' => 'dental-pain/index.html',
+        'dental-pain'    => 'dental-pain/index.html',
+        'gainesville-ga' => 'dental-pain/gainesville-ga/index.html',
     );
 
     $slug = get_post_field( 'post_name', get_queried_object_id() );
