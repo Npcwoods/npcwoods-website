@@ -14,7 +14,7 @@ add_action("init", function() {
         "/albuquerque-uti-treatment/"  => "/uti-treatment/albuquerque-nm/",
         "/atlanta-uti-treatment/"     => "/uti-treatment/",
         "/boone-sinus-infection/"     => "/sinus-infection-treatment/",
-        "/phoenix-az-sinus/"          => "/sinus-infection-treatment/",
+        "/phoenix-az-sinus/"          => "/sinus-infection-treatment/phoenix-az/",
         "/sample-page/"              => "/",
         "/hello-world/"              => "/",
         "/my-account/"               => "/",

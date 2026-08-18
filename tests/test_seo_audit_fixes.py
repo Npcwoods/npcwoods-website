@@ -108,11 +108,52 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertNotIn("get_post_field", php)
         self.assertNotIn("'tucson-az'", php)
 
+    def test_sinus_phoenix_plugin_is_path_only(self):
+        php = read("php/npcwoods-sinus-phoenix.php")
+        self.assertIn("parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH )", php)
+        self.assertIn("'/sinus-infection-treatment/phoenix-az/'", php)
+        self.assertIn("sinus-infection-treatment/phoenix-az/index.html", php)
+        self.assertNotIn("get_post_field", php)
+        self.assertNotIn("'phoenix-az'", php)
+        self.assertEqual(php.count("=>"), 1)
+
+    def test_phoenix_sinus_page_locked_copy_and_compliance(self):
+        html = read("landing-pages/sinus-infection-treatment/phoenix-az/index.html")
+        self.assertIn("<title>Sinus Treatment in Phoenix, AZ | $59 Text Visit</title>", html)
+        self.assertIn(
+            "Sinus infection in Phoenix and you don’t want the waiting room? Text Chris.",
+            html,
+        )
+        self.assertIn(
+            'content="Sinus pressure in Phoenix and you don’t want the waiting room? Text Chris Woods, NP. $59. Same-day pharmacy when it is safe. You only pay if he can treat you."',
+            html,
+        )
+        self.assertIn("Hi Chris, I'd like to start a $59 visit", html)
+        self.assertIn("Banner or a Phoenix urgent-care", html)
+        self.assertIn("--brand: #9B1C1C;", html)
+        self.assertNotIn("#2563EB", html)
+        self.assertNotRegex(html, r"(?i)\b(doctor|physician|appointment|insurance)\b")
+        self.assertNotRegex(html, r"\bMD\b")
+        self.assertNotRegex(html, r"GTM-[A-Z0-9]+|G-[A-Z0-9]+|AW-\d+|UA-\d+")
+        self.assertNotIn("googletagmanager.com", html)
+        self.assertNotIn("tracking.js", html)
+        self.assertNotIn("Tucson", html)
+        self.assertNotIn("Mesa", html)
+
     def test_tucson_sinus_legacy_slug_points_at_city_page(self):
         php = read("php/npcwoods-redirects-404-cleanup.php")
         self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', php)
         self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', php)
-        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/"', php)
+
+    def test_phoenix_legacy_sinus_slugs_point_at_city_page(self):
+        cleanup = read("php/npcwoods-redirects-404-cleanup.php")
+        redirects = read("php/npcwoods-redirects.php")
+        self.assertIn('"/phoenix-az-sinus/"                => "/sinus-infection-treatment/phoenix-az/"', cleanup)
+        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/phoenix-az/"', cleanup)
+        self.assertIn('"/phoenix-az-sinus/"          => "/sinus-infection-treatment/phoenix-az/"', redirects)
+        self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', cleanup)
+        self.assertIn('"/mesa-sinus-infection/"            => "/sinus-infection-treatment/"', cleanup)
+        self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', cleanup)
 
     def test_blog_meta_map_covers_recent_posts_and_will_rerun(self):
         php = read("php/npcwoods-faq-schema.php")

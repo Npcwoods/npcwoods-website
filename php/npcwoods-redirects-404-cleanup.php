@@ -21,7 +21,8 @@ add_action("init", function() {
         // AZ UTI (→ UTI hub; no nested page exists for these cities)
         "/phoenix-uti-treatment/"           => "/uti-treatment/",
         // AZ sinus (→ sinus hub)
-        "/phoenix-sinus-infection/"         => "/sinus-infection-treatment/",
+        "/phoenix-az-sinus/"                => "/sinus-infection-treatment/phoenix-az/",
+        "/phoenix-sinus-infection/"         => "/sinus-infection-treatment/phoenix-az/",
         "/mesa-sinus-infection/"            => "/sinus-infection-treatment/",
         "/scottsdale-sinus-infection/"      => "/sinus-infection-treatment/",
         "/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/",
