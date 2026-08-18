@@ -65,6 +65,23 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertRegex(block, r"\b329\b", "orphan static Albuquerque blog page should be excluded")
         self.assertNotRegex(block, r"\b407\b", "/faq/ should not be excluded")
         self.assertNotRegex(block, r"\b408\b", "/about/ should not be excluded")
+        # Remaining AZ UTI excludes: Phoenix 11, Tucson 12, Peoria 18.
+        # Chandler 14, Gilbert 15, Glendale 16, Tempe 19 are in the sitemap (live).
+        remaining_az_uti = None
+        lines = block.splitlines()
+        for i, line in enumerate(lines):
+            if "UTI Treatment city pages (AZ)" not in line:
+                continue
+            for follow in lines[i + 1 :]:
+                stripped = follow.strip()
+                if stripped.startswith("//") or not stripped:
+                    continue
+                remaining_az_uti = stripped
+                break
+            break
+        self.assertIsNotNone(remaining_az_uti, "AZ UTI remaining-exclude line missing")
+        remaining_ids = {int(n) for n in re.findall(r"\d+", remaining_az_uti)}
+        self.assertEqual(remaining_ids, {11, 12, 18})
 
     def test_blog_meta_map_covers_recent_posts_and_will_rerun(self):
         php = read("php/npcwoods-faq-schema.php")

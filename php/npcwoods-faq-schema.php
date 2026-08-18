@@ -366,7 +366,8 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
         // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20) re-added
-        11, 12, 14, 15, 16, 18, 19,
+        // Chandler (14), Gilbert (15), Glendale (16), Tempe (19) included in the sitemap
+        11, 12, 18,
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         268, 272, 276, 280, 288, 292, 296, 300,
         // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Mesa (23) excluded until served correctly
