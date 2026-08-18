@@ -1,3 +1,23 @@
+# STOP. Read this first.
+
+**Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
+
+- **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template).
+- **Preview only:** Vercel review lane (`vercel-review-site.vercel.app`). Never deploy the repo root to Vercel.
+- **Credentials:** Chris-HQ `.env` (`SFTP_HOST`, `SFTP_PORT=22`, `SFTP_USERNAME` or `SFTP_USER`, `SFTP_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Assume the file is current. Never print secrets. Never paste them in chat.
+- **A live URL needs three pieces** or git and production look like they do not match:
+  1. HTML here (usually `landing-pages/<path>/index.html`)
+  2. SFTP copy on GoDaddy `html/`
+  3. WordPress page stub + mu-plugin route in `php/`
+- **Existing pages:** `python3 scripts/deploy.py --pages <path>` (dry-run by default). Live needs Chris's explicit yes and the phrase `CHRIS APPROVED LIVE DEPLOY`.
+- **First-time URLs:** `deploy.py` will not create the route. Add the mu-plugin map and WP stub, upload the HTML, then flush GoDaddy WPaaS cache (Quick Links → Flush Cache).
+- **Verify the clean URL** (no query string). A cache-bust can show the real HTML while `https://npcwoods.com/<path>/` still serves a ~15KB empty WordPress shell. Done means a no-query-string GET is 200, city templates are ~60KB+, and the locked title and H1 are present.
+- **Do not link empty shells.** Many city × condition URLs are WP stubs with no title or H1. Fetch the live URL before adding it to `/sitemap/`, `/conditions/`, or a state hub.
+- **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
+
+Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship.
+
+---
 # CLAUDE.md — Website Department
 
 > This file contains code structure, page stubs, and deployment workflows for NPCWoods.com.
