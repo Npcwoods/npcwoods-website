@@ -1,3 +1,17 @@
+# STOP. Read this first.
+
+**Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
+
+- **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template).
+- **Preview only:** Vercel review lane (`vercel-review-site.vercel.app`). Never deploy the repo root to Vercel.
+- **A live URL needs three pieces** or git and production look like they don't match:
+  1. HTML here (usually `landing-pages/<path>/index.html`)
+  2. SFTP copy on GoDaddy `html/`
+  3. WordPress page stub + mu-plugin route in `php/`
+- **Deploy:** `python3 scripts/deploy.py --pages <path>` (dry-run by default). Live needs Chris's explicit yes and the phrase `CHRIS APPROVED LIVE DEPLOY`.
+- **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
+
+---
 # CLAUDE.md — Website Department
 
 > This file contains code structure, page stubs, and deployment workflows for NPCWoods.com.
