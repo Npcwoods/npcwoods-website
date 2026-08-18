@@ -370,8 +370,8 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         11, 12, 18,
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         268, 272, 276, 280, 288, 292, 296, 300,
-        // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Mesa (23) excluded until served correctly
-        22, 23, 24, 25, 26, 27, 28, 29, 30,
+        // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Tucson (22) included; Mesa (23) excluded until served correctly
+        23, 24, 25, 26, 27, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
         265, 269, 273, 277, 281, 285, 289, 293, 297, 301,
         // Strep Throat/Ear Infection city pages (AZ)

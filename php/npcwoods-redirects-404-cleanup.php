@@ -24,7 +24,7 @@ add_action("init", function() {
         "/phoenix-sinus-infection/"         => "/sinus-infection-treatment/",
         "/mesa-sinus-infection/"            => "/sinus-infection-treatment/",
         "/scottsdale-sinus-infection/"      => "/sinus-infection-treatment/",
-        "/tucson-sinus-infection/"          => "/sinus-infection-treatment/",
+        "/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/",
         "/surprise-sinus-infection/"        => "/sinus-infection-treatment/",
         "/tucson-az-sinus/"                 => "/sinus-infection-treatment/",
         // AZ telemedicine (→ AZ state hub)

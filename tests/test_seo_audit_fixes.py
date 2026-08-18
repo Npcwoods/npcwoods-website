@@ -82,6 +82,37 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIsNotNone(remaining_az_uti, "AZ UTI remaining-exclude line missing")
         remaining_ids = {int(n) for n in re.findall(r"\d+", remaining_az_uti)}
         self.assertEqual(remaining_ids, {11, 12, 18})
+        # Remaining AZ sinus excludes: Mesa 23 still out. Tucson 22 is live / in the sitemap.
+        remaining_az_sinus = None
+        for i, line in enumerate(lines):
+            if "Sinus Infection Treatment city pages (AZ)" not in line:
+                continue
+            for follow in lines[i + 1 :]:
+                stripped = follow.strip()
+                if stripped.startswith("//") or not stripped:
+                    continue
+                remaining_az_sinus = stripped
+                break
+            break
+        self.assertIsNotNone(remaining_az_sinus, "AZ sinus remaining-exclude line missing")
+        remaining_sinus_ids = {int(n) for n in re.findall(r"\d+", remaining_az_sinus)}
+        self.assertNotIn(22, remaining_sinus_ids)
+        self.assertNotIn(21, remaining_sinus_ids)
+        self.assertIn(23, remaining_sinus_ids)
+
+    def test_sinus_tucson_plugin_is_path_only(self):
+        php = read("php/npcwoods-sinus-tucson.php")
+        self.assertIn("parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH )", php)
+        self.assertIn("'/sinus-infection-treatment/tucson-az/'", php)
+        self.assertIn("sinus-infection-treatment/tucson-az/index.html", php)
+        self.assertNotIn("get_post_field", php)
+        self.assertNotIn("'tucson-az'", php)
+
+    def test_tucson_sinus_legacy_slug_points_at_city_page(self):
+        php = read("php/npcwoods-redirects-404-cleanup.php")
+        self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', php)
+        self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', php)
+        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/"', php)
 
     def test_blog_meta_map_covers_recent_posts_and_will_rerun(self):
         php = read("php/npcwoods-faq-schema.php")
