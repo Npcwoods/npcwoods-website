@@ -47,7 +47,7 @@ gtag('config', 'AW-610222919');
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
   <link rel="apple-touch-icon" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 
-  <!-- Fonts: Inter (body+display per DESIGN.md), DM Serif Display (wordmark only, used by shared nav) -->
+  <!-- Fonts: Inter (body+display per design system), DM Serif Display (wordmark only, used by shared nav) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://npcwoods.com">
@@ -176,7 +176,7 @@ gtag('config', 'AW-610222919');
 </script>
 
   <style>
-    /* ===== DESIGN SYSTEM TOKENS (per /DESIGN.md) ===== */
+    /* ===== DESIGN SYSTEM TOKENS (per design system) ===== */
     :root {
       --white: #FFFFFF;
       --off-white: #F7F8FA;
@@ -366,6 +366,16 @@ gtag('config', 'AW-610222919');
       border-radius: 50%;
       background: var(--success);
       box-shadow: 0 0 0 3px rgba(22,163,74,0.18);
+    }
+    .hero-photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 18px;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 24px rgba(26,26,46,0.12);
     }
     .hero h1 {
       color: var(--text-primary);
@@ -1056,12 +1066,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner">
+    <img
+      class="hero-photo"
+      src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp"
+      alt="Chris Woods, Nurse Practitioner"
+      width="160"
+      height="160"
+    >
     <span class="hero-badge">
       <span class="hero-dot"></span>
       Licensed in Georgia &middot; Same-day reply
     </span>
     <h1 data-npc-personalize="headline">Tooth infection in Gainesville and the dentist is closed? Text Chris. <span>$59.</span></h1>
-    <p class="hero-sub" data-npc-personalize="subheadline">Can't see a dentist for a tooth infection? Text Chris Woods, a licensed Georgia Nurse Practitioner (FNP-C). $59 text visit. Pay after treated. If it is not safe by text, you do not pay. This is not an emergency dentist, and it is not an ER replacement.</p>
+    <p class="hero-sub" data-npc-personalize="subheadline">Tonight, the weekend, or you cannot get in to a dentist in Gainesville or nearby North GA. Text Chris Woods, a licensed Georgia Nurse Practitioner (FNP-C). $59 is the whole visit. Same-day pharmacy prescription when it is safe. A prescription is not promised. Antibiotics do not fix the tooth. You must be physically in Georgia (or another licensed state) at the time of the visit.</p>
     <div class="hero-price">$59 flat &middot; pay after you are treated</div>
     <div class="hero-cta-row">
       <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="cta-btn" data-npc-personalize="cta-text">
@@ -1235,8 +1252,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="er-hospitals">
-        <p>Northeast Georgia Medical Center in Gainesville. Do not text through an airway problem.</p>
+        <p>Northeast Georgia Medical Center, 743 Spring Street NE, Gainesville. Do not text through an airway problem.</p>
       </div>
+
+      <p class="triage-cdc">Learn more about <a href="https://www.cdc.gov/antibiotic-use/dental.html">antibiotic use in dental care</a> from the CDC, and <a href="https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/antibiotics">ADA guidance on dental antibiotics</a>.</p>
     </div>
   </div>
 </section>
@@ -1475,7 +1494,7 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<!-- NPCWoods Tracking: sms_click / phone_call_click / gclid capture -->
+<!-- NPCWoods Tracking: sms_click / phone_call_click -->
 <script src="/tracking.js?v=20260528-no-phi"></script>
 
 <!-- NPCWoods Smart Content: dynamic headlines + social proof from Railway -->
