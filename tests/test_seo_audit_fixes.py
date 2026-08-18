@@ -144,15 +144,16 @@ class SeoAuditFixTests(unittest.TestCase):
         php = read("php/npcwoods-redirects-404-cleanup.php")
         self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', php)
         self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', php)
-        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/"', php)
 
-    def test_phoenix_legacy_sinus_slugs_still_point_at_hub(self):
-        redirects = read("php/npcwoods-redirects.php")
+    def test_phoenix_legacy_sinus_slugs_point_at_city_page(self):
         cleanup = read("php/npcwoods-redirects-404-cleanup.php")
-        self.assertIn('"/phoenix-az-sinus/"          => "/sinus-infection-treatment/"', redirects)
-        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/"', cleanup)
-        self.assertNotIn("/sinus-infection-treatment/phoenix-az/", redirects)
-        self.assertNotIn("/sinus-infection-treatment/phoenix-az/", cleanup)
+        redirects = read("php/npcwoods-redirects.php")
+        self.assertIn('"/phoenix-az-sinus/"                => "/sinus-infection-treatment/phoenix-az/"', cleanup)
+        self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/phoenix-az/"', cleanup)
+        self.assertIn('"/phoenix-az-sinus/"          => "/sinus-infection-treatment/phoenix-az/"', redirects)
+        self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', cleanup)
+        self.assertIn('"/mesa-sinus-infection/"            => "/sinus-infection-treatment/"', cleanup)
+        self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', cleanup)
 
     def test_blog_meta_map_covers_recent_posts_and_will_rerun(self):
         php = read("php/npcwoods-faq-schema.php")
