@@ -44,6 +44,17 @@ Read this file first — it contains SFTP host/user/password, WordPress REST API
 | `WP_USERNAME` | WordPress admin username |
 | `WP_APP_PASSWORD` | WordPress application password (for REST API) |
 
+
+## First-time URLs and cache
+
+`deploy.py` assumes the WP stub and mu-plugin route already exist. New URLs still need those two pieces before or with the HTML upload.
+
+After any live upload, flush GoDaddy WPaaS cache (Quick Links → Flush Cache). Then GET the **clean URL with no query string**. A cache-bust can lie: the real HTML may already be on disk while `https://npcwoods.com/<path>/` still serves a ~15KB empty shell. Do not report live until the clean URL has the locked title and H1.
+
+Assume Chris-HQ `.env` is current. Never print `SFTP_PASSWORD` or `WP_APP_PASSWORD`.
+
+See `skills/npcwoods-live-page-launch/SKILL.md` and the STOP banner in `CLAUDE.md`.
+
 ## How to Execute Commands on Chris's Mac
 
 Use the `mcp__Control_your_Mac__osascript` tool. It runs AppleScript, which can execute shell commands:
