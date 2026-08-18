@@ -30,11 +30,11 @@ DEFAULT_OUT_ROOT = ROOT / "landing-pages" / "uti-treatment"
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 REQUIRED_FIELDS = ("slug", "city", "state", "state_abbr", "state_page")
 
-# Guardrails carried over from the original build script.
+# Guardrails: paid LPs keep tracking.js + the paid-surface marker, but
+# advertising/analytics pixels stay off health-condition pages (no BAA).
 REQUIRED_MARKERS = [
-    "GTM-59QSWZRC",
-    "gtag/js?id=G-EFFRQMG8TC",
-    "AW-610222919",
+    "health-condition pages must not",
+    "GTM, GA4, and Google Ads stay off",
     "window.NPCWoodsPaidSurface = true",
     "tracking.js",
     'content="noindex,follow"',
@@ -44,6 +44,11 @@ FORBIDDEN_MARKERS = [
     "connect.facebook.net",
     "facebook.com/tr",
     "fbevents.js",
+    "GTM-59QSWZRC",
+    "G-EFFRQMG8TC",
+    "AW-610222919",
+    "fbq('init'",
+    'fbq("init"',
     "nitrofurantoin",
     "trimethoprim",
     "macrobid",

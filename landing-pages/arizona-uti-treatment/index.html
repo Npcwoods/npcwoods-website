@@ -3,27 +3,14 @@
 <head>
 <!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page. -->
+     so predefining a no-op fbq means fbevents.js never loads on this page.
+     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
 <script>
 window.fbq = function () {};
 window.fbq.queue = [];
 window.fbq.loaded = true;
 window.fbq.version = '2.0';
 window._fbq = window.fbq;
-</script>
-<!-- NPCWoods Tracking: GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
 </script>
 
   <meta charset="UTF-8">
@@ -43,7 +30,6 @@ gtag('config', 'AW-610222919');
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://npcwoods.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0&family=Inter:wght@400;500;600;700;800;900&display=swap">
 
   <script type="application/ld+json">

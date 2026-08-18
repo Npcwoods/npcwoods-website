@@ -2,10 +2,10 @@
   "base_url": "https://npcwoods.com",
   "generated_by": "tests/guardian/build_manifest.py",
   "summary": {
-    "total": 95,
-    "health_pages": 66,
+    "total": 98,
+    "health_pages": 68,
     "paid_lps": 9,
-    "other": 29
+    "other": 30
   },
   "pages": [
     {
@@ -81,6 +81,15 @@
       "routed_by": "npcwoods-ga-nc-pages.php"
     },
     {
+      "url": "https://npcwoods.com/cold-sore-treatment/",
+      "local_source": "landing-pages/cold-sore-treatment/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
       "url": "https://npcwoods.com/colorado-telemedicine/",
       "local_source": "landing-pages/colorado-telemedicine/index.html",
       "exists_locally": true,
@@ -151,6 +160,15 @@
       "is_paid_lp": false,
       "kind": "core",
       "routed_by": "npcwoods-faq-page.php"
+    },
+    {
+      "url": "https://npcwoods.com/gainesville-ga/",
+      "local_source": "dental-pain/gainesville-ga/index.html",
+      "exists_locally": false,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-dental-pages.php"
     },
     {
       "url": "https://npcwoods.com/georgia-telemedicine/",
@@ -614,6 +632,15 @@
     {
       "url": "https://npcwoods.com/pricing/",
       "local_source": "landing-pages/pricing/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/real-care/",
+      "local_source": "landing-pages/real-care/index.html",
       "exists_locally": true,
       "is_health_page": false,
       "is_paid_lp": false,

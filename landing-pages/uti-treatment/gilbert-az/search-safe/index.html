@@ -2,27 +2,14 @@
 <html lang="en">
 <head>
 <!-- Meta Pixel disabled: no BAA with Meta — health-condition pages must not send PageView there.
-     Predefining a no-op fbq means the GTM-injected pixel never loads on this page. -->
+     Predefining a no-op fbq means the GTM-injected pixel never loads on this page.
+     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
 <script>
 window.fbq = function () {};
 window.fbq.queue = [];
 window.fbq.loaded = true;
 window.fbq.version = '2.0';
 window._fbq = window.fbq;
-</script>
-<!-- NPCWoods Tracking: GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
 </script>
 <!-- Paid-surface marker: this noindex page is built for paid traffic and appends a safe marker to SMS bodies. -->
 <script>window.NPCWoodsPaidSurface = true;</script>
@@ -910,9 +897,6 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
-<!-- GTM noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
 <nav class="nav">

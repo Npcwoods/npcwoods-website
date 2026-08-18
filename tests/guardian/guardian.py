@@ -8,7 +8,8 @@ Needs no credentials.
 Checks per page (from tests/guardian/manifest.json):
   1. HTTP 200 and the page actually renders (not the WP 404 theme page)
   2. tracking.js script tag present (+ the file itself returns 200, checked once)
-  3. GTM container present in <head>
+  3. Non-health pages: GTM container present in <head>. Health pages: GTM,
+     GA4 G-EFFRQMG8TC, and Google Ads AW-610222919 must be absent (no BAA).
   4. Health pages: ZERO Meta/Facebook pixel — no connect.facebook.net, no live
      fbq(...) calls (the no-op fbq stub that BLOCKS the pixel is allowed)
   5. Canonical claim wording drift (response time / hours / med cost / reviews)
@@ -108,6 +109,14 @@ CANONICAL_REVIEW_COUNT = 50
 
 TRACKING_JS_RE = re.compile(r"<script[^>]+src=[\"'][^\"']*tracking\.js[^\"']*[\"']", re.I)
 GTM_RE = re.compile(r"googletagmanager\.com|GTM-[A-Z0-9]{4,}", re.I)
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+LIVE_HEALTH_AD_RE = re.compile(
+    r"googletagmanager\.com/(?:gtm\.js|ns\.html|gtag/js)"
+    r"|['\"]GTM-59QSWZRC['\"]"
+    r"|['\"]G-EFFRQMG8TC['\"]"
+    r"|['\"]AW-610222919['\"]",
+    re.I,
+)
 META_REFRESH_RE = re.compile(
     r"""<meta[^>]+http-equiv=["']refresh["'][^>]*url=([^"'>\s]+)""", re.I
 )
@@ -250,8 +259,16 @@ def check_page(session: requests.Session, page: dict, sitemap_urls: set[str]) ->
             Finding("RED", url, "tracking.js", "no <script src=...tracking.js> tag found")
         )
 
-    # 3. GTM in <head>
-    if not GTM_RE.search(head):
+    # 3. GTM / GA4 / Ads — required on marketing pages; forbidden on health pages
+    live_html = HTML_COMMENT_RE.sub("", html)
+    if page["is_health_page"]:
+        if LIVE_HEALTH_AD_RE.search(live_html):
+            res.findings.append(
+                Finding("RED", url, "ads-analytics-on-health",
+                        "live GTM, GA4, or Google Ads tag on a health-condition "
+                        "page (no BAA — these pixels stay off)")
+            )
+    elif not GTM_RE.search(head):
         if GTM_RE.search(html):
             res.findings.append(
                 Finding("YELLOW", url, "gtm-placement",
@@ -482,12 +499,22 @@ def playwright_spot_checks(sample: list[dict]) -> tuple[list[Finding], list[str]
                 continue
             gtm = any("googletagmanager.com" in u for u in good_hits)
             ga4 = any("google-analytics.com" in u or "/g/collect" in u for u in good_hits)
-            if not gtm:
-                findings.append(Finding("RED", url, "playwright-gtm",
-                                        "no googletagmanager.com request fired on load"))
-            if not ga4:
-                findings.append(Finding("YELLOW", url, "playwright-ga4",
-                                        "no GA4 collect request observed on load"))
+            if page_meta["is_health_page"]:
+                if gtm:
+                    findings.append(Finding("RED", url, "playwright-gtm-health",
+                                            "googletagmanager.com request fired on a "
+                                            "health-condition page"))
+                if ga4:
+                    findings.append(Finding("RED", url, "playwright-ga4-health",
+                                            "GA4 collect request fired on a "
+                                            "health-condition page"))
+            else:
+                if not gtm:
+                    findings.append(Finding("RED", url, "playwright-gtm",
+                                            "no googletagmanager.com request fired on load"))
+                if not ga4:
+                    findings.append(Finding("YELLOW", url, "playwright-ga4",
+                                            "no GA4 collect request observed on load"))
             if page_meta["is_health_page"] and fb_hits:
                 findings.append(Finding("RED", url, "playwright-meta-pixel",
                                         f"{len(fb_hits)} facebook request(s) fired on a "
