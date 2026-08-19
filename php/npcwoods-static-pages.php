@@ -28,6 +28,7 @@ add_action( "template_redirect", function() {
         "do-i-need-antibiotics-sinus-infection" => "do-i-need-antibiotics-sinus-infection/index.html",
 
         "real-care"              => "real-care/index.html",
+        "notice-of-privacy-practices" => "notice-of-privacy-practices/index.html",
 
     );
 

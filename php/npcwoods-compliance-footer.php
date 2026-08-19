@@ -120,6 +120,7 @@ function npcwoods_compliance_footer() {
 
             <div class="footer-legal-links">
                 <a href="/privacy-policy/">Privacy Policy</a>
+                <a href="/notice-of-privacy-practices/">Notice of Privacy Practices</a>
                 <a href="/terms-of-service/">Terms of Service</a>
                 <a href="/medical-disclaimer/">Medical Disclaimer</a>
             </div>
