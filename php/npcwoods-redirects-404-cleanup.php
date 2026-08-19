@@ -19,12 +19,13 @@ add_action("init", function() {
         "/peoria-az-strep/"                 => "/strep-throat-treatment/",
         "/mesa-az-strep/"                   => "/strep-throat-treatment/",
         // AZ UTI (→ UTI hub; no nested page exists for these cities)
-        "/phoenix-uti-treatment/"           => "/uti-treatment/",
-        // AZ sinus (→ sinus hub)
+        "/phoenix-uti-treatment/"           => "/uti-treatment/phoenix-az/",
+        // AZ sinus (→ sinus hub / city page when a real draft exists)
         "/phoenix-az-sinus/"                => "/sinus-infection-treatment/phoenix-az/",
         "/phoenix-sinus-infection/"         => "/sinus-infection-treatment/phoenix-az/",
-        "/mesa-sinus-infection/"            => "/sinus-infection-treatment/",
-        "/scottsdale-sinus-infection/"      => "/sinus-infection-treatment/",
+        "/mesa-sinus-infection/"            => "/sinus-infection-treatment/mesa-az/",
+        "/chandler-sinus-infection/"        => "/sinus-infection-treatment/chandler-az/",
+        "/scottsdale-sinus-infection/"      => "/sinus-infection-treatment/scottsdale-az/",
         "/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/",
         "/surprise-sinus-infection/"        => "/sinus-infection-treatment/",
         "/tucson-az-sinus/"                 => "/sinus-infection-treatment/",

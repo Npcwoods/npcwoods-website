@@ -152,7 +152,7 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn('"/phoenix-sinus-infection/"         => "/sinus-infection-treatment/phoenix-az/"', cleanup)
         self.assertIn('"/phoenix-az-sinus/"          => "/sinus-infection-treatment/phoenix-az/"', redirects)
         self.assertIn('"/tucson-sinus-infection/"          => "/sinus-infection-treatment/tucson-az/"', cleanup)
-        self.assertIn('"/mesa-sinus-infection/"            => "/sinus-infection-treatment/"', cleanup)
+        self.assertIn('"/mesa-sinus-infection/"            => "/sinus-infection-treatment/mesa-az/"', cleanup)
         self.assertIn('"/tucson-az-sinus/"                 => "/sinus-infection-treatment/"', cleanup)
 
     def test_blog_meta_map_covers_recent_posts_and_will_rerun(self):

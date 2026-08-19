@@ -25,7 +25,7 @@ add_action("init", function() {
         "/author/chris/"             => "/about/",
         "/author/npcwoods/"          => "/about/",
         "/gilbert-az-strep/"         => "/arizona-telemedicine/",
-        "/tucson-az-uti/"            => "/uti-treatment/",
+        "/tucson-az-uti/"            => "/uti-treatment/tucson-az/",
         "/blog/blog-ry/"             => "/blog/",
         "/blog/blog-ry"              => "/blog/",
         "/blog/burning-when-you-pee-albuquerque/" => "/blog-burning-when-you-pee-albuquerque/",
