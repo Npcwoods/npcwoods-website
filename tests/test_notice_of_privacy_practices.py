@@ -116,6 +116,20 @@ class NoticeOfPrivacyPracticesTests(unittest.TestCase):
         self.assertNotIn("/npp/", self.route)
         self.assertNotIn("/hipaa/", self.route)
 
+    def test_google_and_meta_pixels_are_absent(self):
+        for token in (
+            "GTM-59QSWZRC",
+            "G-EFFRQMG8TC",
+            "AW-610222919",
+            "googletagmanager.com",
+            "google-site-verification",
+            "connect.facebook.net",
+            "facebook.com/tr",
+            "fbq(",
+            "fbq ('",
+        ):
+            self.assertNotIn(token, self.page)
+
 
 if __name__ == "__main__":
     unittest.main()
