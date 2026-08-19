@@ -361,7 +361,10 @@ foreach ($npcwoods_footer_candidates as $npcwoods_footer_path) {
 if (!$npcwoods_footer_rendered):
 ?>
 <footer class="npc-site-footer" aria-label="Footer">
-  <div class="npc-footer-inner"><p>$59 text-based urgent care with Chris Woods, MSN, APRN, FNP-C. Available in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</p></div>
+  <div class="npc-footer-inner">
+    <p>$59 text-based urgent care with Chris Woods, MSN, APRN, FNP-C. Available in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</p>
+    <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
+  </div>
 </footer>
 <?php endif; ?>
 

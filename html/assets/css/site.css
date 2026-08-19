@@ -798,6 +798,14 @@
   text-transform: uppercase;
 }
 
+.npc-footer-emergency {
+  margin: 12px auto 0;
+  max-width: 36rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #6B6B80;
+}
+
 @media (max-width: 768px) {
   .npc-footer-grid {
     grid-template-columns: 1fr 1fr;
