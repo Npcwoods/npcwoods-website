@@ -28,6 +28,13 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("shared/footer-snippet.html", self.text)
         self.assertIn("npcwoods_shared_footer_rendered", self.text)
 
+    def test_homepage_fallback_footer_includes_emergency_blurb(self):
+        locked = (
+            "Text-based telehealth is not for emergencies. "
+            "If you have chest pain, trouble breathing, or other emergency symptoms, call 911."
+        )
+        self.assertIn(locked, self.text)
+
     def test_homepage_leaves_seo_metadata_to_wordpress(self):
         """Yoast must be the sole owner of description, canonical, and social tags."""
         patterns = (
