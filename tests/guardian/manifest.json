@@ -2,10 +2,10 @@
   "base_url": "https://npcwoods.com",
   "generated_by": "tests/guardian/build_manifest.py",
   "summary": {
-    "total": 98,
+    "total": 99,
     "health_pages": 68,
     "paid_lps": 9,
-    "other": 30
+    "other": 31
   },
   "pages": [
     {
@@ -163,8 +163,8 @@
     },
     {
       "url": "https://npcwoods.com/gainesville-ga/",
-      "local_source": "dental-pain/gainesville-ga/index.html",
-      "exists_locally": false,
+      "local_source": "landing-pages/dental-pain/gainesville-ga/index.html",
+      "exists_locally": true,
       "is_health_page": true,
       "is_paid_lp": false,
       "kind": "city",
@@ -591,6 +591,15 @@
       "is_health_page": false,
       "is_paid_lp": false,
       "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/notice-of-privacy-practices/",
+      "local_source": "landing-pages/notice-of-privacy-practices/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
       "routed_by": "npcwoods-static-pages.php"
     },
     {
