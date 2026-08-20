@@ -196,6 +196,36 @@ class DraftCityAndBlogPageTests(unittest.TestCase):
         self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/chandler-az/", html)
         self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/scottsdale-az/", html)
 
+    def test_uti_and_blog_drafts_use_red_charcoal_not_hospital_blue(self):
+        """Phoenix/Tucson UTI + both blogs must match live sinus red (#9B1C1C), not #2563EB."""
+        surfaces = [
+            "landing-pages/uti-treatment/phoenix-az/index.html",
+            "landing-pages/uti-treatment/tucson-az/index.html",
+            "blog/can-nurse-practitioner-prescribe-antibiotics-by-text/index.html",
+            "blog/can-nurse-practitioner-prescribe-antibiotics-by-text.html",
+            "blog/dental-pain-cant-get-a-dentist/index.html",
+            "blog/dental-pain-cant-get-a-dentist.html",
+        ]
+        hospital_blue = (
+            "#2563EB",
+            "#2563eb",
+            "rgba(37,99,235",
+            "rgba(37, 99, 235",
+            "#1D4ED8",
+            "#EFF6FF",
+            "#DBEAFE",
+        )
+        for rel in surfaces:
+            html = read(rel)
+            with self.subTest(rel=rel):
+                self.assertIn("#9B1C1C", html)
+                for token in hospital_blue:
+                    self.assertNotIn(token, html)
+                if rel.startswith("landing-pages/"):
+                    self.assertIn("--brand: #9B1C1C;", html)
+                    self.assertIn("theme-color\" content=\"#9B1C1C\"", html)
+                    self.assertIn("background: #9B1C1C !important;", html)
+
     def test_legacy_redirects_point_at_new_city_pages(self):
         redirects = read("php/npcwoods-redirects.php")
         cleanup = read("php/npcwoods-redirects-404-cleanup.php")
