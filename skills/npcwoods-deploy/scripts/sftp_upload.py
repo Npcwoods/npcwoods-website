@@ -14,7 +14,7 @@ Usage (via osascript):
 
 Configuration:
     Fill in the variables in the CONFIG section below before running.
-    Read credentials from: /Users/chriswoods/Desktop/Chris-HQ/ChrisOS/.env
+    Read credentials from: /Users/macmini/Desktop/Chris-HQ/.env
 """
 
 import paramiko
@@ -24,13 +24,13 @@ import sys
 # ============================================================
 # CONFIG — Fill these in from the .env file
 # ============================================================
-SFTP_HOST = ''        # e.g., vki.0b3.myftpupload.com
+SFTP_HOST = ''        # from .env — 1085255.us30.ssh.myftpupload.com (not the HTTPS ftp host)
 SFTP_PORT = 22
-SFTP_USERNAME = ''    # e.g., client_373e6043b2_1085255
+SFTP_USERNAME = ''    # from .env SFTP_USERNAME (re-read after any GoDaddy SFTP reset)
 SFTP_PASSWORD = ''
 
 # Local base path (where files are on Chris's Mac)
-LOCAL_BASE = '/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website'
+LOCAL_BASE = '/Users/macmini/Desktop/Chris-HQ/npcwoods-website'
 
 # Remote web root on GoDaddy
 REMOTE_ROOT = 'html'
