@@ -13,6 +13,8 @@ add_action( 'template_redirect', function() {
     $path_map = array(
         // UTI Treatment city pages (children of /uti-treatment/)
         '/uti-treatment/mesa-az/'                => 'uti-treatment/mesa-az/index.html',
+        '/uti-treatment/phoenix-az/'             => 'uti-treatment/phoenix-az/index.html',
+        '/uti-treatment/tucson-az/'              => 'uti-treatment/tucson-az/index.html',
         '/uti-treatment/surprise-az/'            => 'uti-treatment/surprise-az/index.html',
         '/uti-treatment/scottsdale-az/'          => 'uti-treatment/scottsdale-az/index.html',
         '/uti-treatment/albuquerque-nm/'         => 'uti-treatment/albuquerque-nm/index.html',
