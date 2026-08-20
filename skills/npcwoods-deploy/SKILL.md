@@ -237,41 +237,17 @@ resp = urllib.request.urlopen(req)
 
 **Bundled helper script:** `scripts/create_wp_stubs.py` handles this step.
 
-## Step 4: Homepage Modification (if needed)
+## Step 4: Homepage — stop
 
-If the new pages need a section on the homepage, the process is:
-
-1. **Download** the current homepage PHP via SFTP:
-   ```python
-   sftp.get('html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php', '/tmp/homepage.php')
-   ```
-
-2. **Find the insertion point** — read the file and identify the HTML comment or section tag where the new section should go. The homepage sections in order are: Hero, Social Proof, Pain Points, Before/After, How It Works, Pricing, Conditions, [education section goes here], About, Licenses, Testimonials, FAQ, Final CTA, Footer.
-
-3. **Inject the new HTML** — use Python string replacement to insert the new section:
-   ```python
-   marker = '<!-- ABOUT -->'  # or whatever section comes after
-   new_content = content.replace(marker, new_section_html + '\n\n  ' + marker, 1)
-   ```
-
-4. **Back up the current version** before uploading:
-   ```python
-   sftp.rename(remote_path, remote_path + '.backup-YYYYMMDD')
-   ```
-
-5. **Upload the modified file:**
-   ```python
-   sftp.put('/tmp/homepage-modified.php', remote_path)
-   ```
-
-The homepage PHP lives at: `html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php`
+**Do not follow the old TT4/flavor PHP upload path.** Live `/` is WordPress page 63 (Gutenberg), not `homepage/page-npcwoods-home.php` and not a theme PHP file on the server. Read `HOMEPAGE.md`. Do not edit homepage PHP when shipping city or blog pages unless Chris explicitly says to change the homepage.
 
 ## Step 5: Verify
 
-After deploying, always verify at least 3 pages:
+After deploying, always verify at least 2 pages:
 - The hub/index page
 - One child page
-- The homepage (if modified)
+
+Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`.
 
 Use `WebFetch` to confirm each page loads with the correct content. If a page still shows a 404 or old content, GoDaddy's edge cache might be stale — it usually clears within a few minutes, but Chris can force-clear from the GoDaddy dashboard.
 

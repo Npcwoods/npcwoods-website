@@ -2,7 +2,7 @@
 
 **Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
 
-- **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template).
+- **Source:** this repo (HTML, landing pages, PHP mu-plugins). Homepage: `HOMEPAGE.md` — live `/` is not the git PHP file.
 - **Preview only:** Vercel review lane (`vercel-review-site.vercel.app`). Never deploy the repo root to Vercel.
 - **Credentials:** Chris-HQ `.env` (`SFTP_HOST`, `SFTP_PORT=22`, `SFTP_USERNAME` or `SFTP_USER`, `SFTP_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Assume the file is current. Never print secrets. Never paste them in chat.
 - **A live URL needs three pieces** or git and production look like they do not match:
@@ -14,6 +14,7 @@
 - **Verify the clean URL** (no query string). A cache-bust can show the real HTML while `https://npcwoods.com/<path>/` still serves a ~15KB empty WordPress shell. Done means a no-query-string GET is 200, city templates are ~60KB+, and the locked title and H1 are present.
 - **Do not link empty shells.** Many city × condition URLs are WP stubs with no title or H1. Fetch the live URL before adding it to `/sitemap/`, `/conditions/`, or a state hub.
 - **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
+- **Homepage is not the git PHP file.** Live `/` is WordPress page 63 (Gutenberg). Read `HOMEPAGE.md` before any homepage work.
 
 Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship.
 
@@ -23,7 +24,7 @@ Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship
 > This file contains code structure, page stubs, and deployment workflows for NPCWoods.com.
 
 ## Key Page IDs & Routing
-- Homepage: Page ID `63` (Template: `page-npcwoods-home.php`)
+- Homepage: Page ID `63` — live body is Gutenberg, not git `homepage/page-npcwoods-home.php`. Read `HOMEPAGE.md`.
 - Experience: Page ID `310` | Blog: Page ID `413` | GA: Page ID `252` | NC: Page ID `253`
 - WordPress REST API Auth: `curl -u "$WP_USERNAME:$WP_APP_PASSWORD"`
 - Blog posts: Set status to `draft` via `POST /wp-json/wp/v2/posts`. Closing comments and pingbacks is mandatory.

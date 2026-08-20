@@ -8,4 +8,4 @@ Credentials live in Chris-HQ `.env`. Assume that file is current. Use `scripts/d
 
 Do not tell Chris a URL is live until `https://npcwoods.com/<path>/` (no `?`) returns the real HTML.
 
-Then read `CLAUDE.md`, `skills/npcwoods-live-page-launch/SKILL.md`, `PRODUCT.md`, and `DESIGN.md`.
+Then read `CLAUDE.md`, `HOMEPAGE.md`, `skills/npcwoods-live-page-launch/SKILL.md`, `PRODUCT.md`, and `DESIGN.md`.
