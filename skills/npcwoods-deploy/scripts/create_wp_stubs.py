@@ -9,7 +9,7 @@ Usage (via osascript):
     Write this script to /tmp/ with credentials and pages filled in, then execute.
 
 Configuration:
-    Fill in WP credentials from: /Users/chriswoods/Desktop/Chris-HQ/ChrisOS/.env
+    Fill in WP credentials from: /Users/macmini/Desktop/Chris-HQ/.env
     Define your pages in the PAGES list below.
 """
 

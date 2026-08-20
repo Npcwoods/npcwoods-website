@@ -1,52 +1,61 @@
-# Homepage source of truth
+# Homepage — locked production map (2026-08-19)
 
-Verified 2026-08-19 evening. **Docs only.** Do not deploy from this file. Do not edit live WordPress.
+**Docs only.** This file is the locked map for live `/`. Do not invent extras. Do not change live-site PHP, deploy scripts, or page HTML from this document.
 
-Live `/` is **not** the git PHP file and is **not** on the city/blog static-HTML flow.
+## Credentials
 
-## What is live
+Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only. Never hardcode. Never use chat memory. Never use skills that still say `vki.0b3` or `client_b58ea8ab6e`.
 
-| Fact | Value |
-|---|---|
-| Production | WordPress on GoDaddy: https://npcwoods.com/ |
-| Page | WordPress page ID **63** |
-| Theme in body class | `wp-theme-twentytwentyfour` |
-| Live body class includes | `home page-template-page-npcwoods-home page-template-page-npcwoods-home-php page-id-63 wp-theme-twentytwentyfour` |
-| Live H1 | `Same-Day Telemedicine — $59, No Appointment` |
-| Where that H1 lives | Gutenberg / page-63 content |
+- Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`).
+- GoDaddy SFTP reset changes USERNAME and password. Re-read `.env`. If SFTP fails once, stop and ask Chris — don't brute-force.
+- SSH/SFTP host: `1085255.us30.ssh.myftpupload.com` port 22. Not the HTTPS ftp host.
 
-Live head is Twenty Twenty-Four / core `wp_head`. The block header is `wp-block-template-part`.
+Do not put passwords in this file, in chat, or in skills.
 
-## Files that are not live
+## mu-plugins
 
-Do not upload or edit these as if they were `/`:
+WordPress loads **every** `.php` in `html/wp-content/mu-plugins/`.
 
-- **`homepage/page-npcwoods-home.php` in git** — H1 is `$59 text-based telemedicine.` That string is **not** what is live. Do not deploy this file as the homepage.
-- **`wp-content/themes/twentytwentyfour/page-npcwoods-home.php`** — **does not exist** on the server.
-- **`wp-content/themes/flavor/page-npcwoods-home.php`** — exists on the server and is the **wrong** file. Edits do not appear on the clean URL.
+- NEVER two PHP files with the same functions.
+- NEVER upload `copy 1.php`, `.PATCHED.php`, or a second copy of a plugin.
+- Backups = `.bak` only (not `.php`). Rename, don't duplicate.
+- Do not use WP File Manager to edit PHP. It creates `filename copy 1.php` and takes the site down. wp-admin File Manager is also down during that 500 — use SFTP.
+- Keep `npcwoods-faq-schema.php` (the ~24KB original). Do not edit it unless Chris says so.
 
-## CSS (separate track)
+## Homepage
 
-After a 2026-08-19 mu-plugin 500 + WPaaS flush, stylesheet tags disappeared (`0` `rel=stylesheet`, no `site.css`, no `global-styles`). CSS restore is in progress separately. Missing CSS is not a reason to upload homepage PHP.
+The cause of the "unstyled"/default WP look was **not** missing CSS. Active theme is Twenty Twenty-Four (block theme). It ignores PHP templates unless forced.
 
-## Homepage is not the city/blog flow
+Real homepage is `page-npcwoods-home.php`. It MUST exist at:
 
-City and blog pages use: `landing-pages/.../index.html` + mu-plugin route + WP page stub + `scripts/deploy.py`.
+```
+html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php
+```
 
-The homepage is **not** on that flow yet. `deploy.py` does not ship `/`.
+Also keep a copy under `themes/flavor/`.
 
-## mu-plugin on page 63
+Force it with mu-plugin `npcwoods-force-php-templates.php` (already live). Do not delete it. Do not add a second copy of it.
 
-`php/npcwoods-faq-schema.php` has an output-buffer guardrail on page 63 (string replace only). Edit or replace that original filename only.
+- Do NOT enqueue `wp-block-library` or `twentytwentyfour/style.css` on the homepage. They unstyle the custom template. `site.css` (shared nav/footer) is OK.
+- Theme updates can delete custom PHP from `twentytwentyfour`. After any WP/theme update, verify the homepage file is still there.
 
-## Locked rules
+### Done check
 
-1. **Never upload a second mu-plugin like `*.PATCHED.php`.** Edit or replace the original filename only. Two files with the same functions = sitewide 500.
-2. **After any mu-plugin change**, verify uncached `https://npcwoods.com/?n=1` **and** `/wp-admin/` are 200 before the next upload.
-3. **Do not edit homepage PHP, flavor templates, or TT4 `functions.php`** when shipping city or blog pages unless Chris explicitly says to change the homepage.
-4. **Git `homepage/page-npcwoods-home.php` is not the live homepage.** Do not deploy it as if it were.
-5. **Chris approves homepage changes from hero / middle / footer screenshots**, not from a PR.
+- `https://npcwoods.com/?n=1` is 200
+- Title is `NPCWoods Telemedicine: $59 Text-Based Urgent Care`
+- HTML contains `npc-redesign` and Chris's hero
+- HTML is **not** `wp-site-blocks` with a blue underlined nav list
+- `/wp-admin/` should be the login page (200), not "WordPress Error"
 
-## Planned next (not this PR)
+## Deploy
 
-Convert the homepage to the same static HTML flow as Phoenix UTI: first-screen mock with mobile photo fix, screenshot approve, then live. Do not start that work from this doc.
+- Dry-run first. Nothing live without Chris's yes — except restoring a down homepage/login, which is an emergency.
+- Don't touch homepage CSS or mu-plugins "while you're in there."
+- Verify with a cache buster (`?n=1`). City pages can look fine from cache while PHP is dead.
+
+## If the site is 500
+
+1. Do not upload another PHP file.
+2. SFTP list mu-plugins. Delete only `*copy*.php` and `*PATCHED.php`. Keep the original.
+3. Confirm homepage template still exists in `twentytwentyfour`.
+4. Confirm `?n=1` is real homepage HTML and `/wp-admin/` is login. Then STOP.

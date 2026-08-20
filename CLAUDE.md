@@ -2,9 +2,9 @@
 
 **Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
 
-- **Source:** this repo (HTML, landing pages, PHP mu-plugins). Homepage: `HOMEPAGE.md` — live `/` is not the git PHP file.
+- **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template). Homepage: `HOMEPAGE.md`.
 - **Preview only:** Vercel review lane (`vercel-review-site.vercel.app`). Never deploy the repo root to Vercel.
-- **Credentials:** Chris-HQ `.env` (`SFTP_HOST`, `SFTP_PORT=22`, `SFTP_USERNAME` or `SFTP_USER`, `SFTP_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Assume the file is current. Never print secrets. Never paste them in chat.
+- **Credentials:** Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only (`SFTP_HOST`, `SFTP_PORT=22`, `SFTP_USERNAME` or `SFTP_USER`, `SFTP_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). Assume the file is current. Never hardcode. Never use chat memory or leftover `vki.0b3` / `client_b58ea8ab6e` examples. Never print secrets. Never paste them in chat.
 - **A live URL needs three pieces** or git and production look like they do not match:
   1. HTML here (usually `landing-pages/<path>/index.html`)
   2. SFTP copy on GoDaddy `html/`
@@ -14,7 +14,7 @@
 - **Verify the clean URL** (no query string). A cache-bust can show the real HTML while `https://npcwoods.com/<path>/` still serves a ~15KB empty WordPress shell. Done means a no-query-string GET is 200, city templates are ~60KB+, and the locked title and H1 are present.
 - **Do not link empty shells.** Many city × condition URLs are WP stubs with no title or H1. Fetch the live URL before adding it to `/sitemap/`, `/conditions/`, or a state hub.
 - **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
-- **Homepage is not the git PHP file.** Live `/` is WordPress page 63 (Gutenberg). Read `HOMEPAGE.md` before any homepage work.
+- **Homepage:** live `/` is `page-npcwoods-home.php` on Twenty Twenty-Four, forced by `npcwoods-force-php-templates.php`. Read `HOMEPAGE.md` before any homepage work.
 
 Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship.
 
@@ -24,7 +24,7 @@ Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship
 > This file contains code structure, page stubs, and deployment workflows for NPCWoods.com.
 
 ## Key Page IDs & Routing
-- Homepage: Page ID `63` — live body is Gutenberg, not git `homepage/page-npcwoods-home.php`. Read `HOMEPAGE.md`.
+- Homepage: `page-npcwoods-home.php` at `html/wp-content/themes/twentytwentyfour/` (also keep a copy under `themes/flavor/`), forced by `npcwoods-force-php-templates.php`. Read `HOMEPAGE.md`.
 - Experience: Page ID `310` | Blog: Page ID `413` | GA: Page ID `252` | NC: Page ID `253`
 - WordPress REST API Auth: `curl -u "$WP_USERNAME:$WP_APP_PASSWORD"`
 - Blog posts: Set status to `draft` via `POST /wp-json/wp/v2/posts`. Closing comments and pingbacks is mandatory.
@@ -34,6 +34,9 @@ Marketing surfaces run as static HTML bypassed via mu-plugins:
 - `npcwoods-static-pages.php`: 9 state pages + conditions + sitemap
 - `npcwoods-education-pages.php`: `/learn/*` (14 conditions) + `/medications/*` (21 drugs)
 - `npcwoods-dental-pages.php` / `npcwoods-pharmacy-pages.php`: Dental and pharmacy page overrides
+- `npcwoods-force-php-templates.php`: forces the homepage PHP template on Twenty Twenty-Four. Already live. Do not delete it. Do not add a second copy. See `HOMEPAGE.md`.
+
+WordPress loads every `.php` in `html/wp-content/mu-plugins/`. Never upload `copy 1.php`, `.PATCHED.php`, or a second file with the same functions. Backups = `.bak` only.
 
 ## Shared Components
 All static landing pages must include:
@@ -66,6 +69,8 @@ python3 scripts/deploy.py --pages <path> --live                              # d
 python3 scripts/deploy.py --pages <path> --verify-only                       # live tracking check only
 ```
 Not covered by deploy.py (do manually): first-time page launches (mu-plugin routing + WP stub creation), non-page assets (`tracking.js`, mu-plugins, `llms.txt`), IndexNow ping, sitemap exclusions.
+
+Dry-run first. Nothing live without Chris's yes — except restoring a down homepage/login. Don't touch homepage CSS or mu-plugins "while you're in there." Homepage / 500 rules: `HOMEPAGE.md`.
 
 ## Search-Safe City Pages (template system)
 The 8 `uti-treatment/<city>/search-safe/` pages are generated from one template. **Never hand-edit the 8 pages** — edit `landing-pages/uti-treatment/_search-safe-template/template.html` (design) or `cities.json` (per-city data), then run `python3 scripts/build-search-safe-pages.py`. New city = one cities.json entry. See the README in that folder. Verify: `python3 -m unittest tests.test_search_safe_template`.

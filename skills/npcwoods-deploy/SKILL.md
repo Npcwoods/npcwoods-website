@@ -27,20 +27,20 @@ So without the WP page stubs, your HTML files sit on the server but nobody can r
 
 ## Credentials
 
-All credentials live in a single `.env` file on Chris's Mac:
+Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only. Never hardcode. Never use chat memory. Never use leftover `vki.0b3` or `client_b58ea8ab6e` examples.
 
 ```
-/Users/chriswoods/Desktop/Chris-HQ/.env
+/Users/macmini/Desktop/Chris-HQ/.env
 ```
 
-Read this file first — it contains SFTP host/user/password, WordPress REST API credentials, and other config. The key variables you need:
+Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). GoDaddy SFTP reset changes USERNAME and password. Re-read `.env`. If SFTP fails once, stop and ask Chris — don't brute-force.
 
 | Variable | What it's for |
 |---|---|
-| `SFTP_HOST` | GoDaddy SFTP server (e.g., `vki.0b3.myftpupload.com`) |
+| `SFTP_HOST` | SSH/SFTP host: `1085255.us30.ssh.myftpupload.com`. Not the HTTPS ftp host. |
 | `SFTP_PORT` | Always `22` |
-| `SFTP_USERNAME` | SFTP login user |
-| `SFTP_PASSWORD` | SFTP login password |
+| `SFTP_USERNAME` | SFTP login user (changes when GoDaddy resets SFTP) |
+| `SFTP_PASSWORD` | SFTP login password (re-read `.env`; never print) |
 | `WP_USERNAME` | WordPress admin username |
 | `WP_APP_PASSWORD` | WordPress application password (for REST API) |
 
@@ -111,7 +111,7 @@ mkdir_safe('html/my-section/page-slug')
 # Upload files
 # Local path = where the file is on Chris's Mac (under Chris-HQ/npcwoods-website/)
 # Remote path = where it goes on the server (under html/)
-sftp.put('/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website/path/to/index.html',
+sftp.put('/Users/macmini/Desktop/Chris-HQ/npcwoods-website/path/to/index.html',
          'html/my-section/page-slug/index.html')
 
 sftp.close()
@@ -120,7 +120,7 @@ transport.close()
 
 **Local file paths:** Files built in Cowork sessions live under:
 ```
-/Users/chriswoods/Desktop/Chris-HQ/npcwoods-website/
+/Users/macmini/Desktop/Chris-HQ/npcwoods-website/
 ```
 This maps to the Cowork workspace at:
 ```
@@ -178,7 +178,9 @@ sftp.put(local_php_path, 'html/wp-content/mu-plugins/npcwoods-my-section-pages.p
 
 **Naming convention:** `npcwoods-{section}-pages.php` (e.g., `npcwoods-education-pages.php`, `npcwoods-dental-pages.php`)
 
-See `references/mu-plugin-template.php` for a copy-paste template.
+WordPress loads **every** `.php` in `html/wp-content/mu-plugins/`. NEVER two PHP files with the same functions. NEVER upload `copy 1.php`, `.PATCHED.php`, or a second copy of a plugin. Backups = `.bak` only (not `.php`). Rename, don't duplicate. Do not use WP File Manager to edit PHP.
+
+See `references/mu-plugin-template.php` for a copy-paste template. Homepage mu-plugin rules: `HOMEPAGE.md`.
 
 ## Step 3: Create WordPress Page Stubs via REST API
 
@@ -237,9 +239,13 @@ resp = urllib.request.urlopen(req)
 
 **Bundled helper script:** `scripts/create_wp_stubs.py` handles this step.
 
-## Step 4: Homepage — stop
+## Step 4: Homepage — read `HOMEPAGE.md`
 
-**Do not follow the old TT4/flavor PHP upload path.** Live `/` is WordPress page 63 (Gutenberg), not `homepage/page-npcwoods-home.php` and not a theme PHP file on the server. Read `HOMEPAGE.md`. Do not edit homepage PHP when shipping city or blog pages unless Chris explicitly says to change the homepage.
+Live `/` is `page-npcwoods-home.php` at `html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php`, forced by `npcwoods-force-php-templates.php` (already live). Keep a copy under `themes/flavor/`. Do not delete the force plugin. Do not add a second copy.
+
+Do not treat `/` as Gutenberg. Do not enqueue `wp-block-library` or `twentytwentyfour/style.css` on the homepage. Don't touch homepage CSS or mu-plugins "while you're in there" shipping city or blog pages. Nothing live without Chris's yes — except restoring a down homepage/login.
+
+Done check: `https://npcwoods.com/?n=1` is 200, title `NPCWoods Telemedicine: $59 Text-Based Urgent Care`, HTML contains `npc-redesign` and Chris's hero — not `wp-site-blocks` with a blue underlined nav list. `/wp-admin/` must be the login page (200), not "WordPress Error".
 
 ## Step 5: Verify
 
@@ -247,7 +253,7 @@ After deploying, always verify at least 2 pages:
 - The hub/index page
 - One child page
 
-Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`.
+Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`. If the site is 500: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm `?n=1` is real homepage HTML and `/wp-admin/` is login; then STOP.
 
 Use `WebFetch` to confirm each page loads with the correct content. If a page still shows a 404 or old content, GoDaddy's edge cache might be stale — it usually clears within a few minutes, but Chris can force-clear from the GoDaddy dashboard.
 
@@ -276,17 +282,18 @@ These are already deployed and working — don't overwrite or conflict with them
 | `npcwoods-redirects.php` | 301 redirects for old URLs |
 | `npcwoods-compliance-footer.php` | LegitScript seal injection |
 | `npcwoods-tracking.php` | Analytics tracking |
-| `npcwoods-faq-schema.php` | FAQ schema injection |
+| `npcwoods-faq-schema.php` | FAQ schema injection (~24KB original — do not edit unless Chris says so) |
+| `npcwoods-force-php-templates.php` | Forces homepage `page-npcwoods-home.php` on Twenty Twenty-Four. Already live. Do not delete. Do not add a second copy. See `HOMEPAGE.md`. |
 
 ## Quick Reference: End-to-End Deployment Checklist
 
-1. Read `.env` from `/Users/chriswoods/Desktop/Chris-HQ/ChrisOS/.env`
+1. Read `.env` from `/Users/macmini/Desktop/Chris-HQ/.env`
 2. Write Python script to temp file, execute via `osascript do shell script`
 3. SFTP connect with paramiko → create directories → upload HTML files to `html/{path}/`
-4. Create mu-plugin PHP with `is_page()` + `template_redirect` pattern → upload to `html/wp-content/mu-plugins/`
+4. Create mu-plugin PHP with `is_page()` + `template_redirect` pattern → upload to `html/wp-content/mu-plugins/` (never a second copy / `copy 1.php` / `.PATCHED.php`)
 5. WP REST API: create parent page → create child pages with `parent: parent_id` (include browser User-Agent!)
-6. If homepage needs updating: download → backup → inject section → re-upload
-7. Verify with WebFetch
+6. Homepage: read `HOMEPAGE.md`. Do not touch homepage CSS or mu-plugins while shipping other pages.
+7. Verify with a cache buster (`?n=1`). City pages can look fine from cache while PHP is dead.
 8. Update SHIFT-LOG.md
 
 ## Helper Scripts
