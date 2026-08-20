@@ -5,7 +5,7 @@ description: Use when publishing a new npcwoods.com URL, when a live page looks 
 
 # NPCWoods live page launch
 
-Live site is WordPress on GoDaddy (`https://npcwoods.com`). GitHub is source. Vercel is preview only. Nothing goes live without Chris’s explicit yes (the phrase `CHRIS APPROVED LIVE DEPLOY` for a named URL).
+Live site is WordPress on GoDaddy (`https://npcwoods.com`). GitHub is source. Vercel is preview only. Nothing goes live without Chris’s explicit yes (the phrase `CHRIS APPROVED LIVE DEPLOY` for a named URL). Homepage is a different system — read `HOMEPAGE.md` before touching `/`.
 
 ## Credentials
 
