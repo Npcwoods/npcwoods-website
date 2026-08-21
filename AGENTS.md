@@ -1,5 +1,7 @@
 # Agent rules for npcwoods-website
 
+Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room, kitchen, freezer, whiteboard, plate, push it live. This folder is kitchen food for the dining room. GitHub save ≠ live.
+
 Read the **STOP. Read this first.** banner at the top of `CLAUDE.md` before you edit, preview, match, or deploy anything.
 
 Live site = WordPress on GoDaddy (npcwoods.com). This repo is source. Vercel is preview only.

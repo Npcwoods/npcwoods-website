@@ -1,5 +1,7 @@
 # STOP. Read this first.
 
+Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room = live npcwoods.com, kitchen = this folder on the Mini, freezer = GitHub, plate = a page that loads, push it live = Chris yes then plate it. GitHub save is not live.
+
 **Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
 
 - **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template). Homepage: `HOMEPAGE.md`.
