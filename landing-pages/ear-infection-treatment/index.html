@@ -5,13 +5,7 @@
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
      so predefining a no-op fbq means fbevents.js never loads on this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
-<script>
-window.fbq = function () {};
-window.fbq.queue = [];
-window.fbq.loaded = true;
-window.fbq.version = '2.0';
-window._fbq = window.fbq;
-</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Same-Day Ear Infection Treatment Online | $59 | NPCWoods</title>
@@ -1630,44 +1624,7 @@ window._fbq = window.fbq;
 </script>
 
 <!-- ===== Core Web Vitals field reporter (sends LCP/CLS/INP/FCP/TTFB to GA4 via dataLayer) ===== -->
-<script>
-(function() {
-  if (window.__npcCwvLoaded) return;
-  window.__npcCwvLoaded = true;
-  window.dataLayer = window.dataLayer || [];
-  function report(metric) {
-    try {
-      window.dataLayer.push({
-        event: 'web_vitals',
-        metric_name: metric.name,
-        metric_value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-        metric_rating: metric.rating,
-        metric_id: metric.id,
-        page_path: location.pathname
-      });
-    } catch (e) {}
-  }
-  function load() {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
-    s.async = true;
-    s.onload = function() {
-      if (!window.webVitals) return;
-      window.webVitals.onLCP(report);
-      window.webVitals.onCLS(report);
-      window.webVitals.onINP(report);
-      window.webVitals.onFCP(report);
-      window.webVitals.onTTFB(report);
-    };
-    document.head.appendChild(s);
-  }
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(load, { timeout: 3000 });
-  } else {
-    setTimeout(load, 2000);
-  }
-})();
-</script>
+
 <!-- ===== END SITE HEADER ===== -->
 
 <style>
@@ -2300,7 +2257,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 <!-- NPCWoods Tracking: tracking.js -->
-<script src="/tracking.js?v=20260528-no-phi"></script>
+
 <!-- NPCWoods Contact Save -->
 <style>
   /* ===== SAVE CONTACT FLOATING BUTTON ===== */
@@ -2544,89 +2501,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </div>
 </div>
 
-<script>
-(function() {
-  var wrap = document.getElementById('npcSaveWrap');
-  var btn = document.getElementById('npcSaveBtn');
-  var card = document.getElementById('npcSaveCard');
-  var dismiss = document.getElementById('npcSaveDismiss');
-  var dl = document.getElementById('npcSaveDownload');
 
-  if (!wrap || !btn || !card) return;
-
-  // Check if dismissed this session
-  try {
-    if (sessionStorage.getItem('npc-contact-dismissed') === '1') {
-      wrap.classList.add('npc-save-hidden');
-      return;
-    }
-  } catch(e) {}
-
-  var hasSeenExpanded = false;
-  try { hasSeenExpanded = sessionStorage.getItem('npc-contact-seen') === '1'; } catch(e) {}
-
-  // Show after 3 second delay
-  setTimeout(function() {
-    wrap.classList.add('npc-save-visible');
-
-    // Auto-expand on first view, stay collapsed on subsequent pages
-    if (!hasSeenExpanded) {
-      setTimeout(function() {
-        card.classList.add('npc-save-card-open');
-        btn.style.opacity = '0';
-        btn.style.pointerEvents = 'none';
-        // Auto-collapse after 5 seconds
-        setTimeout(function() {
-          card.classList.remove('npc-save-card-open');
-          btn.style.opacity = '1';
-          btn.style.pointerEvents = 'auto';
-          try { sessionStorage.setItem('npc-contact-seen', '1'); } catch(e) {}
-        }, 5000);
-      }, 200);
-    }
-  }, 3000);
-
-  // Toggle on click
-  btn.addEventListener('click', function() {
-    card.classList.add('npc-save-card-open');
-    btn.style.opacity = '0';
-    btn.style.pointerEvents = 'none';
-  });
-
-  // Dismiss
-  dismiss.addEventListener('click', function() {
-    card.classList.remove('npc-save-card-open');
-    wrap.classList.remove('npc-save-visible');
-    try { sessionStorage.setItem('npc-contact-dismissed', '1'); } catch(e) {}
-    setTimeout(function() { wrap.classList.add('npc-save-hidden'); }, 400);
-  });
-
-  // Close card when clicking outside
-  document.addEventListener('click', function(e) {
-    if (card.classList.contains('npc-save-card-open') && !wrap.contains(e.target)) {
-      card.classList.remove('npc-save-card-open');
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-    }
-  });
-
-  // Track download
-  dl.addEventListener('click', function() {
-    // Google Analytics / Ads
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'save_contact_vcard',
-        value: 0
-      });
-    }
-    // Facebook Pixel
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'save_contact_vcard' });
-    }
-  });
-})();
-</script>
 <!-- END NPCWoods Contact Save -->
 
 <!-- NPCWoods CWV: GTM relocated to end of <body> by cwv-batch-fixes.py -->

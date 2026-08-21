@@ -4,13 +4,7 @@
 <!-- Meta Pixel disabled: no BAA with Meta — health-condition pages must not send PageView there.
      Predefining a no-op fbq means the GTM-injected pixel never loads on this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
-<script>
-window.fbq = function () {};
-window.fbq.queue = [];
-window.fbq.loaded = true;
-window.fbq.version = '2.0';
-window._fbq = window.fbq;
-</script>
+
 <!-- Paid-surface marker: this noindex page is built for paid traffic and appends a safe marker to SMS bodies. -->
 <script>window.NPCWoodsPaidSurface = true;</script>
 <meta charset="UTF-8">
@@ -1292,6 +1286,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 </script>
 <!-- NPCWoods Tracking: tracking.js -->
-<script src="/tracking.js?v=20260622-paid-surface"></script>
+
 </body>
 </html>

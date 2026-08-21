@@ -1,7 +1,7 @@
 """Health-condition HTML must not ship live Meta / GTM / GA4 / Ads pixels.
 
 Chris approved removing advertising/analytics pixels from health pages
-(no BAA). Homepage / marketing files are out of scope.
+(no BAA). Homepage PHP stays out of this commit. Public snippet is disabled.
 
 Run: python3 -m unittest tests.test_health_page_trackers
 """
@@ -69,11 +69,12 @@ class HealthPageTrackerTest(unittest.TestCase):
         self.assertNotIn("GTM, GA4, and Google Ads stay off", text)
         # Homepage tracking rides on wp_head(); this file must stay untouched.
 
-    def test_marketing_snippet_still_has_homepage_pixel(self):
+    def test_marketing_snippet_is_disabled(self):
         snippet = ROOT / "html" / "shared" / "tracking-snippet.html"
         text = snippet.read_text(encoding="utf-8")
-        self.assertIn("fbq('init'", text)
-        self.assertIn("HOMEPAGE / MARKETING PAGES ONLY", text)
+        self.assertNotIn("fbq('init'", text)
+        self.assertNotIn("GTM-59QSWZRC", text)
+        self.assertIn("intentionally disabled", text)
 
     def test_executive_false_positive_is_not_treated_as_health(self):
         self.assertFalse(

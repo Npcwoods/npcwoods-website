@@ -1,72 +1,77 @@
 <?php
 /**
- * Plugin Name: NPCWoods Tracking (GA4 fallback + tracking.js)
- * Description: Adds the canonical GA4 tag and tracking.js event layer. GTM is already installed via Site Kit or similar.
- * Version: 1.1
- *
- * GTM-59QSWZRC is already injected by another plugin — do NOT duplicate it.
- * The site should emit neutral click events only; downstream conversion
- * handling belongs in GTM / GA4 / Google Ads, not inline page code.
+ * Plugin Name: NPCWoods Tracking
+ * Description: Removes retired third-party tracking from public HTML responses.
+ * Version: 2.1
  */
 
-function npcwoods_is_health_condition_request() {
-    $uri = isset($_SERVER['REQUEST_URI']) ? strtolower((string) $_SERVER['REQUEST_URI']) : '';
-    // Same family as tests/guardian/build_manifest.py HEALTH_MARKERS.
-    $markers = array(
-        'uti',
-        'sinus',
-        'strep',
-        'ear-infection',
-        'tooth',
-        'dental',
-        '/learn/',
-        '/medications/',
-        'ed-treatment',
-        'glp1',
-        'yeast',
-        'antibiotics',
-        '/conditions/',
-        'poison-ivy',
-        'cold-sore',
-    );
-    foreach ($markers as $marker) {
-        // Avoid a false match on /executive/ (contains the letters "uti").
-        if ($marker === 'uti' && strpos($uri, 'executive') !== false) {
-            continue;
-        }
-        if (strpos($uri, $marker) !== false) {
-            return true;
-        }
+/**
+ * Covers WordPress templates plus every static HTML page served by the site's
+ * mu-plugins. Removing the legacy snippets from the final response also
+ * catches tags injected by Site Kit or other WordPress plugins.
+ */
+function npcwoods_tracking_rewrite_document($html) {
+    if (!is_string($html) || stripos($html, '</head') === false) {
+        return $html;
     }
-    return false;
+
+    $patterns = array(
+        // External Google scripts and the legacy first-party event layer.
+        '~<script\b[^>]*\bsrc\s*=\s*(["\'])[^"\']*(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net|/tracking\.js(?:[?"\']))[^"\']*\1[^>]*>\s*</script\s*>~is',
+        // Inline GTM/gtag bootstraps, the previous Meta Pixel, and Meta no-op stubs.
+        '~<script\b[^>]*>.*?(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net|\bgtag\s*\(|\bdataLayer\s*=|connect\.facebook\.net/en_US/fbevents\.js|\bfbq\s*\(|window\.fbq\s*=).*?</script\s*>~is',
+        // GTM and legacy Pixel no-script fallbacks.
+        '~<noscript\b[^>]*>.*?(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net|facebook\.com/tr(?:[/?])).*?</noscript\s*>~is',
+        '~<img\b[^>]*\bsrc\s*=\s*(["\'])[^"\']*facebook\.com/tr(?:[/?])[^"\']*\1[^>]*>~is',
+    );
+
+    $html = preg_replace($patterns, '', $html);
+
+    return $html;
 }
 
-// GA4 + Google Ads base tags — homepage / marketing only. Health-condition
-// URLs stay off GTM/GA4/Ads (no BAA).
-add_action('wp_head', function () {
-    if (npcwoods_is_health_condition_request()) {
-        echo "<!-- Meta, GTM, GA4, and Google Ads stay off health-condition pages (no BAA). -->\n";
-        return;
+/**
+ * The homepage embeds the approved Pixel in its own template immediately
+ * after wp_head(). Strip any legacy or duplicate tracker emitted by a
+ * WordPress head hook without buffering the homepage body.
+ */
+function npcwoods_tracking_rewrite_homepage_head($html) {
+    if (!is_string($html)) {
+        return $html;
     }
-    ?>
-    <!-- NPCWoods Tracking: GA4 + Ads direct -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EFFRQMG8TC');
-    gtag('config', 'AW-610222919');
-    </script>
-    <!-- NPCWoods Tracking: Ahrefs Analytics -->
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
-    <?php
-}, 1);
 
-// Canonical site event layer before </body>
-add_action('wp_footer', function () {
-    ?>
-    <!-- NPCWoods Tracking: tracking.js -->
-    <script src="/tracking.js?v=20260528-no-phi"></script>
-    <?php
-}, 99);
+    $patterns = array(
+        '~<!--\s*Meta Pixel Code\s*-->.*?<!--\s*End Meta Pixel Code\s*-->~is',
+        '~<script\b[^>]*\bsrc\s*=\s*(["\'])[^"\']*(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net)[^"\']*\1[^>]*>\s*</script\s*>~is',
+        '~<script\b[^>]*>.*?(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net|\bgtag\s*\(|\bdataLayer\s*=|connect\.facebook\.net/en_US/fbevents\.js|\bfbq\s*\(|window\.fbq\s*=).*?</script\s*>~is',
+        '~<noscript\b[^>]*>.*?(?:googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net|facebook\.com/tr(?:[/?])).*?</noscript\s*>~is',
+        '~<img\b[^>]*\bsrc\s*=\s*(["\'])[^"\']*facebook\.com/tr(?:[/?])[^"\']*\1[^>]*>~is',
+    );
+
+    return preg_replace($patterns, '', $html);
+}
+
+function npcwoods_tracking_start_homepage_head_buffer() {
+    if (!is_admin() && is_front_page()) {
+        $GLOBALS['npcwoods_tracking_homepage_head_buffer_started'] = ob_start('npcwoods_tracking_rewrite_homepage_head');
+    }
+}
+
+function npcwoods_tracking_end_homepage_head_buffer() {
+    if (!empty($GLOBALS['npcwoods_tracking_homepage_head_buffer_started'])) {
+        ob_end_flush();
+        unset($GLOBALS['npcwoods_tracking_homepage_head_buffer_started']);
+    }
+}
+
+add_action('wp_head', 'npcwoods_tracking_start_homepage_head_buffer', 0);
+add_action('wp_head', 'npcwoods_tracking_end_homepage_head_buffer', PHP_INT_MAX);
+
+// Start before the static-page handlers (which use readfile() at priority 1).
+add_action('template_redirect', function () {
+    // The homepage owns its exact Pixel directly in its template. Avoiding a
+    // response-level rewrite here preserves the complete homepage document.
+    if (!is_admin() && !is_front_page()) {
+        ob_start('npcwoods_tracking_rewrite_document');
+    }
+}, 0);

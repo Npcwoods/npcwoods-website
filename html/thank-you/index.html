@@ -40,129 +40,13 @@
   </script>
 
   <!-- Google Analytics & GTM -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EFFRQMG8TC');
-    gtag('config', 'AW-610222919');
-  </script>
+  
+  
+  
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1558261907814968');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img alt="" height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></noscript>
-  <!-- End Meta Pixel Code -->
 
   <!-- NPCWoods Post-Checkout Conversion Events -->
-  <script>
-  (async function() {
-    const params = new URLSearchParams(window.location.search);
-    const transactionId = window.NPC_CHECKOUT_IDENTIFIER ||
-      params.get('session_id') ||
-      params.get('checkout_session_id') ||
-      params.get('payment_intent');
-    if (!transactionId) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'thank_you_checkout_skipped',
-        reason: 'missing_checkout_session'
-      });
-      return;
-    }
-
-    async function hashCheckoutIdentifier(value) {
-      try {
-        if (!window.crypto || !window.crypto.subtle || typeof TextEncoder === 'undefined') {
-          return 'checkout-present';
-        }
-        const encoded = new TextEncoder().encode(String(value));
-        const digest = await window.crypto.subtle.digest('SHA-256', encoded);
-        return 'checkout-' + Array.from(new Uint8Array(digest))
-          .map(function(byte) { return byte.toString(16).padStart(2, '0'); })
-          .join('')
-          .slice(0, 32);
-      } catch (error) {
-        return 'checkout-present';
-      }
-    }
-
-    const safeTransactionId = await hashCheckoutIdentifier(transactionId);
-    const sanitizedPageUrl = window.location.origin + window.location.pathname;
-
-    const eventPayload = {
-      value: 59.0,
-      currency: 'USD',
-      transaction_id: safeTransactionId,
-      event_category: 'checkout',
-      event_label: 'thank_you_page'
-    };
-
-    try {
-      const storageKey = 'npc-thank-you-checkout-fired:' + safeTransactionId;
-      if (sessionStorage.getItem(storageKey)) return;
-      sessionStorage.setItem(storageKey, '1');
-    } catch (error) {}
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'thank_you_checkout',
-      conversion_value: eventPayload.value,
-      currency: eventPayload.currency,
-      transaction_id: eventPayload.transaction_id
-    });
-
-    if (typeof gtag === 'function') {
-      gtag('event', 'thank_you_checkout', eventPayload);
-      gtag('event', 'conversion', {
-        send_to: 'AW-610222919/wEePCOG2sLIcEMeG_aIC',
-        value: eventPayload.value,
-        currency: eventPayload.currency,
-        transaction_id: eventPayload.transaction_id
-      });
-    }
-
-    if (typeof fbq === 'function') {
-      fbq('track', 'Purchase', {
-        value: eventPayload.value,
-        currency: eventPayload.currency,
-        content_name: 'NPCWoods visit',
-        order_id: safeTransactionId
-      });
-    }
-
-    const metaParams = new URLSearchParams({
-      id: '1558261907814968',
-      ev: 'Purchase',
-      dl: sanitizedPageUrl,
-      'cd[value]': String(eventPayload.value),
-      'cd[currency]': eventPayload.currency,
-      'cd[content_name]': 'NPCWoods visit',
-      'cd[order_id]': safeTransactionId
-    });
-    const metaPixel = new Image(1, 1);
-    metaPixel.alt = '';
-    metaPixel.referrerPolicy = 'no-referrer-when-downgrade';
-    metaPixel.src = 'https://www.facebook.com/tr/?' + metaParams.toString();
-  })();
-  </script>
+  
 
   <style>
   :root {
@@ -847,7 +731,7 @@
 <link rel="stylesheet" href="/assets/css/site.css">
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
 <header class="topbar" aria-label="Visit confirmation">
   <a class="brand" href="https://npcwoods.com/" aria-label="NPCWoods home">
@@ -1137,125 +1021,10 @@
 </footer>
 
 <!-- ===== REVIEW CATCHER LOGIC ===== -->
-<script>
-(function() {
-  const stars = document.querySelectorAll('.star-btn');
-  const positiveDiv = document.getElementById('positiveReview');
-  const negativeDiv = document.getElementById('negativeReview');
-  const thanksDiv = document.getElementById('reviewThanks');
-  const ratingContainer = document.getElementById('starRating');
-  if (!stars.length || !positiveDiv || !negativeDiv || !thanksDiv || !ratingContainer) return;
-  let selectedRating = 0;
 
-  // Star hover + click logic
-  stars.forEach((star, index) => {
-    star.addEventListener('mouseenter', () => {
-      highlightStars(index + 1);
-    });
-
-    star.addEventListener('click', () => {
-      selectedRating = parseInt(star.dataset.value);
-      highlightStars(selectedRating);
-      lockStars();
-
-      // Track the rating event
-      if (typeof gtag === 'function') {
-        gtag('event', 'thank_you_rating', {
-          'event_category': 'engagement',
-          'event_label': 'star_rating',
-          'value': selectedRating
-        });
-      }
-
-      // Show appropriate CTA
-      if (selectedRating >= 4) {
-        positiveDiv.classList.add('visible');
-        negativeDiv.classList.remove('visible');
-      } else {
-        negativeDiv.classList.add('visible');
-        positiveDiv.classList.remove('visible');
-      }
-    });
-  });
-
-  ratingContainer.addEventListener('mouseleave', () => {
-    if (selectedRating === 0) {
-      highlightStars(0);
-    } else {
-      highlightStars(selectedRating);
-    }
-  });
-
-  function highlightStars(count) {
-    stars.forEach((star, i) => {
-      if (i < count) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
-    });
-  }
-
-  function lockStars() {
-    stars.forEach(star => {
-      star.style.pointerEvents = 'none';
-    });
-  }
-})();
-
-function showThanks() {
-  const positiveDiv = document.getElementById('positiveReview');
-  const negativeDiv = document.getElementById('negativeReview');
-  const thanksDiv = document.getElementById('reviewThanks');
-  if (!positiveDiv || !negativeDiv || !thanksDiv) return;
-  positiveDiv.classList.remove('visible');
-  negativeDiv.classList.remove('visible');
-  thanksDiv.classList.add('visible');
-
-  if (typeof gtag === 'function') {
-    gtag('event', 'thank_you_review_skipped', {
-      'event_category': 'engagement',
-      'event_label': 'review_skipped'
-    });
-  }
-}
-</script>
 
 <!-- ===== THANK-YOU CLICK TRACKING ===== -->
-<script>
-(function() {
-  document.addEventListener('click', function(event) {
-    const target = event.target.closest('[data-track-event]');
-    if (!target) return;
 
-    const eventName = target.getAttribute('data-track-event');
-    const eventLabel = target.getAttribute('data-track-label') || target.textContent.trim();
-    const payload = {
-      event_category: 'engagement',
-      event_label: eventLabel
-    };
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: eventName,
-      event_label: eventLabel,
-      link_url: target.href || ''
-    });
-
-    if (typeof gtag === 'function') {
-      gtag('event', eventName, payload);
-    }
-
-    if (typeof fbq === 'function') {
-      if (eventName === 'thank_you_google_review_click') {
-        fbq('trackCustom', 'GoogleReviewClick', { content_name: eventLabel });
-      } else if (eventName === 'thank_you_private_feedback_click') {
-        fbq('trackCustom', 'PrivateFeedbackClick', { content_name: eventLabel });
-      }
-    }
-  });
-})();
-</script>
 
 <!-- NPCWoods Contact Save -->
 <!-- save-contact CSS: now in /assets/css/site.css -->
@@ -1290,7 +1059,7 @@ function showThanks() {
 <!-- save-contact JS: now in /assets/js/site.js -->
 <!-- END NPCWoods Contact Save -->
 <!-- NPCWoods Tracking: tracking.js -->
-<script src="/tracking.js?v=20260528-no-phi"></script>
+
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

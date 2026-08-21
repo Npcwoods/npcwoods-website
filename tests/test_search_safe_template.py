@@ -76,7 +76,7 @@ class SearchSafeTemplateTest(unittest.TestCase):
             with self.subTest(city=slug):
                 generated = (self.out_root / slug / "search-safe" / "index.html").read_text()
                 self.assertIn("window.NPCWoodsPaidSurface = true", generated)
-                self.assertIn("/tracking.js?v=20260622-paid-surface", generated)
+                self.assertNotIn("/tracking.js", generated)
 
     def test_search_safe_pages_have_no_live_ad_pixels(self):
         comment_re = re.compile(r"<!--.*?-->", re.S)

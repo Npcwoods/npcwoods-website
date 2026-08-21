@@ -2,34 +2,12 @@
 <html lang="en">
 <head>
 <!-- NPCWoods Tracking: GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59QSWZRC');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
-</script>
+
+
+
 <!-- NPCWoods Tracking: Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1558261907814968');
-fbq('track', 'PageView');
-</script>
-<noscript><img alt="" height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></noscript>
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -54,15 +32,9 @@ src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"/></
 <meta name="twitter:title" content="Is NPCWoods Real? Watch Chris Explain the Text-Based Visit">
 <meta name="twitter:description" content="Chris Woods explains NPCWoods, credential verification, text-based care, and the $59 visit.">
 <meta name="twitter:image" content="https://npcwoods.com/trust-video/assets/npcwoods-trust-video-poster.jpg">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFRQMG8TC"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EFFRQMG8TC');
-gtag('config', 'AW-610222919');
-</script>
-<script src="/tracking.js?v=20260528-no-phi" defer></script>
+
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -692,8 +664,7 @@ h1 {
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
 <!-- NPCWoods Tracking: GTM noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59QSWZRC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
 <!-- Last updated: March 2026, v3 premium redesign -->
@@ -1289,213 +1260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
 </div>
 
-<script>
-(function () {
-  // Video source with Vercel share support
-  var video = document.getElementById('trust-video-player');
-  if (video) {
-    var shareQuery = window.location.search && window.location.search.indexOf('_vercel_share=') !== -1 ? window.location.search : '';
-    if (shareQuery) {
-      var sources = video.querySelectorAll('source');
-      for (var i = 0; i < sources.length; i++) {
-        sources[i].src = sources[i].src.split('?')[0] + shareQuery;
-      }
-      video.load();
-    }
-  }
 
-  // FAQ accordion
-  var faqItems = document.querySelectorAll('.faq-item');
-  for (var i = 0; i < faqItems.length; i++) {
-    (function(item) {
-      var btn = item.querySelector('.faq-question');
-      var answer = item.querySelector('.faq-answer');
-      if (!btn || !answer) return;
-      btn.addEventListener('click', function() {
-        var isOpen = item.classList.contains('open');
-        // Close all
-        for (var j = 0; j < faqItems.length; j++) {
-          faqItems[j].classList.remove('open');
-          faqItems[j].querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-          faqItems[j].querySelector('.faq-answer').style.maxHeight = '0';
-        }
-        // Open clicked if it was closed
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    })(faqItems[i]);
-  }
-
-  // Transcript toggle
-  var togBtn = document.getElementById('transcript-toggle');
-  var togContent = document.getElementById('transcript-content');
-  if (togBtn && togContent) {
-    togBtn.addEventListener('click', function() {
-      var isOpen = togBtn.classList.contains('open');
-      if (isOpen) {
-        togBtn.classList.remove('open');
-        togBtn.setAttribute('aria-expanded', 'false');
-        togContent.style.maxHeight = '0';
-        togBtn.childNodes[0].textContent = 'Read full transcript ';
-      } else {
-        togBtn.classList.add('open');
-        togBtn.setAttribute('aria-expanded', 'true');
-        togContent.style.maxHeight = togContent.scrollHeight + 'px';
-        togBtn.childNodes[0].textContent = 'Hide transcript ';
-      }
-    });
-  }
-
-  // ===== SYMPTOM QUIZ =====
-  var quizState = { symptom: null, duration: null };
-
-  var quizData = {
-    uti: {
-      title: 'UTI treatment',
-      desc: 'Burning, urgency, and frequent urination are classic UTI symptoms. Chris treats UTIs regularly via text — most patients have a prescription at their pharmacy the same day.',
-      page: 'https://npcwoods.com/uti-treatment/',
-      label: 'UTI Treatment',
-      smsBody: 'Hi%20Chris%2C%20I%20think%20I%20have%20a%20UTI.%20Can%20you%20help%3F'
-    },
-    sinus: {
-      title: 'Sinus infection treatment',
-      desc: 'Sinus pressure, congestion, and facial pain are right in Chris\'s wheelhouse. He\'ll ask a few questions to figure out if antibiotics are the right call or if something else will help faster.',
-      page: 'https://npcwoods.com/sinus-infection-treatment/',
-      label: 'Sinus Infection',
-      smsBody: 'Hi%20Chris%2C%20I%20think%20I%20have%20a%20sinus%20infection.%20Can%20you%20help%3F'
-    },
-    strep: {
-      title: 'Strep throat treatment',
-      desc: 'Sore throat with pain swallowing is one of the most common things Chris sees. He\'ll help figure out if it\'s likely strep and get you on antibiotics if needed.',
-      page: 'https://npcwoods.com/strep-throat-treatment/',
-      label: 'Strep Throat',
-      smsBody: 'Hi%20Chris%2C%20I%20have%20a%20bad%20sore%20throat.%20Can%20you%20help%3F'
-    },
-    dental: {
-      title: 'Dental pain relief',
-      desc: 'Chris can help manage dental pain and infection while you get in to see a dentist. He\'ll send antibiotics and pain relief if appropriate — no sitting in a waiting room with a throbbing tooth.',
-      page: 'https://npcwoods.com/dental-pain/',
-      label: 'Dental Pain',
-      smsBody: 'Hi%20Chris%2C%20I%20have%20tooth%20pain.%20Can%20you%20help%3F'
-    },
-    ear: {
-      title: 'Ear infection treatment',
-      desc: 'Ear pain and pressure can be miserable. Chris treats ear infections via text regularly and will get you relief fast if antibiotics or other treatment is appropriate.',
-      page: 'https://npcwoods.com/ear-infection-treatment/',
-      label: 'Ear Infection',
-      smsBody: 'Hi%20Chris%2C%20I%20think%20I%20have%20an%20ear%20infection.%20Can%20you%20help%3F'
-    },
-    skin: {
-      title: 'Skin condition treatment',
-      desc: 'Rashes, itching, poison ivy, minor skin infections — Chris can often help via text. He\'ll ask you to describe it or send a photo, then figure out the right treatment.',
-      page: 'https://npcwoods.com/conditions/',
-      label: 'Skin Conditions',
-      smsBody: 'Hi%20Chris%2C%20I%20have%20a%20skin%20issue.%20Can%20you%20help%3F'
-    },
-    cold: {
-      title: 'Cold, cough, and flu treatment',
-      desc: 'Cough, congestion, body aches, fever — Chris can help you figure out what\'s going on and get you medication if it\'s appropriate. No need to drag yourself to a clinic.',
-      page: 'https://npcwoods.com/conditions/',
-      label: 'Cold & Flu',
-      smsBody: 'Hi%20Chris%2C%20I%20have%20cold%2Fflu%20symptoms.%20Can%20you%20help%3F'
-    },
-    other: {
-      title: 'Chris treats a lot more than you\'d think',
-      desc: 'Even if your condition isn\'t listed, Chris may still be able to help. Text him what\'s going on — if it\'s not a good fit for text-based care, he\'ll tell you straight up and point you in the right direction.',
-      page: 'https://npcwoods.com/conditions/',
-      label: 'All Conditions',
-      smsBody: 'Hi%20Chris%2C%20I%20have%20a%20health%20question.%20Can%20you%20help%3F'
-    }
-  };
-
-  window.quizSelectSymptom = function(btn) {
-    quizState.symptom = btn.getAttribute('data-symptom');
-    // Highlight selected
-    var opts = btn.parentNode.querySelectorAll('.quiz-option');
-    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
-    btn.classList.add('selected');
-    // After short delay, advance to step 2
-    setTimeout(function() {
-      document.getElementById('quiz-step-1').classList.remove('active');
-      document.getElementById('quiz-step-2').classList.add('active');
-      document.getElementById('qp1').classList.remove('active');
-      document.getElementById('qp1').classList.add('done');
-      document.getElementById('qp2').classList.add('active');
-      // Fire only neutral progress, never symptom values.
-      if (window.gtag) gtag('event', 'quiz_symptom', { event_category: 'engagement', event_label: 'quiz_step_1_completed' });
-    }, 300);
-  };
-
-  window.quizSelectDuration = function(btn) {
-    quizState.duration = btn.getAttribute('data-duration');
-    // Highlight selected
-    var opts = btn.parentNode.querySelectorAll('.quiz-option');
-    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
-    btn.classList.add('selected');
-    // After short delay, show result
-    setTimeout(function() {
-      document.getElementById('quiz-step-2').classList.remove('active');
-      document.getElementById('qp2').classList.remove('active');
-      document.getElementById('qp2').classList.add('done');
-      document.getElementById('qp3').classList.add('active');
-      document.getElementById('qp3').classList.add('done');
-      showQuizResult();
-      // Fire only neutral completion, never symptom or duration values.
-      if (window.gtag) gtag('event', 'quiz_complete', { event_category: 'engagement', event_label: 'quiz_completed' });
-    }, 300);
-  };
-
-  function showQuizResult() {
-    var data = quizData[quizState.symptom] || quizData.other;
-    var urgencyNote = '';
-    if (quizState.duration === 'longer' && (quizState.symptom === 'dental' || quizState.symptom === 'ear')) {
-      urgencyNote = '<p style="color:var(--gold);font-weight:600;font-size:14px;margin-bottom:16px">Since this has been going on a while, Chris may suggest you also see someone in person. He\'ll be honest about what\'s best.</p>';
-    }
-    var resultEl = document.getElementById('quiz-result');
-    resultEl.innerHTML =
-      '<div class="quiz-result-card">' +
-        '<div class="quiz-result-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Chris can help with this</div>' +
-        '<h3>' + data.title + '</h3>' +
-        '<p>' + data.desc + '</p>' +
-        urgencyNote +
-        '<div class="quiz-result-actions">' +
-          '<a class="btn btn-primary" href="sms:4806394722?body=' + data.smsBody + '">Text Chris now</a>' +
-          '<a class="btn btn-secondary" href="' + data.page + '">Learn about ' + data.label + '</a>' +
-        '</div>' +
-      '</div>' +
-      '<button class="quiz-restart" onclick="quizRestart()">Start over</button>';
-    resultEl.classList.add('active');
-  }
-
-  window.quizRestart = function() {
-    quizState = { symptom: null, duration: null };
-    document.getElementById('quiz-result').classList.remove('active');
-    document.getElementById('quiz-result').innerHTML = '';
-    document.getElementById('quiz-step-2').classList.remove('active');
-    document.getElementById('quiz-step-1').classList.add('active');
-    document.getElementById('qp1').className = 'quiz-progress-dot active';
-    document.getElementById('qp2').className = 'quiz-progress-dot';
-    document.getElementById('qp3').className = 'quiz-progress-dot';
-    // Clear selections
-    var allOpts = document.querySelectorAll('.quiz-option');
-    for (var i = 0; i < allOpts.length; i++) allOpts[i].classList.remove('selected');
-  };
-
-  // Sticky CTA: show after scrolling past hero, hide near footer
-  var stickyCta = document.getElementById('sticky-cta');
-  if (stickyCta && window.innerWidth <= 860) {
-    var heroSection = document.querySelector('.video-hero');
-    window.addEventListener('scroll', function() {
-      if (!heroSection) return;
-      var heroBottom = heroSection.getBoundingClientRect().bottom;
-      stickyCta.style.display = heroBottom < 0 ? 'block' : 'none';
-    }, { passive: true });
-  }
-})();
-</script>
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

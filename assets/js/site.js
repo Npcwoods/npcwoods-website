@@ -95,49 +95,7 @@
 
 
 /* ============================================================
- * 2. CORE WEB VITALS REPORTER (sends LCP/CLS/INP/FCP/TTFB to GA4)
- * ============================================================ */
-
-(function() {
-  if (window.__npcCwvLoaded) return;
-  window.__npcCwvLoaded = true;
-  window.dataLayer = window.dataLayer || [];
-  function report(metric) {
-    try {
-      window.dataLayer.push({
-        event: 'web_vitals',
-        metric_name: metric.name,
-        metric_value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-        metric_rating: metric.rating,
-        metric_id: metric.id,
-        page_path: location.pathname
-      });
-    } catch (e) {}
-  }
-  function load() {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
-    s.async = true;
-    s.onload = function() {
-      if (!window.webVitals) return;
-      window.webVitals.onLCP(report);
-      window.webVitals.onCLS(report);
-      window.webVitals.onINP(report);
-      window.webVitals.onFCP(report);
-      window.webVitals.onTTFB(report);
-    };
-    document.head.appendChild(s);
-  }
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(load, { timeout: 3000 });
-  } else {
-    setTimeout(load, 2000);
-  }
-})();
-
-
-/* ============================================================
- * 3. SAVE CONTACT FLOATING WIDGET
+ * 2. SAVE CONTACT FLOATING WIDGET
  * ============================================================ */
 
 (function() {
@@ -205,26 +163,11 @@
     }
   });
 
-  // Track download
-  dl.addEventListener('click', function() {
-    // Google Analytics / Ads
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'save_contact_vcard',
-        value: 0
-      });
-    }
-    // Facebook Pixel
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'save_contact_vcard' });
-    }
-  });
 })();
 
 
 /* ============================================================
- * 4. FADE-IN ANIMATION OBSERVER
+ * 3. FADE-IN ANIMATION OBSERVER
  * ============================================================ */
 
 (function() {

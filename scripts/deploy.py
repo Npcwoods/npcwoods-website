@@ -56,8 +56,13 @@ FORBIDDEN_MARKERS = [
     "facebook.com/tr",
     'fbq("init"',
     "fbq('init'",
+    "googletagmanager.com",
+    "google-analytics.com",
+    "googleadservices.com",
+    "doubleclick.net",
+    "/tracking.js",
 ]
-WARN_IF_MISSING = ["GTM-59QSWZRC", "tracking.js"]
+WARN_IF_MISSING = []
 WARN_IF_PRESENT = ["insurance"]
 INTENTIONAL_NO_TRACKING_PAGES = {"pay"}
 

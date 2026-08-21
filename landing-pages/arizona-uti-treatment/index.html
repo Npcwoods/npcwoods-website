@@ -5,13 +5,7 @@
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
      so predefining a no-op fbq means fbevents.js never loads on this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
-<script>
-window.fbq = function () {};
-window.fbq.queue = [];
-window.fbq.loaded = true;
-window.fbq.version = '2.0';
-window._fbq = window.fbq;
-</script>
+
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -605,131 +599,7 @@ window._fbq = window.fbq;
     </div>
   </section>
 </main>
-<script>
-(function () {
-  var root = document.querySelector('[data-uti-check]');
-  if (!root) return;
 
-  var state = {
-    location: '',
-    symptoms: [],
-    flags: []
-  };
-
-  function sendWidgetEvent(name, params) {
-    if (typeof gtag === 'function') {
-      gtag('event', name, Object.assign({
-        event_category: 'engagement',
-        page_path: window.location.pathname,
-        transport_type: 'beacon'
-      }, params || {}));
-    }
-  }
-
-  function selectedValues(group) {
-    return state[group] || [];
-  }
-
-  function setProgress(step) {
-    root.querySelectorAll('[data-progress]').forEach(function (bar) {
-      bar.classList.toggle('active', Number(bar.dataset.progress) <= step);
-    });
-  }
-
-  function showStep(stepName) {
-    root.querySelectorAll('.uti-check-step').forEach(function (step) {
-      step.classList.toggle('active', step.dataset.step === String(stepName));
-    });
-    if (String(stepName).indexOf('result-') === 0) {
-      setProgress(3);
-      sendWidgetEvent('uti_checker_result', { result_type: stepName.replace('result-', '') });
-      root.scrollIntoView({ block: 'start' });
-    } else {
-      setProgress(Number(stepName));
-    }
-  }
-
-  root.querySelectorAll('[data-single]').forEach(function (option) {
-    option.addEventListener('click', function () {
-      var group = option.dataset.single;
-      root.querySelectorAll('[data-single="' + group + '"]').forEach(function (sibling) {
-        sibling.classList.remove('selected');
-      });
-      option.classList.add('selected');
-      state[group] = option.dataset.value;
-      var step = option.closest('.uti-check-step').dataset.step;
-      root.querySelector('[data-next="' + step + '"]').disabled = false;
-      sendWidgetEvent('uti_checker_answer', { step: step, answer_group: group });
-    });
-  });
-
-  root.querySelectorAll('[data-multi]').forEach(function (option) {
-    option.addEventListener('click', function () {
-      var group = option.dataset.multi;
-      var value = option.dataset.value;
-      state[group] = selectedValues(group);
-
-      if (value === 'none') {
-        root.querySelectorAll('[data-multi="' + group + '"]').forEach(function (sibling) {
-          sibling.classList.remove('selected');
-        });
-        option.classList.add('selected');
-        state[group] = ['none'];
-      } else {
-        var none = root.querySelector('[data-multi="' + group + '"][data-value="none"]');
-        if (none) none.classList.remove('selected');
-        state[group] = state[group].filter(function (item) { return item !== 'none'; });
-        option.classList.toggle('selected');
-        if (option.classList.contains('selected')) {
-          if (state[group].indexOf(value) === -1) state[group].push(value);
-        } else {
-          state[group] = state[group].filter(function (item) { return item !== value; });
-        }
-      }
-
-      var step = option.closest('.uti-check-step').dataset.step;
-      root.querySelector('[data-next="' + step + '"]').disabled = state[group].length === 0;
-      sendWidgetEvent('uti_checker_answer', { step: step, answer_group: group });
-    });
-  });
-
-  root.querySelectorAll('[data-next]').forEach(function (button) {
-    button.addEventListener('click', function () {
-      var current = Number(button.dataset.next);
-      if (current === 1 && state.location === 'other') {
-        showStep('result-state');
-        return;
-      }
-      if (current === 3) {
-        // Clinical safety check: "Blood in urine" is an automatic safety flag that requires hands-on/in-person care
-        var hasFlag = state.flags.some(function (flag) { return flag !== 'none'; }) || state.symptoms.indexOf('blood') !== -1;
-        var hasSymptoms = state.symptoms.length > 0;
-        if (hasFlag) {
-          showStep('result-flag');
-        } else if (hasSymptoms) {
-          showStep('result-good');
-        } else {
-          showStep('result-mild');
-        }
-        return;
-      }
-      showStep(current + 1);
-    });
-  });
-
-  root.querySelectorAll('[data-back]').forEach(function (button) {
-    button.addEventListener('click', function () {
-      showStep(Number(button.dataset.back) - 1);
-    });
-  });
-
-  root.querySelectorAll('[data-uti-sms]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      sendWidgetEvent('uti_checker_sms_click', { result_type: link.dataset.utiSms || 'unknown' });
-    });
-  });
-})();
-</script>
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
 <!-- Copy this block into every page before </body> -->
 <!-- Last updated: August 2026 — CSS moved to /assets/css/site.css -->
@@ -853,7 +723,7 @@ window._fbq = window.fbq;
 <!-- ===== END SITE FOOTER ===== -->
 
 <!-- NPCWoods Tracking: sms_click / phone_call_click / gclid capture -->
-<script src="/tracking.js?v=20260528-no-phi"></script>
+
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
