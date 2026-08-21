@@ -29,6 +29,8 @@ add_action( "template_redirect", function() {
 
         "real-care"              => "real-care/index.html",
         "notice-of-privacy-practices" => "notice-of-privacy-practices/index.html",
+        "charlotte-nc" => "uti-treatment/charlotte-nc/index.html",
+        "what-is-async-telemedicine" => "what-is-async-telemedicine/index.html",
 
     );
 
