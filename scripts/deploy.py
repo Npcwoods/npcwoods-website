@@ -81,6 +81,7 @@ STUB_IDS = {
     "/pay/": 674,
     "/cold-sore-treatment/": 835,
     "/uti-treatment/charlotte-nc/": 284,
+    "/uti-treatment/atlanta-ga/": 264,
     "/what-is-async-telemedicine/": 892,
     "/uti-treatment/mesa-az/": 13,
     "/uti-treatment/surprise-az/": 20,
