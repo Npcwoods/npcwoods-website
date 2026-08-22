@@ -267,6 +267,15 @@ img{display:block;max-width:100%}
 .treat,.state-pill{
   padding:10px 16px;background:var(--panel-2);border:1px solid var(--line);
   border-radius:999px;font-size:14px;font-weight:500;color:var(--body);
+  text-decoration:none;display:inline-block;line-height:1.3;cursor:pointer;
+  transition:border-color .15s ease,color .15s ease,background .15s ease,transform .15s ease;
+}
+.treat:hover,.state-pill:hover{
+  border-color:var(--blue);color:var(--blue);background:#eaf4ff;
+  transform:translateY(-1px);
+}
+.treat:focus-visible,.state-pill:focus-visible{
+  outline:2px solid var(--blue);outline-offset:3px;
 }
 .treat small{display:block;font-size:11px;color:var(--muted);font-weight:400}
 
@@ -320,6 +329,23 @@ img{display:block;max-width:100%}
   background:#fff;border-color:rgba(0,0,0,.1);color:#3d3d3f;
 }
 .section-light .prob,.section-white .prob{background:#fff}
+.section-slate{
+  background:#323843;
+  --panel:#323843;--panel-2:#3e4654;--panel-3:#4a5363;
+  --ink:#f4f6f9;--body:#d8dee8;--muted:#aeb6c3;--line:rgba(255,255,255,.16);
+  color:#f4f6f9;
+}
+.section-slate .section-kicker{
+  color:#9fd0ff;background:rgba(0,113,227,.22);border:1px solid rgba(0,113,227,.42);
+  border-radius:999px;padding:4px 14px;
+}
+.section-slate .chip,.section-slate .treat,.section-slate .state-pill{
+  background:#4c5566;border-color:rgba(255,255,255,.32);color:#ffffff;
+}
+.section-slate .treat:hover,.section-slate .state-pill:hover{
+  border-color:#2997ff;color:#fff;background:rgba(0,113,227,.32);
+}
+.section-slate .treat small{color:#b8c0cc}
 .dark-to-light{
   position:relative;z-index:2;
   clip-path:polygon(0 56px,100% 0,100% 100%,0 100%);
@@ -551,7 +577,7 @@ body.npc-redesign .npc-site-footer { display:none !important; }
   </div>
 </section>
 
-<section class="section section-light dark-to-light center">
+<section class="section section-slate dark-to-light center">
   <div class="section-inner">
     <span class="section-kicker">One price. One promise.</span>
     <h2 class="section-title">That's the whole thing. $59.</h2>
@@ -568,37 +594,47 @@ body.npc-redesign .npc-site-footer { display:none !important; }
     <h2 class="section-title">Common $59 visits.</h2>
     <p class="section-body">If it is safe to handle by text, I will. If it is not, I will say so and you do not pay.</p>
     <div class="treat-grid">
-      <span class="treat">UTI</span>
-      <span class="treat">Sinus infection</span>
-      <span class="treat">Strep throat</span>
-      <span class="treat">Ear infection</span>
-      <span class="treat">Pink eye</span>
-      <span class="treat">Bronchitis / cough</span>
-      <span class="treat">Skin infection</span>
-      <span class="treat">Tooth infection <small>bridge only, dentist still required</small></span>
-      <span class="treat">Stomach bug</span>
-      <span class="treat">Cold sores</span>
-      <span class="treat">COVID / flu</span>
-      <span class="treat">Allergies</span>
-      <span class="treat">Acid reflux</span>
-      <span class="treat">Acne</span>
-      <span class="treat">Yeast infection</span>
-      <span class="treat">Ingrown toenail</span>
-      <span class="treat">Poison ivy</span>
-      <span class="treat">ED</span>
-      <span class="treat">Medication refills</span>
-      <span class="treat">GLP-1 consult <small>fit and safety, drug cost separate</small></span>
+      <a class="treat" href="https://npcwoods.com/uti-treatment/">UTI</a>
+      <a class="treat" href="https://npcwoods.com/sinus-infection-treatment/">Sinus infection</a>
+      <a class="treat" href="https://npcwoods.com/strep-throat-treatment/">Strep throat</a>
+      <a class="treat" href="https://npcwoods.com/ear-infection-treatment/">Ear infection</a>
+      <a class="treat" href="https://npcwoods.com/pink-eye-treatment/">Pink eye</a>
+      <a class="treat" href="https://npcwoods.com/learn/bronchitis/">Bronchitis / cough</a>
+      <a class="treat" href="https://npcwoods.com/learn/skin-infection/">Skin infection</a>
+      <a class="treat" href="https://npcwoods.com/dental-pain/">Tooth infection <small>bridge only, dentist still required</small></a>
+      <a class="treat" href="https://npcwoods.com/learn/stomach-bug/">Stomach bug</a>
+      <a class="treat" href="https://npcwoods.com/cold-sore-treatment/">Cold sores</a>
+      <a class="treat" href="https://npcwoods.com/learn/covid-flu/">COVID / flu</a>
+      <a class="treat" href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a>
+      <a class="treat" href="https://npcwoods.com/conditions/#gerd">Acid reflux</a>
+      <a class="treat" href="https://npcwoods.com/conditions/">Acne</a>
+      <a class="treat" href="https://npcwoods.com/learn/yeast-infection/">Yeast infection</a>
+      <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
+      <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
+      <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
+      <a class="treat" href="https://npcwoods.com/conditions/#medication-refills">Medication refills</a>
+      <a class="treat" href="https://npcwoods.com/glp1-weight-loss/">GLP-1 consult <small>fit and safety, drug cost separate</small></a>
     </div>
   </div>
 </section>
 
-<section class="section section-light center">
+<section class="section section-slate center">
   <div class="section-inner">
     <span class="section-kicker">Where I can help</span>
     <h2 class="section-title">Licensed in 11 states.</h2>
     <p class="section-body">You have to be physically in one of these states at the time of the visit.</p>
     <div class="states-pills">
-      <span class="state-pill">Arizona</span><span class="state-pill">Colorado</span><span class="state-pill">Georgia</span><span class="state-pill">Idaho</span><span class="state-pill">Iowa</span><span class="state-pill">Montana</span><span class="state-pill">Nevada</span><span class="state-pill">New Mexico</span><span class="state-pill">North Carolina</span><span class="state-pill">Oregon</span><span class="state-pill">Utah</span>
+      <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
+      <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+      <a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
+      <a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
+      <a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
+      <a class="state-pill" href="https://npcwoods.com/montana-telemedicine/">Montana</a>
+      <a class="state-pill" href="https://npcwoods.com/nevada-telemedicine/">Nevada</a>
+      <a class="state-pill" href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a>
+      <a class="state-pill" href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
+      <a class="state-pill" href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
+      <a class="state-pill" href="https://npcwoods.com/utah-telemedicine/">Utah</a>
     </div>
   </div>
 </section>
