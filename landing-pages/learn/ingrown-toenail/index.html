@@ -889,6 +889,52 @@ body::after { content:none!important; display:none!important; }
   .mobile-floating-cta { position:fixed; left:14px; right:14px; bottom:14px; z-index:70; display:block; }
   .mobile-floating-cta a { display:flex; justify-content:center; align-items:center; min-height:52px; border-radius:999px; background:var(--blue); color:#fff!important; -webkit-text-fill-color:#fff!important; font-weight:800; box-shadow:0 12px 34px rgba(0,113,227,.35); }
   body { padding-bottom:76px; }
+  #infection-check { padding-bottom:128px; }
+  #infection-check + #treatment { margin-top:0; }
+  .table-wrap { overflow:visible; border-radius:0; }
+  .compare-table,
+  .compare-table tbody,
+  .compare-table tr,
+  .compare-table td { display:block; width:100%; }
+  .compare-table {
+    border:0;
+    border-radius:0;
+    background:transparent;
+  }
+  .compare-table thead { display:none; }
+  .compare-table tr {
+    background:#fff;
+    border:1px solid rgba(0,0,0,.09);
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+    margin:0 0 14px;
+    overflow:hidden;
+  }
+  .compare-table td,
+  .section-light .compare-table td,
+  .section-white .compare-table td,
+  .compare-table td:first-child {
+    color:#111114;
+    background:#fff!important;
+    border-bottom:1px solid rgba(0,0,0,.07);
+    display:grid;
+    grid-template-columns:minmax(96px,34%) 1fr;
+    gap:14px;
+    padding:14px 16px;
+    font-size:15px;
+    line-height:1.45;
+  }
+  .compare-table td:last-child { border-bottom:0; }
+  .compare-table td::before {
+    content:attr(data-label);
+    color:#6e6e73;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .compare-table .treat-us { color:#139866!important; font-weight:800!important; }
+  .compare-table .treat-er { color:#4f4f57!important; }
 }
 </style>
 </head>
@@ -1159,7 +1205,7 @@ body::after { content:none!important; display:none!important; }
 
 <section id="overview" class="section section-white"><div class="section-inner" style="max-width:820px"><span class="section-kicker">Clinical overview</span><h2 class="section-title">What an ingrown toenail is, in plain language</h2><p class="section-body">An ingrown toenail happens when the edge of the nail grows into the nearby skin. The big toe is the usual troublemaker. Pressure from the nail can cause pain and swelling; once the skin breaks, bacteria can get in and create a localized infection.</p><div class="symptom-grid"><div class="symptom-card"><div class="symptom-icon">1</div><div><strong>Pain at the edge</strong><span>Sharp, throbbing, or tender along one side of the nail</span></div></div><div class="symptom-card"><div class="symptom-icon">2</div><div><strong>Redness and swelling</strong><span>Skin around the nail looks puffy or angry</span></div></div><div class="symptom-card"><div class="symptom-icon">3</div><div><strong>Pus or drainage</strong><span>Yellow, white, or cloudy drainage suggests infection</span></div></div><div class="symptom-card"><div class="symptom-icon">4</div><div><strong>Walking hurts</strong><span>Shoes or pressure make the toe flare up</span></div></div></div><div class="care-note"><strong>The honest line:</strong> antibiotics can treat the infection around an ingrown toenail. They do not permanently fix a nail edge that keeps digging into skin. Recurring cases usually need podiatry.</div></div></section>
 
-<section id="infection-check" class="section section-light"><div class="section-inner" style="max-width:900px"><span class="section-kicker">Do you need antibiotics?</span><h2 class="section-title">Sore nail vs. infected nail</h2><p class="section-body">Not every ingrown toenail needs a prescription. This is the decision point.</p><div class="table-wrap"><table class="compare-table"><thead><tr><th>Finding</th><th>What it suggests</th><th>Best next step</th></tr></thead><tbody><tr><td>Minor soreness only</td><td>Irritated nail edge</td><td>Warm soaks, roomy shoes, careful nail care</td></tr><tr><td>Pus, warmth, swelling</td><td class="treat-us">Possible localized infection</td><td class="treat-us">Text us for same-day review</td></tr><tr><td>Spreading redness</td><td>Infection may be moving beyond the nail fold</td><td>Same-day clinical review; urgent if rapid</td></tr><tr><td>Diabetes or poor circulation</td><td class="treat-er">Higher-risk foot infection</td><td class="treat-er">In-person care</td></tr><tr><td>Recurring ingrown nail</td><td>Nail edge problem, not just infection</td><td>Podiatrist for a lasting fix</td></tr></tbody></table></div></div></section>
+<section id="infection-check" class="section section-light"><div class="section-inner" style="max-width:900px"><span class="section-kicker">Do you need antibiotics?</span><h2 class="section-title">Sore nail vs. infected nail</h2><p class="section-body">Not every ingrown toenail needs a prescription. This is the decision point.</p><div class="table-wrap"><table class="compare-table"><thead><tr><th>Finding</th><th>What it suggests</th><th>Best next step</th></tr></thead><tbody><tr><td data-label="Finding">Minor soreness only</td><td data-label="What it suggests">Irritated nail edge</td><td data-label="Best next step">Warm soaks, roomy shoes, careful nail care</td></tr><tr><td data-label="Finding">Pus, warmth, swelling</td><td data-label="What it suggests" class="treat-us">Possible localized infection</td><td data-label="Best next step" class="treat-us">Text us for same-day review</td></tr><tr><td data-label="Finding">Spreading redness</td><td data-label="What it suggests">Infection may be moving beyond the nail fold</td><td data-label="Best next step">Same-day clinical review; urgent if rapid</td></tr><tr><td data-label="Finding">Diabetes or poor circulation</td><td data-label="What it suggests" class="treat-er">Higher-risk foot infection</td><td data-label="Best next step" class="treat-er">In-person care</td></tr><tr><td data-label="Finding">Recurring ingrown nail</td><td data-label="What it suggests">Nail edge problem, not just infection</td><td data-label="Best next step">Podiatrist for a lasting fix</td></tr></tbody></table></div></div></section>
 
 <section id="treatment" class="section"><div class="section-inner" style="max-width:1000px"><span class="section-kicker">What may help</span><h2 class="section-title">Treatment options for an infected ingrown toenail</h2><p class="section-body">Chris chooses treatment based on your symptoms, allergies, state, and safety risks. These are common pieces of the plan.</p><div class="drug-grid"><a href="https://npcwoods.com/medications/cephalexin/" class="drug-card"><div class="drug-badge badge-blue">Common antibiotic</div><h3>Cephalexin</h3><div class="brand">Brand: Keflex</div><p>Often used for uncomplicated skin and soft tissue infections when it fits the person and allergy history.</p></a><div class="drug-card"><div class="drug-badge badge-green">Home care</div><h3>Warm soaks</h3><div class="brand">15-20 minutes</div><p>Soaks can reduce tenderness, loosen crusting, and make the nail fold easier to keep clean.</p></div><div class="drug-card"><div class="drug-badge badge-orange">Local care</div><h3>Ointment and bandage</h3><div class="brand">Keep it clean</div><p>A thin layer of over-the-counter antibiotic ointment and a loose bandage can protect irritated skin.</p></div><div class="drug-card"><div class="drug-badge badge-purple">Long-term fix</div><h3>Podiatry</h3><div class="brand">For recurring nails</div><p>A podiatrist can remove the problem nail edge and prevent repeated digging in.</p></div></div></div></section>
 
