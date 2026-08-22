@@ -279,12 +279,13 @@ def check_page(session: requests.Session, page: dict, sitemap_urls: set[str]) ->
                 Finding("RED", url, "gtm-missing", "no GTM container on page")
             )
 
-    # 4. Meta pixel on health pages
+    # 4. Ads pixel 1558261907814968 stays off health pages.
+    # Site pixel 1428464038973925 is allowed sitewide.
     if page["is_health_page"]:
-        if "connect.facebook.net" in html:
+        if "1558261907814968" in html:
             res.findings.append(
                 Finding("RED", url, "meta-pixel",
-                        "connect.facebook.net present on a health page")
+                        "ads pixel 1558261907814968 present on a health page")
             )
         else:
             # fbq(...) CALLS are the pixel; a bare no-op stub definition

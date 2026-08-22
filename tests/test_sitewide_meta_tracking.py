@@ -150,10 +150,13 @@ class SitewideMetaTrackingTest(unittest.TestCase):
         self.assertIsNotNone(sms_bind, "Contact must bind to sms: clicks")
         self.assertIn("connect.facebook.net/en_US/fbevents.js", source)
         self.assertIn(f"facebook.com/tr?id={OFFICIAL_PIXEL_ID}", source)
+        site_pixel = re.search(r"fbq\(\s*['\"]init['\"]\s*,\s*['\"]%s['\"]" % INJECTED_PIXEL_ID, source)
+        self.assertIsNotNone(site_pixel, "homepage must also init site pixel 1428464038973925")
         self.assertGreater(init.start(), wp_head.start())
+        self.assertGreater(site_pixel.start(), wp_head.start())
         self.assertGreater(pageview.start(), wp_head.start())
         self.assertGreater(contact.start(), wp_head.start())
-        self.assertNotIn(INJECTED_PIXEL_ID, source)
+        self.assertIn(f"facebook.com/tr?id={INJECTED_PIXEL_ID}", source)
         self.assertNotIn("GTM-59QSWZRC", source)
         self.assertNotRegex(source, r"fbq\(\s*['\"]track['\"]\s*,\s*['\"]Lead['\"]")
 
@@ -173,12 +176,14 @@ class SitewideMetaTrackingTest(unittest.TestCase):
         self.assertNotIn('1428464038973925', transformed)
         self.assertNotIn('facebook.com/tr', transformed)
 
-    def test_filter_removes_meta_tracking_without_injecting_a_replacement(self):
+    def test_filter_replaces_legacy_trackers_with_site_pixel(self):
         transformed = transform(SAMPLE_DOCUMENT)
 
-        self.assertNotIn("connect.facebook.net/en_US/fbevents.js", transformed)
-        self.assertNotIn("facebook.com/tr", transformed)
-        self.assertNotIn("fbq('init'", transformed)
+        self.assertEqual(transformed.count("1428464038973925"), 2)
+        self.assertIn("connect.facebook.net/en_US/fbevents.js", transformed)
+        self.assertIn("fbq('init', '1428464038973925')", transformed)
+        self.assertIn("fbq('track', 'PageView')", transformed)
+        self.assertIn("facebook.com/tr?id=1428464038973925", transformed)
         self.assertNotIn("1558261907814968", transformed)
         self.assertNotIn("googletagmanager.com", transformed)
         self.assertNotIn("google-analytics.com", transformed)
@@ -186,16 +191,15 @@ class SitewideMetaTrackingTest(unittest.TestCase):
         self.assertIn("fonts.googleapis.com", transformed)
         self.assertIn("analytics.ahrefs.com", transformed)
 
-    def test_fallback_mu_plugin_removes_meta_without_injecting_a_replacement(self):
+    def test_fallback_mu_plugin_replaces_legacy_trackers_with_site_pixel(self):
         transformed = transform(
             SAMPLE_DOCUMENT,
             FALLBACK_PLUGIN,
             "npcwoods_sitewide_meta_pixel_rewrite_document",
         )
 
-        self.assertNotIn("connect.facebook.net/en_US/fbevents.js", transformed)
-        self.assertNotIn("facebook.com/tr", transformed)
-        self.assertNotIn("fbq('init'", transformed)
+        self.assertIn("fbq('init', '1428464038973925')", transformed)
+        self.assertIn("connect.facebook.net/en_US/fbevents.js", transformed)
         self.assertNotIn("1558261907814968", transformed)
         self.assertNotIn("googletagmanager.com", transformed)
 

@@ -50,12 +50,9 @@ class HealthPageTrackerTest(unittest.TestCase):
                 live = uncommented(html)
                 for token in LIVE_TOKENS:
                     self.assertNotIn(token, live, f"{rel} still has live {token}")
-                self.assertIsNone(
-                    FBQ_INIT_RE.search(live), f"{rel} still has live fbq init"
-                )
-                self.assertNotIn(
-                    "facebook.com/tr", live, f"{rel} still has a live Meta noscript"
-                )
+                self.assertNotIn("1558261907814968", live, f"{rel} has ads pixel 1558261907814968")
+                if FBQ_INIT_RE.search(live) or "facebook.com/tr" in live:
+                    self.assertIn("1428464038973925", live, f"{rel} has Meta tracking without the site pixel")
                 self.assertIn(
                     "GTM, GA4, and Google Ads stay off",
                     html,
@@ -68,6 +65,7 @@ class HealthPageTrackerTest(unittest.TestCase):
         text = homepage.read_text(encoding="utf-8")
         self.assertNotIn("GTM, GA4, and Google Ads stay off", text)
         self.assertIn("1558261907814968", text)
+        self.assertIn("1428464038973925", text)
 
     def test_marketing_snippet_is_disabled(self):
         snippet = ROOT / "html" / "shared" / "tracking-snippet.html"
