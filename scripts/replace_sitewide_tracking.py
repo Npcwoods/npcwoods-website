@@ -3,8 +3,9 @@
 
 The public site contains static HTML pages that bypass WordPress hooks. This
 script removes the retired Meta Pixel and legacy third-party tracking from
-every locally served HTML page plus the homepage PHP template. It is
-idempotent and defaults to a no-write preview; use --apply to write.
+every locally served HTML page. The homepage PHP template owns the approved
+Pixel and is left alone. It is idempotent and defaults to a no-write preview;
+use --apply to write.
 """
 
 from __future__ import annotations
@@ -89,9 +90,7 @@ def target_paths(root: Path = ROOT) -> list[Path]:
             if "<html" not in text.lower() or "</head" not in text.lower():
                 continue
             paths.append(path)
-    homepage = root / HOMEPAGE_TEMPLATE
-    if homepage.exists():
-        paths.append(homepage)
+    # Homepage owns the approved Meta Pixel in its template. Do not strip it.
     return sorted(set(paths))
 
 

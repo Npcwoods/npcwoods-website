@@ -71,6 +71,11 @@ class ReplaceSitewideTrackingTest(unittest.TestCase):
         self.assertNotIn("facebook.com/tr", source)
         self.assertNotIn("fbq('init'", source)
 
+    def test_homepage_template_is_not_stripped_by_sitewide_replace(self):
+        module = load_module()
+        homepage = ROOT / "homepage" / "page-npcwoods-home.php"
+        self.assertNotIn(homepage, module.target_paths())
+
 
 if __name__ == "__main__":
     unittest.main()

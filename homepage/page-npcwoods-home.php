@@ -2,7 +2,8 @@
 /**
  * Template Name: NPCWoods Homepage
  * Pocket refresh 2026-08-21: urgent care in your pocket.
- * Tracking via wp_head()/wp_footer(). Do not enqueue TT4 / wp-block-library on this template.
+ * Approved Meta Pixel (1558261907814968) lives in this template after wp_head().
+ * Do not enqueue TT4 / wp-block-library on this template.
  */
 ?>
 <!DOCTYPE html>
@@ -29,6 +30,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
+<!-- Meta Pixel Code: homepage only. Official dataset 1558261907814968. -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1558261907814968');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"
+/></noscript>
+<script>
+(function () {
+  function fireContact() {
+    if (typeof fbq !== 'function') return;
+    fbq('track', 'Contact');
+    fbq('trackCustom', 'ContactSent');
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var a = t && t.closest ? t.closest('a[href^="sms:"]') : null;
+    if (a) fireContact();
+  });
+})();
+</script>
+<!-- End Meta Pixel Code -->
 <style>
 :root {
   --bg: #05060a;

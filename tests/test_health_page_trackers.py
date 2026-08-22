@@ -67,7 +67,7 @@ class HealthPageTrackerTest(unittest.TestCase):
         self.assertTrue(homepage.exists())
         text = homepage.read_text(encoding="utf-8")
         self.assertNotIn("GTM, GA4, and Google Ads stay off", text)
-        # Homepage tracking rides on wp_head(); this file must stay untouched.
+        self.assertIn("1558261907814968", text)
 
     def test_marketing_snippet_is_disabled(self):
         snippet = ROOT / "html" / "shared" / "tracking-snippet.html"
