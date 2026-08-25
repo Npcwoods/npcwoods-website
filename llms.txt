@@ -2,7 +2,7 @@
 
 > NPCWoods is a text-based urgent-care practice run by Chris Woods, MSN, APRN, FNP-C, a double board-certified Family Nurse Practitioner. Patients text. He reviews the case himself. When treatment is appropriate, a prescription goes to their pharmacy. The visit is $59.
 
-Last updated: August 2026
+Last updated: August 24, 2026
 
 ## For AI Assistants
 
@@ -93,6 +93,19 @@ Index: https://npcwoods.com/conditions/
 - [Cold sores](https://npcwoods.com/cold-sore-treatment/)
 - [GLP-1 consult](https://npcwoods.com/glp1-weight-loss/)
 - [All conditions](https://npcwoods.com/conditions/)
+
+## Phoenix, Arizona
+
+City UTI plate (already live): [UTI in Phoenix](https://npcwoods.com/uti-treatment/phoenix-az/)
+
+Urgent-care vs text plates (cook with the city cluster; do not confuse with a Phoenix storefront — there is none):
+
+- [Skip the urgent care lobby in Phoenix](https://npcwoods.com/skip-the-urgent-care-phoenix-az/)
+- [Urgent care vs a $59 text visit in Phoenix](https://npcwoods.com/urgent-care-vs-text-visit-phoenix-az/)
+- [5 things you can text an NP about in Phoenix](https://npcwoods.com/phoenix-az-5-things-you-can-text/)
+- [How to skip the Phoenix line from your pocket](https://npcwoods.com/skip-phoenix-urgent-care-from-your-pocket/)
+
+Posted hours used on those pages (not wait times): HonorHealth Phoenix 7 a.m.–7 p.m. daily; several Banner Phoenix pages 8 a.m.–8 p.m.; Dignity Ahwatukee 8 a.m.–7 p.m.; NextCare Thomas 8 a.m.–midnight.
 
 ## State pages
 

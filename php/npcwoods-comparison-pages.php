@@ -9,6 +9,10 @@ add_action( 'template_redirect', function() {
     $page_map = array(
         'telehealth-vs-urgent-care' => 'telehealth-vs-urgent-care/index.html',
         'uti-treatment-online'      => 'uti-treatment-online/index.html',
+        'skip-the-urgent-care-phoenix-az' => 'skip-the-urgent-care-phoenix-az/index.html',
+        'urgent-care-vs-text-visit-phoenix-az' => 'urgent-care-vs-text-visit-phoenix-az/index.html',
+        'phoenix-az-5-things-you-can-text' => 'phoenix-az-5-things-you-can-text/index.html',
+        'skip-phoenix-urgent-care-from-your-pocket' => 'skip-phoenix-urgent-care-from-your-pocket/index.html',
     );
 
     $slug = get_post_field( 'post_name', get_queried_object_id() );

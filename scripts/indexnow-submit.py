@@ -50,6 +50,10 @@ URLS_TO_SUBMIT = [
     "https://npcwoods.com/uti-treatment/mesa-az/",
     "https://npcwoods.com/uti-treatment/surprise-az/",
     "https://npcwoods.com/strep-throat-treatment/",
+    "https://npcwoods.com/skip-the-urgent-care-phoenix-az/",
+    "https://npcwoods.com/urgent-care-vs-text-visit-phoenix-az/",
+    "https://npcwoods.com/phoenix-az-5-things-you-can-text/",
+    "https://npcwoods.com/skip-phoenix-urgent-care-from-your-pocket/",
 ]
 
 
