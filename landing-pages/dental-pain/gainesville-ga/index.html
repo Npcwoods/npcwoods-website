@@ -798,7 +798,38 @@
 
     /* Hide JSON-LD blocks */
     script[type="application/ld+json"] { display: none; }
-  </style>
+  
+/* Phoenix-style site header on dark gold plates — light bar, always on top of the hero */
+.npc-nav{
+  position:sticky;top:0;z-index:10000;
+  background:#ffffff !important;
+  border-bottom:1px solid #e5e7eb;
+}
+.npc-nav-inner{height:64px}
+.npc-nav-logo-name,
+.npc-nav-links > li > a:not(.npc-nav-cta){
+  color:#1A1A2E !important;
+  -webkit-text-fill-color:#1A1A2E !important;
+}
+.npc-nav-logo-tag{
+  color:#2563EB !important;
+  -webkit-text-fill-color:#2563EB !important;
+}
+.npc-nav-links > li > a.npc-nav-cta,
+.npc-nav-cta,
+.npc-nav-cta-mobile{
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+.npc-nav-cta svg,
+.npc-nav-cta-mobile svg{
+  stroke:#FFFFFF !important;
+  color:#FFFFFF !important;
+}
+.npc-nav-toggle span{background:#1A1A2E !important}
+.hero{padding-top:28px}
+
+</style>
 
 <!-- NPCWoods Tracking: Ahrefs Analytics -->
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
@@ -819,6 +850,8 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
+<link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -1090,6 +1123,31 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+<style>
+  .npc-atf-answer {
+    margin: 16px auto 24px;
+    max-width: 65ch;
+    padding: 18px 22px;
+    border: 1px solid #dbe5f5;
+    border-radius: 12px;
+    background: #f8fbff;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #25364f;
+  }
+  .npc-atf-answer p { margin: 0; }
+  .npc-atf-answer a { color: #1d4ed8; font-weight: 600; }
+</style>
+<div class="npc-atf-answer" data-npc-aeo="atf-answer">
+  <p>
+    <strong>NPCWoods Telemedicine</strong> reviews dental pain in Gainesville, Georgia for <strong>$59</strong> by text.
+    You must be physically in Georgia or another licensed state at the time of the visit.
+    Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
+    A prescription is not promised. You only pay if he can treat you.
+  </p>
+</div>
+
 
 
 <!-- ===== THE SCENARIO ===== -->

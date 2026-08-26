@@ -867,6 +867,37 @@ img{display:block;max-width:100%}
   .vs-us-head,.vs-them-head{font-size:10px}
   .vs-check{margin-right:4px}
 }
+
+/* Phoenix-style site header on dark gold plates — light bar, always on top of the hero */
+.npc-nav{
+  position:sticky;top:0;z-index:10000;
+  background:#ffffff !important;
+  border-bottom:1px solid #e5e7eb;
+}
+.npc-nav-inner{height:64px}
+.npc-nav-logo-name,
+.npc-nav-links > li > a:not(.npc-nav-cta){
+  color:#1A1A2E !important;
+  -webkit-text-fill-color:#1A1A2E !important;
+}
+.npc-nav-logo-tag{
+  color:#2563EB !important;
+  -webkit-text-fill-color:#2563EB !important;
+}
+.npc-nav-links > li > a.npc-nav-cta,
+.npc-nav-cta,
+.npc-nav-cta-mobile{
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+.npc-nav-cta svg,
+.npc-nav-cta-mobile svg{
+  stroke:#FFFFFF !important;
+  color:#FFFFFF !important;
+}
+.npc-nav-toggle span{background:#1A1A2E !important}
+.hero{padding-top:28px}
+
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -885,6 +916,8 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
+<link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
 <body>
 
@@ -1158,6 +1191,31 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+<style>
+  .npc-atf-answer {
+    margin: 16px auto 24px;
+    max-width: 65ch;
+    padding: 18px 22px;
+    border: 1px solid #dbe5f5;
+    border-radius: 12px;
+    background: #f8fbff;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #25364f;
+  }
+  .npc-atf-answer p { margin: 0; }
+  .npc-atf-answer a { color: #1d4ed8; font-weight: 600; }
+</style>
+<div class="npc-atf-answer" data-npc-aeo="atf-answer">
+  <p>
+    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+    Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
+    No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit.
+    A prescription is not promised. You only pay if he can treat you.
+  </p>
+</div>
+
 
 <!-- STATS BAND -->
 <div class="stats-band">

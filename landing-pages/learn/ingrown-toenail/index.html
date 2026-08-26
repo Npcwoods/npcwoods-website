@@ -936,6 +936,37 @@ body::after { content:none!important; display:none!important; }
   .compare-table .treat-us { color:#139866!important; font-weight:800!important; }
   .compare-table .treat-er { color:#4f4f57!important; }
 }
+
+/* Phoenix-style site header on dark gold plates — light bar, always on top of the hero */
+.npc-nav{
+  position:sticky;top:0;z-index:10000;
+  background:#ffffff !important;
+  border-bottom:1px solid #e5e7eb;
+}
+.npc-nav-inner{height:64px}
+.npc-nav-logo-name,
+.npc-nav-links > li > a:not(.npc-nav-cta){
+  color:#1A1A2E !important;
+  -webkit-text-fill-color:#1A1A2E !important;
+}
+.npc-nav-logo-tag{
+  color:#2563EB !important;
+  -webkit-text-fill-color:#2563EB !important;
+}
+.npc-nav-links > li > a.npc-nav-cta,
+.npc-nav-cta,
+.npc-nav-cta-mobile{
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+}
+.npc-nav-cta svg,
+.npc-nav-cta-mobile svg{
+  stroke:#FFFFFF !important;
+  color:#FFFFFF !important;
+}
+.npc-nav-toggle span{background:#1A1A2E !important}
+.hero{padding-top:28px}
+
 </style>
 <!-- Meta Pixel Code -->
 <script>

@@ -62,6 +62,8 @@ add_action('wp_head', function() {
     echo '<link rel="author" href="' . esc_url($profile['about_url']) . '" />' . "\n";
     // cite-as tells AI crawlers which URL to attribute when citing this content
     echo '<link rel="cite-as" href="' . esc_url($permalink) . '" />' . "\n";
+    echo '<link rel="alternate" type="application/llms.txt" href="' . esc_url(home_url('/llms.txt')) . '" />' . "\n";
+    echo '<link rel="alternate" type="application/llms-full.txt" href="' . esc_url(home_url('/llms-full.txt')) . '" />' . "\n";
 
     $person = array(
         '@type' => 'Person',
