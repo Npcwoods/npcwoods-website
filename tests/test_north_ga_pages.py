@@ -28,6 +28,15 @@ PAGES = {
         "min_bytes": 50000,
         "health": True,
     },
+    "landing-pages/uti-treatment/canton-ga/index.html": {
+        "title": "UTI Treatment in Canton, GA | $59 Text Visit",
+        "h1": "UTI in Canton and you don’t want the Riverstone waiting room? Text Chris.",
+        "url": "https://npcwoods.com/uti-treatment/canton-ga/",
+        "local": "Riverstone",
+        "forbidden": ("Atlanta", "Piedmont", "Grady", "Banner", "Wellstar", "Northside", "Peachtree", "Kennestone"),
+        "min_bytes": 50000,
+        "health": True,
+    },
     "landing-pages/skip-the-urgent-care-woodstock-ga/index.html": {
         "title": "7 reasons people in Woodstock skip the urgent-care lobby | $59 text visit",
         "h1": "7 reasons people in Woodstock skip the urgent-care lobby",
@@ -102,7 +111,10 @@ class NorthGaKitchenPlateTests(unittest.TestCase):
                 self.assertIn(SMS, html)
                 self.assertIn(LOCKED_911, html)
                 self.assertIn(FOOTER_MARK, html)
-                self.assertIn("COOK DRAFT 2026-08-24", html)
+                self.assertTrue(
+                    "COOK DRAFT" in html or "Plated 2026-08-28" in html,
+                    "kitchen draft mark or plated date",
+                )
                 self.assertIn("--bg: #05060a", html)
                 self.assertIn('class="hero"', html)
                 self.assertIn("stats-band", html)

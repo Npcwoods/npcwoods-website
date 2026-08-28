@@ -35,6 +35,7 @@ ROUTING_PLUGINS = [
     "npcwoods-paid-pages.php",
     "npcwoods-llmseo-pages.php",
     "npcwoods-ga-nc-pages.php",
+    "npcwoods-north-ga-pages.php",
     "npcwoods-glp1-pages.php",
     "npcwoods-about-pages.php",
     "npcwoods-affordable-arizona-page.php",
