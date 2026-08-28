@@ -15,7 +15,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gold_uti_chassis as gold
 
 ROOT = gold.ROOT
-DRAFT = "<!-- COOK DRAFT 2026-08-25: mix wave week 1. Kitchen only. Not live. Gold UTI chassis. -->\n"
+DRAFT = "<!-- COOK DRAFT 2026-08-26: mix wave. Kitchen only. Not live. Gold UTI chassis. -->\n"
+WAVE2 = ["asheville-nc", "augusta-ga", "colorado-springs-co", "reno-nv"]
 SMS = gold.SMS
 LOCKED_911 = gold.LOCKED_911
 
@@ -216,6 +217,202 @@ CITIES = [
             ),
         ],
     },
+    {
+        "lane": "money",
+        "slug": "asheville-nc",
+        "city": "Asheville",
+        "state": "North Carolina",
+        "state_slug": "north-carolina-telemedicine",
+        "abbr": "NC",
+        "kicker": "$59 Flat · Asheville, NC · Text visit",
+        "streets": "Tunnel Road, Patton, and I-40",
+        "pharmacy": "an Asheville Ingles, CVS, or Walgreens",
+        "er_table": "ER (Mission)",
+        "collab": "Chris practices in North Carolina under a collaborative agreement with a North Carolina-licensed physician.",
+        "phone": (
+            "In Asheville. Burning when I pee. Tunnel Road is a line.",
+            "Any fever or back pain?",
+            "No fever. Just burning and I cannot stop going.",
+            "If it is a straightforward UTI and text is safe, I'll send it to your Asheville pharmacy.",
+            "✓ Plan ready · $59 · pay after",
+        ),
+        "scene": (
+            "Asheville after a long day. Patton is busy. Tunnel Road is a wait.",
+            "Burning, urgency, going often — and you are downtown, in West Asheville, or off I-40. A walk-in on Tunnel Road still means a chair.",
+            "NPCWoods is a $59 text visit, not a clinic on Tunnel Road or Patton Avenue. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+        ),
+        "fit_good": [
+            "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
+            "You are in Asheville, West Asheville, or nearby and you do not want the lobby",
+            "You can name an Asheville-area pharmacy for pickup",
+        ],
+        "fit_bad": [
+            "Fever with back or side pain, pregnancy, or you cannot keep fluids down",
+            "You need a urine culture in a lab today, or you are getting worse fast",
+            "Kids, X-rays, stitches — a walk-in on Tunnel Road, Patton, or near I-40",
+        ],
+        "faqs": [
+            (
+                "Can I get UTI antibiotics by text in Asheville, NC?",
+                "When it is safe, yes. Text Chris Woods, a licensed nurse practitioner, at (480) 639-4722. $59. If antibiotics are appropriate, they can go to an Asheville-area pharmacy the same day. A prescription is not promised. You only pay if he can treat you.",
+            ),
+            (
+                "Do I have to be in Asheville?",
+                "You must be physically in North Carolina or another licensed state at the time of the visit. This page is for people in Asheville, West Asheville, and nearby.",
+            ),
+            (
+                "How is this different from sitting Tunnel Road?",
+                "An Asheville walk-in is a building with a chair. This is a $59 text visit with the same NP. Use the lobby for X-rays, stitches, kids who need a room, or anything that has to be examined. Use text when the story is treatable by text.",
+            ),
+        ],
+    },
+    {
+        "lane": "money",
+        "slug": "augusta-ga",
+        "city": "Augusta",
+        "state": "Georgia",
+        "state_slug": "georgia-telemedicine",
+        "abbr": "GA",
+        "kicker": "$59 Flat · Augusta, GA · Text visit",
+        "streets": "Broad Street, Washington Road, and I-20",
+        "pharmacy": "an Augusta Publix, CVS, or Walgreens",
+        "er_table": "ER (downtown / Washington Road)",
+        "collab": "Chris practices in Georgia under a collaborative agreement with a Georgia-licensed physician.",
+        "phone": (
+            "In Augusta. Burning when I pee. I am not sitting Washington Road tonight.",
+            "Any fever or back pain?",
+            "No. Just burning and urgency.",
+            "If text care is a fit, I'll send it to your Augusta pharmacy.",
+            "✓ Plan ready · $59 · pay after",
+        ),
+        "scene": (
+            "Augusta on a weeknight. Riverwalk is quiet. The walk-in on Washington Road is not.",
+            "Burning, urgency, going often — and you are downtown, on Washington Road, or off I-20. A chair still means a wait.",
+            "NPCWoods is a $59 text visit, not a clinic on Washington Road or Broad Street. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+        ),
+        "fit_good": [
+            "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
+            "You are in Augusta, Martinez, or Evans and you do not want the lobby",
+            "You can name an Augusta-area pharmacy for pickup",
+        ],
+        "fit_bad": [
+            "Fever with back or side pain, pregnancy, or you cannot keep fluids down",
+            "You need a urine culture in a lab today, or you are getting worse fast",
+            "Kids, X-rays, stitches — a walk-in on Washington Road, Broad Street, or near I-20",
+        ],
+        "faqs": [
+            (
+                "Can I get UTI antibiotics by text in Augusta, GA?",
+                "When it is safe, yes. Text Chris Woods, a licensed nurse practitioner, at (480) 639-4722. $59. If antibiotics are appropriate, they can go to an Augusta-area pharmacy the same day. A prescription is not promised. You only pay if he can treat you.",
+            ),
+            (
+                "Do I have to be in Augusta?",
+                "You must be physically in Georgia or another licensed state at the time of the visit. This page is for people in Augusta, Martinez, Evans, and nearby.",
+            ),
+            (
+                "How is this different from sitting Washington Road?",
+                "An Augusta walk-in is a building with a chair. This is a $59 text visit with the same NP. Use the lobby for X-rays, stitches, kids who need a room, or anything that has to be examined. Use text when the story is treatable by text.",
+            ),
+        ],
+    },
+    {
+        "lane": "lab",
+        "slug": "colorado-springs-co",
+        "city": "Colorado Springs",
+        "state": "Colorado",
+        "state_slug": "colorado-telemedicine",
+        "abbr": "CO",
+        "kicker": "$59 Flat · Colorado Springs, CO · Text visit",
+        "streets": "Academy Boulevard, Tejon, and I-25",
+        "pharmacy": "a Colorado Springs King Soopers, Walgreens, or Safeway",
+        "er_table": "ER (Memorial / Penrose)",
+        "collab": "",
+        "phone": (
+            "In the Springs. Burning when I pee. Academy is a line.",
+            "Any fever or back pain?",
+            "No fever. Just burning.",
+            "If text is safe, I'll send it to your Colorado Springs pharmacy.",
+            "✓ Plan ready · $59 · pay after",
+        ),
+        "scene": (
+            "Colorado Springs after work. Academy Boulevard is slow. A UTI is not.",
+            "Burning, urgency, going often — and you are near Tejon, off Academy, or on I-25. A walk-in still means a chair.",
+            "NPCWoods is a $59 text visit, not a clinic on Academy Boulevard or Tejon Street. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+        ),
+        "fit_good": [
+            "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
+            "You are in Colorado Springs, Fountain, or nearby and you do not want the lobby",
+            "You can name a Colorado Springs-area pharmacy for pickup",
+        ],
+        "fit_bad": [
+            "Fever with back or side pain, pregnancy, or you cannot keep fluids down",
+            "You need a urine culture in a lab today, or you are getting worse fast",
+            "Kids, X-rays, stitches — a walk-in on Academy, Tejon, or near I-25",
+        ],
+        "faqs": [
+            (
+                "Can I get UTI antibiotics by text in Colorado Springs, CO?",
+                "When it is safe, yes. Text Chris Woods, a licensed nurse practitioner, at (480) 639-4722. $59. If antibiotics are appropriate, they can go to a Colorado Springs-area pharmacy the same day. A prescription is not promised. You only pay if he can treat you.",
+            ),
+            (
+                "Do I have to be in Colorado Springs?",
+                "You must be physically in Colorado or another licensed state at the time of the visit. This page is for people in Colorado Springs, Fountain, and nearby.",
+            ),
+            (
+                "How is this different from sitting Academy?",
+                "A Colorado Springs walk-in is a building with a chair. This is a $59 text visit with the same NP. Use the lobby for X-rays, stitches, kids who need a room, or anything that has to be examined. Use text when the story is treatable by text.",
+            ),
+        ],
+    },
+    {
+        "lane": "lab",
+        "slug": "reno-nv",
+        "city": "Reno",
+        "state": "Nevada",
+        "state_slug": "nevada-telemedicine",
+        "abbr": "NV",
+        "kicker": "$59 Flat · Reno, NV · Text visit",
+        "streets": "Virginia Street, Midtown, and I-80",
+        "pharmacy": "a Reno Smith's, CVS, or Walgreens",
+        "er_table": "ER (Renown)",
+        "collab": "",
+        "phone": (
+            "In Reno. Burning when I pee. I am not sitting Virginia Street tonight.",
+            "Any fever or back pain?",
+            "No. Just burning and going constantly.",
+            "If text care is a fit, I'll send it to your Reno pharmacy.",
+            "✓ Plan ready · $59 · pay after",
+        ),
+        "scene": (
+            "Reno on a weeknight. Midtown is open. The walk-in on Virginia Street is a wait.",
+            "Burning, urgency, going often — and you are downtown, in Midtown, or off I-80. A chair still means sitting.",
+            "NPCWoods is a $59 text visit, not a clinic on Virginia Street or Kietzke. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+        ),
+        "fit_good": [
+            "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
+            "You are in Reno, Sparks, or Midtown and you do not want the lobby",
+            "You can name a Reno-area pharmacy for pickup",
+        ],
+        "fit_bad": [
+            "Fever with back or side pain, pregnancy, or you cannot keep fluids down",
+            "You need a urine culture in a lab today, or you are getting worse fast",
+            "Kids, X-rays, stitches — a walk-in on Virginia Street, Kietzke, or near I-80",
+        ],
+        "faqs": [
+            (
+                "Can I get UTI antibiotics by text in Reno, NV?",
+                "When it is safe, yes. Text Chris Woods, a licensed nurse practitioner, at (480) 639-4722. $59. If antibiotics are appropriate, they can go to a Reno-area pharmacy the same day. A prescription is not promised. You only pay if he can treat you.",
+            ),
+            (
+                "Do I have to be in Reno?",
+                "You must be physically in Nevada or another licensed state at the time of the visit. This page is for people in Reno, Sparks, and nearby.",
+            ),
+            (
+                "How is this different from sitting Virginia Street?",
+                "A Reno walk-in is a building with a chair. This is a $59 text visit with the same NP. Use the lobby for X-rays, stitches, kids who need a room, or anything that has to be examined. Use text when the story is treatable by text.",
+            ),
+        ],
+    },
 ]
 
 
@@ -318,7 +515,7 @@ def cook_city(spec: dict) -> Path:
 <p>You text Chris, not a rotating pool and not a video waiting room. Follow-up on the same visit is included.</p>
 {collab}
 <p>Full UTI pages: <a href="https://npcwoods.com/uti-treatment/">UTI treatment</a>, <a href="https://npcwoods.com/learn/uti/">UTI guide</a>. Fee: <a href="https://npcwoods.com/pricing/">pricing</a>. Statewide: <a href="https://npcwoods.com/{spec['state_slug']}/">{html_lib.escape(spec['state'])} telemedicine</a>.</p>
-<p>Chris Woods, MSN, APRN, FNP-C. Licensed in {html_lib.escape(spec['state'])}. He is a nurse practitioner, not a physician.</p>
+<p>Chris Woods, MSN, APRN, FNP-C. Licensed in {html_lib.escape(spec['state'])}. He is a nurse practitioner.</p>
 </div></section>""",
             gold.states(),
             gold.bottom_cta(
@@ -410,7 +607,11 @@ def cook_city(spec: dict) -> Path:
 
 
 def main() -> None:
-    for spec in CITIES:
+    wanted = set(sys.argv[1:] or WAVE2)
+    cooked = [spec for spec in CITIES if spec["slug"] in wanted]
+    if not cooked:
+        raise SystemExit(f"no matching cities for {sorted(wanted)}")
+    for spec in cooked:
         cook_city(spec)
 
 

@@ -1,17 +1,21 @@
 <?php
 /**
  * Plugin Name: NPCWoods UTI Mix Wave Week 1
- * Description: Serves standalone HTML for Savannah, Raleigh, Denver, and Las Vegas UTI city pages.
+ * Description: Serves standalone HTML for mix-wave UTI city pages.
  */
 add_action( 'template_redirect', function() {
     $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
     $path = trailingslashit( $path );
 
     $path_map = array(
-        '/uti-treatment/savannah-ga/'   => 'uti-treatment/savannah-ga/index.html',
-        '/uti-treatment/raleigh-nc/'    => 'uti-treatment/raleigh-nc/index.html',
-        '/uti-treatment/denver-co/'     => 'uti-treatment/denver-co/index.html',
-        '/uti-treatment/las-vegas-nv/'  => 'uti-treatment/las-vegas-nv/index.html',
+        '/uti-treatment/savannah-ga/'          => 'uti-treatment/savannah-ga/index.html',
+        '/uti-treatment/raleigh-nc/'           => 'uti-treatment/raleigh-nc/index.html',
+        '/uti-treatment/denver-co/'            => 'uti-treatment/denver-co/index.html',
+        '/uti-treatment/las-vegas-nv/'         => 'uti-treatment/las-vegas-nv/index.html',
+        '/uti-treatment/asheville-nc/'         => 'uti-treatment/asheville-nc/index.html',
+        '/uti-treatment/augusta-ga/'           => 'uti-treatment/augusta-ga/index.html',
+        '/uti-treatment/colorado-springs-co/'  => 'uti-treatment/colorado-springs-co/index.html',
+        '/uti-treatment/reno-nv/'              => 'uti-treatment/reno-nv/index.html',
     );
 
     if ( isset( $path_map[ $path ] ) ) {
