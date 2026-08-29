@@ -55,6 +55,10 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         """The shared footer owns the site-wide MedicalBusiness entity."""
         self.assertEqual(0, len(re.findall(r'"@type"\s*:\s*"MedicalBusiness"', self.text)))
 
+    def test_homepage_response_time_matches_guardian_canonical(self):
+        self.assertIn("usually within a few hours", self.text)
+        self.assertNotIn("Most visits wrap up in under an hour", self.text)
+
 
 if __name__ == "__main__":
     unittest.main()

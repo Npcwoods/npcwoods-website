@@ -163,7 +163,7 @@ function npcwoods_meta_descriptions($desc) {
     if (is_singular('page') || is_front_page()) {
         global $post;
         if ($post && $post->ID == 63) {
-            return 'NPCWoods Telemedicine — $59 text-based urgent care from a licensed Nurse Practitioner. No hassle, no waiting rooms. Same-day response. Text (480) 639-4722.';
+            return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
         }
     }
     if (!empty($desc)) return $desc;
@@ -251,7 +251,9 @@ function npcwoods_replace_canonical($html) {
 // ============================================================
 add_filter('wpseo_robots_array', 'npcwoods_noindex_pages');
 function npcwoods_noindex_pages($robots) {
-    if (is_page(3)) { $robots['index'] = 'noindex'; }
+    if (is_page(3) || is_page(198) || is_single(825) || is_single(839)) {
+        $robots['index'] = 'noindex';
+    }
     return $robots;
 }
 
@@ -289,35 +291,35 @@ function npcwoods_speed_hints() {
 
 add_filter('wpseo_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine — $59 Online Urgent Care | No Hassle';
+        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine — $59 Online Urgent Care';
+        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_desc', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'See a real Nurse Practitioner from home — $59 flat fee, no hassle. Text-based urgent care for UTI, sinus infections, strep, ED, and more.';
+        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
     }
     return $desc;
 }, 20);
 
 add_filter('wpseo_twitter_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine — $59 Online Urgent Care';
+        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_twitter_description', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'See a real Nurse Practitioner from home — $59 flat fee, no hassle. Text-based urgent care for UTI, sinus infections, strep, ED, and more.';
+        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
     }
     return $desc;
 }, 20);
@@ -359,15 +361,20 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // PAID-ONLY NOINDEX CLONES (not in sitemap; only paid traffic lands here)
         // ============================================================
         698,  // /uti-care/ paid Google + Facebook clone (noindexed)
+        802,  // /conditions/albuterol-inhaler-refill-preview/ leftover preview, not a live plate
+        825,  // /cost-savings-preview/ leftover blog preview
+        839,  // /swimmers-ear-preview/ leftover blog preview
+        198,  // /affordable-telemedicine-arizona-no-insurance/ leftover stub
+        462,  // /what-is-async-telemedicine/ post duplicate; page 892 owns the URL
 
         // ============================================================
         // CITY PAGES — temporarily excluded to focus crawl budget
         // on 66 core pages. Re-add once domain authority grows.
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
-        // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20) re-added
+        // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20), Phoenix (11) re-added
         // Chandler (14), Gilbert (15), Glendale (16), Tempe (19) included in the sitemap
-        11, 12, 18,
+        12, 18,  // Tucson, Peoria — still excluded for crawl budget
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         // Mix wave re-added: Savannah (268), Augusta (272), Raleigh (288)
         276, 280, 292, 296, 300,

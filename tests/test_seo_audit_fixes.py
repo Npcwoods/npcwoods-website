@@ -100,6 +100,13 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertNotIn(21, remaining_sinus_ids)
         self.assertIn(23, remaining_sinus_ids)
 
+    def test_leftover_urls_are_excluded_from_yoast_sitemap(self):
+        block = sitemap_exclusion_block()
+        self.assertRegex(block, r"\b825\b", "cost-savings-preview post should be excluded")
+        self.assertRegex(block, r"\b839\b", "swimmers-ear-preview post should be excluded")
+        self.assertRegex(block, r"\b198\b", "affordable-AZ leftover should be excluded")
+        self.assertRegex(block, r"\b462\b", "async post duplicate should be excluded; page 892 owns the URL")
+
     def test_sinus_tucson_plugin_is_path_only(self):
         php = read("php/npcwoods-sinus-tucson.php")
         self.assertIn("parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH )", php)
@@ -166,6 +173,30 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn('"/ear-infection/"', php)
         self.assertIn('"/ear-infection-treatment/"', php)
         self.assertNotIn('"/faq/"                      => "/#faq"', php)
+
+    def test_leftover_preview_and_stub_urls_301_to_live_plates(self):
+        php = read("php/npcwoods-redirects.php")
+        self.assertIn('"/cost-savings-preview/"', php)
+        self.assertIn('"/cost-savings-convenience/"', php)
+        self.assertIn('"/swimmers-ear-preview/"', php)
+        self.assertIn('"/ear-pain-after-swimming-swimmers-ear/"', php)
+        self.assertIn('"/affordable-telemedicine-arizona-no-insurance/"', php)
+        self.assertIn('"/pricing/"', php)
+
+    def test_homepage_yoast_overrides_match_locked_title(self):
+        php = read("php/npcwoods-faq-schema.php")
+        self.assertIn("NPCWoods Telemedicine: $59 Text-Based Urgent Care", php)
+        self.assertIn(
+            "Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.",
+            php,
+        )
+
+    def test_blog_index_does_not_link_preview_leftovers(self):
+        html = read("landing-pages/blog/index.html")
+        self.assertNotIn("cost-savings-preview", html)
+        self.assertNotIn("swimmers-ear-preview", html)
+        self.assertIn("https://npcwoods.com/cost-savings-convenience/", html)
+        self.assertIn("https://npcwoods.com/ear-pain-after-swimming-swimmers-ear/", html)
 
     def test_physical_ear_infection_page_points_to_current_hub(self):
         html = read("landing-pages/ear-infection/index.html")

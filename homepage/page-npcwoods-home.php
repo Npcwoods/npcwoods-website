@@ -14,17 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#05060a">
 <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
-<link rel="canonical" href="https://npcwoods.com/">
-<meta property="og:title" content="NPCWoods Telemedicine: $59 Text-Based Urgent Care">
-<meta property="og:description" content="Urgent care in your pocket. Text a real Nurse Practitioner. $59 flat. No waiting room. No app.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://npcwoods.com/">
-<meta property="og:site_name" content="NPCWoods Telemedicine">
-<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp">
-<meta name="description" content="Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MedicalBusiness","@id":"https://npcwoods.com/#medical-business","name":"NPCWoods Telemedicine","description":"Text-based urgent care with a licensed Nurse Practitioner. $59 flat fee. Licensed in 11 states.","telephone":"+14806394722","url":"https://npcwoods.com/","priceRange":"$59","areaServed":[{"@type":"State","name":"Arizona"},{"@type":"State","name":"Colorado"},{"@type":"State","name":"Georgia"},{"@type":"State","name":"Idaho"},{"@type":"State","name":"Iowa"},{"@type":"State","name":"Montana"},{"@type":"State","name":"Nevada"},{"@type":"State","name":"New Mexico"},{"@type":"State","name":"North Carolina"},{"@type":"State","name":"Oregon"},{"@type":"State","name":"Utah"}],"medicalSpecialty":"https://schema.org/FamilyPractice"}
-</script>
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -530,7 +519,7 @@ body.npc-redesign .npc-site-footer { display:none !important; }
   <div class="section-inner">
     <span class="section-kicker">The visit in your pocket</span>
     <h2 class="section-title">Three texts. That's it.</h2>
-    <p class="section-body">Most visits wrap up in under an hour, from your first text to your prescription. No 30-question form. No portal. No app.</p>
+    <p class="section-body">Most patients hear back the same day, usually within a few hours. No 30-question form. No portal. No app.</p>
     <div class="bento">
       <article class="bento-card">
         <div class="step-num">1</div>
