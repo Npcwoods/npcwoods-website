@@ -43,6 +43,14 @@ add_action("init", function() {
         "/sinus/"                     => "/sinus-infection-treatment/",
         "/strep/"                     => "/strep-throat-treatment/",
         "/strep-throat-ear-infection/" => "/strep-throat-treatment/",
+        // Atlanta/Charlotte leftover city tents were serving UTI food (2026-08-29).
+        // Send guests to the matching condition plate, not the UTI table.
+        "/ed-treatment/atlanta-ga/" => "/ed-treatment/",
+        "/ed-treatment/charlotte-nc/" => "/ed-treatment/",
+        "/sinus-infection-treatment/atlanta-ga/" => "/sinus-infection-treatment/",
+        "/sinus-infection-treatment/charlotte-nc/" => "/sinus-infection-treatment/",
+        "/strep-throat-ear-infection/atlanta-ga/" => "/strep-throat-treatment/",
+        "/strep-throat-ear-infection/charlotte-nc/" => "/strep-throat-treatment/",
         // Guardrail slug cleanup (2026-04-12) — removed "doctor"/"insurance" from URLs
         "/do-i-need-doctor-for-uti/"              => "/when-to-see-provider-for-uti/",
         "/uti-antibiotics-without-seeing-a-doctor/" => "/uti-treatment/",
