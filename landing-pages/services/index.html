@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NPCWoods Telemedicine Services — $59 flat-fee visits for UTI, sinus infections, strep throat, ear infections, ED, and more.">
+<meta name="theme-color" content="#2563EB">
+<title>NPCWoods Services — $59 Telehealth Visits | See What We Treat</title>
+<link rel="canonical" href="https://npcwoods.com/services/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://npcwoods.com/services/">
+<meta property="og:title" content="NPCWoods Services — $59 Telehealth Visits">
+<meta property="og:description" content="See a real Nurse Practitioner from home — $59 flat fee, no insurance needed. UTI, sinus infections, strep throat, ED treatment, and more.">
+<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+<meta property="og:site_name" content="NPCWoods Telemedicine">
+<meta property="og:locale" content="en_US">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NPCWoods Services — $59 Telehealth Visits">
+<meta name="twitter:description" content="See a real Nurse Practitioner from home — $59 flat fee, no insurance needed. UTI, sinus infections, strep throat, ED treatment, and more.">
+<meta name="twitter:image" content="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+<link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+<link rel="apple-touch-icon" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --warm-white: #FDF8F4;
+  --text-primary: #1A1A2E;
+  --text-body: #4A4A5A;
+  --text-muted: #8E8E9A;
+  --brand: #2563EB;
+  --brand-light: #EFF6FF;
+  --brand-hover: #1D4ED8;
+  --brand-soft: #DBEAFE;
+  --border: #E5E7EB;
+  --border-hover: #D1D5DB;
+  --shadow: rgba(0,0,0,0.04);
+  --shadow-hover: rgba(0,0,0,0.08);
+  --success: #16A34A;
+  --success-light: #DCFCE7;
+  --gold: #F59E0B;
+  --section-pad: 100px;
+  --section-pad-mobile: 64px;
+  --container-max: 1200px;
+  --side-pad: 48px;
+  --side-pad-mobile: 20px;
+  --nav-height: 72px;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: clamp(2.2rem, 6vw, 4rem);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+  font-size: 16px;
+}
+
+body {
+  background: var(--white);
+  color: var(--text-body);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--brand);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  z-index: 200;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+section {
+  padding: var(--section-pad) var(--side-pad);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, var(--text-4xl));
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+.overline {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.section-header p {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--brand);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: 16px 32px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+}
+
+.btn-inverted {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--brand);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: 16px 32px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-inverted:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,255,255,0.3);
+}
+
+.icon-brand { color: var(--brand); }
+
+/* ========================================
+   BADGE
+   ======================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand-light);
+  color: var(--brand);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+/* ========================================
+   SCROLL REVEAL
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.visible .stagger:nth-child(1) { transition-delay: 0ms; }
+.reveal.visible .stagger:nth-child(2) { transition-delay: 80ms; }
+.reveal.visible .stagger:nth-child(3) { transition-delay: 160ms; }
+.reveal.visible .stagger:nth-child(4) { transition-delay: 240ms; }
+
+/* ========================================
+   NAV
+   ======================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  padding: 0 var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.nav.scrolled {
+  background: var(--white);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.85); }
+.nav:not(.scrolled) .nav-links a:hover { color: var(--white); }
+.nav:not(.scrolled) .nav-cta { background: var(--white); color: var(--brand); }
+.nav:not(.scrolled) .nav-hamburger span { background: var(--white); }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-body);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--brand); }
+
+.nav-cta {
+  background: var(--brand);
+  color: var(--white);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  padding: 10px 24px;
+  border-radius: 100px;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--white);
+  z-index: 99;
+  padding: 32px var(--side-pad);
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 16px 0;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu .btn-primary {
+  margin-top: 24px;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1a4fd4 0%, #2563EB 25%, #3b82f6 50%, #60a5fa 75%, #93c5fd 100%);
+  padding: calc(var(--nav-height) + 80px) var(--side-pad) 80px;
+  text-align: center;
+}
+
+.hero-trendline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-trendline svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+  margin-bottom: 28px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.hero-badge .pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.hero h1 {
+  color: var(--white);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.12);
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,0.9);
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.hero-sub strong {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--white);
+  transition: background 0.2s;
+}
+.hero-pill:hover {
+  background: rgba(255,255,255,0.25);
+}
+.hero-pill svg {
+  flex-shrink: 0;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+/* ========================================
+   SOCIAL PROOF BAR
+   ======================================== */
+.proof-bar {
+  background: var(--brand);
+  padding: 20px var(--side-pad);
+  text-align: center;
+}
+.proof-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+.proof-bar span {
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.proof-bar .dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   HOW IT WORKS
+   ======================================== */
+.how-section {
+  background: var(--white);
+}
+
+.steps {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  position: relative;
+}
+
+.step { text-align: center; }
+
+.step-num {
+  width: 56px;
+  height: 56px;
+  background: var(--brand);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.step h3 {
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: var(--text-base);
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ========================================
+   SERVICE CARDS (Interactive)
+   ======================================== */
+.services-section {
+  background: var(--off-white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow-hover);
+  border-color: var(--border-hover);
+}
+.service-card.active {
+  border-color: var(--brand);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+}
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--brand);
+  transition: color 0.3s;
+}
+.service-card:hover .service-icon,
+.service-card.active .service-icon {
+  background: var(--brand);
+}
+.service-card:hover .service-icon svg,
+.service-card.active .service-icon svg {
+  color: var(--white);
+}
+
+.service-card h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.service-card .service-preview {
+  font-size: var(--text-base);
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+.service-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--success-light);
+  color: var(--success);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-top: 20px;
+}
+
+.service-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--brand-light);
+  color: var(--brand);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+.service-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  margin-top: 16px;
+  transition: gap 0.2s ease;
+}
+.service-card:hover .service-expand { gap: 10px; }
+
+/* ========================================
+   SERVICE DETAIL PANEL
+   ======================================== */
+.detail-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+  background: var(--off-white);
+}
+.detail-panel.open {
+  max-height: 800px;
+  opacity: 1;
+}
+.detail-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--side-pad) 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.detail-left h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.detail-left p {
+  color: var(--text-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.detail-right h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.detail-right ul {
+  list-style: none;
+  padding: 0;
+}
+.detail-right li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-base);
+}
+.detail-right li:last-child { border-bottom: none; }
+
+.icon-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icon-circle.green {
+  background: var(--success-light);
+}
+.icon-circle.green svg { color: var(--success); }
+
+/* ========================================
+   PRICING
+   ======================================== */
+.pricing-section {
+  background: var(--white);
+}
+
+.pricing-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--brand);
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+}
+
+.pricing-amount {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.04em;
+}
+.pricing-amount .dollar {
+  font-size: 2.5rem;
+  vertical-align: super;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.pricing-label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.pricing-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+.pricing-list {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.pricing-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--text-base);
+}
+
+.pricing-item .icon-circle.muted {
+  background: var(--off-white);
+}
+.pricing-item .icon-circle.muted svg { color: var(--text-muted); }
+
+.pricing-item.included { color: var(--text-primary); font-weight: 500; }
+.pricing-item.none-needed {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+}
+
+.pricing-tagline {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 24px;
+}
+
+.pricing-cta { margin-top: 32px; }
+.pricing-btn { width: 100%; justify-content: center; }
+
+/* ========================================
+   COMPARE (3-column)
+   ======================================== */
+.compare-section {
+  background: var(--off-white);
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.compare-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.compare-card.highlight {
+  border-color: var(--brand);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.15);
+  transform: scale(1.04);
+  position: relative;
+}
+.compare-card.highlight::before {
+  content: 'BEST VALUE';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brand);
+  color: var(--white);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+.compare-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.compare-amount {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+.compare-amount.strikethrough {
+  color: #EF4444;
+  text-decoration: line-through;
+  text-decoration-color: #EF4444;
+}
+.compare-note {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   FAQ
+   ======================================== */
+.faq-section {
+  background: var(--white);
+}
+
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.faq-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  font-size: var(--text-base);
+  color: var(--text-body);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding-bottom 0.3s ease;
+  padding-bottom: 0;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cta-section {
+  background: var(--brand);
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-inner h2 {
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.cta-inner p {
+  color: rgba(255,255,255,0.85);
+  font-size: var(--text-lg);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.cta-phone {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  margin-top: 20px;
+}
+.cta-phone a {
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.site-footer {
+  background: var(--text-primary);
+  padding: 60px var(--side-pad) 40px;
+}
+
+.footer-grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .nav-logo {
+  color: var(--white);
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+.footer-links h4 {
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+
+.footer-contact h4 {
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.footer-contact p,
+.footer-contact a {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+.footer-contact a:hover { color: var(--white); }
+.footer-logo-img { filter: brightness(0) invert(1); }
+
+.footer-bottom {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+}
+
+/* ========================================
+   STICKY MOBILE CTA
+   ======================================== */
+.mobile-sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding: 12px 20px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+}
+.mobile-sticky-cta .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 14px 24px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 500px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .compare-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .compare-card.highlight { transform: none; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root {
+    --side-pad: 20px;
+    --section-pad: 64px;
+  }
+
+  .nav {
+    height: 60px;
+    padding: 0 20px;
+  }
+  :root { --nav-height: 60px; }
+
+  .hero {
+    padding: calc(var(--nav-height) + 40px) 20px 60px;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .hero-sub { font-size: var(--text-base); }
+  .hero-pills { gap: 6px; }
+  .hero-pill { padding: 7px 14px; font-size: 0.7rem; }
+
+  .detail-inner { padding: 0 20px 48px; }
+
+  .pricing-card { padding: 36px 28px; }
+  .pricing-amount { font-size: 4rem; }
+
+  .proof-bar-inner { gap: 8px; }
+  .proof-bar span { font-size: var(--text-xs); }
+
+  .mobile-sticky-cta { display: block; }
+  .site-footer { padding-bottom: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hidden SVG Sprite -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24">
+    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24">
+    <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24">
+    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.21 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-pill" viewBox="0 0 24 24">
+    <path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-droplet" viewBox="0 0 24 24">
+    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-thermometer" viewBox="0 0 24 24">
+    <path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-ear" viewBox="0 0 24 24">
+    <path d="M6 8.5a6.5 6.5 0 1113 0c0 4.5-3 6-3 9.5a3 3 0 01-6 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- Skip to Content -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<header>
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <a href="https://npcwoods.com" class="nav-logo"><img src="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" alt="NPCWoods"></a>
+
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <a href="tel:4806394722" class="nav-cta">Start My $59 Visit</a>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+    <a href="#how" class="mobile-nav-link">How It Works</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#pricing" class="mobile-nav-link">Pricing</a>
+    <a href="#faq" class="mobile-nav-link">FAQ</a>
+    <a href="tel:4806394722" class="btn-primary">Start My $59 Visit</a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-trendline" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 320 C120 310, 200 280, 320 350 C440 420, 500 300, 620 260 C740 220, 820 380, 940 200 C1060 20, 1200 150, 1440 80" stroke="rgba(255,255,255,0.15)" stroke-width="3" fill="none"/>
+        <circle cx="0" cy="320" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="320" cy="350" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="620" cy="260" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="940" cy="200" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="1440" cy="80" r="5" fill="rgba(255,255,255,0.3)"/>
+        <path d="M0 400 C180 380, 360 440, 540 380 C720 320, 900 360, 1080 280 C1260 200, 1350 160, 1440 140" stroke="rgba(255,255,255,0.07)" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="pulse-dot"></span>
+        Board-Certified NP &middot; Arizona Licensed &middot; Accepting Patients
+      </div>
+      <h1 class="reveal">See exactly what<br>we treat &mdash; and how.</h1>
+      <p class="hero-sub reveal">
+        Tap any service below for the full breakdown. Every visit is <strong>$59 flat</strong> &mdash; no insurance needed, no hidden fees, no waiting rooms.
+      </p>
+      <div class="hero-pills reveal">
+        <span class="hero-pill">
+          <svg width="16" height="16"><use href="#icon-shield"/></svg>
+          HIPAA Compliant
+        </span>
+        <span class="hero-pill">
+          <svg width="16" height="16"><use href="#icon-check-circle"/></svg>
+          $59 Flat Fee
+        </span>
+        <span class="hero-pill">
+          <svg width="16" height="16"><use href="#icon-clock"/></svg>
+          Same-Day Response
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="proof-bar-inner">
+      <span>$59 Flat Fee</span><span class="dot"></span>
+      <span>No Insurance Needed</span><span class="dot"></span>
+      <span>Same-Day Response</span><span class="dot"></span>
+      <span>Real Licensed NP</span><span class="dot"></span>
+      <span>HIPAA Compliant</span><span class="dot"></span>
+      <span>Prescriptions Sent Locally</span>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="overline">The Process</span>
+        <h2>Three steps. No waiting room.</h2>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step stagger">
+          <div class="step-num">1</div>
+          <h3>Text Your Symptoms</h3>
+          <p>Send Chris a text at (480) 639-4722. No medical jargon needed &mdash; just describe what you're feeling.</p>
+        </div>
+        <div class="step stagger">
+          <div class="step-num">2</div>
+          <h3>Get Evaluated by a Real NP</h3>
+          <p>Chris personally reviews your case and applies real clinical judgment. Not an algorithm. Not a chatbot.</p>
+        </div>
+        <div class="step stagger">
+          <div class="step-num">3</div>
+          <h3>Receive Your Plan &amp; Prescription</h3>
+          <p>Get a full treatment plan and prescription sent to your nearest pharmacy &mdash; all for $59.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (Interactive) -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="overline">What We Treat</span>
+        <h2>Common conditions. Uncommon convenience.</h2>
+        <p>Tap any card to see the full breakdown of what's included in your $59 visit.</p>
+      </div>
+
+      <div class="services-grid reveal">
+        <!-- UTI -->
+        <div class="service-card stagger" data-service="uti" onclick="toggleService('uti')">
+          <div class="service-tag">MOST COMMON</div>
+          <div class="service-icon"><svg><use href="#icon-pill"/></svg></div>
+          <h3>UTI Treatment</h3>
+          <p class="service-preview">Burning, urgency, frequency? Get evaluated and treated fast &mdash; no waiting room required.</p>
+          <div class="service-price">$59 flat</div>
+          <div class="service-expand">See details <svg width="14" height="14"><use href="#icon-arrow-right"/></svg></div>
+        </div>
+
+        <!-- Sinus Infection -->
+        <div class="service-card stagger" data-service="sinus" onclick="toggleService('sinus')">
+          <div class="service-icon"><svg><use href="#icon-droplet"/></svg></div>
+          <h3>Sinus Infection</h3>
+          <p class="service-preview">Pressure, congestion, headache that won't quit. Get relief without dragging yourself to urgent care.</p>
+          <div class="service-price">$59 flat</div>
+          <div class="service-expand">See details <svg width="14" height="14"><use href="#icon-arrow-right"/></svg></div>
+        </div>
+
+        <!-- Strep & Ear -->
+        <div class="service-card stagger" data-service="strep" onclick="toggleService('strep')">
+          <div class="service-icon"><svg><use href="#icon-thermometer"/></svg></div>
+          <h3>Strep Throat &amp; Ear Infections</h3>
+          <p class="service-preview">Sore throat making it hard to swallow? Earache keeping you up? Get treated today.</p>
+          <div class="service-price">$59 flat</div>
+          <div class="service-expand">See details <svg width="14" height="14"><use href="#icon-arrow-right"/></svg></div>
+        </div>
+
+        <!-- ED Treatment -->
+        <div class="service-card stagger" data-service="ed" onclick="toggleService('ed')">
+          <div class="service-tag">DISCREET</div>
+          <div class="service-icon"><svg><use href="#icon-shield"/></svg></div>
+          <h3>Erectile Dysfunction</h3>
+          <p class="service-preview">Confidential evaluation from home. No awkward waiting rooms. Prescriptions if appropriate.</p>
+          <div class="service-price">$59 flat</div>
+          <div class="service-expand">See details <svg width="14" height="14"><use href="#icon-arrow-right"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL PANELS -->
+  <div class="detail-panel" id="panel-uti">
+    <div class="detail-inner">
+      <div class="detail-left">
+        <h2>UTI Treatment</h2>
+        <p>Urinary tract infections are painful, disruptive, and incredibly common &mdash; but they shouldn't require an hour-long wait at urgent care. Your Nurse Practitioner will take a thorough symptom history, ask the right clinical questions, rule out complications, and prescribe the right antibiotic sent directly to your preferred pharmacy.</p>
+        <a href="tel:4806394722" class="btn-primary">
+          <svg width="18" height="18"><use href="#icon-phone"/></svg>
+          Start My Visit
+        </a>
+      </div>
+      <div class="detail-right">
+        <h3>What's Included in Your $59 Visit</h3>
+        <ul>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Complete virtual consultation with a licensed NP</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Clinical symptom evaluation &amp; thorough history</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Diagnosis and personalized treatment plan</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Prescription sent to your pharmacy</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Follow-up guidance &mdash; what to watch for</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="panel-sinus">
+    <div class="detail-inner">
+      <div class="detail-left">
+        <h2>Sinus Infection Treatment</h2>
+        <p>That pounding pressure behind your eyes, the congestion that won't quit, the headache that makes it hard to think. Your NP will take a detailed history of your symptoms &mdash; duration, severity, nasal discharge, facial pain &mdash; and determine the right treatment plan to get you relief fast.</p>
+        <a href="tel:4806394722" class="btn-primary">
+          <svg width="18" height="18"><use href="#icon-phone"/></svg>
+          Start My Visit
+        </a>
+      </div>
+      <div class="detail-right">
+        <h3>What's Included in Your $59 Visit</h3>
+        <ul>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Secure telehealth consultation with a licensed NP</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Detailed symptom assessment &amp; medical history</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Personalized treatment plan</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Antibiotic or other Rx sent to your pharmacy</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Guidance on when to follow up or seek further care</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="panel-strep">
+    <div class="detail-inner">
+      <div class="detail-left">
+        <h2>Strep Throat &amp; Ear Infections</h2>
+        <p>A sore throat that makes it painful to swallow. An earache that won't let up. Getting into urgent care often means hours of waiting, only to spend five minutes with a provider. Your NP will evaluate your symptoms thoroughly and get you the right treatment &mdash; from wherever you are.</p>
+        <a href="tel:4806394722" class="btn-primary">
+          <svg width="18" height="18"><use href="#icon-phone"/></svg>
+          Start My Visit
+        </a>
+      </div>
+      <div class="detail-right">
+        <h3>What's Included in Your $59 Visit</h3>
+        <ul>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Complete telehealth evaluation with a licensed NP</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Thorough symptom &amp; medication history review</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Clinical diagnosis and treatment plan</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Prescription sent to your preferred pharmacy</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Clear follow-up instructions &amp; red flag guidance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="panel-ed">
+    <div class="detail-inner">
+      <div class="detail-left">
+        <h2>Erectile Dysfunction Treatment</h2>
+        <p>ED affects millions of men, but the biggest barrier isn't the condition &mdash; it's the discomfort of discussing it face to face. Telehealth removes that entirely. Connect privately with your NP, get evaluated, and if clinically appropriate, receive a prescription for sildenafil or tadalafil sent to your pharmacy.</p>
+        <a href="tel:4806394722" class="btn-primary">
+          <svg width="18" height="18"><use href="#icon-phone"/></svg>
+          Start My Visit &mdash; It's Confidential
+        </a>
+      </div>
+      <div class="detail-right">
+        <h3>What's Included in Your $59 Visit</h3>
+        <ul>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Confidential consultation with a licensed NP</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Complete health history &amp; cardiovascular risk review</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Personalized treatment plan for your situation</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Prescription sent to your pharmacy (if appropriate)</li>
+          <li><div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div> Usage guidance, expectations &amp; follow-up plan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="overline">Simple Pricing</span>
+        <h2>One visit. One price. No surprises.</h2>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-amount"><span class="dollar">$</span>59</div>
+        <div class="pricing-label">Per visit &middot; Flat fee</div>
+
+        <div class="pricing-list">
+          <div class="pricing-item included">
+            <div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div>
+            Full clinical evaluation
+          </div>
+          <div class="pricing-item included">
+            <div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div>
+            Diagnosis &amp; treatment plan
+          </div>
+          <div class="pricing-item included">
+            <div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div>
+            Prescriptions if warranted
+          </div>
+          <div class="pricing-item included">
+            <div class="icon-circle green"><svg width="12" height="12"><use href="#icon-check"/></svg></div>
+            Follow-up guidance included
+          </div>
+        </div>
+
+        <hr class="pricing-divider">
+
+        <div class="pricing-list">
+          <div class="pricing-item none-needed">
+            <div class="icon-circle muted"><svg width="10" height="10"><use href="#icon-x"/></svg></div>
+            Insurance required
+          </div>
+          <div class="pricing-item none-needed">
+            <div class="icon-circle muted"><svg width="10" height="10"><use href="#icon-x"/></svg></div>
+            Waiting room
+          </div>
+          <div class="pricing-item none-needed">
+            <div class="icon-circle muted"><svg width="10" height="10"><use href="#icon-x"/></svg></div>
+            Video call needed
+          </div>
+          <div class="pricing-item none-needed">
+            <div class="icon-circle muted"><svg width="10" height="10"><use href="#icon-x"/></svg></div>
+            Hidden fees
+          </div>
+        </div>
+
+        <p class="pricing-tagline">No hidden fees. Ever.</p>
+
+        <div class="pricing-cta">
+          <a href="tel:4806394722" class="btn-primary pricing-btn">Start My Visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="overline">Compare &amp; Save</span>
+        <h2>See how NPCWoods stacks up.</h2>
+        <p>Same quality care. Fraction of the cost. Zero hassle.</p>
+      </div>
+
+      <div class="compare-grid reveal">
+        <div class="compare-card stagger">
+          <div class="compare-label">ER Visit</div>
+          <div class="compare-amount strikethrough">$500+</div>
+          <p class="compare-note">Average ER copay with insurance. Hours of waiting. For the same conditions.</p>
+        </div>
+        <div class="compare-card highlight stagger">
+          <div class="compare-label">NPCWoods</div>
+          <div class="compare-amount">$59</div>
+          <p class="compare-note">Flat fee. No insurance needed. Same-day response. Prescription included.</p>
+        </div>
+        <div class="compare-card stagger">
+          <div class="compare-label">Urgent Care</div>
+          <div class="compare-amount strikethrough">$150+</div>
+          <p class="compare-note">Average copay + waiting + drive time. Sometimes more without insurance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="overline">Common Questions</span>
+        <h2>Got questions? We've got answers.</h2>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I need insurance?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            Nope. NPCWoods is $59 flat &mdash; no insurance billing, no copays, no surprise charges. You pay one price and that's it. We actually designed it this way so care stays simple and affordable.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How fast will I hear back?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            Same day. Most patients hear back within a few hours. You'll connect with a real Nurse Practitioner &mdash; not a chatbot, not a questionnaire that goes into a black hole.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will I get a prescription?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            If it's clinically appropriate, yes &mdash; your prescription gets sent directly to your preferred pharmacy. Your NP will only prescribe what's safe and right for your specific situation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What states do you serve?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            NPCWoods currently serves patients in Georgia, North Carolina, Arizona, New Mexico, Nevada, Iowa, and more. Text us to confirm your state.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is my information private?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            100%. All visits are HIPAA-compliant and conducted through a secure telehealth platform. Your health information is never shared, sold, or used for anything other than your care.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Who is my provider?
+            <svg class="faq-chevron"><use href="#icon-chevron-down"/></svg>
+          </button>
+          <div class="faq-answer" role="region">
+            You'll be seen by Chris &mdash; a board-certified Nurse Practitioner. Not a random provider from a call center. You get a real person who takes the time to understand what you're dealing with.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2>You deserve care that shows up.</h2>
+      <p>No appointment. No waiting room. No insurance required. Just real healthcare &mdash; from a real person &mdash; for $59.</p>
+      <a href="tel:4806394722" class="btn-inverted">
+        <svg width="18" height="18" class="icon-brand"><use href="#icon-phone"/></svg>
+        Start My $59 Visit Now
+      </a>
+      <div class="cta-phone">
+        Questions first? Text anytime &mdash; no obligation. <a href="tel:4806394722">(480) 639-4722</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo"><img src="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" alt="NPCWoods" class="footer-logo-img"></span>
+      <p>Telemedicine that shows up. $59 flat-fee visits from a board-certified nurse practitioner.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#services">Services We Treat</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Text or call anytime:</p>
+      <a href="tel:4806394722">(480) 639-4722</a>
+      <p>npcwoods.com</p>
+    </div>
+  </div>
+  <div style="text-align:center; margin-bottom:12px;"><a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com"><img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" /></a></div>
+<div class="footer-bottom">
+    <p>&copy; 2026 NPCWoods Telemedicine &middot; Chris Woods, MSN, FNP-C &middot; HIPAA Compliant</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="mobile-sticky-cta" id="mobileCta">
+  <a href="tel:4806394722" class="btn-primary">Start My $59 Visit</a>
+</div>
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "NPCWoods Telemedicine",
+  "description": "Online telemedicine visits with a board-certified Nurse Practitioner — $59 flat fee, no insurance required. Serving all of Arizona.",
+  "url": "https://npcwoods.com/services/",
+  "telephone": "+14806394722",
+  "priceRange": "$59",
+  "image": "https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg",
+  "areaServed": {
+    "@type": "State",
+    "name": "Arizona",
+    "sameAs": "https://en.wikipedia.org/wiki/Arizona"
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceType": "Telemedicine",
+    "availableLanguage": "English"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Telemedicine Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalTherapy",
+          "name": "UTI Treatment Online",
+          "description": "Fast UTI diagnosis and prescription — no urine sample needed for uncomplicated cases.",
+          "url": "https://npcwoods.com/uti-treatment/"
+        },
+        "price": "59",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalTherapy",
+          "name": "Sinus Infection Treatment",
+          "description": "Antibiotics and relief for sinus infections — prescribed same day via text-based visit.",
+          "url": "https://npcwoods.com/sinus-infection-treatment/"
+        },
+        "price": "59",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalTherapy",
+          "name": "Strep Throat & Ear Infection Treatment",
+          "description": "Quick evaluation and treatment for strep throat and ear infections from home.",
+          "url": "https://npcwoods.com/strep-throat-ear-infection/"
+        },
+        "price": "59",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalTherapy",
+          "name": "ED Treatment",
+          "description": "Discreet erectile dysfunction treatment — prescribed by a real NP, not a chatbot.",
+          "url": "https://npcwoods.com/ed-treatment/"
+        },
+        "price": "59",
+        "priceCurrency": "USD"
+      }
+    ]
+  },
+  "medicalSpecialty": "PrimaryCare",
+  "isAcceptingNewPatients": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a visit cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every visit is a flat $59 — no hidden fees, no insurance required, no surprise bills."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nope. NPCWoods is a cash-pay practice. $59 flat — that's it. No insurance needed, no copays, no deductibles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast will I get a response?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most patients hear back within minutes during business hours. Your visit is handled by a real Nurse Practitioner — not a bot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you prescribe medications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — as a board-certified Nurse Practitioner, Chris can prescribe antibiotics, antivirals, ED medications, and more. Prescriptions are sent directly to your pharmacy."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+// ========================================
+// SCROLL REVEAL
+// ========================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ========================================
+// NAV — Scroll shadow
+// ========================================
+const nav = document.getElementById('nav');
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const heroBottom = hero ? hero.offsetHeight - 100 : 10;
+  nav.classList.toggle('scrolled', window.scrollY > heroBottom);
+}, { passive: true });
+
+// ========================================
+// HAMBURGER MENU
+// ========================================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+// ========================================
+// INTERACTIVE SERVICE CARDS
+// ========================================
+let activeService = null;
+
+function toggleService(serviceId) {
+  const allPanels = document.querySelectorAll('.detail-panel');
+  const allCards = document.querySelectorAll('.service-card');
+  const panel = document.getElementById('panel-' + serviceId);
+  const card = document.querySelector('[data-service="' + serviceId + '"]');
+
+  if (activeService === serviceId) {
+    panel.classList.remove('open');
+    card.classList.remove('active');
+    activeService = null;
+    return;
+  }
+
+  allPanels.forEach(p => p.classList.remove('open'));
+  allCards.forEach(c => c.classList.remove('active'));
+
+  panel.classList.add('open');
+  card.classList.add('active');
+  activeService = serviceId;
+
+  setTimeout(() => {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 150);
+}
+
+// ========================================
+// FAQ ACCORDION
+// ========================================
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// ========================================
+// STICKY MOBILE CTA
+// ========================================
+const mobileCta = document.getElementById('mobileCta');
+const heroEl = document.querySelector('.hero');
+
+if (mobileCta && heroEl) {
+  const ctaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      mobileCta.style.transform = entry.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+    });
+  }, { threshold: 0 });
+
+  mobileCta.style.transition = 'transform 0.3s ease';
+  mobileCta.style.transform = 'translateY(100%)';
+  ctaObserver.observe(heroEl);
+}
+</script>
+
+</body>
+</html>
