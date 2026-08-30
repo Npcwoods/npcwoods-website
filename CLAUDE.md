@@ -16,6 +16,7 @@ Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room = 
 - **Verify the clean URL** (no query string). A cache-bust can show the real HTML while `https://npcwoods.com/<path>/` still serves a ~15KB empty WordPress shell. Done means a no-query-string GET is 200, city templates are ~60KB+, and the locked title and H1 are present.
 - **Do not link empty shells.** Many city × condition URLs are WP stubs with no title or H1. Fetch the live URL before adding it to `/sitemap/`, `/conditions/`, or a state hub.
 - **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
+- **Named hospitals / clinic brands** (Wellstar, Banner, HonorHealth, Piedmont, Northside, Peachtree, NextCare, etc.) stay out of plated story copy. Streets and towns are fine. Names belong only in a head-to-head compare table or list.
 - **Homepage:** live `/` is `page-npcwoods-home.php` on Twenty Twenty-Four, forced by `npcwoods-force-php-templates.php`. Read `HOMEPAGE.md` before any homepage work.
 
 Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship.

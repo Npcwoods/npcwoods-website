@@ -5,6 +5,13 @@
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
      so predefining a no-op fbq means fbevents.js never loads on this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
 
 <meta charset="UTF-8">
 <!-- NPCWoods Tracking: Ahrefs Analytics -->
@@ -899,23 +906,6 @@ img{display:block;max-width:100%}
 .hero{padding-top:28px}
 
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
 <link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
@@ -1533,6 +1523,26 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- CITY UTI DOORS (kitchen 2026-08-26) -->
+<section class="section">
+  <div class="section-inner" style="text-align:center">
+    <span class="section-kicker">City UTI doors</span>
+    <h2 class="section-title">Same $59 text visit. Your town.</h2>
+    <p style="font-size:15px;color:var(--body);max-width:560px;margin:0 auto 8px">Live city plates with food on them. Not a directory of empty shells.</p>
+    <div class="cross-wrap">
+      <a href="https://npcwoods.com/uti-treatment/atlanta-ga/" class="cross-link">Atlanta, GA</a>
+      <a href="https://npcwoods.com/uti-treatment/woodstock-ga/" class="cross-link">Woodstock, GA</a>
+      <a href="https://npcwoods.com/uti-treatment/canton-ga/" class="cross-link">Canton, GA</a>
+      <a href="https://npcwoods.com/uti-treatment/savannah-ga/" class="cross-link">Savannah, GA</a>
+      <a href="https://npcwoods.com/uti-treatment/charlotte-nc/" class="cross-link">Charlotte, NC</a>
+      <a href="https://npcwoods.com/uti-treatment/raleigh-nc/" class="cross-link">Raleigh, NC</a>
+      <a href="https://npcwoods.com/uti-treatment/phoenix-az/" class="cross-link">Phoenix, AZ</a>
+      <a href="https://npcwoods.com/uti-treatment/denver-co/" class="cross-link">Denver, CO</a>
+      <a href="https://npcwoods.com/uti-treatment/las-vegas-nv/" class="cross-link">Las Vegas, NV</a>
+    </div>
+  </div>
+</section>
+
 <!-- SPOKE GUIDES -->
 <section class="section section-light">
   <div class="section-inner">
@@ -1684,7 +1694,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
-      NPI: 1285125468 &bull; Address: 125 Medical Park Ln Ste F, Murphy, NC 28906 &bull; Phone: (480) 639-4722<br>
+      NPI: 1285125468 &bull; Mailing address: Scottsdale, AZ &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
     </div>
@@ -1709,10 +1719,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "125 Medical Park Ln Ste F",
-      "addressLocality": "Murphy",
-      "addressRegion": "NC",
-      "postalCode": "28906",
+      "addressLocality": "Scottsdale",
+      "addressRegion": "AZ",
       "addressCountry": "US"
     }
   }

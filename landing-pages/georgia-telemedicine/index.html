@@ -761,23 +761,14 @@ a { text-decoration: none; color: inherit; }
   }
 </style>
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel disabled: no BAA with Meta. This no-op stub also blocks GTM-injected pixel code on this health page. -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -1354,12 +1345,12 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       <h2>Find your city, see what we treat there.</h2>
     </div>
     <div class="nl-city-grid">
-      <a href="#" class="nl-city">
+      <a href="https://npcwoods.com/uti-treatment/atlanta-ga/" class="nl-city">
         <div class="nl-row"><h3>Atlanta</h3><span class="nl-arrow">&rarr;</span></div>
         <div class="nl-pop">~498K residents</div>
         <div class="nl-top">Top text reasons: <b>UTI &middot; sinus &middot; strep</b></div>
       </a>
-      <a href="#" class="nl-city">
+      <a href="https://npcwoods.com/uti-treatment/savannah-ga/" class="nl-city">
         <div class="nl-row"><h3>Savannah</h3><span class="nl-arrow">&rarr;</span></div>
         <div class="nl-pop">~147K residents</div>
         <div class="nl-top">Top text reasons: <b>sinus &middot; UTI &middot; skin infection</b></div>
@@ -1406,6 +1397,16 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       <h2>North Georgia mountain towns, covered too.</h2>
     </div>
     <div class="nl-city-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto">
+      <a href="https://npcwoods.com/uti-treatment/woodstock-ga/" class="nl-city">
+        <div class="nl-row"><h3>Woodstock</h3><span class="nl-arrow">&rarr;</span></div>
+        <div class="nl-pop">Cherokee County</div>
+        <div class="nl-top">Weekend clinic closed &mdash; <b>UTI by text, $59</b></div>
+      </a>
+      <a href="https://npcwoods.com/uti-treatment/canton-ga/" class="nl-city">
+        <div class="nl-row"><h3>Canton</h3><span class="nl-arrow">&rarr;</span></div>
+        <div class="nl-pop">Cherokee County</div>
+        <div class="nl-top">Riverstone weeknight skip &mdash; <b>UTI by text, $59</b></div>
+      </a>
       <a href="https://npcwoods.com/blairsville-ga/" class="nl-city">
         <div class="nl-row"><h3>Blairsville</h3><span class="nl-arrow">&rarr;</span></div>
         <div class="nl-pop">Union County</div>
@@ -1585,7 +1586,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
-      NPI: 1285125468 &bull; Address: 125 Medical Park Ln Ste F, Murphy, NC 28906 &bull; Phone: (480) 639-4722<br>
+      NPI: 1285125468 &bull; Mailing address: Scottsdale, AZ &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
     </div>
@@ -1610,10 +1611,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "125 Medical Park Ln Ste F",
-      "addressLocality": "Murphy",
-      "addressRegion": "NC",
-      "postalCode": "28906",
+      "addressLocality": "Scottsdale",
+      "addressRegion": "AZ",
       "addressCountry": "US"
     }
   }

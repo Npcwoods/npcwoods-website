@@ -49,6 +49,7 @@ Many city × condition URLs are empty WP stubs. Fetch first. If there is no titl
 - Don't touch homepage CSS or mu-plugins "while you're in there."
 - Do not touch `/pay`, gclid, or tracking unless Chris reopens that hop.
 - No doctor / physician / MD / insurance language.
+- Do not name hospitals or clinic brands in story copy except in a head-to-head compare table or list. Streets and towns are fine.
 - No generated likeness of Chris. Real photo only.
 - No patient data anywhere in the launch.
 
