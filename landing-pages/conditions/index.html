@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="NPCWoods treats UTIs, sinus infections, dental pain, and more via text for $59. No paperwork. See our full list of conditions.">
 <meta name="theme-color" content="#2563EB">
-<title>Conditions We Treat | $59 Telehealth | NPCWoods</title>
+<title>$59 Online Urgent Care | Treat UTI, Sinus & GLP-1 | NPCWoods</title>
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="apple-touch-icon" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="canonical" href="https://npcwoods.com/conditions/">
@@ -19,7 +19,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://npcwoods.com/conditions/">
-<meta property="og:title" content="Conditions We Treat | $59 Telehealth | NPCWoods">
+<meta property="og:title" content="$59 Online Urgent Care | Treat UTI, Sinus & GLP-1 | NPCWoods">
 <meta property="og:description" content="NPCWoods treats UTIs, sinus infections, dental pain, ear infections, and more via text for $59. $59 flat fee. No paperwork.">
 <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
 
@@ -610,24 +610,58 @@ a { text-decoration: none; color: inherit; }
 }
 </script>
 
-<!-- Schema: Person -->
+<!-- Schema: Person + MedicalWebPage (NPI entity, not Physician) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://npcwoods.com/#chris-woods",
-  "url": "https://npcwoods.com/about/",
-  "name": "Chris Woods",
-  "jobTitle": "Nurse Practitioner",
-  "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-  "worksFor": {
-    "@id": "https://npcwoods.com/#medical-business"
-  },
-  "hasCredential": {
-    "@type": "EducationalOccupationalCredential",
-    "credentialCategory": "license",
-    "name": "MSN, APRN, FNP-C"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://npcwoods.com/#chris-woods",
+      "url": "https://npcwoods.com/about/",
+      "name": "Chris Woods",
+      "honorificSuffix": "MSN, APRN, FNP-C",
+      "jobTitle": "Licensed Nurse Practitioner",
+      "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+      "worksFor": {
+        "@id": "https://npcwoods.com/#medical-business"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NPI",
+        "value": "1285125468"
+      },
+      "sameAs": [
+        "https://npiregistry.cms.hhs.gov/provider-view/1285125468"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certification",
+          "name": "Family Nurse Practitioner - Certified (FNP-C)"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certification",
+          "name": "Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)"
+        }
+      ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://npcwoods.com/conditions/#webpage",
+      "url": "https://npcwoods.com/conditions/",
+      "name": "$59 Online Urgent Care | Treat UTI, Sinus & GLP-1 | NPCWoods",
+      "isPartOf": { "@id": "https://npcwoods.com/#website" },
+      "about": { "@id": "https://npcwoods.com/#medical-business" },
+      "reviewedBy": { "@id": "https://npcwoods.com/#chris-woods" },
+      "lastReviewed": "2026-09-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2"]
+      }
+    }
+  ]
 }
 </script>
 

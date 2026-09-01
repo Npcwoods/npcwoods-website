@@ -257,6 +257,7 @@ class SeoAuditFixTests(unittest.TestCase):
             "landing-pages/learn/yeast-infection/index.html",
             "landing-pages/ear-infection-treatment/index.html",
             "landing-pages/faq/index.html",
+            "landing-pages/conditions/index.html",
             "landing-pages/pricing/index.html",
             "landing-pages/medications/cephalexin/index.html",
             "landing-pages/medications/amoxicillin/index.html",

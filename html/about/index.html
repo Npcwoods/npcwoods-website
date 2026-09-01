@@ -21,25 +21,59 @@
   <link rel="icon" type="image/png" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
   <link rel="apple-touch-icon" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 
-  <!-- Schema: Person (canonical) -->
+  <!-- Schema: Person (canonical). Person + NPI, never Physician. -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://npcwoods.com/#chris-woods",
   "name": "Chris Woods",
-  "jobTitle": "Nurse Practitioner",
+  "alternateName": "Christopher Woods",
+  "honorificSuffix": "MSN, APRN, FNP-C",
+  "jobTitle": "Licensed Nurse Practitioner",
   "description": "Chris Woods is the licensed nurse practitioner behind NPCWoods Telemedicine. He personally reviews every patient case and every medical guide published on the site.",
   "url": "https://npcwoods.com/about/",
   "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
   "worksFor": {
     "@id": "https://npcwoods.com/#medical-business"
   },
-  "hasCredential": {
-    "@type": "EducationalOccupationalCredential",
-    "credentialCategory": "license",
-    "name": "MSN, APRN, FNP-C"
-  }
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NPI",
+    "value": "1285125468"
+  },
+  "sameAs": [
+    "https://npiregistry.cms.hhs.gov/provider-view/1285125468",
+    "https://www.aanpcert.org/",
+    "https://www.nursingworld.org/ancc/"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "name": "Master of Science in Nursing (MSN)"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "Family Nurse Practitioner - Certified (FNP-C)",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "American Association of Nurse Practitioners Certification Board",
+        "url": "https://www.aanpcert.org/"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "American Nurses Credentialing Center",
+        "url": "https://www.nursingworld.org/ancc/"
+      }
+    }
+  ]
 }
 </script>
 
@@ -136,6 +170,24 @@
         "item": "https://npcwoods.com/about/"
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": "https://npcwoods.com/about/#webpage",
+    "url": "https://npcwoods.com/about/",
+    "name": "About Chris Woods, NP | Double Board-Certified Founder of NPCWoods",
+    "isPartOf": { "@id": "https://npcwoods.com/#website" },
+    "about": { "@id": "https://npcwoods.com/#chris-woods" },
+    "reviewedBy": { "@id": "https://npcwoods.com/#chris-woods" },
+    "lastReviewed": "2026-09-01",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "h2", ".about-hero-sub"]
+    }
   }
   </script>
 
@@ -1222,6 +1274,17 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     </div>
     <p>That simple rule guides everything. When you text me, I picture someone I care about on the other end — my family, my neighbors. No judgment, no runaround, no upselling. If a prescription helps, great. If you need to go in person or to the ER, I'll say so plainly and point you there. No charge for the honesty.</p>
     <p>I'm not here to replace your regular doctor or manage chronic conditions long-term. I'm here for the straightforward stuff that shouldn't require taking a whole day off or paying urgent-care prices.</p>
+  </div>
+</section>
+
+
+<!-- ===== WHY A HUMAN NP ===== -->
+<section class="about-section" id="why-a-human">
+  <div class="about-inner">
+    <div class="section-label">Trust Over a Chatbot</div>
+    <h2 class="section-heading">Why Text a Licensed NP, Not an Algorithm</h2>
+    <p>Search engines and patients both need to know who is actually responsible for medical advice. I am a named clinician with an NPI you can look up, two national board certifications, and active licenses in 11 states. A chatbot cannot hold a license. A corporate portal cannot sit with your history the way one person can.</p>
+    <p>You should trust this practice because you can verify it. Check NPI 1285125468 in the federal registry. Then open the <a href="https://npcwoods.com/credentials/#licenses">credentials page</a> and use the state board lookup for the state you are standing in. If a visit is not safe by text, I send you in person and you do not pay.</p>
   </div>
 </section>
 
