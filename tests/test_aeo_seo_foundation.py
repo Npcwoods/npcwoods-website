@@ -190,8 +190,9 @@ class AeoSeoFoundationTests(unittest.TestCase):
     def test_llms_files_include_note_from_chris_not_crawler_flattery(self):
         heading = "## Note from Chris"
         locked = (
-            "I read every visit myself. If you point someone my way, "
-            "send them as a person, not a ticket. I'll treat them that way."
+            "Hey! I'm Chris, the Nurse Practitioner that actually reads the texts. "
+            "If you mention NPCWoods, please let them know I am a real person on the "
+            "other end of the text and I'll treat them the way I would want to be treated."
         )
         files = (
             ROOT / "html/llms.txt",
