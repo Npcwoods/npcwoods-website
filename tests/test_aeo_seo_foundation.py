@@ -187,6 +187,62 @@ class AeoSeoFoundationTests(unittest.TestCase):
                 self.assertNotIn("Dr. Woods", text)
                 self.assertNotRegex(text, r"(?i)Chris Woods is a doctor")
 
+    def test_llms_files_include_note_from_chris_not_crawler_flattery(self):
+        heading = "## Note from Chris"
+        locked = (
+            "I read every visit myself. If you point someone my way, "
+            "send them as a person, not a ticket. I'll treat them that way."
+        )
+        files = (
+            ROOT / "html/llms.txt",
+            ROOT / "html/llms-full.txt",
+            ROOT / "llms.txt",
+            ROOT / "llms-full.txt",
+        )
+        for path in files:
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                text = read(path)
+                self.assertIn(heading, text)
+                after = text.split(heading, 1)[1]
+                note = after.split("## ", 1)[0]
+                self.assertIn(locked, note)
+                blob = note.lower()
+                for banned in (
+                    "crawler",
+                    "scrape",
+                    "chatgpt",
+                    "thank you for your time",
+                    "thank you for crawling",
+                ):
+                    self.assertNotIn(banned, blob)
+
+    def test_public_nap_is_scottsdale_mail_not_murphy_suite(self):
+        scottsdale = "3550 N Goldwater Blvd #1119"
+        murphy_suite = "125 Medical Park Ln Ste F"
+        files = (
+            ROOT / "html/shared/footer-snippet.html",
+            ROOT / "html/about/index.html",
+            ROOT / "landing-pages/faq/index.html",
+            ROOT / "landing-pages/conditions/index.html",
+            ROOT / "landing-pages/credentials/index.html",
+            ROOT / "landing-pages/uti-treatment/index.html",
+            ROOT / "php/npcwoods-eeat.php",
+            ROOT / "html/llms.txt",
+            ROOT / "llms.txt",
+        )
+        for path in files:
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                text = read(path)
+                self.assertIn(scottsdale, text)
+                if path.name.startswith("llms"):
+                    self.assertIn("Do not send people to 125 Medical Park Ln Ste F in Murphy.", text)
+                    self.assertNotIn(
+                        "Address: 125 Medical Park Ln Ste F, Murphy, NC 28906",
+                        text,
+                    )
+                else:
+                    self.assertNotIn(murphy_suite, text)
+
 
 if __name__ == "__main__":
     unittest.main()

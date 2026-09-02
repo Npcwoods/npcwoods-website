@@ -141,10 +141,14 @@ add_action('wp_head', function() {
             array('@type' => 'State', 'name' => 'Utah'),
         ),
         // Ratings live on the Google Business Profile — self-hosted review markup violates Google policy
+        // Telemedicine mailing / contact only. Not a walk-in clinic. In-person
+        // medical-park suites stay on NPI and off this site.
         'address' => array(
             '@type' => 'PostalAddress',
+            'streetAddress' => '3550 N Goldwater Blvd #1119',
             'addressLocality' => 'Scottsdale',
             'addressRegion' => 'AZ',
+            'postalCode' => '85251',
             'addressCountry' => 'US',
         ),
         'paymentAccepted' => 'Cash, Credit Card, HSA, FSA',
