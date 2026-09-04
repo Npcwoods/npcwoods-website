@@ -34,6 +34,7 @@ add_action("init", function() {
         "/cost-savings-preview/"     => "/cost-savings-convenience/",
         "/swimmers-ear-preview/"     => "/ear-pain-after-swimming-swimmers-ear/",
         "/affordable-telemedicine-arizona-no-insurance/" => "/pricing/",
+        "/conditions/albuterol-inhaler-refill-preview/" => "/conditions/",
         "/pharmacy-info/"            => "/pharmacy/",
         "/states/"                   => "/",
         "/phoenix-telemedicine/"      => "/arizona-telemedicine/",
@@ -62,6 +63,20 @@ add_action("init", function() {
         header("Cache-Control: no-cache, no-store, must-revalidate");
         header("Location: " . home_url($redirects[$path]), true, 301);
         exit;
+    }
+    // Leftover preview posts still 200 at ?p=ID even after the slug 301s.
+    $preview_ids = [
+        825 => "/cost-savings-convenience/",
+        839 => "/ear-pain-after-swimming-swimmers-ear/",
+        802 => "/conditions/",
+    ];
+    if (isset($_GET["p"])) {
+        $pid = (int) $_GET["p"];
+        if (isset($preview_ids[$pid])) {
+            header("Cache-Control: no-cache, no-store, must-revalidate");
+            header("Location: " . home_url($preview_ids[$pid]), true, 301);
+            exit;
+        }
     }
 });
 add_action("template_redirect", function() {

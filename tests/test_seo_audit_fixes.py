@@ -182,6 +182,15 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn('"/ear-pain-after-swimming-swimmers-ear/"', php)
         self.assertIn('"/affordable-telemedicine-arizona-no-insurance/"', php)
         self.assertIn('"/pricing/"', php)
+        self.assertIn('"/conditions/albuterol-inhaler-refill-preview/"', php)
+        self.assertIn('"/conditions/"', php)
+
+    def test_leftover_preview_post_ids_301_to_live_plates(self):
+        php = read("php/npcwoods-redirects.php")
+        self.assertIn("$_GET[\"p\"]", php)
+        self.assertIn('825 => "/cost-savings-convenience/"', php)
+        self.assertIn('839 => "/ear-pain-after-swimming-swimmers-ear/"', php)
+        self.assertIn('802 => "/conditions/"', php)
 
     def test_homepage_yoast_overrides_match_locked_title(self):
         php = read("php/npcwoods-faq-schema.php")
