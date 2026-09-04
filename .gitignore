@@ -111,3 +111,4 @@ landing-pages/test-*.html
 *.local.md
 scratch/
 .superpowers/
+.worktrees/
