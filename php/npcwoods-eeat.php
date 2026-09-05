@@ -160,7 +160,12 @@ add_action('wp_head', function() {
         ),
     );
 
-    $graph = array($person, $business);
+    // Homepage footer already owns MedicalBusiness. Emitting it here too
+    // prints the entity twice on /.
+    $graph = array($person);
+    if (!$is_home) {
+        $graph[] = $business;
+    }
 
     if ($is_post && $post_id) {
         $headline = wp_strip_all_tags(get_the_title($post_id));

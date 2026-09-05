@@ -55,6 +55,13 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         """The shared footer owns the site-wide MedicalBusiness entity."""
         self.assertEqual(0, len(re.findall(r'"@type"\s*:\s*"MedicalBusiness"', self.text)))
 
+    def test_eeat_plugin_does_not_emit_medical_business_on_the_front_page(self):
+        php = (ROOT / "php" / "npcwoods-eeat.php").read_text(encoding="utf-8")
+        self.assertIn("$graph = array($person);", php)
+        self.assertIn("if (!$is_home)", php)
+        self.assertIn("$graph[] = $business;", php)
+        self.assertIn("Ratings live on the Google Business Profile", php)
+
     def test_homepage_response_time_matches_guardian_canonical(self):
         self.assertIn("usually within a few hours", self.text)
         self.assertNotIn("Most visits wrap up in under an hour", self.text)

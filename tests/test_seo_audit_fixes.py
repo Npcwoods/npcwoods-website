@@ -292,15 +292,19 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn('content="0; url=https://npcwoods.com/pricing/"', html)
         self.assertNotIn("insurance", html.lower())
 
-    def test_pricing_schema_uses_service_not_product_markup(self):
+    def test_pricing_schema_uses_medical_service_not_product_markup(self):
         nodes = graph_nodes("landing-pages/pricing/index.html")
         product_nodes = [node for node in nodes if node_has_type(node, "Product")]
-        service_nodes = [node for node in nodes if node_has_type(node, "Service")]
+        generic_service = [node for node in nodes if node_has_type(node, "Service")]
+        medical_service = [node for node in nodes if node_has_type(node, "MedicalService")]
 
         self.assertEqual([], product_nodes)
-        self.assertEqual(1, len(service_nodes))
+        self.assertEqual([], generic_service)
+        self.assertEqual(1, len(medical_service))
+        self.assertNotIn("aggregateRating", medical_service[0])
+        self.assertNotIn("review", medical_service[0])
 
-        offer = service_nodes[0].get("offers", {})
+        offer = medical_service[0].get("offers", {})
         self.assertEqual("Offer", offer.get("@type"))
         self.assertEqual("59.00", offer.get("price"))
         self.assertEqual("USD", offer.get("priceCurrency"))

@@ -73,6 +73,22 @@ class AeoWaveBInjectTest(unittest.TestCase):
                 block = html[start : start + 800]
                 self.assertIn(state, block)
 
+    def test_arizona_hub_hrefs_tucson_uti_not_a_hash(self):
+        html = (ROOT / "landing-pages/arizona-telemedicine/index.html").read_text(encoding="utf-8")
+        self.assertIn('href="https://npcwoods.com/uti-treatment/tucson-az/"', html)
+        self.assertRegex(
+            html,
+            r'href="https://npcwoods.com/uti-treatment/tucson-az/"[\s\S]{0,240}<h3>Tucson</h3>',
+        )
+
+    def test_nevada_hub_hrefs_reno_uti_not_a_hash(self):
+        html = (ROOT / "landing-pages/nevada-telemedicine/index.html").read_text(encoding="utf-8")
+        self.assertIn('href="https://npcwoods.com/uti-treatment/reno-nv/"', html)
+        self.assertRegex(
+            html,
+            r'href="https://npcwoods.com/uti-treatment/reno-nv/"[\s\S]{0,240}<h3>Reno</h3>',
+        )
+
     def test_pink_eye_atf_names_the_condition(self):
         html = (ROOT / "landing-pages/pink-eye-treatment/index.html").read_text(encoding="utf-8")
         start = html.index('data-npc-aeo="atf-answer"')
