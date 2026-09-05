@@ -17,36 +17,47 @@
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1558261907814968');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"
-/></noscript>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
+<!-- Meta Pixel Code: load after idle or first tap so phones stay snappy. -->
 <script>
 (function () {
+  var loaded = false;
+  function loadPixel() {
+    if (loaded) return;
+    loaded = true;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1558261907814968');
+    fbq('init', '1428464038973925');
+    fbq('track', 'PageView');
+  }
   function fireContact() {
+    loadPixel();
     if (typeof fbq !== 'function') return;
     fbq('track', 'Contact');
     fbq('trackCustom', 'ContactSent');
   }
+  function schedulePixel() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () { loadPixel(); }, { timeout: 2500 });
+    } else {
+      setTimeout(loadPixel, 2000);
+    }
+  }
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, loadPixel, { once: true, passive: true });
+  });
+  if (document.readyState === 'complete') schedulePixel();
+  else window.addEventListener('load', schedulePixel);
   document.addEventListener('click', function (e) {
     var t = e.target;
     var a = t && t.closest ? t.closest('a[href^="sms:"]') : null;
@@ -54,6 +65,12 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
   });
 })();
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"
+/></noscript>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
+/></noscript>
 <!-- End Meta Pixel Code -->
 <style>
 :root {

@@ -66,6 +66,30 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("usually within a few hours", self.text)
         self.assertNotIn("Most visits wrap up in under an hour", self.text)
 
+    def test_homepage_fonts_do_not_block_first_paint(self):
+        self.assertIn('media="print"', self.text)
+        self.assertIn("this.media='all'", self.text)
+        self.assertNotIn(
+            'href="https://www.googletagmanager.com"',
+            self.text,
+        )
+
+    def test_homepage_defers_meta_pixel_until_idle_or_first_input(self):
+        self.assertIn("requestIdleCallback", self.text)
+        self.assertIn("loadPixel", self.text)
+        self.assertIn("connect.facebook.net/en_US/fbevents.js", self.text)
+        self.assertIn("1558261907814968", self.text)
+        self.assertIn("1428464038973925", self.text)
+
+
+    def test_save_contact_widget_waits_for_idle(self):
+        js = (ROOT / "assets" / "js" / "site.js").read_text(encoding="utf-8")
+        live = (ROOT / "html" / "assets" / "js" / "site.js").read_text(encoding="utf-8")
+        self.assertEqual(js, live)
+        self.assertIn("npcSaveWrap", js)
+        self.assertIn("requestIdleCallback", js)
+        self.assertIn("bootSaveContact", js)
+
 
 if __name__ == "__main__":
     unittest.main()

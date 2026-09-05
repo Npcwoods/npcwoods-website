@@ -99,6 +99,23 @@
  * ============================================================ */
 
 (function() {
+  var booted = false;
+  function bootSaveContact() {
+    if (booted) return;
+    booted = true;
+    bootSaveContactInner();
+  }
+  function scheduleSaveContact() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () { bootSaveContact(); }, { timeout: 4000 });
+    } else {
+      setTimeout(bootSaveContact, 2500);
+    }
+  }
+  if (document.readyState === 'complete') scheduleSaveContact();
+  else window.addEventListener('load', scheduleSaveContact);
+
+  function bootSaveContactInner() {
   var wrap = document.getElementById('npcSaveWrap');
   var btn = document.getElementById('npcSaveBtn');
   var card = document.getElementById('npcSaveCard');
@@ -162,6 +179,7 @@
       btn.style.pointerEvents = 'auto';
     }
   });
+  }
 
 })();
 
