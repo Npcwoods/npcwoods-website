@@ -77,6 +77,8 @@ STUB_IDS = {
     "/north-carolina-telemedicine/": 253,
     "/dental-pain/": 336,
     "/dental-pain/search-safe/": 995,
+    "/online-urgent-care-info/": 998,
+    "/online-urgent-care-info/search-safe/": 999,
     "/pharmacy/": 334,
     "/pharmacy-partners/": 335,
     "/pay/": 674,
