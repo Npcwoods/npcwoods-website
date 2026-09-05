@@ -80,6 +80,43 @@ class HealthPageTrackerTest(unittest.TestCase):
             "executive contains the letters 'uti' but is not a condition page",
         )
 
+    def test_transform_replaces_live_meta_pixel_with_noop_stub(self):
+        html = (
+            "<!DOCTYPE html>\n<html>\n<head>\n"
+            "<!-- Meta Pixel Code -->\n"
+            "<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;}"
+            "(window,document,'script',"
+            "'https://connect.facebook.net/en_US/fbevents.js');"
+            "fbq('init', '1428464038973925');fbq('track', 'PageView');</script>\n"
+            '<noscript><img src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"></noscript>\n'
+            "<!-- End Meta Pixel Code -->\n"
+            "</head>\n<body></body></html>\n"
+        )
+        new = mod.transform(html)
+        live = uncommented(new)
+        self.assertNotRegex(live, FBQ_INIT_RE)
+        self.assertNotIn("connect.facebook.net", live)
+        self.assertNotIn("facebook.com/tr", live)
+        self.assertIn("window.fbq = function", new)
+        self.assertIn("GTM, GA4, and Google Ads stay off", new)
+
+    def test_aeo_named_plates_keep_noop_stub_only(self):
+        pages = (
+            "landing-pages/uti-treatment/phoenix-az/index.html",
+            "landing-pages/uti-treatment/tucson-az/index.html",
+            "landing-pages/sinus-infection-treatment/phoenix-az/index.html",
+            "landing-pages/dental-pain/index.html",
+            "landing-pages/faq/index.html",
+        )
+        for rel in pages:
+            html = (ROOT / rel).read_text(encoding="utf-8")
+            live = uncommented(html)
+            with self.subTest(page=rel):
+                self.assertNotRegex(live, FBQ_INIT_RE)
+                self.assertNotIn("connect.facebook.net", live)
+                self.assertNotIn("facebook.com/tr", live)
+                self.assertIn("window.fbq = function", html)
+
 
 if __name__ == "__main__":
     unittest.main()

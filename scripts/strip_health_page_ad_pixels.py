@@ -105,6 +105,21 @@ GTM_PRECONNECT_RE = re.compile(
     r"[ \t]*<link rel=\"preconnect\" href=\"https://www\.googletagmanager\.com\">[ \t]*\n?"
 )
 
+PIXEL_BLOCK_RE = re.compile(
+    r"[ \t]*<!--\s*Meta Pixel Code\s*-->.*?"
+    r"<!--\s*End Meta Pixel Code\s*-->[ \t]*\n?",
+    re.IGNORECASE | re.DOTALL,
+)
+
+STUB_SCRIPT = """<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
+"""
+
 ORPHAN_COMMENTS = (
     re.compile(r"[ \t]*<!-- NPCWoods Tracking: GTM -->[ \t]*\n?"),
     re.compile(r"[ \t]*<!-- Google Tag Manager -->[ \t]*\n?"),
@@ -180,8 +195,11 @@ def ensure_hipaa_comment(html: str) -> str:
 
     if META_DISABLED_RE.search(html):
         html = META_DISABLED_RE.sub(inject_note, html, count=1)
-        if "window.fbq = function" in html:
-            return html
+        if "window.fbq = function" not in html:
+            html = META_DISABLED_RE.sub(
+                lambda m: m.group(0) + "\n" + STUB_SCRIPT, html, count=1
+            )
+        return html
 
     if GA_ADS_NOTE in html and "window.fbq = function" in html:
         return html
@@ -193,7 +211,8 @@ def ensure_hipaa_comment(html: str) -> str:
 
 
 def transform(html: str) -> str:
-    out = GTM_LOADER_RE.sub("", html)
+    out = PIXEL_BLOCK_RE.sub("", html)
+    out = GTM_LOADER_RE.sub("", out)
     out = GA4_ADS_RE.sub("", out)
     out = GTM_NOSCRIPT_RE.sub("", out)
     out = GTM_PRECONNECT_RE.sub("", out)
