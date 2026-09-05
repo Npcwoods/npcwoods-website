@@ -153,6 +153,15 @@
       "routed_by": "npcwoods-dental-pages.php"
     },
     {
+      "url": "https://npcwoods.com/dental-pain/search-safe/",
+      "local_source": "landing-pages/dental-pain/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
       "url": "https://npcwoods.com/do-i-need-antibiotics-sinus-infection/",
       "local_source": "landing-pages/do-i-need-antibiotics-sinus-infection/index.html",
       "exists_locally": true,

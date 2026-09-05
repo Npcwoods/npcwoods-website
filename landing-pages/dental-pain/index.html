@@ -5,6 +5,7 @@
      The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
      so predefining a no-op fbq means fbevents.js never loads on this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
+
 <script>
 window.fbq = function () {};
 window.fbq.queue = [];
@@ -13,12 +14,11 @@ window.fbq.version = '2.0';
 window._fbq = window.fbq;
 </script>
 
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tooth Infection Antibiotics Online | $59 | NPCWoods</title>
-  <meta name="description" content="Dentist won't prescribe antibiotics? No PCP? NPCWoods bridges the gap, $59, dental infection prescriptions sent to your pharmacy.">
-  <meta name="keywords" content="antibiotics for tooth infection online, dental abscess telemedicine, tooth infection treatment without dentist, emergency antibiotics for tooth infection, online prescription tooth infection">
+  <title>Dental pain without the waiting room | Text Chris, NP · $59</title>
+  <meta name="description" content="Tooth pain or a dental infection and you can't get in? Text Chris Woods, NP. Same person every time. $59. You don't pay if he can't treat you.">
+  <meta name="keywords" content="dental pain text visit, tooth infection telemedicine, weekend tooth pain, dental pain nurse practitioner, tooth pain can't see dentist">
   <meta name="theme-color" content="#2563EB">
   <link rel="canonical" href="https://npcwoods.com/dental-pain/">
   <link rel="cite-as" href="https://npcwoods.com/dental-pain/">
@@ -26,8 +26,8 @@ window._fbq = window.fbq;
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://npcwoods.com/dental-pain/">
-  <meta property="og:title" content="Tooth Infection Antibiotics Online | $59 | NPCWoods">
-  <meta property="og:description" content="Dentist won't prescribe antibiotics? No PCP? NPCWoods bridges the gap, $59, dental infection prescriptions sent to your pharmacy.">
+  <meta property="og:title" content="Dental pain without the waiting room | Text Chris, NP · $59">
+  <meta property="og:description" content="Tooth pain or a dental infection and you can't get in? Text Chris Woods, NP. Same person every time. $59. You don't pay if he can't treat you.">
   <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
 
   <!-- Favicon -->
@@ -75,6 +75,7 @@ window._fbq = window.fbq;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     body {
@@ -83,6 +84,7 @@ window._fbq = window.fbq;
       color: var(--charcoal);
       line-height: 1.6;
       overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* Typography */
@@ -227,7 +229,9 @@ window._fbq = window.fbq;
       position: relative;
       z-index: 2;
       max-width: 800px;
+      width: 100%;
       margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .hero-badge {
@@ -249,12 +253,15 @@ window._fbq = window.fbq;
       margin-bottom: 1.5rem;
       animation: fadeInDown 0.8s ease 0.2s both;
       letter-spacing: -0.5px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: manual;
     }
 
     .hero p {
       color: rgba(255,255,255,0.95);
       font-size: 1.1rem;
-      max-width: 650px;
+      max-width: min(650px, 100%);
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2.5rem;
@@ -266,8 +273,9 @@ window._fbq = window.fbq;
       display: inline-block;
       background: var(--warm-white);
       color: var(--primary);
+      -webkit-text-fill-color: var(--primary);
       padding: 1.25rem 3rem;
-      border-radius: 8px;
+      border-radius: 100px;
       font-weight: 600;
       font-size: 1.1rem;
       transition: all 0.3s ease;
@@ -276,6 +284,8 @@ window._fbq = window.fbq;
       cursor: pointer;
       text-decoration: none;
       animation: fadeInUp 0.8s ease 0.4s both;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .hero-cta:hover {
@@ -1387,7 +1397,31 @@ window._fbq = window.fbq;
       }
 
       .hero {
-        padding: 3.5rem 1.5rem 4.5rem;
+        padding: 3.25rem 1rem 4.25rem;
+      }
+
+      .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.1rem;
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 1.55rem;
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 1.75rem;
+        max-width: 100%;
+      }
+
+      .hero-cta {
+        padding: 0.95rem 1.1rem;
+        font-size: 0.95rem;
+        white-space: normal;
       }
 
       .problem-section,
@@ -1525,10 +1559,10 @@ window._fbq = window.fbq;
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Can I get antibiotics for a tooth infection without seeing a dentist?",
+        "name": "Can a text visit replace the dentist?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, you cannot safely cure a tooth infection without eventually seeing a dentist for physical care. A text visit at NPCWoods only provides bridge antibiotics to control the infection. Antibiotics are a temporary measure to reduce swelling and pain, but a dentist must perform a root canal, filling, or extraction to address the root cause."
+          "text": "No. A text visit can only bridge the gap — calm an infection when it is clinically appropriate — while you get real dental care. The tooth still needs a dentist. A dentist must perform a root canal, filling, or extraction to address the root cause."
         }
       },
       {
@@ -1541,18 +1575,18 @@ window._fbq = window.fbq;
       },
       {
         "@type": "Question",
-        "name": "How long does it take to get a prescription?",
+        "name": "How fast is the pharmacy send when you can treat me?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most patients receive their dental antibiotic prescriptions at their local pharmacy within one to two hours of submitting their text consult. Chris Woods reviews all submissions same-day. Once the double board-certified Nurse Practitioner completes your clinical review, the prescription is sent electronically to your chosen local pharmacy immediately."
+          "text": "When a pharmacy send is appropriate, it is usually same day to your local pharmacy after the review. Times vary by pharmacy. A prescription is never promised before the review."
         }
       },
       {
         "@type": "Question",
-        "name": "What antibiotics are used for tooth infections?",
+        "name": "What medicine might you send?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "First-line dental antibiotics usually include amoxicillin or clindamycin for penicillin-allergic patients. Chris Woods selects the safest and most effective option based on your medical history. Most patients notice a significant improvement in tooth pain and jaw swelling within twenty-four to forty-eight hours of starting the medication."
+          "text": "If treatment is appropriate, Chris Woods picks the safest option for you from your history and allergies. Drug names are not listed on this page, and a prescription is never promised before the review."
         }
       },
       {
@@ -1584,15 +1618,15 @@ window._fbq = window.fbq;
         "name": "Do I still need to see my dentist?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, you must see a dentist to permanently resolve a tooth infection, as antibiotics alone cannot repair decayed or damaged dental tissue. NPCWoods only serves as a clinical bridge. The antibiotics will control your swelling and pain temporarily, giving you a safe window to get an appointment scheduled for definitive dental care."
+          "text": "Yes. Medicine alone does not fix decay or drain what is under the tooth. This is a pause button so you can get on a dentist's schedule. NPCWoods is a clinical bridge, not a replacement for dental care."
         }
       },
       {
         "@type": "Question",
-        "name": "What if the antibiotics don't work?",
+        "name": "What if I'm not better in a couple of days?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You must text us immediately if your tooth pain or jaw swelling does not begin to improve after forty-eight hours of taking your antibiotics. Follow-up reviews are completely free. Chris Woods can adjust your prescription to a different class of antibiotics or direct you to urgent physical dental care if the infection is spreading."
+          "text": "Text Chris. Follow-up review is free. We may change course or send you in for urgent dental or ER care if it is spreading. If you have trouble breathing or swallowing, floor-of-mouth swelling, or a high fever, call 911."
         }
       },
       {
@@ -1600,7 +1634,7 @@ window._fbq = window.fbq;
         "name": "Can I get refills?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, we do not provide refills for dental antibiotics, as these are prescribed as a single, short-term course to temporarily manage your acute infection. You must arrange dental care. Taking repeated courses of antibiotics without fixing the underlying dental issue can lead to antibiotic resistance and recurrent, more severe infections."
+          "text": "No ongoing refills for this. Short bridge only. Repeated courses without dental work is the wrong plan. You must arrange real dental care."
         }
       }
     ]
@@ -1613,10 +1647,10 @@ window._fbq = window.fbq;
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Can I get antibiotics for a tooth infection without seeing a dentist?",
+        "name": "Can a text visit replace the dentist?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, you cannot safely cure a tooth infection without eventually seeing a dentist for physical care. A text visit at NPCWoods only provides bridge antibiotics to control the infection. Antibiotics are a temporary measure to reduce swelling and pain, but a dentist must perform a root canal, filling, or extraction to address the root cause."
+          "text": "No. A text visit can only bridge the gap — calm an infection when it is clinically appropriate — while you get real dental care. The tooth still needs a dentist. A dentist must perform a root canal, filling, or extraction to address the root cause."
         }
       },
       {
@@ -1629,18 +1663,18 @@ window._fbq = window.fbq;
       },
       {
         "@type": "Question",
-        "name": "How long does it take to get a prescription?",
+        "name": "How fast is the pharmacy send when you can treat me?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most patients receive their dental antibiotic prescriptions at their local pharmacy within one to two hours of submitting their text consult. Chris Woods reviews all submissions same-day. Once the double board-certified Nurse Practitioner completes your clinical review, the prescription is sent electronically to your chosen local pharmacy immediately."
+          "text": "When a pharmacy send is appropriate, it is usually same day to your local pharmacy after the review. Times vary by pharmacy. A prescription is never promised before the review."
         }
       },
       {
         "@type": "Question",
-        "name": "What antibiotics are used for tooth infections?",
+        "name": "What medicine might you send?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "First-line dental antibiotics usually include amoxicillin or clindamycin for penicillin-allergic patients. Chris Woods selects the safest and most effective option based on your medical history. Most patients notice a significant improvement in tooth pain and jaw swelling within twenty-four to forty-eight hours of starting the medication."
+          "text": "If treatment is appropriate, Chris Woods picks the safest option for you from your history and allergies. Drug names are not listed on this page, and a prescription is never promised before the review."
         }
       },
       {
@@ -1672,15 +1706,15 @@ window._fbq = window.fbq;
         "name": "Do I still need to see my dentist?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, you must see a dentist to permanently resolve a tooth infection, as antibiotics alone cannot repair decayed or damaged dental tissue. NPCWoods only serves as a clinical bridge. The antibiotics will control your swelling and pain temporarily, giving you a safe window to get an appointment scheduled for definitive dental care."
+          "text": "Yes. Medicine alone does not fix decay or drain what is under the tooth. This is a pause button so you can get on a dentist's schedule. NPCWoods is a clinical bridge, not a replacement for dental care."
         }
       },
       {
         "@type": "Question",
-        "name": "What if the antibiotics don't work?",
+        "name": "What if I'm not better in a couple of days?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You must text us immediately if your tooth pain or jaw swelling does not begin to improve after forty-eight hours of taking your antibiotics. Follow-up reviews are completely free. Chris Woods can adjust your prescription to a different class of antibiotics or direct you to urgent physical dental care if the infection is spreading."
+          "text": "Text Chris. Follow-up review is free. We may change course or send you in for urgent dental or ER care if it is spreading. If you have trouble breathing or swallowing, floor-of-mouth swelling, or a high fever, call 911."
         }
       },
       {
@@ -1688,12 +1722,13 @@ window._fbq = window.fbq;
         "name": "Can I get refills?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, we do not provide refills for dental antibiotics, as these are prescribed as a single, short-term course to temporarily manage your acute infection. You must arrange dental care. Taking repeated courses of antibiotics without fixing the underlying dental issue can lead to antibiotic resistance and recurrent, more severe infections."
+          "text": "No ongoing refills for this. Short bridge only. Repeated courses without dental work is the wrong plan. You must arrange real dental care."
         }
       }
     ]
   }
   </script>
+<!-- Meta Pixel kept off this health URL (no BAA). No-op stub is in <head>. -->
 <link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
 <link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
@@ -2561,7 +2596,7 @@ window._fbq = window.fbq;
 
 <!-- ===== MOBILE FLOATING CTA ===== -->
 <div class="mobile-floating-cta">
-  <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20I%20have%20a%20dental%20infection%20and%20need%20antibiotics.">Text Chris Now</a>
+  <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20dental%20pain%2C%20can%20you%20help%3F">Text Chris Now</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -2580,9 +2615,9 @@ window._fbq = window.fbq;
   </div>
   <div class="hero-content">
     <div class="hero-badge">$59 flat fee • No paperwork, no hassle</div>
-    <h1>Your Dentist Said You Need Antibiotics. Now What?</h1>
-    <p>Your dentist diagnosed the infection. They said you need antibiotics to clear it before any treatment. But they won't prescribe them, you need a PCP. You don't have a PCP. So you're stuck waiting weeks for an appointment, in pain, while the infection gets worse. Or you blow $1,000 at the ER. There's a third option.</p>
-    <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20I%20saw%20your%20page.%20I%20have%20a%20dental%20infection%20and%20need%20antibiotics." class="hero-cta">Text Chris Now, (480) 639-4722</a>
+    <h1>Dental pain?<br>No dentist today?<br>Text Chris.</h1>
+    <p>Swelling, throbbing, weekend, dentist can't see you yet — that's a text, not a $1,000 ER lobby. I'm Chris Woods, NP. I read your story the same every time. If a short bridge course of medicine is appropriate, I send it to your local pharmacy. You still need a dentist for the real fix. $59. You only pay if I can treat you.</p>
+    <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20dental%20pain%2C%20can%20you%20help%3F" class="hero-cta">Text Chris Now<br>(480) 639-4722</a>
     <div class="hero-trust-indicators">
       <span>🔒 HIPAA-Compliant &amp; Secure</span>
       <span class="bullet">•</span>
@@ -2825,8 +2860,8 @@ window._fbq = window.fbq;
       <div class="journey-step blocked">
         <div class="journey-icon">⚠</div>
         <div class="journey-content">
-          <h4>Dentist Says: "You Need Antibiotics"</h4>
-          <p>They confirm the infection. They say you need antibiotics before they can treat it. But then they say: "I can't prescribe those, you need your primary care provider."</p>
+          <h4>Dentist Says: "You Need Medicine First"</h4>
+          <p>They confirm the infection. They say you need a short pharmacy course before they can treat it. Then they say: "I can't send that — you need your primary care provider."</p>
         </div>
       </div>
 
@@ -2846,7 +2881,7 @@ window._fbq = window.fbq;
         <div class="journey-icon">💰</div>
         <div class="journey-content">
           <h4>ER Is Your Only Option (Until Now)</h4>
-          <p>Cost: $800–$1,500. Wait time: 4 hours. Result: They give you the same $20 amoxicillin that a telemedicine provider could have prescribed in 10 minutes.</p>
+          <p>Cost: $800–$1,500. Wait time: 4 hours. Result: they often send the same kind of short pharmacy course a text visit can cover when it's appropriate — after a long wait and a huge bill.</p>
         </div>
       </div>
 
@@ -2863,13 +2898,13 @@ window._fbq = window.fbq;
 
     <div class="gap-illustration">
       <h3>Why Your Dentist Won't Prescribe</h3>
-      <p>It's not because they can't, dentists ARE licensed to prescribe <a href="https://www.cdc.gov/antibiotic-use/community/about/index.html" target="_blank" rel="noopener">antibiotics</a>. It's because many have a policy: "Let the primary care provider handle systemic infections." It makes sense in a normal healthcare system where everyone has a PCP. But if you don't, you're stuck in a gap.</p>
+      <p>It's not because they can't. Dentists are licensed to send medicine when it's needed. Many still have a policy: "Let the primary care provider handle systemic infections." That makes sense in a system where everyone has a PCP. If you don't, you're stuck in a gap.</p>
     </div>
 
     <div class="conversation">
       <div class="message patient">
         <div class="bubble patient-bubble">
-          "So my dentist says I have an abscess and need antibiotics before she can treat it. Can you prescribe them?"
+          "So my dentist says I have an abscess and need medicine before she can treat it. Can you help?"
         </div>
       </div>
       <div class="message clinician">
@@ -2929,7 +2964,7 @@ window._fbq = window.fbq;
       <div class="step">
         <div class="step-number">3</div>
         <h3>Get Your Rx</h3>
-        <p>I write your prescription and send it straight to your pharmacy. You pick it up, start the antibiotics, and get your infection under control while you arrange real dental care. (Use <a href="https://www.goodrx.com/" target="_blank" rel="noopener">GoodRx</a> for the lowest price at your pharmacy.)</p>
+        <p>If a pharmacy send is appropriate, I send it to your local pharmacy. You pick it up, start the short bridge course, and get the infection under control while you arrange real dental care. (Use <a href="https://www.goodrx.com/" target="_blank" rel="noopener">GoodRx</a> for the lowest price at your pharmacy.)</p>
       </div>
     </div>
 
@@ -2981,6 +3016,7 @@ window._fbq = window.fbq;
         <li>Acute tooth trauma or fracture needing emergency dental surgery</li>
         <li>Infection that requires physical drainage or extraction (dental emergency)</li>
         <li>Severe facial swelling that's spreading or affecting your airway</li>
+        <li>Floor-of-mouth swelling, or swelling under the tongue</li>
         <li>Difficulty breathing or swallowing</li>
         <li>High fever (>102°F) with signs of sepsis</li>
         <li>Any infection showing signs of spreading to the neck or lymph nodes</li>
@@ -2988,11 +3024,11 @@ window._fbq = window.fbq;
     </div>
 
     <div class="er-warning">
-      <p>⚠ Emergency Signs: If you're experiencing severe facial swelling, difficulty breathing, high fever, or signs that the infection is spreading, GO TO THE ER NOW. This is not a replacement for emergency care.</p>
+      <p>⚠ Emergency Signs: If you're experiencing severe facial swelling, floor-of-mouth swelling, difficulty breathing or swallowing, high fever, or signs that the infection is spreading, call 911 or go to the ER now. Text-based telehealth is not for emergencies.</p>
     </div>
 
     <div class="disclaimer">
-      <p><strong>Important:</strong> This is bridge care, not dental care. I can provide antibiotics to control the infection, but you still need to see a dentist for the actual treatment, root canal, extraction, or whatever your tooth needs. Think of this as the antibiotic "pause button" that gives you time to get real dental care scheduled and to let the infection clear enough for your dentist to work.</p>
+      <p><strong>Important:</strong> This is bridge care, not dental care. If treatment is appropriate, I can send a short pharmacy course to calm the infection. You still need a dentist for the actual treatment — root canal, extraction, or whatever your tooth needs. Think of this as a pause button so you can get on a dentist's schedule.</p>
     </div>
 
   </div>
@@ -3038,7 +3074,7 @@ window._fbq = window.fbq;
         <div class="symptom-action yellow">
           ! Text Chris NOW. Don't wait. Moderate infections escalate quickly.
         </div>
-        <p class="symptom-note">You're in the window where antibiotics will make a huge difference. The sooner you start, the faster you'll feel better.</p>
+        <p class="symptom-note">You're in the window where a same-day text visit can matter. The sooner we review it, the sooner you can get moving — if treatment is appropriate.</p>
       </div>
 
       <div id="red" class="tab-content">
@@ -3053,9 +3089,9 @@ window._fbq = window.fbq;
           <li>Pus draining from the site</li>
         </ul>
         <div class="symptom-action red">
-          🚨 GO TO THE ER NOW. Do not text. Do not wait. This is a medical emergency.
+          🚨 Call 911 or go to the ER now. Do not text. Do not wait. This is a medical emergency.
         </div>
-        <p class="symptom-note">Severe infections can become life-threatening if they spread to the sinuses, brain, or lungs. Airway compromise is an emergency. Get to an emergency room immediately.</p>
+        <p class="symptom-note">Severe infections can become life-threatening if they spread. Floor-of-mouth swelling, trouble breathing or swallowing, spreading facial swelling, or high fever: call 911. Text-based telehealth is not for emergencies.</p>
       </div>
     </div>
   </div>
@@ -3069,11 +3105,11 @@ window._fbq = window.fbq;
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)" tabindex="0">
-          Can I get antibiotics for a tooth infection without seeing a dentist?
+          Can a text visit replace the dentist?
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>No, you cannot safely cure a tooth infection without eventually seeing a dentist for physical care. A text visit at NPCWoods only provides bridge antibiotics to control the infection.</strong> Antibiotics are a temporary measure to reduce swelling and pain, but a dentist must perform a root canal, filling, or extraction to address the root cause.</p>
+          <p><strong>No. A text visit can only bridge the gap — calm an infection when it's clinically appropriate — while you get real dental care.</strong> The tooth still needs a dentist. A dentist must perform a root canal, filling, or extraction to address the root cause.</p>
         </div>
       </div>
 
@@ -3089,21 +3125,21 @@ window._fbq = window.fbq;
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)" tabindex="0">
-          How long does it take to get a prescription?
+          How fast is the pharmacy send when you can treat me?
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>Most patients receive their dental antibiotic prescriptions at their local pharmacy within one to two hours of submitting their text consult. Chris Woods reviews all submissions same-day.</strong> Once the double board-certified Nurse Practitioner completes your clinical review, the prescription is sent electronically to your chosen local pharmacy immediately.</p>
+          <p><strong>When a pharmacy send is appropriate, it's usually same day to your local pharmacy after I finish the review.</strong> Times vary by pharmacy. Chris Woods reviews submissions same-day. A prescription is never promised before the review.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)" tabindex="0">
-          What antibiotics are used for tooth infections?
+          What medicine might you send?
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>First-line dental antibiotics usually include amoxicillin or clindamycin for penicillin-allergic patients. Chris Woods selects the safest and most effective option based on your medical history.</strong> Most patients notice a significant improvement in tooth pain and jaw swelling within twenty-four to forty-eight hours of starting the medication.</p>
+          <p><strong>If treatment is appropriate, I pick the safest option for you from your history and allergies.</strong> I don't list drug names on this page, and a prescription is never promised before the review.</p>
         </div>
       </div>
 
@@ -3143,17 +3179,17 @@ window._fbq = window.fbq;
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>Yes, you must see a dentist to permanently resolve a tooth infection, as antibiotics alone cannot repair decayed or damaged dental tissue. NPCWoods only serves as a clinical bridge.</strong> The antibiotics will control your swelling and pain temporarily, giving you a safe window to get an appointment scheduled for definitive dental care.</p>
+          <p><strong>Yes. Medicine alone doesn't fix decay or drain what's under the tooth.</strong> This is a pause button so you can get on a dentist's schedule. NPCWoods is a clinical bridge, not a replacement for dental care.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)" tabindex="0">
-          What if the antibiotics don't work?
+          What if I'm not better in a couple of days?
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>You must text us immediately if your tooth pain or jaw swelling does not begin to improve after forty-eight hours of taking your antibiotics. Follow-up reviews are completely free.</strong> Chris Woods can adjust your prescription to a different class of antibiotics or direct you to urgent physical dental care if the infection is spreading.</p>
+          <p><strong>Text me. Follow-up review is free.</strong> We may change course or send you in for urgent dental / ER care if it's spreading. If you have trouble breathing or swallowing, floor-of-mouth swelling, or a high fever, call 911.</p>
         </div>
       </div>
 
@@ -3163,7 +3199,7 @@ window._fbq = window.fbq;
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>No, we do not provide refills for dental antibiotics, as these are prescribed as a single, short-term course to temporarily manage your acute infection. You must arrange dental care.</strong> Taking repeated courses of antibiotics without fixing the underlying dental issue can lead to antibiotic resistance and recurrent, more severe infections.</p>
+          <p><strong>No ongoing refills for this. Short bridge only.</strong> Repeated courses without dental work is the wrong plan. You must arrange real dental care.</p>
         </div>
       </div>
     </div>
@@ -3227,13 +3263,13 @@ window._fbq = window.fbq;
 
     <h2>Stop Waiting. Start Texting.</h2>
 
-    <p>Your <a href="https://www.cdc.gov/antibiotic-use/community/about/index.html" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.95); text-decoration: underline;">tooth infection</a> isn't going to get better on its own. Your dentist won't prescribe. The ER is expensive and slow. You don't need to wait three months for a primary care provider.</p>
+    <p>Your tooth infection isn't going to get better on its own. Your dentist may not be able to see you today. The ER is expensive and slow. You don't need to wait three months for a primary care provider.</p>
 
     <p><strong>Text me right now. Describe what's going on. I'll take it from there.</strong></p>
 
     <div class="cta-buttons">
-      <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20I%20saw%20your%20dental%20abscess%20page%20and%20I%20need%20help%20with%20a%20tooth%20infection." class="btn btn-primary">Text (480) 639-4722</a>
-      <a href="tel:4806394722" class="btn btn-secondary">Or Call</a>
+      <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20dental%20pain%2C%20can%20you%20help%3F" class="btn btn-primary">Text (480) 639-4722</a>
+      <a href="sms:4806394722?body=Hi%20NPCWoods%20-%20dental%20pain%2C%20can%20you%20help%3F" class="btn btn-secondary">Or text (480) 639-4722</a>
     </div>
     <p class="bottom-trust" style="font-size: 0.85rem; color: rgba(255,255,255,0.85); margin-top: 16px; text-align: center; font-weight: 500; text-shadow: 0 1px 4px rgba(15,23,42,0.15); margin-bottom: 0;">🔒 HIPAA-Compliant &amp; Secure &nbsp;•&nbsp; HSA/FSA accepted &nbsp;•&nbsp; Sent same-day to your pharmacy</p>
 
@@ -3370,7 +3406,7 @@ window._fbq = window.fbq;
   "@type": "MedicalBusiness",
   "name": "NPCWoods Telemedicine",
   "url": "https://npcwoods.com",
-  "description": "Telemedicine service providing bridge antibiotic prescriptions for dental infections",
+  "description": "Text-based telemedicine for dental pain and tooth infections. $59 flat fee. Bridge care while you get to a dentist.",
   "telephone": "(480) 639-4722",
   "areaServed": [
     "AZ",
@@ -3411,10 +3447,10 @@ window._fbq = window.fbq;
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Can I get antibiotics for a tooth infection without seeing a dentist?",
+      "name": "Can a text visit replace the dentist?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not really — and this isn't one. You still need to see a dentist for the actual treatment. What NPCWoods does is bridge the gap: you get the antibiotics to control the infection while you're waiting for your dental appointment."
+        "text": "No. A text visit can only bridge the gap while you get real dental care. The tooth still needs a dentist for the actual treatment."
       }
     },
     {
@@ -3427,10 +3463,10 @@ window._fbq = window.fbq;
     },
     {
       "@type": "Question",
-      "name": "What antibiotics are used for tooth infections?",
+      "name": "What medicine might you send?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The most common are amoxicillin (first choice, usually) and clindamycin (if you're allergic to penicillin). I'll determine which is right for you based on your medical history, allergies, and what you're already taking."
+        "text": "If treatment is appropriate, I pick the safest option for you from your history and allergies. I do not list drug names on this page, and a prescription is never promised before the review."
       }
     }
   ]
