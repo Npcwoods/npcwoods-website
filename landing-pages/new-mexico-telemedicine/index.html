@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- NPCWoods Tracking: GTM -->
 
 
 
+<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
+     The stub below also blocks a later-injected Meta pixel: Meta's base code starts with `if(f.fbq)return;`,
+     so predefining a no-op fbq means fbevents.js never loads on this page.
+     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="New Mexico telemedicine for $59. Text a nurse practitioner from anywhere in NM, even rural areas. No paperwork. Prescriptions to your pharmacy.">
@@ -286,27 +296,11 @@ a { text-decoration: none; color: inherit; }
   }
 </style>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
+<link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
-<!-- NPCWoods Tracking: GTM noscript -->
 
 
 <!-- HEADER -->
@@ -662,6 +656,85 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+<style>
+  .npc-atf-answer {
+    margin: 16px auto 24px;
+    max-width: 65ch;
+    padding: 18px 22px;
+    border: 1px solid #dbe5f5;
+    border-radius: 12px;
+    background: #f8fbff;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #25364f;
+  }
+  .npc-atf-answer p { margin: 0; }
+  .npc-atf-answer a { color: #1d4ed8; font-weight: 600; }
+</style>
+<div class="npc-atf-answer" data-npc-aeo="atf-answer">
+  <p>
+    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+    Licensed in New Mexico. Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
+    No video. No app. No chatbot. You must be physically in New Mexico or another licensed state at the time of the visit.
+    A prescription is not promised. You only pay if he can treat you.
+  </p>
+</div>
+<style>
+  /* Self-contained styles for .npc-clinician-byline (minimal, no external dep). Override safe if site.css loaded. */
+  .npc-clinician-byline {
+    margin: 20px auto 28px;
+    max-width: 720px;
+    padding: 14px 18px;
+    border: 1px solid #dbe5f5;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #25364f;
+  }
+  .npc-clinician-byline .npc-byline-inner { display: block; }
+  .npc-clinician-byline .npc-byline-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-bottom: 8px; padding: 4px 10px; border-radius: 999px;
+    background: #e8f1ff; color: #1d4ed8;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .npc-clinician-byline .npc-byline-main { margin: 0 0 6px; font-size: 0.95rem; color: #13233f; }
+  .npc-clinician-byline .npc-byline-main a { color: #1d4ed8; text-decoration: underline; font-weight: 600; }
+  .npc-clinician-byline .npc-byline-main a:hover { color: #1e40af; }
+  .npc-clinician-byline .npc-byline-meta { margin: 0; font-size: 0.82rem; color: #4b5d7a; }
+  .npc-clinician-byline .npc-byline-meta strong { color: #25364f; font-weight: 600; }
+  .npc-clinician-byline .npc-byline-meta time { font-weight: 700; color: #1d4ed8; }
+  .npc-clinician-byline .npc-byline-real { font-weight: 600; color: #13233f; }
+  .npc-clinician-byline .npc-byline-verify { color: #2563eb; text-decoration: underline; font-weight: 500; white-space: nowrap; }
+  .npc-clinician-byline .npc-byline-verify:hover { color: #1d4ed8; }
+  @media (max-width: 640px) {
+    .npc-clinician-byline { margin: 16px 12px 24px; padding: 12px 14px; font-size: 0.88rem; }
+    .npc-clinician-byline .npc-byline-main { font-size: 0.9rem; }
+  }
+</style>
+
+<section class="npc-clinician-byline" aria-label="Clinician review attribution and freshness">
+  <div class="npc-byline-inner">
+    <div class="npc-byline-badge" aria-hidden="true">Clinician reviewed</div>
+    <p class="npc-byline-main">
+      Clinically reviewed by 
+      <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C</a> — 
+      Double board-certified Nurse Practitioner. Licensed in 11 states.
+    </p>
+    <p class="npc-byline-meta">
+      <strong>Last reviewed: <time datetime="2026-09-04">September 4, 2026</time></strong>. 
+      This page reflects Chris's real clinical experience treating patients via NPCWoods Telemedicine. 
+      <span class="npc-byline-real">Real clinician. No AI.</span>
+      <a href="https://npcwoods.com/credentials/" class="npc-byline-verify">Verify credentials &amp; licenses</a>
+    </p>
+  </div>
+</section>
+
+
 <!-- LOCAL CONTEXT (local-rollout 2026-05-04) -->
 <section class="nl-local nl-cream">
   <div class="nl-wrap">
