@@ -1,6 +1,9 @@
 """Guardrails for the paid-search dental pain landing page."""
 
+import json
 import re
+import subprocess
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -8,6 +11,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "landing-pages" / "dental-pain" / "search-safe" / "index.html"
 ROUTER = ROOT / "php" / "npcwoods-dental-pages.php"
+SAVER_MARKERS = (
+    "npc_attribution_last",
+    "npc_attribution_first",
+    "NPCWoodsAttribution",
+    "gclid",
+    "gbraid",
+    "wbraid",
+)
+SAVER_THIRD_PARTY = (
+    "fetch(",
+    "sendbeacon",
+    "xmlhttprequest",
+    "navigator.sendbeacon",
+    "gtag(",
+    "fbq(",
+    "new image",
+)
 
 
 def live_markup(text: str) -> str:
@@ -87,6 +107,87 @@ class DentalSearchSafePageTest(unittest.TestCase):
             "'/dental-pain/search-safe/' => 'dental-pain/search-safe/index.html'",
             text,
         )
+
+    def test_first_party_click_id_saver_is_present_and_stays_local(self):
+        text = page_text()
+        for marker in SAVER_MARKERS:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, text)
+        saver = live_markup(text)
+        for marker in SAVER_THIRD_PARTY:
+            with self.subTest(marker=marker):
+                self.assertNotIn(marker, saver)
+
+    def test_gclid_is_stored_in_pay_page_shape(self):
+        stored = run_saver("?gclid=TESTGCLID1234567890")
+        last = stored["last"]
+        self.assertEqual("google", last["source"])
+        self.assertEqual("cpc", last["medium"])
+        self.assertEqual("TESTGCLID1234567890", last["click_id"])
+        self.assertEqual("gclid", last["click_id_type"])
+        self.assertGreater(last["expiresAt"], 0)
+        self.assertEqual(last["click_id"], stored["first"]["click_id"])
+        self.assertEqual("TESTGCLID1234567890", stored["attribution"]["click_id"])
+
+    def test_utm_campaign_survives_with_click_id(self):
+        stored = run_saver(
+            "?utm_source=google&utm_medium=cpc&utm_campaign=search-15&gclid=LIVECLICKIDABCDEF"
+        )
+        last = stored["last"]
+        self.assertEqual("search-15", last["campaign"])
+        self.assertEqual("LIVECLICKIDABCDEF", last["click_id"])
+        self.assertEqual("gclid", last["click_id_type"])
+
+    def test_stored_click_id_folds_into_stripe_reference_on_pay(self):
+        from tests.test_pay_attribution import run_pay_submit
+
+        stored = run_saver("?gclid=TESTGCLID1234567890")
+        redirect = run_pay_submit("", stored["last"])
+        params = redirect["params"]
+        self.assertEqual("google", params["utm_source"])
+        self.assertEqual("cpc", params["utm_medium"])
+        self.assertEqual("TESTGCLID1234567890", params["gclid"])
+        self.assertEqual(
+            "google-cpc-manual-payment-gclid-TESTGCLID1234567890",
+            params["client_reference_id"],
+        )
+
+
+def run_saver(query: str) -> dict:
+    runner = textwrap.dedent(
+        """
+        const fs = require('fs');
+        const html = fs.readFileSync(process.argv[1], 'utf8');
+        const query = process.argv[2] || '';
+        const match = html.match(/<script>\\s*(window\\.NPCWoodsPaidSurface = true;[\\s\\S]*?\\}\\)\\(\\);)\\s*<\\/script>/);
+        if (!match) throw new Error('saver script not found');
+        const storage = {};
+        global.window = {
+          location: { search: query, pathname: '/dental-pain/search-safe/' },
+          localStorage: {
+            getItem(key) { return Object.prototype.hasOwnProperty.call(storage, key) ? storage[key] : null; },
+            setItem(key, value) { storage[key] = String(value); },
+            removeItem(key) { delete storage[key]; },
+          },
+        };
+        global.URLSearchParams = URLSearchParams;
+        eval(match[1]);
+        const last = storage.npc_attribution_last ? JSON.parse(storage.npc_attribution_last) : null;
+        const first = storage.npc_attribution_first ? JSON.parse(storage.npc_attribution_first) : null;
+        console.log(JSON.stringify({
+          last,
+          first,
+          attribution: global.window.NPCWoodsAttribution || {},
+        }));
+        """
+    )
+    completed = subprocess.run(
+        ["node", "-e", runner, str(PAGE), query],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return json.loads(completed.stdout)
 
 
 if __name__ == "__main__":

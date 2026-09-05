@@ -40,7 +40,84 @@
     @media(max-width:800px){.hero{padding-top:48px}.hero-grid,.split{grid-template-columns:1fr}.trust-card{max-width:460px}.steps{grid-template-columns:1fr}.safety ul{columns:1}.nav-cta{display:none}.npc-footer-inner{display:block}.npc-footer-links{margin-top:22px}.mobile-bar{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:30}.mobile-bar .cta{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.3)}body{padding-bottom:66px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   </style>
-  <script>window.NPCWoodsPaidSurface = true;</script>
+  <!-- First-party click-ID saver. Stores gclid/gbraid/wbraid in this browser
+       only. Does not load third-party pixels. /pay reads npc_attribution_last. -->
+  <script>
+  window.NPCWoodsPaidSurface = true;
+  (function () {
+    'use strict';
+    var ATTRIBUTION_TTL_MS = 90 * 24 * 60 * 60 * 1000;
+    var params = new URLSearchParams(window.location.search);
+
+    function cleanTag(value) {
+      return String(value || '')
+        .trim()
+        .replace(/[^a-zA-Z0-9_.-]+/g, '-')
+        .replace(/^[-_.]+|[-_.]+$/g, '')
+        .slice(0, 80);
+    }
+
+    function cleanRef(value) {
+      return String(value || '')
+        .trim()
+        .replace(/[^a-zA-Z0-9_.-]+/g, '')
+        .slice(0, 180);
+    }
+
+    function storageGet(key) {
+      try {
+        var raw = window.localStorage && window.localStorage.getItem(key);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        if (!parsed || !parsed.expiresAt || Date.now() > parsed.expiresAt) {
+          window.localStorage.removeItem(key);
+          return null;
+        }
+        return parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function storageSet(key, value) {
+      try {
+        value.expiresAt = Date.now() + ATTRIBUTION_TTL_MS;
+        window.localStorage.setItem(key, JSON.stringify(value));
+      } catch (e) {}
+    }
+
+    var clickId = cleanRef(params.get('gclid') || params.get('gbraid') || params.get('wbraid'));
+    var clickIdType = params.get('gclid') ? 'gclid' : (params.get('gbraid') ? 'gbraid' : (params.get('wbraid') ? 'wbraid' : ''));
+    var source = cleanTag(params.get('utm_source')) || (clickId ? 'google' : '');
+    var medium = cleanTag(params.get('utm_medium')) || (clickId ? 'cpc' : '');
+    var campaign = cleanTag(params.get('utm_campaign'));
+    var content = cleanTag(params.get('utm_content'));
+    var term = cleanTag(params.get('utm_term'));
+    var hasNewSignal = !!(clickId || source || medium || campaign || content || term);
+    var firstTouch = storageGet('npc_attribution_first');
+    var lastTouch = storageGet('npc_attribution_last');
+
+    if (hasNewSignal) {
+      var touch = {
+        source: source || 'unknown',
+        medium: medium || 'unknown',
+        campaign: campaign || '',
+        content: content || '',
+        term: term || '',
+        click_id: clickId,
+        click_id_type: clickIdType
+      };
+      if (!firstTouch) {
+        storageSet('npc_attribution_first', touch);
+        firstTouch = touch;
+      }
+      storageSet('npc_attribution_last', touch);
+      lastTouch = touch;
+    }
+
+    window.NPCWoodsAttribution = lastTouch || firstTouch || {};
+  })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

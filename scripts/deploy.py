@@ -76,6 +76,7 @@ STUB_IDS = {
     "/georgia-telemedicine/": 252,
     "/north-carolina-telemedicine/": 253,
     "/dental-pain/": 336,
+    "/dental-pain/search-safe/": 995,
     "/pharmacy/": 334,
     "/pharmacy-partners/": 335,
     "/pay/": 674,
