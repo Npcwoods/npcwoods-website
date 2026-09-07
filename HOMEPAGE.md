@@ -47,7 +47,8 @@ Patients hit the ordinary address. That is the done check:
 
 - `https://npcwoods.com/` (no `?`) is 200
 - Title is `NPCWoods Telemedicine: $59 Text-Based Urgent Care`
-- H1 is `You feel awful.` (scroll plate live 2026-09-07)
+- H1 is `You feel awful.` (Hybrid V3 Homelander, 2026-09-07)
+- Plate marker: `data-plate="hybrid-v3-homelander"`
 - HTML contains `npc-redesign` and Chris's hero
 - HTML is **not** `wp-site-blocks` with a blue underlined nav list
 - `/wp-admin/` should be the login page (200), not "WordPress Error"

@@ -33,6 +33,13 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("$59", self.text)
         self.assertIn("sms:+14806394722", self.text)
 
+    def test_hybrid_v3_homelander_rooms(self):
+        self.assertIn('data-plate="hybrid-v3-homelander"', self.text)
+        self.assertIn("Hey, I'm Chris.", self.text)
+        self.assertIn("Common $59 visits.", self.text)
+        self.assertIn("Licensed in 11 states.", self.text)
+        self.assertIn("NPCWoods vs. big telehealth", self.text)
+
     def test_homepage_leaves_seo_metadata_to_wordpress(self):
         """Yoast must be the sole owner of description, canonical, and social tags."""
         patterns = (

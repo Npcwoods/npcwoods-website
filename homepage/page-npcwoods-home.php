@@ -1,7 +1,8 @@
 <?php
 /**
  * Template Name: NPCWoods Homepage
- * Scroll plate live 2026-09-07. Chris: push the npcwoods scroll plate live.
+ * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
+ * Lean scroll plate plus Chris, comparison, $59 visits, and 11-state rooms.
  * Approved Meta Pixels live in this template after wp_head():
  * 1558261907814968 (ads) and 1428464038973925 (site).
  * Do not enqueue TT4 / wp-block-library on this template.
@@ -293,6 +294,86 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     .review p { font-size: 0.95rem; }
     .review cite { display: block; margin-top: 8px; color: var(--muted); font-style: normal; font-size: 0.82rem; }
     .states { margin-top: 18px; color: var(--muted); font-size: 0.95rem; }
+    .wrap-wide { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chip {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+    .meet {
+      display: grid;
+      gap: 22px;
+      align-items: center;
+    }
+    .meet img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      object-fit: cover;
+    }
+    .meet p { margin-top: 12px; color: var(--muted); }
+    .meet-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .meet-links a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .vs-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .vs-cell { padding: 12px 14px; font-size: 0.92rem; border-top: 1px solid var(--line); }
+    .vs-cell:nth-child(-n+3) { border-top: 0; font-weight: 800; }
+    .vs-us-head { background: #EFF6FF; color: var(--blue); }
+    .vs-them-head { color: var(--muted); }
+    .vs-feature { font-weight: 700; background: #faf9f6; }
+    .vs-us { font-weight: 650; }
+    .vs-them { color: var(--muted); }
+    .vs-check { color: #16a34a; font-weight: 900; margin-right: 6px; }
+    .treat-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .treat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 14px 13px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+    .treat small { color: var(--muted); font-weight: 500; font-size: 0.75rem; }
+    .states-pills {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .state-pill {
+      display: inline-flex;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 0.9rem;
+    }
+    .mobile-cta {
+      display: none;
+    }
     .safety {
       max-width: 720px;
       margin: 40px auto 0;
@@ -329,10 +410,36 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       .photo-card img { aspect-ratio: 4 / 5; max-height: 640px; }
       .cta-row { flex-direction: row; justify-content: center; }
       .btn { min-width: 220px; }
+      .meet { grid-template-columns: 0.9fr 1.1fr; gap: 40px; }
+      .treat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 800px) {
+      .mobile-cta {
+        display: flex;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 40;
+        justify-content: center;
+        align-items: center;
+        min-height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+        color: #fff !important;
+        -webkit-text-fill-color: #fff;
+        text-decoration: none;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      }
+      body { padding-bottom: 76px; }
+      .vs-grid { font-size: 0.84rem; }
     }
   </style>
 </head>
-<body class="npc-redesign">
+<body class="npc-redesign" data-plate="hybrid-v3-homelander">
+  <!-- Hybrid V3 Homelander. Public URL: https://npcwoods.com/ -->
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="nav">
     <a class="brand" href="https://npcwoods.com/">
@@ -405,6 +512,101 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       <p class="states">Licensed in Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, and Utah.</p>
     </div>
   </section>
+  <section id="chris">
+    <div class="wrap-wide meet">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="1000" height="1250" loading="lazy" />
+      <div>
+        <p class="eyebrow">Meet your NP</p>
+        <h2>Hey, I'm Chris.</h2>
+        <p>I spent years watching people lose a whole day and a couple hundred bucks over something I could sort out in a few texts. That never sat right with me.</p>
+        <p>So I built the practice I would want for my own family. Text a real Nurse Practitioner, get actually listened to, and pay one honest price.</p>
+        <p>No runaround. No surprise bills. No pretending a chatbot is care. Faith and family keep me grounded, and they are why I treat every visit like it is someone I love.</p>
+        <div class="chips">
+          <span class="chip">MSN, APRN, FNP-C</span>
+          <span class="chip">Double board-certified</span>
+          <span class="chip">NPI 1285125468</span>
+          <span class="chip">Real clinician review</span>
+        </div>
+        <div class="meet-links">
+          <a href="https://npcwoods.com/credentials/">Credentials</a>
+          <a href="https://npcwoods.com/services/">What I treat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section aria-label="NPCWoods compared to big telehealth">
+    <div class="wrap-wide">
+      <p class="eyebrow">The honest comparison</p>
+      <h2>NPCWoods vs. big telehealth</h2>
+      <p class="section-copy">A real NP in your messages. None of the games.</p>
+      <div class="vs-grid">
+        <div class="vs-cell"></div>
+        <div class="vs-cell vs-us-head">NPCWoods</div>
+        <div class="vs-cell vs-them-head">Big telehealth</div>
+        <div class="vs-cell vs-feature">Price</div>
+        <div class="vs-cell vs-us"><span class="vs-check">✓</span>$59 flat fee</div>
+        <div class="vs-cell vs-them">Membership plus visit fees</div>
+        <div class="vs-cell vs-feature">Who reads it</div>
+        <div class="vs-cell vs-us"><span class="vs-check">✓</span>Chris Woods, NP</div>
+        <div class="vs-cell vs-them">Call center or algorithm</div>
+        <div class="vs-cell vs-feature">App</div>
+        <div class="vs-cell vs-us"><span class="vs-check">✓</span>None. Just text</div>
+        <div class="vs-cell vs-them">Download required</div>
+        <div class="vs-cell vs-feature">Pay</div>
+        <div class="vs-cell vs-us"><span class="vs-check">✓</span>After you're treated</div>
+        <div class="vs-cell vs-them">Up front, then extras</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap-wide">
+      <p class="eyebrow">What I treat by text</p>
+      <h2>Common $59 visits.</h2>
+      <p class="section-copy">If it is safe to handle by text, I will. If it is not, I will say so and you do not pay.</p>
+      <div class="treat-grid">
+        <a class="treat" href="https://npcwoods.com/uti-treatment/">UTI</a>
+        <a class="treat" href="https://npcwoods.com/sinus-infection-treatment/">Sinus infection</a>
+        <a class="treat" href="https://npcwoods.com/strep-throat-treatment/">Strep throat</a>
+        <a class="treat" href="https://npcwoods.com/ear-infection-treatment/">Ear infection</a>
+        <a class="treat" href="https://npcwoods.com/pink-eye-treatment/">Pink eye</a>
+        <a class="treat" href="https://npcwoods.com/learn/bronchitis/">Bronchitis / cough</a>
+        <a class="treat" href="https://npcwoods.com/learn/skin-infection/">Skin infection</a>
+        <a class="treat" href="https://npcwoods.com/dental-pain/">Tooth infection <small>bridge only, dentist still required</small></a>
+        <a class="treat" href="https://npcwoods.com/learn/stomach-bug/">Stomach bug</a>
+        <a class="treat" href="https://npcwoods.com/cold-sore-treatment/">Cold sores</a>
+        <a class="treat" href="https://npcwoods.com/learn/covid-flu/">COVID / flu</a>
+        <a class="treat" href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a>
+        <a class="treat" href="https://npcwoods.com/conditions/#gerd">Acid reflux</a>
+        <a class="treat" href="https://npcwoods.com/conditions/">Acne</a>
+        <a class="treat" href="https://npcwoods.com/learn/yeast-infection/">Yeast infection</a>
+        <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
+        <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
+        <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
+        <a class="treat" href="https://npcwoods.com/conditions/#medication-refills">Medication refills</a>
+        <a class="treat" href="https://npcwoods.com/glp1-weight-loss/">GLP-1 consult <small>fit and safety, drug cost separate</small></a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap-wide">
+      <p class="eyebrow">Where I can help</p>
+      <h2>Licensed in 11 states.</h2>
+      <p class="section-copy">You have to be physically in one of these states at the time of the visit.</p>
+      <div class="states-pills">
+        <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
+        <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+        <a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
+        <a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
+        <a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
+        <a class="state-pill" href="https://npcwoods.com/montana-telemedicine/">Montana</a>
+        <a class="state-pill" href="https://npcwoods.com/nevada-telemedicine/">Nevada</a>
+        <a class="state-pill" href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a>
+        <a class="state-pill" href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
+        <a class="state-pill" href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
+        <a class="state-pill" href="https://npcwoods.com/utah-telemedicine/">Utah</a>
+      </div>
+    </div>
+  </section>
   <div class="wrap">
     <div class="safety">
       <b>Emergencies</b>
@@ -421,6 +623,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     <p class="fine">Chris Woods, MSN, APRN, FNP-C · Not a chatbot · Pay after care</p>
   </section>
   </main>
+  <a class="mobile-cta" href="sms:+14806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now · $59</a>
 <?php if (function_exists('wp_footer')) { wp_footer(); } ?>
 </body>
 </html>
