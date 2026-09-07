@@ -5,7 +5,7 @@ description: Use when publishing a new npcwoods.com URL, when a live page looks 
 
 # NPCWoods live page launch
 
-Live site is WordPress on GoDaddy (`https://npcwoods.com`). GitHub is source. Vercel is preview only. Nothing goes live without Chris’s explicit yes (the phrase `CHRIS APPROVED LIVE DEPLOY` for a named URL). Homepage production map is `HOMEPAGE.md` (locked 2026-08-19): live `/` is `page-npcwoods-home.php` forced on Twenty Twenty-Four, not Gutenberg. Read `HOMEPAGE.md` before touching `/`.
+Live site is WordPress on GoDaddy (`https://npcwoods.com`). GitHub is source. Vercel is preview only. Nothing goes live without Chris’s explicit yes (the phrase `CHRIS APPROVED LIVE DEPLOY` for a named URL). Homepage production map is `HOMEPAGE.md`: live `/` is `page-npcwoods-home.php` forced on Twenty Twenty-Four. If you see Gutenberg / `wp-site-blocks`, the forcer died. Read `HOMEPAGE.md` before touching `/`.
 
 ## Credentials
 
@@ -57,4 +57,4 @@ Many city × condition URLs are empty WP stubs. Fetch first. If there is no titl
 
 Report the clean URL, byte size, and H1. Stop.
 
-If the site is 500, follow `HOMEPAGE.md`: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm `?n=1` is real homepage HTML and `/wp-admin/` is login; then STOP.
+If the site is 500, follow `HOMEPAGE.md`: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm the clean URL `https://npcwoods.com/` is real homepage HTML and `/wp-admin/` is login; then STOP. `?n=1` is diagnosis only.

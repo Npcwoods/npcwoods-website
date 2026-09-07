@@ -8,8 +8,8 @@ Pipeline per page:
   2. Timestamped remote backup -> content-output/deploy-backups/<date>/.
   3. SFTP upload: landing-pages/{path}/index.html -> html/{path}/index.html.
   4. WP stub touch (REST no-op update) to flush GoDaddy Varnish cache.
-  5. Live verification (HTTP markers; full Playwright tracking run if
-     playwright is installed).
+  5. Live verification (clean public URL, no query string; full Playwright
+     tracking run if playwright is installed).
 
 DEFAULT IS DRY-RUN. Nothing goes live without Chris's explicit yes:
 --live requires the confirmation phrase, typed interactively or passed
@@ -48,9 +48,10 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
 LIVE_DEPLOY_CONFIRMATION = "CHRIS APPROVED LIVE DEPLOY"
 
-# Universal content guards (every marketing page, every deploy).
-# Meta pixel must never ride along on a health page (see meta-pixel strip,
-# 2026-06-10/11); "insurance" is a Chris hard rule for marketing surfaces.
+# Kitchen HTML must not contain these. Health/city/search-safe plates keep
+# GTM, GA, Ads, tracking.js, and Meta out of the file. The dining-room plugin
+# owns the site pixel. Homepage PHP is the exception. "insurance" is a Chris
+# hard rule for marketing surfaces.
 FORBIDDEN_MARKERS = [
     "connect.facebook.net",
     "facebook.com/tr",
@@ -506,9 +507,10 @@ def wp_auth(env: dict) -> str:
 # --------------------------------------------------------------------------
 
 def verify_http(item: PagePlan) -> str | None:
-    """Cache-busted GET: page loads, looks like our static HTML, carries GTM +
-    tracking.js. Returns None on pass, else a problem description."""
-    url = f"{item.url}?v={int(time.time())}"
+    """Clean-URL GET: the ordinary public address patients hit, no query string.
+    Cache-bust (`?v=` / `?n=1`) can lie while this URL is still an empty WP
+    shell. Returns None on pass, else a problem description."""
+    url = item.url
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:

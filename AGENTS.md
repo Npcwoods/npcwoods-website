@@ -10,6 +10,6 @@ Credentials: load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only (not 
 
 Do not tell Chris a URL is live until `https://npcwoods.com/<path>/` (no `?`) returns the real HTML.
 
-Homepage production map is `HOMEPAGE.md` (locked 2026-08-19): live `/` is `page-npcwoods-home.php` forced on Twenty Twenty-Four, not Gutenberg.
+Homepage production map is `HOMEPAGE.md`: live `/` is `page-npcwoods-home.php` forced on Twenty Twenty-Four. If you see Gutenberg / `wp-site-blocks`, the forcer died. Done check is `https://npcwoods.com/` with no `?`.
 
 Then read `CLAUDE.md`, `HOMEPAGE.md`, `skills/npcwoods-live-page-launch/SKILL.md`, `PRODUCT.md`, and `DESIGN.md`.

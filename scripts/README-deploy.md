@@ -8,8 +8,10 @@ for history and are still runnable, but new deploys should use `deploy.py`.
 
 It runs the same proven pipeline every dated script reimplemented:
 
-1. **Safety checks** on each local file (no Meta pixel markers, warns if
-   GTM/tracking.js missing or "insurance" appears).
+1. **Safety checks** on each local file (no GTM/GA/Ads/tracking.js/Meta
+   markers in kitchen HTML; warns if "insurance" appears). Homepage PHP
+   is the exception. Do not weaken the tool if a leftover file still has
+   pixels — strip the file first.
 2. **SFTP upload** (paramiko) of `landing-pages/{path}/index.html` to GoDaddy
    `html/{path}/index.html` — after downloading a timestamped backup of the
    existing remote file to `content-output/deploy-backups/<date>/`.
@@ -19,9 +21,10 @@ It runs the same proven pipeline every dated script reimplemented:
    the script plus `scripts/page-ids-2026-04-22.json`; search-safe child
    pages flush their parent city stub. Brand-new URLs have nothing cached
    and are skipped with a note.
-4. **Live verification** — cache-busted HTTP check (200, doctype, GTM,
-   tracking.js), and if Playwright is installed, a full mobile tracking run
-   (GTM + GA4 requests fire, zero Meta pixel requests) per page.
+4. **Live verification** — clean public URL with no query string (200,
+   doctype). A `?v=` / `?n=1` cache-bust can lie while patients still see
+   an empty WordPress shell. If Playwright is installed, a mobile tracking
+   run also checks zero Meta pixel requests per page.
 
 Credentials load from `~/Desktop/Chris-HQ/.env` (python-dotenv if installed,
 manual parse otherwise). Never hardcoded, never committed.

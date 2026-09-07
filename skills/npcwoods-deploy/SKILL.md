@@ -245,7 +245,7 @@ Live `/` is `page-npcwoods-home.php` at `html/wp-content/themes/twentytwentyfour
 
 Do not treat `/` as Gutenberg. Do not enqueue `wp-block-library` or `twentytwentyfour/style.css` on the homepage. Don't touch homepage CSS or mu-plugins "while you're in there" shipping city or blog pages. Nothing live without Chris's yes — except restoring a down homepage/login.
 
-Done check: `https://npcwoods.com/?n=1` is 200, title `NPCWoods Telemedicine: $59 Text-Based Urgent Care`, HTML contains `npc-redesign` and Chris's hero — not `wp-site-blocks` with a blue underlined nav list. `/wp-admin/` must be the login page (200), not "WordPress Error".
+Done check: `https://npcwoods.com/` (no `?`) is 200, title `NPCWoods Telemedicine: $59 Text-Based Urgent Care`, HTML contains `npc-redesign` and Chris's hero — not `wp-site-blocks` with a blue underlined nav list. `/wp-admin/` must be the login page (200), not "WordPress Error". `?n=1` is diagnosis only.
 
 ## Step 5: Verify
 
@@ -253,7 +253,7 @@ After deploying, always verify at least 2 pages:
 - The hub/index page
 - One child page
 
-Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`. If the site is 500: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm `?n=1` is real homepage HTML and `/wp-admin/` is login; then STOP.
+Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`. If the site is 500: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm the clean URL `https://npcwoods.com/` is real homepage HTML and `/wp-admin/` is login; then STOP. `?n=1` is diagnosis only.
 
 Use `WebFetch` to confirm each page loads with the correct content. If a page still shows a 404 or old content, GoDaddy's edge cache might be stale — it usually clears within a few minutes, but Chris can force-clear from the GoDaddy dashboard.
 
@@ -293,7 +293,7 @@ These are already deployed and working — don't overwrite or conflict with them
 4. Create mu-plugin PHP with `is_page()` + `template_redirect` pattern → upload to `html/wp-content/mu-plugins/` (never a second copy / `copy 1.php` / `.PATCHED.php`)
 5. WP REST API: create parent page → create child pages with `parent: parent_id` (include browser User-Agent!)
 6. Homepage: read `HOMEPAGE.md`. Do not touch homepage CSS or mu-plugins while shipping other pages.
-7. Verify with a cache buster (`?n=1`). City pages can look fine from cache while PHP is dead.
+7. Verify the clean URL with no query string. City pages can look fine from a cache-bust while PHP is dead. `?n=1` is diagnosis only.
 8. Update SHIFT-LOG.md
 
 ## Helper Scripts

@@ -11,13 +11,18 @@ import re
 import sys
 import tempfile
 import unittest
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from datetime import datetime
 from pathlib import Path
 from unittest import mock
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "deploy.py"
-PAGE = "uti-treatment/mesa-az/search-safe"  # real page in the repo
+PAGE = "uti-treatment/mesa-az/search-safe"  # real kitchen file; currently has leftover Meta
+CLEAN_PAGE = "clean-plate"
+CLEAN_HTML = (
+    "<!DOCTYPE html><html><head><title>Clean plate</title></head>"
+    "<body><h1>Text Chris</h1></body></html>"
+)
 
 
 def load_module():
@@ -26,6 +31,13 @@ def load_module():
     sys.modules[spec.name] = module  # dataclasses needs the module registered
     spec.loader.exec_module(module)
     return module
+
+
+def write_clean_landing(root: Path, page: str = CLEAN_PAGE) -> str:
+    page_dir = root / "landing-pages" / page
+    page_dir.mkdir(parents=True)
+    (page_dir / "index.html").write_text(CLEAN_HTML)
+    return page
 
 
 class PathResolutionTest(unittest.TestCase):
@@ -121,18 +133,30 @@ class DryRunSafetyTest(unittest.TestCase):
 
     def test_dry_run_makes_no_sftp_calls_and_loads_no_credentials(self):
         fake_paramiko = mock.MagicMock()
-        with mock.patch.object(self.m, "load_env") as load_env, \
-             mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}):
-            out = io.StringIO()
-            with redirect_stdout(out):
-                code = self.m.main(["deploy.py", "--pages", PAGE])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}):
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE])
         self.assertEqual(code, 0)
         load_env.assert_not_called()
         fake_paramiko.Transport.assert_not_called()
         text = out.getvalue()
         self.assertIn("[dry-run] nothing uploaded", text)
-        self.assertIn(f"html/{PAGE}/index.html", text)
+        self.assertIn(f"html/{CLEAN_PAGE}/index.html", text)
         self.assertRegex(text, r"sha256 [0-9a-f]{12}")  # checksum shown in the plan
+
+    def test_mesa_search_safe_kitchen_file_is_blocked_until_pixels_stripped(self):
+        err = io.StringIO()
+        with redirect_stdout(io.StringIO()), redirect_stderr(err):
+            code = self.m.main(["deploy.py", "--pages", PAGE])
+        self.assertEqual(code, 2)
+        self.assertIn("forbidden marker", err.getvalue())
+        self.assertIn("connect.facebook.net", err.getvalue())
 
     def test_dry_run_blocks_on_forbidden_meta_pixel_marker(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -158,40 +182,51 @@ class LiveGuardTest(unittest.TestCase):
     def setUp(self):
         self.m = load_module()
 
-    def _run(self, argv, stdin_tty=False, typed=None):
+    def _run(self, argv, stdin_tty=False, typed=None, root=None):
         fake_paramiko = mock.MagicMock()
-        patches = [
-            mock.patch.object(self.m, "load_env"),
-            mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}),
-            mock.patch.object(self.m.sys.stdin, "isatty", return_value=stdin_tty),
-        ]
-        if typed is not None:
-            patches.append(mock.patch("builtins.input", return_value=typed))
         out, err = io.StringIO(), io.StringIO()
-        with patches[0] as load_env, patches[1], patches[2], \
-             (patches[3] if typed is not None else mock.patch.object(self.m, "main", self.m.main)):
+        with ExitStack() as stack:
+            load_env = stack.enter_context(mock.patch.object(self.m, "load_env"))
+            stack.enter_context(mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}))
+            stack.enter_context(mock.patch.object(self.m.sys.stdin, "isatty", return_value=stdin_tty))
+            if root is not None:
+                stack.enter_context(mock.patch.object(self.m, "ROOT", root))
+            if typed is not None:
+                stack.enter_context(mock.patch("builtins.input", return_value=typed))
             with redirect_stdout(out), redirect_stderr(err):
                 code = self.m.main(argv)
         return code, load_env, fake_paramiko, out.getvalue(), err.getvalue()
 
     def test_live_without_confirmation_is_blocked(self):
-        code, load_env, paramiko_mock, _, err = self._run(["deploy.py", "--pages", PAGE, "--live"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            code, load_env, paramiko_mock, _, err = self._run(
+                ["deploy.py", "--pages", CLEAN_PAGE, "--live"], root=root)
         self.assertEqual(code, 2)
         load_env.assert_not_called()
         paramiko_mock.Transport.assert_not_called()
         self.assertIn("[blocked]", err)
 
     def test_live_with_wrong_flag_phrase_is_blocked(self):
-        code, load_env, paramiko_mock, _, err = self._run(
-            ["deploy.py", "--pages", PAGE, "--live", "--confirm-live-deploy", "yes please"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            code, load_env, paramiko_mock, _, err = self._run(
+                ["deploy.py", "--pages", CLEAN_PAGE, "--live",
+                 "--confirm-live-deploy", "yes please"], root=root)
         self.assertEqual(code, 2)
         load_env.assert_not_called()
         paramiko_mock.Transport.assert_not_called()
         self.assertIn("wrong confirmation phrase", err)
 
     def test_live_with_wrong_typed_phrase_is_blocked(self):
-        code, load_env, paramiko_mock, _, err = self._run(
-            ["deploy.py", "--pages", PAGE, "--live"], stdin_tty=True, typed="sure")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            code, load_env, paramiko_mock, _, err = self._run(
+                ["deploy.py", "--pages", CLEAN_PAGE, "--live"],
+                stdin_tty=True, typed="sure", root=root)
         self.assertEqual(code, 2)
         load_env.assert_not_called()
         paramiko_mock.Transport.assert_not_called()
@@ -205,9 +240,12 @@ class LiveGuardTest(unittest.TestCase):
             self.assertFalse(self.m.confirm_live(None, prompt=lambda _: "nope"))
 
     def test_live_and_verify_only_are_mutually_exclusive(self):
-        code, load_env, _, _, err = self._run(
-            ["deploy.py", "--pages", PAGE, "--live", "--verify-only",
-             "--confirm-live-deploy", "CHRIS APPROVED LIVE DEPLOY"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            code, load_env, _, _, err = self._run(
+                ["deploy.py", "--pages", CLEAN_PAGE, "--live", "--verify-only",
+                 "--confirm-live-deploy", "CHRIS APPROVED LIVE DEPLOY"], root=root)
         self.assertEqual(code, 2)
         load_env.assert_not_called()
         self.assertIn("mutually exclusive", err)
@@ -226,16 +264,19 @@ class VerifyOnlyTest(unittest.TestCase):
                 return fixed_now
 
         fake_paramiko = mock.MagicMock()
-        with tempfile.TemporaryDirectory() as tmp, \
-             mock.patch.object(self.m, "hq_root", return_value=Path(tmp)), \
-             mock.patch.object(self.m, "datetime", FixedDatetime), \
-             mock.patch.object(self.m, "load_env") as load_env, \
-             mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}), \
-             mock.patch.object(self.m, "run_verification",
-                               return_value={PAGE: "PASS (HTTP markers only)"}) as rv:
-            out = io.StringIO()
-            with redirect_stdout(out):
-                code = self.m.main(["deploy.py", "--pages", PAGE, "--verify-only"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "hq_root", return_value=Path(tmp)), \
+                 mock.patch.object(self.m, "datetime", FixedDatetime), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}), \
+                 mock.patch.object(self.m, "run_verification",
+                                   return_value={CLEAN_PAGE: "PASS (HTTP markers only)"}) as rv:
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--verify-only"])
 
             report = (Path(tmp) / "content-output" / "reports" / "deploy-verify" /
                       "deploy-verify-20260618-084512.md")
@@ -247,8 +288,8 @@ class VerifyOnlyTest(unittest.TestCase):
             text = report.read_text()
             self.assertIn("# Deploy Verification Proof", text)
             self.assertIn("Mode: verify-only", text)
-            self.assertIn(PAGE, text)
-            self.assertIn(f"https://npcwoods.com/{PAGE}/", text)
+            self.assertIn(CLEAN_PAGE, text)
+            self.assertIn(f"https://npcwoods.com/{CLEAN_PAGE}/", text)
             self.assertIn("PASS (HTTP markers only)", text)
             self.assertIn("Screenshots: none", text)
             self.assertIn(str(report), out.getvalue())
@@ -287,13 +328,17 @@ class VerifyOnlyTest(unittest.TestCase):
 
     def test_verify_only_runs_verification_without_sftp_or_credentials(self):
         fake_paramiko = mock.MagicMock()
-        with mock.patch.object(self.m, "load_env") as load_env, \
-             mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}), \
-             mock.patch.object(self.m, "run_verification",
-                               return_value={PAGE: "PASS (HTTP markers only)"}) as rv:
-            out = io.StringIO()
-            with redirect_stdout(out):
-                code = self.m.main(["deploy.py", "--pages", PAGE, "--verify-only"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.dict(sys.modules, {"paramiko": fake_paramiko}), \
+                 mock.patch.object(self.m, "run_verification",
+                                   return_value={CLEAN_PAGE: "PASS (HTTP markers only)"}) as rv:
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--verify-only"])
         self.assertEqual(code, 0)
         load_env.assert_not_called()
         fake_paramiko.Transport.assert_not_called()
@@ -301,11 +346,56 @@ class VerifyOnlyTest(unittest.TestCase):
         self.assertIn("1/1 pages passed", out.getvalue())
 
     def test_verify_only_reports_failure_exit_code(self):
-        with mock.patch.object(self.m, "run_verification",
-                               return_value={PAGE: "FAIL: bad status 404"}):
-            with redirect_stdout(io.StringIO()):
-                code = self.m.main(["deploy.py", "--pages", PAGE, "--verify-only"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "run_verification",
+                                   return_value={CLEAN_PAGE: "FAIL: bad status 404"}):
+                with redirect_stdout(io.StringIO()):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--verify-only"])
         self.assertEqual(code, 1)
+
+
+class CleanUrlVerifyTest(unittest.TestCase):
+    """Done check is the ordinary public address, not a cache-bust query."""
+
+    def setUp(self):
+        self.m = load_module()
+
+    def test_verify_http_requests_the_ordinary_public_address(self):
+        item = self.m.PagePlan(
+            page=PAGE,
+            local=Path("/tmp/unused"),
+            remote=f"html/{PAGE}/index.html",
+            url=f"https://npcwoods.com/{PAGE}/",
+        )
+        captured = {}
+
+        class Resp:
+            status = 200
+
+            def read(self):
+                return (
+                    b"<!DOCTYPE html><html><head><title>UTI</title></head>"
+                    b"<body><h1>Text Chris</h1></body></html>"
+                )
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+        def fake_urlopen(req, timeout=30):
+            captured["url"] = req.full_url
+            return Resp()
+
+        with mock.patch.object(self.m.urllib.request, "urlopen", fake_urlopen):
+            problem = self.m.verify_http(item)
+        self.assertIsNone(problem)
+        self.assertEqual(captured["url"], item.url)
+        self.assertNotIn("?", captured["url"])
 
 
 if __name__ == "__main__":
