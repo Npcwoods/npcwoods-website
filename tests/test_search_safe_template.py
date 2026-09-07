@@ -88,6 +88,10 @@ class SearchSafeTemplateTest(unittest.TestCase):
                 self.assertNotIn("GTM-59QSWZRC", live)
                 self.assertNotIn("G-EFFRQMG8TC", live)
                 self.assertNotIn("AW-610222919", live)
+                self.assertNotIn("connect.facebook.net", live)
+                self.assertNotIn("facebook.com/tr", live)
+                self.assertNotIn("fbq('init'", live)
+                self.assertNotIn('fbq("init"', live)
                 self.assertIn("GTM, GA4, and Google Ads stay off", generated)
 
 

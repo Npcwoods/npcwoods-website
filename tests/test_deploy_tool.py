@@ -17,7 +17,7 @@ from pathlib import Path
 from unittest import mock
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "deploy.py"
-PAGE = "uti-treatment/mesa-az/search-safe"  # real kitchen file; currently has leftover Meta
+PAGE = "uti-treatment/mesa-az/search-safe"  # real kitchen file; kitchen HTML must stay pixel-free
 CLEAN_PAGE = "clean-plate"
 CLEAN_HTML = (
     "<!DOCTYPE html><html><head><title>Clean plate</title></head>"
@@ -150,13 +150,13 @@ class DryRunSafetyTest(unittest.TestCase):
         self.assertIn(f"html/{CLEAN_PAGE}/index.html", text)
         self.assertRegex(text, r"sha256 [0-9a-f]{12}")  # checksum shown in the plan
 
-    def test_mesa_search_safe_kitchen_file_is_blocked_until_pixels_stripped(self):
-        err = io.StringIO()
-        with redirect_stdout(io.StringIO()), redirect_stderr(err):
+    def test_mesa_search_safe_kitchen_file_is_not_blocked_by_pixel_markers(self):
+        out, err = io.StringIO(), io.StringIO()
+        with redirect_stdout(out), redirect_stderr(err):
             code = self.m.main(["deploy.py", "--pages", PAGE])
-        self.assertEqual(code, 2)
-        self.assertIn("forbidden marker", err.getvalue())
-        self.assertIn("connect.facebook.net", err.getvalue())
+        self.assertEqual(code, 0, err.getvalue())
+        self.assertNotIn("forbidden marker", err.getvalue())
+        self.assertIn("[dry-run] nothing uploaded", out.getvalue())
 
     def test_dry_run_blocks_on_forbidden_meta_pixel_marker(self):
         with tempfile.TemporaryDirectory() as tmp:
