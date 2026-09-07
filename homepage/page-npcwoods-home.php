@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: NPCWoods Homepage
- * Pocket refresh 2026-08-21: urgent care in your pocket.
+ * Scroll plate live 2026-09-07. Chris: push the npcwoods scroll plate live.
  * Approved Meta Pixels live in this template after wp_head():
  * 1558261907814968 (ads) and 1428464038973925 (site).
  * Do not enqueue TT4 / wp-block-library on this template.
@@ -10,16 +10,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05060a">
-<title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
-<link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6F3EE" />
+  <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
+  <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" />
+  <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:900px) 100vw, 520px" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
 <!-- Meta Pixel Code: load after idle or first tap so phones stay snappy. -->
 <script>
@@ -48,9 +47,9 @@
   }
   function schedulePixel() {
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(function () { loadPixel(); }, { timeout: 2500 });
+      requestIdleCallback(function () { loadPixel(); }, { timeout: 8000 });
     } else {
-      setTimeout(loadPixel, 2000);
+      setTimeout(loadPixel, 8000);
     }
   }
   ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
@@ -72,694 +71,356 @@ src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"
 src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<style>
-:root {
-  --bg: #05060a;
-  --panel: #0d0e14;
-  --panel-2: #111318;
-  --panel-3: #161820;
-  --ink: #ffffff;
-  --body: #c7c7ce;
-  --muted: #6e6e73;
-  --line: rgba(255,255,255,0.08);
-  --blue: #0071e3;
-  --blue-bright: #2997ff;
-  --green: #19a463;
-  --red: #e5484d;
-  --radius: 20px;
-  --max: 1120px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--ink);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
-  line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;padding:10px 16px;background:#fff;color:#000;font-weight:700}
-.skip-link:focus{left:14px}
-.nav{
-  position:sticky;top:0;z-index:50;height:56px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 32px;
-  background:transparent;
-  border-bottom:1px solid transparent;
-  transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,height .35s ease;
-}
-.nav.is-scrolled{
-  height:52px;
-  background:rgba(5,6,10,0.72);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  border-bottom-color:var(--line);
-  box-shadow:0 10px 30px rgba(0,0,0,.28);
-}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
-.nav-logo img{width:32px;height:32px;border-radius:8px;object-fit:cover}
-.nav-tag{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
-.nav-cta{
-  position:relative;overflow:hidden;
-  background:var(--blue);color:#fff!important;-webkit-text-fill-color:#fff!important;
-  border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;
-  transition:box-shadow .25s ease,transform .2s ease;
-}
-.nav-cta::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);
-  transform:translateX(-120%);
-  transition:transform .6s ease;
-}
-.nav-cta:hover{box-shadow:0 0 0 3px rgba(0,113,227,.22),0 8px 24px rgba(0,113,227,.5);transform:translateY(-1px)}
-.nav-cta:hover::after{transform:translateX(120%)}
-
-.hero{
-  position:relative;min-height:92vh;
-  display:flex;align-items:center;justify-content:center;
-  padding:80px 24px 60px;background:var(--bg);overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);
-  width:900px;height:700px;
-  background:radial-gradient(ellipse at center, rgba(0,113,227,0.28) 0%, transparent 65%);
-  filter:blur(60px);pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
-  background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none;
-}
-.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;text-align:center}
-.hero-kicker{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
-  border-radius:999px;padding:6px 16px;
-  font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
-  color:rgba(255,255,255,0.7);margin-bottom:28px;
-}
-.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(25,164,99,.2)}
-.hero h1{
-  font-size:clamp(42px,7.5vw,84px);font-weight:800;line-height:1.0;letter-spacing:-0.065em;
-  color:#f4f8ff;margin-bottom:20px;
-}
-.pocket-word{
-  background:linear-gradient(90deg,#ffffff 0%,#a8d4ff 35%,#2997ff 50%,#a8d4ff 65%,#ffffff 100%);
-  background-size:220% 100%;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  animation:pocketSweep 4.8s ease-in-out infinite;
-}
-@keyframes pocketSweep{0%,100%{background-position:100% 0}50%{background-position:0 0}}
-.text-caret{
-  display:inline-block;width:2px;height:.62em;margin-left:4px;vertical-align:-1px;
-  background:#2997ff;border-radius:1px;animation:blink 1.15s steps(1) infinite;
-}
-@keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
-.hero-sub{
-  font-size:clamp(16px,2vw,20px);color:var(--body);line-height:1.55;letter-spacing:-0.015em;
-  max-width:560px;margin:0 auto 36px;
-}
-.hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
-.btn-primary{
-  background:var(--blue);color:#fff!important;-webkit-text-fill-color:#fff!important;
-  border-radius:999px;padding:14px 28px;font-size:15px;font-weight:700;
-  box-shadow:0 8px 30px rgba(0,113,227,.35);
-  transition:box-shadow .4s ease,transform .2s ease;
-}
-.btn-primary.is-ready{animation:ctaGlow 2.6s ease-in-out infinite}
-@keyframes ctaGlow{
-  0%,100%{box-shadow:0 8px 30px rgba(0,113,227,.35)}
-  50%{box-shadow:0 10px 42px rgba(0,113,227,.7),0 0 0 5px rgba(0,113,227,.14)}
-}
-.btn-ghost{
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);
-  color:#fff;border-radius:999px;padding:14px 28px;font-size:15px;font-weight:600;
-}
-.hero-trust{display:flex;align-items:center;justify-content:center;gap:20px;font-size:12px;color:var(--muted);flex-wrap:wrap}
-
-.hero-split{
-  display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;
-  text-align:left;max-width:1100px;
-}
-.hero-split .hero-sub{margin-left:0}
-.hero-split .hero-actions,.hero-split .hero-trust{justify-content:flex-start}
-
-.hero-visual{position:relative;width:min(380px,42vw);flex-shrink:0}
-.hero-face-wrap{
-  border-radius:28px;overflow:hidden;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.14),
-    0 0 48px rgba(41,151,255,.32),
-    0 40px 90px rgba(0,0,0,.5);
-  opacity:0;transform:translateY(12px);
-  transition:opacity .9s ease,transform .9s ease;
-}
-.hero-visual.is-in .hero-face-wrap{opacity:1;transform:none}
-.hero-face{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 10%}
-.hero-visual .phone-float{
-  position:absolute;right:-18%;bottom:-8%;
-  opacity:0;transform:translateY(36px);
-  transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1);
-  animation:none;
-}
-.hero-visual.is-in .phone-float{opacity:1;transform:none}
-.hero-visual.is-in .phone-float.is-settled{animation:float 6s ease-in-out infinite}
-.hero-visual .phone-frame{width:214px}
-
-.phone-float{display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 40px 60px rgba(0,113,227,.35))}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.phone-frame{
-  width:214px;background:#1c1c1e;border-radius:40px;padding:8px;
-  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 0 8px rgba(255,255,255,.03),inset 0 0 0 1px rgba(0,0,0,.55);
-}
-.phone-notch{width:78px;height:22px;background:#1c1c1e;border-radius:14px;margin:7px auto 6px}
-.phone-screen{background:#000;border-radius:32px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:9/19.4;height:auto}
-.imsg-header{background:rgba(24,24,28,.96);padding:10px 14px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.07)}
-.imsg-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(0,113,227,.7)}
-.imsg-name{font-size:12px;font-weight:700;color:#fff;line-height:1.2}
-.imsg-status{font-size:10px;color:var(--green);font-weight:500;display:flex;align-items:center;gap:6px}
-.live-dot{
-  width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;
-  box-shadow:0 0 0 0 rgba(25,164,99,.45);
-  animation:heartbeat 2.2s ease-out infinite;
-}
-@keyframes heartbeat{
-  0%{box-shadow:0 0 0 0 rgba(25,164,99,.42)}
-  70%{box-shadow:0 0 0 7px rgba(25,164,99,0)}
-  100%{box-shadow:0 0 0 0 rgba(25,164,99,0)}
-}
-.imsg-body{padding:10px 9px 14px;display:flex;flex-direction:column;gap:7px;flex:1;min-height:0}
-.imsg-line{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
-.imsg-line.is-in{opacity:1;transform:none}
-.imsg-bubble{max-width:80%;padding:8px 12px;border-radius:18px;font-size:11.5px;line-height:1.5}
-.imsg-bubble.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.imsg-bubble.chris{background:#2c2c2e;color:#e5e5ea;align-self:flex-start;border-bottom-left-radius:4px}
-.imsg-rx{align-self:flex-start;background:rgba(25,164,99,.15);border:1px solid rgba(25,164,99,.35);border-radius:12px;padding:7px 12px;font-size:11px;font-weight:600;color:#19a463}
-.imsg-time{font-size:10px;color:#6e6e73;text-align:center}
-
-.stats-band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 24px}
-.stats-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.stat{text-align:center}
-.stat-n{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.06em;background:linear-gradient(120deg,#fff,var(--blue-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:6px}
-.stat-l{font-size:13px;color:var(--muted);font-weight:500}
-
-.reviews{background:var(--panel-2);padding:56px 0;overflow:hidden}
-.reviews-head{text-align:center;padding:0 24px;margin-bottom:28px}
-.reviews-head h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-0.04em;margin-bottom:4px}
-.reviews-head p{color:var(--muted);font-size:14px}
-.stars-row{display:inline-flex;gap:3px;margin-bottom:6px}
-.stars-row svg{width:18px;height:18px;fill:#f59e0b}
-.scroll-mask{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.scroll-track{display:flex;gap:16px;width:max-content;animation:scrollR 50s linear infinite}
-.scroll-track:hover{animation-play-state:paused}
-@keyframes scrollR{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.rcard{flex-shrink:0;width:300px;background:var(--panel-3);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
-.rcard-text{font-size:13px;color:var(--body);line-height:1.6;font-style:italic;margin-bottom:14px}
-.rcard-foot{display:flex;justify-content:space-between;align-items:center}
-.rcard-author{font-size:12px;font-weight:700;color:#fff}
-.rcard-source{font-size:10px;font-weight:700;color:var(--blue-bright);background:rgba(41,151,255,.12);border-radius:999px;padding:3px 9px}
-
-.section{padding:80px 24px}
-.section-inner{max-width:var(--max);margin:0 auto}
-.section-kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue-bright);margin-bottom:12px}
-.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-0.05em;line-height:1.08;margin-bottom:16px}
-.section-body{font-size:16px;color:var(--body);line-height:1.65;max-width:640px;margin-bottom:40px}
-.center{text-align:center}
-.center .section-body{margin-left:auto;margin-right:auto}
-.alt-bg{background:var(--panel)}
-
-.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.bento-card{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
-.step-num{width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.bento-card h3{font-size:18px;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
-.bento-card p{font-size:14px;color:var(--body);line-height:1.6}
-.bento-card a{color:var(--blue-bright)}
-.chris-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);margin-bottom:12px}
-
-.prob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.prob{background:var(--panel-2);border:1px solid var(--line);border-radius:16px;padding:22px 18px}
-.prob .x{width:28px;height:28px;border-radius:8px;background:rgba(229,72,77,.12);color:var(--red);display:grid;place-items:center;font-weight:800;margin-bottom:10px}
-.prob h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.prob p{font-size:13px;color:var(--muted)}
-
-.meet{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
-.meet img{width:100%;border-radius:24px;aspect-ratio:4/5;object-fit:cover;object-position:center top;box-shadow:0 30px 80px rgba(0,113,227,.2)}
-.meet p{color:var(--body);font-size:16px;line-height:1.65;margin-bottom:14px;max-width:48ch}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.chip{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--body)}
-
-.treat-grid,.states-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.treat,.state-pill{
-  padding:10px 16px;background:var(--panel-2);border:1px solid var(--line);
-  border-radius:999px;font-size:14px;font-weight:500;color:var(--body);
-  text-decoration:none;display:inline-block;line-height:1.3;cursor:pointer;
-  transition:border-color .15s ease,color .15s ease,background .15s ease,transform .15s ease;
-}
-.treat:hover,.state-pill:hover{
-  border-color:var(--blue);color:var(--blue);background:#eaf4ff;
-  transform:translateY(-1px);
-}
-.treat:focus-visible,.state-pill:focus-visible{
-  outline:2px solid var(--blue);outline-offset:3px;
-}
-.treat small{display:block;font-size:11px;color:var(--muted);font-weight:400}
-
-.vs-section{padding:52px 24px;background:var(--panel);border-bottom:1px solid var(--line)}
-.vs-inner{max-width:720px;margin:0 auto}
-.vs-head{text-align:center;margin-bottom:26px}
-.vs-head h2{font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:-0.045em;margin-bottom:8px}
-.vs-head p{color:var(--muted);font-size:14px}
-.vs-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel-2)}
-.vs-cell{padding:13px 14px;border-bottom:1px solid var(--line);font-size:14px;display:flex;align-items:center;line-height:1.35}
-.vs-grid > .vs-cell:nth-last-child(-n+3){border-bottom:none}
-.vs-corner{background:var(--panel-3)}
-.vs-us-head,.vs-them-head{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;justify-content:center;text-align:center}
-.vs-us-head{background:var(--blue);color:#fff}
-.vs-them-head{background:var(--panel-3);color:var(--body)}
-.vs-feature{font-weight:700;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;background:var(--panel-3)}
-.vs-us{background:rgba(0,113,227,.10);color:#fff;font-weight:700}
-.vs-them{color:var(--muted)}
-.vs-check{color:var(--green);margin-right:7px;font-weight:800}
-
-.bottom-cta{background:linear-gradient(160deg,#0a1628 0%,#05060a 50%,#0d1a30 100%);border-top:1px solid var(--line);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
-.bottom-cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,113,227,.2),transparent 65%);filter:blur(40px);pointer-events:none}
-.bottom-cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
-.bottom-cta h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-0.055em;margin-bottom:16px;background:linear-gradient(120deg,#fff,#a8d4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.bottom-cta p{font-size:16px;color:var(--body);margin-bottom:32px;line-height:1.6}
-.bottom-trust-line{font-size:12px;color:var(--muted);margin-top:20px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-
-.er-note{font-size:13px;color:var(--muted);text-align:center;padding:20px 24px 100px;border-top:1px solid var(--line)}
-.mobile-cta{
-  display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;
-  background:var(--blue);color:#fff!important;-webkit-text-fill-color:#fff!important;
-  text-align:center;padding:16px;border-radius:100px;font-weight:700;
-  box-shadow:0 12px 32px rgba(0,113,227,.4);
-}
-.section-light,.section-white{
-  --panel:#ffffff;--panel-2:#f0f0f5;--panel-3:#e8e8ed;
-  --ink:#111114;--body:#3d3d3f;--muted:#6e6e73;--line:rgba(0,0,0,0.09);
-  color:#111114;
-}
-.section-light{background:#f5f5f7}
-.section-white{background:#ffffff}
-.section-light .section-kicker,.section-white .section-kicker{
-  color:var(--blue);background:rgba(0,113,227,.1);border:1px solid rgba(0,113,227,.22);
-  border-radius:999px;padding:4px 14px;
-}
-.section-light .bento-card,.section-white .bento-card{border-left:3px solid var(--blue)}
-.section-light .step-num,.section-white .step-num{box-shadow:0 0 0 6px rgba(0,113,227,.12)}
-.section-light .chip,.section-white .chip,
-.section-light .treat,.section-white .treat,
-.section-light .state-pill,.section-white .state-pill{
-  background:#fff;border-color:rgba(0,0,0,.1);color:#3d3d3f;
-}
-.section-light .prob,.section-white .prob{background:#fff}
-.section-slate{
-  background:#323843;
-  --panel:#323843;--panel-2:#3e4654;--panel-3:#4a5363;
-  --ink:#f4f6f9;--body:#d8dee8;--muted:#aeb6c3;--line:rgba(255,255,255,.16);
-  color:#f4f6f9;
-}
-.section-slate .section-kicker{
-  color:#9fd0ff;background:rgba(0,113,227,.22);border:1px solid rgba(0,113,227,.42);
-  border-radius:999px;padding:4px 14px;
-}
-.section-slate .chip,.section-slate .treat,.section-slate .state-pill{
-  background:#4c5566;border-color:rgba(255,255,255,.32);color:#ffffff;
-}
-.section-slate .treat:hover,.section-slate .state-pill:hover{
-  border-color:#2997ff;color:#fff;background:rgba(0,113,227,.32);
-}
-.section-slate .treat small{color:#b8c0cc}
-.dark-to-light{
-  position:relative;z-index:2;
-  clip-path:polygon(0 56px,100% 0,100% 100%,0 100%);
-  margin-top:-56px;padding-top:calc(80px + 56px);
-}
-
-#npcSaveWrap{display:none!important}
-body.npc-redesign .npc-nav{display:none!important}
-#trustedsite-tm-image,[id^="trustedsite"],[id^="trustedbadge"],[class*="trustedsite"]{display:none!important}
-html{background:#05060a!important}
-body.npc-redesign{background:#05060a!important}
-body.npc-redesign nav.nav{background:rgba(5,6,10,.88)!important;color:#fff!important;backdrop-filter:blur(18px)}
-body.npc-redesign nav.nav.is-scrolled{background:rgba(5,6,10,.94)!important}
-body.npc-redesign .nav-logo,body.npc-redesign .nav-logo span{color:#fff!important}
-body.npc-redesign .nav-tag{color:rgba(255,255,255,.72)!important}
-body::after{content:none!important;display:none!important}
-
-@media(max-width:900px){
-  .hero{min-height:auto;padding:36px 20px 130px}
-  .hero h1{font-size:clamp(34px,10vw,46px)}
-  .hero-sub{margin-bottom:20px}
-  .hero-split{grid-template-columns:1fr;text-align:center}
-  .hero-split .hero-sub{margin-inline:auto}
-  .hero-split .hero-actions,.hero-split .hero-trust{justify-content:center}
-  .hero-visual{width:min(280px,78vw);margin:20px auto 0}
-  .hero-visual .phone-float{right:-12%;bottom:-6%}
-  .hero-visual .phone-frame{width:152px}
-  .dark-to-light{clip-path:polygon(0 32px,100% 0,100% 100%,0 100%);margin-top:-32px;padding-top:calc(56px + 32px)}
-  .bento,.prob-grid,.meet,.stats-inner,.vs-grid{grid-template-columns:1fr}
-  .vs-grid{grid-template-columns:1.1fr 1fr 1fr}
-  .nav{padding:0 16px}
-  .nav-tag{max-width:16ch}
-  .mobile-cta{display:block}
-}
-@media(max-width:600px){
-  .stats-inner{grid-template-columns:1fr 1fr}
-  .prob-grid{grid-template-columns:1fr 1fr}
-  .vs-cell{padding:11px 9px;font-size:12px}
-  .section{padding:56px 20px}
-}
-@media(prefers-reduced-motion:reduce){
-  .scroll-track,.phone-float,.pocket-word,.text-caret,.live-dot,.btn-primary.is-ready,.nav-cta::after{animation:none}
-  .hero-face-wrap,.hero-visual .phone-float,.imsg-line{opacity:1;transform:none;transition:none}
-}
-</style>
+  <style>
+    :root {
+      --ink: #1A1A2E;
+      --muted: #5B5B6B;
+      --blue: #2563EB;
+      --blue-dark: #1D4ED8;
+      --cream: #F6F3EE;
+      --white: #FFFFFF;
+      --line: rgba(26, 26, 46, 0.08);
+      --shadow: 0 20px 50px rgba(26, 26, 46, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    #npcSaveWrap, body::after { display: none !important; content: none !important; }
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:2000;padding:10px 16px;background:#fff;color:#000;font-weight:700}
+    .skip-link:focus{left:14px}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(246, 243, 238, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; }
+    .brand-name { font-family: "DM Serif Display", serif; font-size: 1.15rem; line-height: 1; }
+    .brand-tag {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 3px;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      text-decoration: none;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.86rem;
+      padding: 10px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+    .hero { padding: 36px 20px 20px; text-align: left; }
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(2.15rem, 8vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+    h1 em { font-style: italic; color: var(--blue); }
+    .lede { margin-top: 16px; font-size: 1.08rem; color: var(--muted); max-width: 34rem; }
+    .photo-stage { padding: 12px 16px 8px; }
+    .photo-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #d8d4ce;
+    }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% 18%;
+    }
+    .price-pill {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+    .price-pill strong {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.6rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .price-pill span { font-size: 0.78rem; color: var(--muted); line-height: 1.2; }
+    section { padding: 56px 0 8px; }
+    h2 {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(1.7rem, 6vw, 2.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .section-copy { margin-top: 12px; color: var(--muted); font-size: 1.05rem; }
+    .pain-list { margin-top: 28px; display: grid; gap: 12px; }
+    .pain {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 16px 16px 18px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .x {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #F3E8E8;
+      color: #B42318;
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .pain h3 { font-size: 1rem; margin-bottom: 2px; }
+    .pain p { color: var(--muted); font-size: 0.92rem; }
+    .quote-block { margin-top: 28px; padding: 4px 0 0; }
+    .quote-block p {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+    .steps { margin-top: 28px; display: grid; gap: 14px; }
+    .step {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 18px 16px;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+    }
+    .num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #EFF6FF;
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 700;
+    }
+    .step h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+    .price-block {
+      margin: 36px 16px 0;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .price-block .big {
+      font-family: "DM Serif Display", serif;
+      font-size: 4.2rem;
+      line-height: 1;
+    }
+    .price-block h2 { color: #fff; margin-top: 8px; }
+    .price-block p { color: rgba(255,255,255,0.78); margin-top: 10px; }
+    .cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 650;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      box-shadow: 0 8px 22px rgba(37,99,235,0.35);
+    }
+    .btn-light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .reviews { margin-top: 28px; display: grid; gap: 12px; }
+    .review {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+    }
+    .stars { color: #E2A03A; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 6px; }
+    .review p { font-size: 0.95rem; }
+    .review cite { display: block; margin-top: 8px; color: var(--muted); font-style: normal; font-size: 0.82rem; }
+    .states { margin-top: 18px; color: var(--muted); font-size: 0.95rem; }
+    .safety {
+      max-width: 720px;
+      margin: 40px auto 0;
+      padding: 22px 20px;
+      border: 2px solid #fda29b;
+      background: #fff1f0;
+      border-radius: 20px;
+    }
+    .safety b { display: block; color: #b42318; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .safety p { color: #7a271a; margin-top: 8px; }
+    .finale { padding: 48px 20px 80px; text-align: center; }
+    .finale h2 { margin-bottom: 10px; }
+    .finale .lede { margin: 0 auto 22px; }
+    .fine { margin-top: 18px; font-size: 0.82rem; color: var(--muted); }
+    .reveal { opacity: 0; transform: translateY(18px); animation: up 0.7s ease forwards; }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.14s; }
+    .d3 { animation-delay: 0.22s; }
+    @keyframes up { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; animation: none; }
+    }
+    @media (min-width: 860px) {
+      .hero-grid {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 48px 28px 20px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .photo-stage { padding: 0; }
+      .photo-card img { aspect-ratio: 4 / 5; max-height: 640px; }
+      .cta-row { flex-direction: row; justify-content: center; }
+      .btn { min-width: 220px; }
+    }
+  </style>
 </head>
 <body class="npc-redesign">
-<style>
-body.npc-redesign .npc-nav, body.npc-redesign header.wp-block-template-part, body.npc-redesign .wp-site-blocks > header { display:none !important; }
-body.npc-redesign .npc-site-footer { display:none !important; }
-</style>
-<a class="skip-link" href="#main">Skip to content</a>
-
-<nav class="nav" aria-label="Primary">
-  <a class="nav-logo" href="#">
-    <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="" width="32" height="32">
-    <span>NPCWoods<span class="nav-tag">Urgent care in your pocket</span></span>
-  </a>
-  <a class="nav-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris · $59</a>
-</nav>
-
-<main id="main">
-
-<section class="hero">
-  <div class="hero-inner hero-split">
-    <div>
-      <div class="hero-kicker"><span class="hero-dot"></span> $59 flat · Real NP · 11 states</div>
-      <h1>Urgent care in your <span class="pocket-word">pocket</span><span class="text-caret" aria-hidden="true"></span>.</h1>
-      <p class="hero-sub">I'm Chris, a real Nurse Practitioner. Tell me what's going on and I'll get you sorted out. $59 flat. No waiting room. No app. Just a text.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" id="hero-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
-        <a class="btn-ghost" href="#how">See how it works</a>
-      </div>
-      <div class="hero-trust">
-        <span>MSN, APRN, FNP-C</span>
-        <span>Double board-certified</span>
-        <span>Pay after care</span>
-      </div>
-    </div>
-    <div class="hero-visual" id="hero-visual">
-      <div class="hero-face-wrap" id="hero-face-wrap">
-      <img class="hero-face" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="500" height="625" fetchpriority="high">
-      </div>
-    <div class="phone-float" id="phone-float" aria-hidden="true">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="imsg-header">
-            <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="imsg-avatar" alt="">
-            <div>
-              <div class="imsg-name">Chris @ NPCWoods</div>
-              <div class="imsg-status"><span class="live-dot" aria-hidden="true"></span> Available now</div>
-            </div>
-          </div>
-          <div class="imsg-body">
-            <div class="imsg-line imsg-time">Today 10:08 AM</div>
-            <div class="imsg-line imsg-bubble user">Hey Chris, burning when I pee. Started this morning.</div>
-            <div class="imsg-line imsg-bubble chris">I've got you. Any fever, back pain, or blood?</div>
-            <div class="imsg-line imsg-bubble user">No fever. Just the burning.</div>
-            <div class="imsg-line imsg-rx">✓ Plan sent. Pickup 10:52 AM</div>
-          </div>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="nav">
+    <a class="brand" href="https://npcwoods.com/">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, NP" width="38" height="38" />
+      <span>
+        <span class="brand-name">NPCWoods</span>
+        <span class="brand-tag">Telemedicine</span>
+      </span>
+    </a>
+    <a class="nav-cta" href="sms:+14806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">$59. Text Chris</a>
+  </header>
+  <main id="main">
+  <div class="hero-grid">
+    <section class="hero">
+      <p class="eyebrow reveal">NPCWoods · 11 states</p>
+      <h1 class="reveal d1">You feel awful.<br>The system makes you <em>work</em> for it.</h1>
+      <p class="lede reveal d2">A half-day in a waiting room for a ten-minute problem. Or you text me from the couch. Same problem. Different day.</p>
+    </section>
+    <div class="photo-stage reveal d3">
+      <div class="photo-card">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Nurse Practitioner" width="1000" height="1250" />
+        <div class="price-pill">
+          <strong>$59</strong>
+          <span>flat fee<br>pay after care</span>
         </div>
       </div>
     </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <h2>The old way is the expensive part.</h2>
+      <p class="section-copy">Not the medicine. Not the visit. The runaround.</p>
+      <div class="pain-list">
+        <article class="pain"><div class="x">×</div><div><h3>3-hour waits</h3><p>A half-day in an urgent care lobby for something I can sort out in a few texts.</p></div></article>
+        <article class="pain"><div class="x">×</div><div><h3>$200 for a $20 fix</h3><p>Surprise bills for simple care you already knew you needed.</p></div></article>
+        <article class="pain"><div class="x">×</div><div><h3>No clinic close by</h3><p>The nearest option is far, closed, or booked out for days.</p></div></article>
+        <article class="pain"><div class="x">×</div><div><h3>Forms and denials</h3><p>Portals, paperwork, and fine print after the fact.</p></div></article>
+      </div>
+      <div class="quote-block"><p>I built the practice I would want for my own family.</p></div>
     </div>
-  </div>
-</section>
-
-<div class="stats-band">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-n">$59</div><div class="stat-l">Flat fee, no surprises</div></div>
-    <div class="stat"><div class="stat-n">11</div><div class="stat-l">Licensed states</div></div>
-    <div class="stat"><div class="stat-n">Real NP</div><div class="stat-l">Chris reads every text</div></div>
-    <div class="stat"><div class="stat-n">After</div><div class="stat-l">Pay after you're treated</div></div>
-  </div>
-</div>
-
-<section class="reviews" aria-labelledby="rev-h">
-  <div class="reviews-head">
-    <div class="stars-row" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-    </div>
-    <h2 id="rev-h">Real texts. Real relief.</h2>
-    <p>Same people. Same quotes. Now they show up first.</p>
-  </div>
-  <div class="scroll-mask">
-    <div class="scroll-track">
-      <div class="rcard"><p class="rcard-text">"Very fast and convenient. I first messaged Chris at 10:08am and I was picking up my prescriptions from the pharmacy at 10:52am same day! Cannot recommend enough!"</p><div class="rcard-foot"><span class="rcard-author">A. H.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"Chris texted me back within seconds and had my prescription over to the pharmacy within minutes. So simple and easy. Definitely beats sitting in a waiting room."</p><div class="rcard-foot"><span class="rcard-author">J. R.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"I texted Chris out of nowhere on a Sunday and he answered straight away, saw me in under an hour!"</p><div class="rcard-foot"><span class="rcard-author">B. P.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"My grandmother couldn't get a response from her primary care provider. I texted Chris at 10pm and he responded within 15 minutes."</p><div class="rcard-foot"><span class="rcard-author">M. D.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"What a wonderful service to the community. Fast response time, no sitting in the waiting room."</p><div class="rcard-foot"><span class="rcard-author">J. D. Q.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"Messaged Chris, he responded in a timely manner. Very professional. It was nice to stay home and get quality care."</p><div class="rcard-foot"><span class="rcard-author">T. P.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"Very fast and convenient. I first messaged Chris at 10:08am and I was picking up my prescriptions from the pharmacy at 10:52am same day! Cannot recommend enough!"</p><div class="rcard-foot"><span class="rcard-author">A. H.</span><span class="rcard-source">Facebook</span></div></div>
-      <div class="rcard"><p class="rcard-text">"Chris texted me back within seconds and had my prescription over to the pharmacy within minutes. So simple and easy. Definitely beats sitting in a waiting room."</p><div class="rcard-foot"><span class="rcard-author">J. R.</span><span class="rcard-source">Facebook</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="how" class="section section-light dark-to-light">
-  <div class="section-inner">
-    <span class="section-kicker">The visit in your pocket</span>
-    <h2 class="section-title">Three texts. That's it.</h2>
-    <p class="section-body">Most patients hear back the same day, usually within a few hours. No 30-question form. No portal. No app.</p>
-    <div class="bento">
-      <article class="bento-card">
-        <div class="step-num">1</div>
-        <h3>Text me your symptoms</h3>
-        <p>In your own words. No 30-question form, no portal login, no app to download.</p>
-      </article>
-      <article class="bento-card">
-        <div class="step-num">2</div>
-        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods, NP">
-        <h3>I actually read it</h3>
-        <p>I look at your history, ask what I need to, and build a plan for you. Not a template. Not a bot.</p>
-      </article>
-      <article class="bento-card">
-        <div class="step-num">3</div>
-        <h3>Pick up and feel better</h3>
-        <p>I send your prescription to your pharmacy and a written plan to your inbox. That is it.</p>
-      </article>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:20px;text-align:center">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
-  </div>
-</section>
-
-<section class="section alt-bg">
-  <div class="section-inner">
-    <span class="section-kicker">The old way</span>
-    <h2 class="section-title">Getting better shouldn't be this hard.</h2>
-    <p class="section-body">You feel awful, and the system makes you work for it.</p>
-    <div class="prob-grid">
-      <div class="prob"><span class="x">&times;</span><h3>3-hour waits</h3><p>A half-day in an urgent care lobby for a 10-minute problem.</p></div>
-      <div class="prob"><span class="x">&times;</span><h3>$200 for a $20 fix</h3><p>Surprise bills for simple care you already knew you needed.</p></div>
-      <div class="prob"><span class="x">&times;</span><h3>No clinic close by</h3><p>The nearest option is far, closed, or booked out for days.</p></div>
-      <div class="prob"><span class="x">&times;</span><h3>Forms &amp; denials</h3><p>Portals, paperwork, and confusing fine print after the fact.</p></div>
-    </div>
-    <p class="section-body" style="margin:28px 0 0;max-width:none">I built NPCWoods so you'd have urgent care in your pocket.</p>
-  </div>
-</section>
-
-<section class="section section-white" id="chris">
-  <div class="section-inner meet">
-    <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner">
-    <div>
-      <span class="section-kicker">Meet your NP</span>
-      <h2 class="section-title">Hey, I'm Chris.</h2>
-      <p>I spent years watching people lose a whole day and a couple hundred bucks over something I could sort out in ten minutes. That never sat right with me.</p>
-      <p>So I built the practice I would want for my own family: urgent care in your pocket. Text a real Nurse Practitioner, get actually listened to, and pay one honest price.</p>
-      <p>No runaround. No surprise bills. No pretending a chatbot is care. Faith and family keep me grounded, and they are why I treat every visit like it is someone I love.</p>
-      <div class="chips">
-        <span class="chip">MSN, APRN, FNP-C</span>
-        <span class="chip">Double board-certified</span>
-        <span class="chip">NPI 1285125468</span>
-        <span class="chip">Real clinician review</span>
+  </section>
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three texts from feeling better.</h2>
+      <p class="section-copy">Usually within a few hours — first text to the pharmacy.</p>
+      <div class="steps">
+        <article class="step"><div class="num">01</div><div><h3>Text me your symptoms</h3><p>In your own words. No 30-question form. No portal. No app.</p></div></article>
+        <article class="step"><div class="num">02</div><div><h3>I actually read it</h3><p>I look at your history, ask what I need, and build a plan for you. Not a template. Not a bot.</p></div></article>
+        <article class="step"><div class="num">03</div><div><h3>Pick up and feel better</h3><p>Sent to your pharmacy. Written plan to your inbox. That is it.</p></div></article>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="vs-section" aria-label="NPCWoods compared to big telehealth">
-  <div class="vs-inner">
-    <div class="vs-head">
-      <span class="section-kicker">The honest comparison</span>
-      <h2>NPCWoods vs. big telehealth</h2>
-      <p>A real NP in your messages. None of the games.</p>
-    </div>
-    <div class="vs-grid">
-      <div class="vs-cell vs-corner"></div>
-      <div class="vs-cell vs-us-head">NPCWoods</div>
-      <div class="vs-cell vs-them-head">Big telehealth</div>
-      <div class="vs-cell vs-feature">Price</div>
-      <div class="vs-cell vs-us"><span class="vs-check">✓</span>$59 flat fee</div>
-      <div class="vs-cell vs-them">Membership plus visit fees</div>
-      <div class="vs-cell vs-feature">Who reads it</div>
-      <div class="vs-cell vs-us"><span class="vs-check">✓</span>Chris Woods, NP</div>
-      <div class="vs-cell vs-them">Call center or algorithm</div>
-      <div class="vs-cell vs-feature">App</div>
-      <div class="vs-cell vs-us"><span class="vs-check">✓</span>None. Just text</div>
-      <div class="vs-cell vs-them">Download required</div>
-      <div class="vs-cell vs-feature">Pay</div>
-      <div class="vs-cell vs-us"><span class="vs-check">✓</span>After you're treated</div>
-      <div class="vs-cell vs-them">Up front, then extras</div>
+  </section>
+  <div class="price-block">
+    <div class="big">$59</div>
+    <h2>That’s the whole thing.</h2>
+    <p>Pay after you’re treated. If I can’t safely help you by text, I’ll tell you straight up — and you don’t pay a dime.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="sms:+14806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
     </div>
   </div>
-</section>
-
-<section class="section section-slate dark-to-light center">
-  <div class="section-inner">
-    <span class="section-kicker">One price. One promise.</span>
-    <h2 class="section-title">That's the whole thing. $59.</h2>
-    <p class="section-body">Pay after you're treated. And if I can't safely help you by text, I'll tell you straight up, and you don't pay a dime.</p>
-    <div class="chips" style="justify-content:center">
-      <span class="chip">Flat fee</span><span class="chip">No hidden fees</span><span class="chip">Pay after treated</span><span class="chip">HSA / FSA receipt on request</span>
+  <section>
+    <div class="wrap">
+      <h2>Real texts. Real relief.</h2>
+      <div class="reviews">
+        <article class="review"><div class="stars">★★★★★</div><p>“I first messaged Chris at 10:08am and I was picking up my prescriptions at 10:52am same day.”</p><cite>A. H.</cite></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“I texted Chris out of nowhere on a Sunday and he answered straight away. Lightning-quick.”</p><cite>B. P.</cite></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“I texted Chris at 10pm and he responded within 15 minutes. When the pharmacy didn’t have it, he called the store himself.”</p><cite>M. D.</cite></article>
+      </div>
+      <p class="states">Licensed in Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, and Utah.</p>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="safety">
+      <b>Emergencies</b>
+      <p>Text care is not for chest pain, trouble breathing, severe allergic reaction, or anything that feels life-threatening. Call 911 or go to the nearest emergency room.</p>
     </div>
   </div>
-</section>
-
-<section class="section section-white center">
-  <div class="section-inner">
-    <span class="section-kicker">What I treat by text</span>
-    <h2 class="section-title">Common $59 visits.</h2>
-    <p class="section-body">If it is safe to handle by text, I will. If it is not, I will say so and you do not pay.</p>
-    <div class="treat-grid">
-      <a class="treat" href="https://npcwoods.com/uti-treatment/">UTI</a>
-      <a class="treat" href="https://npcwoods.com/sinus-infection-treatment/">Sinus infection</a>
-      <a class="treat" href="https://npcwoods.com/strep-throat-treatment/">Strep throat</a>
-      <a class="treat" href="https://npcwoods.com/ear-infection-treatment/">Ear infection</a>
-      <a class="treat" href="https://npcwoods.com/pink-eye-treatment/">Pink eye</a>
-      <a class="treat" href="https://npcwoods.com/learn/bronchitis/">Bronchitis / cough</a>
-      <a class="treat" href="https://npcwoods.com/learn/skin-infection/">Skin infection</a>
-      <a class="treat" href="https://npcwoods.com/dental-pain/">Tooth infection <small>bridge only, dentist still required</small></a>
-      <a class="treat" href="https://npcwoods.com/learn/stomach-bug/">Stomach bug</a>
-      <a class="treat" href="https://npcwoods.com/cold-sore-treatment/">Cold sores</a>
-      <a class="treat" href="https://npcwoods.com/learn/covid-flu/">COVID / flu</a>
-      <a class="treat" href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a>
-      <a class="treat" href="https://npcwoods.com/conditions/#gerd">Acid reflux</a>
-      <a class="treat" href="https://npcwoods.com/conditions/">Acne</a>
-      <a class="treat" href="https://npcwoods.com/learn/yeast-infection/">Yeast infection</a>
-      <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
-      <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
-      <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
-      <a class="treat" href="https://npcwoods.com/conditions/#medication-refills">Medication refills</a>
-      <a class="treat" href="https://npcwoods.com/glp1-weight-loss/">GLP-1 consult <small>fit and safety, drug cost separate</small></a>
+  <section class="finale">
+    <h2>Text me. I’ve got you.</h2>
+    <p class="lede">$59 flat. A real Nurse Practitioner. Right from your couch.</p>
+    <div class="cta-row" style="max-width: 420px; margin-left: auto; margin-right: auto;">
+      <a class="btn btn-primary" href="sms:+14806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now</a>
+      <a class="btn btn-light" href="https://npcwoods.com/chris-woods.vcf">Save my number as “sick guy”</a>
     </div>
-  </div>
-</section>
-
-<section class="section section-slate center">
-  <div class="section-inner">
-    <span class="section-kicker">Where I can help</span>
-    <h2 class="section-title">Licensed in 11 states.</h2>
-    <p class="section-body">You have to be physically in one of these states at the time of the visit.</p>
-    <div class="states-pills">
-      <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
-      <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
-      <a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
-      <a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
-      <a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
-      <a class="state-pill" href="https://npcwoods.com/montana-telemedicine/">Montana</a>
-      <a class="state-pill" href="https://npcwoods.com/nevada-telemedicine/">Nevada</a>
-      <a class="state-pill" href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a>
-      <a class="state-pill" href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
-      <a class="state-pill" href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
-      <a class="state-pill" href="https://npcwoods.com/utah-telemedicine/">Utah</a>
-    </div>
-  </div>
-</section>
-
-<section class="bottom-cta">
-  <div class="bottom-cta-inner">
-    <h2>Text me. It's already in your hand!</h2>
-    <p>$59 flat. A real Nurse Practitioner. No waiting room. No app.</p>
-    <a class="btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" style="font-size:16px;padding:16px 32px">Text Chris now</a>
-    <div class="bottom-trust-line">
-      <span>HIPAA-compliant</span>
-      <span>HSA / FSA receipt on request</span>
-      <span>Pay after care</span>
-    </div>
-  </div>
-</section>
-
-<p class="er-note">$59 text-based urgent care with Chris Woods, MSN, APRN, FNP-C. Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.<br>Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
-</main>
-
-<a class="mobile-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now · $59</a>
-<script>
-(function () {
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var nav = document.querySelector('.nav');
-  var visual = document.getElementById('hero-visual');
-  var faceWrap = document.getElementById('hero-face-wrap');
-  var phone = document.getElementById('phone-float');
-  var cta = document.getElementById('hero-cta');
-  var lines = document.querySelectorAll('.imsg-line');
-
-  function onScroll() {
-    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 40);
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  function showAll() {
-    if (visual) visual.classList.add('is-in');
-    if (phone) phone.classList.add('is-settled');
-    lines.forEach(function (el) { el.classList.add('is-in'); });
-    if (cta) cta.classList.add('is-ready');
-  }
-
-  if (reduce) {
-    showAll();
-    return;
-  }
-
-  if (visual) visual.classList.add('is-in');
-  window.setTimeout(function () {
-    if (phone) phone.classList.add('is-settled');
-  }, 720);
-
-  var times = [520, 1280, 2100, 2920, 3600];
-  lines.forEach(function (el, i) {
-    window.setTimeout(function () { el.classList.add('is-in'); }, times[i] || 400);
-  });
-  window.setTimeout(function () {
-    if (cta) cta.classList.add('is-ready');
-  }, 4100);
-
-  var hero = document.querySelector('.hero');
-  if (!hero || !visual) return;
-  var mx = 0, my = 0, sx = 0, sy = 0;
-  function paint() {
-    visual.style.transform = 'translate(' + (mx * -8 + sx) + 'px,' + (my * -6 + sy) + 'px)';
-  }
-  hero.addEventListener('mousemove', function (e) {
-    var r = hero.getBoundingClientRect();
-    mx = (e.clientX - r.left) / r.width - 0.5;
-    my = (e.clientY - r.top) / r.height - 0.5;
-    paint();
-  });
-  window.addEventListener('scroll', function () {
-    var y = Math.min(1, Math.max(0, window.scrollY / 420));
-    sy = y * -16;
-    sx = y * -5;
-    paint();
-  }, { passive: true });
-})();
-</script>
+    <p class="fine">Chris Woods, MSN, APRN, FNP-C · Not a chatbot · Pay after care</p>
+  </section>
+  </main>
 <?php if (function_exists('wp_footer')) { wp_footer(); } ?>
 </body>
 </html>

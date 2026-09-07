@@ -1,6 +1,8 @@
-# Homepage — locked production map (2026-08-19)
+# Homepage — locked production map (2026-09-07)
 
 **Docs only.** This file is the locked map for live `/`. Do not invent extras. Do not change live-site PHP, deploy scripts, or page HTML from this document.
+
+Live `/` is the custom PHP plate `page-npcwoods-home.php`, forced onto Twenty Twenty-Four. It is not a Gutenberg page. If the dining room shows `wp-site-blocks` and a blue underlined nav list, the forcer died — read the 500 steps below. Do not ignore this file.
 
 ## Credentials
 
@@ -41,21 +43,26 @@ Force it with mu-plugin `npcwoods-force-php-templates.php` (already live). Do no
 
 ### Done check
 
-- `https://npcwoods.com/?n=1` is 200
+Patients hit the ordinary address. That is the done check:
+
+- `https://npcwoods.com/` (no `?`) is 200
 - Title is `NPCWoods Telemedicine: $59 Text-Based Urgent Care`
+- H1 is `You feel awful.` (scroll plate live 2026-09-07)
 - HTML contains `npc-redesign` and Chris's hero
 - HTML is **not** `wp-site-blocks` with a blue underlined nav list
 - `/wp-admin/` should be the login page (200), not "WordPress Error"
+
+`?n=1` is diagnosis only. If the clean URL is Gutenberg/empty and `?n=1` is the real homepage, flush cache. Do not tell Chris `/` is live until the clean URL matches.
 
 ## Deploy
 
 - Dry-run first. Nothing live without Chris's yes — except restoring a down homepage/login, which is an emergency.
 - Don't touch homepage CSS or mu-plugins "while you're in there."
-- Verify with a cache buster (`?n=1`). City pages can look fine from cache while PHP is dead.
+- Verify the clean URL (`https://npcwoods.com/`, no `?`). `?n=1` is diagnosis only. City pages can look fine from a cache-bust while PHP is dead.
 
 ## If the site is 500
 
 1. Do not upload another PHP file.
 2. SFTP list mu-plugins. Delete only `*copy*.php` and `*PATCHED.php`. Keep the original.
 3. Confirm homepage template still exists in `twentytwentyfour`.
-4. Confirm `?n=1` is real homepage HTML and `/wp-admin/` is login. Then STOP.
+4. Confirm the clean URL `https://npcwoods.com/` is real homepage HTML and `/wp-admin/` is login. Then STOP. Use `?n=1` only to see whether the file is on disk while cache is lying.

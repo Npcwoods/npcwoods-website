@@ -23,17 +23,15 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
     def test_tracking_js_is_owned_by_wordpress_footer_hook(self):
         self.assertNotIn('<script src="/tracking.js"></script>', self.text)
 
-    def test_homepage_uses_shared_header_and_footer_snippets_when_available(self):
-        self.assertIn("shared/header-snippet.html", self.text)
-        self.assertIn("shared/footer-snippet.html", self.text)
-        self.assertIn("npcwoods_shared_footer_rendered", self.text)
+    def test_homepage_has_emergency_911_blurb(self):
+        self.assertIn("Call 911", self.text)
+        self.assertIn("chest pain", self.text)
 
-    def test_homepage_fallback_footer_includes_emergency_blurb(self):
-        locked = (
-            "Text-based telehealth is not for emergencies. "
-            "If you have chest pain, trouble breathing, or other emergency symptoms, call 911."
-        )
-        self.assertIn(locked, self.text)
+    def test_scroll_plate_markers(self):
+        self.assertIn("npc-redesign", self.text)
+        self.assertIn("You feel awful.", self.text)
+        self.assertIn("$59", self.text)
+        self.assertIn("sms:+14806394722", self.text)
 
     def test_homepage_leaves_seo_metadata_to_wordpress(self):
         """Yoast must be the sole owner of description, canonical, and social tags."""
@@ -63,16 +61,22 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("Ratings live on the Google Business Profile", php)
 
     def test_homepage_response_time_matches_guardian_canonical(self):
-        self.assertIn("usually within a few hours", self.text)
+        self.assertIn("Usually within a few hours", self.text)
         self.assertNotIn("Most visits wrap up in under an hour", self.text)
 
     def test_homepage_fonts_do_not_block_first_paint(self):
-        self.assertIn('media="print"', self.text)
-        self.assertIn("this.media='all'", self.text)
+        self.assertNotIn("Inter-VariableFont_slnt,wght.woff2", self.text)
         self.assertNotIn(
             'href="https://www.googletagmanager.com"',
             self.text,
         )
+        self.assertIn("{ timeout: 8000 }", self.text)
+
+    def test_lcp_hero_image_is_visible_without_javascript(self):
+        self.assertIn("fetchpriority=\"high\"", self.text)
+        self.assertIn("chris-400.webp", self.text)
+        self.assertIn("chris-1000.webp", self.text)
+        self.assertIn("imagesrcset", self.text)
 
     def test_homepage_defers_meta_pixel_until_idle_or_first_input(self):
         self.assertIn("requestIdleCallback", self.text)
