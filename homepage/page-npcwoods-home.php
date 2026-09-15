@@ -3,8 +3,8 @@
  * Template Name: NPCWoods Homepage
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
  * Lean scroll plate plus Chris, comparison, $59 visits, and 11-state rooms.
- * Approved Meta Pixel lives in this template after wp_head():
- * site pixel only, idle or first tap. Ads pixel stays off this plate.
+ * Approved Meta Pixel and GA4 G-0VCC0Z4FD7 live in this template after wp_head():
+ * site pixel + this GA4 ID only, idle or first tap. Ads pixel stays off this plate.
  * Do not enqueue TT4 / wp-block-library on this template.
  */
 ?>
@@ -36,6 +36,14 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1428464038973925');
     fbq('track', 'PageView');
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-0VCC0Z4FD7';
+    document.head.appendChild(ga);
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-0VCC0Z4FD7', { anonymize_ip: true });
   }
   function fireContact() {
     loadPixel();

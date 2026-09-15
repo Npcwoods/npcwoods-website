@@ -104,6 +104,13 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("1428464038973925", self.text)
         self.assertEqual(1, self.text.count("fbq('init'"))
 
+    def test_homepage_loads_requested_ga4_id_only(self):
+        self.assertIn("G-0VCC0Z4FD7", self.text)
+        self.assertIn("gtag/js?id=G-0VCC0Z4FD7", self.text)
+        self.assertNotIn("G-EFFRQMG8TC", self.text)
+        self.assertNotIn("AW-610222919", self.text)
+        self.assertNotIn("GTM-59QSWZRC", self.text)
+
 
     def test_save_contact_widget_waits_for_idle(self):
         js = (ROOT / "assets" / "js" / "site.js").read_text(encoding="utf-8")

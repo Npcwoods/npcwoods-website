@@ -33,6 +33,7 @@ PIXEL_MARKERS = (
     "/tracking.js",
     "GTM-59QSWZRC",
     "G-EFFRQMG8TC",
+    "G-0VCC0Z4FD7",
     "AW-610222919",
 )
 FORBIDDEN_MARKETING = (
