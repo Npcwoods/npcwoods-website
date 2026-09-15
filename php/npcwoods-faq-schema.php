@@ -361,6 +361,13 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // PAID-ONLY NOINDEX CLONES (not in sitemap; only paid traffic lands here)
         // ============================================================
         698,  // /uti-care/ paid Google + Facebook clone (noindexed)
+        // Ads + HIPAA /start-* landers (noindexed)
+        1002,  // /start-uti/
+        1003,  // /start-sinus/
+        1004,  // /start-dental/
+        1005,  // /start-uri/
+        1006,  // /t/
+        1007,  // /t/click/
         802,  // /conditions/albuterol-inhaler-refill-preview/ leftover preview, not a live plate
         825,  // /cost-savings-preview/ leftover blog preview
         839,  // /swimmers-ear-preview/ leftover blog preview

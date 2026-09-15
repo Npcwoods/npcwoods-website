@@ -37,6 +37,7 @@ HEALTH_MARKERS = (
     "conditions/",
     "poison-ivy",
     "cold-sore",
+    "start-uri",
 )
 
 SKIP_SUBSTRINGS = (

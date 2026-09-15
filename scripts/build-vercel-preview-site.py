@@ -238,6 +238,10 @@ def main() -> int:
         if source.exists():
             shutil.copy2(source, output / filename)
 
+    ads_click = ROOT / "html" / "shared" / "ads-click.js"
+    if ads_click.exists():
+        shutil.copy2(ads_click, output / "ads-click.js")
+
     if args.include_live_tracking:
         source = ROOT / "html" / "tracking.js"
         if source.exists():
