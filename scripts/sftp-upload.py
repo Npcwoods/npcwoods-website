@@ -176,6 +176,12 @@ def main(argv):
             sftp.put(str(local), remote)
             uploaded += 1
             print(f"[up] {local.relative_to(ROOT)} -> {remote}")
+            if local.relative_to(ROOT).as_posix() == "homepage/page-npcwoods-home.php":
+                flavor = "html/wp-content/themes/flavor/page-npcwoods-home.php"
+                mkdir_p(sftp, "html/wp-content/themes/flavor")
+                sftp.put(str(local), flavor)
+                uploaded += 1
+                print(f"[up] {local.relative_to(ROOT)} -> {flavor}")
         sftp.close()
         print()
         print(f"  uploaded: {uploaded}")

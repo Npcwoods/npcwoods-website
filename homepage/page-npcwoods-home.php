@@ -3,8 +3,8 @@
  * Template Name: NPCWoods Homepage
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
  * Lean scroll plate plus Chris, comparison, $59 visits, and 11-state rooms.
- * Approved Meta Pixels live in this template after wp_head():
- * 1558261907814968 (ads) and 1428464038973925 (site).
+ * Approved Meta Pixel lives in this template after wp_head():
+ * site pixel only, idle or first tap. Ads pixel stays off this plate.
  * Do not enqueue TT4 / wp-block-library on this template.
  */
 ?>
@@ -16,10 +16,8 @@
   <meta name="theme-color" content="#F6F3EE" />
   <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" />
-  <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:900px) 100vw, 520px" fetchpriority="high" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-serif-display-400.woff2" crossorigin />
+  <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:860px) 92vw, 520px" fetchpriority="high" />
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
 <!-- Meta Pixel Code: load after idle or first tap so phones stay snappy. -->
 <script>
@@ -36,7 +34,6 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1558261907814968');
     fbq('init', '1428464038973925');
     fbq('track', 'PageView');
   }
@@ -66,16 +63,34 @@
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1558261907814968&ev=PageView&noscript=1"
-/></noscript>
-<noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
   <style>
+    @font-face {
+      font-family: "DM Serif Display";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("/assets/fonts/dm-serif-display-400.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "DM Serif Display";
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("/assets/fonts/dm-serif-display-400-italic.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url("/assets/fonts/dm-sans-400-600.woff2") format("woff2");
+    }
     :root {
       --ink: #1A1A2E;
-      --muted: #5B5B6B;
+      --muted: #3A3A3A;
       --blue: #2563EB;
       --blue-dark: #1D4ED8;
       --cream: #F6F3EE;
@@ -86,7 +101,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: Inter, system-ui, sans-serif;
+      font-family: "DM Sans", system-ui, sans-serif;
       color: var(--ink);
       background: var(--cream);
       -webkit-font-smoothing: antialiased;
@@ -124,6 +139,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     .nav-cta {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      min-height: 44px;
       background: linear-gradient(135deg, var(--blue), var(--blue-dark));
       color: #fff !important;
       -webkit-text-fill-color: #fff;
@@ -131,7 +148,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       font-family: "DM Sans", sans-serif;
       font-weight: 600;
       font-size: 0.86rem;
-      padding: 10px 16px;
+      padding: 12px 14px;
+      white-space: nowrap;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
     }
@@ -142,7 +160,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--blue-dark);
       margin-bottom: 14px;
     }
     h1 {
@@ -183,7 +201,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     .price-pill strong {
       font-family: "DM Serif Display", serif;
       font-size: 1.6rem;
-      color: var(--blue);
+      color: var(--blue-dark);
       line-height: 1;
     }
     .price-pill span { font-size: 0.78rem; color: var(--muted); line-height: 1.2; }
@@ -319,7 +337,15 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     }
     .meet p { margin-top: 12px; color: var(--muted); }
     .meet-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-    .meet-links a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .meet-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 12px;
+      color: var(--blue-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
     .vs-grid {
       margin-top: 24px;
       display: grid;
@@ -346,7 +372,9 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     .treat {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 2px;
+      min-height: 44px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -363,7 +391,9 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     }
     .state-pill {
       display: inline-flex;
-      padding: 9px 14px;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 14px;
       border-radius: 999px;
       background: #fff;
       border: 1px solid var(--line);
@@ -435,6 +465,106 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       }
       body { padding-bottom: 76px; }
       .vs-grid { font-size: 0.84rem; }
+      .npc-site-footer { padding-bottom: 108px; }
+    }
+    .npc-site-footer {
+      background: #1A1A2E;
+      color: #B0B0C0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 56px 20px 32px;
+    }
+    .npc-footer-inner { max-width: 1100px; margin: 0 auto; }
+    .npc-footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .npc-footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .npc-footer-brand-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .npc-footer-brand-name img { width: 36px; height: 36px; border-radius: 8px; }
+    .npc-footer-brand p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #8E8E9A;
+      margin: 0;
+      max-width: 280px;
+    }
+    .npc-footer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      background: #2563EB;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      width: fit-content;
+    }
+    .npc-footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin: 0 0 16px;
+    }
+    .npc-footer-col ul { list-style: none; margin: 0; padding: 0; }
+    .npc-footer-col li { margin-bottom: 8px; }
+    .npc-footer-col a { font-size: 0.875rem; color: #B0B0C0; text-decoration: none; }
+    .npc-footer-divider { border: none; border-top: 1px solid #2A2A3E; margin: 0 0 24px; }
+    .npc-footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: #6B6B80;
+    }
+    .npc-footer-bottom a { color: #6B6B80; text-decoration: none; }
+    .npc-footer-trust {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6B6B80;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+    .npc-footer-trust a { color: #9EB8FF; text-decoration: none; }
+    .npc-footer-hipaa-badge {
+      display: inline-flex;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.18);
+      color: #D9E7FF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .npc-footer-emergency {
+      margin: 12px auto 0;
+      max-width: 36rem;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: #6B6B80;
+    }
+    @media (max-width: 768px) {
+      .npc-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .npc-footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .npc-footer-grid { grid-template-columns: 1fr; gap: 28px; }
     }
   </style>
 </head>
@@ -460,7 +590,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     </section>
     <div class="photo-stage reveal d3">
       <div class="photo-card">
-        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Nurse Practitioner" width="1000" height="1250" />
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" srcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" sizes="(max-width:860px) 92vw, 520px" alt="Chris Woods, Nurse Practitioner" width="1000" height="1250" fetchpriority="high" />
         <div class="price-pill">
           <strong>$59</strong>
           <span>flat fee<br>pay after care</span>
@@ -624,6 +754,117 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
   </section>
   </main>
   <a class="mobile-cta" href="sms:+14806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now · $59</a>
+<?php
+$GLOBALS['npcwoods_shared_footer_rendered'] = true;
+$npcwoods_footer = defined('ABSPATH') ? ABSPATH . 'shared/footer-snippet.html' : '';
+if ($npcwoods_footer && is_readable($npcwoods_footer)) {
+    readfile($npcwoods_footer);
+} else {
+?>
+<footer class="npc-site-footer">
+  <div class="npc-footer-inner">
+    <div class="npc-footer-grid">
+      <div class="npc-footer-brand">
+        <div class="npc-footer-brand-name">
+          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
+          NPCWoods Telemedicine
+        </div>
+        <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No appointment. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
+        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-footer-cta">Text (480) 639-4722</a>
+      </div>
+      <div class="npc-footer-col">
+        <h4>Conditions We Treat</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
+          <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
+          <li><a href="https://npcwoods.com/dental-pain/">Dental Pain</a></li>
+          <li><a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a></li>
+          <li><a href="https://npcwoods.com/learn/covid-flu/">Cold &amp; Flu</a></li>
+          <li><a href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a></li>
+          <li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li>
+          <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
+          <li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li>
+          <li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li>
+          <li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li>
+          <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="npc-footer-col">
+        <h4>States We Serve</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
+          <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
+          <li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li>
+          <li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li>
+          <li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li>
+          <li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li>
+          <li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li>
+          <li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li>
+          <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
+          <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
+          <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+        </ul>
+      </div>
+      <div class="npc-footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="https://npcwoods.com/">Home</a></li>
+          <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
+          <li><a href="https://npcwoods.com/pricing/">Pricing, $59</a></li>
+          <li><a href="https://npcwoods.com/faq/">FAQ</a></li>
+          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
+          <li><a href="https://npcwoods.com/learn/">Patient Education</a></li>
+          <li><a href="https://npcwoods.com/medications/">Medications</a></li>
+          <li><a href="https://npcwoods.com/blog/">Blog</a></li>
+          <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="npc-footer-divider">
+    <div class="npc-footer-bottom">
+      <span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>
+      <span><a href="https://npcwoods.com">npcwoods.com</a></span>
+    </div>
+    <div class="npc-footer-trust">
+      <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
+        <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
+      </a><br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
+      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
+      <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
+    </div>
+  </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": "https://npcwoods.com/#medical-business",
+    "name": "NPCWoods",
+    "alternateName": "NPCWoods Telemedicine",
+    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+    "telephone": "+14806394722",
+    "url": "https://npcwoods.com",
+    "logo": "https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg",
+    "priceRange": "$59",
+    "sameAs": [
+      "https://share.google/XlmNvRT4vihOJ8KBH",
+      "https://www.facebook.com/npcwoods",
+      "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3550 N Goldwater Blvd #1119",
+      "addressLocality": "Scottsdale",
+      "addressRegion": "AZ",
+      "postalCode": "85251",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+</footer>
+<?php } ?>
 <?php if (function_exists('wp_footer')) { wp_footer(); } ?>
 </body>
 </html>

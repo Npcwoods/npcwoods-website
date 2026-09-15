@@ -280,6 +280,9 @@ function npcwoods_default_alt_text($attr, $attachment, $size) {
 // ============================================================
 add_action('wp_head', 'npcwoods_speed_hints', 1);
 function npcwoods_speed_hints() {
+    if (function_exists('is_front_page') && is_front_page()) {
+        return;
+    }
     echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />' . "\n";
     echo '<link rel="dns-prefetch" href="https://fonts.googleapis.com" />' . "\n";
 }

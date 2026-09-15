@@ -58,7 +58,9 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
 
     def test_homepage_has_one_business_entity_owner(self):
         """The shared footer owns the site-wide MedicalBusiness entity."""
-        self.assertEqual(0, len(re.findall(r'"@type"\s*:\s*"MedicalBusiness"', self.text)))
+        self.assertEqual(1, len(re.findall(r'"@type"\s*:\s*"MedicalBusiness"', self.text)))
+        self.assertIn("shared/footer-snippet.html", self.text)
+        self.assertIn("npc-site-footer", self.text)
 
     def test_eeat_plugin_does_not_emit_medical_business_on_the_front_page(self):
         php = (ROOT / "php" / "npcwoods-eeat.php").read_text(encoding="utf-8")
@@ -72,11 +74,15 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertNotIn("Most visits wrap up in under an hour", self.text)
 
     def test_homepage_fonts_do_not_block_first_paint(self):
+        self.assertNotIn("fonts.googleapis.com", self.text)
+        self.assertNotIn("fonts.gstatic.com", self.text)
         self.assertNotIn("Inter-VariableFont_slnt,wght.woff2", self.text)
         self.assertNotIn(
             'href="https://www.googletagmanager.com"',
             self.text,
         )
+        self.assertIn('href="/assets/fonts/dm-serif-display-400.woff2"', self.text)
+        self.assertIn("font-display: swap", self.text)
         self.assertIn("{ timeout: 8000 }", self.text)
 
     def test_lcp_hero_image_is_visible_without_javascript(self):
@@ -84,13 +90,19 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("chris-400.webp", self.text)
         self.assertIn("chris-1000.webp", self.text)
         self.assertIn("imagesrcset", self.text)
+        self.assertIn('srcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w', self.text)
+        self.assertIn(
+            'href="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp"',
+            self.text,
+        )
 
     def test_homepage_defers_meta_pixel_until_idle_or_first_input(self):
         self.assertIn("requestIdleCallback", self.text)
         self.assertIn("loadPixel", self.text)
         self.assertIn("connect.facebook.net/en_US/fbevents.js", self.text)
-        self.assertIn("1558261907814968", self.text)
+        self.assertNotIn("1558261907814968", self.text)
         self.assertIn("1428464038973925", self.text)
+        self.assertEqual(1, self.text.count("fbq('init'"))
 
 
     def test_save_contact_widget_waits_for_idle(self):

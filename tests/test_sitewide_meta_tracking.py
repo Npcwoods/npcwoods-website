@@ -110,8 +110,8 @@ def transform_homepage_head(document: str) -> str:
     return completed.stdout
 
 
-OFFICIAL_PIXEL_ID = "1558261907814968"
-INJECTED_PIXEL_ID = "1428464038973925"
+ADS_PIXEL_ID = "1558261907814968"
+SITE_PIXEL_ID = "1428464038973925"
 HOMEPAGE_TEMPLATE = ROOT / "homepage" / "page-npcwoods-home.php"
 
 
@@ -137,26 +137,23 @@ class SitewideMetaTrackingTest(unittest.TestCase):
         wp_head = re.search(r"wp_head\s*\(", source)
         self.assertIsNotNone(wp_head)
 
-        init = re.search(r"fbq\(\s*['\"]init['\"]\s*,\s*['\"]%s['\"]" % OFFICIAL_PIXEL_ID, source)
+        init = re.search(r"fbq\(\s*['\"]init['\"]\s*,\s*['\"]%s['\"]" % SITE_PIXEL_ID, source)
         pageview = re.search(r"fbq\(\s*['\"]track['\"]\s*,\s*['\"]PageView['\"]", source)
         contact = re.search(r"fbq\(\s*['\"]track['\"]\s*,\s*['\"]Contact['\"]", source)
         contact_custom = re.search(r"fbq\(\s*['\"]trackCustom['\"]\s*,\s*['\"]ContactSent['\"]", source)
         sms_bind = re.search(r"a\[href\^=['\"]sms:", source)
 
-        self.assertIsNotNone(init, "homepage must init official Meta Pixel 1558261907814968")
+        self.assertIsNotNone(init, "homepage must init site pixel 1428464038973925")
         self.assertIsNotNone(pageview, "homepage must fire PageView")
         self.assertIsNotNone(contact, "homepage must fire Contact")
         self.assertIsNotNone(contact_custom, "homepage must also fire custom Contact so the beacon is sendable")
         self.assertIsNotNone(sms_bind, "Contact must bind to sms: clicks")
         self.assertIn("connect.facebook.net/en_US/fbevents.js", source)
-        self.assertIn(f"facebook.com/tr?id={OFFICIAL_PIXEL_ID}", source)
-        site_pixel = re.search(r"fbq\(\s*['\"]init['\"]\s*,\s*['\"]%s['\"]" % INJECTED_PIXEL_ID, source)
-        self.assertIsNotNone(site_pixel, "homepage must also init site pixel 1428464038973925")
+        self.assertIn(f"facebook.com/tr?id={SITE_PIXEL_ID}", source)
+        self.assertNotIn(ADS_PIXEL_ID, source)
         self.assertGreater(init.start(), wp_head.start())
-        self.assertGreater(site_pixel.start(), wp_head.start())
         self.assertGreater(pageview.start(), wp_head.start())
         self.assertGreater(contact.start(), wp_head.start())
-        self.assertIn(f"facebook.com/tr?id={INJECTED_PIXEL_ID}", source)
         self.assertNotIn("GTM-59QSWZRC", source)
         self.assertNotRegex(source, r"fbq\(\s*['\"]track['\"]\s*,\s*['\"]Lead['\"]")
 
