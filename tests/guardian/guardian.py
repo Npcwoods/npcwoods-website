@@ -19,6 +19,9 @@ Checks per page (from tests/guardian/manifest.json):
   8. Internal links: every unique internal href HEAD-checked once
   9. Playwright spot-check on a small rotating sample: GTM/GA4 requests fire,
      zero facebook requests on health pages
+  10. Discovery files on apex: /llms.txt, /llms-full.txt, /robots.txt are 200.
+      /sitemap.xml 301 to /sitemap_index.xml is success, not a missing file.
+      www /sitemap.xml should 301 to the same apex index. No canonical required.
 
 Output: content-output/guardian-reports/latest.md (temp-file + os.replace, safe
 for launchd) plus a dated copy. Exit 0 = all green, 1 = red flags.
@@ -188,12 +191,17 @@ def context_snippets(text: str, pattern: re.Pattern, cap: int = 3) -> list[str]:
     return out
 
 
-def fetch(session: requests.Session, url: str, method: str = "GET") -> requests.Response:
+def fetch(
+    session: requests.Session,
+    url: str,
+    method: str = "GET",
+    allow_redirects: bool = True,
+) -> requests.Response:
     last_exc = None
     for attempt in range(2):
         try:
             return session.request(
-                method, url, timeout=TIMEOUT, allow_redirects=True,
+                method, url, timeout=TIMEOUT, allow_redirects=allow_redirects,
                 headers={"User-Agent": UA},
             )
         except requests.RequestException as exc:
@@ -201,6 +209,93 @@ def fetch(session: requests.Session, url: str, method: str = "GET") -> requests.
             if attempt == 0:
                 time.sleep(RETRY_PAUSE)
     raise last_exc
+
+
+SITEMAP_INDEX_URL = "https://npcwoods.com/sitemap_index.xml"
+
+
+def sitemap_xml_redirect_ok(status: int, location: str | None) -> bool:
+    """A 301/308 to the Yoast index is success. Do not treat it as a 404."""
+    if status not in (301, 308):
+        return False
+    if not location:
+        return False
+    return location.rstrip("/").endswith("/sitemap_index.xml")
+
+
+def check_discovery_files(session: requests.Session, base: str) -> list[Finding]:
+    """Apex crawler files. 301 on /sitemap.xml is OK. No canonical required."""
+    findings: list[Finding] = []
+    apex = base.rstrip("/")
+    parsed = urlparse(apex)
+    host = parsed.netloc.replace("www.", "")
+    www = f"{parsed.scheme}://www.{host}"
+
+    for path, expect_type in (
+        ("/llms.txt", "text/plain"),
+        ("/llms-full.txt", "text/plain"),
+        ("/robots.txt", "text/plain"),
+    ):
+        url = apex + path
+        try:
+            resp = fetch(session, url)
+        except requests.RequestException as exc:
+            findings.append(Finding("RED", url, "discovery-file", f"fetch failed: {exc}"))
+            continue
+        if resp.status_code != 200:
+            findings.append(
+                Finding("RED", url, "discovery-file",
+                        f"HTTP {resp.status_code} on apex (expected 200; "
+                        "www-first or cached crawls are a checker bug)")
+            )
+            continue
+        ctype = (resp.headers.get("Content-Type") or "").lower()
+        if expect_type not in ctype:
+            findings.append(
+                Finding("YELLOW", url, "discovery-file",
+                        f"Content-Type {ctype or '(missing)'} (expected {expect_type})")
+            )
+
+    sitemap_xml = apex + "/sitemap.xml"
+    try:
+        first = fetch(session, sitemap_xml, allow_redirects=False)
+        if first.status_code == 200 and "sitemapindex" in (first.text or "")[:400].lower():
+            pass
+        elif sitemap_xml_redirect_ok(first.status_code, first.headers.get("Location")):
+            pass
+        else:
+            findings.append(
+                Finding("YELLOW", sitemap_xml, "discovery-file",
+                        f"HTTP {first.status_code} (301 to {SITEMAP_INDEX_URL} is OK; "
+                        "do not report a Yoast 301 as a missing sitemap)")
+            )
+    except requests.RequestException as exc:
+        findings.append(Finding("YELLOW", sitemap_xml, "discovery-file", f"fetch failed: {exc}"))
+
+    try:
+        idx = fetch(session, SITEMAP_INDEX_URL)
+        if idx.status_code != 200:
+            findings.append(
+                Finding("YELLOW", SITEMAP_INDEX_URL, "discovery-file",
+                        f"HTTP {idx.status_code} fetching Yoast sitemap index")
+            )
+    except requests.RequestException as exc:
+        findings.append(Finding("YELLOW", SITEMAP_INDEX_URL, "discovery-file",
+                                f"sitemap index fetch failed: {exc}"))
+
+    www_sitemap = www + "/sitemap.xml"
+    try:
+        www_first = fetch(session, www_sitemap, allow_redirects=False)
+        if not sitemap_xml_redirect_ok(www_first.status_code, www_first.headers.get("Location")):
+            findings.append(
+                Finding("YELLOW", www_sitemap, "discovery-file",
+                        f"HTTP {www_first.status_code}; want 301 to {SITEMAP_INDEX_URL} "
+                        "(apex /sitemap.xml already 301s; www is the leftover)")
+            )
+    except requests.RequestException as exc:
+        findings.append(Finding("YELLOW", www_sitemap, "discovery-file", f"fetch failed: {exc}"))
+
+    return findings
 
 
 # ------------------------------------------------------------- page checks
@@ -636,6 +731,7 @@ def main() -> int:
     site_findings: list[Finding] = []
     sitemap_urls, sm_findings = fetch_sitemap_urls(session, base)
     site_findings += sm_findings
+    site_findings += check_discovery_files(session, base)
     site_findings += check_tracking_js(session, base)
 
     results: list[PageResult] = []
