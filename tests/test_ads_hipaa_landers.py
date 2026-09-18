@@ -18,7 +18,7 @@ PAGES = {
 HEADLINES = {
     "uti": "UTI treatment by text · $59 · same day",
     "sinus": "Day 5–7 and still getting worse?",
-    "dental": "Tooth throbbing. No dentist today?",
+    "dental": "Tooth throbbing. Bridge care only.",
     "uri": "Can't shake this cold?",
 }
 FLIP = ("start-uti", "start-sinus", "start-dental", "start-uri")
@@ -102,10 +102,14 @@ class AdsHipaaLandersTest(unittest.TestCase):
         text = PAGES["sinus"].read_text(encoding="utf-8").lower()
         self.assertIn("green mucus", text)
 
-    def test_uri_refuses_leftover_z_pack_pitch(self):
-        text = PAGES["uri"].read_text(encoding="utf-8").lower()
-        self.assertIn("viral", text)
-        self.assertIn("do not pay", text.replace("’", "'"))
+    def test_uri_refuses_leftover_meds_without_drug_names(self):
+        text = PAGES["uri"].read_text(encoding="utf-8")
+        live = live_markup(text).lower()
+        self.assertIn("viral", live)
+        self.assertIn("do not pay", live.replace("’", "'"))
+        self.assertIn("leftover meds", live)
+        for banned in ("z-pack", "zpack", "azithromycin", "macrobid", "amoxicillin"):
+            self.assertNotIn(banned, live)
 
     def test_uti_does_not_promise_a_script(self):
         text = PAGES["uti"].read_text(encoding="utf-8")

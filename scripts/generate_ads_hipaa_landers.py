@@ -104,7 +104,7 @@ PAGES = [
         "slug": "start-dental",
         "label": "Dental",
         "title": "Dental pain by text | $59 | NPCWoods",
-        "h1": "Tooth throbbing. No dentist today?",
+        "h1": "Tooth throbbing. Bridge care only.",
         "eyebrow": "Bridge care only",
         "hero": "A text visit can help you understand the next step. It does not replace a dentist. No drainage. No refills if you skip the dentist.",
         "script_line": "This is bridge care only. It does not replace a dentist.",
@@ -152,7 +152,7 @@ PAGES = [
         "title": "Cold / URI visit by text | $59 | NPCWoods",
         "h1": "Can't shake this cold?",
         "eyebrow": "Most colds are viral",
-        "hero": "Can't shake this cold? Most of these are viral. The leftover Z-pack pitch is not the plan. If Chris cannot treat it, you do not pay.",
+        "hero": "Can't shake this cold? Most of these are viral. Leftover meds from last year are not the plan. If Chris cannot treat it, you do not pay.",
         "script_line": "If Chris cannot treat it by text, you do not pay.",
         "yes": [
             "A lingering cold and you want a real NP to sort the lane",
@@ -174,7 +174,7 @@ PAGES = [
         "faqs": [
             (
                 "Will I get leftover cold medicine?",
-                "No. Most colds are viral. The leftover Z-pack pitch is not the plan.",
+                "No. Most colds are viral. Leftover meds from last year are not the plan.",
             ),
             (
                 "What if Chris cannot treat it?",
@@ -190,7 +190,7 @@ PAGES = [
             ),
         ],
         "note_title": "Most of these are viral.",
-        "note": "The leftover Z-pack pitch is not the plan. If Chris cannot treat it by text, you do not pay.",
+        "note": "Leftover meds from last year are not the plan. If Chris cannot treat it by text, you do not pay.",
     },
 ]
 
