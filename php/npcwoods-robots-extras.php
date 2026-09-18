@@ -4,7 +4,7 @@
  * Description: Generates a focused robots.txt. Excludes noise directories and points
  *              crawlers (search + AI) at /llms.txt and /llms-full.txt for narrative
  *              context. Replaces Yoast's default output via the robots_txt filter.
- * Version:     3.0.0
+ * Version:     3.1.0
  * Author:      NPCWoods
  *
  * 2026-05-11 — Collapsed from per-bot blocks (v2.0.0) to a single User-agent: * block.
@@ -23,13 +23,12 @@ add_filter( 'robots_txt', function ( $robots_txt, $public ) {
 		return $robots_txt;
 	}
 
+	// Do not advertise backend folder names here. Those paths 404 at origin.
+	// Extension rules use $ so we only match a URL that ends with the suffix.
 	$disallows = array(
-		'/automation-output/',
-		'/backups/',
-		'/scripts/',
-		'/*.bak',
-		'/*.meta-bak',
-		'/*.synced.bak',
+		'/*.bak$',
+		'/*.meta-bak$',
+		'/*.synced.bak$',
 	);
 
 	$output  = "# NPCWoods.com — Async telemedicine by Chris Woods, MSN, APRN, FNP-C\n";
