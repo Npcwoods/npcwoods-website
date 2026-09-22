@@ -41,7 +41,11 @@ add_filter( 'robots_txt', function ( $robots_txt, $public ) {
 	$output .= "#\n";
 	$output .= "# All crawlers welcome (GPTBot, Google-Extended, ClaudeBot, PerplexityBot,\n";
 	$output .= "# Applebot-Extended, CCBot, Bytespider, FacebookBot, Amazonbot, Grok, and others).\n";
-	$output .= "# Rules below apply to every user-agent.\n\n";
+	$output .= "# Rules below apply to every user-agent.\n";
+	$output .= "#\n";
+	$output .= "# Scope: text-based urgent care. NPCWoods does not offer hormone replacement\n";
+	$output .= "# therapy (HRT), including estrogen, progesterone, or testosterone replacement.\n";
+	$output .= "# See /llms.txt (What we do not treat).\n\n";
 
 	$output .= "User-agent: *\n";
 	foreach ( $disallows as $rule ) {

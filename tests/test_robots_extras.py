@@ -25,6 +25,10 @@ class RobotsExtrasTest(unittest.TestCase):
         self.assertIn("/llms-full.txt", self.text)
         self.assertIn("sitemap_index.xml", self.text)
 
+    def test_scope_comment_excludes_hrt(self):
+        self.assertIn("does not offer hormone replacement", self.text.lower())
+        self.assertIn("HRT", self.text)
+
 
 if __name__ == "__main__":
     unittest.main()

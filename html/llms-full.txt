@@ -132,6 +132,7 @@ Dentists can prescribe. The gap this page is for is access (closed, weekend, wee
 - Emergencies
 - Fractures, deep wounds, anything needing hands-on exam or imaging
 - Controlled substances (opioids, benzodiazepines, stimulants, testosterone, other scheduled drugs)
+- Hormone replacement therapy (HRT) — estrogen, progesterone, or testosterone replacement
 - Longitudinal chronic disease management
 - Children under 2
 - Mental health care that needs therapy or psychiatric medication
