@@ -89,12 +89,22 @@ add_action("template_redirect", function() {
 // Yoast wpseo_sitemap_exclude_author filter empties content but still serves
 // /author-sitemap.xml with HTTP 200, which Search Console reports as an error.
 // Force 410 Gone so Google drops it from the index.
+//
+// /sitemap.xml is a Yoast 301 to /sitemap_index.xml on the apex host only.
+// www.npcwoods.com/sitemap.xml is a real WordPress 404, so checkers that hit
+// www first report a missing sitemap. Send every host to the apex Yoast index.
+// A 301 here is success, not a missing file.
 add_action("init", function() {
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     if ($path === "/author-sitemap.xml" || $path === "/author-sitemap1.xml") {
         status_header(410);
         header("Content-Type: text/plain; charset=UTF-8");
         echo "Gone";
+        exit;
+    }
+    if ($path === "/sitemap.xml" || $path === "/sitemap.xml/") {
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Location: https://npcwoods.com/sitemap_index.xml", true, 301);
         exit;
     }
 }, 1);
