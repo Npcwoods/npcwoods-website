@@ -196,8 +196,7 @@ class DraftCityAndBlogPageTests(unittest.TestCase):
         self.assertIn("https://npcwoods.com/sinus-infection-treatment/mesa-az/", html)
         self.assertIn("https://npcwoods.com/sinus-infection-treatment/chandler-az/", html)
         self.assertIn("https://npcwoods.com/sinus-infection-treatment/scottsdale-az/", html)
-        # Las Vegas sinus is a kitchen draft, not a live plate yet.
-        self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/las-vegas-nv/", html)
+        self.assertIn("https://npcwoods.com/sinus-infection-treatment/las-vegas-nv/", html)
 
     def test_uti_and_blog_drafts_use_red_charcoal_not_hospital_blue(self):
         """Phoenix/Tucson UTI + both blogs must match live sinus red (#9B1C1C), not #2563EB."""

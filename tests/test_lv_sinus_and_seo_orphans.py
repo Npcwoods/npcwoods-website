@@ -72,9 +72,37 @@ class LasVegasSinusDraftTests(unittest.TestCase):
         self.assertNotRegex(page, r"(?i)\b(doctor|physician|insurance)\b")
         self.assertNotRegex(page, r"\bMD\b")
         self.assertNotIn("geoCoordinates", html)
-        for city in ("Mesa", "Tucson", "Chandler", "Scottsdale", "Banner"):
+        for city in ("Mesa", "Tucson", "Chandler", "Banner"):
             self.assertNotIn(city, page)
         # Shared CSS comment says "Phoenix-style"; story copy must not.
+        # Shared footer mailing line names Scottsdale. That is the live snippet.
+
+    def test_lv_footer_matches_shared_snippet_once(self):
+        html = read(LV_HTML)
+        snippet = read("html/shared/footer-snippet.html")
+        self.assertEqual(html.count("<!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->"), 1)
+        self.assertEqual(html.count("&copy; 2026"), 1)
+        self.assertEqual(html.count("npc-site-footer"), 1)
+        self.assertIn(
+            "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT",
+            html,
+        )
+        self.assertEqual(
+            html.count("Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT"),
+            1,
+        )
+        self.assertNotIn("Licensed in NV, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT", html)
+        # Exact shared trust/copyright block, so the plate cannot drift again.
+        self.assertIn(
+            "<span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>",
+            html,
+        )
+        self.assertIn(
+            snippet.split("<!-- ===== NPCWOODS SITE FOOTER", 1)[1].split(
+                "<!-- ===== END SITE FOOTER ===== -->", 1
+            )[0],
+            html,
+        )
 
     def test_lv_sinus_plugin_matches_full_path_and_blocks_uti_canonical(self):
         php = read(LV_PLUGIN)
@@ -111,11 +139,11 @@ class SeoOrphanAndInternalLinkTests(unittest.TestCase):
             "https://npcwoods.com/sinus-infection-treatment/mesa-az/",
             "https://npcwoods.com/sinus-infection-treatment/scottsdale-az/",
             "https://npcwoods.com/sinus-infection-treatment/tucson-az/",
+            LV_URL,
         ):
             self.assertIn(url, html)
-        self.assertNotIn(LV_URL, html)
 
-    def test_sinus_hub_lists_tucson_and_east_valley(self):
+    def test_sinus_hub_lists_tucson_east_valley_and_las_vegas(self):
         html = read("landing-pages/sinus-infection-treatment/index.html")
         self.assertIn("CITY SINUS DOORS", html)
         self.assertIn('href="https://npcwoods.com/sinus-infection-treatment/phoenix-az/"', html)
@@ -123,7 +151,7 @@ class SeoOrphanAndInternalLinkTests(unittest.TestCase):
         self.assertIn('href="https://npcwoods.com/sinus-infection-treatment/mesa-az/"', html)
         self.assertIn('href="https://npcwoods.com/sinus-infection-treatment/chandler-az/"', html)
         self.assertIn('href="https://npcwoods.com/sinus-infection-treatment/scottsdale-az/"', html)
-        self.assertNotIn(LV_URL, html)
+        self.assertIn(f'href="{LV_URL}"', html)
 
     def test_arizona_uti_hub_links_city_plates(self):
         html = read("landing-pages/arizona-uti-treatment/index.html")
