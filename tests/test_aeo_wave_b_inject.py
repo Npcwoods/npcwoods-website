@@ -88,6 +88,11 @@ class AeoWaveBInjectTest(unittest.TestCase):
             html,
             r'href="https://npcwoods.com/uti-treatment/reno-nv/"[\s\S]{0,240}<h3>Reno</h3>',
         )
+        self.assertIn('href="https://npcwoods.com/uti-treatment/las-vegas-nv/"', html)
+        self.assertRegex(
+            html,
+            r'href="https://npcwoods.com/uti-treatment/las-vegas-nv/"[\s\S]{0,240}<h3>Las Vegas</h3>',
+        )
 
     def test_pink_eye_atf_names_the_condition(self):
         html = (ROOT / "landing-pages/pink-eye-treatment/index.html").read_text(encoding="utf-8")

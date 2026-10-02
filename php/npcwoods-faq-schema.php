@@ -383,13 +383,17 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
         // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20), Phoenix (11) re-added
-        // Chandler (14), Gilbert (15), Glendale (16), Tempe (19) included in the sitemap
-        12, 18,  // Tucson, Peoria — still excluded for crawl budget
+        // Chandler (14), Gilbert (15), Glendale (16), Tempe (19), Tucson (12) included in the sitemap
+        18,  // Peoria UTI leftover — still excluded (URL redirects to the UTI hub)
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         // Mix wave re-added: Savannah (268), Augusta (272), Raleigh (288)
         276, 280, 292, 296, 300,
-        // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Tucson (22) included; Mesa (23) excluded until served correctly
-        23, 24, 25, 26, 27, 28, 29, 30,
+        // Sinus Infection Treatment city pages (AZ): Phoenix (21), Tucson (22), Mesa (23),
+        // Chandler (24), Scottsdale (27) are live plates and belong in Yoast page-sitemap.xml.
+        // IDs follow the same city order as UTI 11-20 → sinus 21-30.
+        // Still excluded: leftover AZ sinus stubs that 301 to the sinus hub
+        // (Gilbert 25, Glendale 26, Peoria 28, Tempe 29, Surprise 30).
+        25, 26, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
         265, 269, 273, 277, 281, 285, 289, 293, 297, 301,
         // Strep Throat/Ear Infection city pages (AZ)

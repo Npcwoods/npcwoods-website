@@ -42,6 +42,7 @@ ROUTING_PLUGINS = [
     "npcwoods-comparison-pages.php",
     "npcwoods-experience-page.php",
     "npcwoods-review-page.php",
+    "npcwoods-sinus-las-vegas.php",
 ]
 
 # 'slug' => 'path/to/index.html'   or   '/full/path/' => 'path/to/index.html'

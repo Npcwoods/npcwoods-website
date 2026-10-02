@@ -65,8 +65,8 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertRegex(block, r"\b329\b", "orphan static Albuquerque blog page should be excluded")
         self.assertNotRegex(block, r"\b407\b", "/faq/ should not be excluded")
         self.assertNotRegex(block, r"\b408\b", "/about/ should not be excluded")
-        # Remaining AZ UTI excludes: Phoenix 11, Tucson 12, Peoria 18.
-        # Chandler 14, Gilbert 15, Glendale 16, Tempe 19 are in the sitemap (live).
+        # Remaining AZ UTI excludes: Peoria 18 only.
+        # Phoenix 11, Tucson 12, Chandler 14, Gilbert 15, Glendale 16, Tempe 19 are in the sitemap (live).
         remaining_az_uti = None
         lines = block.splitlines()
         for i, line in enumerate(lines):
@@ -81,8 +81,9 @@ class SeoAuditFixTests(unittest.TestCase):
             break
         self.assertIsNotNone(remaining_az_uti, "AZ UTI remaining-exclude line missing")
         remaining_ids = {int(n) for n in re.findall(r"\d+", remaining_az_uti)}
-        self.assertEqual(remaining_ids, {11, 12, 18})
-        # Remaining AZ sinus excludes: Mesa 23 still out. Tucson 22 is live / in the sitemap.
+        self.assertEqual(remaining_ids, {18})
+        # Remaining AZ sinus excludes: leftover stubs only. Mesa 23, Chandler 24,
+        # Scottsdale 27 are live plates and belong in the sitemap.
         remaining_az_sinus = None
         for i, line in enumerate(lines):
             if "Sinus Infection Treatment city pages (AZ)" not in line:
@@ -96,9 +97,12 @@ class SeoAuditFixTests(unittest.TestCase):
             break
         self.assertIsNotNone(remaining_az_sinus, "AZ sinus remaining-exclude line missing")
         remaining_sinus_ids = {int(n) for n in re.findall(r"\d+", remaining_az_sinus)}
-        self.assertNotIn(22, remaining_sinus_ids)
         self.assertNotIn(21, remaining_sinus_ids)
-        self.assertIn(23, remaining_sinus_ids)
+        self.assertNotIn(22, remaining_sinus_ids)
+        self.assertNotIn(23, remaining_sinus_ids)
+        self.assertNotIn(24, remaining_sinus_ids)
+        self.assertNotIn(27, remaining_sinus_ids)
+        self.assertEqual(remaining_sinus_ids, {25, 26, 28, 29, 30})
 
     def test_leftover_urls_are_excluded_from_yoast_sitemap(self):
         block = sitemap_exclusion_block()
