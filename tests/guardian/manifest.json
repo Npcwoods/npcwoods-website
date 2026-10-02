@@ -2,10 +2,10 @@
   "base_url": "https://npcwoods.com",
   "generated_by": "tests/guardian/build_manifest.py",
   "summary": {
-    "total": 116,
-    "health_pages": 75,
-    "paid_lps": 9,
-    "other": 41
+    "total": 128,
+    "health_pages": 83,
+    "paid_lps": 11,
+    "other": 44
   },
   "pages": [
     {
@@ -99,15 +99,6 @@
       "routed_by": "npcwoods-north-ga-pages.php"
     },
     {
-      "url": "https://npcwoods.com/charlotte-nc/",
-      "local_source": "landing-pages/uti-treatment/charlotte-nc/index.html",
-      "exists_locally": true,
-      "is_health_page": true,
-      "is_paid_lp": false,
-      "kind": "city",
-      "routed_by": "npcwoods-static-pages.php"
-    },
-    {
       "url": "https://npcwoods.com/cold-sore-treatment/",
       "local_source": "landing-pages/cold-sore-treatment/index.html",
       "exists_locally": true,
@@ -153,12 +144,57 @@
       "routed_by": "npcwoods-dental-pages.php"
     },
     {
+      "url": "https://npcwoods.com/dental-pain/ames-ia/",
+      "local_source": "landing-pages/dental-pain/ames-ia/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/dental-pain/dubuque-ia/",
+      "local_source": "landing-pages/dental-pain/dubuque-ia/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/dental-pain/gainesville-ga/",
+      "local_source": "landing-pages/dental-pain/gainesville-ga/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "city",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/dental-pain/iowa-city-ia/",
+      "local_source": "landing-pages/dental-pain/iowa-city-ia/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
       "url": "https://npcwoods.com/dental-pain/search-safe/",
       "local_source": "landing-pages/dental-pain/search-safe/index.html",
       "exists_locally": true,
       "is_health_page": true,
       "is_paid_lp": true,
       "kind": "paid-lp",
+      "routed_by": "npcwoods-dental-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/dental-pain/waterloo-ia/",
+      "local_source": "landing-pages/dental-pain/waterloo-ia/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
       "routed_by": "npcwoods-dental-pages.php"
     },
     {
@@ -639,6 +675,24 @@
       "routed_by": "npcwoods-static-pages.php"
     },
     {
+      "url": "https://npcwoods.com/online-urgent-care-info/",
+      "local_source": "landing-pages/online-urgent-care-info/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/online-urgent-care-info/search-safe/",
+      "local_source": "landing-pages/online-urgent-care-info/search-safe/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": true,
+      "kind": "paid-lp",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
       "url": "https://npcwoods.com/oregon-telemedicine/",
       "local_source": "landing-pages/oregon-telemedicine/index.html",
       "exists_locally": true,
@@ -703,8 +757,8 @@
     },
     {
       "url": "https://npcwoods.com/review/",
-      "local_source": "html/review/index.html",
-      "exists_locally": true,
+      "local_source": "review/index.html",
+      "exists_locally": false,
       "is_health_page": false,
       "is_paid_lp": false,
       "kind": "core",
@@ -754,6 +808,42 @@
       "is_paid_lp": false,
       "kind": "city",
       "routed_by": "npcwoods-north-ga-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/start-dental/",
+      "local_source": "landing-pages/start-dental/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/start-sinus/",
+      "local_source": "landing-pages/start-sinus/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/start-uri/",
+      "local_source": "landing-pages/start-uri/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "core",
+      "routed_by": "npcwoods-paid-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/start-uti/",
+      "local_source": "landing-pages/start-uti/index.html",
+      "exists_locally": true,
+      "is_health_page": true,
+      "is_paid_lp": false,
+      "kind": "condition",
+      "routed_by": "npcwoods-paid-pages.php"
     },
     {
       "url": "https://npcwoods.com/strep-throat-treatment/",
@@ -1042,6 +1132,15 @@
       "is_paid_lp": false,
       "kind": "city",
       "routed_by": "npcwoods-north-ga-pages.php"
+    },
+    {
+      "url": "https://npcwoods.com/washington-telemedicine/",
+      "local_source": "landing-pages/washington-telemedicine/index.html",
+      "exists_locally": true,
+      "is_health_page": false,
+      "is_paid_lp": false,
+      "kind": "state",
+      "routed_by": "npcwoods-static-pages.php"
     },
     {
       "url": "https://npcwoods.com/what-is-async-telemedicine/",

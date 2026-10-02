@@ -23,6 +23,7 @@ add_action( "template_redirect", function() {
         "north-carolina-telemedicine" => "north-carolina-telemedicine/index.html",
         "oregon-telemedicine"    => "oregon-telemedicine/index.html",
         "utah-telemedicine"      => "utah-telemedicine/index.html",
+        "washington-telemedicine" => "washington-telemedicine/index.html",
         "trust-video"            => "trust-video/index.html",
         "ed-treatment"           => "ed-treatment/index.html",        "pricing"                    => "pricing/index.html",        "credentials"                => "credentials/index.html",
         "do-i-need-antibiotics-sinus-infection" => "do-i-need-antibiotics-sinus-infection/index.html",
