@@ -37,7 +37,7 @@ function npcwoods_homepage_output_guardrail() {
 function npcwoods_homepage_output_guardrail_replacements($html) {
     $replacements = array(
         '$59 text-based telemedicine from a licensed NP. No insurance needed, no waiting room. Serving AZ, GA, & NC. Same-day response.' =>
-            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.',
+            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, and Washington.',
         'Does NPCWoods accept insurance?' =>
             'How does NPCWoods pricing work?',
         'We are a direct-pay practice. We do not bill insurance. The $59 flat fee covers your entire visit — no copays, no deductibles, no billing headaches.' =>
@@ -163,7 +163,7 @@ function npcwoods_meta_descriptions($desc) {
     if (is_singular('page') || is_front_page()) {
         global $post;
         if ($post && $post->ID == 63) {
-            return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+            return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 12 states. No waiting room. No app.';
         }
     }
     if (!empty($desc)) return $desc;
@@ -308,7 +308,7 @@ add_filter('wpseo_opengraph_title', function($title) {
 
 add_filter('wpseo_opengraph_desc', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 12 states. No waiting room. No app.';
     }
     return $desc;
 }, 20);
@@ -322,7 +322,7 @@ add_filter('wpseo_twitter_title', function($title) {
 
 add_filter('wpseo_twitter_description', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 12 states. No waiting room. No app.';
     }
     return $desc;
 }, 20);
