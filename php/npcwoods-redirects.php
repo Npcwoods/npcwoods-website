@@ -30,6 +30,8 @@ add_action("init", function() {
         "/blog/blog-ry"              => "/blog/",
         "/blog/burning-when-you-pee-albuquerque/" => "/blog-burning-when-you-pee-albuquerque/",
         "/experience/"               => "/patient-experience/",
+        // Physical html/ear-infection/index.html is served before WP init.
+        // Keep this map, and ship html/ear-infection/index.php (same as /experience/).
         "/ear-infection/"            => "/ear-infection-treatment/",
         "/cost-savings-preview/"     => "/cost-savings-convenience/",
         "/swimmers-ear-preview/"     => "/ear-pain-after-swimming-swimmers-ear/",

@@ -208,10 +208,21 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn("https://npcwoods.com/ear-pain-after-swimming-swimmers-ear/", html)
 
     def test_physical_ear_infection_page_points_to_current_hub(self):
-        html = read("landing-pages/ear-infection/index.html")
-        self.assertIn('<meta name="robots" content="noindex, follow">', html)
-        self.assertIn('<link rel="canonical" href="https://npcwoods.com/ear-infection-treatment/">', html)
-        self.assertIn('content="0; url=https://npcwoods.com/ear-infection-treatment/"', html)
+        # Live /ear-infection/ is a static file. A 200 HTML stub (meta-refresh)
+        # is served before WordPress, so the mu-plugin 301 never fires.
+        # Match /experience/ → physical index.php 301.
+        for rel in (
+            "html/ear-infection/index.php",
+            "landing-pages/ear-infection/index.php",
+        ):
+            php = read(rel)
+            self.assertIn("Location: /ear-infection-treatment/", php)
+            self.assertIn("301", php)
+        html_stub = ROOT / "landing-pages/ear-infection/index.html"
+        self.assertFalse(
+            html_stub.exists(),
+            "static HTML stub at this path 200s and skips the 301",
+        )
 
     def test_static_source_links_to_current_ear_infection_hub(self):
         offenders = []
