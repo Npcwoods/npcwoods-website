@@ -188,13 +188,16 @@ class DraftCityAndBlogPageTests(unittest.TestCase):
         self.assertNotIn("'/sinus-infection-treatment/chandler-az/'", php)
         self.assertNotIn("'/sinus-infection-treatment/scottsdale-az/'", php)
 
-    def test_sitemap_lists_new_uti_cities_not_unpublished_sinus_cities(self):
+    def test_sitemap_lists_live_uti_and_east_valley_sinus_cities(self):
         html = read("landing-pages/sitemap/index.html")
         self.assertIn("https://npcwoods.com/uti-treatment/phoenix-az/", html)
         self.assertIn("https://npcwoods.com/uti-treatment/tucson-az/", html)
-        self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/mesa-az/", html)
-        self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/chandler-az/", html)
-        self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/scottsdale-az/", html)
+        self.assertIn("https://npcwoods.com/sinus-infection-treatment/tucson-az/", html)
+        self.assertIn("https://npcwoods.com/sinus-infection-treatment/mesa-az/", html)
+        self.assertIn("https://npcwoods.com/sinus-infection-treatment/chandler-az/", html)
+        self.assertIn("https://npcwoods.com/sinus-infection-treatment/scottsdale-az/", html)
+        # Las Vegas sinus is a kitchen draft, not a live plate yet.
+        self.assertNotIn("https://npcwoods.com/sinus-infection-treatment/las-vegas-nv/", html)
 
     def test_uti_and_blog_drafts_use_red_charcoal_not_hospital_blue(self):
         """Phoenix/Tucson UTI + both blogs must match live sinus red (#9B1C1C), not #2563EB."""

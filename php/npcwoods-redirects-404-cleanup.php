@@ -93,6 +93,10 @@ add_action("init", function() {
         "/contact/"                         => "/about/",
         // Bucket D — leftover nested city kids-menus (2026-08-29). Take the
         // seats down. Arrow to the matching condition bar, not a 404.
+        // Do NOT add /sinus-infection-treatment/las-vegas-nv/ here. Live WP
+        // currently 301s that slug to UTI Las Vegas via redirect_canonical
+        // because no sinus child stub exists. The kitchen draft +
+        // npcwoods-sinus-las-vegas.php own that path.
         "/ed-treatment/athens-ga/" => "/ed-treatment/",
         "/ed-treatment/augusta-ga/" => "/ed-treatment/",
         "/ed-treatment/chandler-az/" => "/ed-treatment/",

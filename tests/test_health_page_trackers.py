@@ -105,6 +105,7 @@ class HealthPageTrackerTest(unittest.TestCase):
             "landing-pages/uti-treatment/phoenix-az/index.html",
             "landing-pages/uti-treatment/tucson-az/index.html",
             "landing-pages/sinus-infection-treatment/phoenix-az/index.html",
+            "landing-pages/sinus-infection-treatment/las-vegas-nv/index.html",
             "landing-pages/dental-pain/index.html",
             "landing-pages/faq/index.html",
         )
