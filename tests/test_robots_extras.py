@@ -25,6 +25,15 @@ class RobotsExtrasTest(unittest.TestCase):
         self.assertIn("/llms-full.txt", self.text)
         self.assertIn("sitemap_index.xml", self.text)
 
+    def test_license_line_names_washington_and_florida(self):
+        self.assertIn(
+            "13 states (AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA)",
+            self.text,
+        )
+        self.assertIn("Florida counts via out-of-state telehealth registration TPAN3355", self.text)
+        self.assertNotIn("11 states", self.text)
+        self.assertNotIn("12 states", self.text)
+
     def test_scope_comment_excludes_hrt(self):
         self.assertIn("does not offer hormone replacement", self.text.lower())
         self.assertIn("HRT", self.text)
