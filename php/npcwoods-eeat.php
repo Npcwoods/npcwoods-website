@@ -32,7 +32,7 @@ function npcwoods_clinician_profile() {
         'aanpcb_url' => 'https://www.aanpcert.org/',
         'organization_id' => home_url('/#medical-business'),
         'person_id' => home_url('/#chris-woods'),
-        'states' => 'AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT',
+        'states' => 'AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA',
     );
 }
 
@@ -139,6 +139,7 @@ add_action('wp_head', function() {
             array('@type' => 'State', 'name' => 'North Carolina'),
             array('@type' => 'State', 'name' => 'Oregon'),
             array('@type' => 'State', 'name' => 'Utah'),
+            array('@type' => 'State', 'name' => 'Washington'),
         ),
         // Ratings live on the Google Business Profile — self-hosted review markup violates Google policy
         // Telemedicine mailing / contact only. Not a walk-in clinic. In-person

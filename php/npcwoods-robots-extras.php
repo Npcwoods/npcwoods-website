@@ -32,7 +32,7 @@ add_filter( 'robots_txt', function ( $robots_txt, $public ) {
 	);
 
 	$output  = "# NPCWoods.com — Async telemedicine by Chris Woods, MSN, APRN, FNP-C\n";
-	$output .= "# Licensed Nurse Practitioner — 11 states (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT)\n";
+	$output .= "# Licensed Nurse Practitioner — 12 states (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA)\n";
 	$output .= "# NPI: 1285125468 — https://npiregistry.cms.hhs.gov/\n";
 	$output .= "#\n";
 	$output .= "# Context for AI assistants and search crawlers:\n";
