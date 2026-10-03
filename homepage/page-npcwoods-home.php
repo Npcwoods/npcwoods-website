@@ -2,7 +2,7 @@
 /**
  * Template Name: NPCWoods Homepage
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
- * Lean scroll plate plus Chris, comparison, $59 visits, and 12-state rooms.
+ * Lean scroll plate plus Chris, comparison, $59 visits, and 13-state rooms.
  * Approved Meta Pixel and GA4 G-0VCC0Z4FD7 live in this template after wp_head():
  * site pixel + this GA4 ID only, idle or first tap. Ads pixel stays off this plate.
  * Do not enqueue TT4 / wp-block-library on this template.
@@ -592,7 +592,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
   <main id="main">
   <div class="hero-grid">
     <section class="hero">
-      <p class="eyebrow reveal">NPCWoods · 12 states</p>
+      <p class="eyebrow reveal">NPCWoods · 13 states</p>
       <h1 class="reveal d1">You feel awful.<br>The system makes you <em>work</em> for it.</h1>
       <p class="lede reveal d2">A half-day in a waiting room for a ten-minute problem. Or you text me from the couch. Same problem. Different day.</p>
     </section>
@@ -647,7 +647,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
         <article class="review"><div class="stars">★★★★★</div><p>“I texted Chris out of nowhere on a Sunday and he answered straight away. Lightning-quick.”</p><cite>B. P.</cite></article>
         <article class="review"><div class="stars">★★★★★</div><p>“I texted Chris at 10pm and he responded within 15 minutes. When the pharmacy didn’t have it, he called the store himself.”</p><cite>M. D.</cite></article>
       </div>
-      <p class="states">Licensed in Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington.</p>
+      <p class="states">Licensed in Arizona, Colorado, Florida, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington.</p>
     </div>
   </section>
   <section id="chris">
@@ -728,11 +728,12 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
   <section>
     <div class="wrap-wide">
       <p class="eyebrow">Where I can help</p>
-      <h2>Licensed in 12 states.</h2>
+      <h2>Licensed in 13 states.</h2>
       <p class="section-copy">You have to be physically in one of these states at the time of the visit.</p>
       <div class="states-pills">
         <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
         <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+        <a class="state-pill" href="https://flhealthsource.gov/telehealth/" target="_blank" rel="noopener">Florida</a>
         <a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
         <a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
         <a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
@@ -813,6 +814,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
           <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
+          <li><a href="https://flhealthsource.gov/telehealth/" target="_blank" rel="noopener">Florida</a></li>
         </ul>
       </div>
       <div class="npc-footer-col">
@@ -840,7 +842,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA<br>
+      Licensed in AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
