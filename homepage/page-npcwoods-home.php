@@ -162,7 +162,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
     }
     .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-    .hero { padding: 36px 20px 20px; text-align: left; }
+    main { text-align: center; }
+    .hero { padding: 36px 20px 20px; text-align: center; }
     .eyebrow {
       font-size: 0.72rem;
       font-weight: 600;
@@ -179,7 +180,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       font-weight: 400;
     }
     h1 em { font-style: italic; color: var(--blue); }
-    .lede { margin-top: 16px; font-size: 1.08rem; color: var(--muted); max-width: 34rem; }
+    .lede { margin: 16px auto 0; font-size: 1.08rem; color: var(--muted); max-width: 34rem; }
     .photo-stage { padding: 12px 16px 8px; }
     .photo-card {
       position: relative;
@@ -220,7 +221,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       line-height: 1.12;
       letter-spacing: -0.02em;
     }
-    .section-copy { margin-top: 12px; color: var(--muted); font-size: 1.05rem; }
+    .section-copy { margin: 12px auto 0; color: var(--muted); font-size: 1.05rem; max-width: 36rem; }
     .pain-list { margin-top: 28px; display: grid; gap: 12px; }
     .pain {
       background: #fff;
@@ -244,6 +245,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       font-weight: 700;
       margin-top: 2px;
     }
+    .pain, .step, .vs-grid { text-align: left; }
     .pain h3 { font-size: 1rem; margin-bottom: 2px; }
     .pain p { color: var(--muted); font-size: 0.92rem; }
     .quote-block { margin-top: 28px; padding: 4px 0 0; }
@@ -276,7 +278,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
     .step h3 { font-size: 1.05rem; margin-bottom: 4px; }
     .step p { color: var(--muted); font-size: 0.95rem; }
     .price-block {
-      margin: 36px 16px 0;
+      width: min(720px, calc(100% - 32px));
+      margin: 36px auto 0;
       background: var(--ink);
       color: #fff;
       border-radius: 24px;
@@ -289,8 +292,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       line-height: 1;
     }
     .price-block h2 { color: #fff; margin-top: 8px; }
-    .price-block p { color: rgba(255,255,255,0.78); margin-top: 10px; }
-    .cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+    .price-block p { color: rgba(255,255,255,0.78); margin: 10px auto 0; max-width: 34rem; }
+    .cta-row { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 22px; }
     .btn {
       display: inline-flex;
       justify-content: center;
@@ -343,6 +346,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       box-shadow: var(--shadow);
       object-fit: cover;
     }
+    #chris, .stay-left { text-align: left; }
+    #chris .section-copy, .stay-left .section-copy { margin-left: 0; margin-right: 0; max-width: none; }
     .meet p { margin-top: 12px; color: var(--muted); }
     .meet-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
     .meet-links a {
@@ -696,7 +701,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       </div>
     </div>
   </section>
-  <section>
+  <section class="stay-left">
     <div class="wrap-wide">
       <p class="eyebrow">What I treat by text</p>
       <h2>Common $59 visits.</h2>
@@ -725,7 +730,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       </div>
     </div>
   </section>
-  <section>
+  <section class="stay-left">
     <div class="wrap-wide">
       <p class="eyebrow">Where I can help</p>
       <h2>Licensed in 13 states.</h2>
