@@ -112,13 +112,6 @@ a { color: inherit; }
   border-radius: 999px;
   margin-bottom: 18px;
 }
-.hero-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
-  gap: 40px;
-  align-items: center;
-}
-.hero-copy { min-width: 0; }
 .hero h1 {
   font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(2rem, 6vw, 3.4rem);
@@ -126,30 +119,8 @@ a { color: inherit; }
   letter-spacing: -0.02em;
   line-height: 1.12;
   color: var(--ink);
-  max-width: 14ch;
+  max-width: 18ch;
   margin-bottom: 16px;
-}
-.hero-photo {
-  margin: 0;
-  justify-self: end;
-  width: min(100%, 420px);
-}
-.hero-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  max-height: 520px;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 18px;
-  box-shadow: 0 22px 48px -24px rgba(26,26,46,.4);
-  background: #f3e7e2;
-}
-.hero-photo figcaption {
-  margin-top: 10px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.4;
 }
 .hero-sub {
   font-size: clamp(1.05rem, 2.4vw, 1.25rem);
@@ -307,39 +278,9 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
   .sticky-cta { display: none; }
 }
 @media (max-width: 799px) {
-  body { padding-bottom: 96px; }
-  .hero { padding-bottom: 28px; }
-  .hero-split { grid-template-columns: 1fr; gap: 22px; }
-  .hero-photo {
-    display: grid;
-    grid-template-columns: 132px minmax(0, 1fr);
-    gap: 12px;
-    align-items: end;
-    width: 100%;
-  }
-  .hero-photo img { width: 132px; height: 132px; max-height: 132px; aspect-ratio: 1; }
+  body { padding-bottom: 84px; }
   .hero h1 { max-width: none; }
-  .arch-photo { max-width: 260px; }
 }
-
-.arch-band { padding-top: 28px; }
-.arch-photo {
-  margin: 20px 0 0;
-  max-width: 480px;
-}
-.arch-photo img {
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  background: #efe7e1;
-}
-.arch-photo figcaption {
-  margin-top: 10px;
-  font-size: 0.84rem;
-  line-height: 1.5;
-  color: var(--muted);
-}
-.arch-photo figcaption a { color: var(--brand); }
 
 .npc-clinician-byline {
   margin: 20px auto 8px;
@@ -362,6 +303,29 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 .npc-clinician-byline a { color: #1d4ed8; font-weight: 600; }
 
 :root { --hero-top: #F8EDE8; --hero-glow: rgba(153,27,27,.22); --page-accent: #9B1C1C; }
+
+.hero-split { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+.hero-photo { margin: 0; }
+.hero-photo img { width: 100%; max-width: 420px; height: auto; border-radius: 28px; object-fit: cover; box-shadow: 0 24px 50px -28px rgba(26,26,46,.45); }
+.hero-photo figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
+@media (max-width: 800px) { .hero-split { grid-template-columns: 1fr; } }
+
+.place-photo { margin: 18px 0 0; }
+.place-photo img { width: 100%; height: auto; border-radius: 20px; }
+.place-photo figcaption { margin-top: 8px; font-size: 0.82rem; color: var(--muted); }
+.place-photo a { color: var(--brand); }
+.hero-note {
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--body);
+  max-width: 38rem;
+  margin: -6px 0 22px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.78);
+  border-left: 3px solid var(--border);
+  border-radius: 0 8px 8px 0;
+}
 </style>
 </head>
 <body>
@@ -371,7 +335,7 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 <!-- Last updated: May 2026 — CSS/JS moved to external files -->
 
 <!-- Shared site-wide stylesheet (nav, footer, reviews, save-contact) -->
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="https://npcwoods.com/assets/css/site.css">
 
 <!-- SVG icon definitions (hidden) -->
 <svg style="display:none;">
@@ -577,7 +541,7 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 </div>
 
 <!-- Shared site-wide JavaScript (nav, CWV, save-contact, fade-in) -->
-<script src="/assets/js/site.js" defer></script>
+<script src="https://npcwoods.com/assets/js/site.js" defer></script>
 <!-- ===== END SITE HEADER ===== -->
 
 <main id="main">
@@ -586,39 +550,24 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
   </div>
   <section class="hero">
     <div class="wrap hero-split">
-      <div class="hero-copy">
-        <p class="hero-kicker">Saturday in Athens · $59 text visit</p>
-        <h1>The wait is over by the 4th quarter.</h1>
-        <p class="hero-sub">Kid gets sick at the gate. Text a Georgia nurse practitioner from the tailgate. $59. Meds on the way home if a prescription fits.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text (480) 639-4722</a>
-          <a class="btn btn-ghost" href="#how-it-works">How it works</a>
-        </div>
-        <div class="trust-pills">
-          <span class="pill">$59 text visit</span>
-          <span class="pill">No video</span>
-          <span class="pill">Nurse practitioner</span>
-        </div>
+      <div>
+      <p class="hero-kicker">Saturday in Athens · $59 text visit</p>
+      <h1>The wait is over by the 4th quarter.</h1>
+      <p class="hero-sub">Kid gets sick at the gate. Text a Georgia nurse practitioner from the tailgate. $59. Meds on the way home if a prescription fits.</p>
+      <p class="hero-note">This is not a school ad. It is a $59 text visit so a sick Saturday does not turn into a waiting room.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text (480) 639-4722</a>
+        <a class="btn btn-ghost" href="#how-it-works">How it works</a>
+      </div>
+      <div class="trust-pills">
+        <span class="pill">$59 text visit</span>
+        <span class="pill">No video</span>
+        <span class="pill">Nurse practitioner</span>
+      </div>
       </div>
       <figure class="hero-photo">
-        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Georgia nurse practitioner" width="1000" height="1000">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Georgia nurse practitioner" width="420" height="520">
         <figcaption>Chris Woods. Real photo. Text him from the tailgate.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="band arch-band" aria-labelledby="arch-heading">
-    <div class="wrap wrap-narrow">
-      <h2 id="arch-heading">The Arch is still there. The lobby is not.</h2>
-      <p class="lede">The Arch is on the walk in. A walk-in lobby is not. Text a Georgia nurse practitioner from the tailgate. $59. No video.</p>
-      <figure class="arch-photo">
-        <img src="arch-josh-hallett.jpg" alt="The Arch in Athens, Georgia" width="1944" height="2896" loading="lazy">
-        <figcaption>
-          Photo by Josh Hallett,
-          <a href="https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg" rel="noopener">https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg</a>,
-          CC BY-SA 2.0.
-          This is not a school partnership.
-        </figcaption>
       </figure>
     </div>
   </section>
@@ -642,6 +591,30 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 </section>
 
 
+
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">The walk in</p>
+    <h2>The Arch is still there. The lobby is not.</h2>
+    <figure class="place-photo">
+      <img src="arch.jpg" alt="The Arch in Athens on a walk in" width="960" height="640">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg">Josh Hallett</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Not a school partnership.</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Between the hedges</p>
+    <h2>The hedges are still there. The lobby is not.</h2>
+    <div class="prose" style="max-width:42rem">
+      <p>Text from the tailgate instead of leaving for urgent care. Stay with the Saturday, and send the symptoms while you are still at the stadium.</p>
+    </div>
+    <figure class="place-photo">
+      <img src="stadium.jpg" alt="Packed stands, the band, and the trimmed hedge at the stadium" width="3264" height="2448">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Georgia_vs._Tennessee_at_Sanford_Stadium_in_2016.jpg">Godawgs80</a>, 1 Oct 2016, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Not a school partnership and not permission to use the school mark.</figcaption>
+    </figure>
+  </div>
+</section>
 <section class="band">
   <div class="wrap-narrow prose">
     <p class="kicker">Saturday in Athens</p>
@@ -778,7 +751,6 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
-          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
         </ul>
       </div>
 
@@ -809,10 +781,10 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 
     <div class="npc-footer-trust">
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
-        <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
+        <img src="https://npcwoods.com/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>

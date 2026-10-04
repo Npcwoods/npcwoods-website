@@ -100,8 +100,14 @@ class FloridaWashingtonDraftPageTests(unittest.TestCase):
             with self.subTest(slug=slug):
                 self.assertIn(HEADER_MARK, html)
                 self.assertIn(FOOTER_MARK, html)
-                self.assertIn('href="/assets/css/site.css"', html)
-                self.assertIn('src="/assets/js/site.js" defer', html)
+                self.assertTrue(
+                    'href="/assets/css/site.css"' in html
+                    or 'href="https://npcwoods.com/assets/css/site.css"' in html
+                )
+                self.assertTrue(
+                    'src="/assets/js/site.js" defer' in html
+                    or 'src="https://npcwoods.com/assets/js/site.js" defer' in html
+                )
                 self.assertIn(SMS, html)
                 self.assertNotIn("calendly", html.lower())
                 self.assertNotIn("book.npcwoods", html.lower())
@@ -188,24 +194,40 @@ class FloridaWashingtonDraftPageTests(unittest.TestCase):
         self.assertIn('src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp"', html)
         self.assertIn('alt="Chris Woods, Georgia nurse practitioner"', html)
         self.assertIn("Chris Woods. Real photo. Text him from the tailgate.", html)
-        self.assertIn("washington-telemedicine", html)
-        self.assertIn("Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA", html)
+        self.assertIn(
+            "This is not a school ad. It is a $59 text visit so a sick Saturday does not turn into a waiting room.",
+            html,
+        )
         self.assertIn("The Arch is still there. The lobby is not.", html)
-        self.assertIn('src="arch-josh-hallett.jpg"', html)
+        self.assertIn("The hedges are still there. The lobby is not.", html)
+        self.assertIn('src="arch.jpg"', html)
+        self.assertIn('src="stadium.jpg"', html)
         self.assertNotIn("upload.wikimedia.org", html)
-        self.assertIn("Photo by Josh Hallett", html)
+        self.assertIn("Josh Hallett", html)
         self.assertIn("https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg", html)
         self.assertIn("CC BY-SA 2.0", html)
+        self.assertIn("Godawgs80", html)
+        self.assertIn("1 Oct 2016", html)
+        self.assertIn("CC BY-SA 4.0", html)
         self.assertIn("not a school partnership", html.lower())
-        photo = ROOT / "landing-pages" / "athens-saturday-text-visit" / "arch-josh-hallett.jpg"
-        self.assertTrue(photo.is_file())
-        self.assertGreater(photo.stat().st_size, 10_000)
+        self.assertIn("not permission to use the school mark", html.lower())
+        folder = ROOT / "landing-pages" / "athens-saturday-text-visit"
+        for name in ("arch.jpg", "stadium.jpg"):
+            photo = folder / name
+            self.assertTrue(photo.is_file(), name)
+            self.assertGreater(photo.stat().st_size, 10_000, name)
         title = re.search(r"<title>(.*?)</title>", html, flags=re.I | re.S).group(1)
         h1 = re.search(r"<h1>(.*?)</h1>", html, flags=re.I | re.S).group(1)
         for mark in ("uga", "bulldogs", "bulldog", "sanford", "university of georgia"):
             self.assertNotIn(mark, title.lower())
             self.assertNotIn(mark, h1.lower())
-        lowered = html.replace("https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg", "").lower()
+        lowered = html
+        for credit in (
+            "https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg",
+            "https://commons.wikimedia.org/wiki/File:Georgia_vs._Tennessee_at_Sanford_Stadium_in_2016.jpg",
+        ):
+            lowered = lowered.replace(credit, "")
+        lowered = lowered.lower()
         for mark in (
             "university of georgia",
             "bulldogs",
