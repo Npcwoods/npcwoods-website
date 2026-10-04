@@ -112,6 +112,13 @@ a { color: inherit; }
   border-radius: 999px;
   margin-bottom: 18px;
 }
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+  gap: 40px;
+  align-items: center;
+}
+.hero-copy { min-width: 0; }
 .hero h1 {
   font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(2rem, 6vw, 3.4rem);
@@ -119,8 +126,29 @@ a { color: inherit; }
   letter-spacing: -0.02em;
   line-height: 1.12;
   color: var(--ink);
-  max-width: 18ch;
+  max-width: 14ch;
   margin-bottom: 16px;
+}
+.hero-photo {
+  margin: 0;
+  justify-self: end;
+  width: min(100%, 420px);
+}
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 18px;
+  box-shadow: 0 22px 48px -24px rgba(26,26,46,.4);
+  background: #f3e7e2;
+}
+.hero-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
 }
 .hero-sub {
   font-size: clamp(1.05rem, 2.4vw, 1.25rem);
@@ -279,6 +307,8 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
 }
 @media (max-width: 799px) {
   body { padding-bottom: 84px; }
+  .hero-split { grid-template-columns: 1fr; gap: 28px; }
+  .hero-photo { justify-self: start; width: min(100%, 360px); }
   .hero h1 { max-width: none; }
 }
 
@@ -526,19 +556,25 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
     <nav class="crumb" aria-label="Breadcrumb"><a href="https://npcwoods.com/">Home</a> › Athens Saturday text visit</nav>
   </div>
   <section class="hero">
-    <div class="wrap">
-      <p class="hero-kicker">Saturday in Athens · $59 text visit</p>
-      <h1>The wait is over by the 4th quarter.</h1>
-      <p class="hero-sub">Kid gets sick at the gate. Text a Georgia nurse practitioner from the tailgate. $59. Meds on the way home if a prescription fits.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text (480) 639-4722</a>
-        <a class="btn btn-ghost" href="#how-it-works">How it works</a>
+    <div class="wrap hero-split">
+      <div class="hero-copy">
+        <p class="hero-kicker">Saturday in Athens · $59 text visit</p>
+        <h1>The wait is over by the 4th quarter.</h1>
+        <p class="hero-sub">Kid gets sick at the gate. Text a Georgia nurse practitioner from the tailgate. $59. Meds on the way home if a prescription fits.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text (480) 639-4722</a>
+          <a class="btn btn-ghost" href="#how-it-works">How it works</a>
+        </div>
+        <div class="trust-pills">
+          <span class="pill">$59 text visit</span>
+          <span class="pill">No video</span>
+          <span class="pill">Nurse practitioner</span>
+        </div>
       </div>
-      <div class="trust-pills">
-        <span class="pill">$59 text visit</span>
-        <span class="pill">No video</span>
-        <span class="pill">Nurse practitioner</span>
-      </div>
+      <figure class="hero-photo">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Georgia nurse practitioner" width="1000" height="1000">
+        <figcaption>Chris Woods. Real photo. Text him from the tailgate.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -697,6 +733,7 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
         </ul>
       </div>
 
@@ -730,7 +767,7 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>

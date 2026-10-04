@@ -185,6 +185,11 @@ class FloridaWashingtonDraftPageTests(unittest.TestCase):
         self.assertIn("parent or guardian", page)
         self.assertIn("Not for emergencies", page)
         self.assertIn("call 911", page)
+        self.assertIn('src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp"', html)
+        self.assertIn('alt="Chris Woods, Georgia nurse practitioner"', html)
+        self.assertIn("Chris Woods. Real photo. Text him from the tailgate.", html)
+        self.assertIn("washington-telemedicine", html)
+        self.assertIn("Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA", html)
         lowered = html.lower()
         for mark in (
             "university of georgia",
