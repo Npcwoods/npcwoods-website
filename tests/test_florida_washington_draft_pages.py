@@ -1,4 +1,4 @@
-"""Draft Florida vacation + Washington wait-here pages. Git only. Not live."""
+"""Draft Florida, Washington, and Athens Saturday pages. Git only. Not live."""
 from __future__ import annotations
 
 import re
@@ -41,6 +41,12 @@ PAGES = {
         "h1": "Rainier over the city. Turquoise at Diablo. Not fluorescent lights.",
         "must": ("Seattle waterfront", "Diablo Lake", "glacial turquoise", "fluorescent"),
         "canonical": "https://npcwoods.com/washington-cascades-wait-here/",
+    },
+    "athens-saturday-text-visit": {
+        "rel": "landing-pages/athens-saturday-text-visit/index.html",
+        "h1": "The wait is over by the 4th quarter.",
+        "sub": "Kid gets sick at the gate. Text a Georgia nurse practitioner from the tailgate. $59. Meds on the way home if a prescription fits.",
+        "canonical": "https://npcwoods.com/athens-saturday-text-visit/",
     },
 }
 
@@ -161,6 +167,33 @@ class FloridaWashingtonDraftPageTests(unittest.TestCase):
         self.assertNotIn("/washington-wait-here-not-there/mount-rainier/", hub)
         self.assertNotIn("road closure", hub.lower())
         self.assertNotIn("closures", hub.lower())
+
+    def test_athens_saturday_page_keeps_georgia_license_and_avoids_school_marks(self):
+        html = self.html["athens-saturday-text-visit"]
+        page = body_only(html)
+        self.assertIn(PAGES["athens-saturday-text-visit"]["sub"], html)
+        self.assertIn("<title>The wait is over by the 4th quarter | $59 text visit | NPCWoods</title>", html)
+        self.assertIn("Georgia nurse practitioner", page)
+        self.assertIn("APRN-NP319386", page)
+        self.assertIn("RN319386", page)
+        self.assertIn("2027-01-31", page)
+        self.assertIn("physically in Georgia", page)
+        self.assertIn("No controlled substances", page)
+        self.assertIn("Saturday in Athens", page)
+        self.assertIn("Between the hedges", page)
+        self.assertIn("The Arch", page)
+        self.assertIn("parent or guardian", page)
+        self.assertIn("Not for emergencies", page)
+        self.assertIn("call 911", page)
+        lowered = html.lower()
+        for mark in (
+            "university of georgia",
+            "bulldogs",
+            "bulldog",
+            "uga",
+            "sanford",
+        ):
+            self.assertNotIn(mark, lowered)
 
     def test_companion_pages_are_not_thin_hub_duplicates(self):
         hub = body_only(self.html["washington-wait-here-not-there"])
