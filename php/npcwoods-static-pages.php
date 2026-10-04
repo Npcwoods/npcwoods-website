@@ -30,6 +30,12 @@ add_action( "template_redirect", function() {
         "real-care"              => "real-care/index.html",
         "notice-of-privacy-practices" => "notice-of-privacy-practices/index.html",
         "what-is-async-telemedicine" => "what-is-async-telemedicine/index.html",
+        "florida-vacation-sick-text-visit" => "florida-vacation-sick-text-visit/index.html",
+        "washington-wait-here-not-there" => "washington-wait-here-not-there/index.html",
+        "washington-rainier-wait-here" => "washington-rainier-wait-here/index.html",
+        "washington-olympic-wait-here" => "washington-olympic-wait-here/index.html",
+        "washington-cascades-wait-here" => "washington-cascades-wait-here/index.html",
+        "athens-saturday-text-visit" => "athens-saturday-text-visit/index.html",
 
     );
 
