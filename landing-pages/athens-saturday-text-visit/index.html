@@ -319,7 +319,27 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
   }
   .hero-photo img { width: 132px; height: 132px; max-height: 132px; aspect-ratio: 1; }
   .hero h1 { max-width: none; }
+  .arch-photo { max-width: 260px; }
 }
+
+.arch-band { padding-top: 28px; }
+.arch-photo {
+  margin: 20px 0 0;
+  max-width: 480px;
+}
+.arch-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  background: #efe7e1;
+}
+.arch-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.arch-photo figcaption a { color: var(--brand); }
 
 .npc-clinician-byline {
   margin: 20px auto 8px;
@@ -583,6 +603,22 @@ h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 8px; }
       <figure class="hero-photo">
         <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Georgia nurse practitioner" width="1000" height="1000">
         <figcaption>Chris Woods. Real photo. Text him from the tailgate.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band arch-band" aria-labelledby="arch-heading">
+    <div class="wrap wrap-narrow">
+      <h2 id="arch-heading">The Arch is still there. The lobby is not.</h2>
+      <p class="lede">The Arch is on the walk in. A walk-in lobby is not. Text a Georgia nurse practitioner from the tailgate. $59. No video.</p>
+      <figure class="arch-photo">
+        <img src="arch-josh-hallett.jpg" alt="The Arch in Athens, Georgia" width="1944" height="2896" loading="lazy">
+        <figcaption>
+          Photo by Josh Hallett,
+          <a href="https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg" rel="noopener">https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg</a>,
+          CC BY-SA 2.0.
+          This is not a school partnership.
+        </figcaption>
       </figure>
     </div>
   </section>

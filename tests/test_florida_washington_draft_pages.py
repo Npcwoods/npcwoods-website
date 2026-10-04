@@ -190,7 +190,22 @@ class FloridaWashingtonDraftPageTests(unittest.TestCase):
         self.assertIn("Chris Woods. Real photo. Text him from the tailgate.", html)
         self.assertIn("washington-telemedicine", html)
         self.assertIn("Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA", html)
-        lowered = html.lower()
+        self.assertIn("The Arch is still there. The lobby is not.", html)
+        self.assertIn('src="arch-josh-hallett.jpg"', html)
+        self.assertNotIn("upload.wikimedia.org", html)
+        self.assertIn("Photo by Josh Hallett", html)
+        self.assertIn("https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg", html)
+        self.assertIn("CC BY-SA 2.0", html)
+        self.assertIn("not a school partnership", html.lower())
+        photo = ROOT / "landing-pages" / "athens-saturday-text-visit" / "arch-josh-hallett.jpg"
+        self.assertTrue(photo.is_file())
+        self.assertGreater(photo.stat().st_size, 10_000)
+        title = re.search(r"<title>(.*?)</title>", html, flags=re.I | re.S).group(1)
+        h1 = re.search(r"<h1>(.*?)</h1>", html, flags=re.I | re.S).group(1)
+        for mark in ("uga", "bulldogs", "bulldog", "sanford", "university of georgia"):
+            self.assertNotIn(mark, title.lower())
+            self.assertNotIn(mark, h1.lower())
+        lowered = html.replace("https://commons.wikimedia.org/wiki/File:ArchUGA1.jpg", "").lower()
         for mark in (
             "university of georgia",
             "bulldogs",

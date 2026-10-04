@@ -117,6 +117,9 @@ def collect_pages(page_filters: set[str]) -> list[PageCopy]:
     return pages
 
 
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"}
+
+
 def copy_text_page(item: PageCopy, output: Path) -> None:
     text = item.source.read_text(encoding="utf-8", errors="replace")
     if item.source.suffix == ".php":
@@ -124,6 +127,16 @@ def copy_text_page(item: PageCopy, output: Path) -> None:
     destination = output / item.destination
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(text, encoding="utf-8")
+    copy_page_local_images(item, output)
+
+
+def copy_page_local_images(item: PageCopy, output: Path) -> None:
+    source_dir = item.source.parent
+    dest_dir = (output / item.destination).parent
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    for extra in source_dir.iterdir():
+        if extra.is_file() and extra.suffix.lower() in IMAGE_SUFFIXES:
+            shutil.copy2(extra, dest_dir / extra.name)
 
 
 def copy_tree(source: Path, destination: Path) -> None:
