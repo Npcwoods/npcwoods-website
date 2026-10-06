@@ -65,8 +65,8 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertRegex(block, r"\b329\b", "orphan static Albuquerque blog page should be excluded")
         self.assertNotRegex(block, r"\b407\b", "/faq/ should not be excluded")
         self.assertNotRegex(block, r"\b408\b", "/about/ should not be excluded")
-        # Remaining AZ UTI excludes: Phoenix 11, Tucson 12, Peoria 18.
-        # Chandler 14, Gilbert 15, Glendale 16, Tempe 19 are in the sitemap (live).
+        # Remaining AZ UTI excludes: Peoria 18 only.
+        # Phoenix 11, Tucson 12, Chandler 14, Gilbert 15, Glendale 16, Tempe 19 are in the sitemap.
         remaining_az_uti = None
         lines = block.splitlines()
         for i, line in enumerate(lines):
@@ -81,7 +81,7 @@ class SeoAuditFixTests(unittest.TestCase):
             break
         self.assertIsNotNone(remaining_az_uti, "AZ UTI remaining-exclude line missing")
         remaining_ids = {int(n) for n in re.findall(r"\d+", remaining_az_uti)}
-        self.assertEqual(remaining_ids, {11, 12, 18})
+        self.assertEqual(remaining_ids, {18})
         # Remaining AZ sinus excludes: Mesa 23 still out. Tucson 22 is live / in the sitemap.
         remaining_az_sinus = None
         for i, line in enumerate(lines):
@@ -167,6 +167,34 @@ class SeoAuditFixTests(unittest.TestCase):
         self.assertIn("npcwoods_blog_metas_set_v3", php)
         for post_id in (696, 673, 668, 730, 700):
             self.assertIn(f"{post_id} => array(", php)
+
+    def test_phoenix_tucson_sinus_shorts_point_at_sinus_city_pages(self):
+        php = read("php/npcwoods-redirects.php")
+        self.assertIn(
+            '"/sinus-treatment/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/"',
+            php,
+        )
+        self.assertIn(
+            '"/sinus/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/"',
+            php,
+        )
+        self.assertIn(
+            '"/sinus-treatment/tucson-az/" => "/sinus-infection-treatment/tucson-az/"',
+            php,
+        )
+        self.assertIn(
+            '"/sinus/tucson-az/" => "/sinus-infection-treatment/tucson-az/"',
+            php,
+        )
+        # Must not keep sending these shorts to UTI city pages.
+        self.assertNotIn(
+            '"/sinus-treatment/phoenix-az/" => "/uti-treatment/phoenix-az/"',
+            php,
+        )
+        self.assertNotIn(
+            '"/sinus/tucson-az/" => "/uti-treatment/tucson-az/"',
+            php,
+        )
 
     def test_redirects_consolidate_ear_infection_and_keep_faq_live(self):
         php = read("php/npcwoods-redirects.php")

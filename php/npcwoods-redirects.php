@@ -46,6 +46,12 @@ add_action("init", function() {
         "/sinus/"                     => "/sinus-infection-treatment/",
         "/strep/"                     => "/strep-throat-treatment/",
         "/strep-throat-ear-infection/" => "/strep-throat-treatment/",
+        // Phoenix/Tucson sinus short paths were 301ing to UTI city pages (~Sep 24).
+        // Send guests to the matching sinus city plates (2026-10-06).
+        "/sinus-treatment/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/",
+        "/sinus/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/",
+        "/sinus-treatment/tucson-az/" => "/sinus-infection-treatment/tucson-az/",
+        "/sinus/tucson-az/" => "/sinus-infection-treatment/tucson-az/",
         // Atlanta/Charlotte leftover city tents were serving UTI food (2026-08-29).
         // Send guests to the matching condition plate, not the UTI table.
         "/ed-treatment/atlanta-ga/" => "/ed-treatment/",

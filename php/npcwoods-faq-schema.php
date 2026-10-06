@@ -383,8 +383,8 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // Pages still work if visited directly, just not in sitemap.
         // ============================================================
         // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20), Phoenix (11) re-added
-        // Chandler (14), Gilbert (15), Glendale (16), Tempe (19) included in the sitemap
-        12, 18,  // Tucson, Peoria — still excluded for crawl budget
+        // Chandler (14), Gilbert (15), Glendale (16), Tempe (19), Tucson (12) included in the sitemap
+        18,  // Peoria UTI leftover — still excluded (URL redirects to the UTI hub)
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         // Mix wave re-added: Savannah (268), Augusta (272), Raleigh (288)
         276, 280, 292, 296, 300,
