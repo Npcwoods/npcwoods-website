@@ -6,6 +6,7 @@
 add_action( "template_redirect", function() {
     $page_map = array(
         "faq" => "faq/index.html",
+        "cheap-urgent-care-no-insurance" => "cheap-urgent-care-no-insurance/index.html",
         "arizona-telemedicine" => "arizona-telemedicine/index.html",
         "arizona-uti-treatment" => "arizona-uti-treatment/index.html",
         "conditions"             => "conditions/index.html",
