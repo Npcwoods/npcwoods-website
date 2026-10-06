@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
-     The stub below also blocks a later-injected Meta pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page.
-
-     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -673,28 +668,11 @@
       .final-inner .btn { width: 100%; }
     }
   </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
   <div class="top-strip">
     <div class="top-strip-inner">
-      <span>Licensed in 11 states</span>
+      <span>Serving 13 states</span>
       <span>$59 flat visit</span>
       <span>Text-based visit</span>
     </div>
@@ -893,7 +871,6 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
       revealItems.forEach((item) => observer.observe(item));
     }
   </script>
-<!-- NPCWoods Tracking: tracking.js -->
 
 </body>
 </html>

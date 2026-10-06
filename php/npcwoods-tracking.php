@@ -1,30 +1,13 @@
 <?php
 /**
  * Plugin Name: NPCWoods Tracking
- * Description: Keeps site pixel 1428464038973925 on public pages; strips GTM/GA/ads pixel 1558261907814968 off non-homepage HTML.
- * Version: 3.0
+ * Description: Strips Meta Pixel, GTM, GA and Google Ads tags from public HTML. Installs nothing (HIPAA: no tracking tags, 2026-10-06).
+ * Version: 4.0
  */
 
 function npcwoods_site_pixel_snippet() {
-    return <<<'HTML'
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-HTML;
+    // 2026-10-06: Meta Pixel removed sitewide (HIPAA hard rule: no tracking tags). Intentionally empty.
+    return '';
 }
 
 /**
@@ -50,7 +33,8 @@ function npcwoods_tracking_rewrite_document($html) {
         $html = $replaced;
     }
 
-    return preg_replace('~</head\s*>~i', npcwoods_site_pixel_snippet() . '</head>', $html, 1);
+    // 2026-10-06: strip only. Never inject a pixel.
+    return $html;
 }
 
 /**

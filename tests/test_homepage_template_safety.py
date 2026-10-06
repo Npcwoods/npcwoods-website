@@ -97,13 +97,11 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
             self.text,
         )
 
-    def test_homepage_defers_meta_pixel_until_idle_or_first_input(self):
-        self.assertIn("requestIdleCallback", self.text)
-        self.assertIn("loadPixel", self.text)
-        self.assertIn("connect.facebook.net/en_US/fbevents.js", self.text)
-        self.assertNotIn("1558261907814968", self.text)
-        self.assertIn("1428464038973925", self.text)
-        self.assertEqual(1, self.text.count("fbq('init'"))
+    def test_homepage_has_no_meta_pixel(self):
+        # HIPAA hard rule (2026-10-06): no Meta Pixel or other tracking tags.
+        for needle in ("fbq", "fbevents", "facebook.com/tr", "connect.facebook.net",
+                       "1428464038973925", "1558261907814968"):
+            self.assertNotIn(needle, self.text)
 
     def test_homepage_has_no_google_tags(self):
         # HIPAA hard rule (2026-10-06): no Google tags anywhere on the site.

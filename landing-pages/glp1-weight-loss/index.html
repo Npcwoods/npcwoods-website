@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
-     The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page.
-     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -731,23 +727,6 @@
 </style>
 <!-- NPCWoods Tracking: Ahrefs Analytics -->
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <link rel="alternate" type="application/llms.txt" href="https://npcwoods.com/llms.txt">
 <link rel="alternate" type="application/llms-full.txt" href="https://npcwoods.com/llms-full.txt">
 </head>
@@ -1412,6 +1391,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
           <a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
           <a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
           <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
+          <a href="https://npcwoods.com/washington-telemedicine/">Washington</a>
+          <a href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida (telehealth reg.)</a>
         </div>
       </li>
       <li>
@@ -1508,6 +1489,8 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
         <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
         <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
         <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
+        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
+        <a href="https://npcwoods.com/florida-vacation-sick-text-visit/" class="npc-state-link"><span class="npc-state-dot"></span> Florida (telehealth reg.)</a>
       </div>
     </div>
 
@@ -2023,7 +2006,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
-<!-- NPCWoods Tracking: tracking.js -->
 
 <script src="/smart-content.js?v=20260531"></script>
 </body>

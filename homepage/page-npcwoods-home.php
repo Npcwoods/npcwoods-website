@@ -4,7 +4,7 @@
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
  * UTI-look plate: approved preview body. 13 states: 12 NP licenses (incl. Washington)
  * plus Florida by out-of-state telehealth registration (TPAN3355).
- * Meta Pixel loads after wp_head(), idle or first tap. Ads pixel stays off this plate.
+ * 2026-10-06: Meta Pixel REMOVED (HIPAA hard rule: no tracking tags). Do not re-add.
  * 2026-10-06: GA4 / Google tag REMOVED (HIPAA hard rule: no Google tags on the site).
  * Do not re-add any Google tag here.
  * Do not enqueue TT4 / wp-block-library on this template.
@@ -21,53 +21,6 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-serif-display-400.woff2" crossorigin />
   <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:860px) 92vw, 520px" fetchpriority="high" />
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
-<!-- Meta Pixel Code: load after idle or first tap so phones stay snappy. -->
-<script>
-(function () {
-  var loaded = false;
-  function loadPixel() {
-    if (loaded) return;
-    loaded = true;
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1428464038973925');
-    fbq('track', 'PageView');
-  }
-  function fireContact() {
-    loadPixel();
-    if (typeof fbq !== 'function') return;
-    fbq('track', 'Contact');
-    fbq('trackCustom', 'ContactSent');
-  }
-  function schedulePixel() {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(function () { loadPixel(); }, { timeout: 8000 });
-    } else {
-      setTimeout(loadPixel, 8000);
-    }
-  }
-  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
-    window.addEventListener(ev, loadPixel, { once: true, passive: true });
-  });
-  if (document.readyState === 'complete') schedulePixel();
-  else window.addEventListener('load', schedulePixel);
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    var a = t && t.closest ? t.closest('a[href^="sms:"]') : null;
-    if (a) fireContact();
-  });
-})();
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

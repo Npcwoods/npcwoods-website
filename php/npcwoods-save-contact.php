@@ -155,7 +155,7 @@ function npcwoods_save_contact_button() {
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
     </button>
     <div class="npc-save-card-profile">
-      <img class="npc-save-card-avatar" src="https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png" alt="Chris Woods" width="48" height="48" loading="lazy">
+      <img class="npc-save-card-avatar" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods" width="48" height="48" loading="lazy">
       <div>
         <div class="npc-save-card-name">Chris Woods, NP</div>
         <div class="npc-save-card-title">NPCWoods Telemedicine</div>
@@ -215,8 +215,6 @@ function npcwoods_save_contact_button() {
     }
   });
   dl.addEventListener('click', function() {
-    if (typeof gtag === 'function') { gtag('event', 'generate_lead', { event_category: 'engagement', event_label: 'save_contact_vcard', value: 0 }); }
-    if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'save_contact_vcard' }); }
   });
 })();
 </script>
