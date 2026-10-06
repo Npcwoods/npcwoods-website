@@ -37,7 +37,8 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn('data-plate="hybrid-v3-homelander"', self.text)
         self.assertIn("Hey, I'm Chris.", self.text)
         self.assertIn("Common $59 visits.", self.text)
-        self.assertIn("Licensed in 11 states.", self.text)
+        self.assertIn("Serving 13 states.", self.text)
+        self.assertIn("Florida by Out-of-State Telehealth Provider registration (TPAN3355)", self.text)
         self.assertIn("NPCWoods vs. big telehealth", self.text)
 
     def test_homepage_leaves_seo_metadata_to_wordpress(self):
@@ -104,9 +105,11 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("1428464038973925", self.text)
         self.assertEqual(1, self.text.count("fbq('init'"))
 
-    def test_homepage_loads_requested_ga4_id_only(self):
-        self.assertIn("G-0VCC0Z4FD7", self.text)
-        self.assertIn("gtag/js?id=G-0VCC0Z4FD7", self.text)
+    def test_homepage_has_no_google_tags(self):
+        # HIPAA hard rule (2026-10-06): no Google tags anywhere on the site.
+        self.assertNotIn("G-0VCC0Z4FD7", self.text)
+        self.assertNotIn("googletagmanager", self.text)
+        self.assertNotIn("gtag(", self.text)
         self.assertNotIn("G-EFFRQMG8TC", self.text)
         self.assertNotIn("AW-610222919", self.text)
         self.assertNotIn("GTM-59QSWZRC", self.text)

@@ -45,8 +45,8 @@
   "reviewedBy": {
     "@id": "https://npcwoods.com/#chris-woods"
   },
-  "lastReviewed": "2026-10-05",
-  "dateModified": "2026-10-05",
+  "lastReviewed": "2026-10-06",
+  "dateModified": "2026-10-06",
   "about": {
     "@type": "MedicalCondition",
     "name": "Obesity and overweight management with GLP-1 medicines"
@@ -61,10 +61,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Where does natural GLP-1 come from?",
+      "name": "Where does my own GLP-1 come from?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Intestinal L-cells make GLP-1 after you eat. It is a short-lived gut hormone."
+        "text": "L-cells in your gut make it after you eat. It only lasts about two minutes."
       }
     },
     {
@@ -72,7 +72,7 @@
       "name": "Why do the medicines last so long?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Natural GLP-1 is broken down in about two minutes by DPP-4. The medicines are built to resist that and often last about a week."
+        "text": "The DPP-4 bouncer cuts up your own GLP-1 in about two minutes. The medicines are built so it can't do that. Many last about a week."
       }
     },
     {
@@ -80,15 +80,15 @@
       "name": "What is different about tirzepatide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tirzepatide hits both GLP-1 and GIP receptors. Think of it as a key that opens two related locks."
+        "text": "It fits two locks, GLP-1 and GIP. Think of one key that opens two doors."
       }
     },
     {
       "@type": "Question",
-      "name": "Will this lower my blood sugar too much?",
+      "name": "Will this drop my blood sugar too low?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GLP-1 effects on insulin are mostly glucose-dependent. Low sugar risk goes up if you also take insulin or a sulfonylurea. Tell me what you take."
+        "text": "On its own, not often. It mostly works when your sugar is high. The risk goes up if you also take insulin or a sulfonylurea. Tell me every medicine you take."
       }
     }
   ]
@@ -1098,10 +1098,14 @@ main { max-width: 100% !important; }
 .hero { overflow: visible !important; }
 .hero-content { overflow: visible !important; width: 100% !important; }
 .hero .subtitle { display: block !important; width: 100% !important; max-width: 100% !important; }
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 8px; top: 8px; z-index: 100000; background: #fff; color: #111; padding: 8px 12px; }
+.series-map { margin: 1.5rem 0; }
 
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
 <!-- Last updated: May 2026 — CSS/JS moved to external files -->
@@ -1222,7 +1226,7 @@ main { max-width: 100% !important; }
       </a>
       <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states (FL by telehealth reg.)</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
@@ -1325,7 +1329,7 @@ main { max-width: 100% !important; }
       <p style="margin-top:0.75rem;font-size:0.9rem;opacity:.9;">Or start on the <a href="https://npcwoods.com/glp1-weight-loss/" style="color:#fff;text-decoration:underline;font-weight:600;">main GLP-1 page</a>.</p>
     </div>
   </section>
-  <main>
+  <main id="main">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="https://npcwoods.com/">Home</a>
       <span>›</span>
@@ -1376,10 +1380,10 @@ main { max-width: 100% !important; }
     <p class="npc-byline-main">
       Clinically reviewed by 
       <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C</a> — 
-      Double board-certified Nurse Practitioner. Licensed in 11 states.
+      Double board-certified Nurse Practitioner. Serving 13 states: 12 state licenses, plus Florida by telehealth registration.
     </p>
     <p class="npc-byline-meta">
-      <strong>Last reviewed: <time datetime="2026-10-05">October 5, 2026</time></strong>. 
+      <strong>Last reviewed: <time datetime="2026-10-06">October 6, 2026</time></strong>. 
       This page reflects Chris's real clinical experience treating patients via NPCWoods Telemedicine. 
       <span class="npc-byline-real">Real clinician. No AI.</span>
       <a href="https://npcwoods.com/credentials/" class="npc-byline-verify">Verify credentials &amp; licenses</a>
@@ -1390,98 +1394,130 @@ main { max-width: 100% !important; }
 
     <div class="chris-voice">
       <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, nurse practitioner" width="64" height="64">
-      <p>Okay, science time — but keep your shoes on. I'm going to use doorbells, locks, keys, and a bouncer. If those stick, you understand GLP-1 better than half the internet.</p>
+      <p>Hi, I'm Chris, a nurse practitioner, and today I'll show you how GLP-1 medicines work. Don't worry, no lab coat needed. I'll use four pictures: a doorbell, a lock and key, a bouncer, and a yellow light. If those stick, you will know more than most of the internet. (Low bar, I know.)</p>
     </div>
 
+    <p class="intro-text">Every story needs a start, and this one starts with lunch.</p>
+
     <section>
-      <h2 class="section-heading">Your gut sends the first text</h2>
-      <p class="intro-text">After you eat, special cells in your intestine called L-cells release GLP-1. That hormone travels and talks to GLP-1 receptors. A receptor is a G-protein coupled receptor — fancy words for "a lock on the cell that only certain keys open."</p>
-      
+      <h2 class="section-heading">It starts with a meal: the doorbell</h2>
+      <p class="intro-text">You eat, and food moves down into your small gut. There, special cells called L-cells notice the food and send out a hormone called GLP-1. A hormone is just a message your body sends through your blood.</p>
+      <p class="intro-text">I think of GLP-1 as a doorbell that rings to tell your body, "Food is here, so get ready."</p>
+
 <figure class="diagram glp-flow" role="img" aria-label="Gut to brain doorbell diagram">
   <div class="glp-flow-steps">
     <div class="glp-flow-step gut">Gut<br><small>L-cells make GLP-1</small></div>
     <div class="glp-flow-arrow" aria-hidden="true">↓</div>
-    <div class="glp-flow-step bell">🔔 Doorbell<br><small>after you eat</small></div>
+    <div class="glp-flow-step bell">🔔 Doorbell<br><small>rings after you eat</small></div>
     <div class="glp-flow-arrow" aria-hidden="true">↓</div>
-    <div class="glp-flow-step brain">Brain<br><small>"Dinner's here" · appetite &amp; fullness</small></div>
+    <div class="glp-flow-step brain">Body and brain<br><small>"Food is here" · get ready, feel full</small></div>
   </div>
-  <figcaption>Your gut rings the brain's doorbell after you eat.</figcaption>
+  <figcaption>Your gut rings the doorbell after you eat.</figcaption>
 </figure>
 
+      <p class="intro-text">But a doorbell only works if someone hears it, so who is home?</p>
     </section>
 
     <section>
-      <h2 class="section-heading">Where the locks sit</h2>
+      <h2 class="section-heading">Who hears the bell: locks on your cells</h2>
+      <p class="intro-text">The ones who hear it are called receptors. A receptor is like a lock on the outside of a cell, and only the right key fits. GLP-1 is that key.</p>
+      <p class="intro-text">Science folks call this lock a "G-protein coupled receptor." That's a big name, but here is all it means: when the key turns, the lock sends a signal inside the cell, and the cell gets to work.</p>
+      <p class="intro-text">These locks sit in four main spots, and here is what each one does when the key turns:</p>
       <ul class="intro-text">
-        <li><strong>Pancreatic beta cells</strong> — when sugar is high, they release more insulin (glucose-dependent).</li>
-        <li><strong>Pancreatic alpha cells</strong> — they release less glucagon, so the liver dumps less sugar.</li>
-        <li><strong>Stomach</strong> — emptying slows. Food hangs out longer. That yellow-light feeling.</li>
-        <li><strong>Brain</strong> — hypothalamus and brainstem help with appetite and fullness.</li>
+        <li><strong>Pancreas, beta cells.</strong> These cells make insulin, which moves sugar out of your blood and into your cells. Here is the smart part: they make more only when your sugar is high. (The fancy word is "glucose-dependent.")</li>
+        <li><strong>Pancreas, alpha cells.</strong> These make glucagon, which tells your liver to let sugar out. GLP-1 turns it down, so your liver lets out less sugar.</li>
+        <li><strong>Stomach.</strong> Food leaves more slowly. Hold that thought, because we will come back to it.</li>
+        <li><strong>Brain.</strong> Two spots, the hypothalamus and the brainstem, help run hunger. When the key turns there, you feel full sooner.</li>
       </ul>
-      
+
 <figure class="diagram glp-flow" role="img" aria-label="Lock and key receptor diagram">
   <div class="glp-flow-steps">
     <div class="glp-flow-step lock">🔒 Receptor<br><small>the lock on the cell</small></div>
     <div class="glp-flow-arrow" aria-hidden="true">↓</div>
-    <div class="glp-flow-step key">🔑 Medicine<br><small>the key that fits</small></div>
+    <div class="glp-flow-step key">🔑 GLP-1 or the medicine<br><small>the key that fits</small></div>
     <div class="glp-flow-arrow" aria-hidden="true">↓</div>
-    <div class="glp-flow-step on">Cell turns on<br><small>insulin ↑ · glucagon ↓ · stomach slows · brain full</small></div>
+    <div class="glp-flow-step on">The cell turns on<br><small>insulin up when sugar is high · glucagon down · stomach slows · brain feels full</small></div>
   </div>
-  <figcaption>The receptor is a lock. The medicine is a key that fits.</figcaption>
+  <figcaption>The receptor is a lock. GLP-1 is a key that fits.</figcaption>
 </figure>
 
-      <div class="analogy-grid">
-        <div class="analogy-card"><strong>GLP-1 = doorbell</strong>Tells the brain and body: dinner is here.</div>
-        <div class="analogy-card"><strong>Receptor = lock</strong>Sitting on cells waiting for the right key.</div>
-        <div class="analogy-card"><strong>Medicine = key</strong>Fits the lock and holds it open longer.</div>
-        <div class="analogy-card"><strong>DPP-4 = bouncer</strong>Kicks natural GLP-1 out in about two minutes.</div>
-      </div>
+      <p class="intro-text">So far, so good. Your body makes its own keys, so why would anyone need a medicine? Meet the bouncer.</p>
     </section>
 
     <section>
-      <h2 class="section-heading">Why natural GLP-1 is gone in a blink</h2>
-      <p class="intro-text">DPP-4 is an enzyme that chops GLP-1 almost right away. So your own hormone is a short text. The medicines are written to dodge that bouncer. Weekly shots are built to stick around on the order of a week.</p>
-      <p class="intro-text">Tirzepatide also hits GIP receptors. Extra key. Extra lock. Same neighborhood of gut hormones.</p>
+      <h2 class="section-heading">The bouncer named DPP-4</h2>
+      <p class="intro-text">Your body has an enzyme called DPP-4. An enzyme is a tiny tool that cuts or builds things, and I picture DPP-4 as a bouncer at the door. It grabs your own GLP-1 and tosses it out fast, so in about two minutes most of it is gone.</p>
+      <p class="intro-text">So your own doorbell rings for just a moment, and then it goes quiet.</p>
+      <p class="intro-text">GLP-1 medicines, like semaglutide, are copies of GLP-1 with a few smart changes. One change makes the key hard for the bouncer to grab. Another lets the key ride on a protein in your blood, so your kidneys don't flush it out fast. The result is a key that stays in the lock for days, not minutes, which is why many of these shots are once a week.</p>
+
+<figure class="diagram glp-flow" role="img" aria-label="DPP-4 bouncer diagram: natural GLP-1 versus the medicine">
+  <div class="glp-flow-steps">
+    <div class="glp-flow-step gut">Your own GLP-1<br><small>the bouncer grabs it · gone in about 2 minutes</small></div>
+    <div class="glp-flow-arrow" aria-hidden="true">vs</div>
+    <div class="glp-flow-step key">The medicine<br><small>built so the bouncer can't grab it · lasts about a week</small></div>
+  </div>
+  <figcaption>DPP-4 is the bouncer. The medicine is built to slip past it.</figcaption>
+</figure>
+
+      <p class="intro-text">Fun fact: some diabetes pills work the other way around. They slow the bouncer down so your own GLP-1 lasts a bit longer, and they are a different group of medicines.</p>
+      <p class="intro-text">And tirzepatide? It has an extra trick, because it fits two locks: the GLP-1 lock and a cousin lock called GIP. GIP is another gut hormone that rings after meals, so think of tirzepatide as one key that opens two doors.</p>
+      <p class="intro-text">Now, remember the stomach lock I asked you to hold on to? Here is why it matters so much.</p>
     </section>
 
     <section>
-      <h2 class="section-heading">Yellow light for the stomach</h2>
-      <p class="intro-text">Slower gastric emptying means sugar from a meal enters the blood more slowly. It also means that greasy triple burger can sit there and make you regret every choice. That's why nausea shows up when people eat like nothing changed.</p>
-      
+      <h2 class="section-heading">The yellow light in your stomach</h2>
+      <p class="intro-text">When the key turns the stomach lock, food leaves your stomach more slowly. Picture a yellow traffic light. Cars still move, but they don't race through. Food still leaves your stomach, but it takes its time.</p>
+
 <figure class="diagram glp-flow" role="img" aria-label="Traffic light for stomach emptying">
   <div class="traffic-lights">
     <div class="tl red">Fast<br>empty</div>
     <div class="tl yellow">GLP-1<br>slow</div>
     <div class="tl green">Steady<br>fuel</div>
   </div>
-  <figcaption>Slow emptying is like a yellow light — food moves, just not in a rush.</figcaption>
+  <figcaption>Slow emptying is like a yellow light. Food moves, just not in a rush.</figcaption>
 </figure>
 
+      <p class="intro-text">That slow pace helps in two ways. Sugar from your meal gets into your blood more slowly, and you stay full longer.</p>
+      <p class="intro-text">But here is the catch. Eat a giant greasy burger, and it sits there, and sits, until your stomach files a complaint. That is a big reason people feel sick to their stomach. I always say it like this: the medicine changed, so the plate has to change too.</p>
+
+      <div class="analogy-grid">
+        <div class="analogy-card"><strong>GLP-1 = doorbell</strong>Rings after you eat: food is here.</div>
+        <div class="analogy-card"><strong>Receptor = lock</strong>Sits on cells and waits for the right key.</div>
+        <div class="analogy-card"><strong>Medicine = key</strong>Fits the lock and stays put much longer.</div>
+        <div class="analogy-card"><strong>DPP-4 = bouncer</strong>Tosses your own GLP-1 out in about two minutes.</div>
+      </div>
     </section>
 
     <div class="why-box">
-      <strong>Why this matters:</strong> Once you see lock, key, bouncer, and yellow light, dose steps and side-effect tips stop feeling random.
+      <strong>Why this matters:</strong> Once you see the doorbell, the lock and key, the bouncer, and the yellow light, the rest makes sense. Slow dose steps, the side effects, and even the smaller plate all start to make sense.
     </div>
 
     <div class="cliffhanger">
-      <p><strong>Next up:</strong> The honest side-effect talk — common tummy stuff, how to ease it, and the rare "go to the ER" list. <a href="https://npcwoods.com/learn/glp1/side-effects/">GLP-1 Side Effects, Honestly →</a></p>
+      <p><strong>Next up:</strong> That yellow light explains most side effects. On the next page, I'll walk you through the common tummy stuff, what helps, and the rare signs that mean go to the ER. <a href="https://npcwoods.com/learn/glp1/side-effects/">GLP-1 Side Effects, Honestly →</a></p>
+      <p style="margin:0.5rem 0 0;"><a href="https://npcwoods.com/learn/glp1/">← Back to the GLP-1 hub</a></p>
     </div>
 
+    <nav class="series-map" aria-label="GLP-1 series">
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/"><span class="tag">Start here</span><h3>GLP-1, Explained Plainly</h3><p>The big picture and the road map.</p></a>
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/how-they-work/" aria-current="page"><span class="tag">You are here</span><h3>How GLP-1s Work</h3><p>Doorbell, lock and key, bouncer, yellow light.</p></a>
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/side-effects/"><span class="tag">Read next</span><h3>GLP-1 Side Effects, Honestly</h3><p>Common stuff, rare red flags, when to text me.</p></a>
+    </nav>
+
     <section class="faq" aria-label="Frequently asked questions"><h2 class="section-heading">FAQ</h2>
-<details><summary>Where does natural GLP-1 come from?</summary><p>Intestinal L-cells make GLP-1 after you eat. It is a short-lived gut hormone.</p></details>
-<details><summary>Why do the medicines last so long?</summary><p>Natural GLP-1 is broken down in about two minutes by DPP-4. The medicines are built to resist that and often last about a week.</p></details>
-<details><summary>What is different about tirzepatide?</summary><p>Tirzepatide hits both GLP-1 and GIP receptors. Think of it as a key that opens two related locks.</p></details>
-<details><summary>Will this lower my blood sugar too much?</summary><p>GLP-1 effects on insulin are mostly glucose-dependent. Low sugar risk goes up if you also take insulin or a sulfonylurea. Tell me what you take.</p></details>
+<details><summary>Where does my own GLP-1 come from?</summary><p>L-cells in your gut make it after you eat. It only lasts about two minutes.</p></details>
+<details><summary>Why do the medicines last so long?</summary><p>The DPP-4 bouncer cuts up your own GLP-1 in about two minutes. The medicines are built so it can't do that. Many last about a week.</p></details>
+<details><summary>What is different about tirzepatide?</summary><p>It fits two locks, GLP-1 and GIP. Think of one key that opens two doors.</p></details>
+<details><summary>Will this drop my blood sugar too low?</summary><p>On its own, not often. It mostly works when your sugar is high. The risk goes up if you also take insulin or a sulfonylurea. Tell me every medicine you take.</p></details>
 </section>
 
     <section class="sources">
       <h2 class="section-heading">Sources</h2>
       <ol>
-        <li>NIDDK (NIH). Discovery story covering GLP-1 from L-cells, insulin effects, and slowing of stomach emptying. <a href="https://www.niddk.nih.gov/news/archive/2021/story-discovery-medications-diabetes-obesity-emerged-research-pancreatic-hormone" target="_blank" rel="noopener">niddk.nih.gov</a></li>
-        <li>NCBI Bookshelf / StatPearls. GLP-1 receptor agonists — incretin effect, DPP-4, gastric emptying, glucagon. <a href="https://www.ncbi.nlm.nih.gov/books/NBK551568/" target="_blank" rel="noopener">NBK551568</a></li>
-        <li>PMC review. Metabolic responses of GLP-1 receptor ligands (CNS appetite, gastric motility). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8820187/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov/articles/PMC8820187</a></li>
-        <li>DailyMed. WEGOVY (semaglutide) — mechanism, delayed gastric emptying, half-life about 1 week. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">DailyMed Wegovy</a></li>
-        <li>DailyMed. ZEPBOUND (tirzepatide) — GIP and GLP-1 receptor agonist. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">DailyMed Zepbound</a></li>
+        <li>NIDDK (NIH). How GLP-1 was found: L-cells, insulin, and slower stomach emptying. <a href="https://www.niddk.nih.gov/news/archive/2021/story-discovery-medications-diabetes-obesity-emerged-research-pancreatic-hormone" target="_blank" rel="noopener">niddk.nih.gov</a></li>
+        <li>NCBI Bookshelf (StatPearls). GLP-1 receptor agonists: DPP-4, stomach emptying, glucagon. <a href="https://www.ncbi.nlm.nih.gov/books/NBK551568/" target="_blank" rel="noopener">NBK551568</a></li>
+        <li>PMC review. GLP-1 effects on the brain, hunger, and the gut. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8820187/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov/articles/PMC8820187</a></li>
+        <li>DailyMed. WEGOVY (semaglutide) label: how it works, slower stomach emptying, lasts about 1 week. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">DailyMed Wegovy</a></li>
+        <li>DailyMed. ZEPBOUND (tirzepatide) label: GIP and GLP-1 receptor agonist. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">DailyMed Zepbound</a></li>
       </ol>
     </section>
 
@@ -1490,7 +1526,7 @@ main { max-width: 100% !important; }
       <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20a%20%2459%20GLP-1%20consult">Text (480) 639-4722</a>
       <p style="margin:0.75rem 0 0;font-size:0.85rem;opacity:.85;"><a href="https://npcwoods.com/glp1-weight-loss/" style="color:#93c5fd;">Main GLP-1 consult page →</a></p>
     </div>
-    <p class="disclaimer-line">Educational only. This is not medical advice. Text us to see if a GLP-1 is right for you. Brand names like Ozempic®, Wegovy®, Mounjaro®, and Zepbound® are trademarks of their makers. We do not promote compounded versions here.</p>
+    <p class="disclaimer-line">This page is for learning. It is not medical advice. Text me to see if a GLP-1 is right for you. Ozempic®, Wegovy®, Mounjaro®, and Zepbound® are trademarks of their makers. I don't promote compounded versions here.</p>
   </main>
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
 <!-- Copy this block into every page before </body> -->
@@ -1544,6 +1580,8 @@ main { max-width: 100% !important; }
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
+          <li><a href="https://flhealthsource.gov/telehealth/" target="_blank" rel="noopener">Florida</a></li>
         </ul>
       </div>
 
@@ -1577,7 +1615,7 @@ main { max-width: 100% !important; }
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served.<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>

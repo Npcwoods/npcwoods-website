@@ -45,8 +45,8 @@
   "reviewedBy": {
     "@id": "https://npcwoods.com/#chris-woods"
   },
-  "lastReviewed": "2026-10-05",
-  "dateModified": "2026-10-05",
+  "lastReviewed": "2026-10-06",
+  "dateModified": "2026-10-06",
   "about": {
     "@type": "MedicalCondition",
     "name": "Obesity and overweight management with GLP-1 medicines"
@@ -64,7 +64,7 @@
       "name": "What side effects are most common?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nausea, vomiting, diarrhea, constipation, belly discomfort, reflux, burping, and fatigue are among the common ones listed on FDA labels."
+        "text": "Nausea, throwing up, loose stools, and constipation. Belly pain, bloating, heartburn, burping, and feeling tired are common too. These are listed on FDA labels."
       }
     },
     {
@@ -72,7 +72,7 @@
       "name": "How do I make nausea better?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Smaller meals. Stop when full. Sip fluids. Skip greasy, fried food. Dose step-ups exist because jumping high too fast makes tummy effects worse."
+        "text": "Eat smaller meals. Eat slowly. Stop when you are full. Sip water. Skip greasy, fried food. Dose steps help too, because jumping up too fast makes tummy trouble worse."
       }
     },
     {
@@ -80,7 +80,7 @@
       "name": "When is it an emergency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Severe belly pain that goes to the back, signs of a bad allergic reaction, or symptoms of severe dehydration need emergency care. Call 911 if you are in danger."
+        "text": "Bad belly pain that goes to your back, signs of a bad allergic reaction, or signs you are very low on fluids. Get emergency care. Call 911 if you are in danger."
       }
     },
     {
@@ -88,7 +88,7 @@
       "name": "Who should not use these medicines?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "People with a personal or family history of medullary thyroid cancer or MEN2 should not use them, per boxed warnings. They are not for pregnancy."
+        "text": "People who have, or have family who had, medullary thyroid cancer. People with MEN2. This comes from the boxed warning. They are also not for pregnancy."
       }
     }
   ]
@@ -1098,10 +1098,14 @@ main { max-width: 100% !important; }
 .hero { overflow: visible !important; }
 .hero-content { overflow: visible !important; width: 100% !important; }
 .hero .subtitle { display: block !important; width: 100% !important; max-width: 100% !important; }
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 8px; top: 8px; z-index: 100000; background: #fff; color: #111; padding: 8px 12px; }
+.series-map { margin: 1.5rem 0; }
 
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
 <!-- Last updated: May 2026 — CSS/JS moved to external files -->
@@ -1222,7 +1226,7 @@ main { max-width: 100% !important; }
       </a>
       <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states (FL by telehealth reg.)</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
@@ -1325,7 +1329,7 @@ main { max-width: 100% !important; }
       <p style="margin-top:0.75rem;font-size:0.9rem;opacity:.9;">Or start on the <a href="https://npcwoods.com/glp1-weight-loss/" style="color:#fff;text-decoration:underline;font-weight:600;">main GLP-1 page</a>.</p>
     </div>
   </section>
-  <main>
+  <main id="main">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="https://npcwoods.com/">Home</a>
       <span>›</span>
@@ -1376,10 +1380,10 @@ main { max-width: 100% !important; }
     <p class="npc-byline-main">
       Clinically reviewed by 
       <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C</a> — 
-      Double board-certified Nurse Practitioner. Licensed in 11 states.
+      Double board-certified Nurse Practitioner. Serving 13 states: 12 state licenses, plus Florida by telehealth registration.
     </p>
     <p class="npc-byline-meta">
-      <strong>Last reviewed: <time datetime="2026-10-05">October 5, 2026</time></strong>. 
+      <strong>Last reviewed: <time datetime="2026-10-06">October 6, 2026</time></strong>. 
       This page reflects Chris's real clinical experience treating patients via NPCWoods Telemedicine. 
       <span class="npc-byline-real">Real clinician. No AI.</span>
       <a href="https://npcwoods.com/credentials/" class="npc-byline-verify">Verify credentials &amp; licenses</a>
@@ -1390,13 +1394,21 @@ main { max-width: 100% !important; }
 
     <div class="chris-voice">
       <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, nurse practitioner" width="64" height="64">
-      <p>I'm not going to sugarcoat this. Most people get some tummy effects. Most of those get better. A few problems are rare and serious. You deserve both lists.</p>
+      <p>I'm going to be straight with you. Most people get some tummy trouble on these medicines, and most of it gets better. A few problems are rare but serious, and you deserve to hear both. So let's talk like friends, the kind who can talk about poop. (Sorry. It comes with my job.)</p>
     </div>
 
+    <p class="intro-text">If you read <a href="https://npcwoods.com/learn/glp1/how-they-work/">How GLP-1s Work</a>, you already know the main reason for the tummy stuff. If not, here is the short version.</p>
+
     <section>
-      <h2 class="section-heading">Common side effects</h2>
-      <p class="intro-text">FDA labels list common effects. These include nausea, vomiting, diarrhea, and constipation. Belly pain, bloating, reflux, and burping are common too. Some people feel tired. Hair changes can happen. Results vary.</p>
-      
+      <h2 class="section-heading">Why your tummy talks back</h2>
+      <p class="intro-text">GLP-1 medicines are keys that turn locks in your stomach, which makes food leave your stomach more slowly, like a yellow traffic light. The keys also turn locks in your brain that help you feel full. Both of those help, but if food sits too long, or you eat too much, your gut lets you know.</p>
+      <p class="intro-text">So what does "your gut lets you know" look like? Here is the list.</p>
+    </section>
+
+    <section>
+      <h2 class="section-heading">The common stuff</h2>
+      <p class="intro-text">FDA labels list the common side effects, and they include feeling sick to your stomach (nausea), throwing up, loose stools, and constipation. Belly pain, bloating, heartburn, and burping are common too. Some people feel tired, and some notice hair thinning. Not everyone gets these, because every body is different.</p>
+
 <figure class="diagram" role="img" aria-label="How common side effects tend to be">
 <div class="side-meter">
   <div class="side-row"><span>Nausea</span><div class="side-bar"><span style="width:85%;background:#f97316"></span></div><span>common</span></div>
@@ -1407,80 +1419,94 @@ main { max-width: 100% !important; }
   <div class="side-row"><span>Fatigue</span><div class="side-bar"><span style="width:35%;background:#a3e635"></span></div><span>common</span></div>
   <div class="side-row"><span>Pancreatitis</span><div class="side-bar"><span style="width:8%;background:#ef4444"></span></div><span>rare</span></div>
 </div>
-<figcaption>Bars show relative frequency from labels — not your personal odds. Rare red-flag problems still matter.</figcaption>
+<figcaption>Bars show how often each one shows up on the labels. They are not your odds. Rare problems still matter.</figcaption>
 </figure>
 
-      <p class="intro-text">Why the tummy drama? Remember the yellow light. Your stomach empties slower. A huge greasy meal can sit there. Your gut will complain.</p>
+      <p class="intro-text">Here is the good news: most of this fades as your body gets used to the medicine, and a lot of it, you can help.</p>
     </section>
 
     <section>
-      <h2 class="section-heading">Tips that actually help</h2>
+      <h2 class="section-heading">What actually helps</h2>
       <ul class="intro-text">
-        <li>Eat smaller meals. Stop when you feel full — even if the plate isn't empty.</li>
-        <li>Drink water through the day. Dehydration makes everything worse.</li>
-        <li>Go easy on fried and very fatty food, especially early on.</li>
-        <li>Dose step-ups exist for a reason. Climbing slowly gives your gut time to adapt.</li>
+        <li><strong>Eat smaller meals.</strong> Stop when you feel full, even if food is left. Your plate is not the boss of you.</li>
+        <li><strong>Eat slowly.</strong> Your brain needs a few minutes to hear the "I'm full" doorbell.</li>
+        <li><strong>Sip water all day.</strong> Being low on fluids makes everything worse.</li>
+        <li><strong>Go easy on fried and fatty food,</strong> mostly in the first weeks. Greasy food sits at the yellow light the longest.</li>
+        <li><strong>Climb the dose slowly.</strong> That is why we use dose steps, so your gut gets time to adjust.</li>
       </ul>
       <div class="why-box">
-        <strong>Why this matters:</strong> A lot of "I can't tolerate this" stories are really "I ate like day zero." We fix the plate before we give up on the medicine.
+        <strong>Why this matters:</strong> A lot of "I can't take this" stories are really "I ate like I did before." We fix the plate first, and then we talk about the dose.
       </div>
+      <p class="intro-text">Now for the serious part. These problems are rare, but I want you to know them by heart.</p>
     </section>
 
     <div class="er-box">
-      <h3>Go to the ER / call 911 for these</h3>
+      <h3>Go to the ER or call 911 for these</h3>
       <ul>
-        <li><strong>Severe belly pain</strong> that goes to your back — possible pancreatitis. Do not wait it out.</li>
-        <li><strong>Gallbladder-type pain</strong> — strong right-upper pain, maybe after fatty food, maybe with fever or yellowing skin.</li>
-        <li><strong>Dehydration / kidney trouble signs</strong> — can't keep fluids down, very dry mouth, little urine, feeling faint.</li>
-        <li><strong>Allergic reaction</strong> — swelling of face or throat, trouble breathing, widespread hives.</li>
-        <li><strong>Low blood sugar</strong> if you also take insulin or a sulfonylurea — shakiness, sweating, confusion. Treat per your plan and get help if severe.</li>
+        <li><strong>Bad belly pain that goes to your back.</strong> It could be pancreatitis, which means a swollen pancreas. Do not wait it out.</li>
+        <li><strong>Gallbladder pain.</strong> Strong pain under your right ribs, maybe after fatty food, maybe with a fever or yellow skin or eyes.</li>
+        <li><strong>Signs you are very low on fluids.</strong> You can't keep fluids down, your mouth is very dry, you barely pee, or you feel faint. This can hurt your kidneys.</li>
+        <li><strong>An allergic reaction.</strong> Your face or throat swells, you have trouble breathing, or you get hives all over.</li>
+        <li><strong>Low blood sugar,</strong> if you also take insulin or a sulfonylurea. You feel shaky, sweaty, or confused. Treat it the way your plan says, and get help if it is bad.</li>
       </ul>
     </div>
 
+    <p class="intro-text">There is one more warning you will see on the box, and it sounds scary, so let me explain it plainly.</p>
+
     <section>
-      <h2 class="section-heading">Boxed warning (thyroid C-cell tumors)</h2>
-      <p class="intro-text">FDA labels for semaglutide and tirzepatide have a boxed warning. Rodents got thyroid C-cell tumors. We do not know if that matches humans. Do <strong>not</strong> use these if you or your family had medullary thyroid cancer (MTC). Also skip them if you have MEN2.</p>
-      <p class="intro-text">Tell me about neck lumps. Tell me about trouble swallowing. Tell me about short breath or a hoarse voice that will not quit. Those need a real look.</p>
+      <h2 class="section-heading">The boxed warning: thyroid C-cell tumors</h2>
+      <p class="intro-text">The labels for semaglutide and tirzepatide have a boxed warning, which is the FDA's strongest kind. In rats and mice, these drugs caused tumors in thyroid C-cells. We don't know if that happens in people, so here is the rule.</p>
+      <p class="intro-text">Do <strong>not</strong> use these medicines if you, or anyone in your family, had medullary thyroid cancer (MTC). Do not use them if you have a gene condition called MEN2.</p>
+      <p class="intro-text">Tell me if you get a lump in your neck, or if it gets hard to swallow. Tell me about a hoarse voice or short breath that won't go away. Those need a real, in-person look.</p>
+      <p class="intro-text">Next, a word for anyone who might get pregnant soon.</p>
     </section>
 
     <section>
       <h2 class="section-heading">Not for pregnancy</h2>
-      <p class="intro-text">These medicines are not for pregnancy. Labels say to stop if you become pregnant. Plan ahead. The medicine can stay in your body for weeks. If you might be pregnant, or plan to be, text me first.</p>
+      <p class="intro-text">These medicines are not for pregnancy, and the labels say to stop if you get pregnant. The medicine can stay in your body for weeks after your last shot, and the Wegovy label says to stop at least 2 months before you try to get pregnant. So plan ahead: if you might be pregnant, or want to be, text me first and we will make a plan together.</p>
+      <p class="intro-text">So how do you know which list you are on? Here is my simple rule.</p>
     </section>
 
     <section>
-      <h2 class="section-heading">When to text me vs when to go to the ER</h2>
+      <h2 class="section-heading">Text me, or go to the ER?</h2>
       <div class="card-grid">
         <div class="card">
           <div class="card-title">Text me</div>
-          <div class="card-text">Mild nausea. Food questions. Dose timing. Constipation tips. Whether to wait on a step-up. "Is this normal?" check-ins.</div>
+          <div class="card-text">Mild nausea, food questions, when to take your dose, help with constipation, whether to wait on a dose step, and "Is this normal?" check-ins.</div>
         </div>
         <div class="card">
-          <div class="card-title">ER / 911</div>
-          <div class="card-text">Severe pain to the back. Breathing trouble. Face or throat swelling. Collapse. Bad dehydration. Anything that feels like an emergency. Do not text and wait.</div>
+          <div class="card-title">ER or 911</div>
+          <div class="card-text">Bad pain that goes to your back, trouble breathing, face or throat swelling, passing out, or bad fluid loss. Anything that feels like an emergency. Do not text and wait.</div>
         </div>
       </div>
     </section>
 
     <div class="cliffhanger">
-      <p><strong>Coming next in the series:</strong> First 30 Days — what that first month often feels like, in real talk. Until then, the hub and how-they-work pages have your back. <a href="https://npcwoods.com/learn/glp1/">Back to the GLP-1 hub →</a></p>
+      <p><strong>Coming next in the series:</strong> Your first 30 days, and what that first month often feels like. Until then, want to see the yellow light up close? <a href="https://npcwoods.com/learn/glp1/how-they-work/">How GLP-1s Work →</a></p>
+      <p style="margin:0.5rem 0 0;"><a href="https://npcwoods.com/learn/glp1/">← Back to the GLP-1 hub</a></p>
     </div>
 
+    <nav class="series-map" aria-label="GLP-1 series">
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/"><span class="tag">Start here</span><h3>GLP-1, Explained Plainly</h3><p>The big picture and the road map.</p></a>
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/how-they-work/"><span class="tag">Read first</span><h3>How GLP-1s Work</h3><p>Doorbell, lock and key, bouncer, yellow light.</p></a>
+      <a class="series-card live" href="https://npcwoods.com/learn/glp1/side-effects/" aria-current="page"><span class="tag">You are here</span><h3>GLP-1 Side Effects, Honestly</h3><p>Common stuff, rare red flags, when to text me.</p></a>
+    </nav>
+
     <section class="faq" aria-label="Frequently asked questions"><h2 class="section-heading">FAQ</h2>
-<details><summary>What side effects are most common?</summary><p>Nausea, vomiting, diarrhea, constipation, belly discomfort, reflux, burping, and fatigue are among the common ones listed on FDA labels.</p></details>
-<details><summary>How do I make nausea better?</summary><p>Smaller meals. Stop when full. Sip fluids. Skip greasy, fried food. Dose step-ups exist because jumping high too fast makes tummy effects worse.</p></details>
-<details><summary>When is it an emergency?</summary><p>Severe belly pain that goes to the back, signs of a bad allergic reaction, or symptoms of severe dehydration need emergency care. Call 911 if you are in danger.</p></details>
-<details><summary>Who should not use these medicines?</summary><p>People with a personal or family history of medullary thyroid cancer or MEN2 should not use them, per boxed warnings. They are not for pregnancy.</p></details>
+<details><summary>What side effects are most common?</summary><p>Nausea, throwing up, loose stools, and constipation. Belly pain, bloating, heartburn, burping, and feeling tired are common too. These are listed on FDA labels.</p></details>
+<details><summary>How do I make nausea better?</summary><p>Eat smaller meals. Eat slowly. Stop when you are full. Sip water. Skip greasy, fried food. Dose steps help too, because jumping up too fast makes tummy trouble worse.</p></details>
+<details><summary>When is it an emergency?</summary><p>Bad belly pain that goes to your back, signs of a bad allergic reaction, or signs you are very low on fluids. Get emergency care. Call 911 if you are in danger.</p></details>
+<details><summary>Who should not use these medicines?</summary><p>People who have, or have family who had, medullary thyroid cancer. People with MEN2. This comes from the boxed warning. They are also not for pregnancy.</p></details>
 </section>
 
     <section class="sources">
       <h2 class="section-heading">Sources</h2>
       <ol>
-        <li>DailyMed. WEGOVY (semaglutide) — boxed warning (thyroid C-cell tumors / MTC / MEN2), common adverse reactions, pancreatitis, gallbladder disease, hypoglycemia with insulin/secretagogues, acute kidney injury with volume depletion, pregnancy guidance. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">DailyMed Wegovy</a></li>
+        <li>DailyMed. WEGOVY (semaglutide) label: boxed warning (thyroid C-cell tumors, MTC, MEN2), common side effects, pancreatitis, gallbladder, low sugar with insulin, kidney injury with fluid loss, pregnancy. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">DailyMed Wegovy</a></li>
         <li>FDA label PDF (Wegovy). <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/215256s029lbl.pdf" target="_blank" rel="noopener">accessdata.fda.gov …215256s029lbl.pdf</a></li>
-        <li>DailyMed. ZEPBOUND (tirzepatide) — boxed warning and safety sections. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">DailyMed Zepbound</a></li>
+        <li>DailyMed. ZEPBOUND (tirzepatide) label: boxed warning and safety. <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">DailyMed Zepbound</a></li>
         <li>FDA label PDF (Zepbound). <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/217806s037lbl.pdf" target="_blank" rel="noopener">accessdata.fda.gov …217806s037lbl.pdf</a></li>
-        <li>NCBI Bookshelf. GLP-1 receptor agonists — GI effects and clinical cautions. <a href="https://www.ncbi.nlm.nih.gov/books/NBK551568/" target="_blank" rel="noopener">NBK551568</a></li>
+        <li>NCBI Bookshelf. GLP-1 receptor agonists: gut effects and cautions. <a href="https://www.ncbi.nlm.nih.gov/books/NBK551568/" target="_blank" rel="noopener">NBK551568</a></li>
       </ol>
     </section>
 
@@ -1489,7 +1515,7 @@ main { max-width: 100% !important; }
       <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20a%20%2459%20GLP-1%20consult">Text (480) 639-4722</a>
       <p style="margin:0.75rem 0 0;font-size:0.85rem;opacity:.85;"><a href="https://npcwoods.com/glp1-weight-loss/" style="color:#93c5fd;">Main GLP-1 consult page →</a></p>
     </div>
-    <p class="disclaimer-line">Educational only. This is not medical advice. Text us to see if a GLP-1 is right for you. Brand names like Ozempic®, Wegovy®, Mounjaro®, and Zepbound® are trademarks of their makers. We do not promote compounded versions here.</p>
+    <p class="disclaimer-line">This page is for learning. It is not medical advice. Text me to see if a GLP-1 is right for you. Ozempic®, Wegovy®, Mounjaro®, and Zepbound® are trademarks of their makers. I don't promote compounded versions here.</p>
   </main>
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
 <!-- Copy this block into every page before </body> -->
@@ -1543,6 +1569,8 @@ main { max-width: 100% !important; }
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
+          <li><a href="https://flhealthsource.gov/telehealth/" target="_blank" rel="noopener">Florida</a></li>
         </ul>
       </div>
 
@@ -1576,7 +1604,7 @@ main { max-width: 100% !important; }
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served.<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
