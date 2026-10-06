@@ -77,3 +77,60 @@ def ghost_calendar():
         pts.append('%.1f,%.1f' % (x, y))
     b.append('<polyline points="%s" fill="none" stroke="#7cc4ff" stroke-opacity=".55" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>' % ' '.join(pts))
     return _wrap(''.join(b))
+
+
+def ghost_stairs():
+    """Dose steps: soft stair steps climbing right, no numbers."""
+    b = []
+    for i in range(6):
+        x = 180 + i * 170; y = 520 - i * 70; w = 150; h = 70 + i * 8
+        b.append('<rect x="%d" y="%d" width="%d" height="%d" rx="18" fill="none" stroke="#ffffff" stroke-opacity="%.2f" stroke-width="3"/>' % (x, y, w, h, 0.08 + i * 0.03))
+        b.append('<circle cx="%d" cy="%d" r="10" fill="#f5a524" fill-opacity="%.2f"/>' % (x + w/2, y + 28, 0.18 + i * 0.05))
+    b.append('<path d="M120 580 C400 520 700 360 1180 180" fill="none" stroke="#7cc4ff" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/>')
+    return _wrap(''.join(b))
+
+def ghost_twokeys():
+    """Sema vs tirz: two soft key silhouettes."""
+    b = []
+    b.append('<g fill="none" stroke="#2997ff" stroke-opacity=".28" stroke-width="10" stroke-linecap="round"><circle cx="420" cy="300" r="70"/><path d="M490 300 H780 M720 300 V360"/></g>')
+    b.append('<g fill="none" stroke="#f5a524" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"><circle cx="420" cy="520" r="70"/><path d="M490 520 H780 M700 520 V460 M740 520 V580"/></g>')
+    for x,y,op in [(980,220,.12),(1120,400,.10),(1280,280,.09),(980,520,.11)]:
+        b.append('<rect x="%d" y="%d" width="90" height="110" rx="24" fill="none" stroke="#fff" stroke-opacity="%.2f" stroke-width="4"/>' % (x,y,op))
+    return _wrap(''.join(b))
+
+def ghost_plate():
+    """Eating: soft plate rings + small bite dots."""
+    b = []
+    cx,cy=980,340
+    for i,r in enumerate(range(60, 280, 40)):
+        b.append('<circle cx="%d" cy="%d" r="%d" fill="none" stroke="#fff" stroke-opacity="%.2f" stroke-width="3"/>' % (cx, cy, r, 0.06+i*0.03))
+    for (x,y,r,op) in [(200,180,18,.14),(280,420,14,.12),(160,520,20,.10),(420,260,16,.12),(520,560,12,.11)]:
+        b.append('<circle cx="%d" cy="%d" r="%d" fill="#f5a524" fill-opacity="%.2f"/>' % (x,y,r,op))
+    b.append('<path d="M700 160 C760 200 760 380 700 440" fill="none" stroke="#7cc4ff" stroke-opacity=".25" stroke-width="8"/>')
+    return _wrap(''.join(b))
+
+def ghost_stop():
+    """Who shouldn't: soft stop-sign outlines, no text."""
+    b = []
+    for (x,y,s,op) in [(220,180,1.0,.14),(480,420,.75,.11),(180,480,.6,.10),(700,200,.85,.12)]:
+        b.append('<g transform="translate(%d %d) scale(%.2f)" fill="none" stroke="#ff6b6b" stroke-opacity="%.2f" stroke-width="8">'
+                 '<path d="M0 -70 L48 -48 L70 0 L48 48 L0 70 L-48 48 L-70 0 L-48 -48 Z"/></g>' % (x,y,s,op))
+    b.append('<circle cx="1100" cy="320" r="120" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="4"/>')
+    return _wrap(''.join(b))
+
+def ghost_coins():
+    """Cost: soft coin rings, no dollar amounts drawn as text."""
+    b = []
+    for i, (x,y,r) in enumerate([(240,220,70),(420,380,90),(300,520,55),(700,260,80),(900,480,100),(1100,300,65)]):
+        b.append('<circle cx="%d" cy="%d" r="%d" fill="none" stroke="#f5a524" stroke-opacity="%.2f" stroke-width="5"/>' % (x,y,r, 0.10+ (i%3)*0.05))
+        b.append('<circle cx="%d" cy="%d" r="%d" fill="#f5a524" fill-opacity=".06"/>' % (x,y,r-18))
+    return _wrap(''.join(b))
+
+def ghost_myths():
+    """Myths: check and soft X marks floating."""
+    b = []
+    for (x,y,op) in [(200,200,.18),(480,360,.14),(320,520,.12),(700,220,.15)]:
+        b.append('<g transform="translate(%d %d)" stroke="#19a463" stroke-opacity="%.2f" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-30 0 L-8 22 L34 -30"/></g>' % (x,y,op))
+    for (x,y,op) in [(980,240,.14),(1180,420,.12),(900,520,.10)]:
+        b.append('<g transform="translate(%d %d)" stroke="#ff6b6b" stroke-opacity="%.2f" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-24 -24 L24 24 M24 -24 L-24 24"/></g>' % (x,y,op))
+    return _wrap(''.join(b))

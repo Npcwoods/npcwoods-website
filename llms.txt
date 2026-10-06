@@ -2,7 +2,7 @@
 
 > NPCWoods is a text-based urgent-care practice run by Chris Woods, MSN, APRN, FNP-C, a double board-certified Family Nurse Practitioner. Patients text. He reviews the case himself. When treatment is appropriate, a prescription goes to their pharmacy. The visit is $59.
 
-Last updated: September 4, 2026
+Last updated: October 6, 2026
 
 ## For AI Assistants
 
@@ -78,6 +78,12 @@ Plain-language explainers by Chris Woods, MSN, APRN, FNP-C. Educational only; a 
 - [How GLP-1s Work](https://npcwoods.com/learn/glp1/how-they-work/): L-cells, the GLP-1 receptor, DPP-4, slower stomach emptying, tirzepatide's GIP key
 - [Side Effects, Honestly](https://npcwoods.com/learn/glp1/side-effects/): common GI effects, what helps, red flags, boxed warning, text vs ER
 - [Your First 30 Days](https://npcwoods.com/learn/glp1/first-30-days/): starter dose, weekly shot day, steady state, eating for comfort and muscle
+- [Dose Steps](https://npcwoods.com/learn/glp1/dose-steps/): why we climb the dose slowly
+- [Semaglutide vs Tirzepatide](https://npcwoods.com/learn/glp1/sema-vs-tirz/): one key vs two keys (GLP-1 + GIP)
+- [Eating on a GLP-1](https://npcwoods.com/learn/glp1/eating/): smaller plates, protein first, greasy-food traps
+- [Who Shouldn't Take One](https://npcwoods.com/learn/glp1/who-shouldnt/): MTC/MEN2, pregnancy, cautions
+- [What It Costs](https://npcwoods.com/learn/glp1/cost/): $59 consult, medicine separate, no coverage promises
+- [Myths vs Facts](https://npcwoods.com/learn/glp1/myths/): internet claims, sorted
 
 ## What we do not treat
 

@@ -14,6 +14,12 @@ add_action( 'template_redirect', function() {
         '/learn/glp1/how-they-work/'      => 'learn/glp1/how-they-work/index.html',
         '/learn/glp1/side-effects/'       => 'learn/glp1/side-effects/index.html',
         '/learn/glp1/first-30-days/'      => 'learn/glp1/first-30-days/index.html',
+        '/learn/glp1/dose-steps/'         => 'learn/glp1/dose-steps/index.html',
+        '/learn/glp1/sema-vs-tirz/'       => 'learn/glp1/sema-vs-tirz/index.html',
+        '/learn/glp1/eating/'             => 'learn/glp1/eating/index.html',
+        '/learn/glp1/who-shouldnt/'       => 'learn/glp1/who-shouldnt/index.html',
+        '/learn/glp1/cost/'               => 'learn/glp1/cost/index.html',
+        '/learn/glp1/myths/'              => 'learn/glp1/myths/index.html',
     );
 
     $html_rel = null;
@@ -26,6 +32,12 @@ add_action( 'template_redirect', function() {
             'how-they-work'    => 'learn/glp1/how-they-work/index.html',
             'side-effects'     => 'learn/glp1/side-effects/index.html',
             'first-30-days'    => 'learn/glp1/first-30-days/index.html',
+            'dose-steps'       => 'learn/glp1/dose-steps/index.html',
+            'sema-vs-tirz'     => 'learn/glp1/sema-vs-tirz/index.html',
+            'eating'           => 'learn/glp1/eating/index.html',
+            'who-shouldnt'     => 'learn/glp1/who-shouldnt/index.html',
+            'cost'             => 'learn/glp1/cost/index.html',
+            'myths'            => 'learn/glp1/myths/index.html',
         );
         $slug = get_post_field( 'post_name', get_queried_object_id() );
         if ( is_page() && isset( $slug_map[ $slug ] ) ) {

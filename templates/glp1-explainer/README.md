@@ -20,6 +20,12 @@ templates/glp1-explainer/          (kitchen repo copy; same files live at /works
     how-they-work.py    stop 2
     side-effects.py     stop 3
     first-30-days.py    stop 4
+    dose-steps.py       stop 5
+    sema-vs-tirz.py     stop 6
+    eating.py           stop 7
+    who-shouldnt.py     stop 8
+    cost.py             stop 9
+    myths.py            stop 10
 ```
 
 ## Make the next page (example: Dose Steps)
