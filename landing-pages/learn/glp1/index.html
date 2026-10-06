@@ -632,6 +632,56 @@
       font-size: .85rem; color: #6b7080;
     }
     footer.mini a { color: #6b7080; }
+    /* ===== BMI "Might a GLP-1 be a fit?" check (client-side only) ===== */
+    .bmi-fit { margin: 0 0 2.5rem; }
+    .bmi-fit .bmi-private { font-size: .95rem; color: var(--muted); }
+    .bmi-card {
+      background: #fff; border-radius: 24px; box-shadow: var(--shadow);
+      padding: 1.25rem 1.1rem 1.35rem; margin: 1rem 0 1.25rem;
+      max-width: 42rem; box-sizing: border-box; width: 100%;
+    }
+    @media (min-width: 560px) { .bmi-card { padding: 1.6rem 1.6rem 1.75rem; } }
+    .bmi-field { margin-bottom: 1.25rem; }
+    .bmi-row { display: flex; justify-content: space-between; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
+    .bmi-row label { font-weight: 700; color: var(--ink); font-size: 1.02rem; }
+    .bmi-val { font-family: var(--font-serif); font-size: 1.5rem; color: #0071e3; }
+    .bmi-field input[type="range"] {
+      display: block; width: 100%; max-width: 100%; box-sizing: border-box;
+      margin: .5rem 0 .2rem; height: 44px; accent-color: #0071e3; cursor: pointer;
+      background: transparent;
+    }
+    .bmi-field input[type="range"]:focus-visible { outline: 3px solid #1D4ED8; outline-offset: 3px; border-radius: 8px; }
+    .bmi-ends { display: flex; justify-content: space-between; font-size: .82rem; color: #4b5563; }
+    .bmi-gauge { margin: 1.4rem 0 1rem; }
+    .bmi-bar { position: relative; display: flex; height: 16px; border-radius: 999px; overflow: visible; }
+    .bmi-zone { display: block; height: 100%; }
+    /* scale 15 to 50: under 27 = 12/35, 27-30 = 3/35, 30+ = 20/35 */
+    .bmi-zone.z-low { flex: 12 0 0; background: #c7c7ce; border-radius: 999px 0 0 999px; }
+    .bmi-zone.z-mid { flex: 3 0 0; background: #f5a524; }
+    .bmi-zone.z-high { flex: 20 0 0; background: #0071e3; border-radius: 0 999px 999px 0; }
+    .bmi-marker {
+      position: absolute; top: 50%; left: 50%; width: 26px; height: 26px;
+      margin: -13px 0 0 -13px; border-radius: 50%;
+      background: #05060a; border: 4px solid #fff; box-shadow: 0 2px 8px rgba(5,6,10,.35);
+      transition: left .15s ease-out; box-sizing: border-box;
+    }
+    @media (prefers-reduced-motion: reduce) { .bmi-marker { transition: none; } }
+    .bmi-scale { display: flex; justify-content: space-between; gap: .5rem; margin-top: .55rem; font-size: .8rem; color: #374151; }
+    .bmi-scale span:nth-child(2) { text-align: center; }
+    .bmi-scale span:last-child { text-align: right; }
+    .bmi-result { border-top: 1px dashed rgba(37,99,235,.25); padding-top: 1rem; }
+    .bmi-fit .bmi-number { margin: 0 0 .35rem; font-size: 1.1rem; color: var(--ink); }
+    .bmi-number strong { font-family: var(--font-serif); font-size: 2rem; color: var(--ink); font-weight: 400; }
+    .bmi-fit .bmi-msg { margin: 0; font-weight: 600; color: var(--ink); max-width: none; }
+    .bmi-msg[data-band="high"] { color: #1e3a8a; }
+    .bmi-msg[data-band="mid"] { color: #7a4a00; }
+    .bmi-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .bmi-fit .bmi-disclaimer { font-size: .92rem; color: #374151; background: #EFF6FF; border-radius: 14px; padding: .85rem 1rem; }
+    .bmi-cta { margin: 1.25rem 0 1rem; }
+    .bmi-cta p { font-weight: 600; color: var(--ink); }
+    .bmi-cta .btn-primary { max-width: 100%; box-sizing: border-box; text-align: center; }
+    .bmi-fit .bmi-foot { font-size: .8rem; color: #4b5563; max-width: 42rem; }
+    .bmi-foot a { color: #1D4ED8; overflow-wrap: anywhere; }
     .skip-link { position: absolute; left: -999px; top: 0; }
     .skip-link:focus { left: 8px; top: 8px; z-index: 100000; background: #fff; color: #111; padding: 8px 12px; }
   </style>
@@ -760,6 +810,103 @@
     <div class="why-box">
       <strong>Why this matters:</strong> If you understand the doorbell, the lock-and-key, the bouncer, and the yellow traffic light, the ads and the side effects suddenly make sense. That's the point of this series.
     </div>
+
+    <p class="bridge">Now the big question I get every week: "Is this for me?" Let's start with a quick, rough check.</p>
+
+    <section class="bmi-fit" id="bmi-check" aria-labelledby="bmi-title">
+      <h2 class="section-title" id="bmi-title">Might a GLP-1 be a fit?</h2>
+      <p>I use BMI as a first check. BMI is a rough ruler. It only knows your height and weight. It can't see muscle, your health history, or your goals. A bodybuilder and a couch fan can get the same BMI and have very different stories. So think of this as a starting point, not the finish line.</p>
+      <p class="bmi-private">Slide to your numbers. Everything is worked out right here on your screen. Nothing is saved or sent anywhere.</p>
+
+      <div class="bmi-card">
+        <div class="bmi-field">
+          <div class="bmi-row">
+            <label for="bmi-weight">Your weight</label>
+            <span class="bmi-val" id="bmi-weight-out" aria-hidden="true">180 lb</span>
+          </div>
+          <input type="range" id="bmi-weight" min="150" max="350" step="1" value="180" aria-valuetext="180 pounds">
+          <div class="bmi-ends" aria-hidden="true"><span>150 lb</span><span>350 lb</span></div>
+        </div>
+
+        <div class="bmi-field">
+          <div class="bmi-row">
+            <label for="bmi-height">Your height</label>
+            <span class="bmi-val" id="bmi-height-out" aria-hidden="true">5′7″</span>
+          </div>
+          <input type="range" id="bmi-height" min="61" max="77" step="1" value="67" aria-valuetext="5 feet 7 inches">
+          <div class="bmi-ends" aria-hidden="true"><span>5′1″</span><span>6′5″</span></div>
+        </div>
+
+        <div class="bmi-gauge" aria-hidden="true">
+          <div class="bmi-bar">
+            <span class="bmi-zone z-low"></span><span class="bmi-zone z-mid"></span><span class="bmi-zone z-high"></span>
+            <span class="bmi-marker" id="bmi-marker"></span>
+          </div>
+          <div class="bmi-scale"><span>Under 27</span><span>27 to 29.9</span><span>30 and up</span></div>
+        </div>
+
+        <div class="bmi-result">
+          <p class="bmi-number">Your BMI<sup>*</sup>: <strong id="bmi-value">28.2</strong></p>
+          <p class="bmi-msg" id="bmi-msg">You may be a candidate if you also have a weight-related condition like high blood pressure, type 2 diabetes, or sleep apnea.</p>
+        </div>
+        <p class="bmi-sr" id="bmi-live" role="status" aria-live="polite" aria-atomic="true"></p>
+        <noscript><p class="bmi-msg">To figure BMI by hand: 703 × your weight in pounds ÷ (your height in inches × your height in inches).</p></noscript>
+      </div>
+
+      <p class="bmi-disclaimer"><strong>Heads up:</strong> BMI is a screening estimate, not a diagnosis. It does not mean you will or won't get a prescription. I decide at your visit, after I look at your whole health picture.</p>
+
+      <div class="bmi-cta">
+        <p>Want my real answer, not just a ruler's? Text me. The consult is $59.</p>
+        <a class="btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20a%20%2459%20GLP-1%20consult">Text Chris · $59 consult</a>
+      </div>
+
+      <p class="bmi-foot"><sup>*</sup>Why these cutoffs? FDA labeling for GLP-1 medicines used for chronic weight management in adults lists a BMI of 30 or higher, or 27 or higher with at least one weight-related condition. Source: FDA-approved labels for <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">Wegovy (semaglutide)</a> and <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">Zepbound (tirzepatide)</a> on DailyMed (NIH).</p>
+    </section>
+
+    <script>
+    /* BMI check. Runs only in the browser: no storage, no network, no tracking, no URL or sms changes. */
+    (function () {
+      var w = document.getElementById('bmi-weight');
+      var h = document.getElementById('bmi-height');
+      if (!w || !h) return;
+      var wOut = document.getElementById('bmi-weight-out');
+      var hOut = document.getElementById('bmi-height-out');
+      var val = document.getElementById('bmi-value');
+      var msg = document.getElementById('bmi-msg');
+      var live = document.getElementById('bmi-live');
+      var marker = document.getElementById('bmi-marker');
+      var MIN = 15, MAX = 50, liveTimer;
+      var TEXT = {
+        high: 'You may be a good candidate.',
+        mid: 'You may be a candidate if you also have a weight-related condition like high blood pressure, type 2 diabetes, or sleep apnea.',
+        low: "GLP-1s probably aren't the right fit, but text me about your goals."
+      };
+      function ftIn(inches) { return { ft: Math.floor(inches / 12), inch: inches % 12 }; }
+      function update() {
+        var lb = parseInt(w.value, 10);
+        var inches = parseInt(h.value, 10);
+        var bmi = Math.round((703 * lb / (inches * inches)) * 10) / 10;
+        var f = ftIn(inches);
+        var band = bmi >= 30 ? 'high' : (bmi >= 27 ? 'mid' : 'low');
+        wOut.textContent = lb + ' lb';
+        hOut.textContent = f.ft + '\u2032' + f.inch + '\u2033';
+        w.setAttribute('aria-valuetext', lb + ' pounds');
+        h.setAttribute('aria-valuetext', f.ft + ' feet ' + f.inch + (f.inch === 1 ? ' inch' : ' inches'));
+        val.textContent = bmi.toFixed(1);
+        msg.textContent = TEXT[band];
+        msg.setAttribute('data-band', band);
+        var pct = (Math.min(Math.max(bmi, MIN), MAX) - MIN) / (MAX - MIN) * 100;
+        marker.style.left = pct + '%';
+        clearTimeout(liveTimer);
+        liveTimer = setTimeout(function () {
+          live.textContent = 'Your BMI is ' + bmi.toFixed(1) + '. ' + TEXT[band];
+        }, 500);
+      }
+      w.addEventListener('input', update);
+      h.addEventListener('input', update);
+      update();
+    })();
+    </script>
 
     <p class="bridge">You're on page one of the map. Here's where we go next — live stops you can open now, and stops I'm still writing.</p>
 
