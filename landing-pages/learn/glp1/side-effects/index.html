@@ -951,6 +951,147 @@ main, .hero, section, .series-map, .series-card, .chris-voice,
 .diagram svg { max-width: 100%; height: auto; }
 .npc-byline-meta, .npc-byline-main { overflow-wrap: anywhere; word-break: break-word; }
 
+  
+
+/* ===== GLP-1 mobile overflow pass 2 ===== */
+.hero .subtitle,
+.hero h1,
+.hero .hero-badge,
+.hero p {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+.diagram {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  padding: 0.75rem !important;
+}
+.diagram svg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+.traffic-lights {
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  max-width: 100% !important;
+}
+.tl { flex: 0 0 auto; }
+.analogy-grid { grid-template-columns: 1fr !important; }
+.card-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+.glp-cta-band, .glp-cta-band p, .glp-cta-band a {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  box-sizing: border-box !important;
+}
+.sources a, .sources li, .faq summary, .faq details, .intro-text, .section-heading {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+}
+main {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+.series-map, .series-card { width: 100% !important; }
+.chris-voice img { max-width: 64px; height: auto; }
+/* Contain any wide absolute/fixed children */
+body > *:not(script):not(style) { max-width: 100%; }
+@media (max-width: 480px) {
+  .side-meter, .side-row { width: 100% !important; }
+  .side-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    gap: 0.35rem !important;
+  }
+  .side-bar { flex: 1 1 100%; min-width: 0; }
+}
+
+  
+
+/* ===== GLP-1 stacked diagrams + solid hero AA ===== */
+.hero {
+  background: #022c22 !important;
+  background-image: none !important;
+}
+.hero::before { display: none !important; }
+.hero-content {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 18px;
+  padding: 1.25rem 1rem !important;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero h1 {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+.hero .subtitle { color: #d1fae5 !important; }
+.hero .hero-badge {
+  background: #064e3b !important;
+  border-color: #6ee7b7 !important;
+  color: #ecfdf5 !important;
+}
+.glp-flow-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.glp-flow-step {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.glp-flow-step small { display: block; font-weight: 500; font-size: 0.82rem; margin-top: 0.2rem; }
+.glp-flow-step.gut { background: #fef3c7; color: #92400e; border: 1px solid #d97706; }
+.glp-flow-step.bell { background: #dbeafe; color: #1e40af; border: 1px solid #2563eb; }
+.glp-flow-step.brain { background: #ede9fe; color: #5b21b6; border: 1px solid #7c3aed; }
+.glp-flow-step.lock { background: #ecfdf5; color: #065f46; border: 1px solid #059669; }
+.glp-flow-step.key { background: #eff6ff; color: #1e40af; border: 1px solid #2563eb; }
+.glp-flow-step.on { background: #f0fdf4; color: #166534; border: 1px solid #22c55e; }
+.glp-flow-arrow { text-align: center; color: #2563eb; font-size: 1.25rem; font-weight: 700; line-height: 1; }
+.traffic-lights { justify-content: center; flex-wrap: wrap; }
+.diagram svg { display: none !important; } /* legacy wide SVGs if any remain */
+
+  
+
+/* ===== GLP-1 overflow final ===== */
+html, body { overflow-x: hidden !important; max-width: 100% !important; }
+body > *:not(script):not(style) { max-width: 100% !important; } /* not 100vw — avoids scrollbar gutter overflow */
+main { max-width: 100% !important; }
+.diagram, .diagram figcaption, .glp-flow-step, .npc-clinician-byline, .npc-byline-main, .npc-byline-meta {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+.npc-clinician-byline { margin-left: 0 !important; margin-right: 0 !important; }
+
   </style>
 </head>
 <body>
