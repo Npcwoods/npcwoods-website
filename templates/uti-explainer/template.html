@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{url}}">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="{{og_image}}">
+  <meta property="og:site_name" content="NPCWoods Telemedicine">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- HIPAA: no Google tags, pixels, or analytics on this educational page. {{series_comment}} -->
+{{jsonld}}
+  <style>
+{{css}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+{{site_header}}
+
+  <header class="gh" aria-labelledby="gh-title">
+{{ghost_svg}}
+    <div class="gh-wrap">
+      <div class="gh-copy">
+        <span class="gh-pill"><i aria-hidden="true"></i>{{pill}}</span>
+        <h1 id="gh-title"><span class="gh-grad">{{h1_top}}</span> <span class="gh-pop">{{h1_pop}}</span></h1>
+        <p class="gh-sub">{{sub}}</p>
+        <div class="gh-ctas">
+          <a class="gh-btn" href="{{cta_href}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>{{cta_label}}</a>
+          <a class="gh-ghostbtn" href="#start">{{jump_label}} ↓</a>
+        </div>
+        <p class="gh-fine">{{cta_fine}}</p>
+      </div>
+      <div class="gh-photo">
+        <img src="{{chris_cutout_src}}" srcset="{{chris_cutout_srcset}}" sizes="(max-width: 640px) 272px, (max-width: 900px) 315px, 415px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, smiling" fetchpriority="high" decoding="async">
+        <span class="gh-sticker gh-s1">{{sticker1}}</span>
+        <span class="gh-sticker gh-s2">{{sticker2}}</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="ex" id="main">
+    <nav class="ex-map" aria-label="{{map_aria}}">
+      <div class="ex-in">
+        <a class="ex-map-hub" href="{{hub_url}}">← Series hub</a>
+        <div class="ex-map-scroll" tabindex="0" aria-label="Series stops, scroll sideways">
+          <ol>
+{{roadmap_items}}
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <section class="ex-intro" id="start">
+      <div class="ex-in">
+        <nav class="ex-crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="https://npcwoods.com/">Home</a></li>
+            <li><a href="https://npcwoods.com/learn/">Learn</a></li>
+            <li><a href="{{hub_url}}">{{hub_title}}</a></li>
+            <li aria-current="page">{{crumb}}</li>
+          </ol>
+        </nav>
+        <div class="ex-byline">
+          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" width="52" height="52" alt="" loading="lazy" decoding="async">
+          <div><strong>By Chris Woods, MSN, APRN, FNP-C</strong><br>Board-certified nurse practitioner · Reviewed {{reviewed_human}}</div>
+        </div>
+        <p class="ex-lede">{{lede}}</p>
+        <div class="ex-tldr">
+          <h2>The short <em>version</em></h2>
+          <ul>
+{{tldr_items}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+{{sections}}
+
+    <section class="ex-recap" aria-labelledby="recap-title">
+      <div class="ex-in">
+        <span class="ex-kick">Cheat sheet</span>
+        <h2 id="recap-title">{{recap_title}}</h2>
+        <div class="ex-chips">
+{{recap_items}}
+        </div>
+      </div>
+    </section>
+
+    <section class="ex-faq" aria-labelledby="faq-title">
+      <div class="ex-in ex-narrow">
+        <span class="ex-kick">Quick questions</span>
+        <h2 id="faq-title">You asked. I answered.</h2>
+{{faq_items}}
+      </div>
+    </section>
+
+    <section class="ex-src" aria-labelledby="src-title">
+      <div class="ex-in">
+        <h2 id="src-title">Sources</h2>
+        <ol>
+{{source_items}}
+        </ol>
+      </div>
+    </section>
+
+    <nav class="ex-pn" aria-label="Series: previous and next">
+      <div class="ex-in">
+        <div class="ex-pn-grid">
+{{prevnext}}
+        </div>
+        <a class="hub" href="{{hub_url}}">See the whole road map on the series hub →</a>
+      </div>
+    </nav>
+
+    <section class="ex-cta" aria-labelledby="cta-title">
+      <div class="ex-in">
+        <h2 id="cta-title">{{cta_title}}</h2>
+        <p class="ex-big">{{cta_text}}</p>
+        <a class="gh-btn" href="{{cta_href}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>{{cta_label}}</a>
+        <p class="fine">{{cta_fine}} Serving 13 states, including Florida by telehealth registration.</p>
+      </div>
+    </section>
+    <div class="ex-disc"><div class="ex-in"><p>{{disclaimer}}</p></div></div>
+
+  </main>
+{{site_footer}}
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "site": "https://npcwoods.com",
+  "series_id": "uti-explained",
+  "accent": {
+    "name": "yellow",
+    "hex": "#f5a524",
+    "note": "Same yellow pop as GLP-1 Explained. Future series accents: red, blue, gray — one accent per series."
+  },
+  "hub": {
+    "slug": "uti",
+    "url": "https://npcwoods.com/learn/uti/",
+    "title": "UTI Explained Super Easy",
+    "label": "Big picture"
+  },
+  "cta": {
+    "href": "sms:4806394722?body=Hi%20Chris%2C%20I%20think%20I%20have%20a%20UTI",
+    "label": "Text Chris · $59 visit",
+    "fine": "Educational info, not medical advice. A consult doesn't guarantee a prescription. If you have fever, back/side pain, vomiting, or feel very sick, use urgent or emergency care."
+  },
+  "one_pager": {
+    "url": "https://npcwoods.com/uti-treatment/",
+    "title": "UTI antibiotics online · $59"
+  },
+  "stops": [
+    {
+      "slug": "uti",
+      "label": "Big picture",
+      "title": "UTI Explained Super Easy",
+      "url": "https://npcwoods.com/learn/uti/",
+      "blurb": "The big picture in everyday words."
+    },
+    {
+      "slug": "how-it-starts",
+      "label": "How it starts",
+      "title": "How a UTI Starts",
+      "url": "https://npcwoods.com/learn/uti/how-it-starts/",
+      "blurb": "Bacteria climb the short pipe and set up camp."
+    },
+    {
+      "slug": "what-it-feels-like",
+      "label": "What it feels like",
+      "title": "What a UTI Feels Like",
+      "url": "https://npcwoods.com/learn/uti/what-it-feels-like/",
+      "blurb": "Burn, urgency, pressure — in plain talk."
+    },
+    {
+      "slug": "lookalikes",
+      "label": "Lookalikes",
+      "title": "Not Everything That Burns Is a UTI",
+      "url": "https://npcwoods.com/learn/uti/lookalikes/",
+      "blurb": "Yeast, STI, stones, and irritation can fool you."
+    },
+    {
+      "slug": "bladder-vs-kidney",
+      "label": "Bladder vs kidney",
+      "title": "Bladder vs Kidney",
+      "url": "https://npcwoods.com/learn/uti/bladder-vs-kidney/",
+      "blurb": "When text care fits vs red-flag / ER."
+    },
+    {
+      "slug": "antibiotics",
+      "label": "Antibiotics",
+      "title": "Antibiotics, Plainly",
+      "url": "https://npcwoods.com/learn/uti/antibiotics/",
+      "blurb": "Nitrofurantoin, TMP-SMX, and why we pick one."
+    },
+    {
+      "slug": "relief",
+      "label": "Relief",
+      "title": "Relief While It Kicks In",
+      "url": "https://npcwoods.com/learn/uti/relief/",
+      "blurb": "Comfort meds while the antibiotic works — not a cure."
+    },
+    {
+      "slug": "recurring",
+      "label": "Recurring",
+      "title": "Why It Keeps Coming Back",
+      "url": "https://npcwoods.com/learn/uti/recurring/",
+      "blurb": "Recurrence without fear-mongering."
+    },
+    {
+      "slug": "prevention",
+      "label": "Prevention",
+      "title": "Prevention That Isn't Folklore",
+      "url": "https://npcwoods.com/learn/uti/prevention/",
+      "blurb": "What actually helps vs cranberry myths."
+    },
+    {
+      "slug": "who-needs-in-person",
+      "label": "Who needs in-person",
+      "title": "Who Needs In-Person Care",
+      "url": "https://npcwoods.com/learn/uti/who-needs-in-person/",
+      "blurb": "Pregnancy, men, catheters — saying no is care."
+    },
+    {
+      "slug": "myths",
+      "label": "Myths",
+      "title": "Myths vs Facts",
+      "url": "https://npcwoods.com/learn/uti/myths/",
+      "blurb": "Internet claims, sorted. Honest $59 talk too."
+    }
+  ]
+}
