@@ -13,6 +13,7 @@ add_action( 'template_redirect', function() {
         '/learn/glp1/'                    => 'learn/glp1/index.html',
         '/learn/glp1/how-they-work/'      => 'learn/glp1/how-they-work/index.html',
         '/learn/glp1/side-effects/'       => 'learn/glp1/side-effects/index.html',
+        '/learn/glp1/first-30-days/'      => 'learn/glp1/first-30-days/index.html',
     );
 
     $html_rel = null;
@@ -24,6 +25,7 @@ add_action( 'template_redirect', function() {
             'glp1'             => 'learn/glp1/index.html',
             'how-they-work'    => 'learn/glp1/how-they-work/index.html',
             'side-effects'     => 'learn/glp1/side-effects/index.html',
+            'first-30-days'    => 'learn/glp1/first-30-days/index.html',
         );
         $slug = get_post_field( 'post_name', get_queried_object_id() );
         if ( is_page() && isset( $slug_map[ $slug ] ) ) {

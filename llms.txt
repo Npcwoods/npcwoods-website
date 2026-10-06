@@ -70,6 +70,15 @@ Common text-based visits ($59). Link a treatment URL only when one exists.
 
 Index: [Conditions](https://npcwoods.com/conditions/): full list of $59 visits
 
+## GLP-1 Explained (patient education series)
+
+Plain-language explainers by Chris Woods, MSN, APRN, FNP-C. Educational only; a consult does not guarantee a prescription.
+
+- [GLP-1 Explained Super Easy](https://npcwoods.com/learn/glp1/): series hub and road map
+- [How GLP-1s Work](https://npcwoods.com/learn/glp1/how-they-work/): L-cells, the GLP-1 receptor, DPP-4, slower stomach emptying, tirzepatide's GIP key
+- [Side Effects, Honestly](https://npcwoods.com/learn/glp1/side-effects/): common GI effects, what helps, red flags, boxed warning, text vs ER
+- [Your First 30 Days](https://npcwoods.com/learn/glp1/first-30-days/): starter dose, weekly shot day, steady state, eating for comfort and muscle
+
 ## What we do not treat
 
 - Emergencies (chest pain, stroke signs, severe bleeding, trouble breathing)

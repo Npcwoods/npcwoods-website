@@ -1,0 +1,21 @@
+{
+  "site": "https://npcwoods.com",
+  "hub": {"slug": "glp1", "url": "https://npcwoods.com/learn/glp1/", "title": "GLP-1 Explained Super Easy", "label": "Big picture"},
+  "cta": {
+    "href": "sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20a%20%2459%20GLP-1%20consult",
+    "label": "Text Chris · $59 consult",
+    "fine": "Educational info, not medical advice. A consult doesn't guarantee a prescription. Results vary."
+  },
+  "stops": [
+    {"slug": "glp1",          "label": "Big picture",    "title": "GLP-1 Explained Super Easy", "url": "https://npcwoods.com/learn/glp1/",               "blurb": "The big picture in everyday words."},
+    {"slug": "how-they-work", "label": "How they work",  "title": "How GLP-1s Work",            "url": "https://npcwoods.com/learn/glp1/how-they-work/", "blurb": "Doorbell, lock and key, and a bouncer named DPP-4."},
+    {"slug": "side-effects",  "label": "Side effects",   "title": "Side Effects, Honestly",     "url": "https://npcwoods.com/learn/glp1/side-effects/",  "blurb": "Why the tummy talks back, what helps, and red flags."},
+    {"slug": "first-30-days", "label": "First 30 days",  "title": "Your First 30 Days",         "url": "https://npcwoods.com/learn/glp1/first-30-days/", "blurb": "Starter dose, shot day, and what month one often feels like."},
+    {"slug": "dose-steps",    "label": "Dose steps",     "title": "Dose Steps",                 "url": null, "blurb": "Why we climb the dose slowly."},
+    {"slug": "sema-vs-tirz",  "label": "Sema vs. tirz",  "title": "Semaglutide vs Tirzepatide", "url": null, "blurb": "One key vs two keys, in plain talk."},
+    {"slug": "eating",        "label": "Eating",         "title": "Eating on a GLP-1",          "url": null, "blurb": "Smaller plates, greasy-food traps."},
+    {"slug": "who-shouldnt",  "label": "Who shouldn't",  "title": "Who Shouldn't Take One",     "url": null, "blurb": "Clear \"not for you\" situations."},
+    {"slug": "cost",          "label": "Cost",           "title": "What It Costs",              "url": null, "blurb": "Honest talk about price and access."},
+    {"slug": "myths",         "label": "Myths",          "title": "Myths vs Facts",             "url": null, "blurb": "Internet claims, sorted."}
+  ]
+}
