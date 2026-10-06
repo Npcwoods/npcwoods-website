@@ -1266,6 +1266,7 @@ a{color:inherit}
   <h2>That’s the whole thing.</h2>
   <p>Pay after you’re treated. If I can’t safely help you by text, I’ll tell you straight up — and you don’t pay a dime.</p>
   <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary npc-sms-cta">Text Chris now</a>
+  <p style="margin:18px 0 0;font-size:0.95rem;opacity:.9"><a href="https://npcwoods.com/cheap-urgent-care-no-%69nsurance/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:600">See how $59 compares to other online prices &rarr;</a></p>
 </div>
 
 <!-- MEET CHRIS + real photo -->
