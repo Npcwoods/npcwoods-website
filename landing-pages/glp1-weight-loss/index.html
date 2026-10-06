@@ -240,8 +240,8 @@
     }
 
     .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: none;
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
@@ -1598,6 +1598,182 @@
 <!-- ===== END SITE HEADER ===== -->
 
 <style>
+/* ===== GLP-1 consult page, editorial redesign 2026-10-06. Scoped .wl-*. Nothing starts hidden: no opacity-0 entrance animations. ===== */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/inter-latin-var.woff2") format("woff2"); }
+.fade-in, .fade-in.visible { opacity: 1 !important; transform: none !important; }
+.wl { --bg:#05060a; --ink:#111114; --body:#3d4350; --muted:#6b7280; --blue:#0071e3; --blue-bright:#2997ff; --blue-deep:#0058b0; --green:#148a53; --orange:#f5a524; --cream:#F6F3EE; --line:#e7e2d9;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); }
+.wl *, .wl *::before, .wl *::after { box-sizing: border-box; }
+.wl h1, .wl h2, .wl h3 { font-family: inherit; color: inherit; font-weight: 900; letter-spacing: -.035em; line-height: 1.02; margin: 0; }
+.wl p { margin: 0; line-height: 1.6; color: inherit; font-size: inherit; }
+.wl a:hover { text-decoration: none; }
+.wl a:focus-visible, .wl .wl-faq-q:focus-visible { outline: 3px solid var(--blue-bright); outline-offset: 3px; }
+.wl-in { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+.wl-kicker { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.wl-h2 { font-size: clamp(36px, 5.4vw, 64px); }
+.wl-lede { font-size: clamp(17px, 2vw, 20px); color: var(--body); max-width: 640px; margin-top: 16px !important; }
+.wl-btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; background: var(--blue); color: #fff !important; font-weight: 800; font-size: 18px; padding: 18px 28px; border-radius: 999px; box-shadow: 0 12px 34px rgba(0,113,227,.45); text-decoration: none !important; text-align: center; max-width: 100%; }
+.wl-btn:hover { background: var(--blue-deep); color: #fff !important; }
+.wl-btn svg { width: 20px; height: 20px; flex: none; }
+/* hero */
+.wl-hero { position: relative; overflow: hidden; color: #fff; background: radial-gradient(620px 520px at 78% 55%, rgba(0,113,227,.45), transparent 70%), radial-gradient(520px 380px at 8% 0%, rgba(41,151,255,.16), transparent 70%), var(--bg); }
+.wl-hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 24px; padding-top: 64px; min-height: 600px; }
+.wl-hero-copy { align-self: center; padding-bottom: 56px; min-width: 0; }
+.wl-crumb { font-size: 13px; color: #a9adb8; margin-bottom: 22px; }
+.wl-crumb a { color: #d7d9df !important; text-decoration: underline; text-underline-offset: 3px; }
+.wl-crumb span { margin: 0 6px; }
+.wl-badge { display: inline-flex; align-items: center; gap: .6rem; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #d7d7de; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); padding: .55rem .95rem; border-radius: 999px; }
+.wl-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #19a463; box-shadow: 0 0 10px #19a463; flex: none; }
+.wl-hero h1 { font-size: clamp(54px, 7.6vw, 104px); line-height: .92; letter-spacing: -.055em; margin: 24px 0 22px; color: #fff; }
+.wl-hero h1 .wl-pop { display: inline-block; color: var(--bg); background: var(--orange); padding: 0 .14em .06em; border-radius: .12em; transform: rotate(-2deg); }
+.wl-hero-sub { font-size: clamp(17px, 1.7vw, 20px); color: #c7c7ce !important; max-width: 560px; }
+.wl-hero .wl-btn { margin-top: 30px; }
+.wl-hero-price { margin-top: 16px !important; font-size: 14px; color: #9a9aa3 !important; }
+.wl-hero-photo { position: relative; justify-self: center; align-self: end; }
+.wl-hero-photo img { display: block; height: 540px; width: auto; max-width: none; filter: drop-shadow(0 30px 60px rgba(0,0,0,.55)); }
+.wl-sticker { position: absolute; background: #fff; color: var(--ink); font-weight: 800; font-size: 15px; padding: 11px 15px; border-radius: 18px; box-shadow: 0 14px 30px rgba(0,0,0,.35); white-space: nowrap; }
+.wl-st1 { top: 70px; left: -44px; transform: rotate(-6deg); }
+.wl-st2 { top: 200px; right: -26px; background: var(--green); color: #fff; transform: rotate(5deg); }
+/* quick answer */
+.wl-answer { background: var(--cream); padding: 56px 0; border-bottom: 1px solid var(--line); }
+.wl-answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.wl-answer-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 26px 28px; font-size: 16.5px; color: var(--body); }
+.wl-answer-card .wl-tag { display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 5px 10px; border-radius: 8px; margin-bottom: 12px; }
+.wl-answer-card a { color: var(--blue) !important; font-weight: 700; }
+.wl-answer-card strong { color: var(--ink); }
+/* steps */
+.wl-steps { padding: 96px 0; background: #fff; }
+.wl-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.wl-step { border-radius: 26px; padding: 30px 28px 32px; color: #fff; position: relative; overflow: hidden; min-height: 300px; }
+.wl-step:nth-child(1) { background: var(--blue); }
+.wl-step:nth-child(2) { background: var(--ink); }
+.wl-step:nth-child(3) { background: var(--green); }
+.wl-step-num { font-size: 92px; font-weight: 900; line-height: .8; letter-spacing: -.06em; opacity: .25; position: absolute; right: 18px; top: 18px; }
+.wl-step-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,.16); display: grid; place-items: center; margin-bottom: 26px; }
+.wl-step-icon svg { width: 30px; height: 30px; }
+.wl-step h3 { font-size: 28px; margin-bottom: 12px; }
+.wl-step p { font-size: 16px; color: rgba(255,255,255,.88); }
+.wl-step a { color: #fff !important; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+/* pricing */
+.wl-price { background: var(--blue); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
+.wl-price::after { content: ""; position: absolute; width: 620px; height: 620px; right: -180px; top: -200px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.18), transparent); pointer-events: none; }
+.wl-price-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.wl-price .wl-kicker { color: #cfe6ff; }
+.wl-price .wl-lede { color: rgba(255,255,255,.9); }
+.wl-big { font-size: clamp(120px, 18vw, 220px); font-weight: 900; line-height: .82; letter-spacing: -.07em; margin: 18px 0 8px; }
+.wl-big-note { font-size: 18px; font-weight: 700; color: #fff; }
+.wl-price-card { background: #fff; color: var(--ink); border-radius: 28px; padding: 34px 32px; box-shadow: 0 30px 70px rgba(0,30,80,.35); }
+.wl-price-card .wl-label { display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); background: #e8f2ff; padding: 6px 10px; border-radius: 8px; }
+.wl-price-card h3 { font-size: 32px; margin: 14px 0 4px; }
+.wl-price-per { color: var(--muted); font-size: 15px; }
+.wl-feat { list-style: none; margin: 22px 0 26px; padding: 0; display: grid; gap: 12px; }
+.wl-feat li { display: flex; gap: 12px; align-items: flex-start; font-size: 16.5px; color: var(--body); }
+.wl-feat li span.wl-ck { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; margin-top: 1px; }
+.wl-feat li span.wl-ck svg { width: 15px; height: 15px; }
+.wl-price-card .wl-btn { width: 100%; }
+.wl-total { margin-top: 18px; border-top: 1px dashed var(--line); padding-top: 18px; font-size: 15px; color: var(--body); }
+.wl-total strong { color: var(--ink); display: block; font-size: 17px; }
+/* safety */
+.wl-safety { background: var(--cream); padding: 96px 0; }
+.wl-safety-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+.wl-warn { background: #fff; border-radius: 26px; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--orange); padding: 30px 30px 26px; }
+.wl-warn h3 { font-size: 24px; display: flex; gap: 12px; align-items: center; margin-bottom: 18px; }
+.wl-warn h3 svg { width: 34px; height: 34px; flex: none; }
+.wl-warn ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.wl-warn li { position: relative; padding-left: 26px; font-size: 16.5px; color: var(--body); line-height: 1.5; }
+.wl-warn li::before { content: ""; position: absolute; left: 0; top: .45em; width: 12px; height: 12px; border-radius: 3px; background: var(--orange); transform: rotate(45deg); }
+.wl-safety-note { margin-top: 22px !important; font-size: 16px; color: var(--body); font-weight: 600; }
+/* explained */
+.wl-explain { background: var(--bg); color: #fff; padding: 96px 0; }
+.wl-explain .wl-kicker { color: var(--blue-bright); }
+.wl-explain .wl-lede { color: #c7c7ce; }
+.wl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.wl-card { display: flex; flex-direction: column; background: #12141c; border: 1px solid rgba(255,255,255,.1); border-radius: 26px; padding: 28px; color: #fff !important; text-decoration: none !important; transition: transform .2s ease, border-color .2s ease; }
+.wl-card:hover { transform: translateY(-4px); border-color: rgba(41,151,255,.6); }
+.wl-card-art { height: 140px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 22px; }
+.wl-card:nth-child(1) .wl-card-art { background: var(--orange); }
+.wl-card:nth-child(2) .wl-card-art { background: var(--blue); }
+.wl-card:nth-child(3) .wl-card-art { background: var(--green); }
+.wl-card-art svg { width: 96px; height: 96px; }
+.wl-card h3 { font-size: 26px; margin-bottom: 10px; }
+.wl-card p { color: #b9bcc6; font-size: 15.5px; }
+.wl-card .wl-go { margin-top: auto; padding-top: 18px; font-weight: 800; color: var(--blue-bright); }
+/* faq */
+.wl-faq { padding: 96px 0; background: #fff; }
+.wl-faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+.wl-faq-list { display: grid; gap: 12px; }
+.wl-faq-item { border: 1px solid var(--line); border-radius: 18px; background: #fff; overflow: hidden; }
+.wl-faq-q { cursor: pointer; font-weight: 800; font-size: 18px; padding: 20px 56px 20px 22px; position: relative; color: var(--ink); list-style: none; }
+.wl-faq-q::-webkit-details-marker { display: none; }
+.wl-faq-q::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--cream); display: grid; place-items: center; font-size: 20px; line-height: 1; font-weight: 700; }
+.wl-faq-item[open] .wl-faq-q::after { content: "\2212"; background: var(--blue); color: #fff; }
+.wl-faq-a { padding: 0 22px 20px; font-size: 16.5px; color: var(--body); }
+.wl-faq-a strong { color: var(--ink); }
+/* other conditions */
+.wl-more { padding: 72px 0; background: var(--cream); }
+.wl-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.wl-chip { display: inline-block; padding: 12px 18px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--ink) !important; font-weight: 700; font-size: 15px; text-decoration: none !important; }
+.wl-chip:hover { border-color: var(--ink); }
+/* final cta */
+.wl-final { position: relative; overflow: hidden; background: radial-gradient(560px 420px at 80% 70%, rgba(0,113,227,.5), transparent 70%), var(--bg); color: #fff; padding: 88px 0 0; }
+.wl-final-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: end; }
+.wl-final-copy { padding-bottom: 88px; }
+.wl-final h2 { font-size: clamp(42px, 6vw, 76px); letter-spacing: -.05em; }
+.wl-final h2 .wl-pop { display: inline-block; color: var(--bg); background: var(--orange); padding: 0 .14em .04em; border-radius: .12em; transform: rotate(-2deg); }
+.wl-final p { color: #c7c7ce; font-size: 18px; max-width: 560px; margin-top: 18px !important; }
+.wl-final .wl-btn { margin-top: 28px; }
+.wl-final-photo img { display: block; height: 420px; width: auto; max-width: none; margin: 0 auto; filter: drop-shadow(0 24px 50px rgba(0,0,0,.5)); }
+.wl-trust { background: #0b0c12; color: #a9adb8; text-align: center; font-size: 13.5px; line-height: 1.7; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.08); }
+@media (max-width: 960px) {
+  .wl-hero-grid, .wl-final-grid { grid-template-columns: 1fr; min-height: 0; }
+  .wl-hero-copy { padding-bottom: 8px; }
+  .wl-hero-photo img { height: 420px; }
+  .wl-steps-grid, .wl-cards { grid-template-columns: 1fr; }
+  .wl-step { min-height: 0; }
+  .wl-price-grid, .wl-safety-grid, .wl-faq-grid, .wl-answer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .wl-final-copy { padding-bottom: 12px; }
+  .wl-final-photo img { height: 340px; }
+}
+@media (max-width: 640px) {
+  .wl-in { padding: 0 20px; }
+  .wl-hero-grid { padding-top: 34px; }
+  .wl-hero h1 { font-size: 52px; margin: 18px 0 14px; }
+  .wl-badge { font-size: 10.5px; padding: .45rem .75rem; }
+  .wl-btn { width: 100%; font-size: 16.5px; padding: 16px 22px; }
+  .wl-hero-photo img { height: 380px; }
+  .wl-st1 { top: 36px; left: -22px; font-size: 13px; } .wl-st2 { top: 140px; right: -16px; font-size: 13px; }
+  .wl-steps, .wl-price, .wl-safety, .wl-explain, .wl-faq { padding: 64px 0; }
+  .wl-answer { padding: 40px 0; }
+  .wl-answer-card { padding: 22px; font-size: 16px; }
+  .wl-step h3 { font-size: 24px; }
+  .wl-price-card { padding: 26px 22px; }
+  .wl-warn { box-shadow: 6px 6px 0 var(--orange); padding: 24px 20px; }
+  .wl-faq-q { font-size: 16.5px; }
+  .wl-final { padding-top: 64px; }
+  .wl-final-photo img { height: 300px; }
+}
+</style>
+<div class="wl">
+<!-- ===== HERO ===== -->
+<section class="wl-hero" aria-labelledby="wl-title">
+  <div class="wl-in wl-hero-grid">
+    <div class="wl-hero-copy">
+      <nav class="wl-crumb" aria-label="Breadcrumb"><a href="https://npcwoods.com/">Home</a><span aria-hidden="true">&rsaquo;</span><a href="https://npcwoods.com/conditions/">Conditions</a><span aria-hidden="true">&rsaquo;</span>GLP-1 Consult</nav>
+      <div class="wl-badge" data-npc-personalize="trust-badge">$59 flat consult. Text-based. Licensed NP.</div>
+      <h1 id="wl-title" data-npc-personalize="headline">$59 GLP-1 consult <span class="wl-pop">by text</span></h1>
+      <p class="wl-hero-sub" data-npc-personalize="subheadline">Text Chris about oral GLP-1 options. He reviews health history, safety factors, and fit, then explains the safest next step. The NPCWoods consult is $59; any outside costs are separate if a care plan is appropriate.</p>
+      <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="wl-btn" data-npc-personalize="cta-text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Start My $59 GLP-1 Consult</a>
+      <p class="wl-hero-price">No video call, no waiting room, no hidden fees.</p>
+    </div>
+    <div class="wl-hero-photo">
+      <img src="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp" srcset="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp 600w, https://npcwoods.com/learn/glp1/assets/chris-cutout-900.webp 900w" sizes="(max-width: 640px) 272px, (max-width: 960px) 301px, 386px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, nurse practitioner" fetchpriority="high" decoding="async">
+      <span class="wl-sticker wl-st1">Real NP. Real texts.</span>
+      <span class="wl-sticker wl-st2">$59 flat.</span>
+    </div>
+  </div>
+</section>
+
+<style>
 /* ===== SCROLLING REVIEWS BANNER ===== */
 .reviews-banner{padding:48px 0 40px;background:linear-gradient(180deg,#F8FAFC 0%,#FFF 100%);overflow:hidden;text-align:center}
 .reviews-banner-header{margin-bottom:8px}
@@ -1647,77 +1823,47 @@
 </section>
 <!-- ===== END SCROLLING REVIEWS ===== -->
 
-<!-- Breadcrumb -->
-<div class="breadcrumb">
-  <a href="https://npcwoods.com/">Home</a>
-  <span>&rsaquo;</span>
-  <a href="https://npcwoods.com/conditions/">Conditions</a>
-  <span>&rsaquo;</span>
-  GLP-1 Consult
-</div>
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge" data-npc-personalize="trust-badge">$59 flat consult. Text-based. Licensed NP.</div>
-    <h1 data-npc-personalize="headline">$59 GLP-1 consult by text</h1>
-    <p data-npc-personalize="subheadline">Text Chris about oral GLP-1 options. He reviews health history, safety factors, and fit, then explains the safest next step. The NPCWoods consult is $59; any outside costs are separate if a care plan is appropriate.</p>
-    <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="hero-cta" data-npc-personalize="cta-text">Start My $59 GLP-1 Consult</a>
-    <p class="hero-price">No video call, no waiting room, no hidden fees.</p>
+<!-- ===== QUICK ANSWER (AEO) ===== -->
+<section class="wl-answer" aria-label="Quick answer">
+  <div class="wl-in wl-answer-grid">
+    <div class="wl-answer-card" data-npc-aeo="atf-answer">
+      <span class="wl-tag">The short answer</span>
+      <p>
+        <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+        Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
+        No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit.
+        A prescription is not promised. You only pay if he can treat you.
+      </p>
+    </div>
+    <div class="wl-answer-card" itemscope itemtype="https://schema.org/MedicalClinic">
+      <span class="wl-tag">Who and where</span>
+      <p><strong>NPCWoods Telemedicine</strong> offers a <strong>$59 GLP-1 consult by text</strong>. Chris Woods, MSN, APRN, FNP-C, reviews your health history, safety factors, and fit, then explains the safest next step. The NPCWoods consult is $59; any outside costs are separate if a care plan is appropriate. Available for people physically located in one of 13 states: AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, or WA (state NP licenses), or FL (out-of-state telehealth registration).</p>
+    </div>
   </div>
 </section>
-<style>
-  .npc-atf-answer {
-    margin: 16px auto 24px;
-    max-width: 65ch;
-    padding: 18px 22px;
-    border: 1px solid #dbe5f5;
-    border-radius: 12px;
-    background: #f8fbff;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #25364f;
-  }
-  .npc-atf-answer p { margin: 0; }
-  .npc-atf-answer a { color: #1d4ed8; font-weight: 600; }
-</style>
-<div class="npc-atf-answer" data-npc-aeo="atf-answer">
-  <p>
-    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
-    Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
-    No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit.
-    A prescription is not promised. You only pay if he can treat you.
-  </p>
-</div>
-
-
-<!-- ===== LLM ANSWER EXTRACTION BLOCK ===== -->
-<div class="section">
-  <div class="answer-block" itemscope itemtype="https://schema.org/MedicalClinic">
-    <p><strong>NPCWoods Telemedicine</strong> offers a <strong>$59 GLP-1 consult by text</strong>. Chris Woods, MSN, APRN, FNP-C, reviews your health history, safety factors, and fit, then explains the safest next step. The NPCWoods consult is $59; any outside costs are separate if a care plan is appropriate. Available for people physically located in one of 13 states: AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, or WA (state NP licenses), or FL (out-of-state telehealth registration).</p>
-  </div>
-</div>
 
 <!-- ===== HOW IT WORKS ===== -->
-<section class="section section-alt fade-in">
-  <div class="container">
-    <h2>Three Simple Steps</h2>
-    <p style="text-align:center; max-width:600px; margin:0 auto 1.5rem;">No app maze, no portal to learn, no video visit to schedule. Start by text and Chris will tell you what makes sense.</p>
-
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">1</div>
+<section class="wl-steps" aria-labelledby="wl-steps-title">
+  <div class="wl-in">
+    <span class="wl-kicker">How it works</span>
+    <h2 class="wl-h2" id="wl-steps-title">Three Simple Steps</h2>
+    <p class="wl-lede">No app maze, no portal to learn, no video visit to schedule. Start by text and Chris will tell you what makes sense.</p>
+    <div class="wl-steps-grid">
+      <div class="wl-step">
+        <span class="wl-step-num" aria-hidden="true">1</span>
+        <div class="wl-step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 7h22v15H12l-7 6z"/><path d="M11 13h10M11 17h6" stroke-linecap="round"/></svg></div>
         <h3>Text Chris</h3>
         <p>Text <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult">(480) 639-4722</a> and ask about a GLP-1 consult. Chris will ask only what he needs to understand your history and safety factors.</p>
       </div>
-      <div class="step-card">
-        <div class="step-number">2</div>
+      <div class="wl-step">
+        <span class="wl-step-num" aria-hidden="true">2</span>
+        <div class="wl-step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.4" aria-hidden="true" focusable="false"><circle cx="14" cy="14" r="8"/><path d="M20 20l7 7" stroke-linecap="round"/><path d="M10.5 14l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Chris Reviews Fit</h3>
         <p>Chris Woods, MSN, APRN, FNP-C, reviews the details personally. If text-based care is not the right fit, he will say so and point you toward the safer next step.</p>
       </div>
-      <div class="step-card">
-        <div class="step-number">3</div>
+      <div class="wl-step">
+        <span class="wl-step-num" aria-hidden="true">3</span>
+        <div class="wl-step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 26c4-8 16-4 20-14"/><path d="M20 6h7v7"/><path d="M27 6L19 14"/></svg></div>
         <h3>You Get A Clear Next Step</h3>
         <p>You receive a plain-English answer about fit, safety, and next steps. The consult is $59; any outside costs are separate if a care plan is appropriate.</p>
       </div>
@@ -1726,140 +1872,155 @@
 </section>
 
 <!-- ===== PRICING ===== -->
-<section class="pricing-section fade-in" id="pricing">
-  <div class="container">
-    <h2>Simple Pricing</h2>
-    <div class="pricing-intro">
-      <p>The NPCWoods consult is $59. No hidden fees. Any outside costs are separate if a care plan is appropriate.</p>
+<section class="wl-price" id="pricing" aria-labelledby="wl-price-title">
+  <div class="wl-in wl-price-grid">
+    <div>
+      <span class="wl-kicker">Pricing</span>
+      <h2 class="wl-h2" id="wl-price-title">Simple Pricing</h2>
+      <div class="wl-big" aria-hidden="true">$59</div>
+      <p class="wl-big-note">flat NPCWoods consult fee</p>
+      <p class="wl-lede">The NPCWoods consult is $59. No hidden fees. Any outside costs are separate if a care plan is appropriate.</p>
     </div>
-
-    <div class="pricing-cards">
-      <div class="pricing-card">
-        <span class="pricing-card-label">Consult</span>
-        <h3>GLP-1 Consult</h3>
-        <div class="pricing-amount">$59</div>
-        <p class="pricing-per">flat NPCWoods consult fee</p>
-        <ul class="pricing-features">
-          <li>Text-based visit with Chris Woods, NP</li>
-          <li>Health history and safety review</li>
-          <li>Fit and next-step guidance</li>
-          <li>No video call required</li>
-          <li>No hidden NPCWoods fees</li>
-        </ul>
-        <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="pricing-btn primary" data-npc-personalize="cta-text">Start My $59 GLP-1 Consult</a>
-      </div>
-    </div>
-
-    <div class="pricing-total">
-      <h4>What you pay NPCWoods:</h4>
-      <p>$59 for the consult</p>
-      <span class="pricing-total-note">If a care plan is appropriate, outside costs are separate and explained before you decide.</span>
+    <div class="wl-price-card">
+      <span class="wl-label">Consult</span>
+      <h3>GLP-1 Consult</h3>
+      <p class="wl-price-per">$59 &middot; flat NPCWoods consult fee</p>
+      <ul class="wl-feat">
+        <li><span class="wl-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Text-based visit with Chris Woods, NP</li>
+        <li><span class="wl-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Health history and safety review</li>
+        <li><span class="wl-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fit and next-step guidance</li>
+        <li><span class="wl-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No video call required</li>
+        <li><span class="wl-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No hidden NPCWoods fees</li>
+      </ul>
+      <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="wl-btn" data-npc-personalize="cta-text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Start My $59 GLP-1 Consult</a>
+      <div class="wl-total"><strong>What you pay NPCWoods: $59 for the consult</strong>If a care plan is appropriate, outside costs are separate and explained before you decide.</div>
     </div>
   </div>
 </section>
 
-<!-- ===== WHEN ORAL GLP-1 MAY NOT BE RIGHT ===== -->
-<section class="section fade-in">
-  <div class="container">
-    <h2>When Text-Based Care May Not Be Right</h2>
-    <p style="text-align:center; max-width:650px; margin:0 auto 0.5rem;">Some situations need in-person evaluation. Chris reviews safety factors first and will tell you if text-based care is not the right lane.</p>
-
-    <div class="er-warning-box">
-      <h3>In-person care may be safer with:</h3>
-      <ul>
-        <li>Severe or worsening abdominal pain</li>
-        <li>Persistent vomiting or signs of dehydration</li>
-        <li>Pregnancy, breastfeeding, or actively trying to conceive</li>
-        <li>A history of serious pancreas, thyroid, or gastrointestinal conditions</li>
-        <li>Any symptom that feels urgent or unsafe to manage by text</li>
-      </ul>
+<!-- ===== WHEN TEXT-BASED CARE MAY NOT BE RIGHT ===== -->
+<section class="wl-safety" aria-labelledby="wl-safety-title">
+  <div class="wl-in wl-safety-grid">
+    <div>
+      <span class="wl-kicker">Safety first</span>
+      <h2 class="wl-h2" id="wl-safety-title">When Text-Based Care May Not Be Right</h2>
+      <p class="wl-lede">Some situations need in-person evaluation. Chris reviews safety factors first and will tell you if text-based care is not the right lane.</p>
     </div>
-
-    <p style="text-align:center; max-width:650px; margin:1.5rem auto 0; font-size:0.95rem;">If you are not sure, text Chris and ask. If the safer answer is in-person care, he will say that clearly.</p>
+    <div>
+      <div class="wl-warn">
+        <h3><svg viewBox="0 0 34 34" fill="none" aria-hidden="true" focusable="false"><path d="M17 3l15 27H2z" fill="#f5a524" stroke="#111114" stroke-width="2.4" stroke-linejoin="round"/><path d="M17 13v8" stroke="#111114" stroke-width="3" stroke-linecap="round"/><circle cx="17" cy="25.5" r="1.8" fill="#111114"/></svg>In-person care may be safer with:</h3>
+        <ul>
+          <li>Severe or worsening abdominal pain</li>
+          <li>Persistent vomiting or signs of dehydration</li>
+          <li>Pregnancy, breastfeeding, or actively trying to conceive</li>
+          <li>A history of serious pancreas, thyroid, or gastrointestinal conditions</li>
+          <li>Any symptom that feels urgent or unsafe to manage by text</li>
+        </ul>
+      </div>
+      <p class="wl-safety-note">If you are not sure, text Chris and ask. If the safer answer is in-person care, he will say that clearly.</p>
+    </div>
   </div>
 </section>
 
 <!-- ===== GLP-1 EXPLAINED (learn series links) ===== -->
-<section class="section fade-in" id="glp1-explained">
-  <div class="container">
-    <h2>GLP-1, Explained Plainly</h2>
-    <p style="text-align:center; max-width:620px; margin:0 auto 0.5rem;">Want the science before you text? Chris wrote a plain-English series on how these medicines work and what side effects to watch for.</p>
-    <div class="cross-links">
-      <a href="https://npcwoods.com/learn/glp1/" class="cross-link">GLP-1 Explained (start here)</a>
-      <a href="https://npcwoods.com/learn/glp1/how-they-work/" class="cross-link">How GLP-1s Work</a>
-      <a href="https://npcwoods.com/learn/glp1/side-effects/" class="cross-link">GLP-1 Side Effects, Honestly</a>
+<section class="wl-explain" id="glp1-explained" aria-labelledby="wl-explain-title">
+  <div class="wl-in">
+    <span class="wl-kicker">Learn first</span>
+    <h2 class="wl-h2" id="wl-explain-title">GLP-1, Explained Plainly</h2>
+    <p class="wl-lede">Want the science before you text? Chris wrote a plain-English series on how these medicines work and what side effects to watch for.</p>
+    <div class="wl-cards">
+      <a href="https://npcwoods.com/learn/glp1/" class="wl-card">
+        <div class="wl-card-art"><svg viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false"><rect x="22" y="14" width="52" height="68" rx="12" fill="#fff"/><circle cx="48" cy="44" r="16" fill="#05060a"/><circle cx="48" cy="44" r="6" fill="#f5a524"/><path d="M34 70h28" stroke="#05060a" stroke-width="5" stroke-linecap="round"/><path d="M80 30c4 4 4 12 0 16M86 24c7 7 7 21 0 28" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <h3>GLP-1 Explained (start here)</h3>
+        <p>The big picture: what GLP-1 is, why your gut rings the doorbell, and who these medicines may fit.</p>
+        <span class="wl-go">Start here &rarr;</span>
+      </a>
+      <a href="https://npcwoods.com/learn/glp1/how-they-work/" class="wl-card">
+        <div class="wl-card-art"><svg viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false"><rect x="50" y="22" width="34" height="44" rx="8" fill="#fff"/><circle cx="67" cy="40" r="6" fill="#0071e3"/><path d="M64 44h6v10h-6z" fill="#0071e3"/><circle cx="24" cy="58" r="12" stroke="#fff" stroke-width="6"/><path d="M34 54h22M48 54v8M42 54v6" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg></div>
+        <h3>How GLP-1s Work</h3>
+        <p>Lock and key, the DPP-4 bouncer, and why a weekly shot lasts so much longer than your own hormone.</p>
+        <span class="wl-go">Read it &rarr;</span>
+      </a>
+      <a href="https://npcwoods.com/learn/glp1/side-effects/" class="wl-card">
+        <div class="wl-card-art"><svg viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false"><rect x="32" y="8" width="32" height="80" rx="14" fill="#05060a"/><circle cx="48" cy="28" r="9" fill="#5b5f6b"/><circle cx="48" cy="50" r="9" fill="#f5a524"/><circle cx="48" cy="72" r="9" fill="#5b5f6b"/><circle cx="48" cy="50" r="14" stroke="#f5a524" stroke-opacity=".45" stroke-width="3"/></svg></div>
+        <h3>GLP-1 Side Effects, Honestly</h3>
+        <p>The common stuff, the yellow-light signs, and the red flags that mean call for help now.</p>
+        <span class="wl-go">Read it &rarr;</span>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="section section-alt fade-in">
-  <div class="container">
-    <h2>Common Questions</h2>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is a GLP-1 consult by text?</div>
-        <div class="faq-answer"><p><strong>It is a $59 text-based consult with Chris Woods, NP.</strong> He reviews your health history, safety factors, and fit, then explains the safest next step.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do I need a video call?</div>
-        <div class="faq-answer"><p><strong>No video call is required to start.</strong> The visit begins by text. Chris will tell you if text-based care fits or if in-person care is safer.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How much is the consult?</div>
-        <div class="faq-answer"><p><strong>The NPCWoods consult is $59.</strong> Any outside costs are separate if a care plan is appropriate.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How fast will I hear back?</div>
-        <div class="faq-answer"><p><strong>Chris personally reviews text visits.</strong> Response time varies with volume, but the process is built to be simple, direct, and easy to start.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What states are served?</div>
-        <div class="faq-answer"><p><strong>NPCWoods serves people physically located in 13 states: Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington (state NP licenses), plus Florida (out-of-state telehealth registration).</strong></p></div>
-      </div>
+<section class="wl-faq" aria-labelledby="wl-faq-title">
+  <div class="wl-in wl-faq-grid">
+    <div>
+      <span class="wl-kicker">FAQ</span>
+      <h2 class="wl-h2" id="wl-faq-title">Common Questions</h2>
+    </div>
+    <div class="wl-faq-list">
+        <details class="wl-faq-item">
+          <summary class="wl-faq-q">What is a GLP-1 consult by text?</summary>
+          <div class="wl-faq-a"><p><strong>It is a $59 text-based consult with Chris Woods, NP.</strong> He reviews your health history, safety factors, and fit, then explains the safest next step.</p></div>
+        </details>
+        <details class="wl-faq-item">
+          <summary class="wl-faq-q">Do I need a video call?</summary>
+          <div class="wl-faq-a"><p><strong>No video call is required to start.</strong> The visit begins by text. Chris will tell you if text-based care fits or if in-person care is safer.</p></div>
+        </details>
+        <details class="wl-faq-item">
+          <summary class="wl-faq-q">How much is the consult?</summary>
+          <div class="wl-faq-a"><p><strong>The NPCWoods consult is $59.</strong> Any outside costs are separate if a care plan is appropriate.</p></div>
+        </details>
+        <details class="wl-faq-item">
+          <summary class="wl-faq-q">How fast will I hear back?</summary>
+          <div class="wl-faq-a"><p><strong>Chris personally reviews text visits.</strong> Response time varies with volume, but the process is built to be simple, direct, and easy to start.</p></div>
+        </details>
+        <details class="wl-faq-item">
+          <summary class="wl-faq-q">What states are served?</summary>
+          <div class="wl-faq-a"><p><strong>NPCWoods serves people physically located in 13 states: Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington (state NP licenses), plus Florida (out-of-state telehealth registration).</strong></p></div>
+        </details>
     </div>
   </div>
 </section>
 
 <!-- ===== CROSS-LINKS ===== -->
-<section class="section fade-in">
-  <div class="container">
-    <h2>Other Conditions We Treat</h2>
-    <p style="text-align:center; max-width:600px; margin:0 auto 0.5rem;">NPCWoods also handles common text-based visits for straightforward issues.</p>
-
-    <div class="cross-links">
-      <a href="https://npcwoods.com/uti-treatment/" class="cross-link">UTI Treatment</a>
-      <a href="https://npcwoods.com/sinus-infection-treatment/" class="cross-link">Sinus Visit</a>
-      <a href="https://npcwoods.com/dental-pain/" class="cross-link">Dental Pain</a>
-      <a href="https://npcwoods.com/ear-infection-treatment/" class="cross-link">Ear Pain</a>
-      <a href="https://npcwoods.com/conditions/" class="cross-link">All Conditions</a>
-      <a href="https://npcwoods.com/how-it-works/" class="cross-link">How It Works</a>
-      <a href="https://npcwoods.com/pharmacy/" class="cross-link">Pharmacy Info</a>
-      <a href="https://npcwoods.com/arizona-telemedicine/" class="cross-link">Arizona</a>
-      <a href="https://npcwoods.com/georgia-telemedicine/" class="cross-link">Georgia</a>
-      <a href="https://npcwoods.com/north-carolina-telemedicine/" class="cross-link">North Carolina</a>
+<section class="wl-more" aria-labelledby="wl-more-title">
+  <div class="wl-in">
+    <span class="wl-kicker">More text visits</span>
+    <h2 class="wl-h2" id="wl-more-title" style="font-size:clamp(30px,4vw,44px)">Other Conditions We Treat</h2>
+    <p class="wl-lede">NPCWoods also handles common text-based visits for straightforward issues.</p>
+    <div class="wl-chips">
+      <a href="https://npcwoods.com/uti-treatment/" class="wl-chip">UTI Treatment</a>
+      <a href="https://npcwoods.com/sinus-infection-treatment/" class="wl-chip">Sinus Visit</a>
+      <a href="https://npcwoods.com/dental-pain/" class="wl-chip">Dental Pain</a>
+      <a href="https://npcwoods.com/ear-infection-treatment/" class="wl-chip">Ear Pain</a>
+      <a href="https://npcwoods.com/conditions/" class="wl-chip">All Conditions</a>
+      <a href="https://npcwoods.com/how-it-works/" class="wl-chip">How It Works</a>
+      <a href="https://npcwoods.com/pharmacy/" class="wl-chip">Pharmacy Info</a>
+      <a href="https://npcwoods.com/arizona-telemedicine/" class="wl-chip">Arizona</a>
+      <a href="https://npcwoods.com/georgia-telemedicine/" class="wl-chip">Georgia</a>
+      <a href="https://npcwoods.com/north-carolina-telemedicine/" class="wl-chip">North Carolina</a>
     </div>
   </div>
 </section>
 
 <!-- ===== BOTTOM CTA ===== -->
-<section class="bottom-cta">
-  <div class="container">
-    <h2>Ask Chris About A GLP-1 Consult</h2>
-    <p>Start with a $59 text-based consult. Chris reviews your history, safety factors, and fit, then explains the safest next step.</p>
-    <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="hero-cta" data-npc-personalize="cta-text">Start My $59 GLP-1 Consult</a>
+<section class="wl-final" aria-labelledby="wl-final-title">
+  <div class="wl-in wl-final-grid">
+    <div class="wl-final-copy">
+      <h2 id="wl-final-title">Ask Chris About A <span class="wl-pop">GLP-1 Consult</span></h2>
+      <p>Start with a $59 text-based consult. Chris reviews your history, safety factors, and fit, then explains the safest next step.</p>
+      <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult" class="wl-btn" data-npc-personalize="cta-text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Start My $59 GLP-1 Consult</a>
+    </div>
+    <div class="wl-final-photo"><img src="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp" width="900" height="1258" alt="" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
 <!-- ===== CLINICIAN TRUST LINE ===== -->
-<div class="clinician-trust-line">
+<div class="wl-trust">
   Reviewed by Chris Woods, MSN, APRN, FNP-C. Licensed Nurse Practitioner<br>
   Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355) &bull; 13 states served &bull; Last updated: October 2026
+</div>
 </div>
 
 <!-- ===== SITE FOOTER ===== -->
@@ -1993,18 +2154,7 @@
 </div>
 
 <!-- ===== SCRIPTS ===== -->
-<script>
-// Fade-in on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 
 
 <script src="/smart-content.js?v=20260531"></script>
