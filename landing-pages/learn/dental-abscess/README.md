@@ -39,6 +39,8 @@ Do not hand-edit the generated `index.html` files. They will be overwritten.
 
 Accent is one red only: `{ "name": "red", "hex": "#B42318" }` (homepage safety red). The rest of the page uses homepage cream, ink, and blue.
 
+Background matches the GLP-1 series per page type (body classes set by the build): `series-hub` copies `/learn/glp1/` (vertical night → neon blue → cream → white body gradient, white cards behind all text), `series-stop` copies the GLP-1 stops (dark neon-glow hero band, white page), `series-offer` copies `/glp1-weight-loss/` (blue hero band, white page).
+
 ## How to push live later (Chris yes required)
 
 First-time URLs. `deploy.py` will not create routes or WordPress stubs.

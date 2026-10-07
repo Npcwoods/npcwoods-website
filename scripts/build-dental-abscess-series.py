@@ -280,6 +280,7 @@ def page_shell(
     schema_blocks: list[str],
     body: str,
     extra_head: str = "",
+    body_class: str = "series-page",
 ) -> str:
     schemas = "\n".join(
         f'<script type="application/ld+json">\n{block}\n</script>' for block in schema_blocks
@@ -333,7 +334,7 @@ window._fbq = window.fbq;
 .npc-clinician-byline a {{ color: #1d4ed8; font-weight: 600; }}
 </style>
 </head>
-<body class="series-page">
+<body class="{body_class}">
 <a class="skip-link" href="#main">Skip to content</a>
 {header}
 {body}
@@ -418,6 +419,7 @@ def build_explainer(series: dict, content: dict, css: str, header: str, footer: 
             person_schema(),
         ],
         body="\n".join(part for part in body_parts if part),
+        body_class="series-page series-hub" if stop["kind"] == "hub" else "series-page series-stop",
     )
 
 
@@ -500,6 +502,7 @@ def build_offer(series: dict, content: dict, css: str, header: str, footer: str)
         ],
         body=body,
         extra_head='<meta name="theme-color" content="#B42318">',
+        body_class="series-page series-offer",
     )
 
 
