@@ -92,7 +92,7 @@ FAQ: [FAQ](https://npcwoods.com/faq/)
 - Strep throat — [Strep throat](https://npcwoods.com/strep-throat-treatment/)
 - Ear infection — [Ear infection](https://npcwoods.com/ear-infection-treatment/)
 - Pink eye — [Pink eye](https://npcwoods.com/pink-eye-treatment/)
-- Tooth infection / dental abscess — [Dental pain](https://npcwoods.com/dental-pain/) and [Tooth infection](https://npcwoods.com/learn/tooth-infection/)
+- Tooth infection / dental abscess — [Dental pain](https://npcwoods.com/dental-pain/), [Dental abscess treatment](https://npcwoods.com/dental-abscess-treatment/), [Dental Abscess Explained](https://npcwoods.com/learn/dental-abscess/), and [Tooth infection](https://npcwoods.com/learn/tooth-infection/)
 - Erectile dysfunction — [ED treatment](https://npcwoods.com/ed-treatment/)
 - Cold sores — [Cold sores](https://npcwoods.com/cold-sore-treatment/)
 - Poison ivy / plant rash — [Poison ivy](https://npcwoods.com/poison-ivy/)
@@ -121,6 +121,8 @@ In-person care may be safer with severe abdominal pain, persistent vomiting, pre
 
 ### Dental abscess / tooth infection
 Canonical: [Dental pain](https://npcwoods.com/dental-pain/)
+PMax-safe offer: [Dental abscess treatment](https://npcwoods.com/dental-abscess-treatment/)
+Education series: [Dental Abscess Explained](https://npcwoods.com/learn/dental-abscess/)
 
 When it is safe, Chris can prescribe bridge antibiotics (often amoxicillin, or clindamycin if penicillin-allergic) and send them to a local pharmacy. This does not drain an abscess, save the tooth, or replace a dentist.
 
