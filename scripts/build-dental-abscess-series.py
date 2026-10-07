@@ -447,7 +447,7 @@ def build_offer(series: dict, content: dict, css: str, header: str, footer: str)
   {bubbles_html(page["bubbles"])}
   <div class="accent-block">
     <h2>I will not promise a script</h2>
-    <p>A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth or drain the pocket. Some need the ER. If a helper medicine fits, an antibiotic your clinician may send to your pharmacy is a bridge. The dentist still fixes the house.</p>
+    <p>A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth or drain the pocket. Some need the ER. If a helper medicine fits, I may send it to your pharmacy as a bridge. The dentist still fixes the house.</p>
   </div>
   <div class="split">
     <div class="yes">
