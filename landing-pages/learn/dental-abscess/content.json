@@ -35,7 +35,7 @@
         "heading": "What I can and cannot do",
         "body": [
           "I am a Nurse Practitioner. People text me. I work in 13 states, including Florida by telehealth registration. A text visit is $59. You do not pay if text care is not safe.",
-          "A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth, drain the pocket, or take the tooth out. Some need the ER. If you fit a text visit, I may send an antibiotic to your pharmacy as a bridge. A bridge is not the repair. The dentist still has to fix the source.",
+          "A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth, drain the pocket, or take the tooth out. Some need the ER. If you fit a text visit, I may send helper medicine to your pharmacy as a bridge. A bridge is not the repair. The dentist still has to fix the source.",
           "Keep going. Stop 2 is how the window breaks in the first place."
         ]
       }
@@ -393,7 +393,7 @@
   },
   "what-care-looks-like": {
     "meta_title": "What Dental Abscess Care Looks Like | NPCWoods Learn Series",
-    "meta_description": "Source control first. An antibiotic is a helper, not a fix. Chris Woods, NP, explains dental abscess care without naming any drugs.",
+    "meta_description": "Source control first. Helper medicine is a bridge, not a fix. Chris Woods, NP, explains dental abscess care without naming any drugs.",
     "h1": "What care looks like",
     "lede": "Care has two jobs. Job one is to open the pocket and fix the source. Job two is to calm germs while that happens. Job one is a dentist. Job two is sometimes a medicine I can send to your pharmacy. Job two never replaces job one.",
     "bubbles": [
@@ -413,7 +413,7 @@
         "type": "prose",
         "heading": "Where medicine fits",
         "body": [
-          "An antibiotic your clinician may send to your pharmacy is a helper. It can calm spreading germs in people who fit that plan. It does not clean the dead nerve. It does not close the cavity. The CDC keeps teaching the same idea across infections: use these medicines when they help, and do not treat them like magic.",
+          "Medicine your clinician may send to your pharmacy is a helper. It can calm spreading germs in people who fit that plan. It does not clean the dead nerve. It does not close the cavity. The CDC keeps teaching the same idea across infections: use these medicines when they help, and do not treat them like magic.",
           "A consult does not guarantee a prescription. If you do not fit, I will say so. If you need the ER, I will say so. If you need a dentist today and no medicine yet, I will say that too.",
           "I will not name products on this page. Google health ads and, more important, good care both fail when a landing page turns into a shopping list."
         ]
@@ -453,7 +453,7 @@
     ],
     "sources": [
       { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
-      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
+      { "label": "CDC: using prescription medicine wisely", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
       { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" },
       { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" }
     ]
@@ -575,7 +575,7 @@
     "sources": [
       { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
       { "label": "MedlinePlus. Root canal.", "url": "https://medlineplus.gov/ency/article/007268.htm" },
-      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" }
+      { "label": "CDC: using prescription medicine wisely", "url": "https://www.cdc.gov/antibiotic-use/index.html" }
     ]
   },
   "myths": {
@@ -628,7 +628,7 @@
     "sources": [
       { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
       { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" },
-      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
+      { "label": "CDC: using prescription medicine wisely", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
       { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" }
     ]
   },
@@ -654,7 +654,7 @@
       },
       {
         "q": "Will I get medicine?",
-        "a": "Only if it is appropriate. A consult does not guarantee a prescription. If a helper medicine fits, an antibiotic your clinician may send to your pharmacy is a bridge, not a tooth repair."
+        "a": "Only if it is appropriate. A consult does not guarantee a prescription. Helper medicine, if it fits, is a bridge, not a tooth repair."
       },
       {
         "q": "Do you pull teeth?",

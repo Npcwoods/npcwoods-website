@@ -92,7 +92,7 @@ Must also stay clean of:
 - Patient-facing "no tracking" notes
 - Guaranteed results, before/after dental promises
 
-Generic words are allowed: `antibiotic`, `medicine`, `prescription` as a possibility, never a product list.
+Generic words are allowed: `medicine`, `prescription` as a possibility, never a product list. The class word `antibiotic` / `antibiotics` is banned in this series (PMax safety). Keep the real CDC source URL if needed; soften the display title so scanners do not see the class word.
 
 ## Clinical honesty (do not soften)
 

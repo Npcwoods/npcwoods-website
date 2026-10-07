@@ -109,6 +109,26 @@ class DentalAbscessSeriesTest(unittest.TestCase):
                         hits.append(f"{path.relative_to(ROOT)}:{i}:{line.strip()}")
         self.assertEqual(hits, [], "medication names in series build:\n" + "\n".join(hits))
 
+    def test_zero_antibiotic_class_word_in_series_build(self):
+        # PMax / Site Audit restricted class word. Fail everywhere in the
+        # series HTML/JSON/CSS build. The real CDC source URL may keep
+        # /antibiotic-use/ in the path; display titles must stay soft.
+        allowed_url = "https://www.cdc.gov/antibiotic-use/index.html"
+        class_word = re.compile(r"antibiotics?", re.I)
+        roots = [SERIES_DIR, OFFER.parent]
+        hits = []
+        for root in roots:
+            for path in root.rglob("*"):
+                if path.suffix.lower() not in {".html", ".json", ".css"}:
+                    continue
+                scrubbed = path.read_text(encoding="utf-8").replace(allowed_url, "")
+                for i, line in enumerate(scrubbed.splitlines(), 1):
+                    if class_word.search(line):
+                        hits.append(f"{path.relative_to(ROOT)}:{i}:{line.strip()}")
+        self.assertEqual(
+            hits, [], "antibiotic class word in series build:\n" + "\n".join(hits)
+        )
+
     def test_no_ad_trackers_in_live_markup(self):
         for path in html_files():
             live = COMMENT_RE.sub("", path.read_text(encoding="utf-8"))
