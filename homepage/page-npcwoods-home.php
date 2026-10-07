@@ -14,7 +14,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#F6F3EE" />
-  <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
+  <title>$59 Text Urgent Care — No Waiting Room | NPCWoods</title>
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-serif-display-400.woff2" crossorigin />
   <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:860px) 92vw, 520px" fetchpriority="high" />

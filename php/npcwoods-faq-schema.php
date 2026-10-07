@@ -37,7 +37,7 @@ function npcwoods_homepage_output_guardrail() {
 function npcwoods_homepage_output_guardrail_replacements($html) {
     $replacements = array(
         '$59 text-based telemedicine from a licensed NP. No insurance needed, no waiting room. Serving AZ, GA, & NC. Same-day response.' =>
-            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.',
+            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, and Washington.',
         'Does NPCWoods accept insurance?' =>
             'How does NPCWoods pricing work?',
         'We are a direct-pay practice. We do not bill insurance. The $59 flat fee covers your entire visit — no copays, no deductibles, no billing headaches.' =>
@@ -163,7 +163,7 @@ function npcwoods_meta_descriptions($desc) {
     if (is_singular('page') || is_front_page()) {
         global $post;
         if ($post && $post->ID == 63) {
-            return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+            return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
         }
     }
     if (!empty($desc)) return $desc;
@@ -182,7 +182,7 @@ function npcwoods_meta_descriptions($desc) {
         'greensboro-nc'=>'Greensboro, NC','wilmington-nc'=>'Wilmington, NC'
     );
     $descriptions = array(
-        63=>'NPCWoods offers $59 telemedicine visits by text message. No hassle, no video calls, no waiting rooms. Treat UTIs, sinus infections, strep, ED and more. Licensed in AZ, GA, NC.',
+        63=>'NPCWoods offers $59 telemedicine visits by text message. No hassle, no video calls, no waiting rooms. Treat UTIs, sinus infections, strep, ED and more. Serving 13 states.',
         184=>'Online urgent care for UTIs, sinus infections, strep throat, ear infections, and ED. $59 flat fee per visit. Text-based telemedicine — no paperwork, no appointments needed.',
         192=>'Online ear infection treatment for $59. A licensed NP evaluates your symptoms by text and sends prescriptions to your pharmacy. No video call, no hassle.',
         198=>'Affordable telemedicine in Arizona — $59 flat fee for urgent care by text message. Treat UTIs, sinus infections, strep, and ED from home. No paperwork.',
@@ -294,35 +294,35 @@ function npcwoods_speed_hints() {
 
 add_filter('wpseo_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
+        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
+        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_desc', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+        return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
     }
     return $desc;
 }, 20);
 
 add_filter('wpseo_twitter_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'NPCWoods Telemedicine: $59 Text-Based Urgent Care';
+        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_twitter_description', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Urgent care in your pocket. Text Chris Woods, a real Nurse Practitioner. $59 flat. Licensed in 11 states. No waiting room. No app.';
+        return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
     }
     return $desc;
 }, 20);
@@ -384,7 +384,7 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // ============================================================
         // UTI Treatment city pages (AZ) - Mesa (13), Scottsdale (17), Surprise (20), Phoenix (11) re-added
         // Chandler (14), Gilbert (15), Glendale (16), Tempe (19) included in the sitemap
-        12, 18,  // Tucson, Peoria — still excluded for crawl budget
+        18,  // Peoria — still excluded for crawl budget (Tucson 12 re-added to sitemap 2026-10-06)
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         // Mix wave re-added: Savannah (268), Augusta (272), Raleigh (288)
         276, 280, 292, 296, 300,
