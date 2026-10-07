@@ -1,0 +1,673 @@
+{
+  "hub": {
+    "meta_title": "Dental Abscess Explained | Plain Talk from Chris Woods, NP",
+    "meta_description": "A dental abscess is a pocket of pus next to a tooth or gum. Chris Woods, NP, explains the big picture in plain words, then walks the whole story stop by stop.",
+    "h1": "Dental Abscess Explained",
+    "lede": "Hey. I am Chris. A dental abscess is a pocket of pus. Think of a water balloon your body builds to wall off germs. The balloon can sit under a tooth, in the gum, or start to push into the face. It hurts. It can spread. This series is the whole story, in order.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "My tooth woke me up at 3 a.m. Is this an abscess?" },
+      { "style": "black", "who": "Chris", "text": "Maybe. A throb that will not quit, a bad taste, or a puffy gum is the usual start. Walk the stops with me. I will tell you when this is a dentist job, an ER job, or a text I can help with." }
+    ],
+    "stats": [
+      { "num": "Pus pocket", "label": "That is the abscess. Your body built a wall around germs." },
+      { "num": "Not a cure", "label": "Medicine can calm germs. It does not fix the hole in the tooth." },
+      { "num": "Two doors", "label": "Some people fit a text visit. Many need a dentist or the ER." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "The one picture I want in your head",
+        "body": [
+          "Your mouth is full of germs. Most days they stay on the surface, like dust on a porch. A crack, a deep cavity, or a deep gum pocket is a broken window. Germs walk inside the tooth or down the root.",
+          "Your body does not like that. It sends white blood cells. Those cells and dead germs make pus. The pus has to go somewhere. It makes a pocket. That pocket is the abscess.",
+          "The pocket can sit at the tip of the root. That is a tooth abscess. It can sit in the gum beside the tooth. That is a gum abscess. If the swelling leaves the jaw and climbs the face or neck, that is no longer a small pocket. That is spreading. Spreading is an emergency.",
+          "I am going to walk you through how it starts, what it feels like, how to tell tooth from gum from face, what else it can mimic, the red flags, what care actually looks like, who fits a text visit, why it comes back, and the myths that waste a weekend."
+        ]
+      },
+      {
+        "type": "callout",
+        "kind": "safety",
+        "title": "If you cannot swallow, cannot breathe, or the floor of your mouth is rising",
+        "body": "Stop reading. Call 911 or go to the ER. A dental abscess can push into the neck and the airway. I cannot treat that by text. A dentist cannot treat that in a regular chair either. That is an emergency room."
+      },
+      {
+        "type": "prose",
+        "heading": "What I can and cannot do",
+        "body": [
+          "I am a Nurse Practitioner. People text me. I work in 13 states, including Florida by telehealth registration. A text visit is $59. You do not pay if text care is not safe.",
+          "A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth, drain the pocket, or take the tooth out. Some need the ER. If you fit a text visit, I may send an antibiotic to your pharmacy as a bridge. A bridge is not the repair. The dentist still has to fix the source.",
+          "Keep going. Stop 2 is how the window breaks in the first place."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is a dental abscess in one sentence?",
+        "a": "It is a pocket of pus your body built around germs that got inside a tooth or gum."
+      },
+      {
+        "q": "Can a text visit replace a dentist?",
+        "a": "No. A text visit can help some people while they get to a dentist. It cannot drill, drain, or pull a tooth."
+      },
+      {
+        "q": "Do I always need medicine?",
+        "a": "No. A consult does not guarantee a prescription. Some people need the ER. Some people only need a dentist. Some people fit a short bridge of medicine plus a dental plan."
+      },
+      {
+        "q": "How much is a visit with you?",
+        "a": "$59 flat. You do not pay if I cannot treat you by text."
+      }
+    ],
+    "sources": [
+      { "label": "MedlinePlus, U.S. National Library of Medicine. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
+      { "label": "National Institute of Dental and Craniofacial Research. Tooth decay.", "url": "https://www.nidcr.nih.gov/health-info/tooth-decay" },
+      { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" },
+      { "label": "Sanders JL, Houck RC. Dental Abscess. StatPearls, NCBI Bookshelf.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK493149/" }
+    ]
+  },
+  "how-it-starts": {
+    "meta_title": "How a Dental Abscess Starts | NPCWoods Learn Series",
+    "meta_description": "Chris Woods, NP, explains how a cavity, crack, or gum pocket lets germs in and why your body builds a pus pocket.",
+    "h1": "How a dental abscess starts",
+    "lede": "An abscess does not jump out of nowhere. Germs need a door. The door is usually a hole, a crack, or a deep gum pocket. Then your body builds a wall. That wall is the balloon I told you about.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "It was just a little cavity. How did it turn into this?" },
+      { "style": "black", "who": "Chris", "text": "A cavity is a tunnel. If the tunnel hits the living nerve room in the middle of the tooth, germs move in and set up shop." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "The tooth is a room with a nerve in it",
+        "body": [
+          "Picture a tooth like a hard house. The white outer wall is enamel. Under that is a softer layer called dentin. In the middle is a small room with a nerve and blood vessels. Dentists call that pulp. I call it the live wire.",
+          "Sugar and germs on the surface make acid. Acid eats a tunnel through enamel, then dentin. When the tunnel reaches the live wire, the nerve gets angry. That is the deep ache. If germs keep going, they walk out the tiny hole at the tip of the root, into the bone. Your body walls them off. That wall is a tooth abscess.",
+          "The National Institute of Dental and Craniofacial Research describes tooth decay the same way: germs plus sugar, then a hole, then the inside of the tooth."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Three common doors",
+        "body": [
+          "Door one is a cavity that went too far. You may have felt a sweet zap for months. Then one night it became a throb.",
+          "Door two is a crack or a chip. Ice, a popcorn kernel, an old filling. The house wall splits. Germs do not need a wide door. A hairline crack is enough.",
+          "Door three is the gum. If the gum pulls back or a pocket gets deep, germs slide down the outside of the root. The abscess sits in the gum, not at the root tip. Same balloon. Different address.",
+          "A fourth door shows up after a dentist visit that left a space, or after a tooth was already dying and nobody fixed the source. We will get to why it comes back later."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "What does not start an abscess",
+        "items": [
+          "Cold air on a healthy tooth. That is sensitive dentin, not a pus pocket.",
+          "A one-time headache. Face pain has other jobs. Next stops cover lookalikes.",
+          "Sleeping on one side. That can make a sore jaw. It does not build pus."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Why the balloon grows at night",
+        "body": [
+          "When you lie down, more blood sits in your head. The pocket has less room to hide. That is why people text me at 2 a.m. The story started weeks ago. Night is when the balloon feels biggest.",
+          "Next stop: what that balloon actually feels like, in your jaw, your ear, and your neck."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can a filling leak and start this?",
+        "a": "Yes. An old filling can leave a gap. Germs use the gap like a side door into the dentin and then the nerve room."
+      },
+      {
+        "q": "Does every cavity become an abscess?",
+        "a": "No. A small surface hole can be cleaned and filled. The abscess starts when germs reach the live nerve or the deep gum pocket."
+      },
+      {
+        "q": "Can gum disease make a tooth abscess?",
+        "a": "Gum disease can make a gum abscess beside the tooth. A dying nerve inside the tooth makes a tooth abscess at the root tip. Both hurt. They are not the same address."
+      }
+    ],
+    "sources": [
+      { "label": "National Institute of Dental and Craniofacial Research. Tooth decay.", "url": "https://www.nidcr.nih.gov/health-info/tooth-decay" },
+      { "label": "Centers for Disease Control and Prevention. About oral health.", "url": "https://www.cdc.gov/oral-health/about/index.html" },
+      { "label": "MedlinePlus. Tooth decay.", "url": "https://medlineplus.gov/ency/article/001055.htm" },
+      { "label": "Sanders JL, Houck RC. Dental Abscess. StatPearls, NCBI Bookshelf.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK493149/" }
+    ]
+  },
+  "what-it-feels-like": {
+    "meta_title": "What a Dental Abscess Feels Like | NPCWoods Learn Series",
+    "meta_description": "Throb, bite pain, bad taste, gum bump, ear ache. Chris Woods, NP, maps how a dental abscess feels in plain words.",
+    "h1": "What a dental abscess feels like",
+    "lede": "People do not walk in saying abscess. They say the tooth is a heartbeat. They say they cannot chew on that side. They say something tastes like a penny. Here is the feeling map.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "It is not a sharp zap anymore. It is a drum in my jaw." },
+      { "style": "black", "who": "Chris", "text": "That drum is pressure. Pus does not have a drain, so it pushes on bone and nerve. Pressure feels like a throb." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "The throb is pressure, not a mystery",
+        "body": [
+          "When the nerve is dying, you get zaps from cold or sweet. When the abscess is forming, the zaps often fade and a deep throb takes over. You can count it with your pulse. Biting down is like stepping on a bruise.",
+          "Hot drinks can make it roar. Cold can calm it for a minute, then it comes back. That flip is a classic dying-nerve pattern. I hear it every week."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "The usual cluster",
+        "items": [
+          "A tooth that hurts when you tap it or chew.",
+          "A gum that looks puffy, shiny, or has a small white head, like a pimple.",
+          "A bad taste or bad smell when the pocket leaks a little.",
+          "Swelling in the cheek that makes one side look round.",
+          "Pain that shoots to the ear, temple, or neck on the same side.",
+          "Feeling wiped out, or a low fever. A high fever is a different story. That is a red flag stop."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "The pimple on the gum",
+        "body": [
+          "Sometimes the balloon finds a tiny exit on the gum. People call it a gum boil. It may leak and the pain drops for a day. That is not a cure. That is a pressure valve. The house is still broken. The germs are still inside.",
+          "If the swelling is moving toward the eye, the floor of the mouth, or the neck, stop guessing. That is the red flag stop, and it may be the ER."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "What I ask in a text",
+        "body": [
+          "Which tooth. How long. Can you swallow your spit. Can you open your mouth. Any swelling you can see in a mirror. Any trouble breathing. Any fever that makes you shake. Those answers tell me if we keep talking or if you need a building with a drain and a team.",
+          "Next stop: tooth vs gum vs face swelling. Same pain family. Three different maps."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can an abscess hurt less after it drains a little?",
+        "a": "Yes. A leak can drop the pressure. The germs are still there. The pain coming down is not the all-clear."
+      },
+      {
+        "q": "Why does it hurt in my ear?",
+        "a": "The nerves in the back teeth and the ear share a hallway. Your brain sometimes files tooth pain in the ear drawer."
+      },
+      {
+        "q": "If I can still chew on the other side, is it mild?",
+        "a": "Not always. People protect the sore side. The pocket can still grow. Watch swelling and swallowing, not just chewing."
+      }
+    ],
+    "sources": [
+      { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
+      { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" }
+    ]
+  },
+  "tooth-vs-gum": {
+    "meta_title": "Tooth vs Gum vs Face Swelling | Dental Abscess Series",
+    "meta_description": "Chris Woods, NP, separates a tooth-root abscess, a gum abscess, and spreading face or neck swelling.",
+    "h1": "Tooth vs gum vs face swelling",
+    "lede": "Three maps. One family of germs. If you know the address, you know how scared to be and who should see you.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "My cheek looks like a walnut. Is that the tooth or the gum?" },
+      { "style": "black", "who": "Chris", "text": "A walnut in the cheek can be either. A rising floor of the mouth or an eye that will not open is face spreading. That is a different door: the ER." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "Tooth abscess: the basement leak",
+        "body": [
+          "A tooth abscess sits at the tip of the root, in the bone. The house died from the inside. You often have a deep cavity or a crack. The tooth may feel high, like it grew overnight. Tapping it is miserable.",
+          "The gum by that tooth can still swell. The source is still the dead nerve inside. A dentist has to open that tooth or take it out. Rinsing the gum does not reach the basement."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Gum abscess: the side-yard leak",
+        "body": [
+          "A gum abscess sits in the soft tissue beside the tooth. Food can pack in a pocket. The gum gets a shiny dome. The tooth may still be alive. Cold can still zap it.",
+          "A dentist or a gum specialist may drain that pocket and clean the side of the root. If the tooth is loose and the bone is gone, the plan changes. I cannot clean a pocket by text."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Face and neck swelling: the flood",
+        "body": [
+          "If the wall breaks, pus and germs move through the loose spaces of the face. One eye can swell shut. The floor of the mouth can lift like a rising bread loaf. The neck can get hard. Swallowing spit can hurt. Breathing can feel tight.",
+          "That is not a weekend project. That can become a deep neck infection. StatPearls and emergency texts treat this as a threat to the airway. Call 911 or go to the ER. Do not wait for a text back.",
+          "A little cheek puff that stays over one tooth is common. Spreading that crosses the midline, lifts the tongue, or closes an eye is not common and not safe at home."
+        ]
+      },
+      {
+        "type": "callout",
+        "kind": "note",
+        "title": "I will not pretend I can see through a phone",
+        "body": "A photo helps. It does not replace a pair of hands and an X-ray. If I am not sure which map you are on, I send you in. That is the honest visit."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can I have both a tooth and a gum abscess?",
+        "a": "Yes. A long-dead tooth can drain through the gum. The dentist still has to treat the source, not only the pimple."
+      },
+      {
+        "q": "Does face swelling always mean the ER?",
+        "a": "Mild puff over one tooth can wait for a same-day dentist if you can swallow and breathe. Spreading, rising floor of the mouth, trouble swallowing, or a closing eye is the ER."
+      },
+      {
+        "q": "Why does one side of my face feel hot?",
+        "a": "Inflammation brings blood. Heat over one tooth can be local. Heat plus shaking chills is more systemic. That belongs on the red flag stop."
+      }
+    ],
+    "sources": [
+      { "label": "Sanders JL, Houck RC. Dental Abscess. StatPearls, NCBI Bookshelf.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK493149/" },
+      { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" }
+    ]
+  },
+  "lookalikes": {
+    "meta_title": "Dental Abscess Lookalikes: Sinus, Jaw Joint, Canker | NPCWoods",
+    "meta_description": "Sinus pressure, jaw joint pain, canker sores, and ear pain can mimic a dental abscess. Chris Woods, NP, sorts the lookalikes.",
+    "h1": "Lookalikes that steal the scene",
+    "lede": "Not every face ache is a pus pocket. Sinus pressure, a cranky jaw joint, a canker sore, and an ear problem can wear the same costume. I sort them so you do not treat the wrong story.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "My whole cheek hurts. I thought it was a tooth. My nose is also stuffed." },
+      { "style": "black", "who": "Chris", "text": "Then we talk sinus and tooth in the same breath. Upper back teeth sit under the sinus floor like apartments under a parking deck." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "Sinus: the parking deck over the upper teeth",
+        "body": [
+          "Your maxillary sinus sits above the upper back teeth. When that space fills with pressure, those teeth can ache as a group. Bending forward makes it worse. Both sides of the nose may feel blocked. Several teeth hurt, not one tap-tender tooth.",
+          "A true tooth abscess usually picks one tooth that hates a tap. Sinus pain is more of a neighborhood. I still take it seriously. I just do not call every cheek ache an abscess."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Jaw joint: the hinge, not the root",
+        "body": [
+          "The jaw joint sits in front of the ear. If you clench, grind, or chew gum like a part-time job, that hinge gets sore. Opening wide can pop. The pain can radiate to the temple and the ear.",
+          "A joint problem does not make a gum pimple or a bad-taste leak. It also does not usually make you feverish. If your bite feels off after a clench night and the gum looks calm, think hinge first."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "Other costumes",
+        "items": [
+          "Canker sore: a shallow yellow-white spot on soft tissue. Hurts like fire. No deep throb in bone. No spreading face.",
+          "Dry socket after a pulling: empty-hole pain a few days after a tooth came out. That is a dentist follow-up, not a new abscess in a live tooth.",
+          "Ear infection: the ear itself is sore, and the tooth exam is calm. Kids get this more. Adults can too.",
+          "Heart pain can rarely show up in the jaw. If jaw pain comes with chest pressure, sweat, or shortness of breath, call 911. That is not a dental series problem."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Why I still want the next stop",
+        "body": [
+          "Lookalikes are why I ask a lot of questions. They are also why a photo of the gum helps. If I cannot tell, I point you to a dentist or the ER instead of guessing.",
+          "Next stop is the one I want you to memorize: red flags. When this stops being a tooth story and becomes an airway story."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can a sinus problem and a tooth abscess happen together?",
+        "a": "Yes. An upper tooth abscess can irritate the sinus. A sinus flare can make teeth ache. If one tooth is tap-tender and the gum is puffy, I lean tooth."
+      },
+      {
+        "q": "Is a canker sore ever an abscess?",
+        "a": "No. A canker sore is a surface ulcer. An abscess is a deeper pocket of pus. They can both hurt. They do not get the same plan."
+      },
+      {
+        "q": "My jaw clicks. Is that an emergency?",
+        "a": "A click without fever, swelling, or swallow trouble is usually a joint story. See a dentist if it locks. Use the ER if the airway feels tight or the swelling is spreading."
+      }
+    ],
+    "sources": [
+      { "label": "MedlinePlus. Temporomandibular disorders.", "url": "https://medlineplus.gov/ency/article/001227.htm" },
+      { "label": "MedlinePlus. Sinusitis.", "url": "https://medlineplus.gov/ency/article/000647.htm" },
+      { "label": "National Institute of Dental and Craniofacial Research. TMJ disorders.", "url": "https://www.nidcr.nih.gov/health-info/tmd" },
+      { "label": "American Dental Association, MouthHealthy. Canker sores.", "url": "https://www.mouthhealthy.org/all-topics-a-z/canker-sores" }
+    ]
+  },
+  "red-flags": {
+    "meta_title": "Dental Abscess Red Flags and Emergencies | NPCWoods",
+    "meta_description": "Trouble swallowing, rising floor of the mouth, closing eye, high fever. Chris Woods, NP, lists when a dental abscess is an emergency.",
+    "h1": "Red flags: when this is an emergency",
+    "lede": "Most abscesses are miserable and still local. A few become a race against the airway. I want this list in your pocket. If you meet it, you do not text me first. You go.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "I can swallow, but my cheek is puffy. Do I need the ER?" },
+      { "style": "black", "who": "Chris", "text": "Puffy over one tooth, swallowing fine, breathing fine: get a dentist today if you can. If the puff climbs, the tongue rises, or spit is hard to swallow, that is the ER." }
+    ],
+    "sections": [
+      {
+        "type": "callout",
+        "kind": "safety",
+        "title": "Go to the ER or call 911 now",
+        "body": "Trouble breathing. Trouble swallowing spit. Floor of the mouth rising. Tongue pushing up. Neck getting hard or wide. An eye swelling shut. High fever with confusion or a rash. Chest pain with jaw pain. Those are not text-visit problems."
+      },
+      {
+        "type": "prose",
+        "heading": "Why the floor of the mouth matters",
+        "body": [
+          "Under your tongue is a soft space. If infection fills it, the tongue rides up and back. That can close the airway. This pattern is the one emergency teams watch for with dental infections. I will not manage it from a phone.",
+          "A hard, rapidly spreading neck is the same family. Do not ice it and hope. Do not wait for morning clinic."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "Same-day dentist, not later this month",
+        "items": [
+          "One tooth is tap-tender and the gum has a boil.",
+          "Swelling stays over that tooth and you can still swallow.",
+          "You feel a bad taste and the pain is getting louder each night.",
+          "You have a low-grade fever and you still look like yourself in the mirror."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "What a text visit is not for",
+        "body": [
+          "I will not talk you out of the ER. If your story is messy and I cannot see your airway, I send you in. You do not pay for a $59 visit when I tell you text care is not safe.",
+          "Next stop is calmer on purpose: what care looks like when you are stable. The dentist plan. The bridge plan. The honest limits of medicine."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "I have a fever of 101 and a puffy gum. ER or dentist?",
+        "a": "If you can swallow and breathe and the swelling is local, a same-day dentist or an urgent dental clinic is the usual door. If the fever is high, you feel confused, or swelling is spreading, use the ER."
+      },
+      {
+        "q": "Can I wait overnight if the pain is only a throb?",
+        "a": "A throb without spreading or swallow trouble can wait for morning dental care. Recheck the red flags if you wake worse."
+      },
+      {
+        "q": "Should I text you from the ER parking lot?",
+        "a": "If you already know you need the ER, go in. You can text later for follow-up once you are stable and back in a state I can treat."
+      }
+    ],
+    "sources": [
+      { "label": "Sanders JL, Houck RC. Dental Abscess. StatPearls, NCBI Bookshelf.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK493149/" },
+      { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" }
+    ]
+  },
+  "what-care-looks-like": {
+    "meta_title": "What Dental Abscess Care Looks Like | NPCWoods Learn Series",
+    "meta_description": "Source control first. An antibiotic is a helper, not a fix. Chris Woods, NP, explains dental abscess care without naming any drugs.",
+    "h1": "What care looks like",
+    "lede": "Care has two jobs. Job one is to open the pocket and fix the source. Job two is to calm germs while that happens. Job one is a dentist. Job two is sometimes a medicine I can send to your pharmacy. Job two never replaces job one.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "Can you just send something so I can skip the dentist?" },
+      { "style": "black", "who": "Chris", "text": "I can talk about a bridge. I will not sell you a skip. The hole is still there. Germs move back in if nobody fixes the house." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "Source control is the real treatment",
+        "body": [
+          "Dentists treat the source. They may numb you, open the tooth, let the pus out, clean the nerve room, and seal it later. That path is a root canal. Or they take the tooth out if it cannot be saved. Sometimes they make a small cut in the gum to drain a pocket.",
+          "The American Association of Endodontists is blunt about this: an abscessed tooth needs dental treatment. Medicine alone is not the finish line. I agree. I say it in kitchen words. You cannot mop a flood and leave the pipe open."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Where medicine fits",
+        "body": [
+          "An antibiotic your clinician may send to your pharmacy is a helper. It can calm spreading germs in people who fit that plan. It does not clean the dead nerve. It does not close the cavity. The CDC keeps teaching the same idea across infections: use these medicines when they help, and do not treat them like magic.",
+          "A consult does not guarantee a prescription. If you do not fit, I will say so. If you need the ER, I will say so. If you need a dentist today and no medicine yet, I will say that too.",
+          "I will not name products on this page. Google health ads and, more important, good care both fail when a landing page turns into a shopping list."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "Comfort that does not pretend to cure",
+        "items": [
+          "Salt water rinses can make the gum feel cleaner. They do not empty the basement.",
+          "A cold pack on the cheek can take the edge off swelling you can see.",
+          "Soft food on the other side keeps you fed.",
+          "Store-shelf pain medicine, if you already use it safely, can take the drum down a notch. It does not kill the pocket."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Time",
+        "body": [
+          "If a bridge is appropriate, people often feel a little better in a day or two. If you are worse, if swelling grows, or if red flags show up, the plan changes. Text me back if we already started a visit. Go to the ER if the airway list shows up.",
+          "Next stop: who fits a dentist chair, who fits a text, and who needs both."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Will you always send medicine?",
+        "a": "No. A consult does not guarantee a prescription. I send something only when it is appropriate and you are in a state I can treat."
+      },
+      {
+        "q": "If I start medicine, can I cancel the dentist?",
+        "a": "No. Medicine is a bridge. The source is still there. Canceling the dentist is how this comes back."
+      },
+      {
+        "q": "Can you pull the tooth by text?",
+        "a": "No. I do not have a chair, an X-ray, or forceps. I can help some people get comfortable enough to reach a dentist."
+      }
+    ],
+    "sources": [
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
+      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
+      { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" },
+      { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" }
+    ]
+  },
+  "dentist-vs-text": {
+    "meta_title": "Dentist vs Text Visit for a Dental Abscess | NPCWoods",
+    "meta_description": "Who fits a $59 text visit with Chris Woods, NP, and who needs a dentist or the ER. Honest scope. No guaranteed prescription.",
+    "h1": "Dentist vs text visit: who fits",
+    "lede": "I like being useful. I like being honest more. A lot of abscesses need a dentist or the ER. A smaller group fits a text visit as a bridge. Here is the split.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "I cannot get a dentist until Thursday. Can I text you today?" },
+      { "style": "black", "who": "Chris", "text": "If you are stable, swallowing, and the swelling is local, we can talk. If you are an emergency, Thursday is not the plan. The ER is." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "Who often fits a text visit",
+        "body": [
+          "You are an adult. You are physically in one of the 13 states I serve, including Florida by telehealth registration. You can swallow. You can breathe. The swelling sits over one tooth or one gum spot. You can tell me the story in texts. You understand a consult does not guarantee a prescription.",
+          "You also understand the dentist is still on the calendar. I am the bridge, not the repair shop."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Who needs a dentist, not me",
+        "body": [
+          "You need a tooth opened, drained, or pulled. You have a loose tooth and pus at the gum line that needs cleaning. You need an X-ray. You need a hands-on exam. That is a dentist. I will tell you that even if you hoped I would skip it.",
+          "If you already have a dentist who can see you today, go. Do not wait on a text if a chair is open."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "Who needs the ER",
+        "body": [
+          "You met the red flag list. Airway. Swallowing. Rising floor of the mouth. Spreading neck. Closing eye. You look sick in a way that is more than a toothache. Pregnant people with a spreading infection, people with very hard immune systems, and people who cannot keep fluids down often need a building, not a thread.",
+          "Kids under 2 are not a text-visit group at all in this practice."
+        ]
+      },
+      {
+        "type": "callout",
+        "kind": "note",
+        "title": "$59, and you do not pay if I cannot treat you by text",
+        "body": "Text (480) 639-4722. Tell me the tooth, the swelling, and whether you can swallow. If you do not fit, I will say so. No hard sell. No guaranteed result."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What states can text you?",
+        "a": "I serve 13 states, including Florida by telehealth registration. You must be physically in a state I can treat at the time of the visit."
+      },
+      {
+        "q": "What if I text and you say I need the ER?",
+        "a": "Then you go. You are not charged for a visit I cannot do by text."
+      },
+      {
+        "q": "Can I use this if I already have a dentist?",
+        "a": "Yes, as a bridge when the dentist cannot see you yet and you still fit text care. I still want you in that dental chair."
+      }
+    ],
+    "sources": [
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
+      { "label": "Sanders JL, Houck RC. Dental Abscess. StatPearls, NCBI Bookshelf.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK493149/" },
+      { "label": "NPCWoods. How a visit works.", "url": "https://npcwoods.com/how-it-works/" }
+    ]
+  },
+  "why-it-comes-back": {
+    "meta_title": "Why a Dental Abscess Comes Back | NPCWoods Learn Series",
+    "meta_description": "If nobody fixes the source, the balloon refills. Chris Woods, NP, explains why dental abscesses return.",
+    "h1": "Why it comes back",
+    "lede": "If you mop the floor and leave the pipe open, you will mop again. That is the whole stop. The abscess is the puddle. The dead nerve, the crack, or the gum pocket is the pipe.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "The last medicine helped. Two weeks later it is back." },
+      { "style": "black", "who": "Chris", "text": "Then the source is still open. We treat the germs again only if it is safe. We do not pretend the house healed itself." }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "heading": "The pipe is still open",
+        "body": [
+          "Medicine can drop the number of germs in the pocket. It cannot rebuild enamel. It cannot pull dead nerve tissue out of a canal. It cannot flatten a deep gum pocket. When the helper course ends, leftover germs throw a party in the same room.",
+          "People feel fine for a week. Then the throb returns. They think the last plan failed. The last plan did its job as a bridge. Nobody scheduled the repair."
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "Other reasons the balloon refills",
+        "items": [
+          "The dentist started a root canal and the last visit never happened.",
+          "A cracked tooth split further after you chewed ice on it.",
+          "Food keeps packing the same gum pocket.",
+          "A neighboring tooth is dying and you blamed the old one.",
+          "You stopped the helper medicine early because the pain dropped. Early stop is how germs rebound."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "What I do when you text the sequel",
+        "body": [
+          "I ask what changed. I ask if a dentist ever opened the tooth. I ask about red flags again. Repeat visits do not get a rubber stamp. If the story is the same leak, I push harder on the dental chair. If the story looks like spreading, I push the ER.",
+          "I will not keep sending bridges forever on a tooth that needs to come out. That is not kindness. That is delay.",
+          "Last stop is myths. The ones I hear every Saturday night."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "If it came back, did the last medicine fail?",
+        "a": "Not always. The medicine may have done its helper job. The source was still open, so the pocket refilled."
+      },
+      {
+        "q": "Can a tooth abscess come back after a root canal?",
+        "a": "Sometimes, if a canal was missed, a crack runs under the gum, or the seal fails. That is a dentist or a specialist revisit."
+      },
+      {
+        "q": "How fast can it refill?",
+        "a": "Days to weeks is common if the source is open. Do not use the quiet week as proof you are done."
+      }
+    ],
+    "sources": [
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" },
+      { "label": "MedlinePlus. Root canal.", "url": "https://medlineplus.gov/ency/article/007268.htm" },
+      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" }
+    ]
+  },
+  "myths": {
+    "meta_title": "Dental Abscess Myths vs Facts | NPCWoods Learn Series",
+    "meta_description": "Salt water is not surgery. A leak is not a cure. Chris Woods, NP, knocks down dental abscess myths.",
+    "h1": "Myths vs facts",
+    "lede": "This is the Saturday-night pile. I hear these every week. I am going to knock them down in the same order the series taught you.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "My uncle said if it drains, it is over." },
+      { "style": "black", "who": "Chris", "text": "Your uncle described a pressure valve. The pipe is still open. Fact beats uncle." }
+    ],
+    "sections": [
+      {
+        "type": "list",
+        "heading": "The pile",
+        "items": [
+          "Myth: If I ignore it, it will wall off and disappear. Fact: The pocket can go quiet and still spread later. MedlinePlus treats an abscess as something that needs care, not a wait-and-see hobby.",
+          "Myth: Salt water will cure it. Fact: A rinse is comfort. It is not source control.",
+          "Myth: If it drains, I am done. Fact: A gum boil that pops is a leak, not a repair.",
+          "Myth: A text visit replaces a dentist. Fact: I can be a bridge for some people. I cannot drill or pull.",
+          "Myth: Medicine always gets sent. Fact: A consult does not guarantee a prescription.",
+          "Myth: If the pain stops, the tooth healed. Fact: A dead nerve can go quiet while germs keep working at the root tip.",
+          "Myth: Oil, garlic, or whiskey kills the pocket. Fact: Those make breath interesting. They do not clean a canal.",
+          "Myth: I can crush leftover pills from a friend. Fact: That is a bad idea and I will not help you do it. Your story may not fit that bottle."
+        ]
+      },
+      {
+        "type": "prose",
+        "heading": "The true ending of this series",
+        "body": [
+          "A dental abscess is a balloon your body built around germs. The door was a hole, a crack, or a gum pocket. The feeling is pressure. The map is tooth, gum, or spreading face. Lookalikes steal the scene. Red flags mean the ER. Care is source first, helper medicine second, and only when it fits. I can text with some of you. A dentist still has to fix the house. If you skip the house, the balloon comes back.",
+          "If you want the $59 text visit, and you think you fit, text me. If you need the ER, go. If you can get a dentist today, go there. I would rather you pick the right door than pick my door."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is it safe to wait if I am scared of the dentist?",
+        "a": "Fear is real. Waiting on a spreading infection is worse. Tell the dentist you are scared. Use the ER if red flags show up. Text me if you fit a bridge and need a plan in words."
+      },
+      {
+        "q": "Do you promise the pain will stop?",
+        "a": "No. I do not promise results. I promise an honest read on whether text care is safe."
+      },
+      {
+        "q": "Where do I start if I am still not sure?",
+        "a": "Read the red flag stop again. If you are not on that list, read dentist vs text. Then text me or call a dentist. The offer page is the short version of the visit."
+      }
+    ],
+    "sources": [
+      { "label": "MedlinePlus. Tooth abscess.", "url": "https://medlineplus.gov/ency/article/001060.htm" },
+      { "label": "American Dental Association, MouthHealthy. Abscess (toothache).", "url": "https://www.mouthhealthy.org/all-topics-a-z/abscess" },
+      { "label": "Centers for Disease Control and Prevention. Antibiotic use.", "url": "https://www.cdc.gov/antibiotic-use/index.html" },
+      { "label": "American Association of Endodontists. Abscessed teeth.", "url": "https://www.aae.org/patients/dental-symptoms/abscessed-teeth/" }
+    ]
+  },
+  "one_pager": {
+    "meta_title": "Dental Abscess Treatment by Text | $59 | NPCWoods",
+    "meta_description": "Tooth throbbing or a puffy gum? Text Chris Woods, NP. $59 visit. A consult does not guarantee a prescription. Many abscesses still need a dentist or the ER.",
+    "h1": "Tooth throbbing. Gum puffy. Text Chris.",
+    "lede": "I am Chris Woods, a Nurse Practitioner. Some dental abscesses fit a $59 text visit as a bridge. Many need a dentist the same day. A few need the ER. I will tell you which door you are on. A consult does not guarantee a prescription.",
+    "bubbles": [
+      { "style": "blue", "who": "You", "text": "I cannot get a dentist until next week. The tooth is a drum." },
+      { "style": "black", "who": "Chris", "text": "Text me the story. If you fit, we make a plan. If you need a chair or the ER, I say that. You do not pay if I cannot treat you by text." }
+    ],
+    "plain_cards": [
+      { "kicker": "Stop 1", "title": "The big picture", "text": "A pocket of pus. A balloon your body built.", "href": "/learn/dental-abscess/" },
+      { "kicker": "Stop 6", "title": "Red flags", "text": "When this is an emergency, not a text.", "href": "/learn/dental-abscess/red-flags/" },
+      { "kicker": "Stop 7", "title": "What care looks like", "text": "Dentist fixes the source. Medicine is a helper.", "href": "/learn/dental-abscess/what-care-looks-like/" },
+      { "kicker": "Stop 8", "title": "Dentist vs text", "text": "Who fits a $59 visit. Who does not.", "href": "/learn/dental-abscess/dentist-vs-text/" }
+    ],
+    "faqs": [
+      {
+        "q": "How much is the visit?",
+        "a": "$59 flat. You do not pay if text care is not safe."
+      },
+      {
+        "q": "Will I get medicine?",
+        "a": "Only if it is appropriate. A consult does not guarantee a prescription. If a helper medicine fits, an antibiotic your clinician may send to your pharmacy is a bridge, not a tooth repair."
+      },
+      {
+        "q": "Do you pull teeth?",
+        "a": "No. A dentist does hands-on work. I do text visits."
+      },
+      {
+        "q": "What states?",
+        "a": "13 states, including Florida by telehealth registration. You must be in a state I can treat at the time of the visit."
+      },
+      {
+        "q": "When do I skip this page and go to the ER?",
+        "a": "Trouble breathing or swallowing, a rising floor of the mouth, a closing eye, or a hard spreading neck. Call 911 or go now."
+      }
+    ]
+  }
+}

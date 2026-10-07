@@ -61,7 +61,9 @@ Common text-based visits ($59). Link a treatment URL only when one exists.
 - [Strep throat](https://npcwoods.com/strep-throat-treatment/): $59 text visit
 - [Ear infection](https://npcwoods.com/ear-infection-treatment/): $59 text visit
 - [Pink eye](https://npcwoods.com/pink-eye-treatment/): $59 text visit
-- [Tooth infection / dental abscess](https://npcwoods.com/dental-pain/): bridge antibiotics only; dentist still required
+- [Tooth infection / dental abscess](https://npcwoods.com/dental-pain/): bridge care only; dentist still required
+- [Dental abscess treatment](https://npcwoods.com/dental-abscess-treatment/): $59 text visit one-pager. No medication names. A consult does not guarantee a prescription.
+- [Dental Abscess Explained](https://npcwoods.com/learn/dental-abscess/): 10-stop education series under /learn/dental-abscess/
 - [Erectile dysfunction](https://npcwoods.com/ed-treatment/): $59 text visit
 - [Poison ivy / plant rash](https://npcwoods.com/poison-ivy/): $59 text visit
 - [Cold sores](https://npcwoods.com/cold-sore-treatment/): $59 text visit
@@ -147,7 +149,7 @@ No. $59 when you need a visit.
 Yes, for non-controlled medications, when it is appropriate, in the 11 licensed states.
 
 **Can I get antibiotics for a tooth infection?**
-Sometimes, as a bridge, when it is safe. Antibiotics do not fix the tooth. You still need a dentist. [Dental pain](https://npcwoods.com/dental-pain/): bridge care only
+Sometimes, as a bridge, when it is safe. Medicine does not fix the tooth. You still need a dentist. [Dental pain](https://npcwoods.com/dental-pain/) and the [dental abscess treatment](https://npcwoods.com/dental-abscess-treatment/) one-pager: bridge care only. Series: [Dental Abscess Explained](https://npcwoods.com/learn/dental-abscess/)
 
 **Do you prescribe Ozempic or compounded GLP-1s?**
 No. The live page is a $59 consult about oral GLP-1 options, fit, and safety. Outside drug cost is separate. [GLP-1 consult](https://npcwoods.com/glp1-weight-loss/): fit and safety, not a pen shop

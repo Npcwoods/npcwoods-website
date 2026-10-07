@@ -8,6 +8,38 @@
  */
 
 add_action( 'template_redirect', function() {
+    $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+    $path = trailingslashit( $path );
+
+    // Nested /learn/dental-abscess/ series needs path matching.
+    // Slug-only routing cannot tell hub stops apart.
+    $path_map = array(
+        '/learn/dental-abscess/'                      => 'learn/dental-abscess/index.html',
+        '/learn/dental-abscess/how-it-starts/'        => 'learn/dental-abscess/how-it-starts/index.html',
+        '/learn/dental-abscess/what-it-feels-like/'   => 'learn/dental-abscess/what-it-feels-like/index.html',
+        '/learn/dental-abscess/tooth-vs-gum/'         => 'learn/dental-abscess/tooth-vs-gum/index.html',
+        '/learn/dental-abscess/lookalikes/'           => 'learn/dental-abscess/lookalikes/index.html',
+        '/learn/dental-abscess/red-flags/'            => 'learn/dental-abscess/red-flags/index.html',
+        '/learn/dental-abscess/what-care-looks-like/' => 'learn/dental-abscess/what-care-looks-like/index.html',
+        '/learn/dental-abscess/dentist-vs-text/'      => 'learn/dental-abscess/dentist-vs-text/index.html',
+        '/learn/dental-abscess/why-it-comes-back/'    => 'learn/dental-abscess/why-it-comes-back/index.html',
+        '/learn/dental-abscess/myths/'                => 'learn/dental-abscess/myths/index.html',
+    );
+
+    if ( isset( $path_map[ $path ] ) ) {
+        $html_file = ABSPATH . $path_map[ $path ];
+        if ( file_exists( $html_file ) ) {
+            header( 'Content-Type: text/html; charset=UTF-8' );
+            header( 'X-NPCWoods-Page: education' );
+            header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
+            header( 'X-Content-Type-Options: nosniff' );
+            header( 'X-Frame-Options: SAMEORIGIN' );
+            header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+            readfile( $html_file );
+            exit;
+        }
+    }
+
     // Map page slugs to their static HTML files
     $page_map = array(
         // Hub page
@@ -27,6 +59,7 @@ add_action( 'template_redirect', function() {
         'yeast-infection'         => 'learn/yeast-infection/index.html',
         'ingrown-toenail'         => 'learn/ingrown-toenail/index.html',
         'covid-flu'               => 'learn/covid-flu/index.html',
+        'dental-abscess'          => 'learn/dental-abscess/index.html',
         // Drug reference pages
         'amoxicillin'             => 'medications/amoxicillin/index.html',
         'augmentin'               => 'medications/augmentin/index.html',
