@@ -173,33 +173,86 @@ class SitewideMetaTrackingTest(unittest.TestCase):
         self.assertNotIn('1428464038973925', transformed)
         self.assertNotIn('facebook.com/tr', transformed)
 
-    def test_filter_replaces_legacy_trackers_with_site_pixel(self):
-        transformed = transform(SAMPLE_DOCUMENT)
-
-        self.assertEqual(transformed.count("1428464038973925"), 2)
-        self.assertIn("connect.facebook.net/en_US/fbevents.js", transformed)
-        self.assertIn("fbq('init', '1428464038973925')", transformed)
-        self.assertIn("fbq('track', 'PageView')", transformed)
-        self.assertIn("facebook.com/tr?id=1428464038973925", transformed)
-        self.assertNotIn("1558261907814968", transformed)
-        self.assertNotIn("googletagmanager.com", transformed)
-        self.assertNotIn("google-analytics.com", transformed)
-        self.assertNotIn("/tracking.js", transformed)
+    def assert_strips_and_injects_nothing(self, transformed):
+        # HIPAA (no BAA with Meta/Ahrefs): the plugin may strip trackers but
+        # must never inject Meta Pixel (or anything else) into the page.
+        for marker in (
+            "1428464038973925",
+            "1558261907814968",
+            "connect.facebook.net",
+            "fbevents.js",
+            "facebook.com/tr",
+            "fbq('init'",
+            "fbq('track'",
+            "googletagmanager.com",
+            "google-analytics.com",
+            "/tracking.js",
+            "Meta Pixel Code",
+        ):
+            self.assertNotIn(marker, transformed)
+        # The health-page no-op stub must survive (it blocks later-injected pixels).
+        self.assertIn("window.fbq = function () {};", transformed)
         self.assertIn("fonts.googleapis.com", transformed)
-        self.assertIn("analytics.ahrefs.com", transformed)
+        self.assertIn("Care when you need it.", transformed)
+        # Ahrefs is not stripped by this plugin, and is never added by it.
+        self.assertEqual(transformed.count("analytics.ahrefs.com"), SAMPLE_DOCUMENT.count("analytics.ahrefs.com"))
 
-    def test_fallback_mu_plugin_replaces_legacy_trackers_with_site_pixel(self):
-        transformed = transform(
-            SAMPLE_DOCUMENT,
-            FALLBACK_PLUGIN,
-            "npcwoods_sitewide_meta_pixel_rewrite_document",
+    def test_tracking_plugin_strips_trackers_and_injects_nothing(self):
+        self.assert_strips_and_injects_nothing(transform(SAMPLE_DOCUMENT))
+
+    def test_fallback_mu_plugin_strips_trackers_and_injects_nothing(self):
+        self.assert_strips_and_injects_nothing(
+            transform(
+                SAMPLE_DOCUMENT,
+                FALLBACK_PLUGIN,
+                "npcwoods_sitewide_meta_pixel_rewrite_document",
+            )
         )
 
-        self.assertIn("fbq('init', '1428464038973925')", transformed)
-        self.assertIn("connect.facebook.net/en_US/fbevents.js", transformed)
-        self.assertNotIn("1558261907814968", transformed)
-        self.assertNotIn("googletagmanager.com", transformed)
+    def test_clean_health_page_passes_through_unchanged(self):
+        page = """<!doctype html><html><head>
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
+<title>UTI treatment</title>
+</head><body><h1>UTI</h1></body></html>"""
+        for plugin, fn in (
+            (PLUGIN, "npcwoods_tracking_rewrite_document"),
+            (FALLBACK_PLUGIN, "npcwoods_sitewide_meta_pixel_rewrite_document"),
+        ):
+            with self.subTest(plugin=plugin.name):
+                self.assertEqual(transform(page, plugin, fn), page)
 
+    def test_stripping_never_swallows_neighboring_script_or_html(self):
+        page = """<html><head>
+<script type="application/ld+json">{"@type":"MedicalWebPage"}</script>
+<link rel="canonical" href="https://npcwoods.com/uti-treatment/">
+<script>fbq('init', '1428464038973925');</script>
+</head><body></body></html>"""
+        for plugin, fn in (
+            (PLUGIN, "npcwoods_tracking_rewrite_document"),
+            (FALLBACK_PLUGIN, "npcwoods_sitewide_meta_pixel_rewrite_document"),
+        ):
+            with self.subTest(plugin=plugin.name):
+                out = transform(page, plugin, fn)
+                self.assertIn("MedicalWebPage", out)
+                self.assertIn('rel="canonical"', out)
+                self.assertNotIn("1428464038973925", out)
+
+    def test_plugin_sources_contain_no_tracker_snippet(self):
+        for plugin in (PLUGIN, FALLBACK_PLUGIN):
+            source = plugin.read_text(encoding="utf-8")
+            with self.subTest(plugin=plugin.name):
+                self.assertNotIn("<<<'HTML'", source)
+                self.assertNotIn("fbq('track', 'PageView')", source)
+                self.assertNotIn("facebook.com/tr?id=", source)
+                self.assertNotIn("analytics.ahrefs.com", source)
+                self.assertNotRegex(source, r"preg_replace\(\s*'~</head")
+                self.assertIn("no Business Associate Agreement".lower(), source.lower())
 
 if __name__ == "__main__":
     unittest.main()
