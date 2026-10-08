@@ -443,6 +443,142 @@ h1 em { font-style: italic; color: var(--accent); }
   .series-sticky { top: 56px; }
 }
 
+/* ===== Background parity with the GLP-1 series (2026-10-07) =====
+   Each page type copies its GLP-1 twin:
+   - Hub   (series-hub)   = /learn/glp1/ : full-page vertical night -> neon blue
+     -> cream -> white body gradient, dark neon-glow hero, white cards behind
+     every block of text so nothing sits bare on a mid or low band.
+   - Stop  (series-stop)  = /learn/glp1/<stop>/ : dark neon-glow hero band
+     (same radial stack as the GLP .gh hero), then a plain white page.
+   - Offer (series-offer) = /glp1-weight-loss/ : brand-blue gradient hero band,
+     then a plain white page. Stops held in the deep-blue range so white hero
+     text stays WCAG AA.
+   Red stays on accent elements only. */
+html { overflow-x: hidden; }
+
+body.series-page.series-hub {
+  background-color: #FFFFFF;
+  background-image: linear-gradient(
+    180deg,
+    #05060a 0%,
+    #05060a 10%,
+    #071a3a 18%,
+    #0a84ff 34%,
+    #0a84ff 48%,
+    #5eb8ff 58%,
+    #F6F3EE 72%,
+    #FFFFFF 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+body.series-page.series-stop,
+body.series-page.series-offer { background: #FFFFFF; }
+
+/* Full-bleed hero bands (pseudo-element, so markup and copy stay the same) */
+body.series-hub .hero,
+body.series-stop .hero,
+body.series-offer .offer-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 56px 0 52px;
+  margin-bottom: 28px;
+  color: #fff;
+}
+body.series-hub .hero::before,
+body.series-stop .hero::before,
+body.series-offer .offer-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+}
+body.series-hub .hero::before,
+body.series-stop .hero::before {
+  background:
+    radial-gradient(620px 520px at 74% 52%, rgba(0,113,227,.42), transparent 70%),
+    radial-gradient(500px 360px at 12% 0%, rgba(41,151,255,.14), transparent 70%),
+    #05060a;
+}
+body.series-offer .offer-hero::before {
+  background: linear-gradient(160deg, #1a4fd4 0%, #1D4ED8 35%, #2563EB 100%);
+}
+/* Hub only: fade the band into the black top of the body gradient (no seam) */
+body.series-hub .hero::before {
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+}
+@media (max-width: 640px) {
+  body.series-hub .hero::before,
+  body.series-stop .hero::before {
+    background: radial-gradient(420px 380px at 60% 78%, rgba(0,113,227,.45), transparent 70%), #05060a;
+  }
+  body.series-hub .hero,
+  body.series-stop .hero,
+  body.series-offer .offer-hero { padding: 40px 0 40px; }
+}
+body.series-hub .hero h1,
+body.series-stop .hero h1,
+body.series-offer .offer-hero h1 { color: #fff; }
+body.series-hub .hero .lede,
+body.series-stop .hero .lede { color: #c7c7ce; }
+body.series-offer .offer-hero .lede { color: #fff; }
+body.series-hub .hero-kicker,
+body.series-stop .hero-kicker,
+body.series-offer .hero-kicker {
+  color: #f5f7ff;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  padding: .5rem .9rem;
+  border-radius: 999px;
+}
+body.series-hub .hero-kicker .dot,
+body.series-stop .hero-kicker .dot,
+body.series-offer .hero-kicker .dot {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.85), 0 0 10px var(--accent);
+}
+body.series-offer .offer-price { box-shadow: 0 0 0 1.5px #fff, 0 10px 24px rgba(0,0,0,.18); }
+
+/* Readable labels on white (was #8E8E9A, under AA) */
+.bubble-label { color: #5f5f68; }
+
+/* Hub: white cards behind every loose text block, like the GLP-1 hub panels */
+body.series-hub .thread,
+body.series-hub .prose,
+body.series-hub .faq,
+body.series-hub .sources {
+  background: #fff;
+  color: var(--muted);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 22px 20px;
+}
+body.series-hub .thread { max-width: 480px; }
+body.series-hub .prose > h2:first-child,
+body.series-hub .faq > h2:first-child,
+body.series-hub .sources > h2:first-child { margin-top: 0; }
+body.series-hub .prose > :last-child { margin-bottom: 0; }
+body.series-hub .roadmap { box-shadow: var(--shadow); }
+body.series-hub .ink-block,
+body.series-stop .ink-block { border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+@media (min-width: 560px) {
+  body.series-hub .thread,
+  body.series-hub .prose,
+  body.series-hub .faq,
+  body.series-hub .sources { padding: 26px 26px; }
+}
+
+/* Stop + offer: white page, so give white cards a visible edge */
+body.series-offer .yes,
+body.series-offer .no,
+body.series-offer .plain-card,
+body.series-stop .stat {
+  box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(26,26,46,.06);
+}
+
 .npc-clinician-byline {
   margin: 28px 0;
   padding: 14px 18px;
@@ -460,7 +596,7 @@ h1 em { font-style: italic; color: var(--accent); }
 .npc-clinician-byline a { color: #1d4ed8; font-weight: 600; }
 </style>
 </head>
-<body class="series-page">
+<body class="series-page series-offer">
 <a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->

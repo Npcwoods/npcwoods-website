@@ -160,5 +160,35 @@ class DentalAbscessSeriesTest(unittest.TestCase):
                 self.assertNotIn("guaranteed results", lower)
 
 
+    def test_background_matches_glp1_per_page_type(self):
+        # Hub copies /learn/glp1/ (vertical night -> neon blue -> cream -> white
+        # body gradient). Stops copy /learn/glp1/<stop>/ (dark neon-glow hero
+        # band on a white page). Offer copies /glp1-weight-loss/ (blue hero band
+        # on a white page).
+        css = (SERIES_DIR / "_shared" / "series.css").read_text(encoding="utf-8")
+        for stop in (
+            "#05060a 10%", "#071a3a 18%", "#0a84ff 34%", "#0a84ff 48%",
+            "#5eb8ff 58%", "#F6F3EE 72%", "#FFFFFF 100%",
+        ):
+            self.assertIn(stop, css)
+        self.assertIn("rgba(0,113,227,.42)", css)
+        hub = (SERIES_DIR / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<body class="series-page series-hub">', hub)
+        self.assertIn('<body class="series-page series-offer">', OFFER.read_text(encoding="utf-8"))
+        for stop in series()["stops"]:
+            if not stop["slug"]:
+                continue
+            text = (SERIES_DIR / stop["slug"] / "index.html").read_text(encoding="utf-8")
+            with self.subTest(page=stop["slug"]):
+                self.assertIn('<body class="series-page series-stop">', text)
+
+    def test_one_accent_only(self):
+        css = (SERIES_DIR / "_shared" / "series.css").read_text(encoding="utf-8")
+        self.assertIn("--accent: #B42318;", css)
+        # No second series accent hue snuck in with the background work.
+        for other in ("#f5a524", "#F5A524", "#19a463"):
+            self.assertNotIn(other, css)
+
+
 if __name__ == "__main__":
     unittest.main()
