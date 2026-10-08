@@ -100,7 +100,9 @@ class DentalAbscessSeriesTest(unittest.TestCase):
         hits = []
         for root in roots:
             for path in root.rglob("*"):
-                if path.suffix.lower() not in {".html", ".json", ".css"}:
+                if MED_NAME_RE.search(path.name):
+                    hits.append(f"{path.relative_to(ROOT)}: filename")
+                if path.suffix.lower() not in {".html", ".json", ".css", ".svg"}:
                     continue
                 if path.name == "README.md":
                     continue
@@ -119,7 +121,9 @@ class DentalAbscessSeriesTest(unittest.TestCase):
         hits = []
         for root in roots:
             for path in root.rglob("*"):
-                if path.suffix.lower() not in {".html", ".json", ".css"}:
+                if class_word.search(path.name):
+                    hits.append(f"{path.relative_to(ROOT)}: filename")
+                if path.suffix.lower() not in {".html", ".json", ".css", ".svg"}:
                     continue
                 scrubbed = path.read_text(encoding="utf-8").replace(allowed_url, "")
                 for i, line in enumerate(scrubbed.splitlines(), 1):
@@ -188,6 +192,67 @@ class DentalAbscessSeriesTest(unittest.TestCase):
         # No second series accent hue snuck in with the background work.
         for other in ("#f5a524", "#F5A524", "#19a463"):
             self.assertNotIn(other, css)
+
+
+    def test_series_pages_have_hero_cutout_ghost_and_body_figure(self):
+        # SEO Mini-Series skill: every explainer page (hub + 9 stops) carries
+        # Chris's real clinician cutout, a topic ghost graphic in the hero,
+        # and at least one body figure with real alt text.
+        cutout_re = re.compile(
+            r'<img class="hero-cutout" src="/learn/glp1/assets/chris-cutout-600\.webp[^"]*"[^>]*'
+            r'width="\d+" height="\d+" alt="[^"]+"'
+        )
+        fig_re = re.compile(
+            r'<figure class="art-fig"><img src="(?P<src>[^"]+)" width="(?P<w>\d+)" height="(?P<h>\d+)" '
+            r'alt="(?P<alt>[^"]*)" loading="lazy" decoding="async">'
+        )
+        pages = [SERIES_DIR / "index.html"] + [
+            SERIES_DIR / stop["slug"] / "index.html" for stop in series()["stops"] if stop["slug"]
+        ]
+        self.assertEqual(len(pages), 10)
+        for path in pages:
+            text = path.read_text(encoding="utf-8")
+            main = text.split('<main id="main">', 1)[1]
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertRegex(main, cutout_re)
+                self.assertIn('<svg class="hero-ghost"', main)
+                self.assertIn('aria-hidden="true"', main.split('<svg class="hero-ghost"', 1)[1][:200])
+                self.assertIn('class="hero-bubble hb-black"', main)
+                self.assertIn('class="hero-bubble hb-blue"', main)
+                figs = list(fig_re.finditer(main))
+                self.assertGreaterEqual(len(figs), 1, "no body figure")
+                for fig in figs:
+                    self.assertGreater(len(fig["alt"].strip()), 40, f"weak alt on {fig['src']}")
+                    rel = fig["src"].split("?", 1)[0].lstrip("/")
+                    asset = ROOT / "landing-pages" / rel
+                    self.assertTrue(asset.exists(), f"missing asset {asset}")
+                    self.assertLess(asset.stat().st_size, 150_000)
+
+    def test_ghost_graphics_have_no_text_or_numbers(self):
+        for path in [SERIES_DIR / "index.html"] + [
+            SERIES_DIR / s["slug"] / "index.html" for s in series()["stops"] if s["slug"]
+        ]:
+            text = path.read_text(encoding="utf-8")
+            ghost = text.split('<svg class="hero-ghost"', 1)[1].split("</svg>", 1)[0]
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertNotIn("<text", ghost)
+
+    def test_schema_image_and_real_og_picture(self):
+        for path in [SERIES_DIR / "index.html"] + [
+            SERIES_DIR / s["slug"] / "index.html" for s in series()["stops"] if s["slug"]
+        ]:
+            text = path.read_text(encoding="utf-8")
+            blocks = re.findall(r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>', text, re.S)
+            med = [json.loads(b) for b in blocks if '"MedicalWebPage"' in b][0]
+            og = re.search(r'<meta property="og:image" content="([^"]+)"', text).group(1)
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertIn("image", med)
+                self.assertTrue(med["image"]["url"].endswith(".jpg"))
+                self.assertTrue(og.startswith("https://npcwoods.com/learn/dental-abscess/assets/og/"))
+                local = ROOT / "landing-pages" / og.split("npcwoods.com/", 1)[1].split("?", 1)[0]
+                self.assertTrue(local.exists(), f"missing og image {local}")
+                self.assertLess(local.stat().st_size, 150_000)
+                self.assertIn('<meta name="twitter:image"', text)
 
 
 if __name__ == "__main__":

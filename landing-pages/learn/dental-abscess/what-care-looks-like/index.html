@@ -20,7 +20,11 @@ window._fbq = window.fbq;
 <meta property="og:title" content="What Dental Abscess Care Looks Like | NPCWoods Learn Series">
 <meta property="og:description" content="Source control first. Helper medicine is a bridge, not a fix. Chris Woods, NP, explains dental abscess care without naming any drugs.">
 <meta property="og:url" content="https://npcwoods.com/learn/dental-abscess/what-care-looks-like/">
-<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
+<meta property="og:image" content="https://npcwoods.com/learn/dental-abscess/assets/og/og-what-care-looks-like.jpg?v=20261008">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="What care looks like: Chris Woods, NP, with a tooth diagram">
+<meta name="twitter:image" content="https://npcwoods.com/learn/dental-abscess/assets/og/og-what-care-looks-like.jpg?v=20261008">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +47,13 @@ window._fbq = window.fbq;
   },
   "publisher": {
     "@id": "https://npcwoods.com/#medical-business"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://npcwoods.com/learn/dental-abscess/assets/og/og-what-care-looks-like.jpg",
+    "width": 1200,
+    "height": 630,
+    "caption": "What care looks like"
   }
 }
 </script>
@@ -575,6 +586,82 @@ body.series-stop .stat {
   box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(26,26,46,.06);
 }
 
+/* ===== Editorial hero + body figures (2026-10-08) =====
+   Explainer pages only (hub + stops). The offer page does not load this.
+   Matches the GLP-1 / UTI explainer hero: real clinician cutout on the
+   right, two iMessage bubbles kept off the face, a topic ghost graphic
+   behind the headline. Nothing starts hidden. No entrance animations. */
+body.series-hub .hero.hero-art,
+body.series-stop .hero.hero-art {
+  padding: 0;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.hero-ghost {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto;
+  padding: 56px 40px 0;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
+  align-items: end; min-height: 560px;
+}
+.hero-copy { align-self: center; padding-bottom: 56px; min-width: 0; }
+.hero-copy .lede { max-width: 34rem; }
+.hero-photo { position: relative; justify-self: center; align-self: end; }
+.hero-photo img {
+  display: block; height: 520px; width: auto; max-width: none;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55));
+}
+.hero-bubble {
+  position: absolute; z-index: 3;
+  color: #fff; font-weight: 700; font-size: 15px; line-height: 1.25;
+  padding: 11px 16px; border-radius: 20px 20px 20px 6px;
+  max-width: 200px; white-space: normal;
+  box-shadow: 0 12px 28px rgba(0,0,0,.32);
+}
+.hero-bubble.hb-black {
+  background: #000; border: 1.5px solid #fff;
+  top: 6px; left: -92px; transform: rotate(-4deg);
+}
+.hero-bubble.hb-blue {
+  background: #007AFF; border: 1.5px solid #fff;
+  bottom: 96px; left: -104px; transform: rotate(3deg);
+  border-radius: 20px 20px 6px 20px;
+  box-shadow: 0 12px 28px rgba(0,122,255,.28), 0 8px 20px rgba(0,0,0,.28);
+}
+@media (max-width: 900px) and (min-width: 641px) {
+  .hero-inner { padding: 48px 28px 0; min-height: 0; }
+  .hero-photo img { height: 420px; }
+  .hero-bubble.hb-black { left: -70px; }
+  .hero-bubble.hb-blue { left: -80px; bottom: 70px; }
+}
+@media (max-width: 640px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 34px 20px 0; min-height: 0; gap: 0; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-photo { margin: 64px auto 0; }
+  .hero-photo img { height: 360px; }
+  .hero-bubble { font-size: 13px; padding: 9px 12px; max-width: 168px; }
+  .hero-bubble.hb-black { top: -50px; left: -18px; }
+  .hero-bubble.hb-blue { bottom: 30px; left: -18px; }
+}
+@media (max-width: 360px) { .hero-photo img { height: 320px; } }
+
+/* Body figures */
+.art-fig { margin: 32px auto; max-width: 640px; }
+.art-fig img { width: 100%; height: auto; display: block; border-radius: 18px; }
+.art-fig figcaption {
+  margin-top: 10px; font-size: .92rem; line-height: 1.45; color: var(--body);
+  text-align: center;
+}
+body.series-hub .art-fig {
+  background: #fff; border-radius: 24px; padding: 14px 14px 16px;
+  box-shadow: var(--shadow);
+}
+body.series-stop .art-fig img { box-shadow: 0 0 0 1px var(--line); }
+
 .npc-clinician-byline {
   margin: 28px 0;
   padding: 14px 18px;
@@ -810,12 +897,22 @@ body.series-stop .stat {
 
 <div class="series-sticky" role="navigation" aria-label="Episode bar"><span class="series-sticky-ep">Stop 7 of 10 · What care looks like</span><a class="series-sticky-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%20have%20a%20dental%20abscess%20or%20bad%20tooth%20pain%20and%20want%20a%20%2459%20text%20visit.">Text Chris</a></div>
 <main id="main">
-<article class="series-wrap">
-<header class="hero">
+<header class="hero hero-art">
+<svg class="hero-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><line x1="0" y1="90" x2="1440" y2="90" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="180" x2="1440" y2="180" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="270" x2="1440" y2="270" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="360" x2="1440" y2="360" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="540" x2="1440" y2="540" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="630" x2="1440" y2="630" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="120" y1="0" x2="120" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="240" y1="0" x2="240" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="360" y1="0" x2="360" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="480" y1="0" x2="480" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="600" y1="0" x2="600" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="720" y1="0" x2="720" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="840" y1="0" x2="840" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="960" y1="0" x2="960" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1080" y1="0" x2="1080" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1200" y1="0" x2="1200" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1320" y1="0" x2="1320" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><g class="ghost-tooth" transform="translate(500 118) scale(1.4)"><path d="M20 60 C20 25 40 8 60 14 C75 18 85 28 100 22 C115 16 125 10 140 14 C165 20 180 35 180 60 C180 95 172 120 165 140 C160 190 158 250 150 320 C148 338 129 338 127 322 C122 270 115 222 100 202 C85 222 78 270 73 322 C71 338 52 338 50 320 C42 250 40 190 35 140 C28 120 20 95 20 60 Z" fill="none" stroke="#7cc4ff" stroke-opacity="0.26" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="M70 100 C69 84 76 76 86 84 C93 90 107 90 114 84 C124 76 131 84 130 100 C130 126 128 150 126 166 L74 166 C72 150 70 126 70 100 Z M74 166 C70 205 66 262 61.5 326 M126 166 C130 205 134 262 138.5 326" fill="none" stroke="#2997ff" stroke-opacity="0.24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" stroke-dasharray="3 9"/><path d="M240 30 C320 70 210 150 290 200 C350 236 270 300 320 350" fill="none" stroke="#7cc4ff" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" stroke-dasharray="2 12"/><circle cx="240" cy="30" r="12" fill="none" stroke="#B42318" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="262" cy="118" r="12" fill="none" stroke="#7cc4ff" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="290" cy="200" r="12" fill="none" stroke="#7cc4ff" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle cx="320" cy="350" r="12" fill="none" stroke="#7cc4ff" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></g></svg>
+<div class="hero-inner">
+<div class="hero-copy">
 <div class="hero-kicker"><span class="dot"></span> Dental abscess series · Stop 7</div>
 <h1>What care looks like</h1>
 <p class="lede">Care has two jobs. Job one is to open the pocket and fix the source. Job two is to calm germs while that happens. Job one is a dentist. Job two is sometimes a medicine I can send to your pharmacy. Job two never replaces job one.</p>
+</div>
+<div class="hero-photo">
+<img class="hero-cutout" src="/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" srcset="/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, /learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" sizes="(max-width: 640px) 258px, (max-width: 900px) 301px, 372px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, smiling with a stethoscope" fetchpriority="high" decoding="async">
+<span class="hero-bubble hb-black">Fix the source first</span>
+<span class="hero-bubble hb-blue">Medicine is a helper</span>
+</div>
+</div>
 </header>
+<article class="series-wrap">
 <div class="thread" aria-label="Sample texts">
 <div class="bubble-label">You</div>
 <div class="bubble bubble-blue">Can you just send something so I can skip the dentist?</div>
@@ -833,6 +930,7 @@ body.series-stop .stat {
 <p>A consult does not guarantee a prescription. If you do not fit, I will say so. If you need the ER, I will say so. If you need a dentist today and no medicine yet, I will say that too.</p>
 <p>I will not name products on this page. Google health ads and, more important, good care both fail when a landing page turns into a shopping list.</p>
 </div>
+<figure class="art-fig"><img src="/learn/dental-abscess/assets/care-steps.svg?v=20261008" width="640" height="816" alt="Four care steps on a dotted path. One, find the source: a dentist checks the tooth and takes an X-ray. Two, let the pus out: open the tooth, or a small cut in the gum drains it. Three, fix the source: a root canal cleans and seals the nerve room, or the tooth is removed if it cannot be saved. Four, helper medicine if it fits: it calms germs as a bridge and is not the repair. Steps one to three are the dentist, and step four never replaces them." loading="lazy" decoding="async"><figcaption>Source first. A helper medicine is a bridge, not the repair.</figcaption></figure>
 <div class="prose">
 <h2>Comfort that does not pretend to cure</h2>
 <ul>

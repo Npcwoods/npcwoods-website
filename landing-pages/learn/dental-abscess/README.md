@@ -101,3 +101,15 @@ Generic words are allowed: `medicine`, `prescription` as a possibility, never a 
 Many abscesses need a dentist or the ER. Text care fits some stable, local cases only. A consult does not guarantee a prescription. Helper medicine is a bridge. The dentist still fixes the source.
 
 License wording: **13 states, including Florida by telehealth registration**. Never Florida-licensed.
+
+## Pictures and hero art (2026-10-08)
+
+- Hero (hub + 9 stops): Chris's real wink + stethoscope cutout, shared with the GLP-1 and UTI series at `/learn/glp1/assets/chris-cutout-{600,900}.webp?v=20261006arms`. Never generate or edit images of Chris.
+- Two hero bubbles per page (black with a thin white outline, iMessage blue `#007AFF`), placed off the face. Text lives in `art.json`.
+- Ghost graphic: inline, `aria-hidden`, a big tooth outline plus one topic motif per stop (`ghost_svg()` in the build). No text, no numbers.
+- Body figures: clean SVGs in `assets/`, drawn by `scripts/build-dental-abscess-art.py`. Placement, alt text, and captions in `art.json` (`after_section` is the 0-based section index).
+- Share cards: `assets/og/og-<page>.jpg` (1200x630), rendered by `scripts/build-dental-abscess-og.py`. Also used as `image` in the MedicalWebPage JSON-LD.
+- `_shared/art.css` loads on the explainer pages only. The offer page does not use it.
+- Deploy note: `scripts/deploy.py` uploads `index.html` only. Upload `assets/` (SVGs + og JPGs) alongside it.
+
+Rebuild order: `build-dental-abscess-art.py` → `build-dental-abscess-og.py` → `build-dental-abscess-series.py` → tests.

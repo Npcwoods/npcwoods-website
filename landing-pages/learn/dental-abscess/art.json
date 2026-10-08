@@ -1,0 +1,128 @@
+{
+  "version": "20261008",
+  "asset_base": "/learn/dental-abscess/assets/",
+  "cutout": {
+    "src600": "/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms",
+    "src900": "/learn/glp1/assets/chris-cutout-900.webp?v=20261006arms",
+    "width": 900,
+    "height": 1258,
+    "alt": "Chris Woods, MSN, APRN, FNP-C, smiling with a stethoscope"
+  },
+  "pages": {
+    "hub": {
+      "ghost": "hub",
+      "stickers": ["Hey! I'm Chris", "Let's find the source tooth"],
+      "figures": [
+        {
+          "src": "tooth-anatomy-map.svg", "width": 640, "height": 600, "after_section": 0,
+          "alt": "Labeled cross-section of a back tooth in the jaw. Labels: enamel, the hard white shell; dentin, the softer layer; pulp, the nerve room; nerve and blood vessels running down the root canals; root; gum; jawbone. Red dashed circles mark where a tooth abscess forms at the root tip and where a gum abscess forms in the gum beside the tooth.",
+          "caption": "Inside a tooth. A tooth abscess sits at the root tip. A gum abscess sits in the gum beside the tooth."
+        }
+      ]
+    },
+    "how-it-starts": {
+      "ghost": "how-it-starts",
+      "stickers": ["Germs need a door", "Cavity to nerve room"],
+      "figures": [
+        {
+          "src": "cavity-to-abscess-steps.svg", "width": 640, "height": 780, "after_section": 0,
+          "alt": "Four tooth cross-sections in order. One: acid digs a small hole in the enamel shell. Two: the hole reaches the softer dentin. Three: germs travel down to the pulp and the nerve gets angry. Four: the nerve dies and a pus pocket forms at the root tip in the jawbone.",
+          "caption": "From cavity to abscess, one layer at a time."
+        },
+        {
+          "src": "three-doors-germs-get-in.svg", "width": 640, "height": 400, "after_section": 1,
+          "alt": "Three teeth side by side showing the three doors germs use: a deep cavity that reaches the pulp, a crack that splits the crown, and a deep gum pocket where a pus pocket forms beside the root.",
+          "caption": "Three common doors: a deep cavity, a crack, or a gum pocket."
+        }
+      ]
+    },
+    "what-it-feels-like": {
+      "ghost": "what-it-feels-like",
+      "stickers": ["A throb means pressure", "Can you swallow? Tell me"],
+      "figures": [
+        {
+          "src": "feeling-map.svg", "width": 640, "height": 720, "after_section": 1,
+          "alt": "Feeling map. A tooth with a deep cavity, an angry pulp, a pus pocket at the root tip, and a small bump on the gum, with pulse lines above it. Listed feelings: throb like a heartbeat, hurts to bite or tap, hot can make it roar while cold may calm it for a minute, puffy gum or a pimple-like bump, bad taste or smell. A side view of a head shows pain traveling from a lower back tooth to the ear, temple, or neck on the same side. Swelling toward the eye or neck is a red flag.",
+          "caption": "The feeling map: pressure, tap pain, the hot and cold flip, a gum bump, a bad taste, and pain that travels."
+        }
+      ]
+    },
+    "tooth-vs-gum": {
+      "ghost": "tooth-vs-gum",
+      "stickers": ["Root tip or gum?", "Spreading face = ER"],
+      "figures": [
+        {
+          "src": "tooth-vs-gum-abscess.svg", "width": 640, "height": 640, "after_section": 1,
+          "alt": "Side by side. Left, tooth abscess: a deep cavity, a dead gray nerve inside, and a pus pocket at the root tip in the bone; a dentist opens or removes the tooth. Right, gum abscess: the nerve may still be alive, and the pus pocket sits in the gum beside the root; a dentist drains and cleans the pocket. Warning strip: swelling that spreads into the face, eye, or neck is a flood, go to the ER.",
+          "caption": "Same germ family, different address. Spreading face or neck swelling is the ER."
+        }
+      ]
+    },
+    "lookalikes": {
+      "ghost": "lookalikes",
+      "stickers": ["Not every ache is a tooth", "One tooth or a few?"],
+      "figures": [
+        {
+          "src": "lookalikes-cards.svg", "width": 640, "height": 820, "after_section": 2,
+          "alt": "Four lookalike cards. Sinus pressure: several upper teeth ache together and it is worse when you bend over. Jaw joint: a sore hinge in front of the ear that may click or pop while the gum looks calm. Canker sore: a shallow sore on soft skin that stings with no deep throb in the bone. Ear trouble: the ear itself hurts and the teeth check out calm. Warning strip: jaw pain with chest pressure, sweating, or shortness of breath means call 911.",
+          "caption": "Four costumes a dental abscess can wear, and the clue for each."
+        }
+      ]
+    },
+    "red-flags": {
+      "ghost": "red-flags",
+      "stickers": ["Can't swallow? Go now", "The ER beats a text here"],
+      "figures": [
+        {
+          "src": "red-flags-er.svg", "width": 640, "height": 720, "after_section": 0,
+          "alt": "Red warning card titled Go to the ER or call 911, do not text first. Six red flags with icons: trouble breathing, cannot swallow spit, floor of the mouth rising, neck hard or swelling, eye swelling shut, and high fever with confusion.",
+          "caption": "If you see any of these, skip the text. Go to the ER or call 911."
+        }
+      ]
+    },
+    "what-care-looks-like": {
+      "ghost": "what-care-looks-like",
+      "stickers": ["Fix the source first", "Medicine is a helper"],
+      "figures": [
+        {
+          "src": "care-steps.svg", "width": 640, "height": 816, "after_section": 1,
+          "alt": "Four care steps on a dotted path. One, find the source: a dentist checks the tooth and takes an X-ray. Two, let the pus out: open the tooth, or a small cut in the gum drains it. Three, fix the source: a root canal cleans and seals the nerve room, or the tooth is removed if it cannot be saved. Four, helper medicine if it fits: it calms germs as a bridge and is not the repair. Steps one to three are the dentist, and step four never replaces them.",
+          "caption": "Source first. A helper medicine is a bridge, not the repair."
+        }
+      ]
+    },
+    "dentist-vs-text": {
+      "ghost": "dentist-vs-text",
+      "stickers": ["Dentist fixes the tooth", "A text is the bridge"],
+      "figures": [
+        {
+          "src": "dentist-text-er-who-does-what.svg", "width": 640, "height": 672, "after_section": 2,
+          "alt": "Who does what. Dentist, fixes the tooth: exam and X-ray, opens and drains the pocket, root canal or removes the tooth. Text visit with Chris, the bridge: asks the red-flag questions, symptom care plan for tonight, helper medicine only if it fits, points you to the right door. ER, the airway door: trouble breathing or swallowing, swelling spreading in the face or neck.",
+          "caption": "Three doors. Each one has a different job."
+        }
+      ]
+    },
+    "why-it-comes-back": {
+      "ghost": "why-it-comes-back",
+      "stickers": ["Same pipe, same puddle", "Fix the source tooth"],
+      "figures": [
+        {
+          "src": "why-it-comes-back-loop.svg", "width": 640, "height": 700, "after_section": 0,
+          "alt": "A loop of red arrows around a tooth with a dead nerve and a pus pocket at the root tip. Source still open, from a dead nerve, a crack, or a gum pocket. Germs grow back. The pocket refills and the throb returns. A helper calms it for a while. Then back to the start. A blue bar below reads: break the loop, a dentist fixes the source.",
+          "caption": "The comeback loop keeps spinning until a dentist fixes the source."
+        }
+      ]
+    },
+    "myths": {
+      "ghost": "myths",
+      "stickers": ["Fact beats uncle", "A drain is not done"],
+      "figures": [
+        {
+          "src": "myths-vs-facts.svg", "width": 640, "height": 896, "after_section": 0,
+          "alt": "Four myth and fact pairs. Myth: if it drains, it is over. Fact: a drain is a pressure valve and the source is still open. Myth: no pain means it healed. Fact: a dead nerve can go quiet while germs keep working. Myth: salt water will cure it. Fact: a rinse is comfort, not a repair. Myth: a text visit replaces a dentist. Fact: text can be a bridge, and a dentist fixes the tooth.",
+          "caption": "Four myths I hear every week, and the facts that beat them."
+        }
+      ]
+    }
+  }
+}
