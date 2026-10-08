@@ -694,16 +694,28 @@ def main(argv=None) -> int:
         transport.close()
 
     # cache flush
+    # GoDaddy WPaaS runs a FULL-SITE ban (gateway + CDN) on any publish->publish
+    # update when full-page CDN cache is on, so one stub touch flushes every page.
+    # Touching one stub per page just stacks bans (and burns the ban token
+    # limit) while every page sits cold behind the gateway rate limiter, which
+    # is what 503s Googlebot. Touch once; npcwoods-cache-warm.php re-warms.
     flush_results = {}
     if not args.skip_flush:
         auth = wp_auth(env)
+        flushed_by = None
         for item in uploaded:
             stub = stub_id_for_page(item.page, stub_table)
             if not stub:
                 flush_results[item.page] = "no stub (new URL, nothing cached)"
                 print(f"  [cache] {item.page}: no stub — new URL, nothing cached")
                 continue
+            if flushed_by is not None:
+                flush_results[item.page] = f"covered by full-site flush via stub {flushed_by}"
+                print(f"  [cache] {item.page}: covered by full-site flush via stub {flushed_by}")
+                continue
             ok = touch_stub(auth, stub)
+            if ok:
+                flushed_by = stub
             flush_results[item.page] = f"stub {stub} {'flushed' if ok else 'FAILED — flush manually'}"
             print(f"  [cache] {item.page}: stub {stub} {'ok' if ok else 'FAILED — flush manually'}")
             time.sleep(0.4)
