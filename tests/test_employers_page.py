@@ -166,5 +166,38 @@ class EmployersPageTest(unittest.TestCase):
         self.assertIsNone(re.search(r"^\s*function\s+\w+", php, re.M))
 
 
+    def test_privacy_line_uses_plain_hipaa_wording(self):
+        self.assertNotIn("HIPAA-compliant", self.html)
+        self.assertNotIn("Health details stay between", self.html)
+        self.assertGreaterEqual(self.visible.count("Your employer never sees your health details. We follow HIPAA."), 2)
+        faq = next(d for d in self.jsonld if d["@type"] == "FAQPage")
+        answers = [q["acceptedAnswer"]["text"] for q in faq["mainEntity"]]
+        self.assertIn("No. Your employer never sees your health details. We follow HIPAA.", answers)
+
+    def test_work_injury_faq_in_visible_and_json_ld(self):
+        q = "What about injuries on the job?"
+        a = ("On-the-job injuries go through your company's workers' comp process. Chris handles "
+             "everyday sickness like colds, UTIs, and rashes. Emergencies, call 911.")
+        self.assertIn(q, self.visible)
+        self.assertIn(a, self.visible)
+        faq = next(d for d in self.jsonld if d["@type"] == "FAQPage")
+        pairs = {x["name"]: x["acceptedAnswer"]["text"] for x in faq["mainEntity"]}
+        self.assertEqual(pairs.get(q), a)
+
+    def test_pilot_cost_line_matches_member_pays_model(self):
+        self.assertIn("No cost to your company to start a pilot. Team members pay $59 per visit.", self.visible)
+        self.assertIn("only pays if Chris can treat them", self.visible)
+
+    def test_blue_bubble_contrast_at_least_4_5(self):
+        m = re.search(r"\.bubble\.me\{[^}]*background:(#[0-9A-Fa-f]{6})", self.html)
+        self.assertIsNotNone(m)
+        def lum(hx):
+            out = []
+            for i in (1, 3, 5):
+                c = int(hx[i:i + 2], 16) / 255
+                out.append(c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4)
+            return 0.2126 * out[0] + 0.7152 * out[1] + 0.0722 * out[2]
+        self.assertGreaterEqual(1.05 / (lum(m.group(1)) + 0.05), 4.5)
+
 if __name__ == "__main__":
     unittest.main()

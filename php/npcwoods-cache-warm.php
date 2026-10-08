@@ -26,7 +26,7 @@ function npcwoods_cw_delay() {
 
 /** URLs per cron batch, pause between GETs (microseconds), gap between batches. */
 function npcwoods_cw_batch_size() {
-	return 15;
+	return 40;
 }
 function npcwoods_cw_pause_us() {
 	return 700000;
@@ -114,7 +114,7 @@ add_action(
 		$stats   = array();
 		$strikes = 0;
 		foreach ( $batch as $u ) {
-			if ( microtime( true ) - $started > 60 ) {
+			if ( microtime( true ) - $started > 120 ) {
 				break;
 			}
 			$res  = wp_remote_get(

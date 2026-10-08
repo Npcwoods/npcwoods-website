@@ -37,6 +37,7 @@ function npcwoods_smh_static_pages() {
 		'/uti-treatment/is-my-uti-getting-worse/'          => 'uti-treatment/is-my-uti-getting-worse/index.html',
 		'/uti-treatment/no-video-uti-treatment/'           => 'uti-treatment/no-video-uti-treatment/index.html',
 		'/uti-treatment/uti-antibiotics-online/'           => 'uti-treatment/uti-antibiotics-online/index.html',
+		'/alternatives-to-teladoc/'                        => 'alternatives-to-teladoc/index.html',
 	);
 }
 
