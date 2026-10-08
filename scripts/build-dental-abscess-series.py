@@ -5,6 +5,8 @@ Reads:
   landing-pages/learn/dental-abscess/series.json
   landing-pages/learn/dental-abscess/content.json
   landing-pages/learn/dental-abscess/_shared/series.css
+  landing-pages/learn/dental-abscess/_shared/art.css   (explainer pages only)
+  landing-pages/learn/dental-abscess/art.json          (hero art + body figures)
   html/shared/header-snippet.html
   html/shared/footer-snippet.html
 
@@ -92,22 +94,21 @@ def breadcrumb_schema(crumbs: list[tuple[str, str]]) -> str:
     )
 
 
-def medical_schema(name: str, url: str, description: str, reviewed: str) -> str:
-    return json.dumps(
-        {
-            "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            "name": name,
-            "url": url,
-            "description": description,
-            "lastReviewed": reviewed,
-            "author": {"@id": "https://npcwoods.com/#chris-woods"},
-            "reviewedBy": {"@id": "https://npcwoods.com/#chris-woods"},
-            "publisher": {"@id": "https://npcwoods.com/#medical-business"},
-        },
-        indent=2,
-        ensure_ascii=False,
-    )
+def medical_schema(name: str, url: str, description: str, reviewed: str, image: dict | None = None) -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "name": name,
+        "url": url,
+        "description": description,
+        "lastReviewed": reviewed,
+        "author": {"@id": "https://npcwoods.com/#chris-woods"},
+        "reviewedBy": {"@id": "https://npcwoods.com/#chris-woods"},
+        "publisher": {"@id": "https://npcwoods.com/#medical-business"},
+    }
+    if image:
+        data["image"] = image
+    return json.dumps(data, indent=2, ensure_ascii=False)
 
 
 def bubbles_html(bubbles: list[dict]) -> str:
@@ -122,9 +123,24 @@ def bubbles_html(bubbles: list[dict]) -> str:
     return "\n".join(parts)
 
 
-def sections_html(sections: list[dict]) -> str:
+def figure_html(art: dict, fig: dict) -> str:
+    src = f"{art['asset_base']}{fig['src']}?v={art['version']}"
+    return (
+        '<figure class="art-fig">'
+        f'<img src="{esc(src)}" width="{fig["width"]}" height="{fig["height"]}" '
+        f'alt="{esc(fig["alt"])}" loading="lazy" decoding="async">'
+        f'<figcaption>{esc(fig["caption"])}</figcaption>'
+        "</figure>"
+    )
+
+
+def sections_html(sections: list[dict], figures: list[dict] | None = None, art: dict | None = None) -> str:
     out: list[str] = []
-    for block in sections:
+    figures = figures or []
+    for fig in figures:
+        if fig.get("after_section", 0) < 0:
+            out.append(figure_html(art, fig))
+    for idx, block in enumerate(sections):
         kind = block.get("type")
         if kind == "prose":
             out.append('<div class="prose">')
@@ -149,6 +165,9 @@ def sections_html(sections: list[dict]) -> str:
             out.append(f"<h2>{esc(block.get('title', ''))}</h2>")
             out.append(f"<p>{esc(block.get('body', ''))}</p>")
             out.append("</aside>")
+        for fig in figures:
+            if fig.get("after_section", 0) == idx:
+                out.append(figure_html(art, fig))
     return "\n".join(out)
 
 
@@ -269,6 +288,148 @@ def sticky_html(cta: str, label: str) -> str:
     )
 
 
+
+TOOTH_PATH = (
+    "M20 60 C20 25 40 8 60 14 C75 18 85 28 100 22 C115 16 125 10 140 14 "
+    "C165 20 180 35 180 60 C180 95 172 120 165 140 C160 190 158 250 150 320 "
+    "C148 338 129 338 127 322 C122 270 115 222 100 202 C85 222 78 270 73 322 "
+    "C71 338 52 338 50 320 C42 250 40 190 35 140 C28 120 20 95 20 60 Z"
+)
+PULP_PATH = (
+    "M70 100 C69 84 76 76 86 84 C93 90 107 90 114 84 C124 76 131 84 130 100 "
+    "C130 126 128 150 126 166 L74 166 C72 150 70 126 70 100 Z "
+    "M74 166 C70 205 66 262 61.5 326 M126 166 C130 205 134 262 138.5 326"
+)
+GHOST_BLUE = "#7cc4ff"
+GHOST_BLUE2 = "#2997ff"
+GHOST_RED = "#B42318"
+
+
+def _gs(color: str, opacity: float, width: float, dash: str = "") -> str:
+    d = f' stroke-dasharray="{dash}"' if dash else ""
+    return (
+        f'fill="none" stroke="{color}" stroke-opacity="{opacity}" stroke-width="{width}" '
+        f'stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"{d}'
+    )
+
+
+GHOST_EXTRAS = {
+    "hub": (
+        f'<path d="M-140 136 Q-60 112 20 128 M180 128 Q260 112 340 136" {_gs(GHOST_BLUE, .3, 4)}/>'
+        f'<circle cx="61.5" cy="344" r="26" {_gs(GHOST_RED, .42, 4)}/>'
+    ),
+    "how-it-starts": (
+        f'<path d="M118 16 L112 40 L120 58 L110 80 L116 98" {_gs(GHOST_RED, .42, 4)}/>'
+        + "".join(
+            f'<circle cx="{x}" cy="{y}" r="4.5" fill="{GHOST_BLUE2}" fill-opacity=".45"/>'
+            for x, y in ((84, 30), (88, 52), (83, 72), (80, 120), (72, 170), (68, 230), (64, 290))
+        )
+    ),
+    "what-it-feels-like": "".join(
+        f'<path d="M{100 - r} 40 A{r} {r} 0 0 1 {100 + r} 40" {_gs(GHOST_RED, o, 4)}/>'
+        for r, o in ((60, .45), (80, .3), (100, .18))
+    ),
+    "tooth-vs-gum": (
+        f'<path d="M-140 136 Q-60 112 20 128 M180 128 Q260 112 340 136" {_gs(GHOST_BLUE, .3, 4)}/>'
+        f'<circle cx="61.5" cy="344" r="24" {_gs(GHOST_RED, .42, 4)}/>'
+        f'<ellipse cx="190" cy="178" rx="18" ry="30" {_gs(GHOST_BLUE, .36, 4)}/>'
+    ),
+    "lookalikes": (
+        f'<circle cx="290" cy="70" r="22" {_gs(GHOST_RED, .5, 4)}/>'
+        f'<ellipse cx="350" cy="80" rx="20" ry="34" {_gs(GHOST_BLUE, .34, 4)}/>'
+        f'<path d="M300 92 C300 140 300 170 280 190 L200 196" {_gs(GHOST_BLUE, .35, 4)}/>'
+        f'<path d="M-120 -10 C-120 -60 -30 -66 -10 -30 C10 -66 100 -60 100 -10" {_gs(GHOST_BLUE2, .3, 4)}/>'
+    ),
+    "red-flags": (
+        f'<path d="M300 10 L392 176 L208 176 Z" {_gs(GHOST_RED, .42, 5)}/>'
+        f'<path d="M300 64 V124" {_gs(GHOST_RED, .42, 6)}/>'
+        f'<circle cx="300" cy="150" r="5" fill="{GHOST_RED}" fill-opacity=".42"/>'
+    ),
+    "what-care-looks-like": (
+        f'<path d="M240 30 C320 70 210 150 290 200 C350 236 270 300 320 350" {_gs(GHOST_BLUE, .4, 4, "2 12")}/>'
+        + "".join(
+            f'<circle cx="{x}" cy="{y}" r="12" {_gs(c, .5, 4)}/>'
+            for x, y, c in ((240, 30, GHOST_RED), (262, 118, GHOST_BLUE), (290, 200, GHOST_BLUE), (320, 350, GHOST_BLUE))
+        )
+    ),
+    "dentist-vs-text": (
+        f'<path d="M250 20 H370 Q400 20 400 50 V90 Q400 120 370 120 H290 L262 144 L268 120 H250 '
+        f'Q220 120 220 90 V50 Q220 20 250 20 Z" {_gs(GHOST_BLUE2, .34, 4)}/>'
+        f'<path d="M255 70 H365" {_gs(GHOST_BLUE, .35, 4, "2 12")}/>'
+    ),
+    "why-it-comes-back": (
+        f'<path d="M100 -20 A220 220 0 1 1 -110 230" {_gs(GHOST_RED, .4, 4, "2 12")}/>'
+        f'<path d="M-130 212 L-110 232 L-88 214" {_gs(GHOST_RED, .5, 4)}/>'
+    ),
+    "myths": (
+        f'<path d="M250 40 L298 88 M298 40 L250 88" {_gs(GHOST_RED, .42, 5)}/>'
+        f'<path d="M248 176 L270 198 L310 150" {_gs(GHOST_BLUE, .4, 5)}/>'
+    ),
+}
+
+
+def ghost_svg(variant: str) -> str:
+    """Topic ghost graphic behind the hero headline: a big tooth outline plus
+    one stop motif. Decorative, no text, no numbers."""
+    grid = "".join(
+        f'<line x1="0" y1="{y}" x2="1440" y2="{y}" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/>'
+        for y in range(90, 720, 90)
+    ) + "".join(
+        f'<line x1="{x}" y1="0" x2="{x}" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/>'
+        for x in range(120, 1440, 120)
+    )
+    return (
+        '<svg class="hero-ghost" focusable="false" viewBox="0 0 1440 720" '
+        'preserveAspectRatio="xMidYMid slice" aria-hidden="true">'
+        f"{grid}"
+        '<g class="ghost-tooth" transform="translate(500 118) scale(1.4)">'
+        f'<path d="{TOOTH_PATH}" {_gs(GHOST_BLUE, .26, 5)}/>'
+        f'<path d="{PULP_PATH}" {_gs(GHOST_BLUE2, .24, 3, "3 9")}/>'
+        f"{GHOST_EXTRAS.get(variant, '')}"
+        "</g></svg>"
+    )
+
+
+def hero_html(page: dict, stop: dict, art: dict, page_art: dict) -> str:
+    cut = art["cutout"]
+    s1, s2 = page_art["stickers"]
+    return "\n".join([
+        '<header class="hero hero-art">',
+        ghost_svg(page_art["ghost"]),
+        '<div class="hero-inner">',
+        '<div class="hero-copy">',
+        f'<div class="hero-kicker"><span class="dot"></span> Dental abscess series · Stop {stop["episode"]}</div>',
+        f"<h1>{esc(page['h1'])}</h1>",
+        f'<p class="lede">{esc(page["lede"])}</p>',
+        "</div>",
+        '<div class="hero-photo">',
+        f'<img class="hero-cutout" src="{esc(cut["src600"])}" '
+        f'srcset="{esc(cut["src600"])} 600w, {esc(cut["src900"])} 900w" '
+        f'sizes="(max-width: 640px) 258px, (max-width: 900px) 301px, 372px" '
+        f'width="{cut["width"]}" height="{cut["height"]}" alt="{esc(cut["alt"])}" '
+        'fetchpriority="high" decoding="async">',
+        f'<span class="hero-bubble hb-black">{esc(s1)}</span>',
+        f'<span class="hero-bubble hb-blue">{esc(s2)}</span>',
+        "</div>",
+        "</div>",
+        "</header>",
+    ])
+
+
+def og_url(art: dict, key: str) -> str:
+    return f"{SITE}{art['asset_base']}og/og-{key}.jpg?v={art['version']}"
+
+
+def og_image_obj(art: dict, key: str, title: str) -> dict:
+    return {
+        "@type": "ImageObject",
+        "url": og_url(art, key).split("?", 1)[0],
+        "width": 1200,
+        "height": 630,
+        "caption": title,
+    }
+
+
 def page_shell(
     *,
     title: str,
@@ -281,6 +442,8 @@ def page_shell(
     body: str,
     extra_head: str = "",
     body_class: str = "series-page",
+    og_image: str = "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
+    og_extra: str = "",
 ) -> str:
     schemas = "\n".join(
         f'<script type="application/ld+json">\n{block}\n</script>' for block in schema_blocks
@@ -307,7 +470,7 @@ window._fbq = window.fbq;
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(canonical)}">
-<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
+<meta property="og:image" content="{esc(og_image)}">{og_extra}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -362,9 +525,10 @@ def cta_band(series: dict, href: str, heading: str, body: str) -> str:
 </section>"""
 
 
-def build_explainer(series: dict, content: dict, css: str, header: str, footer: str, stop: dict, index: int) -> str:
+def build_explainer(series: dict, content: dict, css: str, header: str, footer: str, stop: dict, index: int, art: dict) -> str:
     key = "hub" if stop["kind"] == "hub" else stop["slug"]
     page = content[key]
+    page_art = art["pages"][key]
     cta = sms_href(series["sms"]["number"], series["sms"]["prefill"])
     canonical = f"{SITE}{stop['path']}"
     crumbs = [
@@ -380,16 +544,12 @@ def build_explainer(series: dict, content: dict, css: str, header: str, footer: 
     body_parts = [
         sticky_html(cta, sticky_label),
         '<main id="main">',
+        hero_html(page, stop, art, page_art),
         '<article class="series-wrap">',
-        '<header class="hero">',
-        f'<div class="hero-kicker"><span class="dot"></span> Dental abscess series · Stop {stop["episode"]}</div>',
-        f"<h1>{esc(page['h1'])}</h1>",
-        f'<p class="lede">{esc(page["lede"])}</p>',
-        "</header>",
         chris_card(series) if stop["kind"] == "hub" else "",
         bubbles_html(page.get("bubbles", [])),
         stats_html(page.get("stats", [])),
-        sections_html(page.get("sections", [])),
+        sections_html(page.get("sections", []), page_art.get("figures", []), art),
         roadmap_html(series, stop["path"], dotted=True),
         eeat_html(series),
         faqs_html(page.get("faqs", [])),
@@ -413,13 +573,23 @@ def build_explainer(series: dict, content: dict, css: str, header: str, footer: 
         header=header,
         footer=footer,
         schema_blocks=[
-            medical_schema(page["h1"], canonical, page["meta_description"], series["reviewed"]),
+            medical_schema(
+                page["h1"], canonical, page["meta_description"], series["reviewed"],
+                image=og_image_obj(art, key, page["h1"]),
+            ),
             faq_schema(page["faqs"]),
             breadcrumb_schema(crumbs),
             person_schema(),
         ],
         body="\n".join(part for part in body_parts if part),
         body_class="series-page series-hub" if stop["kind"] == "hub" else "series-page series-stop",
+        og_image=og_url(art, key),
+        og_extra=(
+            '\n<meta property="og:image:width" content="1200">'
+            '\n<meta property="og:image:height" content="630">'
+            f'\n<meta property="og:image:alt" content="{esc(page["h1"])}: Chris Woods, NP, with a tooth diagram">'
+            f'\n<meta name="twitter:image" content="{esc(og_url(art, key))}">'
+        ),
     )
 
 
@@ -516,11 +686,13 @@ def main() -> None:
     series = load_json(SERIES_DIR / "series.json")
     content = load_json(SERIES_DIR / "content.json")
     css = (SERIES_DIR / "_shared" / "series.css").read_text(encoding="utf-8")
+    art_css = (SERIES_DIR / "_shared" / "art.css").read_text(encoding="utf-8")
+    art = load_json(SERIES_DIR / "art.json")
     header = (ROOT / "html" / "shared" / "header-snippet.html").read_text(encoding="utf-8")
     footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8")
 
     for index, stop in enumerate(series["stops"]):
-        html_text = build_explainer(series, content, css, header, footer, stop, index)
+        html_text = build_explainer(series, content, css + "\n" + art_css, header, footer, stop, index, art)
         if stop["slug"]:
             out = SERIES_DIR / stop["slug"] / "index.html"
         else:
