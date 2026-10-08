@@ -24,6 +24,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SERIES_DIR = ROOT / "landing-pages" / "learn" / "dental-abscess"
 OFFER_DIR = ROOT / "landing-pages" / "dental-abscess-treatment"
 SITE = "https://npcwoods.com"
+# The pre-WA/FL footer licensing line. If the shared footer snippet ever regresses
+# to it, refuse to build rather than re-plate an 11-state footer onto the series.
+STALE_FOOTER_LICENSE_LINE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
+CURRENT_FOOTER_LICENSE_LINE = (
+    "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by "
+    "telehealth registration (TPAN3355). 13 states served.<br>"
+)
 
 
 def load_json(path: Path) -> dict:
@@ -682,6 +689,16 @@ def write(path: Path, text: str) -> None:
     print(f"wrote {path.relative_to(ROOT)} ({path.stat().st_size} bytes)")
 
 
+def check_footer(footer: str) -> None:
+    """The series embeds html/shared/footer-snippet.html verbatim. Guard the
+    licensing line so a stale snippet can't bring the 11-state footer back."""
+    if STALE_FOOTER_LICENSE_LINE in footer or CURRENT_FOOTER_LICENSE_LINE not in footer:
+        raise SystemExit(
+            "html/shared/footer-snippet.html does not carry the current 13-state "
+            "licensing line; fix the shared footer before rebuilding the series."
+        )
+
+
 def main() -> None:
     series = load_json(SERIES_DIR / "series.json")
     content = load_json(SERIES_DIR / "content.json")
@@ -690,6 +707,7 @@ def main() -> None:
     art = load_json(SERIES_DIR / "art.json")
     header = (ROOT / "html" / "shared" / "header-snippet.html").read_text(encoding="utf-8")
     footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8")
+    check_footer(footer)
 
     for index, stop in enumerate(series["stops"]):
         html_text = build_explainer(series, content, css + "\n" + art_css, header, footer, stop, index, art)

@@ -89,6 +89,27 @@ class MuPluginSafetyTest(unittest.TestCase):
         self.assertNotIn("wp_remote_post", src)
         self.assertNotIn("wp_remote_request", src)
 
+    def test_cache_warm_tuned_for_mwp_cron(self):
+        """MWP cron ticks every few minutes and kills a run at ~255s: each run
+        must do ~100-120 URLs inside a ~150s cap and back off on timeouts
+        instead of aborting the batch."""
+        src = (PHP / "npcwoods-cache-warm.php").read_text(encoding="utf-8")
+
+        def ret(fn):
+            m = re.search(r"function %s\(\)\s*\{\s*return\s+(\d+);" % fn, src)
+            self.assertIsNotNone(m, fn)
+            return int(m.group(1))
+
+        self.assertTrue(100 <= ret("npcwoods_cw_batch_size") <= 120)
+        cap, timeout = ret("npcwoods_cw_time_cap"), ret("npcwoods_cw_timeout")
+        self.assertTrue(120 <= cap <= 160)
+        self.assertLess(cap + timeout + 10, 255)
+        self.assertIn("npcwoods_cw_backoff(", src)
+        self.assertIn("sleep( $sleep )", src)
+        self.assertNotIn("$strikes >= 3", src)
+        self.assertIn("wp_schedule_single_event( time() + $gap, 'npcwoods_cw_batch', array( $i ) )", src)
+        self.assertIn("'npcwoods_cw_lock'", src)
+
 
 if __name__ == "__main__":
     unittest.main()
