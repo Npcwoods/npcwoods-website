@@ -824,6 +824,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
           <li><a href="https://npcwoods.com/learn/">Patient Education</a></li>
           <li><a href="https://npcwoods.com/medications/">Medications</a></li>
           <li><a href="https://npcwoods.com/blog/">Blog</a></li>
+          <li><a href="https://npcwoods.com/employers/">For Employers</a></li>
           <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
         </ul>
       </div>
