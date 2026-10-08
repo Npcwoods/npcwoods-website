@@ -49,3 +49,10 @@ def test_nav_credentials_13_states():
         assert "11 state licenses" not in t, f
         assert "NPI, board cert, 13 states (FL by telehealth reg.)" in t, f
         assert "Florida-licensed" not in t, f
+
+
+def test_teladoc_uses_current_site_shell():
+    html = (LP / "alternatives-to-teladoc/index.html").read_text(encoding="utf-8")
+    assert (ROOT / "html/shared/header-snippet.html").read_text(encoding="utf-8").strip() in html
+    assert (ROOT / "html/shared/footer-snippet.html").read_text(encoding="utf-8").strip() in html
+    assert "11 state licenses" not in html
