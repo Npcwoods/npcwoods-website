@@ -255,5 +255,52 @@ class DentalAbscessSeriesTest(unittest.TestCase):
                 self.assertIn('<meta name="twitter:image"', text)
 
 
+
+class DentalAbscessFooterTest(unittest.TestCase):
+    """2026-10-08: the series shipped with the pre-WA/FL 11-state footer line."""
+
+    STALE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
+
+    def test_pages_carry_current_shared_footer(self):
+        footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8").strip()
+        self.assertNotIn(self.STALE, footer)
+        self.assertIn("13 states served.", footer)
+        self.assertIn('href="https://npcwoods.com/employers/">For Employers</a>', footer)
+        for path in html_files():
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertNotIn(self.STALE, text)
+                self.assertEqual(text.count(footer), 1)
+                self.assertNotIn("Florida-licensed", text)
+
+    def test_rebuild_matches_committed_pages(self):
+        """Running the generator must reproduce the committed (live) pages byte for byte."""
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "build_dental_abscess_series", ROOT / "scripts" / "build-dental-abscess-series.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        built = {}
+        mod.write = lambda path, text: built.__setitem__(Path(path), text)
+        mod.main()
+        self.assertEqual(len(built), 11)
+        for path, text in built.items():
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertEqual(text, path.read_text(encoding="utf-8"))
+
+    def test_generator_refuses_stale_footer(self):
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "build_dental_abscess_series_guard", ROOT / "scripts" / "build-dental-abscess-series.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        with self.assertRaises(SystemExit):
+            mod.check_footer("<footer>" + self.STALE + "</footer>")
+
+
 if __name__ == "__main__":
     unittest.main()

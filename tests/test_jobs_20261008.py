@@ -56,3 +56,32 @@ def test_teladoc_uses_current_site_shell():
     assert (ROOT / "html/shared/header-snippet.html").read_text(encoding="utf-8").strip() in html
     assert (ROOT / "html/shared/footer-snippet.html").read_text(encoding="utf-8").strip() in html
     assert "11 state licenses" not in html
+
+
+STALE_FOOTER_LINE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
+CURRENT_FOOTER_LINE = (
+    "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by "
+    "telehealth registration (TPAN3355). 13 states served.<br>"
+)
+
+
+def test_footer_licensing_line_13_states():
+    """Site Audit P1: /learn/, /dental-abscess-treatment/ and the dental-abscess
+    series still showed the 11-state footer line live."""
+    files = [ROOT / "html/shared/footer-snippet.html", LP / "learn/index.html", LP / "dental-abscess-treatment/index.html"]
+    files += sorted((LP / "learn/dental-abscess").glob("**/index.html"))
+    assert len(files) == 13
+    for f in files:
+        t = f.read_text(encoding="utf-8")
+        assert STALE_FOOTER_LINE not in t, f
+        assert t.count(CURRENT_FOOTER_LINE) == 1, f
+        assert "Florida-licensed" not in t, f
+
+
+def test_learn_meta_pixel_left_exactly_as_live():
+    """/learn/ carries the site Meta pixel live (Chris is deciding separately).
+    This pin keeps a footer/copy commit from silently adding or removing it.
+    If Chris decides to change it, update this test in that same commit."""
+    t = (LP / "learn/index.html").read_text(encoding="utf-8")
+    assert t.count("fbq('init', '1428464038973925');") == 1
+    assert t.count("https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1") == 1
