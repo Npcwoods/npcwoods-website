@@ -5,10 +5,15 @@
      The stub below also blocks a later-injected Meta pixel: Meta's base code starts with `if(f.fbq)return;`,
      so predefining a no-op fbq keeps Meta's browser script off this page.
      GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
-<script>window.fbq=function(){};window._fbq=window.fbq;</script>
+
+<script>
+window.fbq = function () {};
+window.fbq.queue = [];
+window.fbq.loaded = true;
+window.fbq.version = '2.0';
+window._fbq = window.fbq;
+</script>
 <meta charset="UTF-8">
-<!-- NPCWoods Tracking: Ahrefs Analytics -->
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="1qFceGSHKP6yg4JlSdNJ4Q" async></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingrown Toenail Treatment Online | $59 | NPCWoods</title>
 <meta name="description" content="Infected ingrown toenail? Text a Licensed Nurse Practitioner for same-day guidance and antibiotics when appropriate. $59 flat fee. No paperwork.">
@@ -968,23 +973,6 @@ body::after { content:none!important; display:none!important; }
 .hero{padding-top:28px}
 
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1428464038973925');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
