@@ -29,6 +29,8 @@ function npcwoods_ads_click_ingest() {
         $value = isset( $data[ $key ] ) ? (string) $data[ $key ] : '';
         $row[ $key ] = preg_replace( '/[^a-zA-Z0-9_-]/', '', substr( $value, 0, 180 ) );
     }
+    $event = isset( $data['event'] ) ? (string) $data['event'] : 'sms';
+    $row['event'] = ( $event === 'land' ) ? 'land' : 'sms';
     $row['ts'] = preg_replace( '/[^0-9]/', '', substr( (string) ( $data['ts'] ?? '' ), 0, 20 ) );
     $log = ( defined( 'WP_CONTENT_DIR' ) ? WP_CONTENT_DIR : ( ABSPATH . 'wp-content' ) ) . '/.npc-ads-click.jsonl';
     $line = wp_json_encode( $row );
@@ -55,6 +57,7 @@ add_action( 'template_redirect', function() {
         '/start-sinus/' => 'start-sinus/index.html',
         '/start-dental/' => 'start-dental/index.html',
         '/start-uri/' => 'start-uri/index.html',
+        '/text/' => 'text/index.html', // X Ads lander, Oct 2026
     );
 
     $html_rel = null;
@@ -67,6 +70,7 @@ add_action( 'template_redirect', function() {
             'start-sinus' => 'start-sinus/index.html',
             'start-dental' => 'start-dental/index.html',
             'start-uri' => 'start-uri/index.html',
+            'text' => 'text/index.html',
         );
         $slug = get_post_field( 'post_name', get_queried_object_id() );
         if ( is_page() && isset( $slug_map[ $slug ] ) ) {
@@ -89,3 +93,13 @@ add_action( 'template_redirect', function() {
         }
     }
 }, 1 );
+
+// /text/ (X Ads lander) is noindex: keep its WP stub out of the Yoast page sitemap.
+add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', function( $ids ) {
+    $ids  = is_array( $ids ) ? $ids : array();
+    $stub = get_page_by_path( 'text' );
+    if ( $stub ) {
+        $ids[] = (int) $stub->ID;
+    }
+    return $ids;
+}, 20 );
