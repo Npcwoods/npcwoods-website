@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
-     The stub below also blocks a later-injected Meta pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page.
-     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
-<script>
-window.fbq = function () {};
-window.fbq.queue = [];
-window.fbq.loaded = true;
-window.fbq.version = '2.0';
-window._fbq = window.fbq;
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -40,8 +29,15 @@ window._fbq = window.fbq;
 <meta property="og:url" content="https://npcwoods.com/pricing/">
 <meta property="og:title" content="Pricing | $59 Flat Fee, Same-Day Care | NPCWoods">
 <meta property="og:description" content="One price. One promise. $59 for a text-based visit with a licensed nurse practitioner. No paperwork, no hassle.">
-<meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
-<meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://npcwoods.com/assets/img/share/pricing-1200x630.jpg">
+  <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/pricing-1200x630.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Chris Woods, NP, text visit card for NPCWoods. $59 flat.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/pricing-1200x630.jpg">
+  <meta name="twitter:image:alt" content="Chris Woods, NP, text visit card for NPCWoods. $59 flat.">
 
 <script type="application/ld+json">
 {
@@ -106,6 +102,10 @@ window._fbq = window.fbq;
         {
           "@type": "State",
           "name": "Utah"
+        },
+        {
+          "@type": "State",
+          "name": "Washington"
         }
       ],
       "sameAs": [
@@ -168,6 +168,10 @@ window._fbq = window.fbq;
         {
           "@type": "State",
           "name": "North Carolina"
+        },
+        {
+          "@type": "State",
+          "name": "Washington"
         }
       ],
       "offers": {
@@ -182,7 +186,7 @@ window._fbq = window.fbq;
           "@type": "Country",
           "name": "United States"
         },
-        "description": "$59 flat fee, no paperwork, no hidden costs, no membership. Cash-pay only.",
+        "description": "$59 flat fee, charged only if treatment by text is appropriate. No paperwork, no hidden costs, no membership. Cash-pay only.",
         "url": "https://npcwoods.com/pricing/",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -214,7 +218,7 @@ window._fbq = window.fbq;
         "@id": "https://npcwoods.com/#medical-business"
       },
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-23",
+      "dateModified": "2026-10-09",
       "inLanguage": "en-US",
       "primaryImageOfPage": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp"
     }
@@ -240,40 +244,81 @@ window._fbq = window.fbq;
   "@id": "https://npcwoods.com/pricing/#faq",
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".faq-item summary", ".faq-answer p"]
+    "cssSelector": [
+      ".faq-item summary",
+      ".faq-answer p"
+    ]
   },
-  "author": { "@id": "https://npcwoods.com/#chris-woods" },
-  "publisher": { "@id": "https://npcwoods.com/#medical-business" },
+  "author": {
+    "@id": "https://npcwoods.com/#chris-woods"
+  },
+  "publisher": {
+    "@id": "https://npcwoods.com/#medical-business"
+  },
   "mainEntity": [
     {
       "@type": "Question",
       "name": "What does $59 include?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A full text-based visit with Chris Woods, a Licensed Nurse Practitioner. That means a real back-and-forth conversation about what's going on, a clinical review, a recommended plan, and a prescription sent to your pharmacy when it's medically appropriate. Follow-up questions for the same visit are included." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A full text-based visit with Chris Woods, a Licensed Nurse Practitioner. That means a real back-and-forth conversation about what's going on, a clinical review, a recommended plan, and a prescription sent to your pharmacy when it's medically appropriate. Follow-up questions for the same visit are included."
+      }
     },
     {
       "@type": "Question",
       "name": "Are there hidden fees or surprise bills?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. $59 is the whole cost of the visit. There's no membership, no facility fee, no separate prescription cost from us. You'll pay your pharmacy for the medication itself like any other prescription." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. $59 is the whole cost of the visit. There's no membership, no facility fee, no separate prescription cost from us. You'll pay your pharmacy for the medication itself like any other prescription."
+      }
     },
     {
       "@type": "Question",
       "name": "Do you accept payment plans or copays?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It's a flat $59 paid at the start of the visit by card. We don't bill any third parties, so there's nothing to file and nothing coming back in the mail six weeks later." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's one flat $59 by card, charged only if Chris can treat you. We don't bill any third parties, so there's nothing to file and nothing coming back in the mail six weeks later."
+      }
     },
     {
       "@type": "Question",
       "name": "What if I don't need a prescription?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The $59 covers the visit itself, not the prescription. If the clinical picture doesn't call for medication, you'll still get a clear plan, guidance on when to escalate, and the same follow-up window. You paid for the evaluation, not a guaranteed script." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The $59 covers the visit itself, not the prescription. If the clinical picture doesn't call for medication, you'll still get a clear plan, guidance on when to escalate, and the same follow-up window. If Chris can't treat you by text, you don't pay."
+      }
     },
     {
       "@type": "Question",
-      "name": "Can I get a refund if I'm not the right fit?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. If after reviewing what you send, Chris decides this is something better handled in person (or that you need urgent in-person care), we'll refund the visit and tell you what to do next. You won't pay for a visit we can't responsibly complete." }
+      "name": "What if Chris can't treat me by text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You don't pay. If after reviewing what you send, Chris decides this is better handled in person (or that you need urgent in-person care), there's no charge, and he tells you what to do next. The $59 is only charged when treatment by text is appropriate."
+      }
     },
     {
       "@type": "Question",
       "name": "Is this cheaper than urgent care?",
-      "acceptedAnswer": { "@type": "Answer", "text": "For straightforward infections, a retail urgent care cash rate usually runs $150-$250 for the visit alone, plus lab fees, plus whatever the pharmacy charges. Emergency rooms are far more than that. $59 is the full visit cost here — a fraction of what a walk-in clinic charges for the same kind of evaluation." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a routine acute visit (UTI, sinus, strep, yeast, pink eye), a retail urgent care cash rate is usually $150-$250 for the visit alone, plus lab fees, plus whatever the pharmacy charges. Emergency rooms are far more than that. $59 is the full visit cost here, a fraction of what a walk-in clinic charges for the same kind of evaluation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not a monthly membership?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because most people who need a telehealth visit need it once a quarter, not once a week. A $59 flat fee paid when you actually need care is cheaper than $30-$50/mo running in the background and still adding a copay per visit. Simple beats sticky."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use an HSA or FSA card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, HSA and FSA cards are accepted the same as any other card. Telehealth visits with a licensed clinician are qualified medical expenses. Save your receipt if your administrator asks."
+      }
     }
   ]
 }
@@ -549,6 +594,8 @@ a { color: inherit; text-decoration: none; }
           <a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
           <a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
           <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
+          <a href="https://npcwoods.com/washington-telemedicine/">Washington</a>
+          <a href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida (telehealth reg.)</a>
         </div>
       </li>
       <li>
@@ -603,7 +650,7 @@ a { color: inherit; text-decoration: none; }
       </a>
       <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states (FL by telehealth reg.)</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
@@ -645,6 +692,8 @@ a { color: inherit; text-decoration: none; }
         <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
         <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
         <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
+        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
+        <a href="https://npcwoods.com/florida-vacation-sick-text-visit/" class="npc-state-link"><span class="npc-state-dot"></span> Florida (telehealth reg.)</a>
       </div>
     </div>
 
@@ -707,7 +756,7 @@ a { color: inherit; text-decoration: none; }
       <div class="price-meta">Flat fee &middot; Same-day response &middot; No paperwork</div>
     </div>
     <h1>$59. One price. One promise.</h1>
-    <p class="hero-sub">A full text-based visit with a <strong>Licensed Nurse Practitioner</strong>. No membership. No surprise bills. If medication makes sense, it's sent to your pharmacy, that's it.</p>
+    <p class="hero-sub">A full text-based visit with a <strong>Licensed Nurse Practitioner</strong>. No membership. No surprise bills. You only pay if Chris can treat you. If medication makes sense, it's sent to your pharmacy, that's it.</p>
     <div class="btn-row">
       <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -716,7 +765,7 @@ a { color: inherit; text-decoration: none; }
       <a href="https://npcwoods.com/credentials/" class="btn-secondary">See credentials &amp; licenses</a>
     </div>
     <p style="margin-top:24px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.78);">
-      NPI 1285125468 &nbsp;&middot;&nbsp; LegitScript certified &nbsp;&middot;&nbsp; Licensed in 11 states
+      NPI 1285125468 &nbsp;&middot;&nbsp; LegitScript certified &nbsp;&middot;&nbsp; Serving 13 states
     </p>
   </div>
 </section>
@@ -795,7 +844,7 @@ a { color: inherit; text-decoration: none; }
     <div class="section-head">
       <div class="section-label">What $59 gets you</div>
       <h2 class="section-heading">The whole visit. Not a teaser.</h2>
-      <p class="section-sub">Every visit runs the same way, no upsells, no "premium tier." When you pay $59, this is what you're getting.</p>
+      <p class="section-sub">Every visit runs the same way, no upsells, no "premium tier." When Chris can treat you, $59 covers all of this.</p>
     </div>
     <div class="section-shell">
       <ul class="check-list">
@@ -804,7 +853,7 @@ a { color: inherit; text-decoration: none; }
         <li><strong>A clear treatment plan</strong> in writing, what you have, what to do, what would change the plan, when to escalate.</li>
         <li><strong>Prescription to your pharmacy</strong> when it's medically appropriate. Sent electronically to whatever pharmacy you use.</li>
         <li><strong>Follow-up questions on the same visit</strong> are included. If symptoms change or the plan needs tweaking, text back, no new charge.</li>
-        <li><strong>No paperwork, no copays to chase, no third-party billing.</strong> One flat charge to the card at the start and we're done.</li>
+        <li><strong>No paperwork, no copays to chase, no third-party billing.</strong> One flat $59 by card, charged only if Chris can treat you. That's it.</li>
       </ul>
     </div>
   </div>
@@ -845,6 +894,7 @@ a { color: inherit; text-decoration: none; }
         <div class="compare-note" role="cell">Recurring charge whether you use it or not. Most visits still add a per-visit copay.</div>
       </div>
     </div>
+    <p class="section-sub" style="margin:24px auto 0;text-align:center;">Want named online prices, with sources? <a href="https://npcwoods.com/cheap-urgent-care-no-insurance/" style="color:var(--brand);font-weight:700;">See how $59 stacks up against other online options &rarr;</a></p>
   </div>
 </section>
 
@@ -858,7 +908,7 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="section-shell">
       <ul class="ex-list">
-        <li><strong>Controlled substances.</strong> We don't prescribe opioids, benzodiazepines, ADHD stimulants, testosterone, or anything Schedule II&ndash;IV. That's a modality limit, not a price limit.</li>
+        <li><strong>Controlled substances.</strong> We don't prescribe controlled substances of any kind (Schedule II&ndash;IV) or hormone therapy. That's a modality limit, not a price limit.</li>
         <li><strong>Conditions requiring a hands-on exam</strong>, chest pain, abdominal pain that won't localize, neurological symptoms, injuries needing imaging.</li>
         <li><strong>Chronic disease management</strong>, hypertension, diabetes, thyroid, ongoing mental health, is better done with a PCP who can run labs and see you longitudinally.</li>
         <li><strong>Pediatrics under age 2</strong>, or any presentation where a physical exam or vitals are clearly needed to rule out something serious.</li>
@@ -873,7 +923,7 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="section-label">Where this works</div>
-      <h2 class="section-heading">Licensed in 11 states</h2>
+      <h2 class="section-heading">Serving 13 states</h2>
       <p class="section-sub">You need to be physically located in one of these states at the time of the visit. Chris is a double board-certified Nurse Practitioner, licensed in:</p>
     </div>
     <div class="section-shell">
@@ -889,6 +939,7 @@ a { color: inherit; text-decoration: none; }
         <div class="card"><a href="https://npcwoods.com/oregon-telemedicine/"><strong>Oregon</strong>, Portland, Eugene, Bend</a></div>
         <div class="card"><a href="https://npcwoods.com/georgia-telemedicine/"><strong>Georgia</strong>, Atlanta, Athens, Savannah</a></div>
         <div class="card"><a href="https://npcwoods.com/north-carolina-telemedicine/"><strong>North Carolina</strong>, Charlotte, Raleigh, Asheville</a></div>
+        <div class="card"><a href="https://npcwoods.com/washington-telemedicine/"><strong>Washington</strong>, Seattle, Spokane, Tacoma</a></div>
       </div>
     </div>
   </div>
@@ -904,8 +955,9 @@ a { color: inherit; text-decoration: none; }
     <div class="faq-list">
       <details class="faq-item"><summary>What does $59 include?</summary><div class="faq-answer"><p>A full text-based visit with Chris Woods, a Licensed Nurse Practitioner. That means a real back-and-forth conversation about what's going on, a clinical review, a recommended plan, and a prescription sent to your pharmacy when it's medically appropriate. Follow-up questions for the same visit are included.</p></div></details>
       <details class="faq-item"><summary>Are there hidden fees or surprise bills?</summary><div class="faq-answer"><p>No. $59 is the whole cost of the visit. There's no membership, no facility fee, no separate prescription cost from us. You'll pay your pharmacy for the medication itself like any other prescription.</p></div></details>
-      <details class="faq-item"><summary>What if I don't need a prescription?</summary><div class="faq-answer"><p>The $59 covers the visit itself, not the prescription. If the clinical picture doesn't call for medication, you'll still get a clear plan, guidance on when to escalate, and the same follow-up window. You paid for the evaluation, not a guaranteed script.</p></div></details>
-      <details class="faq-item"><summary>Can I get a refund if I'm not the right fit?</summary><div class="faq-answer"><p>Yes. If after reviewing what you send, Chris decides this is something better handled in person (or that you need urgent in-person care), we refund the visit and tell you what to do next. You won't pay for a visit we can't responsibly complete.</p></div></details>
+      <details class="faq-item"><summary>Do you accept payment plans or copays?</summary><div class="faq-answer"><p>It's one flat $59 by card, charged only if Chris can treat you. We don't bill any third parties, so there's nothing to file and nothing coming back in the mail six weeks later.</p></div></details>
+      <details class="faq-item"><summary>What if I don't need a prescription?</summary><div class="faq-answer"><p>The $59 covers the visit itself, not the prescription. If the clinical picture doesn't call for medication, you'll still get a clear plan, guidance on when to escalate, and the same follow-up window. If Chris can't treat you by text, you don't pay.</p></div></details>
+      <details class="faq-item"><summary>What if Chris can't treat me by text?</summary><div class="faq-answer"><p>You don't pay. If after reviewing what you send, Chris decides this is better handled in person (or that you need urgent in-person care), there's no charge, and he tells you what to do next. The $59 is only charged when treatment by text is appropriate.</p></div></details>
       <details class="faq-item"><summary>Is this cheaper than urgent care?</summary><div class="faq-answer"><p>For a routine acute visit (UTI, sinus, strep, yeast, pink eye), a retail urgent care cash rate is usually $150-$250 for the visit alone, plus lab fees, plus whatever the pharmacy charges. Emergency rooms are far more than that. $59 is the full visit cost here, a fraction of what a walk-in clinic charges for the same kind of evaluation.</p></div></details>
       <details class="faq-item"><summary>Why not a monthly membership?</summary><div class="faq-answer"><p>Because most people who need a telehealth visit need it once a quarter, not once a week. A $59 flat fee paid when you actually need care is cheaper than $30-$50/mo running in the background and still adding a copay per visit. Simple beats sticky.</p></div></details>
       <details class="faq-item"><summary>Can I use an HSA or FSA card?</summary><div class="faq-answer"><p>Yes, HSA and FSA cards are accepted the same as any other card. Telehealth visits with a licensed clinician are qualified medical expenses. Save your receipt if your administrator asks.</p></div></details>
@@ -977,6 +1029,8 @@ a { color: inherit; text-decoration: none; }
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
+          <li><a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" target="_blank" rel="noopener">Florida</a></li>
         </ul>
       </div>
 
@@ -1010,7 +1064,7 @@ a { color: inherit; text-decoration: none; }
         <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served.<br>
       NPI: 1285125468 &bull; Mailing: Scottsdale, AZ &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
@@ -1047,7 +1101,6 @@ a { color: inherit; text-decoration: none; }
 </footer>
 <!-- ===== END SITE FOOTER ===== -->
 
-<!-- NPCWoods Tracking: tracking.js -->
 
 <script src="/assets/js/site.js" defer></script>
 </body>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta — health-condition pages must not send PageView there.
-     The stub below also blocks the GTM-injected pixel: Meta's base code starts with `if(f.fbq)return;`,
-     so predefining a no-op fbq means fbevents.js never loads on this page.
-     GTM, GA4, and Google Ads stay off this health-condition page (no BAA). -->
+<!-- Meta Pixel disabled 2026-06-10: no BAA with Meta. Health-condition pages must not send PageView there.
+     The stub below also blocks a GTM-injected pixel: Meta's base code starts with if(f.fbq)return,
+     so predefining a no-op fbq means the Meta script never loads on this page.
+     GTM, GA4, Google Ads, and Ahrefs stay off this health-condition page (no BAA). -->
 <script>
 window.fbq = function () {};
 window.fbq.queue = [];
@@ -31,6 +31,15 @@ window._fbq = window.fbq;
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://npcwoods.com/glp1-weight-loss/">
   <meta property="og:site_name" content="NPCWoods Telemedicine">
+  <meta property="og:image" content="https://npcwoods.com/assets/img/share/glp1-weight-loss-1200x630.jpg">
+  <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/glp1-weight-loss-1200x630.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Chris Woods, NP, text visit card for NPCWoods. $59 flat.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/glp1-weight-loss-1200x630.jpg">
+  <meta name="twitter:image:alt" content="Chris Woods, NP, text visit card for NPCWoods. $59 flat.">
 
   <!-- Schema: MedicalBusiness -->
   <script type="application/ld+json">
@@ -66,29 +75,6 @@ window._fbq = window.fbq;
       "https://share.google/XlmNvRT4vihOJ8KBH",
       "https://www.facebook.com/npcwoods",
       "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
-    ],
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mary W." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "datePublished": "2026-05-26",
-        "reviewBody": "Even though the visit was online, I felt that all of my concerns were addressed, and the response time was so quick. Thank you NP Wood for your compassion and care!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Dana H." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "datePublished": "2026-05-06",
-        "reviewBody": "Quick, professional and convenient. No sitting in a waiting room with other sick people. I highly recommend and will definitely use this again."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Tori D." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "datePublished": "2026-04-22",
-        "reviewBody": "This is AMAZING! We loved it!!! I would do it all over again in a heartbeat! It was so simple and doing it from my house with a sick kid is even better!!"
-      }
     ]
   }
   </script>
@@ -272,7 +258,17 @@ window._fbq = window.fbq;
       z-index: 1000;
     }
 
+    .mobile-floating-cta .mfc-row { display: flex; align-items: center; gap: 10px; }
+    .mobile-floating-cta .mfc-close {
+      flex: none; width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.55); background: rgba(255,255,255,0.14);
+      color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; padding: 0;
+    }
+    .mobile-floating-cta .mfc-close:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    .mobile-floating-cta[hidden], body.sticky-off .mobile-floating-cta { display: none !important; }
     .mobile-floating-cta a {
+      flex: 1;
       display: block;
       background: var(--warm-white);
       color: var(--primary);
@@ -287,6 +283,7 @@ window._fbq = window.fbq;
     @media (max-width: 640px) {
       .mobile-floating-cta { display: block; }
       body { padding-bottom: 80px; }
+      body.sticky-off { padding-bottom: 0; }
     }
 
     /* ===== HERO ===== */
@@ -649,6 +646,39 @@ window._fbq = window.fbq;
       text-decoration: none;
       transform: translateY(-2px);
     }
+
+
+    /* ── GLP-1 EXPLAINED PLAINLY (learn series) ── */
+    .explained-kicker{
+      display:block;
+      text-align:center;
+      font-size:0.8rem;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:#f5a524;
+      margin-bottom:0.6rem;
+    }
+    .explained-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+    .explained-card{
+      background:var(--warm-white);
+      border:1px solid var(--border-light);
+      border-top:3px solid #f5a524;
+      border-radius:14px;
+      padding:18px 20px;
+      text-decoration:none;
+      color:inherit;
+      display:block;
+      transition:border-color .2s,transform .2s;
+    }
+    .explained-card:hover{border-color:#f5a524;transform:translateY(-2px);text-decoration:none;color:inherit}
+    .explained-card strong{display:block;font-size:14px;font-weight:700;color:#f5a524;margin-bottom:6px}
+    .explained-card span{font-size:13px;color:var(--text-muted);line-height:1.5}
 
     /* ===== BOTTOM CTA ===== */
     .bottom-cta {
@@ -1452,7 +1482,7 @@ window._fbq = window.fbq;
       </a>
       <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
         <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 11 state licenses</div></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states served</div></div>
         <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
       </a>
       <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
@@ -1494,6 +1524,8 @@ window._fbq = window.fbq;
         <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
         <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
         <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
+        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
+        <a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" class="npc-state-link" target="_blank" rel="noopener"><span class="npc-state-dot"></span> Florida (telehealth registration)</a>
       </div>
     </div>
 
@@ -1782,6 +1814,24 @@ window._fbq = window.fbq;
   </div>
 </section>
 
+
+<!-- ===== GLP-1 EXPLAINED PLAINLY (learn series) ===== -->
+<section class="section fade-in" id="glp1-explained" aria-labelledby="glp1-explained-title">
+  <div class="container">
+    <span class="explained-kicker">Learn first</span>
+    <h2 id="glp1-explained-title">GLP-1, Explained Plainly</h2>
+    <p style="text-align:center; max-width:620px; margin:0 auto 0.5rem;">Want the science before you text? I wrote a plain-English series — how they work, side effects, cost, myths, and what month one often feels like.</p>
+    <div class="explained-grid">
+      <a href="https://npcwoods.com/learn/glp1/" class="explained-card"><strong>GLP-1 Explained Super Easy</strong><span>The big picture in everyday words.</span></a>
+      <a href="https://npcwoods.com/learn/glp1/how-they-work/" class="explained-card"><strong>How GLP-1s Work</strong><span>Doorbell, lock and key, and why a weekly shot lasts.</span></a>
+      <a href="https://npcwoods.com/learn/glp1/side-effects/" class="explained-card"><strong>Side Effects, Honestly</strong><span>The common stuff, yellow lights, and red flags.</span></a>
+      <a href="https://npcwoods.com/learn/glp1/cost/" class="explained-card"><strong>What It Costs</strong><span>$59 consult. Medicine separate. No coverage promises.</span></a>
+      <a href="https://npcwoods.com/learn/glp1/myths/" class="explained-card"><strong>Myths vs Facts</strong><span>Internet claims, sorted — without the hype.</span></a>
+      <a href="https://npcwoods.com/learn/glp1/first-30-days/" class="explained-card"><strong>Your First 30 Days</strong><span>Starter dose, shot day, and week-by-week feel.</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section class="section section-alt fade-in">
   <div class="container">
@@ -1849,7 +1899,7 @@ window._fbq = window.fbq;
 <!-- ===== CLINICIAN TRUST LINE ===== -->
 <div class="clinician-trust-line">
   Reviewed by Chris Woods, MSN, APRN, FNP-C. Licensed Nurse Practitioner<br>
-  Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; Last updated: June 2026
+  Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served. &bull; Last updated: June 2026
 </div>
 
 <!-- ===== SITE FOOTER ===== -->
@@ -1905,6 +1955,8 @@ window._fbq = window.fbq;
           <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
           <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
           <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
+          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
+          <li><a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" target="_blank" rel="noopener">Florida (telehealth registration)</a></li>
         </ul>
       </div>
 
@@ -1938,7 +1990,7 @@ window._fbq = window.fbq;
         <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
-      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>
+      Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served.<br>
       NPI: 1285125468 &bull; Mailing: Scottsdale, AZ &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
@@ -1976,9 +2028,20 @@ window._fbq = window.fbq;
 <!-- ===== END SITE FOOTER ===== -->
 
 <!-- Mobile Floating CTA -->
-<div class="mobile-floating-cta">
-  <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult">Text Chris, $59 Consult</a>
+<div class="mobile-floating-cta" id="stickyText">
+  <div class="mfc-row">
+    <a href="sms:4806394722?body=Hi%2C%20I%20would%20like%20to%20ask%20about%20a%20%2459%20GLP-1%20consult">Text Chris, $59 Consult</a>
+    <button type="button" class="mfc-close" id="stickyClose" aria-label="Dismiss text bar">&times;</button>
+  </div>
 </div>
+<script>
+(function(){
+  var bar=document.getElementById('stickyText'), btn=document.getElementById('stickyClose');
+  function off(){ bar.hidden=true; document.body.classList.add('sticky-off'); }
+  try { if (sessionStorage.getItem('npcStickyOff')==='1') off(); } catch(e){}
+  btn.addEventListener('click', function(){ off(); try { sessionStorage.setItem('npcStickyOff','1'); } catch(e){} });
+})();
+</script>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
