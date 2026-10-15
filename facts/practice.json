@@ -79,6 +79,17 @@
     "11 states",
     "licensed in 13 states"
   ],
-  "banned_word_allowed_phrases": [],
-  "banned_word_allowed_phrases_rule": "Exact phrases Chris has approved despite a banned word (for example a required disclosure or a source's proper name). Empty until Chris says yes to each one."
+  "banned_word_allowed_phrases": [
+    "not a physician",
+    "Collaborative Agreement with GA-Licensed Physician",
+    "Collaborative Agreement with NC-Licensed Physician",
+    "collaborative agreement with a Georgia-licensed physician",
+    "collaborative agreement with a North Carolina-licensed physician",
+    "collaborative agreement with an NC physician",
+    "American Academy of Family Physicians",
+    "American College of Physicians",
+    "American College of Emergency Physicians",
+    "American Family Physician"
+  ],
+  "banned_word_allowed_phrases_rule": "Exact phrases Chris approved on 2026-10-14 despite the word 'physician': GA/NC collaborative-agreement and 'not a physician' disclosures, and source-citation organization names. Matched case-insensitively as whole phrases; the same word anywhere else still blocks. Add more only after Chris says yes to each one."
 }

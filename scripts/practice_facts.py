@@ -75,7 +75,8 @@ def page_words(html: str, allowed_phrases: list[str] | tuple[str, ...] = ()) -> 
         text = rx.sub(" ", text)
     for phrase in allowed_phrases:
         if phrase:
-            text = re.sub(re.escape(phrase), " ", text, flags=re.IGNORECASE)
+            # whole phrase only: "American Family Physician" does not swallow "...Physicians"
+            text = re.sub(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", " ", text, flags=re.IGNORECASE)
     return text
 
 

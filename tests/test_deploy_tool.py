@@ -498,6 +498,21 @@ class ContentBlockTest(unittest.TestCase):
                 code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--verify-only"])
         self.assertEqual(code, 0)
 
+    def test_allowed_disclosure_passes_but_bare_physician_blocks(self):
+        ok = self.page("<p>Chris practices in Georgia under a collaborative agreement with a "
+                       "Georgia-licensed physician. He is a nurse practitioner, not a physician.</p>"
+                       "<li>American Academy of Family Physicians (AAFP), Acute Otitis Media</li>")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root, html=ok)
+            err = io.StringIO()
+            with mock.patch.object(self.m, "ROOT", root), \
+                 redirect_stdout(io.StringIO()), redirect_stderr(err):
+                code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE])  # dry-run
+        self.assertEqual(code, 0, err.getvalue())
+        self._assert_blocked(ok.replace("</body>", "<p>A physician checks every chart.</p></body>"),
+                             "banned word 'physician'")
+
     def test_deploy_banned_words_are_in_the_ledger(self):
         ledger = json.loads(LEDGER.read_text())
         facts = self.m.load_practice_facts()
