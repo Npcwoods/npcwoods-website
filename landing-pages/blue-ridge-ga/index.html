@@ -709,19 +709,9 @@
   });
 })();
 
-// Mobile nav
-(function() {
-  var hamburger = document.getElementById('npcHamburger');
-  var overlay = document.getElementById('npcOverlay');
-  var panel = document.getElementById('npcSlidePanel');
-  var closeBtn = document.getElementById('npcPanelClose');
-  function openMenu() { panel.classList.add('open'); overlay.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
-  function closeMenu() { panel.classList.remove('open'); overlay.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-  if (hamburger) hamburger.addEventListener('click', openMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-})();
+// Mobile nav: /assets/js/npc-menu.js (shared)
 </script>
 
+<script src="/assets/js/npc-menu.js?v=20261015" defer></script>
 </body>
 </html>
