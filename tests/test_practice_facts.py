@@ -100,8 +100,57 @@ class PageChecksTest(unittest.TestCase):
         problems = self.m.page_drift("landing-pages/credentials/index.html", "Serving 13 states", self.ledger)
         self.assertTrue(any("TPAN3355" in p for p in problems))
 
-    def test_allowed_phrases_start_empty(self):
-        self.assertEqual(self.ledger["banned_word_allowed_phrases"], [])
+    ALLOWED = [
+        "not a physician",
+        "Collaborative Agreement with GA-Licensed Physician",
+        "Collaborative Agreement with NC-Licensed Physician",
+        "collaborative agreement with a Georgia-licensed physician",
+        "collaborative agreement with a North Carolina-licensed physician",
+        "collaborative agreement with an NC physician",
+        "American Academy of Family Physicians",
+        "American College of Physicians",
+        "American College of Emergency Physicians",
+        "American Family Physician",
+    ]
+
+    def test_allowed_phrases_are_exactly_chris_approved_list(self):
+        self.assertEqual(self.ledger["banned_word_allowed_phrases"], self.ALLOWED)
+
+    def test_no_allowed_phrase_is_a_bare_word_or_covers_another_banned_word(self):
+        for phrase in self.ledger["banned_word_allowed_phrases"]:
+            words = phrase.split()
+            self.assertGreaterEqual(len(words), 3, phrase)
+            for other in ("appointment", "doctor", "insurance"):
+                self.assertNotIn(other, phrase.lower(), phrase)
+            self.assertNotRegex(phrase, r"\bMD\b")
+            # take out the one word the phrase exists for; nothing banned may remain
+            rest = " ".join(w for w in words if not w.lower().startswith("physician")
+                            and not w.lower().endswith("physician"))
+            self.assertEqual(self.m.banned_word_hits(rest), [], phrase)
+
+    def test_each_allowed_phrase_passes_in_page_text(self):
+        allowed = self.ledger["banned_word_allowed_phrases"]
+        for phrase in allowed:
+            html = f"<p>Chris Woods, MSN, APRN, FNP-C. {phrase}.</p>"
+            self.assertEqual(self.m.banned_word_hits(html, allowed), [], phrase)
+        self.assertEqual(self.m.banned_word_hits(
+            "<li><strong>American Academy of Family Physicians (AAFP)</strong>, Cellulitis</li>", allowed), [])
+        self.assertEqual(self.m.banned_word_hits(
+            '{"description":"Not a chatbot. Not an AI clinician. Not a physician."}', allowed), [])
+
+    def test_same_word_outside_an_allowed_phrase_still_blocks(self):
+        allowed = self.ledger["banned_word_allowed_phrases"]
+        for html in (
+            "<p>Talk to a physician today.</p>",
+            "<p>Our physicians reply fast.</p>",
+            "<p>He works with a Georgia-licensed physician.</p>",           # disclosure cut short
+            "<p>American Family Physicians recommend this.</p>",           # not the journal name
+            "<p>He is not a physician. A physician reviews every chart.</p>",  # second use is bare
+        ):
+            self.assertTrue(self.m.banned_word_hits(html, allowed), html)
+        for html in ("<p>Book an appointment.</p>", "<p>Ask your doctor.</p>",
+                     "<p>We take insurance.</p>", "<p>Seen by an MD.</p>"):
+            self.assertTrue(self.m.banned_word_hits(html, allowed), html)
 
     def test_allowed_phrase_mechanism(self):
         html = "<p>American Academy of Family Physicians</p>"
