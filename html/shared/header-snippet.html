@@ -1,6 +1,6 @@
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
-<!-- Last updated: May 2026 — CSS/JS moved to external files -->
+<!-- Last updated: 2026-10-15 — menu panel now comes from /assets/js/npc-menu.js -->
 
 <!-- Shared site-wide stylesheet (nav, footer, reviews, save-contact) -->
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -83,134 +83,14 @@
       </li>
     </ul>
 
-    <button class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false">
+    <button type="button" class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="npcMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Slide-out overlay -->
-<div class="npc-menu-overlay" id="npcOverlay"></div>
-
-<!-- Slide-out navigation panel -->
-<div class="npc-slide-panel" id="npcSlidePanel" role="dialog" aria-label="Navigation menu">
-  <div class="npc-panel-header">
-    <div class="npc-panel-logo">
-      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
-      NPCWoods
-    </div>
-    <button class="npc-panel-close" id="npcPanelClose" aria-label="Close menu">
-      <svg><use href="#npc-icon-x"/></svg>
-    </button>
-  </div>
-  <div class="npc-panel-body">
-
-    <!-- Navigate -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Navigate</div>
-      <a href="https://npcwoods.com/how-it-works/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-zap"/></svg></div>
-        <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee, one price, one promise</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states (FL by telehealth reg.)</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/learn/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">After Your Visit<div class="npc-panel-link-sub">Patient education library</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/blog/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">Blog<div class="npc-panel-link-sub">Health tips &amp; insights</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/about/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
-        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC, double board-certified</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- States We Serve -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">States We Serve</div>
-      <div class="npc-states-grid">
-        <a href="https://npcwoods.com/arizona-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Arizona</a>
-        <a href="https://npcwoods.com/colorado-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Colorado</a>
-        <a href="https://npcwoods.com/georgia-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Georgia</a>
-        <a href="https://npcwoods.com/idaho-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Idaho</a>
-        <a href="https://npcwoods.com/iowa-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Iowa</a>
-        <a href="https://npcwoods.com/montana-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Montana</a>
-        <a href="https://npcwoods.com/nevada-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Nevada</a>
-        <a href="https://npcwoods.com/new-mexico-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> New Mexico</a>
-        <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
-        <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
-        <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
-        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
-        <a href="https://npcwoods.com/florida-vacation-sick-text-visit/" class="npc-state-link"><span class="npc-state-dot"></span> Florida (telehealth reg.)</a>
-      </div>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- Common Services -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Common Services</div>
-      <a href="https://npcwoods.com/uti-treatment/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-pill"/></svg></div>
-        <div class="npc-panel-link-text">UTI Treatment</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/sinus-infection-treatment/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Sinus Infection</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/dental-pain/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Dental Pain Relief</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">All Conditions<div class="npc-panel-link-sub">Full list of what we treat</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- Get Care Now -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Get Care Now</div>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-panel-cta">
-        <svg><use href="#npc-icon-message"/></svg>
-        Text Chris. Start My $59 Visit
-      </a>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20ask%20about%20a%20%2459%20visit." class="npc-panel-phone">
-        <div class="npc-panel-phone-icon"><svg><use href="#npc-icon-phone"/></svg></div>
-        <div class="npc-panel-link-text">Text (480) 639-4722<div class="npc-panel-link-sub">Same number, real practice</div></div>
-      </a>
-    </div>
-
-  </div>
-</div>
+<!-- Slide-out menu panel: rendered by /assets/js/npc-menu.js (loaded by site.js).
+     Do NOT paste panel markup here or on pages. Edit the MENU list in npc-menu.js. -->
 
 <!-- Shared site-wide JavaScript (nav, CWV, save-contact, fade-in) -->
 <script src="/assets/js/site.js" defer></script>

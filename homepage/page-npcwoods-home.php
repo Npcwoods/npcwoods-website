@@ -1063,6 +1063,7 @@ a{color:inherit}
           <a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
           <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
           <a href="https://npcwoods.com/washington-telemedicine/">Washington</a>
+          <a href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida (telehealth reg.)</a>
         </div>
       </li>
       <li><a href="https://npcwoods.com/blog/">Blog</a></li>
@@ -1076,7 +1077,7 @@ a{color:inherit}
       </li>
     </ul>
 
-    <button class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false">
+    <button type="button" class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="npcMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1385,18 +1386,9 @@ a{color:inherit}
 
 <a class="mobile-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris now · $59</a>
 
-<script>
-/* Minimal sticky-nav hamburger (matches UTI/shared behavior enough for preview) */
-(function(){
-  var btn = document.getElementById('npcHamburger');
-  var nav = document.querySelector('.npc-nav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    var open = nav.classList.toggle('npc-nav-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-})();
-</script>
+<!-- Shared header menu (slide-out panel + dropdowns) from one source: /assets/js/npc-menu.js -->
+<script src="/assets/js/npc-menu.js?v=20261015" defer></script>
+<script src="/assets/js/site.js?v=20261015" defer></script>
 <?php
 $GLOBALS['npcwoods_shared_footer_rendered'] = true;
 $npcwoods_footer = defined('ABSPATH') ? ABSPATH . 'shared/footer-snippet.html' : '';

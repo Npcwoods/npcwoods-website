@@ -6,7 +6,7 @@
  *
  * Usage: <script src="/assets/js/site.js" defer></script>
  *
- * Last updated: May 2026
+ * Last updated: 2026-10-15 (menu moved to /assets/js/npc-menu.js)
  */
 
 
@@ -14,56 +14,42 @@
  * 1. NAVIGATION (Hamburger menu, slide-out panel, scroll shadow)
  * ============================================================ */
 
+/* The header menu (hamburger slide-out panel + desktop dropdowns) lives in
+ * ONE file: /assets/js/npc-menu.js. It renders the panel from a single
+ * data list, so pasted page copies can no longer drift. Bump MENU_VER
+ * when npc-menu.js changes (the versioned URL dodges the 31-day cache). */
 (function() {
-  var hamburger = document.getElementById('npcHamburger');
-  var panel = document.getElementById('npcSlidePanel');
-  var overlay = document.getElementById('npcOverlay');
-  var panelClose = document.getElementById('npcPanelClose');
-  var nav = document.querySelector('.npc-nav');
-  if (!hamburger || !panel || !overlay || !panelClose) return;
+  var MENU_VER = '20261015';
+  if (window.__npcMenuLoaded || !document.querySelector('.npc-nav')) return;
+  var s = document.createElement('script');
+  s.src = '/assets/js/npc-menu.js?v=' + MENU_VER;
+  s.async = false;
+  s.onerror = legacyNav;  // network hiccup: keep the pasted panel working
+  (document.head || document.body).appendChild(s);
 
-  // Scroll shadow effect
-  if (nav) {
-    window.addEventListener('scroll', function() {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
+  function legacyNav() {
+    var hamburger = document.getElementById('npcHamburger');
+    var panel = document.getElementById('npcSlidePanel');
+    var overlay = document.getElementById('npcOverlay');
+    var panelClose = document.getElementById('npcPanelClose');
+    if (!hamburger || !panel || !overlay || !panelClose) return;
+    function openMenu() {
+      panel.classList.add('active'); overlay.classList.add('active'); hamburger.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden';
+      panelClose.focus();
+    }
+    function closeMenu() {
+      panel.classList.remove('active'); overlay.classList.remove('active'); hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = ''; document.body.style.overflow = '';
+      hamburger.focus();
+    }
+    hamburger.addEventListener('click', function() { panel.classList.contains('active') ? closeMenu() : openMenu(); });
+    overlay.addEventListener('click', closeMenu);
+    panelClose.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && panel.classList.contains('active')) closeMenu(); });
   }
-
-  function openMenu() {
-    panel.classList.add('active');
-    overlay.classList.add('active');
-    hamburger.classList.add('active');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    panelClose.focus();
-  }
-
-  function closeMenu() {
-    panel.classList.remove('active');
-    overlay.classList.remove('active');
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    hamburger.focus();
-  }
-
-  hamburger.addEventListener('click', function() {
-    panel.classList.contains('active') ? closeMenu() : openMenu();
-  });
-
-  overlay.addEventListener('click', closeMenu);
-  panelClose.addEventListener('click', closeMenu);
-
-  // Close on link click
-  var links = panel.querySelectorAll('.npc-panel-link, .npc-state-link, .npc-panel-cta, .npc-panel-phone');
-  for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', closeMenu);
-  }
-
-  // Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && panel.classList.contains('active')) closeMenu();
-  });
 })();
 
 
@@ -71,7 +57,7 @@
  * 1.5 MOBILE NAV CTA ("Text · $59" pill in the top bar)
  * ------------------------------------------------------------
  * The desktop nav links (including the CTA) are hidden under
- * 768px, leaving phones with no persistent way to text. Static
+ * 1024px, leaving phones with no persistent way to text. Static
  * pages carry pasted copies of the header snippet, so the pill
  * is injected here instead of editing ~80 HTML files. The
  * matchMedia guard keeps it off desktop even if site.css is
@@ -80,7 +66,7 @@
  * ============================================================ */
 
 (function() {
-  if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
+  if (!window.matchMedia || !window.matchMedia('(max-width: 1023px)').matches) return;
   var inner = document.querySelector('.npc-nav-inner');
   if (!inner || inner.querySelector('.npc-nav-cta-mobile')) return;
   var toggle = inner.querySelector('.npc-nav-toggle');
