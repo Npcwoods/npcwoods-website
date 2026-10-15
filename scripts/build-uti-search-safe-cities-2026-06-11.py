@@ -383,7 +383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- CLINICIAN LINE -->
 <div class="clinician-line">
-  Reviewed by Chris Woods, MSN, APRN, FNP-C — Licensed Nurse Practitioner<br>
+  Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — Licensed Nurse Practitioner<br>
   Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; Serving {{{{CITY}}}}, {{{{ST}}}} &bull; Last updated: <time datetime="2026-06-11">June 11, 2026</time>
 </div>
 

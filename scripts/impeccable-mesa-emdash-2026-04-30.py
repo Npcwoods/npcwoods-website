@@ -57,8 +57,8 @@ mesa_edits: list[tuple[str, str]] = [
         '<div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee · one price, one promise</div></div>',
     ),
     (
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C &mdash; double board-certified</div></div>',
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C · double board-certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC &mdash; double board-certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC · double board-certified</div></div>',
     ),
     (
         '        Text Chris &mdash; Start My $59 Visit',
@@ -143,8 +143,8 @@ mesa_edits: list[tuple[str, str]] = [
         '<li><a href="https://npcwoods.com/pricing/">Pricing · $59</a></li>',
     ),
     (
-        'Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>',
-        'Reviewed by Chris Woods, MSN, APRN, FNP-C · Double Board-Certified Nurse Practitioner<br>',
+        'Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC &mdash; Double Board-Certified Nurse Practitioner<br>',
+        'Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC · Double Board-Certified Nurse Practitioner<br>',
     ),
     # ---- Sticky mobile bottom CTA (1) ---------------------------------------
     (

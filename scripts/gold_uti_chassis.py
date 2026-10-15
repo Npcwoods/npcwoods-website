@@ -185,14 +185,14 @@ def stats() -> str:
   <div class="stats-inner">
     <div class="stat"><div class="stat-n">$59</div><div class="stat-l">Flat fee, pay after care</div></div>
     <div class="stat"><div class="stat-n">11</div><div class="stat-l">Licensed states</div></div>
-    <div class="stat"><div class="stat-n">Same NP</div><div class="stat-l">Chris Woods, FNP-C</div></div>
+    <div class="stat"><div class="stat-n">Same NP</div><div class="stat-l">Chris Woods, FNP-C, AGACNP-BC</div></div>
   </div>
 </div>"""
 
 
 def eeat() -> str:
     return """<div class="eeat-byline" style="background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:24px auto;max-width:var(--max);font-size:13px;line-height:1.5;color:var(--body);">
-  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner and founder of NPCWoods.</p>
+  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner and founder of NPCWoods.</p>
   <p style="margin:0 0 4px 0;"><a href="https://npcwoods.com/about/" style="color:var(--blue-bright);text-decoration:underline;">About Chris</a> · <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);text-decoration:underline;">Full credentials, NPI &amp; state licenses</a></p>
   <p style="margin:0;font-size:12px;color:var(--muted);">Last reviewed: <time datetime="2026-08-24">August 24, 2026</time></p>
 </div>"""
@@ -214,7 +214,7 @@ def how_it_works() -> str:
         <div class="step-num">2</div>
         <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods NP">
         <h3>Chris reviews it</h3>
-        <p>Chris Woods, MSN, APRN, FNP-C, reads it himself. Same nurse practitioner every time. He asks what he needs.</p>
+        <p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads it himself. Same nurse practitioner every time. He asks what he needs.</p>
       </div>
       <div class="bento-card">
         <div class="step-num">3</div>
@@ -286,7 +286,7 @@ def bottom_cta(title: str, sub: str) -> str:
 
 def clinician_line() -> str:
     return """<div class="clinician-line">
-  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner.<br>
+  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner.<br>
   Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT · <a href="https://npcwoods.com/about/" style="color:var(--blue-bright);">About Chris</a> · <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);">Credentials</a> · Last reviewed: <time datetime="2026-08-24">August 24, 2026</time>
 </div>"""
 

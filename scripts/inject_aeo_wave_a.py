@@ -35,7 +35,7 @@ ATF_STYLE = """<style>
 
 GENERIC_ATF = """<div class="npc-atf-answer" data-npc-aeo="atf-answer">
   <p>
-    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner.
     Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
     No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit.
     A prescription is not promised. You only pay if he can treat you.
@@ -176,7 +176,7 @@ def inject_atf(html: str, block: str) -> str:
 def state_atf(state: str) -> str:
     return f"""<div class="npc-atf-answer" data-npc-aeo="atf-answer">
   <p>
-    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner.
     Licensed in {state}. Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
     No video. No app. No chatbot. You must be physically in {state} or another licensed state at the time of the visit.
     A prescription is not promised. You only pay if he can treat you.

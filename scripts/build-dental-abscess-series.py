@@ -62,7 +62,7 @@ def person_schema() -> str:
   "hasCredential": {
     "@type": "EducationalOccupationalCredential",
     "credentialCategory": "license",
-    "name": "MSN, APRN, FNP-C"
+    "name": "MSN, APRN, FNP-C, AGACNP-BC"
   }
 }"""
 
@@ -274,7 +274,7 @@ def eeat_html(series: dict) -> str:
     <div class="npc-byline-badge" aria-hidden="true">Clinician reviewed</div>
     <p class="npc-byline-main">
       Clinically reviewed by
-      <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C</a>
+      <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a>
       — Double board-certified Nurse Practitioner. {esc(license_line)}.
     </p>
     <p class="npc-byline-meta">
@@ -518,7 +518,7 @@ def chris_card(series: dict) -> str:
     return f"""<aside class="chris-card">
   <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" width="88" height="88" alt="Chris Woods, Nurse Practitioner">
   <div>
-    <strong>Chris Woods, MSN, APRN, FNP-C</strong>
+    <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>
     <span>I read the texts myself. {esc(series["license_line"])}. Real photo. Real person.</span>
   </div>
 </aside>"""

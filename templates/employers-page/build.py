@@ -25,7 +25,7 @@ FAQ = [
     ("Does my team need to download an app?",
      "No app, no portal, no login. It's a regular text message to (480) 639-4722 from any phone."),
     ("Who is Chris?",
-     "Chris Woods, MSN, APRN, FNP-C, is a double board-certified nurse practitioner. He reads and answers every text himself. NPI 1285125468."),
+     "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, is a double board-certified nurse practitioner. He reads and answers every text himself. NPI 1285125468."),
     ("Will I see my employee's health information?",
      "No. Your employer never sees your health details. We follow HIPAA."),
     ("Is this a replacement for our health plan?",

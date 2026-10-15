@@ -90,7 +90,7 @@ HEAD_FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 CRAWLER_META = """<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="bingbot" content="index, follow">
-<meta name="author" content="Chris Woods, MSN, APRN, FNP-C">
+<meta name="author" content="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC">
 <meta name="publisher" content="NPCWoods Telemedicine">
 <meta name="geo.region" content="US">
 <meta name="format-detection" content="telephone=yes">
@@ -307,7 +307,7 @@ PRICING_HEAD = """<title>Pricing &mdash; $59 Flat Fee, Same-Day Care | NPCWoods<
       "name": "NPCWoods Async Telehealth Visit",
       "serviceType": "Asynchronous Telemedicine",
       "category": "Telehealth",
-      "description": "A text-based telehealth visit with Chris Woods, MSN, APRN, FNP-C. Includes full clinical review, treatment plan, and prescription routed to your pharmacy when medically appropriate. Follow-up questions for the same visit are included.",
+      "description": "A text-based telehealth visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Includes full clinical review, treatment plan, and prescription routed to your pharmacy when medically appropriate. Follow-up questions for the same visit are included.",
       "provider": { "@id": "https://npcwoods.com/#medical-business" },
       "areaServed": [
         { "@type": "State", "name": "Arizona" },
@@ -582,8 +582,8 @@ PRICING_BODY = """<!-- HERO -->
 # CREDENTIALS PAGE
 # ============================================================================
 
-CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C | NPCWoods</title>
-<meta name="description" content="Chris Woods, MSN, APRN, FNP-C &mdash; Licensed Nurse Practitioner in 11 states. NPI, state license verification links, LegitScript-certified. Verify every credential yourself.">
+CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C, AGACNP-BC | NPCWoods</title>
+<meta name="description" content="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC &mdash; Licensed Nurse Practitioner in 11 states. NPI, state license verification links, LegitScript-certified. Verify every credential yourself.">
 <meta name="theme-color" content="#2563EB">
 <meta name="keywords" content="chris woods nurse practitioner, NPCWoods credentials, verify nurse practitioner, NPI 1285125468, FNP-C credentials, licensed nurse practitioner 11 states">
 <link rel="canonical" href="https://npcwoods.com/credentials/">
@@ -591,7 +591,7 @@ CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C |
 
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://npcwoods.com/credentials/">
-<meta property="og:title" content="Credentials &mdash; Chris Woods, MSN, APRN, FNP-C | NPCWoods">
+<meta property="og:title" content="Credentials &mdash; Chris Woods, MSN, APRN, FNP-C, AGACNP-BC | NPCWoods">
 <meta property="og:description" content="Every license, every board, every verification link. A real clinician with real credentials &mdash; verify them yourself.">
 <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -606,9 +606,9 @@ CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C |
       "url": "https://npcwoods.com/credentials/",
       "name": "Chris Woods",
       "alternateName": "Christopher Woods",
-      "honorificSuffix": "MSN, APRN, FNP-C",
+      "honorificSuffix": "MSN, APRN, FNP-C, AGACNP-BC",
       "jobTitle": "Nurse Practitioner",
-      "description": "Chris Woods, MSN, APRN, FNP-C is a double board-certified Licensed Nurse Practitioner practicing asynchronous telemedicine through NPCWoods. Licensed in 11 U.S. states.",
+      "description": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC is a double board-certified Licensed Nurse Practitioner practicing asynchronous telemedicine through NPCWoods. Licensed in 11 U.S. states.",
       "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
       "worksFor": { "@id": "https://npcwoods.com/#medical-business" },
       "makesOffer": {
@@ -624,6 +624,7 @@ CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C |
       "hasCredential": [
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "Master of Science in Nursing (MSN)" },
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Family Nurse Practitioner - Certified (FNP-C)", "recognizedBy": { "@type": "Organization", "name": "American Association of Nurse Practitioners Certification Board", "url": "https://www.aanpcert.org/" } },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)", "recognizedBy": { "@type": "Organization", "name": "American Nurses Credentialing Center", "url": "https://www.nursingworld.org/ancc/" } },
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Advanced Practice Registered Nurse (APRN)" }
       ],
       "knowsAbout": ["Family Practice", "Primary Care", "Urgent Care", "Telemedicine", "Asynchronous Telemedicine", "Text-Based Telehealth", "UTI Treatment", "Sinus Infection", "Strep Throat", "Pink Eye", "Yeast Infection"],
@@ -652,7 +653,7 @@ CREDENTIALS_HEAD = """<title>Credentials &mdash; Chris Woods, MSN, APRN, FNP-C |
       "@type": "WebPage",
       "@id": "https://npcwoods.com/credentials/",
       "url": "https://npcwoods.com/credentials/",
-      "name": "Credentials — Chris Woods, MSN, APRN, FNP-C | NPCWoods",
+      "name": "Credentials — Chris Woods, MSN, APRN, FNP-C, AGACNP-BC | NPCWoods",
       "isPartOf": { "@type": "WebSite", "@id": "https://npcwoods.com/#website", "url": "https://npcwoods.com/", "name": "NPCWoods Telemedicine" },
       "about": { "@id": "https://npcwoods.com/#chris-woods" },
       "author": { "@id": "https://npcwoods.com/#chris-woods" },
@@ -727,7 +728,7 @@ CREDENTIALS_BODY = """<!-- HERO -->
   <div class="hero-inner">
     <div class="hero-badge"><span class="hero-badge-dot"></span> Verify everything yourself</div>
     <h1>Real credentials.<br>Verified proof.</h1>
-    <p class="hero-sub">Chris Woods, <strong>MSN, APRN, FNP-C</strong> &mdash; a double board-certified Licensed Nurse Practitioner. Below: every license, every board link, every number you need to confirm what you're paying for before you text.</p>
+    <p class="hero-sub">Chris Woods, <strong>MSN, APRN, FNP-C, AGACNP-BC</strong> &mdash; a double board-certified Licensed Nurse Practitioner. Below: every license, every board link, every number you need to confirm what you're paying for before you text.</p>
     <div class="btn-row">
       <a href="#npi" class="btn-primary">See the NPI &amp; licenses</a>
       <a href="https://npcwoods.com/pricing/" class="btn-secondary">See $59 pricing</a>

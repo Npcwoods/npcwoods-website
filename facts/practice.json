@@ -43,7 +43,8 @@
   "credentials_confirmed": [
     "MSN",
     "APRN",
-    "FNP-C"
+    "FNP-C",
+    "AGACNP-BC"
   ],
   "npi": "1285125468",
   "forbidden_words": [
@@ -55,12 +56,13 @@
     "appointment"
   ],
   "acute_care_credential": {
-    "status": "open",
-    "seen_as": [
-      "AGACNP-BC",
-      "ACNP-BC"
-    ],
-    "rule": "Do not pick a winner. Do not rewrite the site."
+    "status": "settled",
+    "value": "AGACNP-BC",
+    "name": "Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)",
+    "board": "American Nurses Credentialing Center (ANCC)",
+    "ancc_certification_number": "2018010254",
+    "settled_by": "Chris, 2026-10-15",
+    "rule": "Write AGACNP-BC. A bare ACNP-BC (not preceded by AG) blocks a push."
   },
   "surfaces": [
     "homepage/page-npcwoods-home.php",
@@ -70,7 +72,8 @@
   ],
   "surface_must_contain": [
     "13 states",
-    "TPAN3355"
+    "TPAN3355",
+    "AGACNP-BC"
   ],
   "surface_must_not_contain": [
     "11 states"
@@ -91,5 +94,9 @@
     "American College of Emergency Physicians",
     "American Family Physician"
   ],
-  "banned_word_allowed_phrases_rule": "Exact phrases Chris approved on 2026-10-14 despite the word 'physician': GA/NC collaborative-agreement and 'not a physician' disclosures, and source-citation organization names. Matched case-insensitively as whole phrases; the same word anywhere else still blocks. Add more only after Chris says yes to each one."
+  "banned_word_allowed_phrases_rule": "Exact phrases Chris approved on 2026-10-14 despite the word 'physician': GA/NC collaborative-agreement and 'not a physician' disclosures, and source-citation organization names. Matched case-insensitively as whole phrases; the same word anywhere else still blocks. Add more only after Chris says yes to each one.",
+  "credential_line": "MSN, APRN, FNP-C, AGACNP-BC",
+  "page_must_not_match_regex": [
+    "(?<![A-Za-z])ACNP-BC"
+  ]
 }

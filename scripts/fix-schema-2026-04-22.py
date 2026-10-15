@@ -42,7 +42,7 @@ JSON_LD_BLOCK_RE = re.compile(
 
 ORG_ID = "https://npcwoods.com/#medical-business"
 PERSON_ID = "https://npcwoods.com/#chris-woods"
-CRED_NAME_CHRIS = "MSN, APRN, FNP-C"
+CRED_NAME_CHRIS = "MSN, APRN, FNP-C, AGACNP-BC"
 
 # ICD-10 codes per condition hub (used for bug4 MedicalTherapy enrichment).
 # Keyed by URL-path fragment; value is (icd10_code, procedure_name_hint).

@@ -213,7 +213,7 @@ def head(
 <meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="NPCWoods Telemedicine">
 <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png">
-<meta property="og:image:alt" content="Chris Woods, MSN, APRN, FNP-C — double board-certified Nurse Practitioner at NPCWoods Telemedicine">
+<meta property="og:image:alt" content="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — double board-certified Nurse Practitioner at NPCWoods Telemedicine">
 <meta property="article:modified_time" content="2026-08-25T00:00:00-07:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{og_title}">
@@ -279,7 +279,7 @@ SINUS_FAQS = [
     ),
     (
         "Is this a chatbot?",
-        "No. Every message is read by Chris Woods, MSN, APRN, FNP-C &amp; AGACNP-BC. NPI 1285125468.",
+        "No. Every message is read by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. NPI 1285125468.",
     ),
 ]
 
@@ -323,7 +323,7 @@ STREP_FAQS = [
     ),
     (
         "Is this a chatbot?",
-        "No. Chris Woods, MSN, APRN, FNP-C &amp; AGACNP-BC. NPI 1285125468.",
+        "No. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. NPI 1285125468.",
     ),
     (
         "I'm in Charlotte or Atlanta. Can you treat my strep?",
@@ -550,7 +550,7 @@ def sinus_body() -> str:
 </div>
 
 <div class="eeat-byline" style="background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 24px 24px;max-width:var(--max);margin-left:auto;margin-right:auto;font-size:13px;line-height:1.5;color:var(--body);">
-  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner and founder of NPCWoods. Real NP. Not a chatbot. Not an AI clinician. Chris reads every text himself.</p>
+  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner and founder of NPCWoods. Real NP. Not a chatbot. Not an AI clinician. Chris reads every text himself.</p>
   <p style="margin:0 0 4px 0;"><a href="https://npcwoods.com/about/" style="color:var(--blue-bright);text-decoration:underline;">About Chris</a> · <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);text-decoration:underline;">Full credentials, NPI and state licenses</a> · <a href="https://npcwoods.com/how-it-works/" style="color:var(--blue-bright);text-decoration:underline;">How a visit works</a> · <a href="https://npcwoods.com/faq/" style="color:var(--blue-bright);text-decoration:underline;">FAQ</a></p>
   <p style="margin:0;font-size:12px;color:var(--muted);">Last reviewed: <time datetime="2026-08-25">August 25, 2026</time> — Sinus decisions follow CDC adult outpatient antibiotic guidance and IDSA acute bacterial rhinosinusitis principles. Most sinus infections start viral. Antibiotics are not automatic.</p>
 </div>
@@ -863,7 +863,7 @@ def sinus_body() -> str:
 </section>
 
 <div class="clinician-line" style="font-size:12px;line-height:1.6;">
-  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner.<br>
+  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner.<br>
   Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; <a href="https://npcwoods.com/about/" style="color:var(--blue-bright);">About Chris</a> &bull; <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);">Credentials</a> &bull; Last reviewed: <time datetime="2026-08-25">August 25, 2026</time>
 </div>
 
@@ -935,7 +935,7 @@ def strep_body() -> str:
 </div>
 
 <div class="eeat-byline" style="background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 24px 24px;max-width:var(--max);margin-left:auto;margin-right:auto;font-size:13px;line-height:1.5;color:var(--body);">
-  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner and founder of NPCWoods. Real NP. Not a chatbot. Not an AI clinician.</p>
+  <p style="margin:0 0 8px 0;color:#fff;font-weight:600;">Written and clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner and founder of NPCWoods. Real NP. Not a chatbot. Not an AI clinician.</p>
   <p style="margin:0 0 4px 0;"><a href="https://npcwoods.com/about/" style="color:var(--blue-bright);text-decoration:underline;">About</a> · <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);text-decoration:underline;">Credentials, NPI, 11-state licenses</a> · <a href="https://npcwoods.com/how-it-works/" style="color:var(--blue-bright);text-decoration:underline;">How it works</a> · <a href="https://npcwoods.com/faq/" style="color:var(--blue-bright);text-decoration:underline;">FAQ</a></p>
   <p style="margin:0;font-size:12px;color:var(--muted);">Last reviewed: <time datetime="2026-08-25">August 25, 2026</time> — Assessments use modified Centor / McIsaac plus individual judgment. Prescriptions only when criteria and scope support. There is no throat swab over text — if the story is muddy, I send you in rather than guess.</p>
 </div>
@@ -1249,7 +1249,7 @@ def strep_body() -> str:
 </section>
 
 <div class="clinician-line" style="font-size:12px;line-height:1.6;">
-  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C</strong>, double board-certified Nurse Practitioner.<br>
+  Clinically reviewed by <strong>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>, double board-certified Nurse Practitioner.<br>
   Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT &bull; <a href="https://npcwoods.com/about/" style="color:var(--blue-bright);">About Chris</a> &bull; <a href="https://npcwoods.com/credentials/" style="color:var(--blue-bright);">Credentials</a> &bull; Last reviewed: <time datetime="2026-08-25">August 25, 2026</time>
 </div>
 

@@ -46,19 +46,28 @@ class PracticeFactsTest(unittest.TestCase):
             self.ledger["washington_public_page"]["rule"],
             "Do not print the Washington license number.",
         )
-        self.assertEqual(self.ledger["credentials_confirmed"], ["MSN", "APRN", "FNP-C"])
+        self.assertEqual(self.ledger["credentials_confirmed"], ["MSN", "APRN", "FNP-C", "AGACNP-BC"])
+        self.assertEqual(self.ledger["credential_line"], "MSN, APRN, FNP-C, AGACNP-BC")
         self.assertEqual(self.ledger["npi"], "1285125468")
         self.assertEqual(
             self.ledger["forbidden_words"],
             ["doctor", "Dr.", "physician", "MD", "insurance", "appointment"],
         )
 
-    def test_acute_care_credential_stays_open(self):
+    def test_acute_care_credential_is_settled_as_agacnp_bc(self):
         acute = self.ledger["acute_care_credential"]
-        self.assertEqual(acute["status"], "open")
-        self.assertEqual(acute["seen_as"], ["AGACNP-BC", "ACNP-BC"])
-        self.assertIn("Do not pick a winner", acute["rule"])
-        self.assertIn("Do not rewrite the site", acute["rule"])
+        self.assertEqual(acute["status"], "settled")
+        self.assertEqual(acute["value"], "AGACNP-BC")
+        self.assertEqual(acute["ancc_certification_number"], "2018010254")
+        self.assertIn("Adult-Gerontology", acute["name"])
+
+    def test_bare_acnp_bc_blocks_but_agacnp_bc_passes(self):
+        rel = "landing-pages/x/index.html"
+        for bad in ("Chris Woods, FNP-C, ACNP-BC", "Board Certified (ACNP-BC)", ">ACNP-BC<"):
+            self.assertTrue(any("ACNP-BC" in p for p in self.m.page_drift(rel, bad, self.ledger)), bad)
+        for good in ("Chris Woods, MSN, APRN, FNP-C, AGACNP-BC",
+                     "Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)"):
+            self.assertEqual(self.m.page_drift(rel, good, self.ledger), [], good)
 
     def test_named_surfaces_match_the_ledger(self):
         self.assertEqual(
@@ -70,7 +79,7 @@ class PracticeFactsTest(unittest.TestCase):
                 "landing-pages/credentials/index.html",
             ],
         )
-        self.assertEqual(self.ledger["surface_must_contain"], ["13 states", "TPAN3355"])
+        self.assertEqual(self.ledger["surface_must_contain"], ["13 states", "TPAN3355", "AGACNP-BC"])
         self.assertEqual(self.ledger["surface_must_not_contain"], ["11 states"])
         self.assertEqual(self.m.surface_mismatches(ROOT, self.ledger), [])
 

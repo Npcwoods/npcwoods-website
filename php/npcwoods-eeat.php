@@ -14,7 +14,7 @@
 
 function npcwoods_clinician_profile() {
     return array(
-        'name' => 'Chris Woods, MSN, APRN, FNP-C',
+        'name' => 'Chris Woods, MSN, APRN, FNP-C, AGACNP-BC',
         'short_name' => 'Chris Woods',
         'title' => 'Licensed Nurse Practitioner',
         'about_url' => home_url('/about/'),
@@ -71,7 +71,7 @@ add_action('wp_head', function() {
         'name' => $profile['short_name'],
         'url' => $profile['about_url'],
         'description' => 'Chris Woods is a Licensed Nurse Practitioner and founder of NPCWoods Telemedicine. He personally reviews every case and every medical article on the site.',
-        'honorificSuffix' => 'MSN, APRN, FNP-C',
+        'honorificSuffix' => 'MSN, APRN, FNP-C, AGACNP-BC',
         'hasCredential' => array(
             array(
                 '@type' => 'EducationalOccupationalCredential',
@@ -91,6 +91,16 @@ add_action('wp_head', function() {
                     '@type' => 'Organization',
                     'name' => 'American Association of Nurse Practitioners Certification Board (AANPCB)',
                     'url' => isset($profile['aanpcb_url']) ? $profile['aanpcb_url'] : 'https://www.aanpcert.org/'
+                )
+            ),
+            array(
+                '@type' => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'certification',
+                'name' => 'Adult-Gerontology Acute Care Nurse Practitioner - Board Certified (AGACNP-BC)',
+                'recognizedBy' => array(
+                    '@type' => 'Organization',
+                    'name' => 'American Nurses Credentialing Center',
+                    'url' => 'https://www.nursingworld.org/ancc/'
                 )
             )
         ),

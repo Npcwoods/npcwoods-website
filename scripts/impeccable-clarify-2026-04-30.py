@@ -88,8 +88,8 @@ homepage_edits: list[tuple[str, str]] = [
         '<a href="sms:4806394722" class="npc-nav-cta">$59 · Text Us</a>',
     ),
     (
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C &mdash; Board Certified</div></div>',
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C · Double Board-Certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C, AGACNP-BC &mdash; Board Certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, FNP-C, AGACNP-BC · Double Board-Certified</div></div>',
     ),
     (
         '        Text Chris &mdash; Start My $59 Visit',
@@ -116,13 +116,13 @@ homepage_edits: list[tuple[str, str]] = [
     ),
     # ---- Image alt text (1) --------------------------------------------------
     (
-        'alt="Chris Woods, MSN, APRN, FNP-C — founder of NPCWoods Telemedicine"',
-        'alt="Chris Woods, MSN, APRN, FNP-C, founder of NPCWoods Telemedicine"',
+        'alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — founder of NPCWoods Telemedicine"',
+        'alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, founder of NPCWoods Telemedicine"',
     ),
     # ---- About-Chris bio (1) -------------------------------------------------
     (
-        "<p>Chris Woods, MSN, APRN, FNP-C, is a double board-certified Family Nurse Practitioner and the founder of NPCWoods Telemedicine. He personally reviews every patient case — no AI, no chatbots, no handoffs to someone you've never met.</p>",
-        "<p>Chris Woods, MSN, APRN, FNP-C, is a double board-certified Family Nurse Practitioner and the founder of NPCWoods Telemedicine. He personally reviews every patient case. No AI, no chatbots, no handoffs to someone you've never met.</p>",
+        "<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, is a double board-certified Family Nurse Practitioner and the founder of NPCWoods Telemedicine. He personally reviews every patient case — no AI, no chatbots, no handoffs to someone you've never met.</p>",
+        "<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, is a double board-certified Family Nurse Practitioner and the founder of NPCWoods Telemedicine. He personally reviews every patient case. No AI, no chatbots, no handoffs to someone you've never met.</p>",
     ),
     # ---- Bare "Board Certified" credential bullet (1) ------------------------
     (
@@ -162,8 +162,8 @@ homepage_edits: list[tuple[str, str]] = [
         "<p>We're a flat-fee cash-pay practice. $59 per visit, no billing. Many patients find that's less than a typical co-pay. We'll send a receipt you can submit to HSA/FSA.</p>",
     ),
     (
-        "<p>Yes. Every case is read and reviewed by Chris Woods, FNP-C — no AI triage, no rotating roster of contract clinicians, no chatbots pretending to be people.</p>",
-        "<p>Yes. Every case is read and reviewed by Chris Woods, FNP-C. No AI triage, no rotating roster of contract clinicians, no chatbots pretending to be people.</p>",
+        "<p>Yes. Every case is read and reviewed by Chris Woods, FNP-C, AGACNP-BC — no AI triage, no rotating roster of contract clinicians, no chatbots pretending to be people.</p>",
+        "<p>Yes. Every case is read and reviewed by Chris Woods, FNP-C, AGACNP-BC. No AI triage, no rotating roster of contract clinicians, no chatbots pretending to be people.</p>",
     ),
     # ---- Tk text divider (1) — was just an em-dash glyph -------------------
     (
@@ -232,8 +232,8 @@ arizona_edits: list[tuple[str, str]] = [
         '<div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee · one price, one promise</div></div>',
     ),
     (
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C &mdash; double board-certified</div></div>',
-        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C · double board-certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC &mdash; double board-certified</div></div>',
+        '<div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC · double board-certified</div></div>',
     ),
     (
         '        Text Chris &mdash; Start My $59 Visit',
@@ -278,8 +278,8 @@ arizona_edits: list[tuple[str, str]] = [
     ),
     # ---- Reviewed-by line (1) ------------------------------------------------
     (
-        'Reviewed by Chris Woods, MSN, APRN, FNP-C &mdash; Double Board-Certified Nurse Practitioner<br>',
-        'Reviewed by Chris Woods, MSN, APRN, FNP-C · Double Board-Certified Nurse Practitioner<br>',
+        'Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC &mdash; Double Board-Certified Nurse Practitioner<br>',
+        'Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC · Double Board-Certified Nurse Practitioner<br>',
     ),
     # ---- Save-card copy (2) --------------------------------------------------
     (
