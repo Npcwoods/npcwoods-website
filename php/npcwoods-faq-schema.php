@@ -183,7 +183,7 @@ function npcwoods_meta_descriptions($desc) {
     );
     $descriptions = array(
         63=>'NPCWoods offers $59 telemedicine visits by text message. No hassle, no video calls, no waiting rooms. Treat UTIs, sinus infections, strep, ED and more. Serving 13 states.',
-        184=>'Online urgent care for UTIs, sinus infections, strep throat, ear infections, and ED. $59 flat fee per visit. Text-based telemedicine — no paperwork, no appointments needed.',
+        184=>'Online urgent care for UTIs, sinus infections, strep throat, ear infections, and ED. $59 flat fee per visit. Text-based telemedicine — no paperwork, no waiting rooms.',
         192=>'Online ear infection treatment for $59. A licensed NP evaluates your symptoms by text and sends prescriptions to your pharmacy. No video call, no hassle.',
         198=>'Affordable telemedicine in Arizona — $59 flat fee for urgent care by text message. Treat UTIs, sinus infections, strep, and ED from home. No paperwork.',
         3=>'NPCWoods Telemedicine privacy policy.',
