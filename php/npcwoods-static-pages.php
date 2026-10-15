@@ -55,6 +55,7 @@ add_action( "template_redirect", function() {
     "park-county-text-visit" => "park-county-text-visit/index.html",
     "winnebago-county-text-visit" => "winnebago-county-text-visit/index.html",
     "lincoln-county-text-visit" => "lincoln-county-text-visit/index.html",
+    "rosebud-county-text-visit" => "rosebud-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
