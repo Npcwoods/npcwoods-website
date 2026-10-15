@@ -19,8 +19,9 @@ def load_ledger(path: Path) -> dict:
         raise ValueError("states_served must include FL")
     if licenses != [state for state in served if state != "FL"]:
         raise ValueError("aprn_licenses must be states_served without FL")
-    if ledger["acute_care_credential"]["status"] != "open":
-        raise ValueError("acute_care_credential stays open until Chris picks one")
+    acute = ledger["acute_care_credential"]
+    if acute.get("status") != "settled" or acute.get("value") != "AGACNP-BC":
+        raise ValueError("acute_care_credential must be settled as AGACNP-BC (Chris, 2026-10-15)")
     return ledger
 
 
@@ -98,6 +99,10 @@ def page_drift(rel: str, html: str, ledger: dict) -> list[str]:
     for needle in ledger.get("page_must_not_contain", ledger.get("surface_must_not_contain", [])):
         if needle.lower() in lower:
             problems.append(f"contains {needle!r} (facts ledger)")
+    for pattern in ledger.get("page_must_not_match_regex", []):
+        m = re.search(pattern, html)
+        if m:
+            problems.append(f"matches {pattern!r} at “{html[max(0, m.start() - 30):m.end() + 10]}” (facts ledger)")
     if rel in ledger.get("surfaces", []):
         for needle in ledger.get("surface_must_contain", []):
             if needle not in html:

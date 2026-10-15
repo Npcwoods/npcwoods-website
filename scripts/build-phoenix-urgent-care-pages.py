@@ -214,7 +214,7 @@ def schema_block(page: dict) -> str:
             "hasCredential": {
                 "@type": "EducationalOccupationalCredential",
                 "credentialCategory": "license",
-                "name": "MSN, APRN, FNP-C",
+                "name": "MSN, APRN, FNP-C, AGACNP-BC",
             },
         },
         {
@@ -295,7 +295,7 @@ def render(page: dict) -> str:
 <title>{page["title"]}</title>
 <meta name="description" content="{page["description"]}">
 <meta name="keywords" content="{page["keywords"]}">
-<meta name="author" content="Chris Woods, MSN, APRN, FNP-C">
+<meta name="author" content="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC">
 <meta name="theme-color" content="#091535">
 <meta name="last-reviewed" content="{REVIEWED}">
 <meta name="geo.region" content="US-AZ">
@@ -358,7 +358,7 @@ def render(page: dict) -> str:
 {page["body"]}
       <section class="npc-clinician-byline" aria-label="Clinician review attribution and freshness">
         <div class="npc-byline-badge" aria-hidden="true">Clinician reviewed</div>
-        <p class="npc-byline-main">Clinically reviewed by <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C</a>. Double board-certified Nurse Practitioner. Licensed in Arizona and 10 other states.</p>
+        <p class="npc-byline-main">Clinically reviewed by <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a>. Double board-certified Nurse Practitioner. Licensed in Arizona and 10 other states.</p>
         <p class="npc-byline-meta"><strong>Last reviewed: <time datetime="{REVIEWED}">{REVIEWED_HUMAN}</time></strong>. Real clinician. No AI. <a href="https://npcwoods.com/credentials/">Verify credentials</a></p>
       </section>
     </div>
@@ -437,7 +437,7 @@ PAGES = [
         "hero_sub": "Banner, HonorHealth, and NextCare doors are real. If the problem is straightforward, you do not always have to sit in that lobby first.",
         "description": "Skip a Phoenix urgent care lobby when the story is text-safe. Same NP, Chris Woods. $59 cash after care. Text (480) 639-4722. Not for emergencies.",
         "keywords": "skip urgent care Phoenix, text NP Phoenix AZ, Phoenix urgent care lobby, $59 text visit Phoenix, NPCWoods Phoenix",
-        "answer": "If you are in Phoenix and the problem is straightforward — a UTI pattern you already know, sinus pressure that is not an emergency, a tooth that hurts but you can swallow — you can text Chris Woods, MSN, APRN, FNP-C, at (480) 639-4722. Text only. No video. $59 cash, paid after care. NPCWoods does not have a Phoenix building.",
+        "answer": "If you are in Phoenix and the problem is straightforward — a UTI pattern you already know, sinus pressure that is not an emergency, a tooth that hurts but you can swallow — you can text Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, at (480) 639-4722. Text only. No video. $59 cash, paid after care. NPCWoods does not have a Phoenix building.",
         "item_list": [
             "The lobbies are real, and they close",
             "I-10 and Loop 101 are not the visit",
@@ -508,7 +508,7 @@ PAGES = [
       <h2>How to start from Phoenix</h2>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Text {PHONE}</h3><p>Say you are in Phoenix and what hurts.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Answer the follow-up</h3><p>Chris Woods, MSN, APRN, FNP-C, reads the thread. Licensed in Arizona.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Answer the follow-up</h3><p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads the thread. Licensed in Arizona.</p></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Pharmacy you name</h3><p>If treatment is appropriate, the prescription goes to Fry's, Walgreens, CVS, Costco, wherever you actually pick up.</p></div></div>
       </div>
       <p><a href="https://npcwoods.com/pricing/">$59 flat. Pay after care.</a> No membership. Pharmacy cost is separate.</p>
@@ -563,7 +563,7 @@ PAGES = [
       <p>If you need those things, go. NPCWoods does not have a Phoenix clinic.</p>
       <h2>2. What a text visit is for</h2>
       <p>A text visit is for a story that can be taken in writing: <a href="https://npcwoods.com/uti-treatment/phoenix-az/">UTI</a>, <a href="https://npcwoods.com/sinus-infection-treatment/">sinus</a>, <a href="https://npcwoods.com/strep-throat-treatment/">strep or ear</a>, <a href="https://npcwoods.com/dental-pain/">dental pain as a bridge</a>, <a href="https://npcwoods.com/ed-treatment/">ED</a> when it is appropriate. The full list is on <a href="https://npcwoods.com/conditions/">conditions</a>.</p>
-      <p>Chris Woods, MSN, APRN, FNP-C, reads the thread. Licensed in Arizona. You must be in Arizona or another licensed state at the time. No video. No waiting room. No appointment slot.</p>
+      <p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads the thread. Licensed in Arizona. You must be in Arizona or another licensed state at the time. No video. No waiting room. No appointment slot.</p>
       <h2>3. Hours vs a phone in your pocket</h2>
       <div class="comparison-wrap">
         <table class="comparison-table">
@@ -606,7 +606,7 @@ PAGES = [
         "hero_sub": "People in Phoenix already take these five problems to Banner, HonorHealth, and NextCare. Sometimes that is the right door. Sometimes the story is simple enough to text.",
         "description": "Five Phoenix problems you can text a licensed NP about: UTI, sinus, strep or ear, dental pain, ED. $59 after care. Same NP. Not for emergencies. Text (480) 639-4722.",
         "keywords": "text nurse practitioner Phoenix, UTI text Phoenix AZ, sinus text visit Phoenix, strep ear dental ED telehealth Phoenix",
-        "answer": "People in Phoenix already take UTI, sinus, strep or ear, dental pain, and ED to Banner, HonorHealth, and NextCare. Sometimes that door is right. Sometimes the story is simple enough to text Chris Woods, MSN, APRN, FNP-C. $59 cash, pay after care. No Phoenix storefront.",
+        "answer": "People in Phoenix already take UTI, sinus, strep or ear, dental pain, and ED to Banner, HonorHealth, and NextCare. Sometimes that door is right. Sometimes the story is simple enough to text Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. $59 cash, pay after care. No Phoenix storefront.",
         "item_list": ["UTI", "Sinus", "Strep or ear", "Dental pain", "ED"],
         "faqs": [
             {
@@ -637,7 +637,7 @@ PAGES = [
         <li><a href="#dental">Dental pain</a></li>
         <li><a href="#ed">ED</a></li>
       </ol>
-      <p>Chris Woods, MSN, APRN, FNP-C, is a nurse practitioner licensed in Arizona. Same person every time. Text only. $59 cash, pay after care, no subscription. No Phoenix storefront.</p>
+      <p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, is a nurse practitioner licensed in Arizona. Same person every time. Text only. $59 cash, pay after care, no subscription. No Phoenix storefront.</p>
       <h2 id="uti">1. UTI</h2>
       <p>Classic bladder symptoms: burning, urgency, frequency, pressure low in the belly. No fever with flank pain. Not pregnant. Not a child. You can keep fluids down.</p>
       <p>That is a common <a href="https://npcwoods.com/uti-treatment/">UTI text visit</a>. Phoenix already has a city plate: <a href="https://npcwoods.com/uti-treatment/phoenix-az/">UTI treatment in Phoenix, AZ</a>. The longer explainer is the <a href="https://npcwoods.com/learn/uti/">UTI guide</a>.</p>
@@ -686,7 +686,7 @@ PAGES = [
             {"name": "Decide if this is 911 or a room", "text": "Call 911 or go to an ER for emergencies. Go to an urgent-care room for films, stitches, a possible break, or a hands-on exam."},
             {"name": "If it is evening, treat heat as part of the plan", "text": "August in a Phoenix lot is not a slogan. Drink water. Do not sit in a closed car with a child. You can still change your mind and text from the driveway."},
             {"name": "Check whether the story is text-safe", "text": "Good candidates include uncomplicated UTI, sinus, strep or ear without red flags, dental pain as a bridge, and ED when appropriate."},
-            {"name": "Text from where you are", "text": "Text (480) 639-4722 in your own words. Chris Woods, MSN, APRN, FNP-C, reads it. Same NP. No video."},
+            {"name": "Text from where you are", "text": "Text (480) 639-4722 in your own words. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads it. Same NP. No video."},
             {"name": "Pay after, only if care happened", "text": "The visit is $59 cash. Not a subscription. If text treatment is not appropriate, there is no charge."},
             {"name": "If the pharmacy is closed, plan the pickup", "text": "A Saturday night visit can still be reviewed. The bottle waits until the store opens. NextCare Thomas is the posted late brick door if you still need a building."},
             {"name": "Know when to abandon the thread", "text": "If new fever and back pain show up, if you start vomiting, if swelling spreads, stop texting and go in."},
@@ -733,7 +733,7 @@ PAGES = [
         </div></div>
         <div class="step" id="step-4"><div class="step-num">4</div><div class="step-content"><h3>Text from where you are</h3>
           <p>Text {PHONE}. Use your own words. "I'm in Phoenix. It burns when I pee. Started this morning. No fever." That is enough to start.</p>
-          <p>Chris Woods, MSN, APRN, FNP-C, reads it. Same NP every time. No video. No app. You must be physically in Arizona or another licensed state.</p>
+          <p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads it. Same NP every time. No video. No app. You must be physically in Arizona or another licensed state.</p>
           <p>He will ask a few questions. If a prescription is appropriate, it goes to the pharmacy you name. Fry's, Walgreens, CVS, Costco, the one you actually use. Pharmacy hours are their own clock — a midnight text does not open a closed pharmacy.</p>
         </div></div>
         <div class="step" id="step-5"><div class="step-num">5</div><div class="step-content"><h3>Pay after, only if care happened</h3>

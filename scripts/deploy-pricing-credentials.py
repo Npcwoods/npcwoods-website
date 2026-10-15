@@ -47,7 +47,7 @@ PAGES = [
     },
     {
         "slug": "credentials",
-        "title": "Credentials — Chris Woods, MSN, APRN, FNP-C",
+        "title": "Credentials — Chris Woods, MSN, APRN, FNP-C, AGACNP-BC",
         "local": ROOT / "landing-pages/credentials/index.html",
         "remote": "html/credentials/index.html",
     },

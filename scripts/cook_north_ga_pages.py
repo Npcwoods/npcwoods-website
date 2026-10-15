@@ -101,8 +101,8 @@ CLOCK_SWAPS = (
 )
 CHEROKEE_SWAPS = (
     (
-        "This page names real Cherokee County walk-ins so the map feels honest. Then it explains the other option: a $59 text visit with Chris Woods, MSN, APRN, FNP-C, when the issue is treatable by text.",
-        "This is not a directory of Cherokee buildings. It is the skip when you cannot leave the house: a $59 text visit with Chris Woods, MSN, APRN, FNP-C, when the issue is treatable by text.",
+        "This page names real Cherokee County walk-ins so the map feels honest. Then it explains the other option: a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, when the issue is treatable by text.",
+        "This is not a directory of Cherokee buildings. It is the skip when you cannot leave the house: a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, when the issue is treatable by text.",
     ),
     (
         "## What “near me” actually is in this county",
@@ -337,7 +337,7 @@ def cook_woodstock_uti() -> None:
 <span class="section-kicker">Woodstock, GA · weekend · $59</span>
 <h2 class="section-title">A weekend in Woodstock. Clinic closed. $59 text.</h2>
 <p>Burning, urgency, going often, pressure — and it is Saturday, Sunday, or the walk-in on Highway 92 already locked the door. You do not have to sit a Cherokee County urgent-care lobby first.</p>
-<p>NPCWoods is a <strong>$59 text visit</strong>, not a clinic on Highway 92, Towne Lake Parkway, or Main Street. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe. Pay after care. No video. No appointment. No waiting room.</p>
+<p>NPCWoods is a <strong>$59 text visit</strong>, not a clinic on Highway 92, Towne Lake Parkway, or Main Street. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe. Pay after care. No video. No appointment. No waiting room.</p>
 <p>Tonight, the weekend, or you cannot get in. That is the gap this page is for. Walk-ins still matter when you need a room. They are the wrong door for a weekend UTI that is miserable and not an emergency.</p>
 </div></section>""",
             gold.how_it_works(),
@@ -378,7 +378,7 @@ def cook_woodstock_uti() -> None:
 <p>You text Chris, not a rotating pool and not a video waiting room. Follow-up on the same visit is included.</p>
 <p>Full UTI pages already live: <a href="https://npcwoods.com/uti-treatment/">UTI treatment</a>, <a href="https://npcwoods.com/uti-treatment-online/">how online UTI care works</a>, <a href="https://npcwoods.com/learn/uti/">UTI guide</a>. Fee: <a href="https://npcwoods.com/pricing/">pricing</a>. Statewide: <a href="https://npcwoods.com/georgia-telemedicine/">Georgia telemedicine</a>.</p>
 <p>Local walk-ins matter for X-rays, stitches, and anything that needs a room. Use them when that is the job. Use this text visit <strong>instead of</strong> the lobby when the issue is treatable by text — including the weekend the clinic is closed.</p>
-<p>Chris Woods, MSN, APRN, FNP-C. Licensed in Georgia. He is a nurse practitioner, not a physician.</p>
+<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Licensed in Georgia. He is a nurse practitioner, not a physician.</p>
 </div></section>""",
             gold.states(),
             gold.bottom_cta(

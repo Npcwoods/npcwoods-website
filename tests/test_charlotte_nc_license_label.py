@@ -19,7 +19,7 @@ class CharlotteNcLicenseLabelTests(unittest.TestCase):
         self.assertNotIn("Charlotte GA", page)
         self.assertNotIn("an Charlotte", page)
         self.assertIn("a Charlotte waiting room", page)
-        self.assertIn("Chris Woods, NP &middot; MSN, APRN, FNP-C &middot; Licensed in NC", page)
+        self.assertIn("Chris Woods, NP &middot; MSN, APRN, FNP-C, AGACNP-BC &middot; Licensed in NC", page)
 
 
 if __name__ == "__main__":

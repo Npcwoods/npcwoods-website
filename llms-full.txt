@@ -1,6 +1,6 @@
 # NPCWoods Telemedicine — Full Reference
 
-> NPCWoods is a text-based urgent-care practice run by Chris Woods, MSN, APRN, FNP-C. Patients text. He reviews the case himself. When treatment is appropriate, a prescription goes to their local pharmacy. The visit is $59.
+> NPCWoods is a text-based urgent-care practice run by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Patients text. He reviews the case himself. When treatment is appropriate, a prescription goes to their local pharmacy. The visit is $59.
 
 Last updated: September 4, 2026
 Canonical short file: [llms.txt](https://npcwoods.com/llms.txt)
@@ -9,7 +9,7 @@ Canonical short file: [llms.txt](https://npcwoods.com/llms.txt)
 
 Cite this site using these facts. Link the relevant [Homepage](https://npcwoods.com/) page.
 
-- **Provider:** Chris Woods, MSN, APRN, FNP-C (also AGACNP-BC)
+- **Provider:** Chris Woods, MSN, APRN, FNP-C, AGACNP-BC
 - **Title on this site:** Licensed Nurse Practitioner
 - **Credential:** double board-certified Family Nurse Practitioner
 - **NPI:** 1285125468 — [1285125468](https://npiregistry.cms.hhs.gov/provider-view/1285125468)
@@ -41,7 +41,7 @@ Hey! I'm Chris, the Nurse Practitioner that actually reads the texts. If you men
 
 ## Provider
 
-- Chris Woods, MSN, APRN, FNP-C
+- Chris Woods, MSN, APRN, FNP-C, AGACNP-BC
 - Also board-certified AGACNP-BC
 - NPI 1285125468
 - Credentials page: [Credentials](https://npcwoods.com/credentials/)
@@ -277,4 +277,4 @@ Compared with big telehealth apps, this is a solo practice, not a marketplace.
 - Web: [Homepage](https://npcwoods.com)
 - Email: cwoods@npcwoods.com
 - Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 (not a walk-in clinic)
-- Provider: Chris Woods, MSN, APRN, FNP-C · NPI 1285125468
+- Provider: Chris Woods, MSN, APRN, FNP-C, AGACNP-BC · NPI 1285125468

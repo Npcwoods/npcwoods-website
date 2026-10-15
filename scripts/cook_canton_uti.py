@@ -99,7 +99,7 @@ def cook() -> Path:
 <span class="section-kicker">Canton, GA · Riverstone · $59</span>
 <h2 class="section-title">A weeknight in Canton. Riverstone is a line. $59 text.</h2>
 <p>Burning, urgency, going often, pressure — and you are coming off I-575, stuck near Riverstone Parkway, or already in Holly Springs. A chair at the county seat still means a wait.</p>
-<p>NPCWoods is a <strong>$59 text visit</strong>, not a clinic on Riverstone Parkway or downtown Canton. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe. Pay after care. No video. No appointment. No waiting room.</p>
+<p>NPCWoods is a <strong>$59 text visit</strong>, not a clinic on Riverstone Parkway or downtown Canton. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe. Pay after care. No video. No appointment. No waiting room.</p>
 <p>After work, after practice, or you cannot leave the house. That is the gap this page is for. Walk-ins still matter when you need a room. They are the wrong door for a weeknight UTI that is miserable and not an emergency.</p>
 </div></section>""",
             gold.how_it_works(),
@@ -140,7 +140,7 @@ def cook() -> Path:
 <p>You text Chris, not a rotating pool and not a video waiting room. Follow-up on the same visit is included.</p>
 <p>Full UTI pages already live: <a href="https://npcwoods.com/uti-treatment/">UTI treatment</a>, <a href="https://npcwoods.com/uti-treatment/woodstock-ga/">Woodstock UTI</a>, <a href="https://npcwoods.com/learn/uti/">UTI guide</a>. Fee: <a href="https://npcwoods.com/pricing/">pricing</a>. Statewide: <a href="https://npcwoods.com/georgia-telemedicine/">Georgia telemedicine</a>.</p>
 <p>Local walk-ins matter for X-rays, stitches, and anything that needs a room. Use them when that is the job. Use this text visit <strong>instead of</strong> the lobby when the issue is treatable by text — including a weeknight on Riverstone.</p>
-<p>Chris Woods, MSN, APRN, FNP-C. Licensed in Georgia under a collaborative agreement with a Georgia-licensed physician. He is a nurse practitioner, not a physician.</p>
+<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Licensed in Georgia under a collaborative agreement with a Georgia-licensed physician. He is a nurse practitioner, not a physician.</p>
 </div></section>""",
             gold.states(),
             gold.bottom_cta(

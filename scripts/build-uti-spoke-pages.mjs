@@ -267,7 +267,7 @@ function renderPage(page) {
     reviewedBy: {
       '@type': 'Person',
       name: 'Chris Woods',
-      honorificSuffix: 'MSN, APRN, FNP-C',
+      honorificSuffix: 'MSN, APRN, FNP-C, AGACNP-BC',
       identifier: {
         '@type': 'PropertyValue',
         propertyID: 'NPI',
@@ -294,8 +294,8 @@ function renderPage(page) {
     description: page.description,
     datePublished: updated,
     dateModified: updated,
-    author: { '@type': 'Person', name: 'Chris Woods, MSN, APRN, FNP-C' },
-    reviewedBy: { '@type': 'Person', name: 'Chris Woods, MSN, APRN, FNP-C' },
+    author: { '@type': 'Person', name: 'Chris Woods, MSN, APRN, FNP-C, AGACNP-BC' },
+    reviewedBy: { '@type': 'Person', name: 'Chris Woods, MSN, APRN, FNP-C, AGACNP-BC' },
     publisher: { '@type': 'Organization', name: 'NPCWoods Telemedicine', url: 'https://npcwoods.com/' },
     mainEntityOfPage: `${url}#webpage`
   });
@@ -325,7 +325,7 @@ function renderPage(page) {
   <meta property="og:url" content="${url}">
   <meta property="og:site_name" content="NPCWoods Telemedicine">
   <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png">
-  <meta property="og:image:alt" content="Chris Woods, MSN, APRN, FNP-C at NPCWoods Telemedicine">
+  <meta property="og:image:alt" content="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC at NPCWoods Telemedicine">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(page.title)}">
   <meta name="twitter:description" content="${esc(page.description)}">
@@ -722,8 +722,8 @@ ${header}
             </div>
           </div>
           <aside class="hero-card" aria-label="Clinician review">
-            <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, MSN, APRN, FNP-C" width="72" height="72">
-            <h2>Reviewed by Chris Woods, MSN, APRN, FNP-C</h2>
+            <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" width="72" height="72">
+            <h2>Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</h2>
             <p>$59 flat fee. Text-based UTI visits in ${states.length} states. If your symptoms need in-person care, Chris will say that clearly.</p>
           </aside>
         </div>
@@ -790,7 +790,7 @@ ${header}
     </section>
 
     <div class="trust-line">
-      Reviewed by Chris Woods, MSN, APRN, FNP-C. Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT. Last updated: <time datetime="${updated}">${updatedDisplay}</time>.
+      Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT. Last updated: <time datetime="${updated}">${updatedDisplay}</time>.
     </div>
   </main>
 ${footer}

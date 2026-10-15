@@ -43,7 +43,7 @@ CITIES = [
         "scene": (
             "A weekend in Savannah. Squares packed, Island traffic, and a UTI that will not wait.",
             "Burning, urgency, going often — and you are downtown, on the Islands, or stuck on Truman Parkway. A walk-in on Abercorn still means a chair.",
-            "NPCWoods is a $59 text visit, not a clinic on Abercorn or Victory Drive. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Abercorn or Victory Drive. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -92,7 +92,7 @@ CITIES = [
         "scene": (
             "Raleigh at 9 p.m. Glenwood is loud. The walk-in on Six Forks is a line.",
             "Burning, urgency, going often — and you are inside the Beltline, in North Hills, or off Capital Boulevard. A chair on Six Forks still means a wait.",
-            "NPCWoods is a $59 text visit, not a clinic on Six Forks or Glenwood. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Six Forks or Glenwood. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -141,7 +141,7 @@ CITIES = [
         "scene": (
             "Denver after work. I-25 is jammed. A UTI does not care about the Highlands parking.",
             "Burning, urgency, going often — and you are on Colfax, in RiNo, or west of I-25. A walk-in still means a chair.",
-            "NPCWoods is a $59 text visit, not a clinic on Colfax or Colorado Boulevard. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Colfax or Colorado Boulevard. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -190,7 +190,7 @@ CITIES = [
         "scene": (
             "Las Vegas between shifts. The Strip does not pause for a UTI.",
             "Burning, urgency, going often — and you are on Tropicana, in Summerlin, or off I-15. A walk-in still means a chair after a long shift.",
-            "NPCWoods is a $59 text visit, not a clinic on Sahara or Flamingo. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Sahara or Flamingo. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -239,7 +239,7 @@ CITIES = [
         "scene": (
             "Asheville after a long day. Patton is busy. Tunnel Road is a wait.",
             "Burning, urgency, going often — and you are downtown, in West Asheville, or off I-40. A walk-in on Tunnel Road still means a chair.",
-            "NPCWoods is a $59 text visit, not a clinic on Tunnel Road or Patton Avenue. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Tunnel Road or Patton Avenue. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -288,7 +288,7 @@ CITIES = [
         "scene": (
             "Augusta on a weeknight. Riverwalk is quiet. The walk-in on Washington Road is not.",
             "Burning, urgency, going often — and you are downtown, on Washington Road, or off I-20. A chair still means a wait.",
-            "NPCWoods is a $59 text visit, not a clinic on Washington Road or Broad Street. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Washington Road or Broad Street. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -337,7 +337,7 @@ CITIES = [
         "scene": (
             "Colorado Springs after work. Academy Boulevard is slow. A UTI is not.",
             "Burning, urgency, going often — and you are near Tejon, off Academy, or on I-25. A walk-in still means a chair.",
-            "NPCWoods is a $59 text visit, not a clinic on Academy Boulevard or Tejon Street. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Academy Boulevard or Tejon Street. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -386,7 +386,7 @@ CITIES = [
         "scene": (
             "Reno on a weeknight. Midtown is open. The walk-in on Virginia Street is a wait.",
             "Burning, urgency, going often — and you are downtown, in Midtown, or off I-80. A chair still means sitting.",
-            "NPCWoods is a $59 text visit, not a clinic on Virginia Street or Kietzke. Chris Woods, MSN, APRN, FNP-C — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
+            "NPCWoods is a $59 text visit, not a clinic on Virginia Street or Kietzke. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC — same nurse practitioner every time — reviews uncomplicated UTI symptoms by text when it is safe.",
         ),
         "fit_good": [
             "It burns when you urinate, you are going often, and this feels like UTIs you have had before",
@@ -515,7 +515,7 @@ def cook_city(spec: dict) -> Path:
 <p>You text Chris, not a rotating pool and not a video waiting room. Follow-up on the same visit is included.</p>
 {collab}
 <p>Full UTI pages: <a href="https://npcwoods.com/uti-treatment/">UTI treatment</a>, <a href="https://npcwoods.com/learn/uti/">UTI guide</a>. Fee: <a href="https://npcwoods.com/pricing/">pricing</a>. Statewide: <a href="https://npcwoods.com/{spec['state_slug']}/">{html_lib.escape(spec['state'])} telemedicine</a>.</p>
-<p>Chris Woods, MSN, APRN, FNP-C. Licensed in {html_lib.escape(spec['state'])}. He is a nurse practitioner.</p>
+<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Licensed in {html_lib.escape(spec['state'])}. He is a nurse practitioner.</p>
 </div></section>""",
             gold.states(),
             gold.bottom_cta(

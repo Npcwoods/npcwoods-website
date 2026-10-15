@@ -107,7 +107,7 @@ function npcwoods_compliance_footer() {
             <div class="footer-business">
                 <div class="footer-business-name">NPCWoods Telemedicine, PLLC</div>
                 <div class="footer-credentials">
-                    Chris Woods, MSN, FNP-C &nbsp;|&nbsp; NPI: 1285125468<br>
+                    Chris Woods, MSN, FNP-C, AGACNP-BC &nbsp;|&nbsp; NPI: 1285125468<br>
                     AZ: 320600 | CO: C-APN.0103723-C-NP | GA: APRN-NP319386 | ID: 1671854 | IA: A183070 | MT: APRN-260601 | NV: 886822 | NM: 82936 | NC: 5010551 | OR: 10043494 | UT: 14202514-4405
                 </div>
             </div>

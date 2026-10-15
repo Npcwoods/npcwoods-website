@@ -25,7 +25,7 @@ PERSON_SCHEMA_BLOCK = '''
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
       "credentialCategory": "license",
-      "name": "MSN, APRN, FNP-C"
+      "name": "MSN, APRN, FNP-C, AGACNP-BC"
     },
     "jobTitle": "Licensed Nurse Practitioner",
     "image": "https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png",

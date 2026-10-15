@@ -1133,7 +1133,7 @@ a{color:inherit}
 <!-- ATF answer (homepage facts, UTI rhythm) -->
 <div class="npc-atf-answer" data-npc-aeo="atf-answer">
   <p>
-    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, a licensed Nurse Practitioner.
+    <strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner.
     Text <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">(480) 639-4722</a>.
     No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit.
     A prescription is not promised. You only pay if he can treat you.
@@ -1272,7 +1272,7 @@ a{color:inherit}
 <!-- MEET CHRIS + real photo -->
 <section class="meet-section" id="chris">
   <div class="meet-inner">
-    <img class="meet-photo" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="1000" height="1250" loading="lazy">
+    <img class="meet-photo" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, Nurse Practitioner" width="1000" height="1250" loading="lazy">
     <div>
       <span class="section-kicker">Meet your NP</span>
       <h2>Hey, I'm Chris.</h2>
@@ -1280,7 +1280,7 @@ a{color:inherit}
       <p>So I built the practice I would want for my own family. Text a real Nurse Practitioner, get actually listened to, and pay one honest price.</p>
       <p>No runaround. No surprise bills. No pretending a chatbot is care. Faith and family keep me grounded, and they are why I treat every visit like it is someone I love.</p>
       <div class="chips">
-        <span class="chip">MSN, APRN, FNP-C</span>
+        <span class="chip">MSN, APRN, FNP-C, AGACNP-BC</span>
         <span class="chip">Double board-certified</span>
         <span class="chip">NPI 1285125468</span>
         <span class="chip">Real clinician review</span>
@@ -1377,7 +1377,7 @@ a{color:inherit}
       <span>📱 No video · Just text</span>
       <span>💊 Sent same-day to your local pharmacy</span>
     </div>
-    <p style="margin-top:18px;color:var(--muted);font-size:13px">Chris Woods, MSN, APRN, FNP-C · Not a chatbot · Pay after care</p>
+    <p style="margin-top:18px;color:var(--muted);font-size:13px">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC · Not a chatbot · Pay after care</p>
   </div>
 </section>
 
@@ -1475,7 +1475,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
-      Reviewed by Chris Woods, MSN, APRN, FNP-C. Double Board-Certified Nurse Practitioner<br>
+      Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Double Board-Certified Nurse Practitioner<br>
       Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355). 13 states served.<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>

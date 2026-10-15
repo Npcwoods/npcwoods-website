@@ -148,7 +148,7 @@ function npcwoods_singular_plate_render() {
 		<?php echo $body; ?>
 	</div>
 	<p><a class="npc-cta" href="<?php echo esc_url( $sms ); ?>">Text (480) 639-4722</a></p>
-	<p class="npc-signoff">Chris Woods, NP · MSN, APRN, FNP-C · You only pay if he can treat you. This is not emergency care. Call 911 for emergencies.</p>
+	<p class="npc-signoff">Chris Woods, NP · MSN, APRN, FNP-C, AGACNP-BC · You only pay if he can treat you. This is not emergency care. Call 911 for emergencies.</p>
 </main>
 </body>
 </html>

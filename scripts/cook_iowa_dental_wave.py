@@ -47,7 +47,7 @@ CITIES = [
         "scene": (
             "Ames on a weeknight. Campus is quiet. The tooth is not.",
             "Throbbing, swelling at the gum, and the dentist on Main Street is closed. A walk-in on Lincoln Way still means a chair — and they still cannot drill the tooth.",
-            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
+            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
         ),
         "walk_in": "Lincoln Way, Main Street, or near campus",
     },
@@ -68,7 +68,7 @@ CITIES = [
         "scene": (
             "Iowa City after hours. Downtown is still up. The dentist is not.",
             "Throbbing tooth, gum swelling, and you are on Gilbert, Iowa Avenue, or campus. A walk-in still cannot pull the tooth.",
-            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
+            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
         ),
         "walk_in": "Gilbert, Iowa Avenue, or downtown",
     },
@@ -89,7 +89,7 @@ CITIES = [
         "scene": (
             "Dubuque on the bluff. Main Street is closed for the night. The abscess is not.",
             "Throbbing, gum swelling, and you are downtown, on Central, or off US-20. A walk-in is a chair. It is not a dental drill.",
-            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
+            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
         ),
         "walk_in": "Main Street, Central, or US-20",
     },
@@ -110,7 +110,7 @@ CITIES = [
         "scene": (
             "Waterloo after a shift. San Marnan is a line. The tooth will not wait.",
             "Throbbing, gum swelling, and you are downtown, on University, or off US-20. A walk-in can look. It cannot finish the tooth.",
-            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
+            "NPCWoods is a $59 text visit. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reviews dental abscess symptoms by text when it is safe. If antibiotics are appropriate, they can go to your pharmacy. That is a bridge. A dentist still has to treat the tooth.",
         ),
         "walk_in": "San Marnan, University, or downtown",
     },
@@ -158,7 +158,7 @@ def dental_how_it_works() -> str:
         <div class="step-num">2</div>
         <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods NP">
         <h3>Chris reviews it</h3>
-        <p>Chris Woods, MSN, APRN, FNP-C, reads it himself. Same nurse practitioner every time. He screens for spreading infection.</p>
+        <p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, reads it himself. Same nurse practitioner every time. He screens for spreading infection.</p>
       </div>
       <div class="bento-card">
         <div class="step-num">3</div>
@@ -266,7 +266,7 @@ def cook_city(spec: dict) -> Path:
 <p>The visit is $59 cash. Pharmacy medication is separate. We are not quoting {html_lib.escape(city)} walk-in cash prices we have not verified.</p>
 <p>You text Chris, not a rotating pool. Follow-up on the same visit is included. A dentist still has to treat the tooth.</p>
 <p>Hub: <a href="https://npcwoods.com/dental-pain/">dental pain</a>. Fee: <a href="https://npcwoods.com/pricing/">pricing</a>. Statewide: <a href="https://npcwoods.com/iowa-telemedicine/">Iowa telemedicine</a>.</p>
-<p>Chris Woods, MSN, APRN, FNP-C. Licensed in Iowa. He is a nurse practitioner.</p>
+<p>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Licensed in Iowa. He is a nurse practitioner.</p>
 </div></section>""",
             gold.states(),
             gold.bottom_cta(
