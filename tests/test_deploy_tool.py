@@ -7,6 +7,7 @@ are mocked, load_env is asserted untouched in every guard test.
 """
 import importlib.util
 import io
+import json
 import re
 import sys
 import tempfile
@@ -396,6 +397,51 @@ class CleanUrlVerifyTest(unittest.TestCase):
         self.assertIsNone(problem)
         self.assertEqual(captured["url"], item.url)
         self.assertNotIn("?", captured["url"])
+
+
+class KitchenCounterTest(unittest.TestCase):
+    """Plate only from Desktop/Chris-HQ/npcwoods-website. The card names the rest."""
+
+    SPARES = (
+        Path("/Users/macmini/Desktop/Chris-HQ/npcwoods-website-fresh-20261014"),
+        Path("/Users/macmini/Desktop/Chris-HQ/npcwoods-website-postlaunch-wt"),
+        Path("/Users/macmini/Desktop/Chris-HQ/postlaunch-fix-2026-10-06"),
+        Path("/Users/macmini/Desktop/Chris-HQ/npcwoods-web-vp-platform"),
+        Path("/Users/macmini/.config/superpowers/worktrees/npcwoods-website/washington-state-hub"),
+    )
+
+    def setUp(self):
+        self.m = load_module()
+
+    def test_real_counter_is_allowed(self):
+        self.assertIsNone(self.m.kitchen_counter_block(self.m.ROOT))
+
+    def test_spare_copies_are_blocked(self):
+        for spare in self.SPARES:
+            blocked = self.m.kitchen_counter_block(spare)
+            self.assertIsNotNone(blocked, spare)
+            self.assertIn("npcwoods-website", blocked)
+            self.assertIn(str(spare), blocked)
+
+    def test_card_names_one_counter_and_points_at_the_ledger(self):
+        card = json.loads(self.m.COUNTER_CARD.read_text(encoding="utf-8"))
+        plating = [row for row in card["counters"] if row["plate"] is True]
+        self.assertEqual([row["folder"] for row in plating], ["npcwoods-website"])
+        self.assertEqual(card["practice_facts"], "npcwoods-website/facts/practice.json")
+        text = self.m.COUNTER_CARD.read_text(encoding="utf-8")
+        self.assertNotIn("11 states", text)
+        self.assertNotIn("13 states", text)
+
+    def test_main_from_a_spare_copy_stops_before_pages(self):
+        spare = self.SPARES[0]
+        buf = io.StringIO()
+        err = io.StringIO()
+        with mock.patch.object(self.m, "SCRIPT_ROOT", spare), \
+                redirect_stdout(buf), redirect_stderr(err):
+            code = self.m.main(["deploy.py", "--pages", PAGE])
+        self.assertEqual(code, 2)
+        self.assertIn(str(spare), err.getvalue())
+        self.assertNotIn("Deploy plan", buf.getvalue())
 
 
 if __name__ == "__main__":

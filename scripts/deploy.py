@@ -41,6 +41,8 @@ from pathlib import Path
 # --------------------------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent.parent  # npcwoods-website repo root
+KITCHEN = Path("/Users/macmini/Desktop/Chris-HQ")
+COUNTER_CARD = KITCHEN / "KITCHEN-COUNTERS.json"
 LANDING_DIR = "landing-pages"
 REMOTE_PREFIX = "html"
 SITE = "https://npcwoods.com"
@@ -600,7 +602,37 @@ def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
 # Main
 # --------------------------------------------------------------------------
 
+SCRIPT_ROOT = Path(__file__).resolve().parent.parent
+
+
+def kitchen_counter_block(script_root: Path | None = None) -> str | None:
+    """Refuse to plate unless this script lives on the one counter the card allows.
+
+    ROOT can point at a throwaway folder in tests. The script file cannot.
+    A spare copy of this file fails because its own path is the counter it plates from.
+    """
+    root = (SCRIPT_ROOT if script_root is None else script_root).resolve()
+    if not COUNTER_CARD.is_file():
+        return f"[blocked] Missing kitchen counter card: {COUNTER_CARD}"
+    card = json.loads(COUNTER_CARD.read_text(encoding="utf-8"))
+    plating = [row for row in card["counters"] if row.get("plate") is True]
+    if len(plating) != 1:
+        return "[blocked] Kitchen counter card must name exactly one folder to plate from."
+    allowed = (KITCHEN / plating[0]["folder"]).resolve()
+    if root != allowed:
+        return (
+            f"[blocked] This copy is not the kitchen counter. "
+            f"Plate only from {allowed}. This script is in {root}."
+        )
+    return None
+
+
 def main(argv=None) -> int:
+    blocked = kitchen_counter_block()
+    if blocked:
+        print(blocked, file=sys.stderr)
+        return 2
+
     parser = argparse.ArgumentParser(
         description="Unified guarded deploy for NPCWoods landing pages. DRY-RUN BY DEFAULT.")
     parser.add_argument("--pages", action="append",

@@ -1,0 +1,34 @@
+{
+  "price_usd": 59,
+  "pay_only_if_text_care_is_safe": true,
+  "no_subscription": true,
+  "states_served": ["AZ", "CO", "FL", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"],
+  "aprn_licenses": ["AZ", "CO", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"],
+  "florida": {
+    "id": "TPAN3355",
+    "kind": "out-of-state telehealth registration",
+    "not": "Florida APRN license",
+    "public_url": "https://flhealthsource.gov/telehealth/"
+  },
+  "washington_public_page": {
+    "rule": "Do not print the Washington license number."
+  },
+  "credentials_confirmed": ["MSN", "APRN", "FNP-C"],
+  "npi": "1285125468",
+  "forbidden_words": ["doctor", "Dr.", "physician", "MD", "insurance"],
+  "acute_care_credential": {
+    "status": "open",
+    "seen_as": ["AGACNP-BC", "ACNP-BC"],
+    "rule": "Do not pick a winner. Do not rewrite the site."
+  },
+  "surfaces": [
+    "homepage/page-npcwoods-home.php",
+    "php/npcwoods-robots-extras.php",
+    "templates/glp1-explainer/partials/site-footer.html",
+    "templates/uti-explainer/partials/site-footer.html",
+    "landing-pages/executive/index.html",
+    "landing-pages/credentials/index.html"
+  ],
+  "surface_must_contain": ["13 states", "TPAN3355"],
+  "surface_must_not_contain": ["11 states"]
+}
