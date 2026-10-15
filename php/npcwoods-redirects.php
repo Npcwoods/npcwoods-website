@@ -68,6 +68,9 @@ add_action("init", function() {
         // 404 stub tidy (2026-10-07) — Chris approved 301s
         "/north-carolina-prescribe/" => "/north-carolina-telemedicine/",
         "/yeast-infection-lookalikes/" => "/learn/uti/lookalikes/",
+        // Duplicate plates retired (2026-10-15) — Chris: "Please fix the duplicate pages"
+        "/landing-pages/uti-treatment/" => "/uti-treatment/",
+        "/landing-pages/medications/amoxicillin/" => "/medications/amoxicillin/",
     ];
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     $path = rtrim($path, "/") . "/";
