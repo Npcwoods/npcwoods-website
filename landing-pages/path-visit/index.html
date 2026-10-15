@@ -1852,6 +1852,476 @@ h1 span {
   background: linear-gradient(180deg, rgba(251, 247, 238, 0), rgba(16, 33, 58, 0.96) 22%, #071427);
 }
 
+/* Cinematic preview v3: a fixed forest world with short scroll-triggered story beats. */
+:root {
+  --film: 0;
+  --scene: 0;
+}
+
+body {
+  background: #071427;
+}
+
+.cinema-shell {
+  position: relative;
+  z-index: 5;
+  background: #071427;
+  color: #ffffff;
+}
+
+.cinema {
+  position: relative;
+  min-height: 620vh;
+  background: #071427;
+}
+
+.cinema-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 78%, rgba(212, 147, 63, 0.16), transparent 34%),
+    linear-gradient(180deg, #06101f, #071427 56%, #10243d);
+  isolation: isolate;
+}
+
+.cinema-canvas,
+.scene-haze,
+.scene-tunnel,
+.scene-orbit,
+.scene-phone,
+.scene-plan {
+  position: absolute;
+  pointer-events: none;
+}
+
+.cinema-canvas {
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.scene-haze {
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at calc(42% + var(--film) * 26%) calc(32% + var(--film) * 18%), rgba(212, 147, 63, 0.26), transparent 28%),
+    radial-gradient(circle at calc(74% - var(--film) * 20%) 72%, rgba(37, 99, 235, 0.28), transparent 34%),
+    linear-gradient(180deg, rgba(7, 20, 39, 0.28), rgba(7, 20, 39, calc(0.78 - var(--film) * 0.24)));
+  mix-blend-mode: screen;
+}
+
+.scene-tunnel {
+  left: 50%;
+  top: 52%;
+  z-index: 3;
+  width: min(126vw, 1180px);
+  height: min(126vw, 1180px);
+  transform: translate(-50%, -50%) scale(calc(0.72 + var(--film) * 0.58)) rotate(calc(var(--film) * 24deg));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 28%, rgba(255, 255, 255, 0.05) 29% 30%, transparent 31% 43%, rgba(212, 147, 63, 0.09) 44% 45%, transparent 46% 100%),
+    conic-gradient(from calc(var(--film) * 180deg), rgba(255, 255, 255, 0.04), transparent, rgba(47, 138, 106, 0.14), transparent, rgba(212, 147, 63, 0.12), transparent);
+  opacity: calc(0.35 + var(--film) * 0.28);
+}
+
+.scene-orbit {
+  z-index: 4;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 80px rgba(212, 147, 63, 0.12);
+}
+
+.scene-orbit.one {
+  left: 10vw;
+  top: 18svh;
+  width: 110px;
+  height: 110px;
+  transform: translateY(calc(var(--film) * -90px)) scale(calc(0.9 + var(--film) * 0.4));
+}
+
+.scene-orbit.two {
+  right: 8vw;
+  bottom: 16svh;
+  width: 170px;
+  height: 170px;
+  transform: translateY(calc(var(--film) * 110px)) scale(calc(0.8 + var(--film) * 0.5));
+}
+
+.scene-phone {
+  right: clamp(18px, 8vw, 120px);
+  top: 50%;
+  z-index: 5;
+  width: min(320px, 78vw);
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  background: rgba(250, 248, 245, 0.95);
+  color: #172033;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.32);
+  opacity: clamp(0.08, calc(var(--film) * 2.4), 1);
+  transform: translateY(calc(-36% - var(--film) * 14%)) translateX(calc((2 - var(--scene)) * 18px)) scale(calc(0.88 + var(--film) * 0.15));
+}
+
+.phone-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.1);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.phone-bar span:last-child {
+  color: #2f8a6a;
+}
+
+.phone-bubble {
+  width: fit-content;
+  max-width: 86%;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 12px 26px rgba(23, 32, 51, 0.08);
+}
+
+.phone-bubble.patient {
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.phone-bubble.np {
+  border-bottom-left-radius: 6px;
+}
+
+.phone-bubble.plan {
+  border-bottom-left-radius: 6px;
+  background: #dfeade;
+  opacity: clamp(0, calc((var(--film) - 0.56) * 5), 1);
+}
+
+.scene-plan {
+  left: clamp(18px, 8vw, 110px);
+  bottom: 13svh;
+  z-index: 5;
+  width: min(280px, 68vw);
+  display: grid;
+  gap: 10px;
+  opacity: clamp(0, calc((var(--film) - 0.68) * 5), 1);
+  transform: translateY(calc(34px - var(--film) * 44px));
+}
+
+.scene-plan span {
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(212, 147, 63, 0.44));
+  box-shadow: 0 0 34px rgba(212, 147, 63, 0.2);
+}
+
+.scene-plan span:nth-child(2) {
+  width: 82%;
+}
+
+.scene-plan span:nth-child(3) {
+  width: 58%;
+  background: linear-gradient(90deg, rgba(47, 138, 106, 0.9), rgba(255, 255, 255, 0.5));
+}
+
+.cinema-ui {
+  position: fixed;
+  left: 18px;
+  right: 18px;
+  top: 88px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.cinema-brand,
+.cinema-sound {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(7, 20, 39, 0.62);
+  color: #ffffff;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.cinema-brand {
+  padding: 5px 14px 5px 5px;
+  font-weight: 900;
+}
+
+.cinema-brand img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cinema-sound {
+  padding: 0 16px;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.cinema-sound.is-on {
+  background: #dfeade;
+  color: #172033;
+}
+
+.cinema-copy {
+  position: fixed;
+  left: clamp(18px, 7vw, 100px);
+  bottom: clamp(74px, 11svh, 132px);
+  z-index: 25;
+  width: min(680px, calc(100% - 36px));
+  pointer-events: none;
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+
+.copy-kicker {
+  margin: 0 0 13px;
+  color: #d4933f;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.cinema-copy h1,
+.cinema-after h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(54px, 10vw, 118px);
+  line-height: 0.88;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.cinema-copy p:not(.copy-kicker),
+.cinema-after p {
+  max-width: 560px;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(18px, 2.4vw, 24px);
+}
+
+.cinema-cta {
+  width: fit-content;
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 26px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+
+.cinema-cta.is-live,
+.cinema-after .cinema-cta {
+  background: #d4933f;
+  color: #071427;
+  -webkit-text-fill-color: #071427;
+}
+
+.cinema-progress {
+  position: fixed;
+  left: 18px;
+  right: 18px;
+  bottom: 22px;
+  z-index: 28;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  transition: opacity 260ms ease;
+}
+
+.cinema-progress span {
+  display: block;
+  width: calc(var(--film) * 100%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d4933f, #2f8a6a, #ffffff);
+}
+
+.cinema-steps {
+  position: relative;
+  z-index: 10;
+  padding-top: 82vh;
+}
+
+.cinema-step {
+  height: 100vh;
+}
+
+.cinema-after {
+  position: relative;
+  z-index: 8;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: 110px 0;
+  background: linear-gradient(180deg, #071427, #122845 48%, #fbf7ee);
+}
+
+.cinema-after-inner {
+  width: min(840px, calc(100% - 36px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cinema-after h2 {
+  font-size: clamp(48px, 8vw, 86px);
+}
+
+.cinema-after p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cinema-after small {
+  display: block;
+  max-width: 620px;
+  margin: 28px auto 0;
+  color: rgba(23, 32, 51, 0.62);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+body.cinema-past .cinema-copy,
+body.cinema-past .cinema-ui,
+body.cinema-past .cinema-progress {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .cinema {
+    min-height: 610vh;
+  }
+
+  .cinema-ui {
+    top: 68px;
+  }
+
+  .cinema-brand {
+    min-height: 38px;
+    font-size: 13px;
+  }
+
+  .cinema-sound {
+    min-height: 38px;
+    padding: 0 13px;
+  }
+
+  .scene-orbit.one {
+    left: -28px;
+    top: 14svh;
+  }
+
+  .scene-orbit.two {
+    right: -52px;
+    bottom: 8svh;
+  }
+
+  .scene-phone {
+    right: 18px;
+    top: 37%;
+    width: min(292px, calc(100vw - 48px));
+    transform: translateY(calc(-35% - var(--film) * 12%)) translateX(calc((2 - var(--scene)) * 12px)) scale(calc(0.82 + var(--film) * 0.14));
+  }
+
+  .scene-plan {
+    left: 20px;
+    bottom: 17svh;
+  }
+
+  .cinema-copy {
+    left: 18px;
+    bottom: 76px;
+    width: calc(100% - 36px);
+  }
+
+  .cinema-copy h1 {
+    font-size: clamp(46px, 14vw, 66px);
+  }
+
+  .cinema-copy p:not(.copy-kicker) {
+    max-width: 340px;
+    font-size: 18px;
+  }
+
+  .cinema-cta {
+    width: 100%;
+  }
+
+  .cinema-after {
+    padding: 88px 0;
+  }
+
+  .cinema-after h2 {
+    font-size: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinema {
+    min-height: auto;
+  }
+
+  .cinema-stage,
+  .cinema-copy,
+  .cinema-ui,
+  .cinema-progress {
+    position: relative;
+    top: auto;
+    bottom: auto;
+  }
+
+  .cinema-stage {
+    height: 100svh;
+  }
+
+  .cinema-copy {
+    padding: 90px 18px 70px;
+  }
+
+  .cinema-steps {
+    display: none;
+  }
+}
+
 /* Live page integration with the shared NPCWoods chrome. */
 .npc-nav { background: rgba(7, 17, 31, 0.94) !important; border-bottom: 1px solid rgba(255,255,255,0.12) !important; }
 .npc-nav-logo-name, .npc-nav-logo-tag, .npc-nav-links > li > a { color: #f8f4ec !important; }
@@ -2081,223 +2551,94 @@ h1 span {
 
 
 <a class="skip-link" href="#main">Skip to visit story</a>
-<canvas class="forest-canvas" id="forestCanvas" aria-hidden="true"></canvas>
-<div class="atmosphere" aria-hidden="true"></div>
-<div class="path-light" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-
-<nav class="concept-nav" aria-label="Visit story navigation">
-  <a class="brand" href="#path" aria-label="NPCWoods clarity visit">
-    <img src="/assets/homepage-v2/chris-400.webp" alt="Chris Woods">
-    <span>
-      <strong>NPCWoods</strong>
-      <span>Clarity visit</span>
-    </span>
-  </a>
-  <div class="nav-actions">
-    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">Quiet mode</button>
-    <a href="#clearing">How it works</a>
-    <a href="#cabin">Trust</a>
-    <a class="nav-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">$59 visit</a>
-  </div>
-</nav>
-
-<aside class="journey-rail" aria-label="Visit story stages">
-  <div class="rail-dot is-active" data-rail="path">Worry</div>
-  <div class="rail-dot" data-rail="clearing">Sort</div>
-  <div class="rail-dot" data-rail="cabin">Trust</div>
-  <div class="rail-dot" data-rail="map">Plan</div>
-</aside>
-
-<main class="site-shell" id="main">
-  <section class="stage" id="path" data-stage="path" data-stage-index="0">
-    <div class="stage-sticky">
-      <div class="wrap stage-grid">
-        <div data-reveal>
-          <div class="eyebrow">A calmer way to start care</div>
-          <h1>Breathe. <span>You're in the right place.</span></h1>
-          <p class="stage-copy">
-            When you feel sick and do not know what to do next, you should not have to fight a portal,
-            wait in a lobby, or download another app. Text a real NP and get a clear plan for $59.
-          </p>
-          <div class="stage-actions">
-            <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start a $59 Text Visit</a>
-            <button class="btn btn-ghost" type="button" data-sound-start>Quiet mode</button>
-          </div>
-          <div class="proof-row">
-            <span class="proof-pill">$59 flat fee</span>
-            <span class="proof-pill">Text-based care</span>
-            <span class="proof-pill">Real NP, not a chatbot</span>
-          </div>
-        </div>
-
-        <div class="path-card" data-reveal aria-label="Text visit orientation">
-          <div class="guide-bubble">
-            <small>Start with what is true</small>
-            <b id="guideQuestion">Tell me what changed, what hurts, and what you are worried about.</b>
-            <div class="fork-options">
-              <button type="button" data-choice="illness">I feel sick</button>
-              <button type="button" data-choice="skin">Skin or rash</button>
-              <button type="button" data-choice="dental">Dental pain</button>
-              <button type="button" data-choice="question">Not sure yet</button>
-            </div>
-            <div class="path-status" id="pathStatus">Choose what fits. This is about getting oriented, not self-diagnosing.</div>
-          </div>
-        </div>
+<main class="cinema-shell" id="main">
+  <section class="cinema" aria-label="NPCWoods cinematic text visit preview">
+    <div class="cinema-stage" aria-hidden="true">
+      <canvas class="cinema-canvas" id="cinemaCanvas"></canvas>
+      <div class="scene-haze"></div>
+      <div class="scene-tunnel"></div>
+      <div class="scene-orbit one"></div>
+      <div class="scene-orbit two"></div>
+      <div class="scene-phone">
+        <div class="phone-bar"><span>NPCWoods</span><span>$59</span></div>
+        <div class="phone-bubble patient">I do not feel right.</div>
+        <div class="phone-bubble np">Tell me what changed.</div>
+        <div class="phone-bubble plan">Clear next step sent.</div>
       </div>
+      <div class="scene-plan">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="cinema-ui">
+      <div class="cinema-brand">
+        <img src="/assets/homepage-v2/chris-400.webp" alt="">
+        <span>NPCWoods</span>
+      </div>
+      <button class="cinema-sound" id="cinemaSound" type="button" aria-pressed="false">sound</button>
+    </div>
+
+    <div class="cinema-copy" aria-live="polite">
+      <p class="copy-kicker" id="copyKicker">Start here</p>
+      <h1 id="copyHeadline">Sick and not sure what to do?</h1>
+      <p id="copyLine">One swipe should feel like the room got quieter.</p>
+      <a class="cinema-cta" id="cinemaCta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start a $59 text visit</a>
+    </div>
+
+    <div class="cinema-progress" aria-hidden="true"><span></span></div>
+
+    <div class="cinema-steps" aria-hidden="true">
+      <div class="cinema-step" data-step="0"></div>
+      <div class="cinema-step" data-step="1"></div>
+      <div class="cinema-step" data-step="2"></div>
+      <div class="cinema-step" data-step="3"></div>
+      <div class="cinema-step" data-step="4"></div>
     </div>
   </section>
 
-  <section class="stage" id="clearing" data-stage="clearing" data-stage-index="1">
-    <div class="stage-sticky">
-      <div class="wrap stage-grid">
-        <div data-reveal>
-          <div class="eyebrow">No portal maze</div>
-          <h2 class="stage-title">First, tell me what's going on.</h2>
-          <p class="stage-copy">
-            Getting sick is tiring enough. You should not have to prove you are sick through a wall of
-            confusing forms. Start with a simple message, then answer the right follow-up questions.
-          </p>
-          <div class="stage-actions">
-            <a class="btn btn-primary" href="#cabin">See who reviews it</a>
-            <a class="btn btn-ghost" href="#map">Skip to the plan</a>
-          </div>
-        </div>
-
-        <div class="clearing-card" id="clearingCard" data-reveal aria-label="Simple intake alternative">
-          <div class="clearing-world" aria-hidden="true">
-            <div class="breath-orb"></div>
-          </div>
-          <div class="clearing-caption">
-            <b>Less friction. More signal.</b>
-            No app download. No blank waiting room. No guessing which portal button starts the visit.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stage" id="cabin" data-stage="cabin" data-stage-index="2">
-    <div class="stage-sticky">
-      <div class="wrap stage-grid">
-        <div data-reveal>
-          <div class="eyebrow">Real clinician review</div>
-          <h2 class="stage-title">Then we sort the next step.</h2>
-          <p class="stage-copy">
-            I'm Chris Woods, MSN, APRN, FNP-C. I review what you send, ask the questions that matter,
-            and help decide whether text-based care is appropriate or whether you need a higher level of care.
-          </p>
-          <div class="stage-actions">
-            <a class="btn btn-primary" href="#map">See the clear plan</a>
-          </div>
-        </div>
-
-        <div class="cabin-card" data-reveal aria-label="Chris Woods review">
-          <div class="cabin-light" aria-hidden="true"></div>
-          <div class="visit-window">
-            <b>Chris Woods</b>
-            <span>MSN, APRN, FNP-C. Real NP care, not a chatbot.</span>
-            <div class="audio-meter" aria-hidden="true">
-              <i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i>
-              <i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i>
-              <i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i>
-              <i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i><i style="--i:24"></i>
-            </div>
-          </div>
-          <div class="cabin-caption">
-            <b>Expert care, delivered like a human.</b>
-            I built NPCWoods because basic care should feel simpler, calmer, and more transparent.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stage light-stage" id="map" data-stage="map" data-stage-index="3">
-    <div class="stage-sticky">
-      <div class="wrap stage-grid">
-        <div data-reveal>
-          <div class="eyebrow">Your next move</div>
-          <h2 class="stage-title">You get a clear plan.</h2>
-          <p class="stage-copy">
-            If treatment is appropriate, you know what to do next. If medication is needed, it can be sent
-            to your pharmacy. If something needs in-person care, I tell you that clearly.
-          </p>
-          <div class="stage-actions">
-            <a class="btn btn-blue" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start my $59 visit</a>
-          </div>
-        </div>
-
-        <div class="map-card" data-reveal aria-label="Sequential care plan">
-          <div class="care-steps">
-            <div class="care-step" data-care-step><i>1</i><div><b>Start with a text</b><span>Tell me what changed, what hurts, and what has you concerned.</span></div></div>
-            <div class="care-step" data-care-step><i>2</i><div><b>Answer the right questions</b><span>No maze. Just the details needed to understand the situation.</span></div></div>
-            <div class="care-step" data-care-step><i>3</i><div><b>Get a clear next step</b><span>Treatment guidance, pharmacy routing when appropriate, or in-person direction when needed.</span></div></div>
-            <div class="care-step" data-care-step><i>4</i><div><b>Ask what you need to ask</b><span>You are not left staring at vague instructions and wondering what they mean.</span></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="final-stage" data-stage="final" data-stage-index="4">
-    <div class="wrap" data-reveal>
-      <div class="eyebrow">Let's get you unstuck</div>
-      <h2 class="stage-title">Get a clear next step today.</h2>
-      <p class="stage-copy">
-        Text-based care from a real NP. $59 flat fee. No app download. No hidden fees. Available in
-        AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.
-      </p>
-      <div class="final-card">
-        <div class="price">$59</div>
-        <p>Flat fee. Secure text-based visit. Real clinician review in 11 licensed states.</p>
-        <div class="stage-actions" style="justify-content:center;">
-          <a class="btn btn-primary" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start My $59 Visit</a>
-          <a class="btn btn-ghost" href="#path">Back to top</a>
-        </div>
-      </div>
-      <div class="draft-note">If symptoms feel severe, life-threatening, or rapidly worsening, seek emergency care or call 911.</div>
+  <section class="cinema-after">
+    <div class="cinema-after-inner">
+      <p class="copy-kicker">Ready when you are</p>
+      <h2>$59. Text-based care from a real NP.</h2>
+      <p>No app download. No hidden fees. Available in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, and UT.</p>
+      <a class="cinema-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Start my $59 visit</a>
+      <small>If symptoms feel severe, life-threatening, or rapidly worsening, seek emergency care or call 911.</small>
     </div>
   </section>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.13/dist/lenis.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.2.0/scrollama.min.js" defer></script>
 <script>
 (function () {
   const root = document.documentElement;
-  const canvas = document.getElementById("forestCanvas");
+  const canvas = document.getElementById("cinemaCanvas");
   const ctx = canvas.getContext("2d");
-  const railDots = document.querySelectorAll("[data-rail]");
-  const revealItems = document.querySelectorAll("[data-reveal]");
-  const stages = Array.from(document.querySelectorAll("[data-stage]"));
-  const careSteps = Array.from(document.querySelectorAll("[data-care-step]"));
-  const choiceButtons = document.querySelectorAll("[data-choice]");
-  const pathStatus = document.getElementById("pathStatus");
-  const guideQuestion = document.getElementById("guideQuestion");
-  const soundToggle = document.getElementById("soundToggle");
-  const soundStartButtons = document.querySelectorAll("[data-sound-start]");
-  const clearingCard = document.getElementById("clearingCard");
-
-  const pathCopy = {
-    illness: "Good. We can start with symptoms and narrow the next step from there.",
-    skin: "Good. Any photos or private details belong inside the secure visit flow.",
-    dental: "Good. We can talk through what is appropriate for text-based bridge care.",
-    question: "Good. You do not have to know the answer before asking for help."
-  };
-
+  const soundButton = document.getElementById("cinemaSound");
+  const kicker = document.getElementById("copyKicker");
+  const headline = document.getElementById("copyHeadline");
+  const line = document.getElementById("copyLine");
+  const cta = document.getElementById("cinemaCta");
+  const steps = document.querySelectorAll(".cinema-step");
+  const copy = [
+    ["Start here", "Sick and not sure what to do?", "One swipe should feel like the room got quieter.", "Start a $59 text visit"],
+    ["No maze", "Skip the portal panic.", "No app download. No lobby. No wall of forms when you already feel bad.", "Keep going"],
+    ["Real care", "Text a real NP.", "Chris reviews what you send and asks the questions that actually matter.", "Meet Chris"],
+    ["Clarity", "Get one clear next step.", "Treatment guidance, pharmacy routing when appropriate, or in-person direction when needed.", "See the plan"],
+    ["Relief", "$59. Start when ready.", "Text-based care. Simple pricing. No hidden fees.", "Start my $59 visit"]
+  ];
   let width = 0;
   let height = 0;
-  let trees = [];
+  let dpr = 1;
   let particles = [];
-  let currentStage = "path";
-  let currentStageIndex = 0;
-  let lastY = window.scrollY;
-  let lastT = performance.now();
-  let scrollSpeed = 0;
+  let active = 0;
+  let progress = 0;
   let audio = null;
-  let lastStepAt = 0;
 
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = Math.floor(width * dpr);
@@ -2305,256 +2646,156 @@ h1 span {
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    trees = Array.from({ length: width < 700 ? 42 : 72 }, (_, i) => ({
+    particles = Array.from({ length: width < 700 ? 72 : 130 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      depth: 0.25 + Math.random() * 1.1,
-      h: 120 + Math.random() * 320,
-      w: 2 + Math.random() * 8,
-      lean: -10 + Math.random() * 20,
-      shade: 20 + Math.random() * 34
-    }));
-    particles = Array.from({ length: width < 700 ? 34 : 70 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: 0.8 + Math.random() * 2.4,
-      s: 0.2 + Math.random() * 0.7,
-      a: 0.1 + Math.random() * 0.34
+      z: 0.2 + Math.random() * 1.8,
+      r: 0.8 + Math.random() * 2.8,
+      a: 0.08 + Math.random() * 0.28
     }));
   }
 
-  function drawForest(t) {
+  function draw(time) {
     ctx.clearRect(0, 0, width, height);
-    const stageLight = currentStageIndex / 4;
-    const shift = window.scrollY * 0.05;
-    trees.forEach((tree) => {
-      const x = (tree.x + Math.sin(t * 0.0002 + tree.depth) * 14 - shift * tree.depth) % (width + 80);
-      const drawX = x < -40 ? x + width + 80 : x;
-      const baseY = height + 40 - tree.y * 0.18;
-      const alpha = 0.28 + tree.depth * 0.28 - stageLight * 0.08;
-      ctx.strokeStyle = `rgba(${tree.shade}, ${tree.shade + 24}, ${tree.shade + 18}, ${alpha})`;
-      ctx.lineWidth = tree.w;
+    const cx = width * (0.5 + Math.sin(progress * Math.PI * 1.2) * 0.08);
+    const cy = height * (0.56 - progress * 0.18);
+    const bg = ctx.createLinearGradient(0, 0, width, height);
+    bg.addColorStop(0, "#071427");
+    bg.addColorStop(0.52, active < 2 ? "#10233f" : "#173949");
+    bg.addColorStop(1, active > 3 ? "#f6efe2" : "#071427");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, width, height);
+
+    for (let ring = 0; ring < 9; ring++) {
+      const radius = (80 + ring * 58 + progress * 210) % (Math.max(width, height) * 0.9);
+      ctx.strokeStyle = `rgba(212, 147, 63, ${0.12 - ring * 0.009})`;
+      ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(drawX, baseY);
-      ctx.lineTo(drawX + tree.lean, baseY - tree.h);
+      ctx.ellipse(cx, cy, radius * 1.28, radius * 0.48, -0.12, 0, Math.PI * 2);
       ctx.stroke();
-      ctx.fillStyle = `rgba(12, 40, 35, ${0.18 + tree.depth * 0.14})`;
-      ctx.beginPath();
-      ctx.ellipse(drawX + tree.lean, baseY - tree.h, tree.h * 0.12, tree.h * 0.24, 0, 0, Math.PI * 2);
-      ctx.fill();
-    });
+    }
+
     particles.forEach((p) => {
-      p.y += p.s + scrollSpeed * 0.006;
-      p.x += Math.sin(t * 0.001 + p.y) * 0.18;
-      if (p.y > height + 10) p.y = -10;
-      ctx.fillStyle = `rgba(255, 244, 214, ${p.a + stageLight * 0.08})`;
+      p.y += 0.12 + p.z * 0.18 + progress * 0.08;
+      p.x += Math.sin(time * 0.0005 + p.y * 0.01) * 0.18;
+      if (p.y > height + 20) p.y = -20;
+      ctx.fillStyle = `rgba(255, 246, 220, ${p.a + progress * 0.08})`;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
     });
-    requestAnimationFrame(drawForest);
+
+    requestAnimationFrame(draw);
   }
 
-  function setStage(stage, index) {
-    currentStage = stage;
-    currentStageIndex = index;
-    root.style.setProperty("--stage", String(index));
-    railDots.forEach((dot) => dot.classList.toggle("is-active", dot.dataset.rail === stage));
-    if (audio) updateAudioStage(index);
-    if (stage === "map") lightCareSteps();
+  function setStep(index) {
+    active = Math.max(0, Math.min(copy.length - 1, index));
+    const item = copy[active];
+    root.style.setProperty("--scene", String(active));
+    kicker.textContent = item[0];
+    headline.textContent = item[1];
+    line.textContent = item[2];
+    cta.textContent = item[3];
+    cta.classList.toggle("is-live", active === copy.length - 1);
+    if (audio) tone(180 + active * 46, active === copy.length - 1 ? 0.08 : 0.04);
   }
 
-  function updateScrollMetrics() {
-    const y = window.scrollY;
-    const now = performance.now();
-    const dy = Math.abs(y - lastY);
-    const dt = Math.max(now - lastT, 16);
-    scrollSpeed = Math.min(1, dy / dt / 2.2);
-    root.style.setProperty("--scroll", String(y));
-    root.style.setProperty("--path-x", `${50 + Math.sin(y * 0.003) * 9}%`);
-    lastY = y;
-    lastT = now;
-    if (audio) updateAudioMotion(now);
+  function updateProgress() {
+    const cinema = document.querySelector(".cinema");
+    const rect = cinema.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    progress = Math.min(1, Math.max(0, -rect.top / Math.max(total, 1)));
+    root.style.setProperty("--film", progress.toFixed(4));
+    document.body.classList.toggle("cinema-past", rect.bottom < window.innerHeight * 0.35);
   }
 
-  function lightCareSteps() {
-    careSteps.forEach((step, index) => {
-      window.setTimeout(() => {
-        step.classList.add("is-lit");
-        if (audio) playChime(330 + index * 58, 0.05);
-      }, index * 290);
-    });
-  }
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+  function setupLibraries() {
+    if (window.Lenis) {
+      const lenis = new window.Lenis({ duration: 1.15, smoothWheel: true, touchMultiplier: 1.15 });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
       }
-    });
-  }, { threshold: 0.16 });
-  revealItems.forEach((item) => revealObserver.observe(item));
+      requestAnimationFrame(raf);
+    }
 
-  const stageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      setStage(entry.target.dataset.stage, Number(entry.target.dataset.stageIndex || 0));
-    });
-  }, { threshold: 0.45 });
-  stages.forEach((stage) => stageObserver.observe(stage));
+    if (window.gsap && window.ScrollTrigger) {
+      window.gsap.registerPlugin(window.ScrollTrigger);
+      window.gsap.to(".scene-phone", { yPercent: -18, scale: 1.08, scrollTrigger: { trigger: ".cinema", start: "top top", end: "bottom bottom", scrub: true } });
+      window.gsap.to(".scene-plan", { opacity: 1, yPercent: -18, scrollTrigger: { trigger: ".cinema-step:nth-child(4)", start: "top center", end: "bottom center", scrub: true } });
+    }
 
-  choiceButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      choiceButtons.forEach((item) => item.classList.remove("is-selected"));
-      button.classList.add("is-selected");
-      pathStatus.textContent = pathCopy[button.dataset.choice];
-      guideQuestion.textContent = "Good. Now we can narrow the next step without making this feel like a clipboard.";
-      root.style.setProperty("--path-x", button.dataset.choice === "skin" ? "42%" : button.dataset.choice === "dental" ? "60%" : "50%");
-      if (audio) playChime(520, 0.07);
-    });
-  });
-
-  function pointerTilt(event) {
-    if (!clearingCard) return;
-    const rect = clearingCard.getBoundingClientRect();
-    const x = ((event.clientX || rect.left + rect.width / 2) - rect.left) / rect.width - 0.5;
-    const y = ((event.clientY || rect.top + rect.height / 2) - rect.top) / rect.height - 0.5;
-    root.style.setProperty("--tilt-x", `${x * 10}deg`);
-    root.style.setProperty("--tilt-y", `${-y * 10}deg`);
-  }
-  if (clearingCard) clearingCard.addEventListener("pointermove", pointerTilt);
-
-  function createNoise(ctxRef) {
-    const bufferSize = ctxRef.sampleRate * 2;
-    const buffer = ctxRef.createBuffer(1, bufferSize, ctxRef.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-    const source = ctxRef.createBufferSource();
-    source.buffer = buffer;
-    source.loop = true;
-    return source;
+    if (window.scrollama) {
+      window.scrollama()
+        .setup({ step: ".cinema-step", offset: 0.56 })
+        .onStepEnter((response) => setStep(Number(response.element.dataset.step || 0)));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setStep(Number(entry.target.dataset.step || 0));
+        });
+      }, { threshold: 0.55 });
+      steps.forEach((step) => observer.observe(step));
+    }
   }
 
   function startAudio() {
     if (audio) {
-      audio.ctx.resume();
-      audio.master.gain.setTargetAtTime(0.55, audio.ctx.currentTime, 0.25);
-      soundToggle.classList.add("is-on");
-      soundToggle.textContent = "Quiet on";
-      soundToggle.setAttribute("aria-pressed", "true");
+      audio.master.gain.setTargetAtTime(0.28, audio.ctx.currentTime, 0.2);
+      soundButton.classList.add("is-on");
+      soundButton.setAttribute("aria-pressed", "true");
       return;
     }
     const ctxRef = new (window.AudioContext || window.webkitAudioContext)();
     const master = ctxRef.createGain();
     master.gain.value = 0.0001;
     master.connect(ctxRef.destination);
-
-    const low = ctxRef.createOscillator();
-    low.type = "sine";
-    low.frequency.value = 82;
-    const lowGain = ctxRef.createGain();
-    lowGain.gain.value = 0.11;
-    low.connect(lowGain).connect(master);
-    low.start();
-
-    const high = ctxRef.createOscillator();
-    high.type = "triangle";
-    high.frequency.value = 196;
-    const highGain = ctxRef.createGain();
-    highGain.gain.value = 0.025;
-    high.connect(highGain).connect(master);
-    high.start();
-
-    const noise = createNoise(ctxRef);
-    const filter = ctxRef.createBiquadFilter();
-    filter.type = "lowpass";
-    filter.frequency.value = 520;
-    const noiseGain = ctxRef.createGain();
-    noiseGain.gain.value = 0.035;
-    noise.connect(filter).connect(noiseGain).connect(master);
-    noise.start();
-
-    audio = { ctx: ctxRef, master, low, lowGain, high, highGain, filter, noiseGain };
-    updateAudioStage(currentStageIndex);
-    master.gain.setTargetAtTime(0.55, ctxRef.currentTime, 0.3);
-    soundToggle.classList.add("is-on");
-    soundToggle.textContent = "Quiet on";
-    soundToggle.setAttribute("aria-pressed", "true");
-    playChime(392, 0.08);
+    const pad = ctxRef.createOscillator();
+    pad.type = "sine";
+    pad.frequency.value = 96;
+    const padGain = ctxRef.createGain();
+    padGain.gain.value = 0.11;
+    pad.connect(padGain).connect(master);
+    pad.start();
+    audio = { ctx: ctxRef, master, pad };
+    master.gain.setTargetAtTime(0.28, ctxRef.currentTime, 0.25);
+    soundButton.classList.add("is-on");
+    soundButton.setAttribute("aria-pressed", "true");
+    tone(220, 0.05);
   }
 
   function stopAudio() {
     if (!audio) return;
-    audio.master.gain.setTargetAtTime(0.0001, audio.ctx.currentTime, 0.22);
-    soundToggle.classList.remove("is-on");
-    soundToggle.textContent = "Quiet mode";
-    soundToggle.setAttribute("aria-pressed", "false");
+    audio.master.gain.setTargetAtTime(0.0001, audio.ctx.currentTime, 0.2);
+    soundButton.classList.remove("is-on");
+    soundButton.setAttribute("aria-pressed", "false");
   }
 
-  function updateAudioStage(index) {
-    const t = audio.ctx.currentTime;
-    const lowFreq = [74, 92, 122, 146, 174][index] || 122;
-    const highFreq = [164, 196, 246, 294, 330][index] || 246;
-    audio.low.frequency.setTargetAtTime(lowFreq, t, 0.5);
-    audio.high.frequency.setTargetAtTime(highFreq, t, 0.5);
-    audio.filter.frequency.setTargetAtTime(460 + index * 260, t, 0.45);
-    audio.noiseGain.gain.setTargetAtTime(index === 2 ? 0.018 : 0.035 + index * 0.006, t, 0.45);
-    audio.highGain.gain.setTargetAtTime(index >= 3 ? 0.05 : 0.025, t, 0.45);
-  }
-
-  function updateAudioMotion(now) {
-    const t = audio.ctx.currentTime;
-    audio.lowGain.gain.setTargetAtTime(0.09 + scrollSpeed * 0.06, t, 0.08);
-    audio.filter.frequency.setTargetAtTime(520 + currentStageIndex * 220 + scrollSpeed * 560, t, 0.08);
-    if (scrollSpeed > 0.16 && now - lastStepAt > 260) {
-      lastStepAt = now;
-      playFootstep();
-    }
-  }
-
-  function playFootstep() {
-    const t = audio.ctx.currentTime;
+  function tone(freq, level) {
+    const now = audio.ctx.currentTime;
     const osc = audio.ctx.createOscillator();
     const gain = audio.ctx.createGain();
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(86 + Math.random() * 18, t);
-    osc.frequency.exponentialRampToValueAtTime(44, t + 0.13);
-    gain.gain.setValueAtTime(0.001, t);
-    gain.gain.exponentialRampToValueAtTime(0.12, t + 0.018);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.exponentialRampToValueAtTime(level, now + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
     osc.connect(gain).connect(audio.master);
-    osc.start(t);
-    osc.stop(t + 0.18);
+    osc.start(now);
+    osc.stop(now + 0.95);
   }
 
-  function playChime(freq, level) {
-    const t = audio.ctx.currentTime;
-    [1, 1.5, 2].forEach((ratio, index) => {
-      const osc = audio.ctx.createOscillator();
-      const gain = audio.ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.value = freq * ratio;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.exponentialRampToValueAtTime(level / (index + 1), t + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.001, t + 1.2 + index * 0.2);
-      osc.connect(gain).connect(audio.master);
-      osc.start(t);
-      osc.stop(t + 1.5 + index * 0.2);
-    });
-  }
-
-  soundToggle.addEventListener("click", () => {
-    if (audio && audio.master.gain.value > 0.01 && soundToggle.classList.contains("is-on")) stopAudio();
+  soundButton.addEventListener("click", () => {
+    if (soundButton.classList.contains("is-on")) stopAudio();
     else startAudio();
   });
-  soundStartButtons.forEach((button) => button.addEventListener("click", startAudio));
-
-  window.addEventListener("resize", resizeCanvas);
-  window.addEventListener("scroll", updateScrollMetrics, { passive: true });
-  resizeCanvas();
-  updateScrollMetrics();
-  requestAnimationFrame(drawForest);
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", resize);
+  window.addEventListener("load", setupLibraries);
+  resize();
+  updateProgress();
+  setStep(0);
+  requestAnimationFrame(draw);
 })();
 </script>
 
