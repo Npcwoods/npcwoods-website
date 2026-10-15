@@ -32,7 +32,7 @@ add_filter( 'robots_txt', function ( $robots_txt, $public ) {
 	);
 
 	$output  = "# NPCWoods.com — Async telemedicine by Chris Woods, MSN, APRN, FNP-C\n";
-	$output .= "# Licensed Nurse Practitioner — 13 states (AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA)\n";
+	$output .= "# Nurse Practitioner serving 13 states: NP licenses in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus Florida by telehealth registration (TPAN3355)\n";
 	$output .= "# Florida counts via out-of-state telehealth registration TPAN3355.\n";
 	$output .= "# NPI: 1285125468 — https://npiregistry.cms.hhs.gov/\n";
 	$output .= "#\n";

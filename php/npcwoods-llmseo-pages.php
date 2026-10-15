@@ -13,8 +13,6 @@ add_action( 'template_redirect', function() {
     $path_map = array(
         // UTI Treatment city pages (children of /uti-treatment/)
         '/uti-treatment/mesa-az/'                => 'uti-treatment/mesa-az/index.html',
-        '/uti-treatment/phoenix-az/'             => 'uti-treatment/phoenix-az/index.html',
-        '/uti-treatment/tucson-az/'              => 'uti-treatment/tucson-az/index.html',
         '/uti-treatment/surprise-az/'            => 'uti-treatment/surprise-az/index.html',
         '/uti-treatment/scottsdale-az/'          => 'uti-treatment/scottsdale-az/index.html',
         '/uti-treatment/albuquerque-nm/'         => 'uti-treatment/albuquerque-nm/index.html',
@@ -23,6 +21,7 @@ add_action( 'template_redirect', function() {
         '/uti-treatment/uti-antibiotics-online/' => 'uti-treatment/uti-antibiotics-online/index.html',
         '/uti-treatment/how-fast-do-uti-antibiotics-work/' => 'uti-treatment/how-fast-do-uti-antibiotics-work/index.html',
         '/uti-treatment/is-my-uti-getting-worse/' => 'uti-treatment/is-my-uti-getting-worse/index.html',
+        '/uti-treatment/uti-or-yeast-infection/' => 'uti-treatment/uti-or-yeast-infection/index.html',
         '/uti-treatment/no-video-uti-treatment/' => 'uti-treatment/no-video-uti-treatment/index.html',
         // Condition hubs (split from former /strep-throat-ear-infection/ on 2026-05-02)
         '/strep-throat-treatment/'              => 'strep-throat-treatment/index.html',
