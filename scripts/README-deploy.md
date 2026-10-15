@@ -1,5 +1,7 @@
 # scripts/deploy.py — the one guarded deploy tool
 
+Current contract: `docs/WEBSITE-RECIPES.md`. Run `python3 scripts/check-website-recipes.py` before review.
+
 `deploy.py` supersedes the dated one-off deploy scripts in this folder
 (`deploy-uti-search-safe-cities-2026-06-12.py`, `deploy-mesa-search-safe-2026-06-11.py`,
 `deploy-meta-pixel-strip-health-2026-06-11.py`, `deploy-discovery-audit-2026-06-10.py`,
@@ -8,8 +10,7 @@ for history and are still runnable, but new deploys should use `deploy.py`.
 
 It runs the same proven pipeline every dated script reimplemented:
 
-1. **Safety checks** on each local file (no Meta pixel markers, warns if
-   GTM/tracking.js missing or "insurance" appears).
+1. **Safety checks** on each local file using `scripts/website_policy.py`: static public pages reject third-party tracker markers. The homepage is handled separately.
 2. **SFTP upload** (paramiko) of `landing-pages/{path}/index.html` to GoDaddy
    `html/{path}/index.html` — after downloading a timestamped backup of the
    existing remote file to `content-output/deploy-backups/<date>/`.
@@ -19,9 +20,7 @@ It runs the same proven pipeline every dated script reimplemented:
    the script plus `scripts/page-ids-2026-04-22.json`; search-safe child
    pages flush their parent city stub. Brand-new URLs have nothing cached
    and are skipped with a note.
-4. **Live verification** — cache-busted HTTP check (200, doctype, GTM,
-   tracking.js), and if Playwright is installed, a full mobile tracking run
-   (GTM + GA4 requests fire, zero Meta pixel requests) per page.
+4. **Live verification** — the ordinary clean URL must return 200 without redirecting, match local title/H1 and substantial body size, and contain no forbidden trackers. Required mobile and desktop browser proof checks that same URL and saves screenshots. A missing browser cannot produce a full pass.
 
 Credentials load from `~/Desktop/Chris-HQ/.env` (python-dotenv if installed,
 manual parse otherwise). Never hardcoded, never committed.
@@ -69,7 +68,8 @@ Optional extras:
 - `--remote-diff` — during dry-run, also connect read-only over SFTP and
   show whether each remote file differs (size/checksum). Off by default so
   a plain dry-run touches nothing at all.
-- `--skip-verify` / `--skip-flush` — for the rare partial run.
+- `--expected-source-hashes` — JSON mapping from reviewed page slugs to SHA256. Mismatches block before credentials load; the upload uses the exact planned bytes.
+- `--skip-verify` / `--skip-flush` — legacy manual partial-run controls; not a verified-completion path and never used by the worker.
 
 ## What deploy.py deliberately does NOT do
 

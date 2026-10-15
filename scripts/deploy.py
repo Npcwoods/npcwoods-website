@@ -4,12 +4,11 @@
 Supersedes the dated one-off deploy scripts (see scripts/README-deploy.md).
 Pipeline per page:
 
-  1. Local safety checks (no Meta pixel; warn on missing GTM/tracking.js).
+  1. Local safety checks using the shared static-page tracking policy.
   2. Timestamped remote backup -> content-output/deploy-backups/<date>/.
   3. SFTP upload: landing-pages/{path}/index.html -> html/{path}/index.html.
   4. WP stub touch (REST no-op update) to flush GoDaddy Varnish cache.
-  5. Live verification (HTTP markers; full Playwright tracking run if
-     playwright is installed).
+  5. Clean-URL content verification and required Playwright browser proof.
 
 DEFAULT IS DRY-RUN. Nothing goes live without Chris's explicit yes:
 --live requires the confirmation phrase, typed interactively or passed
@@ -25,6 +24,7 @@ from __future__ import annotations
 import argparse
 import base64
 import hashlib
+import io
 import json
 import posixpath
 import sys
@@ -41,6 +41,8 @@ from pathlib import Path
 # --------------------------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent.parent  # npcwoods-website repo root
+sys.path.insert(0, str(ROOT / 'scripts'))
+from website_policy import FORBIDDEN_TRACKERS, compare_page, tracker_markers
 LANDING_DIR = "landing-pages"
 REMOTE_PREFIX = "html"
 SITE = "https://npcwoods.com"
@@ -51,17 +53,7 @@ LIVE_DEPLOY_CONFIRMATION = "CHRIS APPROVED LIVE DEPLOY"
 # Universal content guards (every marketing page, every deploy).
 # Meta pixel must never ride along on a health page (see meta-pixel strip,
 # 2026-06-10/11); "insurance" is a Chris hard rule for marketing surfaces.
-FORBIDDEN_MARKERS = [
-    "connect.facebook.net",
-    "facebook.com/tr",
-    'fbq("init"',
-    "fbq('init'",
-    "googletagmanager.com",
-    "google-analytics.com",
-    "googleadservices.com",
-    "doubleclick.net",
-    "/tracking.js",
-]
+FORBIDDEN_MARKERS = FORBIDDEN_TRACKERS
 WARN_IF_MISSING = []
 WARN_IF_PRESENT = ["insurance"]
 INTENTIONAL_NO_TRACKING_PAGES = {"pay"}
@@ -207,6 +199,7 @@ class PagePlan:
     size: int = 0
     sha256: str = ""
     warnings: list = field(default_factory=list)
+    content: bytes = field(default=b'', repr=False)
 
 
 @dataclass
@@ -327,6 +320,7 @@ def build_plan(pages: list[str]) -> list[PagePlan]:
             problems.append(f"{page}: local file missing: {local}")
             continue
         data = local.read_bytes()
+        item.content = data
         item.size = len(data)
         item.sha256 = hashlib.sha256(data).hexdigest()
         html = data.decode("utf-8", errors="replace")
@@ -505,62 +499,39 @@ def wp_auth(env: dict) -> str:
 # Live verification
 # --------------------------------------------------------------------------
 
+def upload_planned_page(sftp, item: PagePlan):
+    """Never reread a mutable source file after approving its digest."""
+    if not item.content or hashlib.sha256(item.content).hexdigest() != item.sha256:
+        raise ValueError('planned content hash mismatch')
+    sftp.putfo(io.BytesIO(item.content), item.remote)
+
+
 def verify_http(item: PagePlan) -> str | None:
-    """Cache-busted GET: page loads, looks like our static HTML, carries GTM +
-    tracking.js. Returns None on pass, else a problem description."""
-    url = f"{item.url}?v={int(time.time())}"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    """Verify the address visitors use, not a cache-busting alternate."""
+    if urllib.parse.urlsplit(item.url).query or urllib.parse.urlsplit(item.url).fragment:
+        return 'verification requires a clean URL without query or fragment'
+    try:
+        source = item.content.decode('utf-8') if item.content else item.local.read_text(encoding='utf-8')
+    except OSError as exc:
+        return f'cannot read expected local page: {exc}'
+    req = urllib.request.Request(item.url, headers={"User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             status = resp.status
+            if resp.geturl() != item.url:
+                return 'clean URL redirected to a different address'
             html = resp.read().decode("utf-8", errors="replace")
     except (urllib.error.URLError, urllib.error.HTTPError) as e:
         return f"request failed: {e}"
     if status != 200:
         return f"bad status {status}"
-    if not html.lstrip().lower().startswith("<!doctype html>"):
-        return "response is not our static HTML page"
-    missing = [m for m in WARN_IF_MISSING if m not in html]
-    if missing:
-        if item.page in INTENTIONAL_NO_TRACKING_PAGES:
-            return None
-        return f"missing markers: {missing}"
-    return None
+    return compare_page(source, html)
 
 
-def verify_tracking_playwright(item: PagePlan) -> tuple[bool, str]:
-    """Full tracking run: mobile viewport, ?gclid=TEST, assert GTM + GA4
-    requests fire and zero Meta pixel requests (pattern from
-    tests/verify-uti-search-safe-cities-tracking.py)."""
-    from playwright.sync_api import sync_playwright  # lazy
-
-    url = f"{item.url}?gclid=TEST_DEPLOY_TOOL"
-    hits, bad_hits = [], []
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        ctx = browser.new_context(viewport={"width": 390, "height": 844}, user_agent=MOBILE_UA)
-        page = ctx.new_page()
-        page.on("request", lambda r: (
-            hits.append(r.url) if any(d in r.url for d in GOOD_TRACKING_DOMAINS) else
-            bad_hits.append(r.url) if any(d in r.url for d in BAD_TRACKING_DOMAINS) else None
-        ))
-        page.goto(url, wait_until="networkidle", timeout=60000)
-        sms = page.locator('a[href^="sms:"]')
-        if sms.count():
-            page.evaluate("""
-                document.querySelectorAll('a[href^="sms:"]').forEach(a => {
-                    a.addEventListener('click', e => e.preventDefault(), {capture: false});
-                });
-            """)
-            sms.first.click()
-            page.wait_for_timeout(3000)
-        ctx.close()
-        browser.close()
-
-    gtm = any("googletagmanager.com" in u for u in hits)
-    ga4 = any("google-analytics.com" in u or "/g/collect" in u for u in hits)
-    ok = gtm and ga4 and not bad_hits
-    return ok, f"GTM={gtm} GA4={ga4} MetaPixel={len(bad_hits)}"
+def verify_tracking_playwright(item: PagePlan):
+    """Required clean-URL mobile/desktop proof using the shared page policy."""
+    from page_verification import browser_proof
+    return browser_proof(item.local, item.url, deploy_verify_report_dir())
 
 
 def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
@@ -570,7 +541,7 @@ def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
         have_playwright = True
     except ImportError:
         have_playwright = False
-        print("[verify] playwright not installed — falling back to HTTP marker checks only")
+        print("[verify] playwright not installed — full verification cannot pass")
 
     results = {}
     for item in plan:
@@ -589,8 +560,8 @@ def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
             results[item.page] = VerificationResult("PASS" if ok else "FAIL", detail, screenshots)
             print(f"  [verify] {item.page}: {'PASS' if ok else 'FAIL'} ({detail})")
         else:
-            results[item.page] = VerificationResult("PASS", "HTTP markers only")
-            print(f"  [verify] {item.page}: PASS (HTTP markers only)")
+            results[item.page] = VerificationResult("FAIL", "HTTP passed; required browser verification unavailable")
+            print(f"  [verify] {item.page}: FAIL (browser verification unavailable)")
     return results
 
 
@@ -614,7 +585,12 @@ def main(argv=None) -> int:
                         help="dry-run extra: read-only SFTP checksum diff vs remote")
     parser.add_argument("--skip-flush", action="store_true", help="live mode: skip WP stub touch")
     parser.add_argument("--skip-verify", action="store_true", help="live mode: skip post-deploy verification")
+    parser.add_argument('--expected-source-hashes', help='JSON page-to-SHA256 mapping from the approved review')
     args = parser.parse_args((argv or sys.argv)[1:])
+
+    if args.live and args.skip_verify:
+        print('[blocked] live publication requires verification; --skip-verify is not allowed', file=sys.stderr)
+        return 2
 
     if args.live and args.verify_only:
         print("[err] --live and --verify-only are mutually exclusive", file=sys.stderr)
@@ -635,6 +611,17 @@ def main(argv=None) -> int:
     except RuntimeError as e:
         print(f"[blocked] {e}", file=sys.stderr)
         return 2
+
+    if args.expected_source_hashes is not None:
+        try:
+            expected = json.loads(args.expected_source_hashes)
+            if not isinstance(expected, dict) or set(expected) != set(pages):
+                raise ValueError('approved hashes must cover exactly the requested pages')
+            if any(expected[item.page] != item.sha256 for item in plan):
+                raise ValueError('page changed since approval; request a new review')
+        except (ValueError, TypeError) as exc:
+            print(f'[blocked] {exc}', file=sys.stderr)
+            return 2
 
     stub_table = load_stub_table()
 
@@ -681,7 +668,7 @@ def main(argv=None) -> int:
                 else:
                     print(f"  [backup] {item.remote} did not exist (first deploy)")
                 sftp_mkdirs(sftp, posixpath.dirname(item.remote))
-                sftp.put(str(item.local), item.remote)
+                upload_planned_page(sftp, item)
                 uploaded.append(item)
                 print(f"  [up] {item.remote}")
             except Exception as e:  # noqa: BLE001 — keep going, report at the end

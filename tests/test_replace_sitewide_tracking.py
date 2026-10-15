@@ -33,6 +33,16 @@ SAMPLE = """<!doctype html>
 
 
 class ReplaceSitewideTrackingTest(unittest.TestCase):
+    def test_unmatched_pixel_comment_cannot_swallow_allowed_analytics(self):
+        module = load_module()
+        allowed = '<script src="https://analytics.ahrefs.com/analytics.js" data-key="public-fixture" async></script>'
+        page = ('<!doctype html><html><head><!-- Meta Pixel Code -->' + allowed +
+                '<!-- Meta Pixel Code --><script src="https://connect.facebook.net/en_US/fbevents.js"></script>' +
+                '<!-- End Meta Pixel Code --></head><body><h1>Page</h1></body></html>')
+        result = module.transform(page)
+        self.assertIn(allowed, result)
+        self.assertNotIn('connect.facebook.net', result)
+
     def test_transform_removes_meta_without_injecting_a_replacement(self):
         module = load_module()
         transformed = module.transform(SAMPLE)

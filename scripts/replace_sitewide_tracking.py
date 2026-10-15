@@ -32,7 +32,7 @@ INERT_LEGACY_TRACKING_ASSET = """/**
 """
 
 META_BLOCK_RE = re.compile(
-    r"[ \t]*<!-- Meta Pixel Code -->.*?<!-- End Meta Pixel Code -->\n?", re.IGNORECASE | re.DOTALL
+    r"[ \t]*<!-- (?:End )?Meta Pixel Code -->\n?", re.IGNORECASE
 )
 SCRIPT_RE = re.compile(r"<script\b[^>]*>.*?</script\s*>", re.IGNORECASE | re.DOTALL)
 NOSCRIPT_RE = re.compile(r"<noscript\b[^>]*>.*?</noscript\s*>", re.IGNORECASE | re.DOTALL)

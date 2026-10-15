@@ -67,12 +67,29 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertNotIn("Most visits wrap up in under an hour", self.text)
 
     def test_homepage_fonts_do_not_block_first_paint(self):
-        self.assertIn('media="print"', self.text)
-        self.assertIn("this.media='all'", self.text)
+        self.assertNotIn("Inter-VariableFont_slnt,wght.woff2", self.text)
+        self.assertNotIn("fonts.googleapis.com", self.text)
+        self.assertIn("-apple-system", self.text)
         self.assertNotIn(
             'href="https://www.googletagmanager.com"',
             self.text,
         )
+        self.assertIn("{ timeout: 8000 }", self.text)
+
+    def test_lcp_hero_image_is_visible_without_javascript(self):
+        self.assertNotRegex(
+            self.text,
+            r"\.hero-face-wrap\{[^}]*opacity:0",
+        )
+        self.assertIn('class="hero-face"', self.text)
+        self.assertIn("fetchpriority=\"high\"", self.text)
+        self.assertIn("chris-400.webp", self.text)
+        self.assertIn("imagesrcset", self.text)
+
+    def test_below_fold_portrait_is_lazy(self):
+        meet = self.text.split('id="chris"', 1)[1]
+        self.assertIn('loading="lazy"', meet)
+        self.assertIn("chris-1000.webp", meet)
 
     def test_homepage_defers_meta_pixel_until_idle_or_first_input(self):
         self.assertIn("requestIdleCallback", self.text)

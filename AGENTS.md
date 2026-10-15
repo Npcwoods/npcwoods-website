@@ -1,5 +1,7 @@
 # Agent rules for npcwoods-website
 
+Current executable website contract: `docs/WEBSITE-RECIPES.md`. Run `python3 scripts/check-website-recipes.py` before review; it supersedes historical tracking and verification recipes.
+
 Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room, kitchen, freezer, whiteboard, plate, push it live. This folder is kitchen food for the dining room. GitHub save ≠ live.
 
 Read the **STOP. Read this first.** banner at the top of `CLAUDE.md` before you edit, preview, match, or deploy anything.

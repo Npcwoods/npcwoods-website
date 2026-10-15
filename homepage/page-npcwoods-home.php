@@ -15,11 +15,7 @@
 <meta name="theme-color" content="#05060a">
 <title>NPCWoods Telemedicine: $59 Text-Based Urgent Care</title>
 <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:900px) 280px, 380px" fetchpriority="high">
 <?php if (function_exists('wp_head')) { wp_head(); } ?>
 <!-- Meta Pixel Code: load after idle or first tap so phones stay snappy. -->
 <script>
@@ -48,9 +44,9 @@
   }
   function schedulePixel() {
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(function () { loadPixel(); }, { timeout: 2500 });
+      requestIdleCallback(function () { loadPixel(); }, { timeout: 8000 });
     } else {
-      setTimeout(loadPixel, 2000);
+      setTimeout(loadPixel, 8000);
     }
   }
   ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
@@ -93,7 +89,7 @@ src="https://www.facebook.com/tr?id=1428464038973925&ev=PageView&noscript=1"
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);color:var(--ink);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
@@ -209,8 +205,6 @@ img{display:block;max-width:100%}
     0 0 0 1px rgba(255,255,255,.14),
     0 0 48px rgba(41,151,255,.32),
     0 40px 90px rgba(0,0,0,.5);
-  opacity:0;transform:translateY(12px);
-  transition:opacity .9s ease,transform .9s ease;
 }
 .hero-visual.is-in .hero-face-wrap{opacity:1;transform:none}
 .hero-face{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 10%}
@@ -470,7 +464,7 @@ body.npc-redesign .npc-site-footer { display:none !important; }
     </div>
     <div class="hero-visual" id="hero-visual">
       <div class="hero-face-wrap" id="hero-face-wrap">
-      <img class="hero-face" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="500" height="625" fetchpriority="high">
+      <img class="hero-face" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" srcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" sizes="(max-width:900px) 280px, 380px" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="500" height="625" fetchpriority="high">
       </div>
     <div class="phone-float" id="phone-float" aria-hidden="true">
       <div class="phone-frame">
@@ -545,7 +539,7 @@ body.npc-redesign .npc-site-footer { display:none !important; }
       </article>
       <article class="bento-card">
         <div class="step-num">2</div>
-        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods, NP">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods, NP" width="52" height="52" loading="lazy" decoding="async">
         <h3>I actually read it</h3>
         <p>I look at your history, ask what I need to, and build a plan for you. Not a template. Not a bot.</p>
       </article>
@@ -576,7 +570,7 @@ body.npc-redesign .npc-site-footer { display:none !important; }
 
 <section class="section section-white" id="chris">
   <div class="section-inner meet">
-    <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner">
+    <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, MSN, APRN, FNP-C, Nurse Practitioner" width="500" height="625" loading="lazy" decoding="async">
     <div>
       <span class="section-kicker">Meet your NP</span>
       <h2 class="section-title">Hey, I'm Chris.</h2>

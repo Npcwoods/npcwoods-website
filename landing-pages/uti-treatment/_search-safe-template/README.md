@@ -1,5 +1,7 @@
 # Search-Safe UTI City Pages — Template System
 
+Current contract: `docs/WEBSITE-RECIPES.md`; shared policy: `scripts/website_policy.py`.
+
 The 8 search-safe city landing pages under `landing-pages/uti-treatment/<slug>/search-safe/index.html` are generated from a single template plus per-city data. They are LIVE and receiving paid ad traffic — never hand-edit the generated pages; edit the template or `cities.json` and regenerate.
 
 ## Files
@@ -23,7 +25,7 @@ The 8 search-safe city landing pages under `landing-pages/uti-treatment/<slug>/s
    python3 -m unittest tests.test_search_safe_template
    git diff -- 'landing-pages/uti-treatment/*/search-safe/index.html'
    ```
-   (After a deliberate template change, the byte-identity test fails until the regenerated pages are committed — that's the point: it forces the diff to be reviewed.)
+   (After a deliberate template change, the byte-identity test fails until the on-disk generated pages match the template — that's the point: it forces the diff to be reviewed.)
 4. Commit template + regenerated pages together.
 
 ## Add a new city
@@ -41,7 +43,7 @@ The 8 search-safe city landing pages under `landing-pages/uti-treatment/<slug>/s
 3. Update `EXPECTED_SLUGS` in `tests/test_search_safe_template.py`, then run the tests.
 4. Commit `cities.json`, the test, and the new `index.html`.
 
-The generator validates the HIPAA-off comment (Meta / GTM / GA4 / Ads stay off these health-condition pages), `tracking.js`, the paid-surface marker, the `noindex,follow` robots meta, and the canonical response-time wording, and rejects any forbidden terms or live ad pixels before writing anything.
+The generator validates the tracking-off comment and shared static-page policy (including no `/tracking.js`), the paid-surface marker, the `noindex,follow` robots meta, and the canonical response-time wording, and rejects any forbidden terms or live ad pixels before writing anything.
 
 ## Notes
 

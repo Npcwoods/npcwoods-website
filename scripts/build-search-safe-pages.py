@@ -24,25 +24,23 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / 'scripts'))
+from website_policy import FORBIDDEN_TRACKERS
 TEMPLATE_DIR = ROOT / "landing-pages" / "uti-treatment" / "_search-safe-template"
 DEFAULT_OUT_ROOT = ROOT / "landing-pages" / "uti-treatment"
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 REQUIRED_FIELDS = ("slug", "city", "state", "state_abbr", "state_page")
 
-# Guardrails: paid LPs keep tracking.js + the paid-surface marker, but
-# advertising/analytics pixels stay off health-condition pages (no BAA).
+# Paid marker remains; tracking follows the same policy as the publisher.
 REQUIRED_MARKERS = [
     "health-condition pages must not",
     "GTM, GA4, and Google Ads stay off",
     "window.NPCWoodsPaidSurface = true",
-    "tracking.js",
     'content="noindex,follow"',
     "Most patients hear back the same day, usually within a few hours.",
 ]
-FORBIDDEN_MARKERS = [
-    "connect.facebook.net",
-    "facebook.com/tr",
+FORBIDDEN_MARKERS = [*FORBIDDEN_TRACKERS,
     "fbevents.js",
     "GTM-59QSWZRC",
     "G-EFFRQMG8TC",

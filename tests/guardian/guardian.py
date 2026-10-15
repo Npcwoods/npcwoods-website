@@ -7,18 +7,14 @@ Needs no credentials.
 
 Checks per page (from tests/guardian/manifest.json):
   1. HTTP 200 and the page actually renders (not the WP 404 theme page)
-  2. tracking.js script tag present (+ the file itself returns 200, checked once)
-  3. Non-health pages: GTM container present in <head>. Health pages: GTM,
-     GA4 G-EFFRQMG8TC, and Google Ads AW-610222919 must be absent (no BAA).
-  4. Health pages: ZERO Meta/Facebook pixel — no connect.facebook.net, no live
-     fbq(...) calls (the no-op fbq stub that BLOCKS the pixel is allowed)
+  2–4. Static routes: shared website_policy.py forbids third-party trackers.
+     The PHP homepage has its own separately maintained policy.
   5. Canonical claim wording drift (response time / hours / med cost / reviews)
   6. Forbidden words in visible text: insurance, doctor, subscription language
   7. Paid LPs (*/search-safe/, /uti-care/): noindex meta present, absent from
      the live sitemap
   8. Internal links: every unique internal href HEAD-checked once
-  9. Playwright spot-check on a small rotating sample: GTM/GA4 requests fire,
-     zero facebook requests on health pages
+  9. Playwright spot-check: forbidden trackers must not fire on static routes.
 
 Output: content-output/guardian-reports/latest.md (temp-file + os.replace, safe
 for launchd) plus a dated copy. Exit 0 = all green, 1 = red flags.
@@ -47,6 +43,8 @@ import requests
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parents[1]
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
+from website_policy import tracker_markers
 DEFAULT_MANIFEST = SCRIPT_DIR / "manifest.json"
 DEFAULT_OUT_DIR = REPO_ROOT / "content-output" / "guardian-reports"
 FALLBACK_OUT_DIR = Path.home() / ".local/npcwoods/reports/guardian-reports"
@@ -253,61 +251,13 @@ def check_page(session: requests.Session, page: dict, sitemap_urls: set[str]) ->
 
     head = html.split("</head>", 1)[0]
 
-    # 2. tracking.js script tag
-    if not TRACKING_JS_RE.search(html):
-        res.findings.append(
-            Finding("RED", url, "tracking.js", "no <script src=...tracking.js> tag found")
-        )
-
-    # 3. GTM / GA4 / Ads — required on marketing pages; forbidden on health pages
-    live_html = HTML_COMMENT_RE.sub("", html)
-    if page["is_health_page"]:
-        if LIVE_HEALTH_AD_RE.search(live_html):
-            res.findings.append(
-                Finding("RED", url, "ads-analytics-on-health",
-                        "live GTM, GA4, or Google Ads tag on a health-condition "
-                        "page (no BAA — these pixels stay off)")
-            )
-    elif not GTM_RE.search(head):
-        if GTM_RE.search(html):
-            res.findings.append(
-                Finding("YELLOW", url, "gtm-placement",
-                        "GTM container found but not in <head>")
-            )
-        else:
-            res.findings.append(
-                Finding("RED", url, "gtm-missing", "no GTM container on page")
-            )
-
-    # 4. Ads pixel 1558261907814968 stays off health pages.
-    # Site pixel 1428464038973925 is allowed sitewide.
-    if page["is_health_page"]:
-        if "1558261907814968" in html:
-            res.findings.append(
-                Finding("RED", url, "meta-pixel",
-                        "ads pixel 1558261907814968 present on a health page")
-            )
-        else:
-            # fbq(...) CALLS are the pixel; a bare no-op stub definition
-            # (window.fbq = function () {}; — blocks GTM-injected pixel) is allowed.
-            # A leftover call WITH the stub present is neutralized at runtime
-            # (stub swallows it) -> YELLOW residual code; without the stub -> RED.
-            calls = FBQ_CALL_RE.findall(html)
-            if calls:
-                has_stub = "window.fbq = function" in html or "window.fbq=function" in html
-                if has_stub:
-                    res.findings.append(
-                        Finding("YELLOW", url, "meta-pixel-residual",
-                                f"{len(calls)} leftover fbq('...') call(s) on a health "
-                                "page — currently neutralized by the no-op stub, but "
-                                "dead pixel code should be removed")
-                    )
-                else:
-                    res.findings.append(
-                        Finding("RED", url, "meta-pixel",
-                                f"{len(calls)} fbq('...') call(s) on a health page "
-                                "with NO blocking stub")
-                    )
+    # Static public routes share the publisher's policy. The PHP homepage is
+    # maintained separately; never require its tracking on another page.
+    if urlparse(url).path not in ("", "/"):
+        markers = tracker_markers(html)
+        if markers:
+            res.findings.append(Finding("RED", url, "third-party-tracker",
+                                        ", ".join(markers)))
 
     # 5 + 6. claims + forbidden words on visible text
     text = strip_to_visible_text(html)
@@ -482,15 +432,8 @@ def playwright_spot_checks(sample: list[dict]) -> tuple[list[Finding], list[str]
                 viewport={"width": 390, "height": 844}, user_agent=MOBILE_UA
             )
             pw_page = ctx.new_page()
-            good_hits: list[str] = []
-            fb_hits: list[str] = []
-            pw_page.on("request", lambda r: (
-                good_hits.append(r.url)
-                if any(d in r.url for d in GOOD_TRACKING_DOMAINS)
-                else fb_hits.append(r.url)
-                if any(d in r.url for d in META_PIXEL_DOMAINS)
-                else None
-            ))
+            forbidden_hits: list[str] = []
+            pw_page.on("request", lambda r: forbidden_hits.extend(tracker_markers(r.url)))
             try:
                 pw_page.goto(url, wait_until="networkidle", timeout=60000)
                 pw_page.wait_for_timeout(2500)
@@ -498,33 +441,10 @@ def playwright_spot_checks(sample: list[dict]) -> tuple[list[Finding], list[str]
                 findings.append(Finding("RED", url, "playwright-load", f"page load failed: {exc}"))
                 ctx.close()
                 continue
-            gtm = any("googletagmanager.com" in u for u in good_hits)
-            ga4 = any("google-analytics.com" in u or "/g/collect" in u for u in good_hits)
-            if page_meta["is_health_page"]:
-                if gtm:
-                    findings.append(Finding("RED", url, "playwright-gtm-health",
-                                            "googletagmanager.com request fired on a "
-                                            "health-condition page"))
-                if ga4:
-                    findings.append(Finding("RED", url, "playwright-ga4-health",
-                                            "GA4 collect request fired on a "
-                                            "health-condition page"))
-            else:
-                if not gtm:
-                    findings.append(Finding("RED", url, "playwright-gtm",
-                                            "no googletagmanager.com request fired on load"))
-                if not ga4:
-                    findings.append(Finding("YELLOW", url, "playwright-ga4",
-                                            "no GA4 collect request observed on load"))
-            if page_meta["is_health_page"] and fb_hits:
-                findings.append(Finding("RED", url, "playwright-meta-pixel",
-                                        f"{len(fb_hits)} facebook request(s) fired on a "
-                                        "health page: "
-                                        + "; ".join(u[:110] for u in fb_hits[:3])))
-            notes.append(
-                f"{url} — GTM={'Y' if gtm else 'N'} GA4={'Y' if ga4 else 'N'} "
-                f"fb-requests={len(fb_hits)}"
-            )
+            if urlparse(url).path not in ("", "/") and forbidden_hits:
+                findings.append(Finding("RED", url, "third-party-tracker",
+                                        f"{len(forbidden_hits)} forbidden network request(s)"))
+            notes.append(f"{url} — forbidden tracker requests={len(forbidden_hits)}")
             ctx.close()
         browser.close()
     return findings, notes
@@ -636,7 +556,7 @@ def main() -> int:
     site_findings: list[Finding] = []
     sitemap_urls, sm_findings = fetch_sitemap_urls(session, base)
     site_findings += sm_findings
-    site_findings += check_tracking_js(session, base)
+    # Legacy tracking.js is not a required site asset under website_policy.py.
 
     results: list[PageResult] = []
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:

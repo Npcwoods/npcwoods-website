@@ -1,5 +1,7 @@
 # STOP. Read this first.
 
+Current executable website contract: `docs/WEBSITE-RECIPES.md`. Run `python3 scripts/check-website-recipes.py` before review; it supersedes historical tracking and verification recipes.
+
 Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room = live npcwoods.com, kitchen = this folder on the Mini, freezer = GitHub, plate = a page that loads, push it live = Chris yes then plate it. GitHub save is not live.
 
 **Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
@@ -60,7 +62,7 @@ All static landing pages must include:
 - **Do not deploy the root directly.** Build a sanitized preview bundle first:
   ```bash
   python3 scripts/build-vercel-preview-site.py --page [name]
-  vercel deploy content-output/previews/vercel-review-site -y --no-wait
+  vercel deploy <bundle-path-from-builder> --yes  # only after preview approval; wait for readiness
   ```
 - Public Review URL fallback: `https://vercel-review-site.vercel.app/`
 
@@ -79,4 +81,4 @@ Dry-run first. Nothing live without Chris's yes — except restoring a down home
 The 8 `uti-treatment/<city>/search-safe/` pages are generated from one template. **Never hand-edit the 8 pages** — edit `landing-pages/uti-treatment/_search-safe-template/template.html` (design) or `cities.json` (per-city data), then run `python3 scripts/build-search-safe-pages.py`. New city = one cities.json entry. See the README in that folder. Verify: `python3 -m unittest tests.test_search_safe_template`.
 
 ## Site Guardian (nightly compliance sweep)
-`python3 tests/guardian/guardian.py` — read-only sweep of all ~95 live pages: tracking.js/GTM present, zero Meta pixel on health pages, canonical claim wording, forbidden words, noindex on paid LPs, broken links. Report: `content-output/guardian-reports/latest.md`. Refresh page list with `tests/guardian/build_manifest.py` after adding pages. Schedule install (needs Chris's yes): `zsh tests/guardian/install.sh`. Run with `~/Desktop/Chris-HQ/gads-env/bin/python` for Playwright spot-checks (system python lacks playwright).
+`python3 tests/guardian/guardian.py` — read-only sweep of all ~95 live pages: shared static-page tracking policy, with the PHP homepage handled separately, canonical claim wording, forbidden words, noindex on paid LPs, broken links. Report: `content-output/guardian-reports/latest.md`. Refresh page list with `tests/guardian/build_manifest.py` after adding pages. Schedule install (needs Chris's yes): `zsh tests/guardian/install.sh`. Run with `~/Desktop/Chris-HQ/gads-env/bin/python` for Playwright spot-checks (system python lacks playwright).
