@@ -9,6 +9,7 @@ add_action( 'template_redirect', function() {
 
     $path_map = array(
         '/dental-pain/'              => 'dental-pain/index.html',
+        '/dental-pain/search-safe/' => 'dental-pain/search-safe/index.html',
         '/dental-pain/gainesville-ga/' => 'dental-pain/gainesville-ga/index.html',
         '/dental-pain/ames-ia/'      => 'dental-pain/ames-ia/index.html',
         '/dental-pain/iowa-city-ia/' => 'dental-pain/iowa-city-ia/index.html',

@@ -12,6 +12,7 @@ add_action( "template_redirect", function() {
         "sitemap"                => "sitemap/index.html",
         "uti-treatment"          => "uti-treatment/index.html",
         "sinus-infection-treatment" => "sinus-infection-treatment/index.html",
+        "cold-sore-treatment"    => "cold-sore-treatment/index.html",
         "colorado-telemedicine"  => "colorado-telemedicine/index.html",
         "georgia-telemedicine"   => "georgia-telemedicine/index.html",
         "idaho-telemedicine"     => "idaho-telemedicine/index.html",
@@ -22,10 +23,21 @@ add_action( "template_redirect", function() {
         "north-carolina-telemedicine" => "north-carolina-telemedicine/index.html",
         "oregon-telemedicine"    => "oregon-telemedicine/index.html",
         "utah-telemedicine"      => "utah-telemedicine/index.html",
+        "washington-telemedicine" => "washington-telemedicine/index.html",
         "trust-video"            => "trust-video/index.html",
         "ed-treatment"           => "ed-treatment/index.html",        "pricing"                    => "pricing/index.html",        "credentials"                => "credentials/index.html",
         "do-i-need-antibiotics-sinus-infection" => "do-i-need-antibiotics-sinus-infection/index.html",
 
+        "real-care"              => "real-care/index.html",
+        "notice-of-privacy-practices" => "notice-of-privacy-practices/index.html",
+        "what-is-async-telemedicine" => "what-is-async-telemedicine/index.html",
+        "athens-saturday-text-visit" => "athens-saturday-text-visit/index.html",
+        "florida-vacation-sick-text-visit" => "florida-vacation-sick-text-visit/index.html",
+        "florida-beach-sick-text-visit" => "florida-beach-sick-text-visit/index.html",
+        "seattle-gameday-text-visit" => "seattle-gameday-text-visit/index.html",
+        "seattle-needle-text-visit" => "seattle-needle-text-visit/index.html",
+        "panama-city-beach-text-visit" => "panama-city-beach-text-visit/index.html",
+        "vegas-strip-text-visit" => "vegas-strip-text-visit/index.html",
 
     );
 
