@@ -115,7 +115,7 @@ function npcwoods_compliance_footer() {
             <div class="footer-contact">
                 <a href="tel:+14806394722">(480) 639-4722</a> &nbsp;|&nbsp;
                 <a href="mailto:cwoods@npcwoods.com">cwoods@npcwoods.com</a><br>
-                Telehealth service &middot; Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT
+                Telehealth service &middot; Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA &middot; Florida by telehealth registration (TPAN3355) &middot; 13 states served
             </div>
 
             <div class="footer-legal-links">

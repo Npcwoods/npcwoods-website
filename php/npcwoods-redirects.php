@@ -30,8 +30,6 @@ add_action("init", function() {
         "/blog/blog-ry"              => "/blog/",
         "/blog/burning-when-you-pee-albuquerque/" => "/blog-burning-when-you-pee-albuquerque/",
         "/experience/"               => "/patient-experience/",
-        // Physical html/ear-infection/index.html is served before WP init.
-        // Keep this map, and ship html/ear-infection/index.php (same as /experience/).
         "/ear-infection/"            => "/ear-infection-treatment/",
         "/cost-savings-preview/"     => "/cost-savings-convenience/",
         "/swimmers-ear-preview/"     => "/ear-pain-after-swimming-swimmers-ear/",
@@ -46,6 +44,12 @@ add_action("init", function() {
         "/sinus/"                     => "/sinus-infection-treatment/",
         "/strep/"                     => "/strep-throat-treatment/",
         "/strep-throat-ear-infection/" => "/strep-throat-treatment/",
+        // Phoenix/Tucson sinus short paths were 301ing to UTI city pages (~Sep 24).
+        // Send guests to the matching sinus city plates (2026-10-06).
+        "/sinus-treatment/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/",
+        "/sinus/phoenix-az/" => "/sinus-infection-treatment/phoenix-az/",
+        "/sinus-treatment/tucson-az/" => "/sinus-infection-treatment/tucson-az/",
+        "/sinus/tucson-az/" => "/sinus-infection-treatment/tucson-az/",
         // Atlanta/Charlotte leftover city tents were serving UTI food (2026-08-29).
         // Send guests to the matching condition plate, not the UTI table.
         "/ed-treatment/atlanta-ga/" => "/ed-treatment/",
@@ -58,6 +62,12 @@ add_action("init", function() {
         "/do-i-need-doctor-for-uti/"              => "/when-to-see-provider-for-uti/",
         "/uti-antibiotics-without-seeing-a-doctor/" => "/uti-treatment/",
         "/urgent-care-cost-without-insurance/"    => "/urgent-care-price-guide/",
+        // 503 crawl waste (2026-10-06) — send guests to healthy siblings
+        "/can-a-nurse-practitioner-prescribe-in-north-carolina/" => "/north-carolina-telemedicine/",
+        "/uti-treatment/uti-or-yeast-infection/" => "/learn/uti/lookalikes/",
+        // 404 stub tidy (2026-10-07) — Chris approved 301s
+        "/north-carolina-prescribe/" => "/north-carolina-telemedicine/",
+        "/yeast-infection-lookalikes/" => "/learn/uti/lookalikes/",
     ];
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     $path = rtrim($path, "/") . "/";

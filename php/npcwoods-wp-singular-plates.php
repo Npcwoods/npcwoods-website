@@ -35,14 +35,52 @@ function npcwoods_singular_plate_should_serve() {
 			return false;
 		}
 	}
-	$file = npcwoods_singular_plate_static_file( $path );
-	if ( $file && file_exists( $file ) ) {
-		return false;
-	}
 	return true;
 }
 
+/**
+ * If a static index.html exists for this path but no earlier mu-plugin
+ * mapped it, serve the file here. Previously we returned false and fell
+ * through to the block theme — that boot is what soft-hangs under
+ * GoDaddy gateway rate limits (parallel /learn/* sweeps).
+ */
+function npcwoods_singular_plate_serve_static_if_present() {
+	$path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+	$path = is_string( $path ) ? $path : '/';
+	$file = npcwoods_singular_plate_static_file( $path );
+	if ( ! $file || ! file_exists( $file ) ) {
+		return false;
+	}
+	header( 'Content-Type: text/html; charset=UTF-8' );
+	header( 'X-NPCWoods-Page: static-catch' );
+	header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'X-Frame-Options: SAMEORIGIN' );
+	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	header( 'Cache-Control: public, max-age=3600' );
+	readfile( $file );
+	exit;
+}
+
 function npcwoods_singular_plate_render() {
+	if ( is_admin() || is_feed() || is_front_page() || is_home() ) {
+		return;
+	}
+	if ( ! is_singular( array( 'post', 'page' ) ) ) {
+		return;
+	}
+	$path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+	$path = is_string( $path ) ? $path : '/';
+	$skip = array( '/pay/', '/path-visit/', '/blog/' );
+	foreach ( $skip as $prefix ) {
+		if ( trailingslashit( $path ) === $prefix ) {
+			return;
+		}
+	}
+
+	// Catch-all for static HTML left unmapped by path-specific mu-plugins.
+	npcwoods_singular_plate_serve_static_if_present();
+
 	if ( ! npcwoods_singular_plate_should_serve() ) {
 		return;
 	}
