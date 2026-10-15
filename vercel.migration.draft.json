@@ -1,0 +1,546 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/activity.json/",
+      "destination": "/wp-content/uploads/npc-data/activity.json",
+      "statusCode": 301
+    },
+    {
+      "source": "/status.json/",
+      "destination": "/wp-content/uploads/npc-data/status.json",
+      "statusCode": 301
+    },
+    {
+      "source": "/scottsdale-uti-treatment/",
+      "destination": "/uti-treatment/scottsdale-az/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mesa-uti-treatment/",
+      "destination": "/uti-treatment/mesa-az/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mesa-az-uti/",
+      "destination": "/uti-treatment/mesa-az/",
+      "statusCode": 301
+    },
+    {
+      "source": "/surprise-uti-treatment/",
+      "destination": "/uti-treatment/surprise-az/",
+      "statusCode": 301
+    },
+    {
+      "source": "/albuquerque-uti-treatment/",
+      "destination": "/uti-treatment/albuquerque-nm/",
+      "statusCode": 301
+    },
+    {
+      "source": "/atlanta-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/boone-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/phoenix-az-sinus/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/sample-page/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hello-world/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/my-account/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cart/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/shop/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/admin/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/chris/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/npcwoods/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gilbert-az-strep/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-az-uti/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/blog-ry/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/blog-ry",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/burning-when-you-pee-albuquerque/",
+      "destination": "/blog-burning-when-you-pee-albuquerque/",
+      "statusCode": 301
+    },
+    {
+      "source": "/experience/",
+      "destination": "/patient-experience/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ear-infection/",
+      "destination": "/ear-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pharmacy-info/",
+      "destination": "/pharmacy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/states/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/phoenix-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home/phoenix-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/uti/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/sinus/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/strep-throat-ear-infection/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/do-i-need-doctor-for-uti/",
+      "destination": "/when-to-see-provider-for-uti/",
+      "statusCode": 301
+    },
+    {
+      "source": "/uti-antibiotics-without-seeing-a-doctor/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/urgent-care-cost-without-insurance/",
+      "destination": "/urgent-care-price-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/phoenix-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/chandler-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tempe-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/glendale-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/surprise-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/peoria-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mesa-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/phoenix-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/phoenix-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mesa-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/scottsdale-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/surprise-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-az-sinus/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mesa-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/scottsdale-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gilbert-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/glendale-az-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/glendale-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tempe-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/chandler-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/surprise-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/peoria-az-telemedicine/",
+      "destination": "/arizona-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tucson-az-ed/",
+      "destination": "/ed-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/scottsdale-az-strep/",
+      "destination": "/strep-throat-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/santa-fe-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/rio-rancho-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/farmington-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/albuquerque-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/santa-fe-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/rio-rancho-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/las-cruces-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/farmington-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/santa-fe-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/rio-rancho-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/farmington-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/las-cruces-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/roswell-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/albuquerque-telemedicine/",
+      "destination": "/new-mexico-telemedicine/",
+      "statusCode": 301
+    },
+    {
+      "source": "/dalton-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gainesville-ga-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/augusta-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/athens-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/atlanta-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/dalton-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/augusta-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/athens-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gainesville-ga-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/charlotte-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/asheville-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hickory-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hendersonville-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/boone-uti-treatment/",
+      "destination": "/uti-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/charlotte-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hickory-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/hendersonville-sinus-infection/",
+      "destination": "/sinus-infection-treatment/",
+      "statusCode": 301
+    },
+    {
+      "source": "/conditions/skin-infections/",
+      "destination": "/learn/skin-infection/",
+      "statusCode": 301
+    },
+    {
+      "source": "/learn/respiratory-infection/",
+      "destination": "/learn/bronchitis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/learn/cold-flu/",
+      "destination": "/learn/covid-flu/",
+      "statusCode": 301
+    },
+    {
+      "source": "/learn/hives/",
+      "destination": "/learn/allergic-reaction/",
+      "statusCode": 301
+    },
+    {
+      "source": "/learn/acne/",
+      "destination": "/learn/skin-infection/",
+      "statusCode": 301
+    },
+    {
+      "source": "/learn/abscesses/",
+      "destination": "/dental-pain/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/",
+      "destination": "/about/",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path((?!.*\\.).*)",
+      "destination": "/:path/index.html"
+    }
+  ]
+}
