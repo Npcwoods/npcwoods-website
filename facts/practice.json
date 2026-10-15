@@ -38,7 +38,13 @@
     "public_url": "https://flhealthsource.gov/telehealth/"
   },
   "washington_public_page": {
-    "rule": "Do not print the Washington license number."
+    "rule": "Print the Washington ARNP license number ARNP.AP.61670388-NP on /washington-telemedicine/ and /credentials/. Do not remove or redact it.",
+    "wa_arnp_license": "ARNP.AP.61670388-NP",
+    "allowed_on": [
+      "landing-pages/washington-telemedicine/index.html",
+      "landing-pages/credentials/index.html"
+    ],
+    "settled_by": "Chris, 2026-10-15 (replaces the 2026-10-14 'Do not print the Washington license number' rule)"
   },
   "credentials_confirmed": [
     "MSN",
