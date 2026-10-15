@@ -4,7 +4,11 @@
 Supersedes the dated one-off deploy scripts (see scripts/README-deploy.md).
 Pipeline per page:
 
-  1. Local safety checks (no Meta pixel; warn on missing GTM/tracking.js).
+  0. Counter + git guard (before .env loads, for --live and --remote-diff):
+     only the one folder KITCHEN-COUNTERS.json allows, on main, clean,
+     fetched, and HEAD == origin/main. No bypass flag.
+  1. Local safety checks that BLOCK: no tracking pixels or Ahrefs, no banned
+     words (appointment, physician, doctor, insurance, MD), no facts drift.
   2. Timestamped remote backup -> content-output/deploy-backups/<date>/.
   3. SFTP upload: landing-pages/{path}/index.html -> html/{path}/index.html.
   4. WP stub touch (REST no-op update) to flush GoDaddy Varnish cache.
@@ -27,6 +31,8 @@ import base64
 import hashlib
 import json
 import posixpath
+import re
+import subprocess
 import sys
 import time
 import urllib.error
@@ -41,6 +47,10 @@ from pathlib import Path
 # --------------------------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent.parent  # npcwoods-website repo root
+SCRIPT_ROOT = Path(__file__).resolve().parent.parent  # where this script file lives; tests cannot move it
+KITCHEN = Path("/Users/macmini/Desktop/Chris-HQ")
+COUNTER_CARD = KITCHEN / "KITCHEN-COUNTERS.json"
+GIT_TIMEOUT_S = 90
 LANDING_DIR = "landing-pages"
 REMOTE_PREFIX = "html"
 SITE = "https://npcwoods.com"
@@ -62,9 +72,11 @@ FORBIDDEN_MARKERS = [
     "googleadservices.com",
     "doubleclick.net",
     "/tracking.js",
+    "analytics.ahrefs.com",
+    "ahrefs.com/analytics",
 ]
 WARN_IF_MISSING = []
-WARN_IF_PRESENT = ["insurance"]
+WARN_IF_PRESENT = []  # "insurance" now BLOCKS via the banned-word check
 INTENTIONAL_NO_TRACKING_PAGES = {"pay"}
 
 # url path -> WP stub ID for the Varnish cache flush. Search-safe child pages
@@ -107,6 +119,16 @@ MOBILE_UA = (
     "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 "
     "(KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
 )
+
+
+def load_practice_facts():
+    """scripts/practice_facts.py from this script's own folder."""
+    import importlib.util
+    path = Path(__file__).resolve().parent / "practice_facts.py"
+    spec = importlib.util.spec_from_file_location("npcw_practice_facts", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def hq_root() -> Path:
@@ -319,8 +341,17 @@ def load_stub_table() -> dict:
 # Plan + safety checks
 # --------------------------------------------------------------------------
 
-def build_plan(pages: list[str]) -> list[PagePlan]:
+def build_plan(pages: list[str], strict: bool = True) -> list[PagePlan]:
+    """strict=True (dry-run, remote-diff, live): banned words and facts drift
+    block. strict=False (--verify-only, no upload): they are shown as warnings."""
     plan, problems = [], []
+    facts = load_practice_facts()
+    ledger_path = ROOT / "facts" / "practice.json"
+    try:
+        ledger = facts.load_ledger(ledger_path)
+    except (OSError, ValueError, KeyError) as e:
+        raise RuntimeError(f"facts ledger unreadable at {ledger_path}: {e}")
+    allowed_phrases = ledger.get("banned_word_allowed_phrases", [])
     for page in pages:
         local = local_path_for(page)
         item = PagePlan(page=page, local=local, remote=remote_path_for(page), url=url_for(page))
@@ -341,14 +372,27 @@ def build_plan(pages: list[str]) -> list[PagePlan]:
         for word in WARN_IF_PRESENT:
             if word in lower:
                 item.warnings.append(f"contains {word!r} — Chris hard rule, double-check before going live")
+        try:
+            rel = local.resolve().relative_to(ROOT.resolve()).as_posix()
+        except ValueError:
+            rel = str(local)
+        content_problems = [f"banned word {h}" for h in facts.banned_word_hits(html, allowed_phrases)]
+        content_problems += [f"facts drift: {d}" for d in facts.page_drift(rel, html, ledger)]
+        for cp in content_problems:
+            if strict:
+                problems.append(f"{page}: {cp} — refusing to deploy")
+            else:
+                item.warnings.append(cp)
         plan.append(item)
     if problems:
         raise RuntimeError("plan blocked:\n  " + "\n  ".join(problems))
     return plan
 
 
-def print_plan(plan: list[PagePlan], stub_table: dict) -> None:
+def print_plan(plan: list[PagePlan], stub_table: dict, head: str | None = None) -> None:
     print(f"Deploy plan — {len(plan)} page(s):")
+    if head:
+        print(f"  from {SCRIPT_ROOT} @ main {head}")
     for item in plan:
         stub = stub_id_for_page(item.page, stub_table)
         stub_note = f"stub {stub}" if stub else "no stub (new URL, nothing cached)"
@@ -384,7 +428,7 @@ def load_env() -> dict:
     return env
 
 
-def confirm_live(confirmation: str | None, prompt=input) -> bool:
+def confirm_live(confirmation: str | None, prompt=None) -> bool:
     """True only when Chris's confirmation phrase is supplied — via flag or
     typed interactively. Anything else blocks the deploy."""
     if confirmation == LIVE_DEPLOY_CONFIRMATION:
@@ -393,10 +437,11 @@ def confirm_live(confirmation: str | None, prompt=input) -> bool:
         print(f"[blocked] wrong confirmation phrase. Expected exactly: {LIVE_DEPLOY_CONFIRMATION}",
               file=sys.stderr)
         return False
-    if not sys.stdin.isatty() and prompt is input:
+    if prompt is None and not sys.stdin.isatty():
         print(f'[blocked] non-interactive run. Re-run with --confirm-live-deploy '
               f'"{LIVE_DEPLOY_CONFIRMATION}" after Chris explicitly approves.', file=sys.stderr)
         return False
+    prompt = prompt or input  # looked up at call time so tests can patch builtins.input
     try:
         typed = prompt(f'Type the confirmation phrase to deploy LIVE ("{LIVE_DEPLOY_CONFIRMATION}"): ')
     except EOFError:
@@ -600,6 +645,85 @@ def run_verification(plan: list[PagePlan]) -> dict[str, VerificationResult]:
 # Main
 # --------------------------------------------------------------------------
 
+def kitchen_counter_block(script_root: Path | None = None) -> str | None:
+    """Refuse unless this script lives in the one folder KITCHEN-COUNTERS.json allows."""
+    root = (SCRIPT_ROOT if script_root is None else script_root).resolve()
+    if not COUNTER_CARD.is_file():
+        return f"[blocked] Missing kitchen counter card: {COUNTER_CARD}"
+    try:
+        card = json.loads(COUNTER_CARD.read_text(encoding="utf-8"))
+        plating = [row for row in card["counters"] if row.get("plate") is True]
+    except (OSError, ValueError, KeyError, TypeError) as e:
+        return f"[blocked] Kitchen counter card unreadable: {e}"
+    if len(plating) != 1:
+        return "[blocked] Kitchen counter card must name exactly one folder to plate from."
+    allowed = (KITCHEN / plating[0]["folder"]).resolve()
+    if root != allowed:
+        return (f"[blocked] This copy is not the kitchen counter. "
+                f"Plate only from {allowed}. This script is in {root}.")
+    return None
+
+
+def _git(repo: Path, *args: str, timeout: int = GIT_TIMEOUT_S) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True,
+                          timeout=timeout, stdin=subprocess.DEVNULL)
+
+
+IGNORED_DIRTY_PREFIXES = ("deploy-backups/", "content-output/deploy-backups/")
+
+
+def git_state_block(repo: Path) -> tuple[str | None, str | None]:
+    """(problem, head_sha). Refuse unless repo is on main, clean, freshly
+    fetched, and HEAD == origin/main. No bypass flag on purpose."""
+    try:
+        top = _git(repo, "rev-parse", "--show-toplevel")
+        if top.returncode != 0:
+            return f"[blocked] {repo} is not a git checkout.", None
+        if Path(top.stdout.strip()).resolve() != repo.resolve():
+            return f"[blocked] git toplevel {top.stdout.strip()} is not {repo}.", None
+        branch = _git(repo, "symbolic-ref", "--short", "-q", "HEAD").stdout.strip()
+        if branch != "main":
+            return f"[blocked] Branch is {branch or '(detached HEAD)'}, not main. Plate only from main.", None
+        status = _git(repo, "status", "--porcelain", "--untracked-files=all")
+        if status.returncode != 0:
+            return f"[blocked] git status failed: {status.stderr.strip()}", None
+        dirty = []
+        for line in status.stdout.splitlines():
+            path = line[3:].split(" -> ")[-1].strip('"')
+            if not path.startswith(IGNORED_DIRTY_PREFIXES):
+                dirty.append(line)
+        if dirty:
+            shown = "\n    ".join(dirty[:15])
+            more = f"\n    … and {len(dirty) - 15} more" if len(dirty) > 15 else ""
+            return (f"[blocked] Uncommitted changes. Commit + merge to main first, then plate that SHA:\n"
+                    f"    {shown}{more}"), None
+        fetch = _git(repo, "fetch", "--quiet", "origin", "main")
+        if fetch.returncode != 0:
+            return f"[blocked] git fetch origin main failed: {fetch.stderr.strip()[:300]}", None
+        head = _git(repo, "rev-parse", "HEAD").stdout.strip()
+        remote = _git(repo, "rev-parse", "FETCH_HEAD").stdout.strip()
+        if not head or head != remote:
+            counts = _git(repo, "rev-list", "--left-right", "--count", f"HEAD...{remote}").stdout.split()
+            ahead, behind = (counts + ["?", "?"])[:2]
+            return (f"[blocked] HEAD {head[:12]} is not origin/main {remote[:12]} "
+                    f"(ahead {ahead}, behind {behind}). Pull main first."), None
+        return None, head
+    except subprocess.TimeoutExpired:
+        return "[blocked] git timed out (iCloud placeholder or network?). Nothing uploaded.", None
+    except FileNotFoundError:
+        return "[blocked] git is not installed.", None
+
+
+def preflight_block() -> tuple[str | None, str | None]:
+    """Counter + git guard. Runs before .env loads. Returns (problem, head_sha)."""
+    blocked = kitchen_counter_block()
+    if blocked:
+        return blocked, None
+    if ROOT.resolve() != SCRIPT_ROOT.resolve():
+        return f"[blocked] Pages folder {ROOT} is not the script folder {SCRIPT_ROOT}.", None
+    return git_state_block(SCRIPT_ROOT)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Unified guarded deploy for NPCWoods landing pages. DRY-RUN BY DEFAULT.")
@@ -633,7 +757,7 @@ def main(argv=None) -> int:
         return 2
 
     try:
-        plan = build_plan(pages)
+        plan = build_plan(pages, strict=not args.verify_only)
     except RuntimeError as e:
         print(f"[blocked] {e}", file=sys.stderr)
         return 2
@@ -650,7 +774,15 @@ def main(argv=None) -> int:
         print(f"\n[done] {len(plan) - len(failed)}/{len(plan)} pages passed verification")
         return 1 if failed else 0
 
-    print_plan(plan, stub_table)
+    # ---- counter + git guard: before .env loads, before any server contact --
+    head = None
+    if args.live or args.remote_diff:
+        blocked, head = preflight_block()
+        if blocked:
+            print(blocked, file=sys.stderr)
+            return 2
+
+    print_plan(plan, stub_table, head)
 
     # ---- dry-run (default) ----------------------------------------------
     if not args.live:
@@ -669,6 +801,9 @@ def main(argv=None) -> int:
     if not confirm_live(args.confirmation):
         return 2
 
+    print(f"\n[about to upload] main @ {head} from {SCRIPT_ROOT}")
+    for item in plan:
+        print(f"  {item.local.relative_to(ROOT)} -> {item.remote}  (sha256 {item.sha256[:12]}…)")
     env = load_env()
     print(f"\n[sftp] connecting to {env['SFTP_HOST']}:{env['SFTP_PORT']}")
     sftp, transport = sftp_connect(env)
