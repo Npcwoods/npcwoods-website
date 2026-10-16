@@ -163,7 +163,7 @@ function npcwoods_meta_descriptions($desc) {
     if (is_singular('page') || is_front_page()) {
         global $post;
         if ($post && $post->ID == 63) {
-            return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
+            return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
         }
     }
     if (!empty($desc)) return $desc;
@@ -294,35 +294,35 @@ function npcwoods_speed_hints() {
 
 add_filter('wpseo_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
+        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
+        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_desc', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
+        return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
     }
     return $desc;
 }, 20);
 
 add_filter('wpseo_twitter_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return '$59 Text Urgent Care — No Waiting Room | NPCWoods';
+        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_twitter_description', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Sick of waiting rooms? Text Chris Woods, NP — $59 flat, no video, no app. Pay only if he can treat you. Serving 13 states.';
+        return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
     }
     return $desc;
 }, 20);
