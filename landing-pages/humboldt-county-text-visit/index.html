@@ -944,6 +944,14 @@ body{isolation:isolate}
   z-index:3;
   filter:drop-shadow(0 2px 12px rgba(0,0,0,.55));
 }
+
+/* Mobile overflow guard: decorative glows stay inside the viewport; stray overflow is clipped, never scrolled. */
+html,body{max-width:100%}
+@supports (overflow:clip){html,body{overflow-x:clip}.hero,.bottom-cta{overflow:clip}}
+.hero::before{left:0;right:0;margin:0 auto;transform:none;width:auto;max-width:900px}
+.bottom-cta::before{left:0;right:0;margin:0 auto;transform:none;width:auto;max-width:600px}
+.hero-kicker{max-width:100%}
+h1,h2,h3,p,li,a{overflow-wrap:break-word}
 </style>
 
 </head>
