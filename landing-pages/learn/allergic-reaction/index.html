@@ -585,11 +585,22 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 @media (max-width:640px){
   .hv-d{display:none!important}
   .hv-m{display:block!important}
-  .hv-m1{right:-34px;top:-30px;width:84px;height:64px;opacity:.62;transform:rotate(-10deg)}
-  .hv-m2{left:calc(100% - 22px);top:3%;width:92px;height:70px;opacity:.62;transform:rotate(12deg)}
-  .hv-m3{left:-58px;top:56%;width:84px;height:84px;opacity:.6}
-  .hv-m4{left:calc(100% - 34px);top:66%;width:72px;height:72px;opacity:.6}
-  .hv-m5{left:76%;top:-38px;width:52px;height:40px;opacity:.55}
+  .gh-copy{position:relative}
+  .ar-hives--copy{z-index:-1}
+  .ar-hives .hv-m{filter:drop-shadow(0 0 10px rgba(0,122,255,.75)) drop-shadow(0 0 22px rgba(0,122,255,.35))}
+  .hv-m1{right:-26px;top:-36px;width:96px;height:72px;opacity:.95;transform:rotate(-10deg)}
+  .hv-m6{left:-30px;top:-26px;width:90px;height:68px;opacity:.9;transform:rotate(8deg)}
+  .hv-c1{right:-6px;top:98px;width:60px;height:45px;opacity:.95;transform:rotate(-8deg)}
+  .ar-hives .hv-c2{display:none!important}
+  .hv-c3{right:4px;bottom:-40px;width:72px;height:54px;opacity:.95;transform:rotate(6deg)}
+  .hv-m2{left:calc(100% - 30px);top:4%;width:110px;height:84px;opacity:.95;transform:rotate(12deg)}
+  .hv-m3{left:-50px;top:54%;width:96px;height:96px;opacity:.9}
+  .hv-m4{left:calc(100% - 36px);top:64%;width:86px;height:86px;opacity:.9}
+  .hv-m5{display:none!important}
+}
+@media (max-width:380px){
+  .hv-c1{right:-14px;top:76px;width:104px;height:78px}
+  .ar-hives .hv-c2{display:block!important;right:100px;top:52px;width:58px;height:58px;opacity:.9}
 }
 </style>
 </head>
@@ -830,9 +841,15 @@ body.has-ep-sticky{padding-bottom:5.5rem}
     <svg class="hv hv-d hv-h3"><use href="#arHvB"/></svg>
     <svg class="hv hv-d hv-h4"><use href="#arHvC"/></svg>
     <svg class="hv hv-m hv-m1"><use href="#arHvC"/></svg>
+    <svg class="hv hv-m hv-m6"><use href="#arHvB"/></svg>
   </div>
   <div class="gh-wrap">
     <div class="gh-copy">
+      <div class="ar-hives ar-hives--copy" aria-hidden="true">
+        <svg class="hv hv-m hv-c1"><use href="#arHvA"/></svg>
+        <svg class="hv hv-m hv-c2"><use href="#arHvC"/></svg>
+        <svg class="hv hv-m hv-c3"><use href="#arHvB"/></svg>
+      </div>
       <span class="gh-pill"><i aria-hidden="true"></i>Patient guide &middot; Hives &amp; allergic reactions</span>
       <h1 id="gh-title"><span class="gh-grad">Hives &amp; allergic reactions.</span> <span class="gh-pop">When to worry.</span></h1>
       <p class="gh-sub">Everything you need to know about hives, from symptoms and severity to treatment, home care, and when it&rsquo;s an emergency. <strong>Lip or tongue swelling, throat tightness, trouble breathing, or fainting? Call 911 first.</strong></p>
