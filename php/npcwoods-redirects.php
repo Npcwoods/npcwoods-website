@@ -28,10 +28,10 @@ add_action("init", function() {
         "/tucson-az-uti/"            => "/uti-treatment/tucson-az/",
         "/blog/blog-ry/"             => "/blog/",
         "/blog/blog-ry"              => "/blog/",
-        "/blog/burning-when-you-pee-albuquerque/" => "/blog-burning-when-you-pee-albuquerque/",
+        "/blog/burning-when-you-pee-albuquerque/" => "/learn/uti/what-it-feels-like/",
         "/experience/"               => "/patient-experience/",
         "/ear-infection/"            => "/ear-infection-treatment/",
-        "/cost-savings-preview/"     => "/cost-savings-convenience/",
+        "/cost-savings-preview/"     => "/pricing/",
         "/swimmers-ear-preview/"     => "/ear-pain-after-swimming-swimmers-ear/",
         "/affordable-telemedicine-arizona-no-insurance/" => "/pricing/",
         "/conditions/albuterol-inhaler-refill-preview/" => "/conditions/",
@@ -71,6 +71,28 @@ add_action("init", function() {
         // Duplicate plates retired (2026-10-15) — Chris: "Please fix the duplicate pages"
         "/landing-pages/uti-treatment/" => "/uti-treatment/",
         "/landing-pages/medications/amoxicillin/" => "/medications/amoxicillin/",
+        // Blog fold (2026-10-17) — Chris approved the blog plan: "push it live".
+        // Thin/duplicate posts fold into the stronger page. One hop, no chains.
+        "/out-of-pocket-59-flat-fee-nurse-practitioner/" => "/pricing/",
+        "/cash-pay-telehealth-reasons/" => "/pricing/",
+        "/cost-savings-convenience/" => "/pricing/",
+        "/is-text-based-telehealth-safe/" => "/what-is-async-telemedicine/",
+        "/text-based-vs-video-telehealth/" => "/what-is-async-telemedicine/",
+        "/telehealth-vs-urgent-care-cost-speed/" => "/telehealth-vs-urgent-care/",
+        "/tooth-infection-antibiotics-telehealth/" => "/dental-pain/",
+        "/get-uti-antibiotics-online-same-day/" => "/uti-treatment/uti-antibiotics-online/",
+        "/burning-when-i-pee/" => "/learn/uti/what-it-feels-like/",
+        "/uti-treatment/burning-when-i-pee/" => "/learn/uti/what-it-feels-like/",
+        "/blog-burning-when-you-pee-albuquerque/" => "/learn/uti/what-it-feels-like/",
+        "/is-it-allergies-or-a-sinus-infection/" => "/allergies-vs-sinus-infection/",
+        "/stop-popping-benadryl/" => "/allergies-vs-sinus-infection/",
+        "/common-infections-telehealth-same-day/" => "/what-can-telehealth-prescribe/",
+        "/questions-before-online-health-service/" => "/alternatives-to-teladoc/",
+        "/red-eye-after-swimming-pink-eye-or-pool-irritation/" => "/pink-eye-treatment/",
+        "/heat-rash-or-skin-infection/" => "/learn/skin-infection/",
+        "/wet-bathing-suit-yeast-infection-or-irritation/" => "/yeast-infection-treatment-online/",
+        "/can-allergies-cause-a-cough-or-is-it-bronchitis/" => "/learn/bronchitis/",
+        "/blog/can-nurse-practitioner-prescribe-antibiotics-by-text/" => "/can-nurse-practitioner-prescribe-antibiotics/",
     ];
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     $path = rtrim($path, "/") . "/";
@@ -81,7 +103,7 @@ add_action("init", function() {
     }
     // Leftover preview posts still 200 at ?p=ID even after the slug 301s.
     $preview_ids = [
-        825 => "/cost-savings-convenience/",
+        825 => "/pricing/",
         839 => "/ear-pain-after-swimming-swimmers-ear/",
         802 => "/conditions/",
     ];
@@ -108,6 +130,24 @@ add_action("init", function() {
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     if ($path === "/author-sitemap.xml" || $path === "/author-sitemap1.xml") {
         status_header(410);
+        header("Content-Type: text/plain; charset=UTF-8");
+        echo "Gone";
+        exit;
+    }
+}, 1);
+
+// Blog removals (2026-10-17) — Chris approved: these posts are gone for good.
+// Posts are set to draft in WP (not trashed); the URLs answer 410 Gone.
+add_action("init", function() {
+    $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $path = rtrim((string) $path, "/") . "/";
+    $gone = [
+        "/sunburn-with-blisters-when-to-get-checked/",
+        "/alpha-gal-syndrome-tick-bite-what-to-watch-for/",
+    ];
+    if (in_array($path, $gone, true)) {
+        status_header(410);
+        header("Cache-Control: no-cache, no-store, must-revalidate");
         header("Content-Type: text/plain; charset=UTF-8");
         echo "Gone";
         exit;

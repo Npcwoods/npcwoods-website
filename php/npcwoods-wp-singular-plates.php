@@ -115,6 +115,22 @@ function npcwoods_singular_plate_render() {
 	<title><?php echo esc_html( $title ); ?> | NPCWoods</title>
 	<meta name="description" content="<?php echo esc_attr( wp_html_excerpt( $excerpt, 155, '…' ) ); ?>">
 	<link rel="canonical" href="<?php echo esc_url( $permalink ); ?>">
+	<?php $npc_share = 'https://npcwoods.com/assets/img/share/pricing-1200x630.jpg'; $npc_share_alt = 'Chris Woods, NP, text visit card for NPCWoods. $59 flat.'; $npc_desc = wp_html_excerpt( $excerpt, 155, '…' ); ?>
+	<?php if ( in_array( (int) $post->ID, array( 1006, 1007 ), true ) ) : ?><meta name="robots" content="noindex, follow"><?php endif; // /t/ and /t/click/ ad-log stubs (2026-10-17) ?>
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="NPCWoods">
+	<meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
+	<meta property="og:description" content="<?php echo esc_attr( $npc_desc ); ?>">
+	<meta property="og:url" content="<?php echo esc_url( $permalink ); ?>">
+	<meta property="og:image" content="<?php echo esc_url( $npc_share ); ?>">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="<?php echo esc_attr( $npc_share_alt ); ?>">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="<?php echo esc_attr( $title ); ?>">
+	<meta name="twitter:description" content="<?php echo esc_attr( $npc_desc ); ?>">
+	<meta name="twitter:image" content="<?php echo esc_url( $npc_share ); ?>">
+	<meta name="twitter:image:alt" content="<?php echo esc_attr( $npc_share_alt ); ?>">
 	<link rel="icon" href="<?php echo esc_url( $logo ); ?>">
 	<link rel="stylesheet" href="/assets/css/site.css">
 	<style>
