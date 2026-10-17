@@ -15,7 +15,7 @@ add_action('template_redirect', function() {
     $posts = get_posts([
         'post_type'      => 'post',
         'post_status'    => 'publish',
-        'posts_per_page' => 20,
+        'posts_per_page' => -1, // list every published post (2026-10-17 blog cleanup)
         'orderby'        => 'date',
         'order'          => 'DESC',
     ]);
@@ -23,6 +23,7 @@ add_action('template_redirect', function() {
     $headshot = 'https://npcwoods.com/wp-content/uploads/2026/03/chris-woods-headshot.png';
     $logo = 'https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg';
 
+    if (!headers_sent()) header('Content-Type: text/html; charset=UTF-8');
     ?><!DOCTYPE html>
 <html lang="en">
 <head>
