@@ -15,8 +15,8 @@
   <meta property="og:description" content="Hives or an allergic rash? Learn mild vs. severe signs, how long hives last, home care, and red flags like throat swelling that need emergency care.">
   <meta property="og:url" content="https://npcwoods.com/learn/allergic-reaction/">
   <meta property="og:site_name" content="NPCWoods">
-  <meta property="og:image" content="https://npcwoods.com/assets/img/share/allergic-reaction-v2-1200x630.jpg">
-  <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/allergic-reaction-v2-1200x630.jpg">
+  <meta property="og:image" content="https://npcwoods.com/assets/img/share/allergic-reaction-v3-1200x630.jpg">
+  <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/allergic-reaction-v3-1200x630.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hives &amp; Allergic Reaction Rash: What to Do, When to Worry">
-  <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/allergic-reaction-v2-1200x630.jpg">
+  <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/allergic-reaction-v3-1200x630.jpg">
   <meta name="twitter:image:alt" content="Chris Woods, NP, beside text bubbles: hives and allergic reactions, what to do and when to worry.">
   <meta name="twitter:description" content="Hives or an allergic rash? Learn mild vs. severe signs, how long hives last, home care, and red flags like throat swelling that need emergency care.">
 
@@ -565,6 +565,33 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 .ar-review-prompt{text-align:center;color:var(--text-muted);font-size:.95rem;max-width:720px;margin:28px auto 0;padding:0 var(--side-pad)}
 .ar-review-prompt a{color:var(--brand);font-weight:600}
 </style>
+<style>
+/* allergic-reaction only: blue hive/welt shapes replace the dotted journey line */
+.ar-hv-defs{position:absolute;width:0;height:0;overflow:hidden}
+.ar-hives{position:absolute;inset:0;z-index:0;pointer-events:none}
+.ar-hives--photo{z-index:-1}
+.ar-hives .hv{position:absolute;display:block;overflow:visible}
+.hv-m{display:none!important}
+.hv-h1{right:2.5%;top:40px;width:190px;height:142px;opacity:.7;transform:rotate(-8deg)}
+.hv-h2{left:-46px;top:44%;width:130px;height:130px;opacity:.6}
+.hv-h3{left:1%;bottom:6px;width:96px;height:72px;opacity:.6;transform:rotate(12deg)}
+.hv-h4{left:calc(50% + 110px);top:52px;width:90px;height:90px;opacity:.55}
+.hv-p1{left:calc(100% + 6px);top:5%;width:150px;height:112px;opacity:.66;transform:rotate(14deg)}
+.hv-p2{left:calc(100% - 30px);top:58%;width:130px;height:130px;opacity:.55}
+.hv-p3{left:-92px;top:48%;width:84px;height:84px;opacity:.6}
+.hv-p4{left:66%;top:-122px;width:80px;height:60px;opacity:.6;transform:rotate(-10deg)}
+@media (max-width:1359px){.ar-hives .hv-h2{display:none}}
+@media (max-width:1100px){.ar-hives .hv-p3,.ar-hives .hv-h3{display:none}}
+@media (max-width:640px){
+  .hv-d{display:none!important}
+  .hv-m{display:block!important}
+  .hv-m1{right:-34px;top:-30px;width:84px;height:64px;opacity:.62;transform:rotate(-10deg)}
+  .hv-m2{left:calc(100% - 22px);top:3%;width:92px;height:70px;opacity:.62;transform:rotate(12deg)}
+  .hv-m3{left:-58px;top:56%;width:84px;height:84px;opacity:.6}
+  .hv-m4{left:calc(100% - 34px);top:66%;width:72px;height:72px;opacity:.6}
+  .hv-m5{left:76%;top:-38px;width:52px;height:40px;opacity:.55}
+}
+</style>
 </head>
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -789,12 +816,21 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 
 <!-- HERO (GLP-1 series look) -->
 <header class="gh" aria-labelledby="gh-title">
-  <svg class="gh-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path d="M-40,70 C130,160 340,250 593,366 C760,440 980,470 1226,525 C1340,548 1440,560 1480,560" fill="none" stroke="#2997ff" stroke-opacity=".16" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,162 C130,240 340,340 593,412 C760,470 980,560 1226,606 C1340,622 1440,628 1480,628" fill="none" stroke="#2997ff" stroke-opacity=".24" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,254 C130,300 340,410 593,500 C760,560 980,626 1226,678 C1340,690 1440,694 1480,696" fill="none" stroke="#2997ff" stroke-opacity=".3" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,40 C150,150 400,280 730,437 C930,530 1180,630 1500,700" fill="none" stroke="#7cc4ff" stroke-opacity=".7" stroke-width="9" stroke-linecap="round" stroke-dasharray="0.1 20"/>
-  </svg>
+  <svg class="ar-hv-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+    <radialGradient id="arHvFill" cx="46%" cy="42%" r="60%"><stop offset="0" stop-color="#a8d2ff" stop-opacity=".5"/><stop offset=".55" stop-color="#3f9bff" stop-opacity=".28"/><stop offset="1" stop-color="#007AFF" stop-opacity=".16"/></radialGradient>
+    <filter id="arHvGlow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="arHvSoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <symbol id="arHvA" viewBox="0 0 200 150"><path d="M30 76C26 56 44 40 66 44C80 30 108 34 122 46C142 42 166 56 160 76C168 92 150 108 130 104C116 118 86 116 74 106C54 112 32 98 30 76Z" fill="#007AFF" opacity=".55" filter="url(#arHvGlow)"/><g filter="url(#arHvSoft)"><path d="M30 76C26 56 44 40 66 44C80 30 108 34 122 46C142 42 166 56 160 76C168 92 150 108 130 104C116 118 86 116 74 106C54 112 32 98 30 76Z" fill="url(#arHvFill)" stroke="#8cc8ff" stroke-opacity=".32" stroke-width="1.5"/><path d="M178 34C186 30 194 38 190 46C188 54 176 54 173 47C170 41 172 36 178 34Z" fill="url(#arHvFill)" stroke="#8cc8ff" stroke-opacity=".45" stroke-width="1.5"/><path d="M22 120C28 114 38 118 37 126C36 134 26 136 22 130C19 127 19 123 22 120Z" fill="url(#arHvFill)" stroke="#8cc8ff" stroke-opacity=".4" stroke-width="1.5"/></g></symbol>
+    <symbol id="arHvB" viewBox="0 0 160 120"><path d="M22 62C24 46 46 40 62 46C78 36 104 40 116 50C134 52 140 70 128 80C118 94 92 94 78 88C60 96 34 88 26 76C22 72 21 66 22 62Z" fill="#007AFF" opacity=".5" filter="url(#arHvGlow)"/><path d="M22 62C24 46 46 40 62 46C78 36 104 40 116 50C134 52 140 70 128 80C118 94 92 94 78 88C60 96 34 88 26 76C22 72 21 66 22 62Z" fill="url(#arHvFill)" stroke="#8cc8ff" stroke-opacity=".32" stroke-width="1.5" filter="url(#arHvSoft)"/></symbol>
+    <symbol id="arHvC" viewBox="0 0 120 120"><path d="M36 38C50 28 70 32 80 42C92 50 90 68 82 76C74 90 52 92 42 82C28 76 24 50 36 38Z" fill="#007AFF" opacity=".5" filter="url(#arHvGlow)"/><path d="M36 38C50 28 70 32 80 42C92 50 90 68 82 76C74 90 52 92 42 82C28 76 24 50 36 38Z" fill="url(#arHvFill)" stroke="#8cc8ff" stroke-opacity=".32" stroke-width="1.5" filter="url(#arHvSoft)"/></symbol>
+  </defs></svg>
+  <div class="ar-hives" aria-hidden="true">
+    <svg class="hv hv-d hv-h1"><use href="#arHvA"/></svg>
+    <svg class="hv hv-d hv-h2"><use href="#arHvC"/></svg>
+    <svg class="hv hv-d hv-h3"><use href="#arHvB"/></svg>
+    <svg class="hv hv-d hv-h4"><use href="#arHvC"/></svg>
+    <svg class="hv hv-m hv-m1"><use href="#arHvC"/></svg>
+  </div>
   <div class="gh-wrap">
     <div class="gh-copy">
       <span class="gh-pill"><i aria-hidden="true"></i>Patient guide &middot; Hives &amp; allergic reactions</span>
@@ -807,6 +843,16 @@ body.has-ep-sticky{padding-bottom:5.5rem}
       <p class="gh-fine">NPI 1285125468 &nbsp;&middot;&nbsp; LegitScript certified &nbsp;&middot;&nbsp; Serving 13 states</p>
     </div>
     <div class="gh-photo">
+      <div class="ar-hives ar-hives--photo" aria-hidden="true">
+        <svg class="hv hv-d hv-p1"><use href="#arHvA"/></svg>
+        <svg class="hv hv-d hv-p2"><use href="#arHvB"/></svg>
+        <svg class="hv hv-d hv-p3"><use href="#arHvC"/></svg>
+        <svg class="hv hv-d hv-p4"><use href="#arHvB"/></svg>
+        <svg class="hv hv-m hv-m2"><use href="#arHvA"/></svg>
+        <svg class="hv hv-m hv-m3"><use href="#arHvB"/></svg>
+        <svg class="hv hv-m hv-m4"><use href="#arHvC"/></svg>
+        <svg class="hv hv-m hv-m5"><use href="#arHvB"/></svg>
+      </div>
       <img src="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" srcset="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, https://npcwoods.com/learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" sizes="(max-width: 640px) 286px, (max-width: 900px) 329px, 429px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling" fetchpriority="high" decoding="async">
       <span class="gh-sticker gh-sticker--black gh-s1">Hey! I'm Chris <span aria-hidden="true">👋</span></span>
       <span class="gh-sticker gh-sticker--blue gh-s2">Itchy welts? Text me.</span>
