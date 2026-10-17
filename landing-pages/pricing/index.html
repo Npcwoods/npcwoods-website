@@ -664,6 +664,48 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 @media (prefers-reduced-motion:reduce){.ep-sticky{transition:none}}
 
 </style>
+<style id="glp-look-img">
+/* v2 imagery: rounded corners + soft shadow, GLP-1 series look */
+.byline--photo{display:flex;gap:1rem;align-items:center}
+.byline-photo{width:88px;height:88px;flex:none;border-radius:20px;object-fit:cover;object-position:50% 18%;box-shadow:0 8px 20px rgba(15,23,42,.14);background:#eef1f5}
+.byline-text{min-width:0}
+.byline-text p{margin:0}
+@media (max-width:420px){.byline-photo{width:72px;height:72px;border-radius:16px}.byline--photo{align-items:flex-start}}
+
+.gets-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:2.25rem;align-items:start}
+.gets-list{min-width:0}
+@media (max-width:820px){.gets-grid{grid-template-columns:1fr;gap:1.75rem}.phone{justify-self:center}}
+.phone{margin:0;width:100%;max-width:300px}
+.phone-frame{position:relative;background:#0b0d12;border-radius:40px;padding:12px;box-shadow:0 24px 50px rgba(15,23,42,.28),0 6px 16px rgba(15,23,42,.12)}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#0b0d12;border-radius:0 0 14px 14px;z-index:2}
+.phone-head{display:flex;flex-direction:column;align-items:center;gap:4px;background:#f6f6f8;border-radius:30px 30px 0 0;padding:30px 12px 10px;border-bottom:1px solid #e5e5ea;text-align:center}
+.phone-head img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 15%}
+.phone-head b{display:block;font-family:'DM Sans',sans-serif;font-size:.8rem;color:#111;line-height:1.2}
+.phone-head span{display:block;font-size:.68rem;color:#8e8e93}
+.phone-thread{background:#fff;border-radius:0 0 30px 30px;padding:14px 12px 18px;display:flex;flex-direction:column;gap:7px}
+.pm{margin:0;max-width:82%;font-size:.8rem;line-height:1.38;padding:.5rem .75rem;border-radius:18px;font-family:'Inter',system-ui,sans-serif}
+.pm--me{align-self:flex-end;background:#007AFF;color:#fff;border-bottom-right-radius:5px}
+.pm--chris{align-self:flex-start;background:#e9e9eb;color:#111;border-bottom-left-radius:5px}
+.pm-note{margin:6px 0 0;text-align:center;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8e8e93}
+.phone figcaption{margin-top:.6rem;text-align:center;font-size:.72rem;color:#6b7280}
+
+.photo-strip{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.photo-strip li{margin:0;padding:0;min-width:0}
+.photo-strip li::before{content:none !important}
+.photo-strip img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:22px;box-shadow:0 14px 34px rgba(15,23,42,.14);background:#eef1f5;margin-bottom:.85rem}
+.photo-strip b{display:block;font-family:'DM Sans',sans-serif;font-size:1.02rem;color:#0f172a;margin-bottom:.2rem}
+.photo-strip span{display:block;font-size:.9rem;line-height:1.5;color:#4b5563}
+@media (max-width:760px){.photo-strip{grid-template-columns:1fr;gap:1.5rem}.photo-strip img{aspect-ratio:16/10}}
+
+.cta-band--photo{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:2.5rem;align-items:center;text-align:left}
+.cta-band--photo .cta-copy{min-width:0}
+.cta-band--photo p.imsg{margin-left:0}
+.cta-band--photo .btn-row{justify-content:flex-start}
+.cta-band--photo .cta-phone{text-align:left}
+.cta-photo{display:block;width:100%;height:auto;border-radius:26px;box-shadow:0 18px 40px rgba(0,0,0,.28);background:#e9e7e2}
+@media (max-width:820px){.cta-band--photo{grid-template-columns:1fr;gap:1.5rem;text-align:center}.cta-photo{max-width:260px;margin:0 auto}.cta-band--photo p.imsg{margin-left:auto}.cta-band--photo .btn-row{justify-content:center}.cta-band--photo .cta-phone{text-align:center}}
+
+</style>
 </head>
 <body>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -935,9 +977,12 @@ body.has-ep-sticky{padding-bottom:5.5rem}
   <div class="stat" role="listitem"><b>$0</b><span>if Chris can't treat you by text</span></div>
   <div class="stat" role="listitem"><b>13</b><span>states (FL by telehealth reg.)</span></div>
 </div>
-<div class="byline" aria-label="Clinician attribution">
+<div class="byline byline--photo" aria-label="Clinician attribution">
+  <img class="byline-photo" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling with arms crossed, stethoscope around his neck" width="400" height="400" decoding="async">
+  <div class="byline-text">
   <div class="badge">Your clinician</div>
   <p><strong><a href="https://npcwoods.com/about/">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a></strong> &mdash; Double board-certified Nurse Practitioner. Serving 13 states: 12 state licenses, plus Florida by telehealth registration. <a href="https://npcwoods.com/credentials/">Verify credentials &amp; licenses</a></p>
+  </div>
 </div>
 <div class="npc-atf-answer" data-npc-aeo="atf-answer">
   <p>
@@ -1005,7 +1050,27 @@ body.has-ep-sticky{padding-bottom:5.5rem}
       <h2 class="section-heading">The whole visit. Not a teaser.</h2>
       <div class="imsg-thread"><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods, nurse practitioner" width="48" height="48" loading="lazy"><p class="imsg">Every visit runs the same way, no upsells, no "premium tier." When Chris can treat you, $59 covers all of this.</p></div>
     </div>
-    <div class="section-shell">
+    <div class="section-shell gets-grid">
+<figure class="phone" aria-label="Sample text visit conversation">
+  <div class="phone-frame">
+    <div class="phone-notch" aria-hidden="true"></div>
+    <div class="phone-head">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="Chris Woods profile photo" width="400" height="400" loading="lazy" decoding="async">
+      <div><b>Chris Woods, NP</b><span>Text visit</span></div>
+    </div>
+    <div class="phone-thread">
+      <p class="pm pm--me">Hi Chris, sore throat and fever since last night. I'm in Phoenix.</p>
+      <p class="pm pm--chris">Sorry you're feeling rough. Quick questions: any trouble breathing or swallowing your own spit? Any rash?</p>
+      <p class="pm pm--me">Breathing's fine. Just hurts to swallow. No rash.</p>
+      <p class="pm pm--chris">Thanks. Your plan is below. If you need anything from the pharmacy, it's sent today. Text me if you're not better in 48 hours.</p>
+      <p class="pm pm--me">Thank you!! 🙏</p>
+      <p class="pm-note">$59 · charged only if Chris can treat you</p>
+    </div>
+  </div>
+  <figcaption>Sample conversation for illustration. Not a real patient.</figcaption>
+</figure>
+
+<div class="gets-list">
       <ul class="check-list">
         <li><strong>A real clinical conversation.</strong> Text back and forth with Chris Woods, a Licensed Nurse Practitioner, not a chatbot, not a form, not a triage script.</li>
         <li><strong>Same-day response</strong> &mdash; most patients hear back within a few hours, including acute infections like UTI, sinus, or strep.</li>
@@ -1014,7 +1079,35 @@ body.has-ep-sticky{padding-bottom:5.5rem}
         <li><strong>Follow-up questions on the same visit</strong> are included. If symptoms change or the plan needs tweaking, text back, no new charge.</li>
         <li><strong>No paperwork, no copays to chase, no third-party billing.</strong> One flat $59 by card, charged only if Chris can treat you. That's it.</li>
       </ul>
+</div>
     </div>
+  </div>
+</section>
+
+<!-- HOW A $59 VISIT GOES (photo strip) -->
+<section class="section photo-strip-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">How a $59 visit goes</div>
+      <h2 class="section-heading">From your couch to a plan, by text.</h2>
+    </div>
+    <ol class="photo-strip">
+      <li>
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/step_text.webp" alt="Hands holding a phone with a text conversation open, a mug of tea nearby" width="1024" height="1024" loading="lazy" decoding="async">
+        <b>1. Text Chris</b>
+        <span>Say what's going on, from wherever you are.</span>
+      </li>
+      <li>
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/step_review.webp" alt="A clinician writing notes at a desk beside a laptop and a cup of coffee" width="1024" height="1024" loading="lazy" decoding="async">
+        <b>2. Chris reviews it</b>
+        <span>A real Nurse Practitioner reads every message and asks follow-up questions.</span>
+      </li>
+      <li>
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/step_pharmacy.webp" alt="A pharmacy bag being handed across a counter" width="1024" height="1024" loading="lazy" decoding="async">
+        <b>3. Get your plan</b>
+        <span>Clear next steps in writing. A prescription goes to your pharmacy only if it's medically appropriate.</span>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -1125,7 +1218,9 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-band">
+<section class="cta-band cta-band--photo">
+  <img class="cta-photo" src="assets/chris-wink-600.webp" alt="Chris Woods, nurse practitioner, smiling and winking with arms crossed" width="600" height="682" loading="lazy" decoding="async">
+  <div class="cta-copy">
   <h2>$59 and a text away.</h2>
   <p class="imsg imsg--black">Text Chris now. Describe what's going on. Get a real plan today.</p>
   <div class="btn-row">
@@ -1135,6 +1230,7 @@ body.has-ep-sticky{padding-bottom:5.5rem}
     </a>
   </div>
   <p class="cta-phone">Or call <a href="tel:4806394722">(480) 639-4722</a> &middot; 7 days a week</p>
+  </div>
 </section>
 <!-- Sticky Text Chris bar (GLP-1 series look) -->
 <div class="ep-sticky" id="ep-sticky" role="region" aria-label="Text Chris">
