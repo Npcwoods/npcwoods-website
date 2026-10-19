@@ -948,6 +948,11 @@ body{isolation:isolate}
   z-index:3;
   filter:drop-shadow(0 2px 12px rgba(0,0,0,.55));
 }
+/* Phones: the decorative logo mark sat on top of the hero trust chips. Reserve room under them and center it there instead (desktop unchanged). */
+@media (max-width:768px){
+  .hero{padding-bottom:128px}
+  .hero-mark{right:auto;left:50%;transform:translateX(-50%);bottom:22px;width:96px}
+}
 
 /* Mobile overflow guard: decorative glows stay inside the viewport; stray overflow is clipped, never scrolled. */
 html,body{max-width:100%}
