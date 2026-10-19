@@ -59,6 +59,7 @@ add_action( "template_redirect", function() {
     "costilla-county-text-visit" => "costilla-county-text-visit/index.html",
     "storey-county-text-visit" => "storey-county-text-visit/index.html",
     "mckinley-county-text-visit" => "mckinley-county-text-visit/index.html",
+    "baca-county-text-visit" => "baca-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
