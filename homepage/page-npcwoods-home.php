@@ -1313,11 +1313,10 @@ a{color:inherit}
       <a class="treat" href="https://npcwoods.com/learn/cold-sores/">Cold sores</a>
       <a class="treat" href="https://npcwoods.com/learn/covid-flu/">COVID / flu</a>
       <a class="treat" href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a>
-      <a class="treat" href="https://npcwoods.com/learn/acid-reflux/">Acid reflux</a>
       <a class="treat" href="https://npcwoods.com/learn/acne/">Acne</a>
       <a class="treat" href="https://npcwoods.com/yeast-infection-treatment/">Yeast infection</a>
       <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
-      <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
+      <a class="treat" href="https://npcwoods.com/conditions/poison-ivy-treatment/">Poison ivy</a>
       <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
       <a class="treat" href="https://npcwoods.com/services/">Medication refills</a>
       <a class="treat" href="https://npcwoods.com/glp1-weight-loss/">GLP-1 consult <small>fit and safety, drug cost separate</small></a>
@@ -1419,7 +1418,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
           <li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li>
           <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
           <li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li>
-          <li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li>
+          <li><a href="https://npcwoods.com/conditions/poison-ivy-treatment/">Poison Ivy</a></li>
           <li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li>
           <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
         </ul>
