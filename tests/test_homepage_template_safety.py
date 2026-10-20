@@ -41,16 +41,28 @@ class HomepageTemplateSafetyTest(unittest.TestCase):
         self.assertIn("NPCWoods vs. big telehealth", self.text)
 
     def test_homepage_leaves_seo_metadata_to_wordpress(self):
-        """Yoast must be the sole owner of description, canonical, and social tags."""
+        """Yoast owns description, canonical, and the social text tags.
+        2026-10-20 (Chris approved): the template owns only the share-image tags
+        (og:image* and twitter:image*) and strips Yoast's image tags so there is one set."""
         patterns = (
             r'<meta\b[^>]*name=["\']description["\']',
             r'<link\b[^>]*rel=["\']canonical["\']',
-            r'<meta\b[^>]*property=["\']og:',
-            r'<meta\b[^>]*name=["\']twitter:',
+            r'<meta\b[^>]*property=["\']og:(?!image)',
+            r'<meta\b[^>]*name=["\']twitter:(?!image)',
         )
         for pattern in patterns:
             with self.subTest(pattern=pattern):
                 self.assertIsNone(re.search(pattern, self.text, re.I))
+
+    def test_homepage_share_image_is_single_1200x630_card(self):
+        self.assertIn("ob_start();", self.text)
+        self.assertIn("og:image(?::[a-z_]+)?|twitter:image(?::[a-z_]+)?", self.text)
+        self.assertEqual(1, len(re.findall(r'property="og:image"', self.text)))
+        self.assertIn('content="https://npcwoods.com/assets/img/share/home-1200x630.jpg"', self.text)
+        self.assertIn('property="og:image:width" content="1200"', self.text)
+        self.assertIn('property="og:image:height" content="630"', self.text)
+        self.assertIn('property="og:image:alt"', self.text)
+        self.assertIn('name="twitter:image"', self.text)
 
     def test_homepage_has_one_fallback_title(self):
         """The active WordPress configuration does not emit a title at wp_head()."""
