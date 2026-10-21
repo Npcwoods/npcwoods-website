@@ -909,10 +909,13 @@ img{display:block;max-width:100%}
 .hero.hero--cutout{min-height:0;display:block;padding:28px 24px 0;
   background:radial-gradient(620px 520px at 74% 52%,rgba(0,113,227,.42),transparent 70%),radial-gradient(500px 360px at 12% 0%,rgba(41,151,255,.14),transparent 70%),var(--bg)}
 .hero--cutout::before{display:none}
-.hero-ghost{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero--cutout .hero-inner{max-width:1120px;width:100%;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
 .hero--cutout .hero-text{align-self:center;padding:40px 0 64px;min-width:0}
 .hero-photo{position:relative;justify-self:center;padding-top:56px}
+/* 2026-10-21: soft light halo behind Chris (no hard edge; replaces the GLP-1 dotted roadmap line) */
+.hero-photo::before{content:"";position:absolute;z-index:0;pointer-events:none;left:50%;top:0;width:150%;aspect-ratio:1/1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(232,243,255,.44) 0%,rgba(178,212,255,.26) 36%,rgba(110,172,255,.1) 66%,rgba(96,165,250,0) 100%)}
+.hero-photo img{position:relative;z-index:1;filter:none}
 .hero-photo img{display:block;height:600px;width:auto;max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}
 .hero-bubble{position:absolute;z-index:3;font-weight:700;font-size:15px;line-height:1.25;padding:11px 16px;border-radius:20px 20px 20px 6px;white-space:nowrap;max-width:min(260px,70vw);text-align:left;letter-spacing:-.01em}
 .hero-bubble::after{content:"";position:absolute;bottom:-1px;left:14px;width:12px;height:12px;transform:rotate(45deg);border-radius:0 0 3px 0}
@@ -940,7 +943,6 @@ img{display:block;max-width:100%}
 }
 @media(max-width:360px){.hero-photo img{height:340px}}
 @media(min-width:901px){.hero--cutout .hero-sub{margin-left:0}}
-@media(max-width:900px){.hero-ghost{display:none}}
 
 
 
@@ -1145,12 +1147,6 @@ a{color:inherit}
 
 <!-- HERO: UTI split layout + homepage messaging (no antibiotics / drug names) -->
 <section class="hero hero--cutout">
-  <svg class="hero-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path d="M-40,70 C130,160 340,250 593,366 C760,440 980,470 1226,525 C1340,548 1440,560 1480,560" fill="none" stroke="#2997ff" stroke-opacity=".16" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,162 C130,240 340,340 593,412 C760,470 980,560 1226,606 C1340,622 1440,628 1480,628" fill="none" stroke="#2997ff" stroke-opacity=".24" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,254 C130,300 340,410 593,500 C760,560 980,626 1226,678 C1340,690 1440,694 1480,696" fill="none" stroke="#2997ff" stroke-opacity=".3" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-40,40 C150,150 400,280 730,437 C930,530 1180,630 1500,700" fill="none" stroke="#7cc4ff" stroke-opacity=".7" stroke-width="9" stroke-linecap="round" stroke-dasharray="0.1 20"/>
-  </svg>
   <div class="hero-inner hero-split">
     <div class="hero-text">
       <div class="hero-kicker">
