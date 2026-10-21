@@ -128,6 +128,7 @@ add_action('wp_head', function() {
         '@type' => 'MedicalBusiness',
         '@id' => $profile['organization_id'],
         'name' => 'NPCWoods Telemedicine',
+        'alternateName' => array('NPCWoods', 'Nurse Practitioner Chris Woods'),
         'url' => home_url('/'),
         'description' => 'Text-based telemedicine visits from a licensed nurse practitioner for a flat $59 fee.',
         'priceRange' => '$59',
@@ -135,8 +136,8 @@ add_action('wp_head', function() {
         'email' => $profile['email'],
         'image' => $profile['headshot'],
         'medicalSpecialty' => 'FamilyPractice',
-        'founder' => array('@id' => $profile['person_id']),
-        'employee' => array('@id' => $profile['person_id']),
+        'founder' => array('@type' => 'Person', '@id' => $profile['person_id'], 'name' => $profile['name']),
+        'employee' => array('@type' => 'Person', '@id' => $profile['person_id'], 'name' => $profile['name']),
         'areaServed' => array(
             array('@type' => 'State', 'name' => 'Arizona'),
             array('@type' => 'State', 'name' => 'Colorado'),

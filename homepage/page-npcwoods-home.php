@@ -159,6 +159,9 @@ img{display:block;max-width:100%}
   max-width:560px;margin:0 auto 36px;
 }
 .hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+/* 2026-10-21: what the name means, sits under the hero sub line */
+.hero-meaning{font-size:14px;line-height:1.5;letter-spacing:.01em;color:rgba(255,255,255,0.62);margin:-22px 0 30px}
+.hero-meaning strong{color:rgba(255,255,255,0.9);font-weight:600}
 .btn-primary{
   background:var(--blue);color:#fff;
   border-radius:999px;padding:14px 28px;
@@ -1113,6 +1116,7 @@ a{color:inherit}
       </div>
       <h1>That phone in your hand? That’s your urgent care now.</h1>
       <p class="hero-sub">A $59 text visit with Chris Woods, your nurse practitioner in your pocket. No waiting room. Just text. No video. No chatbot. You only pay if I can treat you.</p>
+      <p class="hero-meaning">NPCWoods stands for <strong>Nurse Practitioner Chris Woods</strong>.</p>
       <div class="hero-actions">
         <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary npc-sms-cta">Text (480) 639-4722</a>
         <a href="#how-it-works" class="btn-ghost">See how it works</a>
@@ -1497,7 +1501,9 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
     "@type": "MedicalBusiness",
     "@id": "https://npcwoods.com/#medical-business",
     "name": "NPCWoods",
-    "alternateName": "NPCWoods Telemedicine",
+    "alternateName": ["NPCWoods Telemedicine", "Nurse Practitioner Chris Woods"],
+    "founder": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
+    "employee": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
     "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
     "telephone": "+14806394722",
     "url": "https://npcwoods.com",

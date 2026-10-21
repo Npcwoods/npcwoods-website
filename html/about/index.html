@@ -82,6 +82,7 @@
   "@type": "MedicalBusiness",
   "@id": "https://npcwoods.com/#medical-business",
   "name": "NPCWoods Telemedicine",
+  "alternateName": ["NPCWoods", "Nurse Practitioner Chris Woods"],
   "url": "https://npcwoods.com",
   "description": "$59 text-based telemedicine visits personally reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC.",
   "telephone": "+14806394722",
@@ -90,10 +91,14 @@
   "medicalSpecialty": "https://schema.org/FamilyPractice",
   "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
   "founder": {
-    "@id": "https://npcwoods.com/#chris-woods"
+    "@type": "Person",
+    "@id": "https://npcwoods.com/#chris-woods",
+    "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC"
   },
   "employee": {
-    "@id": "https://npcwoods.com/#chris-woods"
+    "@type": "Person",
+    "@id": "https://npcwoods.com/#chris-woods",
+    "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC"
   },
   "sameAs": [
     "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
@@ -357,6 +362,19 @@
       background: var(--copper);
       margin: 24px 0;
       border: none;
+    }
+
+    .about-hero-meaning {
+      margin: 18px 0 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-graphite);
+    }
+
+    .about-hero-meaning strong {
+      color: var(--editorial-blue);
+      font-weight: 700;
     }
 
     .about-hero-sub {
@@ -1114,6 +1132,7 @@
       </div>
       <hr class="about-hero-divider">
       <p class="about-hero-sub">I'm the nurse practitioner behind NPCWoods. With more than a decade of clinical experience across primary care, urgent care, and telehealth, I built this practice so folks could get straightforward medical advice online that feels personal, accountable, and real — the kind of care I'd want for my own family.</p>
+      <p class="about-hero-meaning">The name is literal: NPCWoods stands for <strong>Nurse Practitioner Chris Woods</strong>.</p>
     </div>
     
     <div class="video-showcase-frame" aria-label="Chris Woods introduction video">
