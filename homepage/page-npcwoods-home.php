@@ -19,7 +19,7 @@
   <title>Telehealth Urgent Care by Text, $59 Flat | NPCWoods</title>
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-serif-display-400.woff2" crossorigin />
-  <link rel="preload" as="image" href="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" imagesrcset="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp 400w, https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp 1000w" imagesizes="(max-width:860px) 92vw, 520px" fetchpriority="high" />
+  <link rel="preload" as="image" href="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" imagesrcset="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, https://npcwoods.com/learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" imagesizes="(max-width: 360px) 244px, (max-width: 900px) 272px, (max-width: 1100px) 343px, 429px" fetchpriority="high" />
 <?php
 // 2026-10-20: the homepage uses its own 1200x630 share card. Yoast's og:image /
 // twitter:image tags are stripped from the wp_head output so there is exactly one set.
@@ -159,6 +159,9 @@ img{display:block;max-width:100%}
   max-width:560px;margin:0 auto 36px;
 }
 .hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+/* 2026-10-21: what the name means, sits under the hero sub line */
+.hero-meaning{font-size:14px;line-height:1.5;letter-spacing:.01em;color:rgba(255,255,255,0.62);margin:-22px 0 30px}
+.hero-meaning strong{color:rgba(255,255,255,0.9);font-weight:600}
 .btn-primary{
   background:var(--blue);color:#fff;
   border-radius:999px;padding:14px 28px;
@@ -902,6 +905,43 @@ img{display:block;max-width:100%}
 .npc-nav-toggle span{background:#1A1A2E !important}
 .hero{padding-top:28px}
 
+/* 2026-10-21: hero cutout of Chris (same look as /closest-urgent-care/ and /learn/glp1/) */
+.hero.hero--cutout{min-height:0;display:block;padding:28px 24px 0;
+  background:radial-gradient(620px 520px at 74% 52%,rgba(0,113,227,.42),transparent 70%),radial-gradient(500px 360px at 12% 0%,rgba(41,151,255,.14),transparent 70%),var(--bg)}
+.hero--cutout::before{display:none}
+.hero-ghost{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero--cutout .hero-inner{max-width:1120px;width:100%;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
+.hero--cutout .hero-text{align-self:center;padding:40px 0 64px;min-width:0}
+.hero-photo{position:relative;justify-self:center;padding-top:56px}
+.hero-photo img{display:block;height:600px;width:auto;max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}
+.hero-bubble{position:absolute;z-index:3;font-weight:700;font-size:15px;line-height:1.25;padding:11px 16px;border-radius:20px 20px 20px 6px;white-space:nowrap;max-width:min(260px,70vw);text-align:left;letter-spacing:-.01em}
+.hero-bubble::after{content:"";position:absolute;bottom:-1px;left:14px;width:12px;height:12px;transform:rotate(45deg);border-radius:0 0 3px 0}
+.hero-bubble--blue{background:#007AFF;color:#fff;border:1.5px solid #fff;box-shadow:0 12px 28px rgba(0,122,255,.28),0 8px 20px rgba(0,0,0,.28)}
+.hero-bubble--blue::after{background:#007AFF;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff}
+.hero-bubble--black{background:#000;color:#fff;border:1.5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.hero-bubble--black::after{background:#000;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff}
+/* b1 sits in the band above his head; b2 sits on his folded arms. Neither touches his face. */
+.hero-b1{top:4px;right:-8px;transform:rotate(3deg)}
+.hero-b2{bottom:84px;left:-28px;transform:rotate(-3deg);border-radius:20px 20px 6px 20px}
+.hero-b2::after{left:auto;right:16px}
+@media(max-width:1100px) and (min-width:901px){
+  .hero-photo img{height:480px}
+  .hero-b2{bottom:64px}
+}
+@media(max-width:900px){
+  .hero.hero--cutout{background:radial-gradient(420px 380px at 60% 78%,rgba(0,113,227,.45),transparent 70%),var(--bg)}
+  .hero--cutout .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero--cutout .hero-text{padding:20px 0 0}
+  .hero-photo{padding-top:50px;margin-top:6px}
+  .hero-photo img{height:380px}
+  .hero-bubble{font-size:12.5px;padding:9px 12px}
+  .hero-b1{top:2px;right:-6px}
+  .hero-b2{bottom:54px;left:-14px;max-width:72vw;white-space:normal}
+}
+@media(max-width:360px){.hero-photo img{height:340px}}
+@media(min-width:901px){.hero--cutout .hero-sub{margin-left:0}}
+@media(max-width:900px){.hero-ghost{display:none}}
+
 
 
 /* === Preview-only extras for homepage content in UTI rhythm === */
@@ -1104,7 +1144,13 @@ a{color:inherit}
 <main>
 
 <!-- HERO: UTI split layout + homepage messaging (no antibiotics / drug names) -->
-<section class="hero">
+<section class="hero hero--cutout">
+  <svg class="hero-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-40,70 C130,160 340,250 593,366 C760,440 980,470 1226,525 C1340,548 1440,560 1480,560" fill="none" stroke="#2997ff" stroke-opacity=".16" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M-40,162 C130,240 340,340 593,412 C760,470 980,560 1226,606 C1340,622 1440,628 1480,628" fill="none" stroke="#2997ff" stroke-opacity=".24" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M-40,254 C130,300 340,410 593,500 C760,560 980,626 1226,678 C1340,690 1440,694 1480,696" fill="none" stroke="#2997ff" stroke-opacity=".3" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M-40,40 C150,150 400,280 730,437 C930,530 1180,630 1500,700" fill="none" stroke="#7cc4ff" stroke-opacity=".7" stroke-width="9" stroke-linecap="round" stroke-dasharray="0.1 20"/>
+  </svg>
   <div class="hero-inner hero-split">
     <div class="hero-text">
       <div class="hero-kicker">
@@ -1113,6 +1159,7 @@ a{color:inherit}
       </div>
       <h1>That phone in your hand? That’s your urgent care now.</h1>
       <p class="hero-sub">A $59 text visit with Chris Woods, your nurse practitioner in your pocket. No waiting room. Just text. No video. No chatbot. You only pay if I can treat you.</p>
+      <p class="hero-meaning">NPCWoods stands for <strong>Nurse Practitioner Chris Woods</strong>.</p>
       <div class="hero-actions">
         <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="btn-primary npc-sms-cta">Text (480) 639-4722</a>
         <a href="#how-it-works" class="btn-ghost">See how it works</a>
@@ -1123,28 +1170,10 @@ a{color:inherit}
         <span>📱 No video · Just text</span>
       </div>
     </div>
-    <div class="phone-float">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="imsg-header">
-            <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="imsg-avatar" alt="Chris">
-            <div>
-              <div class="imsg-name">Chris @ NPCWoods</div>
-              <div class="imsg-status">● Available now</div>
-            </div>
-          </div>
-          <div class="imsg-body">
-            <div class="imsg-time">Today 10:08 AM</div>
-            <div class="imsg-bubble user">Hey Chris — sinus pressure + sore throat since yesterday. Can you help?</div>
-            <div class="imsg-bubble chris">Hey! Happy to take a look. Any fever? How long have you felt like this?</div>
-            <div class="imsg-bubble user">Low fever last night. Started ~36 hours ago. No trouble breathing.</div>
-            <div class="imsg-bubble chris">Got it. Plan coming your way — Rx to your pharmacy + written instructions.</div>
-            <div class="imsg-rx">✓ Care plan sent · pharmacy notified</div>
-            <div class="imsg-time" style="margin-top:4px">10:52 AM</div>
-          </div>
-        </div>
-      </div>
+    <div class="hero-photo">
+      <img src="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" srcset="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, https://npcwoods.com/learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" sizes="(max-width: 360px) 244px, (max-width: 900px) 272px, (max-width: 1100px) 343px, 429px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling" loading="eager" fetchpriority="high" decoding="async">
+      <span class="hero-bubble hero-bubble--black hero-b1">Hey! I'm Chris <span aria-hidden="true">👋</span></span>
+      <span class="hero-bubble hero-bubble--blue hero-b2">Just text me. $59 flat.</span>
     </div>
   </div>
 </section>
@@ -1497,7 +1526,9 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
     "@type": "MedicalBusiness",
     "@id": "https://npcwoods.com/#medical-business",
     "name": "NPCWoods",
-    "alternateName": "NPCWoods Telemedicine",
+    "alternateName": ["NPCWoods Telemedicine", "Nurse Practitioner Chris Woods"],
+    "founder": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
+    "employee": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
     "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
     "telephone": "+14806394722",
     "url": "https://npcwoods.com",
