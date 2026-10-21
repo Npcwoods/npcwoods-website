@@ -12,7 +12,17 @@
 
   <meta property="og:title" content="Chris Woods, NP — $59 Text Visits, Not a Chatbot">
   <meta property="og:description" content="Meet Chris Woods, double board-certified NP behind NPCWoods. Text him for $59 — no video, no AI. Check credentials, licenses, and how care works.">
-  <meta property="og:image" content="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp">
+  <meta property="og:image" content="https://npcwoods.com/assets/img/share/about-1200x630.jpg">
+  <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/about-1200x630.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Chris Woods, NP. NPCWoods stands for Nurse Practitioner Chris Woods. $59 text visits.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chris Woods, NP — $59 Text Visits, Not a Chatbot">
+  <meta name="twitter:description" content="Meet Chris Woods, double board-certified NP behind NPCWoods. Text him for $59 — no video, no AI. Check credentials, licenses, and how care works.">
+  <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/about-1200x630.jpg">
+  <meta name="twitter:image:alt" content="Chris Woods, NP. NPCWoods stands for Nurse Practitioner Chris Woods. $59 text visits.">
   <meta property="og:url" content="https://npcwoods.com/about/">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="NPCWoods Telemedicine">
@@ -82,6 +92,7 @@
   "@type": "MedicalBusiness",
   "@id": "https://npcwoods.com/#medical-business",
   "name": "NPCWoods Telemedicine",
+  "alternateName": ["NPCWoods", "Nurse Practitioner Chris Woods"],
   "url": "https://npcwoods.com",
   "description": "$59 text-based telemedicine visits personally reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC.",
   "telephone": "+14806394722",
@@ -90,10 +101,14 @@
   "medicalSpecialty": "https://schema.org/FamilyPractice",
   "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
   "founder": {
-    "@id": "https://npcwoods.com/#chris-woods"
+    "@type": "Person",
+    "@id": "https://npcwoods.com/#chris-woods",
+    "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC"
   },
   "employee": {
-    "@id": "https://npcwoods.com/#chris-woods"
+    "@type": "Person",
+    "@id": "https://npcwoods.com/#chris-woods",
+    "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC"
   },
   "sameAs": [
     "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
@@ -357,6 +372,19 @@
       background: var(--copper);
       margin: 24px 0;
       border: none;
+    }
+
+    .about-hero-meaning {
+      margin: 18px 0 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-graphite);
+    }
+
+    .about-hero-meaning strong {
+      color: var(--editorial-blue);
+      font-weight: 700;
     }
 
     .about-hero-sub {
@@ -1114,6 +1142,7 @@
       </div>
       <hr class="about-hero-divider">
       <p class="about-hero-sub">I'm the nurse practitioner behind NPCWoods. With more than a decade of clinical experience across primary care, urgent care, and telehealth, I built this practice so folks could get straightforward medical advice online that feels personal, accountable, and real — the kind of care I'd want for my own family.</p>
+      <p class="about-hero-meaning">The name is literal: NPCWoods stands for <strong>Nurse Practitioner Chris Woods</strong>.</p>
     </div>
     
     <div class="video-showcase-frame" aria-label="Chris Woods introduction video">
@@ -1382,7 +1411,7 @@
 <!-- ===== STATES ===== -->
 <section class="about-section">
   <div class="about-inner">
-    <div class="section-label">Licensed In</div>
+    <div class="section-label">Where I Practice</div>
     <h2 class="section-heading">13 States and Growing</h2>
     <p>I hold an active NP license in 12 of these states, plus a Florida out-of-state telehealth registration. Every license and registration is maintained and verified.</p>
 
