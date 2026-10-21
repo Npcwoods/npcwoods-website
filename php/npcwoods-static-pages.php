@@ -62,6 +62,7 @@ add_action( "template_redirect", function() {
     "baca-county-text-visit" => "baca-county-text-visit/index.html",
     "wayne-county-text-visit" => "wayne-county-text-visit/index.html",
     "closest-urgent-care" => "closest-urgent-care/index.html",
+    "teton-county-text-visit" => "teton-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
