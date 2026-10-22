@@ -58,7 +58,7 @@
     ],
     about: [
       ['/about/', 'About Chris', CRED + ', double board-certified'],
-      ['/credentials/', 'Credentials', 'NPI, board cert, 13 states (FL by telehealth reg.)'],
+      ['/credentials/', 'Credentials', 'NPI, board cert, 12 states + FL telehealth reg.'],
       ['/blog/', 'Blog', 'Health tips &amp; insights']
     ]
   };
@@ -191,7 +191,7 @@
       '<a class="npcm-dd-all" href="' + url(MENU.allConditions[0]) + '">View all conditions</a>';
   }
   function ddStatesHTML() {
-    return '<span class="npcm-dd-label" aria-hidden="true">13 states served</span><div class="npcm-dd-grid">' +
+    return '<span class="npcm-dd-label" aria-hidden="true">12 state licenses + FL telehealth reg.</span><div class="npcm-dd-grid">' +
       MENU.states.map(function (s) {
         return '<a' + (s[2] ? ' class="npcm-wide"' : '') + ' href="' + url(s[0]) + '"' + cur(s[0]) + '>' + s[1] + (s[2] ? ' <small>' + s[2] + '</small>' : '') + '</a>';
       }).join('') + '</div>';

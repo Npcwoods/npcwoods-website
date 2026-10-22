@@ -77,16 +77,20 @@
     "landing-pages/credentials/index.html"
   ],
   "surface_must_contain": [
-    "13 states",
+    "12 states",
     "TPAN3355",
     "AGACNP-BC"
   ],
   "surface_must_not_contain": [
-    "11 states"
+    "11 states",
+    "13 states"
   ],
   "page_must_not_contain": [
     "11 states",
-    "licensed in 13 states"
+    "licensed in 13 states",
+    "13 states",
+    "thirteen states",
+    "florida-licensed"
   ],
   "banned_word_allowed_phrases": [
     "not a physician",

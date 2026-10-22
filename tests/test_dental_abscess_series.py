@@ -78,7 +78,8 @@ class DentalAbscessSeriesTest(unittest.TestCase):
                 self.assertIn("#007AFF", text)
                 self.assertIn("series-sticky", text)
                 self.assertIn("GTM, GA4, and Google Ads stay off", text)
-                self.assertIn("13 states, including Florida by telehealth registration", text)
+                self.assertIn("12 states plus Florida by telehealth registration (TPAN3355)", text)
+                self.assertNotIn("13 states", text)
                 self.assertIn("does not guarantee a prescription", text.lower())
                 self.assertNotIn("Florida-licensed", text)
                 self.assertNotIn("Florida licensed", text)
@@ -264,7 +265,8 @@ class DentalAbscessFooterTest(unittest.TestCase):
     def test_pages_carry_current_shared_footer(self):
         footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8").strip()
         self.assertNotIn(self.STALE, footer)
-        self.assertIn("13 states served.", footer)
+        self.assertIn("Licensed in 12 states (", footer)
+        self.assertNotIn("13 states", footer)
         self.assertIn('href="https://npcwoods.com/employers/">For Employers</a>', footer)
         for path in html_files():
             text = path.read_text(encoding="utf-8")

@@ -34,7 +34,7 @@
         "type": "prose",
         "heading": "What I can and cannot do",
         "body": [
-          "I am a Nurse Practitioner. People text me. I work in 13 states, including Florida by telehealth registration. A text visit is $59. You do not pay if text care is not safe.",
+          "I am a Nurse Practitioner. People text me. I work in 12 states plus Florida by telehealth registration (TPAN3355). A text visit is $59. You do not pay if text care is not safe.",
           "A consult does not guarantee a prescription. Many abscesses need a dentist to open the tooth, drain the pocket, or take the tooth out. Some need the ER. If you fit a text visit, I may send helper medicine to your pharmacy as a bridge. A bridge is not the repair. The dentist still has to fix the source.",
           "Keep going. Stop 2 is how the window breaks in the first place."
         ]
@@ -472,7 +472,7 @@
         "type": "prose",
         "heading": "Who often fits a text visit",
         "body": [
-          "You are an adult. You are physically in one of the 13 states I serve, including Florida by telehealth registration. You can swallow. You can breathe. The swelling sits over one tooth or one gum spot. You can tell me the story in texts. You understand a consult does not guarantee a prescription.",
+          "You are an adult. You are physically in one of my 12 licensed states, or in Florida by telehealth registration. You can swallow. You can breathe. The swelling sits over one tooth or one gum spot. You can tell me the story in texts. You understand a consult does not guarantee a prescription.",
           "You also understand the dentist is still on the calendar. I am the bridge, not the repair shop."
         ]
       },
@@ -502,7 +502,7 @@
     "faqs": [
       {
         "q": "What states can text you?",
-        "a": "I serve 13 states, including Florida by telehealth registration. You must be physically in a state I can treat at the time of the visit."
+        "a": "I am licensed in 12 states, plus Florida by telehealth registration (TPAN3355). You must be physically in a state I can treat at the time of the visit."
       },
       {
         "q": "What if I text and you say I need the ER?",
@@ -662,7 +662,7 @@
       },
       {
         "q": "What states?",
-        "a": "13 states, including Florida by telehealth registration. You must be in a state I can treat at the time of the visit."
+        "a": "12 states plus Florida by telehealth registration (TPAN3355). You must be in a state I can treat at the time of the visit."
       },
       {
         "q": "When do I skip this page and go to the ER?",
