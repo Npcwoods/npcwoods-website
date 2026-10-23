@@ -64,6 +64,7 @@ add_action( "template_redirect", function() {
     "closest-urgent-care" => "closest-urgent-care/index.html",
     "teton-county-text-visit" => "teton-county-text-visit/index.html",
     "lander-county-text-visit" => "lander-county-text-visit/index.html",
+    "taylor-county-text-visit" => "taylor-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
