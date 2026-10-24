@@ -116,7 +116,7 @@ add_action('wp_head', function() {
             'https://www.legitscript.com/websites/?checker_keywords=npcwoods.com',
             'https://www.aanp.org/',
             'https://www.aanpcert.org/',
-            'https://www.facebook.com/npcwoods',
+            'https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/',
         ),
         'medicalSpecialty' => 'FamilyPractice',
         'jobTitle' => 'Licensed Nurse Practitioner',

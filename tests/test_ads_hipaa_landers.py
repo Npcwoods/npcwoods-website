@@ -65,7 +65,7 @@ class AdsHipaaLandersTest(unittest.TestCase):
                 self.assertIn("GTM, GA4, and Google Ads stay off", text)
                 self.assertIn('content="noindex', text)
                 self.assertIn("Call 911", text)
-                self.assertIn("50+ Five-Star Reviews", text)
+                self.assertIn("80+ Five-Star Google Reviews", text)
                 self.assertIn("legitscript.com", text)
                 self.assertIn("Arizona", text)
                 self.assertIn("North Carolina", text)
