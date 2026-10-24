@@ -1251,8 +1251,8 @@ a{color:inherit}
     <div class="stars-row">
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
-    <h2>50+ Five-Star Reviews</h2>
-    <p>Real patients. Real reviews. From Facebook &amp; Google.</p>
+    <h2>80+ Five-Star Google Reviews</h2>
+    <p>5.0★ on Google · 100% recommend on Facebook</p>
   </div>
   <div class="scroll-mask">
     <div class="scroll-track">
@@ -1532,7 +1532,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
     "priceRange": "$59",
     "sameAs": [
       "https://share.google/XlmNvRT4vihOJ8KBH",
-      "https://www.facebook.com/npcwoods",
+      "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
       "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
     ],
     "address": {

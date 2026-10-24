@@ -75,11 +75,12 @@ STATES = {
             ('Peoria',     '~190K residents', 'UTI &middot; sinus &middot; bronchitis',                    None),
         ],
         'review': {
-            'name': 'Sarah K.',
-            'city': 'Phoenix, AZ',
-            'quote': 'Texted my symptoms at 9pm. Prescription at my pharmacy by 9am. I&rsquo;ve never had healthcare be this easy.',
-            'mark': 'A real review from <em>Phoenix</em>.',
-            'sub': 'Not a marketing stock quote. Pulled from Google. Click to verify.',
+            # Real Google review, word for word (review-check-2026-10-*.md on the box). No city unless the review shows one.
+            'name': 'Kandace B.',
+            'city': None,
+            'quote': 'We have now used NPCwoods several times for our whole family and every experience has been great. No waiting or risking getting exposed to more sickness while waiting to be seen. Chris is very helpful and takes all concerns into account&hellip;',
+            'mark': 'What patients say <em>on Google</em>.',
+            'sub': 'Quoted word for word from Google. Click to verify.',
             'href': 'https://share.google/XlmNvRT4vihOJ8KBH',
         },
     },
@@ -352,11 +353,12 @@ STATES = {
             ('Pahrump',          '~44K residents', 'UTI &middot; sinus &middot; skin infection', None),
         ],
         'review': {
-            'name': 'Rachel D.',
-            'city': 'Reno, NV',
-            'quote': 'Urgent care would&rsquo;ve been 4 hours and $300. This was 40 minutes and $59. I&rsquo;m not going back.',
-            'mark': 'A real review from <em>Reno</em>.',
-            'sub': 'Not a marketing stock quote. Pulled from Google. Click to verify.',
+            # Real Google review, word for word (review-check-2026-10-*.md on the box). No city unless the review shows one.
+            'name': 'Sarah S.',
+            'city': None,
+            'quote': 'Chris genuinely cares about his patients! This service is so convenient and I am so grateful for Chris and what he does!',
+            'mark': 'What patients say <em>on Google</em>.',
+            'sub': 'Quoted word for word from Google. Click to verify.',
             'href': 'https://share.google/XlmNvRT4vihOJ8KBH',
         },
     },
@@ -539,11 +541,12 @@ STATES = {
             ('Park City',    '~8K residents',   'sinus &middot; UTI &middot; skin infection', None),
         ],
         'review': {
-            'name': 'Marcus T.',
-            'city': 'Salt Lake City, UT',
-            'quote': 'I expected a chatbot. Got a real NP who read my history and asked good questions. Worth ten times $59.',
-            'mark': 'A real review from <em>Salt Lake City</em>.',
-            'sub': 'Not a marketing stock quote. Pulled from Google. Click to verify.',
+            # Real Google review, word for word (review-check-2026-10-*.md on the box). No city unless the review shows one.
+            'name': 'Kallie N.',
+            'city': None,
+            'quote': 'Chris responded to my message in THREE MINUTES on a Saturday night! I will definitely be using Chris from now on for me and my family. Thanks, Chris!',
+            'mark': 'What patients say <em>on Google</em>.',
+            'sub': 'Quoted word for word from Google. Click to verify.',
             'href': 'https://share.google/XlmNvRT4vihOJ8KBH',
         },
     },
@@ -701,7 +704,7 @@ def build_hero(s):
         <div class="nl-trust">
           <span class="nl-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Licensed in {s["abbr"]}</span>
           <span class="nl-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Avg reply: under 30 min</span>
-          <span class="nl-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>50+ five-star reviews</span>
+          <span class="nl-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>80+ five-star Google reviews</span>
         </div>
       </div>
       <aside class="nl-card" aria-label="{s["name"]} service overview">
@@ -772,7 +775,7 @@ def build_map_and_cities(s):
       <div class="nl-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p>&ldquo;{review["quote"]}&rdquo;</p>
       <div class="nl-rwho">
-        <span><b style="color:#fff">{review["name"]}</b> &middot; {review["city"]}</span>
+        <span><b style="color:#fff">{review["name"]}</b>{(" &middot; " + review["city"]) if review.get("city") else ""}</span>
         <span class="nl-via">{GOOGLE_LOGO_SVG} via Google</span>
       </div>
     </a>

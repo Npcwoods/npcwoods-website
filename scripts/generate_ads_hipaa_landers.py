@@ -399,7 +399,7 @@ window._fbq = window.fbq;
           <ul class="credentials">
             <li><span class="check">✓</span><span>Double board-certified Nurse Practitioner</span></li>
             <li><span class="check">✓</span><span>Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT</span></li>
-            <li><span class="check">✓</span><span>50+ reviews · real person, no call center</span></li>
+            <li><span class="check">✓</span><span>80+ five-star Google reviews · real person, no call center</span></li>
           </ul>
         </aside>
       </div>
@@ -419,14 +419,14 @@ window._fbq = window.fbq;
         <div class="stats">
           <div class="stat"><b>$59</b><span>flat fee</span></div>
           <div class="stat"><b>11</b><span>licensed states</span></div>
-          <div class="stat"><b>50+</b><span>five-star reviews</span></div>
+          <div class="stat"><b>80+</b><span>five-star Google reviews</span></div>
           <div class="stat"><b>$0</b><span>if he cannot treat it</span></div>
         </div>
       </div>
     </section>
     <section class="cream">
       <div class="wrap">
-        <div class="section-head"><span>Trust</span><h2>50+ Five-Star Reviews</h2><p>Real people. Initials only. From Facebook and Google.</p></div>
+        <div class="section-head"><span>Trust</span><h2>80+ Five-Star Google Reviews</h2><p>Real people. Initials only. From Facebook and Google.</p></div>
         <div class="reviews">
           <article class="rcard"><div class="stars">★★★★★</div><p>“Fast, easy, no waiting, very professional. I recommend him to everyone.”</p><div class="who">D.C.D. · Facebook</div></article>
           <article class="rcard"><div class="stars">★★★★★</div><p>“Messaged Chris. He responded in a timely manner. Very professional. It was nice to stay at home and get quality care.”</p><div class="who">T.P. · Facebook</div></article>

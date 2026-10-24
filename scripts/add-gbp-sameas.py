@@ -292,12 +292,12 @@ def run_self_tests():
     ok &= assert_eq("INSERT flat: sameAs", json.loads(new)["sameAs"], [GBP_URL])
 
     # Test 2: APPEND — MedicalBusiness with existing sameAs
-    block = json.dumps({"@type": "MedicalBusiness", "name": "NPCWoods", "sameAs": ["https://www.facebook.com/npcwoods"]})
+    block = json.dumps({"@type": "MedicalBusiness", "name": "NPCWoods", "sameAs": ["https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/"]})
     new, actions = process_block(block)
     ok &= assert_eq("APPEND: actions", actions, ["appended"])
     ok &= assert_eq("APPEND: sameAs",
                     json.loads(new)["sameAs"],
-                    ["https://www.facebook.com/npcwoods", GBP_URL])
+                    ["https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/", GBP_URL])
 
     # Test 3: DEDUP — re-running is a no-op
     already = {"@type": "MedicalBusiness", "name": "NPCWoods", "sameAs": [GBP_URL]}

@@ -76,7 +76,7 @@ FORBIDDEN_WORDS = [
 #   response time: "Most patients hear back the same day, usually within a few hours."
 #   hours:         "Messages are reviewed 7 days a week." (no clock hours anywhere)
 #   med cost:      "typically $4-$20 with GoodRx" (never "under $10")
-#   reviews:       "50+ five-star reviews"
+#   reviews:       "80+ five-star Google reviews"
 CLAIM_CHECKS = [
     (
         "response-time drift (canonical: 'usually within a few hours')",
@@ -105,7 +105,7 @@ CLAIM_CHECKS = [
     ),
 ]
 REVIEW_COUNT_RE = re.compile(r"\b(\d+)\s*\+?\s*(?:five|5)[-\s]star", re.I)
-CANONICAL_REVIEW_COUNT = 50
+CANONICAL_REVIEW_COUNT = 80
 
 TRACKING_JS_RE = re.compile(r"<script[^>]+src=[\"'][^\"']*tracking\.js[^\"']*[\"']", re.I)
 GTM_RE = re.compile(r"googletagmanager\.com|GTM-[A-Z0-9]{4,}", re.I)
@@ -329,7 +329,7 @@ def check_page(session: requests.Session, page: dict, sitemap_urls: set[str]) ->
             start, end = max(0, m.start() - 45), min(len(text), m.end() + 45)
             res.findings.append(
                 Finding("YELLOW", url,
-                        "claim-drift: review count (canonical: '50+ five-star reviews')",
+                        "claim-drift: review count (canonical: '80+ five-star Google reviews')",
                         "..." + text[start:end].strip() + "...")
             )
 

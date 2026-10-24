@@ -510,7 +510,7 @@ def sinus_body() -> str:
       </div>
       <div class="hero-trust">
         <span>🔒 HIPAA-Compliant</span>
-        <span>⭐ 50+ Five-Star Reviews</span>
+        <span>⭐ 80+ Five-Star Google Reviews</span>
         <span>💊 Generics typically $4–$20 with GoodRx</span>
       </div>
     </div>
@@ -895,7 +895,7 @@ def strep_body() -> str:
       </div>
       <div class="hero-trust">
         <span>🔒 HIPAA-Compliant</span>
-        <span>⭐ 50+ Five-Star Reviews</span>
+        <span>⭐ 80+ Five-Star Google Reviews</span>
         <span>💊 Strep antibiotics typically $4–$15 with GoodRx</span>
       </div>
     </div>

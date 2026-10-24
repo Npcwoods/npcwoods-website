@@ -85,8 +85,8 @@ def build_reviews() -> str:
 <section class="reviews">
   <div class="reviews-head">
     <div class="stars-row">{STAR * 5}</div>
-    <h2>50+ Five-Star Reviews</h2>
-    <p>Real patients. Real reviews. From Facebook &amp; Google.</p>
+    <h2>80+ Five-Star Google Reviews</h2>
+    <p>5.0★ on Google · 100% recommend on Facebook</p>
   </div>
   <div class="scroll-mask">
     <div class="scroll-track">
@@ -267,7 +267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hero-trust">
         <span>📍 Serving {{{{CITY}}}}, {{{{ST}}}}</span>
         <span>🏥 {{{{STATE}}}}-licensed NP</span>
-        <span>⭐ 50+ five-star reviews</span>
+        <span>⭐ 80+ five-star Google reviews</span>
         <span>💊 Meds typically $4–$20 with GoodRx</span>
       </div>
     </div>
