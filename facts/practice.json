@@ -37,6 +37,11 @@
     "not": "Florida APRN license",
     "public_url": "https://flhealthsource.gov/telehealth/"
   },
+  "license_line": {
+    "standard": "13 states, including Florida by telehealth registration",
+    "rule": "Write '13 states, including Florida by telehealth registration' (12 APRN licenses + Florida TPAN3355 out-of-state telehealth registration). Never '12 states', 'plus a Florida telehealth registration', '+ FL telehealth reg.', or 'Florida-licensed'.",
+    "settled_by": "Chris, 2026-10-24 (replaces the 2026-10-21 '12 states / never 13 states' rule)"
+  },
   "washington_public_page": {
     "rule": "Print the Washington ARNP license number ARNP.AP.61670388-NP on /washington-telemedicine/ and /credentials/. Do not remove or redact it.",
     "wa_arnp_license": "ARNP.AP.61670388-NP",
@@ -77,19 +82,23 @@
     "landing-pages/credentials/index.html"
   ],
   "surface_must_contain": [
-    "12 states",
+    "13 states",
     "TPAN3355",
     "AGACNP-BC"
   ],
   "surface_must_not_contain": [
     "11 states",
-    "13 states"
+    "12 states",
+    "plus a Florida telehealth registration",
+    "+ FL telehealth reg"
   ],
   "page_must_not_contain": [
     "11 states",
-    "licensed in 13 states",
-    "13 states",
-    "thirteen states",
+    "12 states",
+    "twelve states",
+    "plus a florida telehealth registration",
+    "plus florida by telehealth registration",
+    "+ fl telehealth reg",
     "florida-licensed"
   ],
   "banned_word_allowed_phrases": [

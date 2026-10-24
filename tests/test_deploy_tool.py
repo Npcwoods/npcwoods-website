@@ -484,8 +484,8 @@ class ContentBlockTest(unittest.TestCase):
     def test_eleven_states_facts_drift_blocks(self):
         self._assert_blocked(self.page("<p>Licensed in 11 states.</p>"), "facts drift")
 
-    def test_licensed_in_13_states_blocks(self):
-        self._assert_blocked(self.page("<p>Licensed in 13 states.</p>"), "facts drift")
+    def test_licensed_in_12_states_blocks(self):
+        self._assert_blocked(self.page("<p>Licensed in 12 states, plus a Florida telehealth registration (TPAN3355).</p>"), "facts drift")
 
     def test_verify_only_is_not_blocked_by_words(self):
         with tempfile.TemporaryDirectory() as tmp:
