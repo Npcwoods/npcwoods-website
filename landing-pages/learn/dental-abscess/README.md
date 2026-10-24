@@ -100,7 +100,7 @@ Generic words are allowed: `medicine`, `prescription` as a possibility, never a 
 
 Many abscesses need a dentist or the ER. Text care fits some stable, local cases only. A consult does not guarantee a prescription. Helper medicine is a bridge. The dentist still fixes the source.
 
-License wording: **12 states plus Florida by telehealth registration (TPAN3355)**. Never Florida-licensed.
+License wording: **13 states, including Florida by telehealth registration (TPAN3355)**. Never Florida-licensed.
 
 ## Pictures and hero art (2026-10-08)
 

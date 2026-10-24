@@ -47,7 +47,7 @@ def test_nav_credentials_13_states():
     for f in files:
         t = f.read_text(encoding="utf-8")
         assert "11 state licenses" not in t, f
-        assert "NPI, board cert, 12 states + FL telehealth reg." in t, f
+        assert "NPI, board cert, 13 states, including Florida by telehealth registration" in t, f
         assert "Florida-licensed" not in t, f
 
 
@@ -60,8 +60,8 @@ def test_teladoc_uses_current_site_shell():
 
 STALE_FOOTER_LINE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
 CURRENT_FOOTER_LINE = (
-    "Licensed in 12 states (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA), plus Florida by "
-    "telehealth registration (TPAN3355).<br>"
+    "Licensed in 13 states, including Florida by telehealth registration "
+    "(AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>"
 )
 
 

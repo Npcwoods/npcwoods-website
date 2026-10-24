@@ -31,7 +31,7 @@ FAQ = [
     ("Is this a replacement for our health plan?",
      "No. It's a fast, low-cost option for everyday urgent care problems. It doesn't replace a health plan, a primary care clinician, or emergency care."),
     ("Which states do you cover?",
-     "12 states plus Florida by telehealth registration (TPAN3355): Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, Washington, and Florida. Your team member has to be physically in one of these states at the time of the visit."),
+     "13 states, including Florida by telehealth registration (TPAN3355): Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, Washington, and Florida. Your team member has to be physically in one of these states at the time of the visit."),
     ("Does every visit end with a prescription?",
      "No. Chris decides what's safe for each person. If someone needs to be seen in person, he'll tell them."),
     ("What about injuries on the job?",

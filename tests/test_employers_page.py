@@ -125,7 +125,7 @@ class EmployersPageTest(unittest.TestCase):
         self.assertEqual(prices, {"$59"}, prices)
 
     def test_states_line_and_exact_list(self):
-        self.assertIn("12 states plus Florida by telehealth registration (TPAN3355)", self.visible)
+        self.assertIn("13 states, including Florida by telehealth registration", self.visible)
         for state in STATES:
             self.assertIn(state, self.visible)
 

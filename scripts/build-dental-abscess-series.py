@@ -28,8 +28,8 @@ SITE = "https://npcwoods.com"
 # to it, refuse to build rather than re-plate an 11-state footer onto the series.
 STALE_FOOTER_LICENSE_LINE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
 CURRENT_FOOTER_LICENSE_LINE = (
-    "Licensed in 12 states (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA), plus Florida by "
-    "telehealth registration (TPAN3355).<br>"
+    "Licensed in 13 states, including Florida by telehealth registration "
+    "(AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>"
 )
 
 
