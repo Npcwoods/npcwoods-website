@@ -765,7 +765,7 @@ def build_map_and_cities(s):
     review_html = ''
     if review:
         review_html = f'''<!-- LOCAL REVIEW (local-rollout 2026-05-04) -->
-<section class="nl-review">
+<section class="nl-review nl-cream">
   <div class="nl-wrap nl-rg">
     <div>
       <h2>{review["mark"]}</h2>
