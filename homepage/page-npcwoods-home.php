@@ -2,8 +2,8 @@
 /**
  * Template Name: NPCWoods Homepage
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
- * UTI-look plate: approved preview body. 12 NP licenses (incl. Washington)
- * plus Florida by out-of-state telehealth registration (TPAN3355).
+ * UTI-look plate: approved preview body. 13 states, including Florida by telehealth
+ * registration (TPAN3355); 12 NP licenses incl. Washington.
  * 2026-10-06: Meta Pixel REMOVED (HIPAA hard rule: no tracking tags). Do not re-add.
  * 2026-10-06: GA4 / Google tag REMOVED (HIPAA hard rule: no Google tags on the site).
  * Do not re-add any Google tag here.
@@ -1372,8 +1372,8 @@ a{color:inherit}
 <section class="states-section" id="states">
   <div class="states-inner">
     <span class="section-kicker">Where I can help</span>
-    <h2 class="section-title" style="color:#fff;font-family:'DM Serif Display',serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:400;margin:8px 0 8px">12 states, plus Florida.</h2>
-    <p style="color:var(--body);max-width:50ch;margin:0 auto">12 state NP licenses, plus Florida by telehealth registration. You have to be physically in one of these states at the time of the visit.</p>
+    <h2 class="section-title" style="color:#fff;font-family:'DM Serif Display',serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:400;margin:8px 0 8px">13 states, including Florida.</h2>
+    <p style="color:var(--body);max-width:50ch;margin:0 auto">13 states, including Florida by telehealth registration. You have to be physically in one of these states at the time of the visit.</p>
     <div class="states-pills">
         <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
         <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
@@ -1510,7 +1510,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Double Board-Certified Nurse Practitioner<br>
-      Licensed in 12 states (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA), plus Florida by telehealth registration (TPAN3355).<br>
+      Licensed in 13 states, including Florida by telehealth registration (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
