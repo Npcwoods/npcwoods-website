@@ -65,6 +65,7 @@ add_action( "template_redirect", function() {
     "teton-county-text-visit" => "teton-county-text-visit/index.html",
     "lander-county-text-visit" => "lander-county-text-visit/index.html",
     "taylor-county-text-visit" => "taylor-county-text-visit/index.html",
+    "guadalupe-county-text-visit" => "guadalupe-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
