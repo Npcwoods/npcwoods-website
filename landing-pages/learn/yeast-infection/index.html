@@ -935,7 +935,64 @@
   color:#FFFFFF !important;
 }
 .npc-nav-toggle span{background:#1A1A2E !important}
-.hero{padding-top:28px}
+
+  /* ===== HERO: GLP-1 header pattern (.gh-*), copied from /learn/glp1/ 2026-10-25. No entrance animations. ===== */
+  @font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/inter-latin-var.woff2") format("woff2"); }
+  .gh { --gh-bg:#05060a; --gh-body:#c7c7ce; --gh-blue:#0071e3; --gh-green:#19a463; --gh-orange:#f5a524;
+    position: relative; overflow: hidden; color: #fff; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-align: left;
+    background: radial-gradient(620px 520px at 74% 52%, rgba(0,113,227,.40), transparent 70%), radial-gradient(520px 380px at 12% 0%, rgba(139,92,246,.22), transparent 70%), var(--gh-bg); }
+  .gh *, .gh *::before, .gh *::after { box-sizing: border-box; }
+  .gh-ghost { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .gh-wrap { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 72px 64px 64px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; min-height: 660px; }
+  .gh-copy { align-self: center; padding-bottom: 20px; min-width: 0; }
+  .gh-pill { display: inline-flex; gap: .6rem; align-items: center; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #d7d7de; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); padding: .55rem .95rem; border-radius: 999px; }
+  .gh-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--gh-green); box-shadow: 0 0 10px var(--gh-green); flex: none; }
+  .gh h1 { font-family: inherit; font-weight: 900; font-size: clamp(56px, 7.4vw, 108px); line-height: .9; letter-spacing: -.055em; margin: 26px 0 22px; color: #fff; animation: none; }
+  .gh h1 .gh-grad { display: block; color: #fff; background: linear-gradient(180deg, #fff 10%, #9fd0ff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .gh h1 .gh-pop { display: inline-block; color: var(--gh-bg); background: var(--gh-orange); padding: 0 .14em .06em; border-radius: .12em; transform: rotate(-2deg); margin-top: .08em; }
+  .gh-sub { font-size: 20px; line-height: 1.5; color: var(--gh-body); max-width: 520px; margin: 0; }
+  .gh-ctas { display: flex; gap: 14px; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+  .gh-btn { display: inline-flex; align-items: center; gap: .6rem; background: var(--gh-blue); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 18px; line-height: 1.2; padding: 18px 28px; border-radius: 999px; box-shadow: 0 12px 34px rgba(0,113,227,.5); white-space: nowrap; }
+  .gh-btn:hover { filter: brightness(1.08); }
+  .gh-btn svg { width: 20px; height: 20px; flex: none; }
+  .gh-ghostbtn { color: #fff !important; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); }
+  .gh-ghostbtn:hover { border-color: rgba(255,255,255,.5); }
+  .gh a:focus-visible { outline: 3px solid #9fd0ff; outline-offset: 3px; }
+  .gh-fine { margin: 22px 0 0; font-size: 12.5px; line-height: 1.5; color: #9a9aa3; max-width: 520px; }
+  .gh-photo { position: relative; align-self: end; justify-self: center; margin-bottom: -64px; }
+  .gh-photo img { display: block; height: 600px; width: auto; max-width: none; filter: drop-shadow(0 30px 60px rgba(0,0,0,.55)); }
+  .gh-sticker { position: absolute; z-index: 3; font-weight: 700; font-size: 15px; line-height: 1.25; padding: 11px 16px; border-radius: 20px 20px 20px 6px; white-space: nowrap; max-width: min(240px, 70vw); }
+  .gh-sticker::after { content: ""; position: absolute; bottom: -1px; left: 14px; width: 12px; height: 12px; transform: rotate(45deg); border-radius: 0 0 3px 0; }
+  /* Classic iPhone blue bubble */
+  .gh-sticker--blue { background: #007AFF; color: #fff; border: 1.5px solid #fff; box-shadow: 0 12px 28px rgba(0,122,255,.28), 0 8px 20px rgba(0,0,0,.28); }
+  .gh-sticker--blue::after { background: #007AFF; border-right: 1.5px solid #fff; border-bottom: 1.5px solid #fff; }
+  /* iPhone black bubble: black fill, white letters, thin white outline */
+  .gh-sticker--black { background: #000; color: #fff; border: 1.5px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,.4); }
+  .gh-sticker--black::after { background: #000; border-right: 1.5px solid #fff; border-bottom: 1.5px solid #fff; }
+  .gh-s1 { top: -6px; left: -96px; transform: rotate(-4deg); }
+  .gh-s2 { top: auto; bottom: 96px; left: -92px; right: auto; transform: rotate(3deg); border-radius: 20px 20px 6px 20px; }
+  .gh-s2::after { left: auto; right: 16px; }
+  .gh + .reviews-banner { margin-top: 0; }
+  @media (max-width: 900px) and (min-width: 641px) {
+    .gh-wrap { padding: 56px 32px 48px; min-height: 0; }
+    .gh-photo { margin-bottom: -48px; } .gh-photo img { height: 460px; }
+    .gh-sub { font-size: 18px; }
+  }
+  @media (max-width: 640px) {
+    .gh { background: radial-gradient(420px 380px at 60% 78%, rgba(0,113,227,.45), transparent 70%), radial-gradient(360px 260px at 0% 0%, rgba(139,92,246,.20), transparent 70%), var(--gh-bg); }
+    .gh-wrap { grid-template-columns: 1fr; padding: 34px 22px 0; min-height: 0; }
+    .gh h1 { font-size: 56px; margin: 18px 0 14px; }
+    .gh-pill { font-size: 10.5px; padding: .45rem .75rem; }
+    .gh-pill-x { display: none; }
+    .gh-sub { font-size: 16.5px; }
+    .gh-ctas { margin-top: 22px; }
+    .gh-btn { font-size: 16.5px; padding: 16px 22px; width: 100%; justify-content: center; }
+    .gh-ghostbtn { display: none; }
+    .gh-fine { font-size: 11px; margin-top: 14px; }
+    .gh-photo { margin: 18px auto 0; } .gh-photo img { height: 400px; }
+    .gh-s1 { top: -10px; left: 4px; font-size: 12.5px; padding: 9px 12px; } .gh-s2 { top: auto; bottom: 28px; left: 4px; right: auto; font-size: 12.5px; padding: 9px 12px; max-width: 72vw; white-space: normal; }
+  }
+  @media (max-width: 360px) { .gh h1 { font-size: 48px; } .gh-photo img { height: 360px; } }
 
 </style>
 </head>
@@ -1161,7 +1218,51 @@
 <!-- CWV JS: now in /assets/js/site.js -->
 <!-- ===== END SITE HEADER ===== -->
 
-<!-- reviews CSS: now in /assets/css/site.css -->
+
+
+<!-- ===== END SITE HEADER ===== -->
+<!-- ===== HERO SECTION (GLP-1 header pattern, 2026-10-25 draft) ===== -->
+  <header class="gh" aria-labelledby="gh-title">
+    <svg class="gh-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<line x1="0" y1="90" x2="1440" y2="90" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="180" x2="1440" y2="180" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="270" x2="1440" y2="270" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="360" x2="1440" y2="360" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="540" x2="1440" y2="540" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="0" y1="630" x2="1440" y2="630" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="120" y1="0" x2="120" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="240" y1="0" x2="240" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="360" y1="0" x2="360" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="480" y1="0" x2="480" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="600" y1="0" x2="600" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="720" y1="0" x2="720" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="840" y1="0" x2="840" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="960" y1="0" x2="960" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="1080" y1="0" x2="1080" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="1200" y1="0" x2="1200" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+<line x1="1320" y1="0" x2="1320" y2="720" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="2 10"/>
+</svg>
+    <div class="gh-wrap">
+      <div class="gh-copy">
+        <span class="gh-pill"><i aria-hidden="true"></i>Common &amp; treatable · $59 text visit<span class="gh-pill-x"> · No video</span></span>
+        <h1 id="gh-title"><span class="gh-grad">Yeast</span> <span class="gh-pop">Infection</span></h1>
+        <p class="gh-sub">Your complete guide to understanding symptoms, treatment, and prevention. You're not alone, this happens to 3 out of 4 women.</p>
+        <div class="gh-ctas">
+          <a class="gh-btn" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Text Chris · $59 visit</a>
+          <a class="gh-ghostbtn" href="#what-is">What it is ↓</a>
+        </div>
+        <p class="gh-fine">Educational info, not medical advice. A visit doesn't guarantee a prescription.</p>
+      </div>
+      <div class="gh-photo">
+        <img src="/assets/img/people/chris-cutout-600.webp" srcset="/assets/img/people/chris-cutout-600.webp 600w, /assets/img/people/chris-cutout-900.webp 900w" sizes="(max-width: 640px) 286px, (max-width: 900px) 329px, 429px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling" fetchpriority="high" decoding="async">
+        <span class="gh-sticker gh-sticker--black gh-s1">Hey! I'm Chris <span aria-hidden="true">👋</span></span>
+        <span class="gh-sticker gh-sticker--blue gh-s2">Super common. Very treatable.</span>
+      </div>
+    </div>
+  </header>
+
+<!-- reviews strip: moved below the hero (2026-10-25 draft); CSS in /assets/css/site.css -->
 <!-- ===== SCROLLING REVIEWS BANNER ===== -->
 <section class="reviews-banner">
 <div class="reviews-banner-header">
@@ -1255,23 +1356,6 @@
 </section>
 <!-- ===== END SCROLLING REVIEWS ===== -->
 
-<!-- ===== END SITE HEADER ===== -->
-<!-- ===== HERO SECTION ===== -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">
-      <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999a11.954 11.954 0 010 10.002 8 8 0 010-10.002zM15.834 4.999a11.954 11.954 0 010 10.002 8 8 0 010-10.002zM9.172 4.5a6 6 0 00-6 6 6 6 0 006 6 6 6 0 006-6 6 6 0 00-6-6z" clip-rule="evenodd"/></svg>
-      Common &amp; Treatable
-    </div>
-    <h1>Yeast Infection</h1>
-    <p class="subtitle">Your complete guide to understanding symptoms, treatment, and prevention. You're not alone, this happens to 3 out of 4 women.</p>
-    <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="hero-cta">
-      <svg fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773c-.02.012-.038.028-.054.045a11 11 0 007.646 7.646c.017-.016.033-.034.045-.054l.773-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-      Text Us ($59 Visit)
-    </a>
-  </div>
-</section>
-
 <!-- ===== MAIN CONTENT ===== -->
 <main>
   <!-- Breadcrumb -->
@@ -1290,7 +1374,7 @@
   </div>
 
   <!-- What is a Yeast Infection Section -->
-  <h2 class="section-heading">What is a Yeast Infection?</h2>
+  <h2 class="section-heading" id="what-is">What is a Yeast Infection?</h2>
   <p class="intro-text">A vaginal yeast infection (candidiasis) happens when there's an overgrowth of a fungus called Candida, a yeast that normally lives in your body in small amounts. When something throws off the balance (antibiotics, hormones, stress), Candida multiplies and causes that uncomfortable itching and discharge.</p>
 
   <div class="callout success">
