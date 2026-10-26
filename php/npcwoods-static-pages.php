@@ -67,6 +67,7 @@ add_action( "template_redirect", function() {
     "taylor-county-text-visit" => "taylor-county-text-visit/index.html",
     "guadalupe-county-text-visit" => "guadalupe-county-text-visit/index.html",
     "conejos-county-text-visit" => "conejos-county-text-visit/index.html",
+    "mineral-county-text-visit" => "mineral-county-text-visit/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );
