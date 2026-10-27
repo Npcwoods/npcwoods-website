@@ -549,6 +549,10 @@ img{display:block;max-width:100%}
   -webkit-text-fill-color:transparent;
 }
 .bottom-cta p{font-size:16px;color:var(--body);margin-bottom:32px;line-height:1.6}
+/* 2026-10-26: ensure bottom CTA pill renders outside flex (matches .price-block .btn-primary) */
+.bottom-cta .btn-primary{
+  display:inline-block;
+}
 .bottom-trust-line{
   font-size:12px;color:var(--muted);
   margin-top:20px;
@@ -827,6 +831,8 @@ img{display:block;max-width:100%}
 .npc-qr-cta{display:none}
 @media(min-width:769px){
   .npc-sms-cta{display:none!important}
+  /* 2026-10-26: bottom-cta has no QR twin — keep the phone pill visible on desktop */
+  .bottom-cta .npc-sms-cta{display:inline-block!important}
   .npc-qr-cta{
     display:inline-flex;align-items:center;gap:18px;
     padding:16px 20px;border-radius:var(--radius);
@@ -936,12 +942,12 @@ img{display:block;max-width:100%}
   .hero--cutout .hero-inner{grid-template-columns:1fr;gap:0}
   .hero--cutout .hero-text{padding:20px 0 0}
   .hero-photo{padding-top:50px;margin-top:6px}
-  .hero-photo img{height:380px}
+  .hero-photo img{height:280px} /* staging 2026-10-26: was 380px (~74%) */
   .hero-bubble{font-size:12.5px;padding:9px 12px}
   .hero-b1{top:2px;right:-6px}
   .hero-b2{bottom:54px;left:-14px;max-width:72vw;white-space:normal}
 }
-@media(max-width:360px){.hero-photo img{height:340px}}
+@media(max-width:360px){.hero-photo img{height:250px}} /* staging 2026-10-26: was 340px */
 @media(min-width:901px){.hero--cutout .hero-sub{margin-left:0}}
 
 
@@ -1081,6 +1087,30 @@ a{color:inherit}
 }
 
 #npcSaveWrap, body::after { display: none !important; content: none !important; }
+
+/* ── MOBILE STICKY CTA (2026-10-26: was unstyled markup) ── */
+.mobile-cta{display:none}
+@media(max-width:768px){
+  /* overflow-x:hidden on body can trap position:fixed; clip keeps fixed to the viewport */
+  html,body{overflow-x:clip}
+  .mobile-cta{
+    display:block;
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:10000;
+    background:var(--blue);
+    color:#fff;
+    text-align:center;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:-0.01em;
+    padding:16px 20px;
+    padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+    box-shadow:0 -8px 30px rgba(0,0,0,.35);
+  }
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom, 0px))}
+}
+
 </style>
 <body>
 <!-- ===== Sticky header / nav (UTI page pattern) ===== -->
