@@ -609,6 +609,100 @@ def rocket_purge(env: dict, urls: list[str]) -> bool:
     return ok
 
 
+def rocket_purge_everything(env: dict) -> bool:
+    """Full-site Rocket CDN purge. Used only as the automatic fallback when a
+    single-URL purge leaves the old copy at the edge."""
+    token = rocket_token(env)
+    if not token:
+        return False
+    site_id = env.get("ROCKET_SITE_ID") or ROCKET_SITE_ID_DEFAULT
+    status, payload = _curl_json(f"{ROCKET_API}/sites/{site_id}/cache/purge_everything",
+                                 method="POST", body={}, token=token)
+    ok = status == 200 and bool(payload is None or payload.get("success", True))
+    print(f"  [cache] Rocket FULL-SITE purge: {'ok' if ok else f'FAILED (HTTP {status})'}")
+    return ok
+
+
+def live_fetch(url: str) -> dict:
+    """Read-only clean-URL GET (no cache-busting query, no compression) the way
+    a patient hits it. Returns status, sha256 of the body, bytes, cf-cache-status, age."""
+    proc = subprocess.run(["curl", "-s", "-A", UA, "--max-time", "45", "-D", "-", url],
+                          capture_output=True, timeout=60)
+    raw = proc.stdout or b""
+    # curl -D - writes every header block (redirects too) before the body
+    head, body = b"", raw
+    while body.startswith(b"HTTP/") and b"\r\n\r\n" in body:
+        head, body = body.split(b"\r\n\r\n", 1)
+    hdrs = {}
+    status = 0
+    for i, line in enumerate(head.decode("latin-1").split("\r\n")):
+        if i == 0:
+            parts = line.split()
+            status = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+        elif ":" in line:
+            k, v = line.split(":", 1)
+            hdrs[k.strip().lower()] = v.strip()
+    return {"status": status, "sha256": hashlib.sha256(body).hexdigest(), "bytes": len(body),
+            "cf_cache": hdrs.get("cf-cache-status", ""), "age": hdrs.get("age", "")}
+
+
+def _stale(expected: dict, fetch) -> dict:
+    out = {}
+    for url, sha in expected.items():
+        live = fetch(url)
+        if live["status"] != 200 or live["sha256"] != sha:
+            out[url] = live
+    return out
+
+
+def purge_and_confirm(env: dict, expected: dict, *, fetch=None, sleep=None,
+                      purge=None, purge_all=None, settle_s: int = 8, rechecks: int = 3) -> dict:
+    """Purge, then PROVE the edge serves the kitchen bytes.
+
+    expected: {live_url: kitchen_sha256}. Single-URL purge first. Rocket's
+    partial purge (files and tags) has been reporting success while the
+    Cloudflare edge keeps the old copy (seen 2026-10-28 on /pharmacy/, /faq/,
+    /arizona-uti-treatment/), so if any clean URL still serves a different sha
+    we fall back to a full-site purge automatically and re-check. Returns
+    {url: "ok ..." | "STALE ..."}; callers must treat STALE as a failed deploy."""
+    fetch = fetch or live_fetch
+    sleep = sleep or time.sleep
+    purge = purge or rocket_purge
+    purge_all = purge_all or rocket_purge_everything
+    results = {}
+    if not expected:
+        return results
+    purge(env, list(expected))
+    sleep(settle_s)
+    stale = _stale(expected, fetch)
+    for url in expected:
+        if url not in stale:
+            results[url] = "ok (single-URL purge; live sha matches kitchen)"
+    if not stale:
+        return results
+    for url, live in stale.items():
+        print(f"  [cache] {url} still stale after single-URL purge "
+              f"(live {live['sha256'][:12]} cf={live['cf_cache'] or '-'} age={live['age'] or '-'}) "
+              f"-> full-site purge")
+    purge_all(env)
+    remaining = dict(stale)
+    for _ in range(rechecks):
+        sleep(settle_s)
+        remaining = _stale({u: expected[u] for u in remaining}, fetch)
+        if not remaining:
+            break
+    for url in stale:
+        if url in remaining:
+            live = remaining[url]
+            results[url] = (f"STALE: live sha {live['sha256'][:12]} != kitchen {expected[url][:12]} "
+                            f"(HTTP {live['status']}, cf={live['cf_cache'] or '-'}, age={live['age'] or '-'}) "
+                            f"even after full-site purge")
+            print(f"  [cache] {url}: {results[url]}", file=sys.stderr)
+        else:
+            results[url] = "ok (full-site purge fallback; live sha matches kitchen)"
+    return results
+
+
 # --------------------------------------------------------------------------
 # Homepage baseline (must be unchanged by any page deploy)
 # --------------------------------------------------------------------------
@@ -697,11 +791,20 @@ def verify_http(item: PagePlan) -> str | None:
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             status = resp.status
-            html = resp.read().decode("utf-8", errors="replace")
+            raw = resp.read()
+            hdrs = getattr(resp, "headers", None) or {}
+            cf_cache = hdrs.get("cf-cache-status", "-")
+            age = hdrs.get("age", "-")
     except (urllib.error.URLError, urllib.error.HTTPError) as e:
         return f"request failed: {e}"
     if status != 200:
         return f"bad status {status}"
+    if item.sha256:
+        live_sha = hashlib.sha256(raw).hexdigest()
+        if live_sha != item.sha256:
+            return (f"live sha {live_sha[:12]} != kitchen {item.sha256[:12]} "
+                    f"(cf-cache-status={cf_cache}, age={age}) — edge is serving a stale copy")
+    html = raw.decode("utf-8", errors="replace")
     if not html.lstrip().lower().startswith("<!doctype html>"):
         return "response is not our static HTML page"
     missing = [m for m in WARN_IF_MISSING if m not in html]
@@ -979,10 +1082,13 @@ def main(argv=None) -> int:
 
     # cache flush: Rocket CDN purge of exactly the uploaded URLs.
     flush_results = {}
+    stale_pages = []
     if not args.skip_flush and uploaded:
-        ok = rocket_purge(env, [item.url for item in uploaded])
+        confirmed = purge_and_confirm(env, {item.url: item.sha256 for item in uploaded})
         for item in uploaded:
-            flush_results[item.page] = "Rocket purge ok" if ok else "Rocket purge FAILED — purge in Rocket panel"
+            flush_results[item.page] = confirmed.get(item.url, "not checked")
+            if not flush_results[item.page].startswith("ok"):
+                stale_pages.append(item.page)
 
     # GoDaddy fallback — do not use since 2026-10-26.
     # GoDaddy WPaaS ran a FULL-SITE ban on any publish->publish stub update,
@@ -1036,7 +1142,9 @@ def main(argv=None) -> int:
     homepage_after = homepage_snapshot()
     hp_problem = homepage_problem(homepage_before, homepage_after)
     print(f"  homepage: {'unchanged vs baseline' if not hp_problem else 'CHANGED — ' + hp_problem}")
-    ok = not failed_uploads and not failed_verify and not hp_problem
+    if stale_pages:
+        print(f"  STALE AT EDGE (live sha != kitchen): {', '.join(stale_pages)}")
+    ok = not failed_uploads and not failed_verify and not hp_problem and not stale_pages
     print(f"  result: {'ALL GOOD' if ok else 'ATTENTION NEEDED'}")
     print("=" * 70)
     return 0 if ok else 1

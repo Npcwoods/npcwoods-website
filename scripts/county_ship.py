@@ -236,9 +236,20 @@ def cmd_ship(args) -> int:
     sys.modules[dp_spec.name] = dp
     dp_spec.loader.exec_module(dp)
     pid = dp.get_or_create_stub(env, args.slug, args.title)
-    ok = D.rocket_purge(env, purge)
-    print("STUB_ID", pid, "TS", ts, "PURGE", "ok" if ok else "FAILED")
-    return 0 if ok else 1
+    # Purge, then prove the edge serves the kitchen bytes for every NEW asset.
+    # Rocket's single-URL purge can report success and leave the old edge copy,
+    # so purge_and_confirm falls back to a full-site purge automatically and
+    # reports STALE if the live sha still does not match. The page HTML itself
+    # goes up (and is confirmed) with scripts/deploy.py.
+    import hashlib
+    expected = {url_for(r): hashlib.sha256(local.read_bytes()).hexdigest() for local, r in assets}
+    D.rocket_purge(env, [page_url])
+    confirmed = D.purge_and_confirm(env, expected)
+    stale = [u for u, r in confirmed.items() if not r.startswith("ok")]
+    for u, r in confirmed.items():
+        print(f"  [cache] {u}: {r}")
+    print("STUB_ID", pid, "TS", ts, "PURGE", "ok" if not stale else "STALE: " + ", ".join(stale))
+    return 0 if not stale else 1
 
 
 def main(argv=None) -> int:

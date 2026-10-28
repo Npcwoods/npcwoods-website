@@ -18,9 +18,9 @@ ABOUT = ROOT / "html/about/index.html"
 CREDENTIALS = ROOT / "landing-pages/credentials/index.html"
 
 AEO_QUESTIONS = (
-    "Can I get a UTI prescription without a video call?",
+    "Can I get UTI treatment without a video call?",
     "How much does an online urgent care visit cost without a health plan?",
-    "Can a nurse practitioner prescribe GLP-1 online?",
+    "Can a nurse practitioner help with GLP-1 weight loss online?",
     "Is text-based telemedicine safe for sinus infections?",
 )
 
