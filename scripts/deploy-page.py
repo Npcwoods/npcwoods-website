@@ -6,8 +6,14 @@ Automates:
  2. Dynamic patching of the target mu-plugin routing file on the server.
  3. WP REST API stub creation/discovery.
  4. Sitemap exclusion patching in npcwoods-faq-schema.php (if --noindex).
- 5. Invalidation of GoDaddy Varnish cache (empty page patch touch).
+ 5. Rocket.net CDN cache purge for the page URL (was GoDaddy Varnish stub
+    touch until 2026-10-26).
  6. Cache-busted HTTP verification of the live page.
+
+HOST: Rocket.net site 354775 since 2026-10-26. SFTP is key auth
+(ROCKET_SFTP_* in Chris-HQ/.env); web root is public_html/. The GoDaddy
+target (html/ prefix, password SFTP) is commented below — do not use since
+2026-10-26.
 """
 import argparse
 import base64
@@ -30,6 +36,18 @@ BACKUP_DIR.mkdir(parents=True, exist_ok=True)
 
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 TS = datetime.now().strftime("%Y%m%d-%H%M%S")
+REMOTE_PREFIX = "public_html"  # Rocket.net web root
+# REMOTE_PREFIX = "html"       # GoDaddy — do not use since 2026-10-26
+
+
+def _deploy_module():
+    """Reuse deploy.py's Rocket SFTP connect + CDN purge (one implementation)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("npcw_deploy", Path(__file__).resolve().parent / "deploy.py")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = mod  # dataclasses need the module registered
+    spec.loader.exec_module(mod)
+    return mod
 
 
 def load_env():
@@ -47,11 +65,17 @@ def load_env():
 
 
 def sftp_connect(env):
-    transport = paramiko.Transport((env["SFTP_HOST"], int(env["SFTP_PORT"])))
-    transport.banner_timeout = 60
-    transport.auth_timeout = 60
-    transport.connect(username=env["SFTP_USERNAME"], password=env["SFTP_PASSWORD"])
-    return paramiko.SFTPClient.from_transport(transport), transport
+    """Rocket.net key-auth SFTP (see deploy.py). One attempt; stop on failure."""
+    return _deploy_module().sftp_connect(env)
+
+
+# GoDaddy — do not use since 2026-10-26.
+# def sftp_connect(env):
+#     transport = paramiko.Transport((env["SFTP_HOST"], int(env["SFTP_PORT"])))
+#     transport.banner_timeout = 60
+#     transport.auth_timeout = 60
+#     transport.connect(username=env["SFTP_USERNAME"], password=env["SFTP_PASSWORD"])
+#     return paramiko.SFTPClient.from_transport(transport), transport
 
 
 def sftp_mkdir_safe(sftp, remote_path):
@@ -164,7 +188,7 @@ def main():
     parser.add_argument("--local", required=True, help="Local HTML file path")
     parser.add_argument("--slug", required=True, help="WordPress page slug (e.g. uti-care)")
     parser.add_argument("--title", required=True, help="WordPress page title")
-    parser.add_argument("--remote", help="Remote HTML path (default: html/{slug}/index.html)")
+    parser.add_argument("--remote", help="Remote HTML path (default: public_html/{slug}/index.html)")
     parser.add_argument("--mu-plugin", default="npcwoods-static-pages.php", help="Routing mu-plugin filename")
     parser.add_argument("--noindex", action="store_true", help="Add page to sitemap exclusion schema")
     args = parser.parse_args()
@@ -176,7 +200,7 @@ def main():
 
     slug = args.slug.strip().lower()
     title = args.title.strip()
-    remote_path = args.remote or f"html/{slug}/index.html"
+    remote_path = args.remote or f"{REMOTE_PREFIX}/{slug}/index.html"
     mu_plugin_name = args.mu_plugin
 
     print(f"=== Unified Deploy: /{slug}/ ===")
@@ -195,10 +219,13 @@ def main():
 
         # Step 2: Route configuration in mu-plugin
         print("\n[2/5] Configuring mu-plugin routing...")
-        remote_mu_path = f"html/wp-content/mu-plugins/{mu_plugin_name}"
+        remote_mu_path = f"{REMOTE_PREFIX}/wp-content/mu-plugins/{mu_plugin_name}"
         remote_relative_path = remote_path
-        if remote_relative_path.startswith("html/"):
-            remote_relative_path = remote_relative_path[len("html/"):]
+        # route map values are web-root relative (same on GoDaddy html/ and Rocket public_html/)
+        for prefix in (f"{REMOTE_PREFIX}/", "html/"):
+            if remote_relative_path.startswith(prefix):
+                remote_relative_path = remote_relative_path[len(prefix):]
+                break
 
         plugin_text = ""
         try:
@@ -226,23 +253,24 @@ def main():
             patched_faq = patch_local_faq_schema(page_id, slug)
             if patched_faq:
                 local_faq = ROOT / "php" / "npcwoods-faq-schema.php"
-                remote_faq = "html/wp-content/mu-plugins/npcwoods-faq-schema.php"
+                remote_faq = f"{REMOTE_PREFIX}/wp-content/mu-plugins/npcwoods-faq-schema.php"
                 sftp_backup_and_upload(sftp, local_faq, remote_faq)
         else:
             print("\n[4/5] Skipping sitemap exclusion (page is indexable)")
 
-        # Step 5: Flush GoDaddy Varnish Cache
-        print("\n[5/5] Flushing Varnish cache...")
-        wp_request(env, "POST", f"/pages/{page_id}", {
-            "content": f"<!-- Stub flushed at {TS}; routed dynamically by {mu_plugin_name}. -->"
-        })
-        print(f"  [flush] WP stub page {page_id} touched.")
+        # Step 5: Rocket CDN purge for this URL (GoDaddy stub touch retired 2026-10-26)
+        print("\n[5/5] Purging Rocket CDN cache...")
+        _deploy_module().rocket_purge(env, [f"https://npcwoods.com/{slug}/"])
+        # GoDaddy Varnish stub touch — do not use since 2026-10-26:
+        # wp_request(env, "POST", f"/pages/{page_id}", {
+        #     "content": f"<!-- Stub flushed at {TS}; routed dynamically by {mu_plugin_name}. -->"
+        # })
 
     finally:
         sftp.close()
         transport.close()
 
-    print("\n[wait] 5 seconds for Varnish cache to settle...")
+    print("\n[wait] 5 seconds for the CDN purge to settle...")
     time.sleep(5)
 
     # Verification check

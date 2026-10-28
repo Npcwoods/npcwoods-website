@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Plan or upload local files to the GoDaddy SFTP server.
 
+RETIRED FOR LIVE UPLOADS 2026-10-26: npcwoods.com moved to Rocket.net.
+The --execute path is blocked (it only knows the GoDaddy target). Dry-run
+planning still works. Upload with scripts/deploy.py (Rocket) instead.
+
 Usage:
     python3 scripts/sftp-upload.py path/to/file1 path/to/file2 ...
     python3 scripts/sftp-upload.py --execute \
@@ -146,7 +150,12 @@ def main(argv):
         print("paramiko not installed. Run: pip3 install paramiko", file=sys.stderr)
         return 2
 
-    env = load_env()
+    # GoDaddy target — do not use since 2026-10-26 (site is on Rocket.net).
+    print("[blocked] sftp-upload.py only targets GoDaddy, retired 2026-10-26. "
+          "Use scripts/deploy.py (Rocket.net). Nothing uploaded.", file=sys.stderr)
+    return 2
+
+    env = load_env()  # noqa: unreachable — GoDaddy fallback kept for reference
     host = env.get("SFTP_HOST")
     port = int(env.get("SFTP_PORT") or 22)
     user = env.get("SFTP_USERNAME")

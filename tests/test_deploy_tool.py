@@ -71,7 +71,7 @@ class PathResolutionTest(unittest.TestCase):
     def test_local_and_remote_paths(self):
         self.assertEqual(self.m.local_path_for(PAGE),
                          self.m.ROOT / "landing-pages" / PAGE / "index.html")
-        self.assertEqual(self.m.remote_path_for(PAGE), f"html/{PAGE}/index.html")
+        self.assertEqual(self.m.remote_path_for(PAGE), f"public_html/{PAGE}/index.html")
         self.assertEqual(self.m.url_for(PAGE), f"https://npcwoods.com/{PAGE}/")
 
     def test_normalize_rejects_traversal_and_bare_root(self):
@@ -130,13 +130,13 @@ class BackupPathTest(unittest.TestCase):
 
     def test_backup_path_is_dated_timestamped_and_never_clobbers_remote_name(self):
         now = datetime(2026, 6, 11, 14, 30, 5)
-        p = self.m.backup_path_for("html/uti-treatment/mesa-az/search-safe/index.html", now)
+        p = self.m.backup_path_for("public_html/uti-treatment/mesa-az/search-safe/index.html", now)
         self.assertEqual(p.parent.name, "2026-06-11")
         self.assertEqual(p.parent.parent.name, "deploy-backups")
         self.assertEqual(p.parent.parent.parent.name, "content-output")
         self.assertEqual(
             p.name,
-            "html__uti-treatment__mesa-az__search-safe__index.html.remote-backup-20260611-143005",
+            "public_html__uti-treatment__mesa-az__search-safe__index.html.remote-backup-20260611-143005",
         )
 
 
@@ -162,7 +162,7 @@ class DryRunSafetyTest(unittest.TestCase):
         fake_paramiko.Transport.assert_not_called()
         text = out.getvalue()
         self.assertIn("[dry-run] nothing uploaded", text)
-        self.assertIn(f"html/{CLEAN_PAGE}/index.html", text)
+        self.assertIn(f"public_html/{CLEAN_PAGE}/index.html", text)
         self.assertRegex(text, r"sha256 [0-9a-f]{12}")  # checksum shown in the plan
 
     def test_mesa_search_safe_kitchen_file_is_not_blocked_by_pixel_markers(self):
@@ -323,7 +323,7 @@ class VerifyOnlyTest(unittest.TestCase):
         plan = [self.m.PagePlan(
             page=PAGE,
             local=self.m.ROOT / "landing-pages" / PAGE / "index.html",
-            remote=f"html/{PAGE}/index.html",
+            remote=f"public_html/{PAGE}/index.html",
             url=f"https://npcwoods.com/{PAGE}/",
         )]
         result = self.m.VerificationResult(
@@ -385,7 +385,7 @@ class CleanUrlVerifyTest(unittest.TestCase):
         item = self.m.PagePlan(
             page=PAGE,
             local=Path("/tmp/unused"),
-            remote=f"html/{PAGE}/index.html",
+            remote=f"public_html/{PAGE}/index.html",
             url=f"https://npcwoods.com/{PAGE}/",
         )
         captured = {}
@@ -603,7 +603,7 @@ class GitGuardTest(unittest.TestCase):
             with self.assertRaises(Reached):
                 self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--live", "--confirm-live-deploy", CONFIRM])
         self.assertIn(f"[about to upload] main @ {head}", out.getvalue())
-        self.assertIn(f"landing-pages/{CLEAN_PAGE}/index.html -> html/{CLEAN_PAGE}/index.html", out.getvalue())
+        self.assertIn(f"landing-pages/{CLEAN_PAGE}/index.html -> public_html/{CLEAN_PAGE}/index.html", out.getvalue())
 
     def test_deploy_backups_do_not_count_as_dirty(self):
         (self.counter / "deploy-backups").mkdir()

@@ -9,11 +9,21 @@ Pipeline per page:
      fetched, and HEAD == origin/main. No bypass flag.
   1. Local safety checks that BLOCK: no tracking pixels or Ahrefs, no banned
      words (appointment, physician, doctor, insurance, MD), no facts drift.
-  2. Timestamped remote backup -> content-output/deploy-backups/<date>/.
-  3. SFTP upload: landing-pages/{path}/index.html -> html/{path}/index.html.
-  4. WP stub touch (REST no-op update) to flush GoDaddy Varnish cache.
-  5. Live verification (clean public URL, no query string; full Playwright
-     tracking run if playwright is installed).
+  2. Homepage baseline snapshot (https://npcwoods.com/?n=1: status, bytes,
+     sha256, <title>) before anything is uploaded.
+  3. Timestamped remote backup -> content-output/deploy-backups/<date>/.
+  4. SFTP upload (Rocket.net, key auth):
+     landing-pages/{path}/index.html -> public_html/{path}/index.html.
+  5. Rocket CDN cache purge for exactly the uploaded URLs
+     (POST https://api.rocket.net/v1/sites/354775/cache/purge).
+  6. Live verification (clean public URL, no query string; full Playwright
+     tracking run if playwright is installed), then the homepage is
+     re-checked against the step-2 baseline.
+
+HOST: npcwoods.com moved from GoDaddy Managed WordPress to Rocket.net on
+2026-10-26 (site id 354775). GoDaddy (html/ prefix, password SFTP, WP stub
+touch for Varnish) is kept below as commented fallback only. Do not use it
+since 2026-10-26.
 
 DEFAULT IS DRY-RUN. Nothing goes live without Chris's explicit yes:
 --live requires the confirmation phrase, typed interactively or passed
@@ -52,8 +62,13 @@ KITCHEN = Path("/Users/macmini/Desktop/Chris-HQ")
 COUNTER_CARD = KITCHEN / "KITCHEN-COUNTERS.json"
 GIT_TIMEOUT_S = 90
 LANDING_DIR = "landing-pages"
-REMOTE_PREFIX = "html"
+# Rocket.net web root, relative to the SFTP home (/home/<user>/public_html).
+REMOTE_PREFIX = "public_html"
+# REMOTE_PREFIX = "html"  # GoDaddy Managed WP — do not use since 2026-10-26
 SITE = "https://npcwoods.com"
+HOMEPAGE_CHECK_URL = f"{SITE}/?n=1"
+ROCKET_API = "https://api.rocket.net/v1"
+ROCKET_SITE_ID_DEFAULT = "354775"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 
 LIVE_DEPLOY_CONFIRMATION = "CHRIS APPROVED LIVE DEPLOY"
@@ -457,12 +472,33 @@ def confirm_live(confirmation: str | None, prompt=None) -> bool:
 # --------------------------------------------------------------------------
 
 def sftp_connect(env):
+    """Rocket.net SFTP: key auth only (Rocket has no SFTP passwords).
+    Host key must already be in ~/.ssh/known_hosts (RejectPolicy).
+    ONE attempt. If it fails, stop and tell Chris; never retry in a loop."""
+    import os
     import paramiko  # lazy: dry-run must never need it
-    transport = paramiko.Transport((env["SFTP_HOST"], int(env["SFTP_PORT"])))
-    transport.banner_timeout = 60
-    transport.auth_timeout = 60
-    transport.connect(username=env["SFTP_USERNAME"], password=env["SFTP_PASSWORD"])
-    return paramiko.SFTPClient.from_transport(transport), transport
+    client = paramiko.SSHClient()
+    client.load_host_keys(os.path.expanduser("~/.ssh/known_hosts"))
+    client.set_missing_host_key_policy(paramiko.RejectPolicy())
+    client.connect(
+        env["ROCKET_SFTP_HOST"],
+        port=int(env.get("ROCKET_SFTP_PORT") or 22),
+        username=env["ROCKET_SFTP_USER"],
+        key_filename=env["ROCKET_SFTP_KEY_PATH"],
+        allow_agent=False, look_for_keys=False,
+        timeout=60, banner_timeout=60, auth_timeout=60,
+    )
+    return client.open_sftp(), client
+
+
+# GoDaddy fallback — do not use since 2026-10-26 (npcwoods.com is on Rocket.net).
+# def sftp_connect_godaddy(env):
+#     import paramiko
+#     transport = paramiko.Transport((env["SFTP_HOST"], int(env["SFTP_PORT"])))  # 1085255.us30.ssh.myftpupload.com
+#     transport.banner_timeout = 60
+#     transport.auth_timeout = 60
+#     transport.connect(username=env["SFTP_USERNAME"], password=env["SFTP_PASSWORD"])
+#     return paramiko.SFTPClient.from_transport(transport), transport
 
 
 def sftp_mkdirs(sftp, remote_dir: str) -> None:
@@ -508,7 +544,108 @@ def remote_diff(sftp, plan: list[PagePlan]) -> None:
 
 
 # --------------------------------------------------------------------------
-# WP cache flush
+# Rocket CDN cache purge (replaces the GoDaddy WP stub touch since 2026-10-26)
+# --------------------------------------------------------------------------
+# Rocket's Cloudflare blocks Python urllib, so these calls go through curl.
+# Credentials go to curl on stdin (never argv, never printed).
+
+def _curl_json(url: str, *, method: str = "GET", body: dict | None = None,
+               token: str | None = None, timeout: int = 60) -> tuple[int, dict | None]:
+    """curl with its whole config (URL, headers, token) on stdin and the JSON
+    body in a 0600 temp file that is deleted right after. Nothing secret
+    reaches argv or stdout."""
+    import os
+    import tempfile
+    cfg = [f'url = "{url}"', f'request = "{method}"', "silent", "show-error",
+           'header = "Content-Type: application/json"',
+           'header = "Accept: application/json"',
+           'write-out = "\\n%{http_code}"', f"max-time = {timeout}"]
+    if token:
+        cfg.append(f'header = "Authorization: Bearer {token}"')
+    body_path = None
+    try:
+        if body is not None:
+            fd, body_path = tempfile.mkstemp(prefix="rocket-", suffix=".json")
+            with os.fdopen(fd, "w") as fh:
+                json.dump(body, fh)
+            cfg.append(f'data-binary = "@{body_path}"')
+        proc = subprocess.run(["curl", "-K", "-"], input="\n".join(cfg) + "\n",
+                              capture_output=True, text=True, timeout=timeout + 10)
+    finally:
+        if body_path:
+            os.unlink(body_path)
+    text, _, code = proc.stdout.rpartition("\n")
+    try:
+        status = int(code.strip())
+    except ValueError:
+        return 0, None
+    try:
+        return status, (json.loads(text) if text.strip() else None)
+    except json.JSONDecodeError:
+        return status, None
+
+
+def rocket_token(env: dict) -> str | None:
+    status, payload = _curl_json(f"{ROCKET_API}/login", method="POST", body={
+        "username": env["ROCKET_API_USERNAME"], "password": env["ROCKET_API_PASSWORD"]})
+    if status != 200 or not payload or not payload.get("token"):
+        print(f"  [cache] Rocket API login failed (HTTP {status}). Purge manually in the Rocket panel.")
+        return None
+    return payload["token"]
+
+
+def rocket_purge(env: dict, urls: list[str]) -> bool:
+    """Purge exactly these URLs from Rocket's CDN. Not purge_everything."""
+    if not urls:
+        return True
+    token = rocket_token(env)
+    if not token:
+        return False
+    site_id = env.get("ROCKET_SITE_ID") or ROCKET_SITE_ID_DEFAULT
+    status, payload = _curl_json(f"{ROCKET_API}/sites/{site_id}/cache/purge",
+                                 method="POST", body={"files": urls}, token=token)
+    ok = status == 200 and bool(payload is None or payload.get("success", True))
+    print(f"  [cache] Rocket purge {len(urls)} URL(s): {'ok' if ok else f'FAILED (HTTP {status})'}")
+    return ok
+
+
+# --------------------------------------------------------------------------
+# Homepage baseline (must be unchanged by any page deploy)
+# --------------------------------------------------------------------------
+
+def homepage_snapshot(url: str = HOMEPAGE_CHECK_URL) -> dict:
+    """Read-only GET via curl. Returns status, bytes, sha256, title."""
+    proc = subprocess.run(["curl", "-s", "-A", UA, "--max-time", "45", url],
+                          capture_output=True, timeout=60)
+    head = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "-A", UA,
+                           "--max-time", "45", url], capture_output=True, text=True, timeout=60)
+    body = proc.stdout or b""
+    m = re.search(rb"<title>([^<]*)</title>", body)
+    return {
+        "status": int(head.stdout or 0),
+        "bytes": len(body),
+        "sha256": hashlib.sha256(body).hexdigest(),
+        "title": m.group(1).decode("utf-8", "replace") if m else "",
+        "custom_hero": b'class="hero' in body and b"wp-site-blocks" not in body,
+    }
+
+
+def homepage_problem(before: dict, after: dict) -> str | None:
+    if after["status"] != 200:
+        return f"homepage status {after['status']}"
+    if not after["custom_hero"]:
+        return "homepage lost the custom PHP template (hero missing / wp-site-blocks present)"
+    if after["title"] != before["title"]:
+        return f"homepage title changed: {before['title']!r} -> {after['title']!r}"
+    if after["sha256"] != before["sha256"]:
+        return (f"homepage sha changed {before['sha256'][:12]} -> {after['sha256'][:12]} "
+                f"({before['bytes']} -> {after['bytes']} bytes)")
+    return None
+
+
+# --------------------------------------------------------------------------
+# GoDaddy WP stub-touch cache flush — do not use since 2026-10-26.
+# Kept (uncalled) as fallback reference only.
 # --------------------------------------------------------------------------
 
 def wp_req(url: str, auth: str, method="GET", body=None):
@@ -738,7 +875,7 @@ def main(argv=None) -> int:
                         help="skip upload; just run live verification for the pages")
     parser.add_argument("--remote-diff", action="store_true",
                         help="dry-run extra: read-only SFTP checksum diff vs remote")
-    parser.add_argument("--skip-flush", action="store_true", help="live mode: skip WP stub touch")
+    parser.add_argument("--skip-flush", action="store_true", help="live mode: skip Rocket CDN purge")
     parser.add_argument("--skip-verify", action="store_true", help="live mode: skip post-deploy verification")
     args = parser.parse_args((argv or sys.argv)[1:])
 
@@ -783,6 +920,8 @@ def main(argv=None) -> int:
             return 2
 
     print_plan(plan, stub_table, head)
+    print(f"  target: Rocket.net site {ROCKET_SITE_ID_DEFAULT} SFTP (key auth), web root {REMOTE_PREFIX}/")
+    print(f"  after upload: Rocket CDN purge of {len(plan)} URL(s): " + ", ".join(i.url for i in plan))
 
     # ---- dry-run (default) ----------------------------------------------
     if not args.live:
@@ -805,7 +944,17 @@ def main(argv=None) -> int:
     for item in plan:
         print(f"  {item.local.relative_to(ROOT)} -> {item.remote}  (sha256 {item.sha256[:12]}…)")
     env = load_env()
-    print(f"\n[sftp] connecting to {env['SFTP_HOST']}:{env['SFTP_PORT']}")
+    missing = [k for k in ("ROCKET_SFTP_HOST", "ROCKET_SFTP_USER", "ROCKET_SFTP_KEY_PATH") if not env.get(k)]
+    if missing:
+        print(f"[blocked] .env is missing {', '.join(missing)}. Nothing uploaded.", file=sys.stderr)
+        return 2
+    homepage_before = homepage_snapshot()
+    print(f"[homepage baseline] {homepage_before['status']} {homepage_before['bytes']:,} bytes "
+          f"sha256 {homepage_before['sha256'][:12]}… title {homepage_before['title']!r}")
+    if homepage_before["status"] != 200 or not homepage_before["custom_hero"]:
+        print("[blocked] homepage is not healthy BEFORE deploy. Nothing uploaded.", file=sys.stderr)
+        return 2
+    print(f"\n[sftp] connecting to Rocket {env['ROCKET_SFTP_HOST']}:{env.get('ROCKET_SFTP_PORT') or 22}")
     sftp, transport = sftp_connect(env)
     uploaded, backups, failed_uploads = [], {}, []
     try:
@@ -828,14 +977,17 @@ def main(argv=None) -> int:
         sftp.close()
         transport.close()
 
-    # cache flush
-    # GoDaddy WPaaS runs a FULL-SITE ban (gateway + CDN) on any publish->publish
-    # update when full-page CDN cache is on, so one stub touch flushes every page.
-    # Touching one stub per page just stacks bans (and burns the ban token
-    # limit) while every page sits cold behind the gateway rate limiter, which
-    # is what 503s Googlebot. Touch once; npcwoods-cache-warm.php re-warms.
+    # cache flush: Rocket CDN purge of exactly the uploaded URLs.
     flush_results = {}
-    if not args.skip_flush:
+    if not args.skip_flush and uploaded:
+        ok = rocket_purge(env, [item.url for item in uploaded])
+        for item in uploaded:
+            flush_results[item.page] = "Rocket purge ok" if ok else "Rocket purge FAILED — purge in Rocket panel"
+
+    # GoDaddy fallback — do not use since 2026-10-26.
+    # GoDaddy WPaaS ran a FULL-SITE ban on any publish->publish stub update,
+    # so one stub touch flushed every page. Kept disabled for reference.
+    if False:  # noqa: SIM108 — GoDaddy stub touch, do not use since 2026-10-26
         auth = wp_auth(env)
         flushed_by = None
         for item in uploaded:
@@ -881,7 +1033,10 @@ def main(argv=None) -> int:
     for page, err in failed_uploads:
         print(f"    {page}: UPLOAD FAILED — {err}")
     failed_verify = [p for p, r in verify_results.items() if r.startswith("FAIL")]
-    ok = not failed_uploads and not failed_verify
+    homepage_after = homepage_snapshot()
+    hp_problem = homepage_problem(homepage_before, homepage_after)
+    print(f"  homepage: {'unchanged vs baseline' if not hp_problem else 'CHANGED — ' + hp_problem}")
+    ok = not failed_uploads and not failed_verify and not hp_problem
     print(f"  result: {'ALL GOOD' if ok else 'ATTENTION NEEDED'}")
     print("=" * 70)
     return 0 if ok else 1
