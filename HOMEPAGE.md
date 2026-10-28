@@ -9,14 +9,19 @@ Live `/` is the custom PHP plate `page-npcwoods-home.php`, forced onto Twenty Tw
 Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only. Never hardcode. Never use chat memory. Never use skills that still say `vki.0b3` or `client_b58ea8ab6e`.
 
 - Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`).
-- GoDaddy SFTP reset changes USERNAME and password. Re-read `.env`. If SFTP fails once, stop and ask Chris — don't brute-force.
-- SSH/SFTP host: `1085255.us30.ssh.myftpupload.com` port 22. Not the HTTPS ftp host.
+- Host since 2026-10-26: **Rocket.net** site 354775. SFTP is SSH-key only (no password): host `170.39.76.85`, port 22, user `idjkehn`, key `~/.ssh/rocket_npcwoods_354775` on the Mini. `.env` names: `ROCKET_SFTP_HOST`, `ROCKET_SFTP_PORT`, `ROCKET_SFTP_USER`, `ROCKET_SFTP_KEY_PATH`, `ROCKET_WEB_ROOT` (= `public_html`). If SFTP fails once, stop and ask Chris — don't brute-force.
+- Cache: Rocket CDN purge of the changed URLs (`ROCKET_API_USERNAME`/`ROCKET_API_PASSWORD`, `POST https://api.rocket.net/v1/sites/354775/cache/purge`). `scripts/deploy.py` does it.
+
+<!-- GoDaddy — do not use since 2026-10-26:
+- GoDaddy SFTP reset changes USERNAME and password. Re-read `.env`.
+- SSH/SFTP host: `1085255.us30.ssh.myftpupload.com` port 22, web root `html/`.
+-->
 
 Do not put passwords in this file, in chat, or in skills.
 
 ## mu-plugins
 
-WordPress loads **every** `.php` in `html/wp-content/mu-plugins/`.
+WordPress loads **every** `.php` in `public_html/wp-content/mu-plugins/` (Rocket; was `html/` on GoDaddy).
 
 - NEVER two PHP files with the same functions.
 - NEVER upload `copy 1.php`, `.PATCHED.php`, or a second copy of a plugin.
@@ -28,13 +33,16 @@ WordPress loads **every** `.php` in `html/wp-content/mu-plugins/`.
 
 The cause of the "unstyled"/default WP look was **not** missing CSS. Active theme is Twenty Twenty-Four (block theme). It ignores PHP templates unless forced.
 
-Real homepage is `page-npcwoods-home.php`. It MUST exist at:
+Real homepage is `page-npcwoods-home.php`.
+
+- **Kitchen source (git):** `homepage/page-npcwoods-home.php` in this repo. That is the only copy in the kitchen; there is no `html/wp-content/...` copy in git.
+- **Live server (Rocket.net):** it MUST exist at
 
 ```
-html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php
+public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php
 ```
 
-Also keep a copy under `themes/flavor/`.
+(GoDaddy path was `html/wp-content/themes/twentytwentyfour/...` — do not use since 2026-10-26.) Also keep a copy under `themes/flavor/` on the server. On 2026-10-27 the live file (83,431 bytes, sha256 `70e945da…`) equalled the kitchen `homepage/page-npcwoods-home.php`.
 
 Force it with mu-plugin `npcwoods-force-php-templates.php` (already live). Do not delete it. Do not add a second copy of it.
 
@@ -46,10 +54,9 @@ Force it with mu-plugin `npcwoods-force-php-templates.php` (already live). Do no
 Patients hit the ordinary address. That is the done check:
 
 - `https://npcwoods.com/` (no `?`) is 200
-- Title is `NPCWoods Telemedicine: $59 Text-Based Urgent Care`
-- H1 is `You feel awful.` (Hybrid V3 Homelander, 2026-09-07)
-- Plate marker: `data-plate="hybrid-v3-homelander"`
-- HTML contains `npc-redesign` and Chris's hero
+- Title is `Telehealth Urgent Care by Text, $59 Flat | NPCWoods` (since 2026-10-18; older title/`npc-redesign`/plate markers are gone — compare against the latest saved baseline instead of hard-coded strings)
+- Rocket baseline 2026-10-27 10:06 PM ET: 200, 92,479 bytes, sha256 `3bdbdbb06c926b31d6a56dcbf07f97d38a31e45882f81c8fc87417fbe90ed69d` (`docs/baselines/`); byte-identical across fetches, no per-request counter on Rocket
+- HTML contains the custom hero (`class="hero"`, Chris's headshot)
 - HTML is **not** `wp-site-blocks` with a blue underlined nav list
 - `/wp-admin/` should be the login page (200), not "WordPress Error"
 

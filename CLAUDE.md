@@ -28,7 +28,7 @@ Read `AGENTS.md` and `skills/npcwoods-live-page-launch/SKILL.md` before you ship
 > This file contains code structure, page stubs, and deployment workflows for NPCWoods.com.
 
 ## Key Page IDs & Routing
-- Homepage: `page-npcwoods-home.php` at `html/wp-content/themes/twentytwentyfour/` (also keep a copy under `themes/flavor/`), forced by `npcwoods-force-php-templates.php`. Read `HOMEPAGE.md`.
+- Homepage: kitchen source `homepage/page-npcwoods-home.php`; live on Rocket.net at `public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php` (also keep a server copy under `themes/flavor/`), forced by `npcwoods-force-php-templates.php`. Read `HOMEPAGE.md`.
 - Experience: Page ID `310` | Blog: Page ID `413` | GA: Page ID `252` | NC: Page ID `253`
 - WordPress REST API Auth: `curl -u "$WP_USERNAME:$WP_APP_PASSWORD"`
 - Blog posts: Set status to `draft` via `POST /wp-json/wp/v2/posts`. Closing comments and pingbacks is mandatory.

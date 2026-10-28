@@ -1,0 +1,9 @@
+url=https://npcwoods.com/?n=1
+measured=2026-10-27 22:06 ET from Mac Mini (curl)
+host=Rocket.net site 354775
+status=200
+bytes=92479
+sha256=3bdbdbb06c926b31d6a56dcbf07f97d38a31e45882f81c8fc87417fbe90ed69d
+title=Telehealth Urgent Care by Text, $59 Flat | NPCWoods
+clean_url_sha_same=yes
+per_request_counter=none seen (4 fetches, HIT and MISS, byte-identical)
