@@ -68,6 +68,7 @@ add_action( "template_redirect", function() {
     "guadalupe-county-text-visit" => "guadalupe-county-text-visit/index.html",
     "conejos-county-text-visit" => "conejos-county-text-visit/index.html",
     "mineral-county-text-visit" => "mineral-county-text-visit/index.html",
+    "rich-county-text-visit" => "rich-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
     );
 
