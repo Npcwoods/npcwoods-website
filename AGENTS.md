@@ -4,9 +4,9 @@ Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room, k
 
 Read the **STOP. Read this first.** banner at the top of `CLAUDE.md` before you edit, preview, match, or deploy anything.
 
-Live site = WordPress on GoDaddy (npcwoods.com). This repo is source. Vercel is preview only.
+Live site = WordPress on Rocket.net (npcwoods.com, site 354775, since 2026-10-26). GoDaddy runs the domain's settings only. This repo is source. Vercel is preview only.
 
-Credentials: load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only (not `/Users/chriswoods/`). Assume that file is current. Never hardcode. Never use chat memory or leftover `vki.0b3` / `client_b58ea8ab6e` examples. Use `scripts/deploy.py` for existing pages. First-time URLs need the mu-plugin route, a WordPress stub, the HTML upload, a WPaaS cache flush, and a **clean-URL** verify (no query string).
+Credentials: load Rocket (`ROCKET_*`, key-only SFTP) and WP settings from `/Users/macmini/Desktop/Chris-HQ/.env` only (not `/Users/chriswoods/`). Assume that file is current. Never hardcode. Never use chat memory or leftover `vki.0b3` / `client_b58ea8ab6e` examples. Use `scripts/deploy.py` for existing pages. First-time URLs need the mu-plugin route, a WordPress stub, the HTML upload, a Rocket cache clear (via Grok Bot; deploy tools purge automatically), and a **clean-URL** verify (no query string, curl from the Mini). All pushes and Rocket cache clears go through Grok Bot.
 
 Do not tell Chris a URL is live until `https://npcwoods.com/<path>/` (no `?`) returns the real HTML.
 

@@ -2,17 +2,17 @@
 
 Talk to Chris in kitchen language from `../WHERE-THINGS-LIVE.md`: dining room = live npcwoods.com, kitchen = this folder on the Mini, freezer = GitHub, plate = a page that loads, push it live = Chris yes then plate it. GitHub save is not live.
 
-**Live site is WordPress on GoDaddy: https://npcwoods.com. It is NOT Vercel.**
+**Live site is WordPress on Rocket.net (site 354775, since 2026-10-26): https://npcwoods.com. It is NOT Vercel.** GoDaddy runs the domain's settings only; its old hosting is retired (never upload there).
 
 - **Source:** this repo (HTML, landing pages, PHP mu-plugins, homepage template). Homepage: `HOMEPAGE.md`.
 - **Preview only:** Vercel review lane (`vercel-review-site.vercel.app`). Never deploy the repo root to Vercel.
-- **Credentials:** Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only (`SFTP_HOST`, `SFTP_PORT=22`, `SFTP_USERNAME` or `SFTP_USER`, `SFTP_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). Assume the file is current. Never hardcode. Never use chat memory or leftover `vki.0b3` / `client_b58ea8ab6e` examples. Never print secrets. Never paste them in chat.
+- **Credentials:** Load Rocket SFTP/API and WP settings from `/Users/macmini/Desktop/Chris-HQ/.env` only (`ROCKET_SFTP_HOST`, `ROCKET_SFTP_PORT=22`, `ROCKET_SFTP_USER`, `ROCKET_SFTP_KEY_PATH` (key-only, no SFTP password), `ROCKET_WEB_ROOT`, `ROCKET_SITE_ID`, `ROCKET_API_USERNAME`, `ROCKET_API_PASSWORD`, `WP_USERNAME`, `WP_APP_PASSWORD`). Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). Assume the file is current. Never hardcode. Never use chat memory or leftover `vki.0b3` / `client_b58ea8ab6e` examples. Never print secrets. Never paste them in chat.
 - **A live URL needs three pieces** or git and production look like they do not match:
   1. HTML here (usually `landing-pages/<path>/index.html`)
-  2. SFTP copy on GoDaddy `html/`
+  2. SFTP copy on Rocket.net `public_html/`
   3. WordPress page stub + mu-plugin route in `php/`
 - **Existing pages:** `python3 scripts/deploy.py --pages <path>` (dry-run by default). Live needs Chris's explicit yes and the phrase `CHRIS APPROVED LIVE DEPLOY`.
-- **First-time URLs:** `deploy.py` will not create the route. Add the mu-plugin map and WP stub, upload the HTML, then flush GoDaddy WPaaS cache (Quick Links → Flush Cache).
+- **First-time URLs:** `deploy.py` will not create the route. Add the mu-plugin map and WP stub, upload the HTML, then clear Rocket cache via Grok Bot (the deploy tools purge Rocket's cache, compare the live sha with the kitchen copy, fall back to a full-site purge and flag STALE if they still differ). Other bots never push or clear the cache themselves.
 - **Verify the clean URL** (no query string). A cache-bust can show the real HTML while `https://npcwoods.com/<path>/` still serves a ~15KB empty WordPress shell. Done means a no-query-string GET is 200, city templates are ~60KB+, and the locked title and H1 are present.
 - **Do not link empty shells.** Many city × condition URLs are WP stubs with no title or H1. Fetch the live URL before adding it to `/sitemap/`, `/conditions/`, or a state hub.
 - **HIPAA:** no patient data. Forbidden live words: doctor, physician, MD, insurance, "Text a Doctor", appointment.
@@ -40,7 +40,7 @@ Marketing surfaces run as static HTML bypassed via mu-plugins:
 - `npcwoods-dental-pages.php` / `npcwoods-pharmacy-pages.php`: Dental and pharmacy page overrides
 - `npcwoods-force-php-templates.php`: forces the homepage PHP template on Twenty Twenty-Four. Already live. Do not delete it. Do not add a second copy. See `HOMEPAGE.md`.
 
-WordPress loads every `.php` in `html/wp-content/mu-plugins/`. Never upload `copy 1.php`, `.PATCHED.php`, or a second file with the same functions. Backups = `.bak` only.
+WordPress loads every `.php` in `public_html/wp-content/mu-plugins/` (Rocket.net). Never upload `copy 1.php`, `.PATCHED.php`, or a second file with the same functions. Backups = `.bak` only.
 
 ## Shared Components
 All static landing pages must include:
@@ -65,8 +65,8 @@ All static landing pages must include:
   ```
 - Public Review URL fallback: `https://vercel-review-site.vercel.app/`
 
-## GoDaddy Production Deployment
-**Use `scripts/deploy.py` — do NOT write new dated one-off deploy scripts.** It handles the whole pipeline (remote backup → SFTP upload → WP stub touch/cache flush → live tracking verification). See `scripts/README-deploy.md`.
+## Rocket.net Production Deployment
+**Use `scripts/deploy.py` — do NOT write new dated one-off deploy scripts.** It handles the whole pipeline (remote backup → key-only SFTP upload to Rocket `public_html/` → Rocket cache purge + sha check → live tracking verification). See `scripts/README-deploy.md`.
 ```bash
 python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe          # dry-run (default, safe)
 python3 scripts/deploy.py --pages <path> --live                              # deploys; asks for Chris's confirmation phrase

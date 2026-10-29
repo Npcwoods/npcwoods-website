@@ -1,11 +1,11 @@
 ---
 name: npcwoods-deploy
-description: Use when Chris explicitly approves publishing, deploying, uploading, or pushing website changes live to NPCWoods.com via GoDaddy Managed WordPress static HTML bypass pages, mu-plugins, WordPress page stubs, or homepage updates.
+description: Use when Chris explicitly approves publishing, deploying, uploading, or pushing website changes live to NPCWoods.com via Rocket.net-hosted WordPress static HTML bypass pages, mu-plugins, WordPress page stubs, or homepage updates.
 ---
 
 # NPCWoods Website Deployment
 
-This skill deploys static HTML pages to npcwoods.com. The site runs on GoDaddy Managed WordPress, but most custom pages bypass the WordPress theme entirely — they're raw HTML files served by mu-plugins that intercept the URL before WordPress renders its own template.
+This skill deploys static HTML pages to npcwoods.com. The site runs on WordPress hosted on Rocket.net (site 354775, since 2026-10-26; GoDaddy runs the domain's settings only), but most custom pages bypass the WordPress theme entirely — they're raw HTML files served by mu-plugins that intercept the URL before WordPress renders its own template.
 
 Think of it like a switchboard operator: WordPress answers the phone for every URL, but the mu-plugin cuts in and says "I'll take this one" before WordPress can route to its block theme.
 
@@ -18,7 +18,7 @@ The deployment pipeline has 4 steps, and all 4 are required:
 3. **Create WordPress page stubs** via REST API so the URLs appear in sitemaps and WordPress routing
 4. **Verify** the pages load correctly
 
-Why all 4? Because GoDaddy Managed WordPress uses nginx as a reverse proxy. When someone visits a URL:
+Why all 4? Because the host's nginx reverse proxy (seen on GoDaddy; treat Rocket.net the same) only hands known pages to WordPress. When someone visits a URL:
 - nginx asks WordPress "do you know this URL?"
 - If no WP page exists at that slug → nginx returns 404 (never even runs PHP)
 - If a WP page exists → WordPress loads, fires `template_redirect` → our mu-plugin intercepts and serves the static HTML instead of the theme
@@ -27,20 +27,22 @@ So without the WP page stubs, your HTML files sit on the server but nobody can r
 
 ## Credentials
 
-Load SFTP/WP from `/Users/macmini/Desktop/Chris-HQ/.env` only. Never hardcode. Never use chat memory. Never use leftover `vki.0b3` or `client_b58ea8ab6e` examples.
+Load Rocket SFTP/API and WP settings from `/Users/macmini/Desktop/Chris-HQ/.env` only. All pushes and Rocket cache clears go through Grok Bot. Never hardcode. Never use chat memory. Never use leftover `vki.0b3` or `client_b58ea8ab6e` examples.
 
 ```
 /Users/macmini/Desktop/Chris-HQ/.env
 ```
 
-Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). GoDaddy SFTP reset changes USERNAME and password. Re-read `.env`. If SFTP fails once, stop and ask Chris — don't brute-force.
+Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). Rocket SFTP is key-only (no password). Re-read `.env`. If SFTP fails once, stop and ask Chris — don't brute-force.
 
 | Variable | What it's for |
 |---|---|
-| `SFTP_HOST` | SSH/SFTP host: `1085255.us30.ssh.myftpupload.com`. Not the HTTPS ftp host. |
-| `SFTP_PORT` | Always `22` |
-| `SFTP_USERNAME` | SFTP login user (changes when GoDaddy resets SFTP) |
-| `SFTP_PASSWORD` | SFTP login password (re-read `.env`; never print) |
+| `ROCKET_SFTP_HOST` | Rocket.net SFTP host |
+| `ROCKET_SFTP_PORT` | Always `22` |
+| `ROCKET_SFTP_USER` | Rocket SFTP login user |
+| `ROCKET_SFTP_KEY_PATH` | Private key path on the Mini (key-only login; never print the key) |
+| `ROCKET_WEB_ROOT` | `public_html` |
+| `ROCKET_SITE_ID` / `ROCKET_API_USERNAME` / `ROCKET_API_PASSWORD` | Rocket API for cache purge (never print) |
 | `WP_USERNAME` | WordPress admin username |
 | `WP_APP_PASSWORD` | WordPress application password (for REST API) |
 
@@ -49,9 +51,9 @@ Path is `/Users/macmini/Desktop/Chris-HQ/` (not `/Users/chriswoods/`). GoDaddy S
 
 `deploy.py` assumes the WP stub and mu-plugin route already exist. New URLs still need those two pieces before or with the HTML upload.
 
-After any live upload, flush GoDaddy WPaaS cache (Quick Links → Flush Cache). Then GET the **clean URL with no query string**. A cache-bust can lie: the real HTML may already be on disk while `https://npcwoods.com/<path>/` still serves a ~15KB empty shell. Do not report live until the clean URL has the locked title and H1.
+After any live upload, Rocket's cache must be cleared via Grok Bot (`deploy.py` / `deploy-page.py` / `county_ship.py` purge automatically, compare the live sha with the kitchen copy, fall back to a full-site purge and flag STALE if they still differ). Then GET the **clean URL with no query string** from the Mini with curl (Rocket's firewall 403s the box). A cache-bust can lie: the real HTML may already be on disk while `https://npcwoods.com/<path>/` still serves a ~15KB empty shell. Do not report live until the clean URL has the locked title and H1.
 
-Assume Chris-HQ `.env` is current. Never print `SFTP_PASSWORD` or `WP_APP_PASSWORD`.
+Assume Chris-HQ `.env` is current. Never print the SFTP key, `ROCKET_API_PASSWORD` or `WP_APP_PASSWORD`.
 
 See `skills/npcwoods-live-page-launch/SKILL.md` and the STOP banner in `CLAUDE.md`.
 
@@ -79,22 +81,22 @@ The `<< 'PYEOF'` heredoc with **single-quoted** delimiter prevents shell variabl
 
 Use Python's `paramiko` library to connect and upload. On the macmini Chris-HQ machine, Paramiko 5.0.0 is installed for the default Homebrew `python3` user site as of 2026-05-23.
 
-**Safety rule:** Prefer the guarded `npcwoods-website/scripts/sftp-upload.py` helper for normal uploads. One-off deploy scripts must have an explicit dry-run/help guard before they read `.env` or open SFTP, and live upload still requires Chris's explicit approval.
+**Safety rule:** Prefer the guarded Rocket tools (`scripts/deploy.py`, `scripts/deploy-page.py`, `scripts/county_ship.py`) for normal uploads. One-off deploy scripts must have an explicit dry-run/help guard before they read `.env` or open SFTP, and live upload still requires Chris's explicit approval.
 
-**Remote directory structure:** The web root is `html/`. So a page at `npcwoods.com/learn/strep-throat/` lives at `html/learn/strep-throat/index.html` on the server.
+**Remote directory structure:** The Rocket.net web root is `public_html/`. So a page at `npcwoods.com/learn/strep-throat/` lives at `public_html/learn/strep-throat/index.html` on the server.
 
 **Script pattern:**
 
 ```python
 import paramiko
 
-host = 'SFTP_HOST_FROM_ENV'
+host = 'ROCKET_SFTP_HOST_FROM_ENV'
 port = 22
-username = 'SFTP_USERNAME_FROM_ENV'
-password = 'SFTP_PASSWORD_FROM_ENV'
+username = 'ROCKET_SFTP_USER_FROM_ENV'
+key_path = 'ROCKET_SFTP_KEY_PATH_FROM_ENV'  # key-only; Rocket has no SFTP password
 
 transport = paramiko.Transport((host, port))
-transport.connect(username=username, password=password)
+transport.connect(username=username, pkey=paramiko.PKey.from_path(key_path))
 sftp = paramiko.SFTPClient.from_transport(transport)
 
 # Create directories (use -mkdir equivalent that doesn't fail if exists)
@@ -105,14 +107,14 @@ def mkdir_safe(path):
         pass  # already exists
 
 # Create directory structure
-mkdir_safe('html/my-section')
-mkdir_safe('html/my-section/page-slug')
+mkdir_safe('public_html/my-section')
+mkdir_safe('public_html/my-section/page-slug')
 
 # Upload files
 # Local path = where the file is on Chris's Mac (under Chris-HQ/npcwoods-website/)
-# Remote path = where it goes on the server (under html/)
+# Remote path = where it goes on the server (under public_html/)
 sftp.put('/Users/macmini/Desktop/Chris-HQ/npcwoods-website/path/to/index.html',
-         'html/my-section/page-slug/index.html')
+         'public_html/my-section/page-slug/index.html')
 
 sftp.close()
 transport.close()
@@ -133,7 +135,7 @@ This maps to the Cowork workspace at:
 
 The mu-plugin is a PHP file that intercepts WordPress URL routing and serves your static HTML instead of the theme.
 
-**Where mu-plugins go:** `html/wp-content/mu-plugins/` on the server.
+**Where mu-plugins go:** `public_html/wp-content/mu-plugins/` on the server.
 
 **The proven pattern** (used by all working plugins on this site):
 
@@ -167,18 +169,18 @@ add_action( 'template_redirect', function() {
 - `is_page()` — only fires when WordPress has resolved a real page at this slug (that's why WP stubs are required)
 - `get_post_field('post_name', get_queried_object_id())` — gets the slug of the current page
 - Priority `1` — fires before other template_redirect hooks
-- `ABSPATH` — resolves to the `html/` web root on GoDaddy
+- `ABSPATH` — resolves to the `public_html/` web root on Rocket.net
 
-**Do NOT use `$_SERVER['REQUEST_URI']` matching** — it seems simpler but fails because GoDaddy's nginx layer returns 404 before PHP runs if no WP page exists at the slug. The `init` hook approach also fails for the same reason. Stick with `template_redirect` + `is_page()`.
+**Do NOT use `$_SERVER['REQUEST_URI']` matching** — it seems simpler but fails because the host's nginx layer (seen on GoDaddy; treat Rocket.net the same) returns 404 before PHP runs if no WP page exists at the slug. The `init` hook approach also fails for the same reason. Stick with `template_redirect` + `is_page()`.
 
 Upload the mu-plugin via SFTP just like any other file:
 ```python
-sftp.put(local_php_path, 'html/wp-content/mu-plugins/npcwoods-my-section-pages.php')
+sftp.put(local_php_path, 'public_html/wp-content/mu-plugins/npcwoods-my-section-pages.php')
 ```
 
 **Naming convention:** `npcwoods-{section}-pages.php` (e.g., `npcwoods-education-pages.php`, `npcwoods-dental-pages.php`)
 
-WordPress loads **every** `.php` in `html/wp-content/mu-plugins/`. NEVER two PHP files with the same functions. NEVER upload `copy 1.php`, `.PATCHED.php`, or a second copy of a plugin. Backups = `.bak` only (not `.php`). Rename, don't duplicate. Do not use WP File Manager to edit PHP.
+WordPress loads **every** `.php` in `public_html/wp-content/mu-plugins/`. NEVER two PHP files with the same functions. NEVER upload `copy 1.php`, `.PATCHED.php`, or a second copy of a plugin. Backups = `.bak` only (not `.php`). Rename, don't duplicate. Do not use WP File Manager to edit PHP.
 
 See `references/mu-plugin-template.php` for a copy-paste template. Homepage mu-plugin rules: `HOMEPAGE.md`.
 
@@ -190,7 +192,7 @@ For each URL you want to serve, create a WordPress page at that slug. The page c
 
 **Authentication:** Basic auth with `WP_USERNAME:WP_APP_PASSWORD` from the .env file.
 
-**Critical: Add a browser User-Agent header.** GoDaddy's Cloudflare layer blocks requests from Python's default `urllib` user agent (error 1010). Always include:
+**Critical: Add a browser User-Agent header.** Rocket's Cloudflare layer (GoDaddy's did too) blocks requests from Python's default `urllib` user agent (error 1010). Always include:
 
 ```python
 headers = {
@@ -241,7 +243,7 @@ resp = urllib.request.urlopen(req)
 
 ## Step 4: Homepage — read `HOMEPAGE.md`
 
-Live `/` is `page-npcwoods-home.php` at `html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php`, forced by `npcwoods-force-php-templates.php` (already live). Keep a copy under `themes/flavor/`. Do not delete the force plugin. Do not add a second copy.
+Live `/` is `page-npcwoods-home.php` at `public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php` on Rocket.net, forced by `npcwoods-force-php-templates.php` (already live). Keep a copy under `themes/flavor/`. Do not delete the force plugin. Do not add a second copy.
 
 Do not treat `/` as Gutenberg. Do not enqueue `wp-block-library` or `twentytwentyfour/style.css` on the homepage. Don't touch homepage CSS or mu-plugins "while you're in there" shipping city or blog pages. Nothing live without Chris's yes — except restoring a down homepage/login.
 
@@ -255,7 +257,7 @@ After deploying, always verify at least 2 pages:
 
 Do not modify the homepage as part of a city/blog deploy. See `HOMEPAGE.md`. If the site is 500: do not upload another PHP file; SFTP list mu-plugins and delete only `*copy*.php` and `*PATCHED.php`; confirm the homepage template still exists in `twentytwentyfour`; confirm the clean URL `https://npcwoods.com/` is real homepage HTML and `/wp-admin/` is login; then STOP. `?n=1` is diagnosis only.
 
-Use `WebFetch` to confirm each page loads with the correct content. If a page still shows a 404 or old content, GoDaddy's edge cache might be stale — it usually clears within a few minutes, but Chris can force-clear from the GoDaddy dashboard.
+Use `WebFetch` to confirm each page loads with the correct content. Rocket's firewall 403s the box, so check from the Mini with curl. If a page still shows a 404, old content or a STALE flag, Rocket's edge cache may be stale: ask Grok Bot to clear Rocket cache (other bots never clear it themselves).
 
 ## Output Format
 
@@ -289,8 +291,8 @@ These are already deployed and working — don't overwrite or conflict with them
 
 1. Read `.env` from `/Users/macmini/Desktop/Chris-HQ/.env`
 2. Write Python script to temp file, execute via `osascript do shell script`
-3. SFTP connect with paramiko → create directories → upload HTML files to `html/{path}/`
-4. Create mu-plugin PHP with `is_page()` + `template_redirect` pattern → upload to `html/wp-content/mu-plugins/` (never a second copy / `copy 1.php` / `.PATCHED.php`)
+3. SFTP connect with paramiko → create directories → upload HTML files to `public_html/{path}/`
+4. Create mu-plugin PHP with `is_page()` + `template_redirect` pattern → upload to `public_html/wp-content/mu-plugins/` (never a second copy / `copy 1.php` / `.PATCHED.php`)
 5. WP REST API: create parent page → create child pages with `parent: parent_id` (include browser User-Agent!)
 6. Homepage: read `HOMEPAGE.md`. Do not touch homepage CSS or mu-plugins while shipping other pages.
 7. Verify the clean URL with no query string. City pages can look fine from a cache-bust while PHP is dead. `?n=1` is diagnosis only.
@@ -300,7 +302,7 @@ These are already deployed and working — don't overwrite or conflict with them
 
 The `scripts/` directory contains reusable Python scripts:
 
-- **`sftp_upload.py`** — Upload files/directories to the server via SFTP. Reads credentials from .env automatically.
+- **`sftp_upload.py`** — Upload files/directories to Rocket.net via key-only SFTP (`ROCKET_*` from .env). Prefer `scripts/deploy.py` for normal uploads.
 - **`create_wp_stubs.py`** — Create WordPress page stubs via REST API. Handles parent/child relationships.
 
 Both scripts are designed to be written to `/tmp/` and executed via osascript. Read them for the exact invocation pattern.

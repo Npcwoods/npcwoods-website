@@ -6,7 +6,7 @@ Lessons learned the hard way so you don't have to repeat them.
 
 **Problem:** WordPress REST API calls from Python get blocked with a 403 / error code 1010.
 
-**Cause:** GoDaddy uses Cloudflare, which blocks requests from Python's default `urllib` user agent ("Python-urllib/3.x").
+**Cause:** The host's Cloudflare layer (Rocket.net now; GoDaddy before 2026-10-26) blocks requests from Python's default `urllib` user agent ("Python-urllib/3.x").
 
 **Fix:** Always include a browser User-Agent header:
 ```python
@@ -19,7 +19,7 @@ headers = {
 
 **Problem:** You write a mu-plugin that matches the raw URL path. Pages still 404.
 
-**Cause:** GoDaddy Managed WordPress uses nginx as a reverse proxy. For URLs where no WordPress page exists, nginx returns 404 **before PHP even runs**. Your mu-plugin never fires.
+**Cause:** The host's nginx reverse proxy (seen on GoDaddy; treat Rocket.net the same). For URLs where no WordPress page exists, nginx returns 404 **before PHP even runs**. Your mu-plugin never fires.
 
 **Fix:** Always use the `is_page()` + `get_post_field()` pattern:
 ```php
@@ -56,9 +56,9 @@ Use single-quoted `'PYEOF'` to prevent shell variable expansion.
 
 **Problem:** Pages still show 404 or old content after successful upload and mu-plugin deployment.
 
-**Cause:** GoDaddy/Cloudflare edge cache caches 404 responses. Once a URL returns 404, the cache remembers it for a while.
+**Cause:** Rocket.net's edge cache (Cloudflare) caches 404 responses. Once a URL returns 404, the cache remembers it for a while.
 
-**Fix:** Wait a few minutes, or have Chris clear the cache from the GoDaddy dashboard. Alternatively, test with `?nocache=1` parameter (Cloudflare usually bypasses cache for URLs with query strings).
+**Fix:** Ask Grok Bot to clear Rocket cache (deploy tools purge automatically and flag STALE if the live sha still differs; other bots never clear the cache themselves). Check from the Mini with curl, since Rocket's firewall 403s the box. Alternatively, test with `?nocache=1` parameter (Cloudflare usually bypasses cache for URLs with query strings).
 
 ## 6. Nested URL Routing (Parent/Child Pages)
 
@@ -78,7 +78,7 @@ If duplicates exist, you may need to change the old page's slug or set it to dra
 
 **Problem:** Some one-off deploy scripts do not implement `--help` or dry-run behavior, so a harmless-looking usage check can read `.env` and start a live SFTP upload.
 
-**Fix:** Use guarded helpers like `scripts/sftp-upload.py` for routine uploads. If a one-off script is needed, add argument handling before credential loading:
+**Fix:** Use the guarded Rocket tools (`scripts/deploy.py`, `scripts/deploy-page.py`, `scripts/county_ship.py`) for routine uploads. If a one-off script is needed, add argument handling before credential loading:
 ```python
 if "--help" in sys.argv or "-h" in sys.argv:
     print("Usage: ...")

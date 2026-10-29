@@ -15,7 +15,7 @@
  * - get_post_field('post_name', ...) gets the slug of the current page
  * - We check the slug against our map and serve the static HTML if it matches
  * - Priority 1 ensures this runs before other template_redirect hooks
- * - ABSPATH resolves to the web root (html/) on GoDaddy
+ * - ABSPATH resolves to the web root (public_html/) on Rocket.net
  *
  * DO NOT USE:
  * - $_SERVER['REQUEST_URI'] matching (nginx 404s before PHP runs)

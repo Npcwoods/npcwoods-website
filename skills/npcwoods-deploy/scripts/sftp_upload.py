@@ -2,7 +2,8 @@
 """
 NPCWoods SFTP Upload Helper
 ============================
-Uploads files and directories to GoDaddy via SFTP using paramiko.
+Uploads files and directories to Rocket.net (site 354775) via key-only SFTP using paramiko.
+Prefer scripts/deploy.py for normal uploads; all pushes go through Grok Bot.
 
 Usage (via osascript):
     Write this script to /tmp/ with credentials filled in, then execute:
@@ -24,16 +25,16 @@ import sys
 # ============================================================
 # CONFIG — Fill these in from the .env file
 # ============================================================
-SFTP_HOST = ''        # from .env — 1085255.us30.ssh.myftpupload.com (not the HTTPS ftp host)
-SFTP_PORT = 22
-SFTP_USERNAME = ''    # from .env SFTP_USERNAME (re-read after any GoDaddy SFTP reset)
-SFTP_PASSWORD = ''
+SFTP_HOST = ''        # from .env ROCKET_SFTP_HOST
+SFTP_PORT = 22        # from .env ROCKET_SFTP_PORT
+SFTP_USERNAME = ''    # from .env ROCKET_SFTP_USER
+SFTP_KEY_PATH = ''    # from .env ROCKET_SFTP_KEY_PATH (key-only; Rocket has no SFTP password)
 
 # Local base path (where files are on Chris's Mac)
 LOCAL_BASE = '/Users/macmini/Desktop/Chris-HQ/npcwoods-website'
 
-# Remote web root on GoDaddy
-REMOTE_ROOT = 'html'
+# Remote web root on Rocket.net (ROCKET_WEB_ROOT)
+REMOTE_ROOT = 'public_html'
 
 # ============================================================
 # UPLOAD MAP — Define what to upload
@@ -67,7 +68,7 @@ def mkdir_safe(sftp, path):
 
 
 def main():
-    if not SFTP_HOST or not SFTP_USERNAME:
+    if not SFTP_HOST or not SFTP_USERNAME or not SFTP_KEY_PATH:
         print('ERROR: Fill in SFTP credentials before running!')
         sys.exit(1)
 
@@ -79,7 +80,7 @@ def main():
     transport = paramiko.Transport((SFTP_HOST, SFTP_PORT))
     transport.banner_timeout = 30
     transport.auth_timeout = 30
-    transport.connect(username=SFTP_USERNAME, password=SFTP_PASSWORD)
+    transport.connect(username=SFTP_USERNAME, pkey=paramiko.PKey.from_path(os.path.expanduser(SFTP_KEY_PATH)))
     sftp = paramiko.SFTPClient.from_transport(transport)
     print('Connected.')
 

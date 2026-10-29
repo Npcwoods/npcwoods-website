@@ -3,7 +3,7 @@
 NPCWoods WordPress Page Stub Creator
 ======================================
 Creates WordPress pages via REST API so that mu-plugin routing works.
-Without these stubs, GoDaddy returns 404 before PHP even runs.
+Without these stubs, the host's nginx layer returns 404 before PHP even runs.
 
 Usage (via osascript):
     Write this script to /tmp/ with credentials and pages filled in, then execute.
@@ -54,7 +54,7 @@ def get_headers():
     return {
         'Authorization': 'Basic ' + auth_string,
         'Content-Type': 'application/json',
-        # CRITICAL: GoDaddy/Cloudflare blocks Python's default user agent (error 1010)
+        # CRITICAL: Rocket's Cloudflare layer blocks Python's default user agent (error 1010)
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
     }
 
