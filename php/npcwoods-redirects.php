@@ -93,6 +93,10 @@ add_action("init", function() {
         "/wet-bathing-suit-yeast-infection-or-irritation/" => "/yeast-infection-treatment-online/",
         "/can-allergies-cause-a-cough-or-is-it-bronchitis/" => "/learn/bronchitis/",
         "/blog/can-nurse-practitioner-prescribe-antibiotics-by-text/" => "/can-nurse-practitioner-prescribe-antibiotics/",
+        // Duplicate poison ivy plate retired (2026-10-29) — Chris: "Fix this please".
+        // Kept /poison-ivy/ (the one with Search Console impressions). The old static
+        // index.html stays on disk, so public_html/conditions/.htaccess fires this 301 first.
+        "/conditions/poison-ivy-treatment/" => "/poison-ivy/",
     ];
     $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     $path = rtrim($path, "/") . "/";

@@ -23,6 +23,8 @@ function npcwoods_smh_excluded_ids() {
 		// Paid-only landers, noindex,nofollow by design (npcwoods-paid-pages.php).
 		998,  // /online-urgent-care-info/
 		999,  // /online-urgent-care-info/search-safe/
+		// Retired duplicate, 301s to /poison-ivy/ (2026-10-29).
+		773,  // /conditions/poison-ivy-treatment/
 	);
 }
 
@@ -38,6 +40,7 @@ function npcwoods_smh_static_pages() {
 		'/uti-treatment/no-video-uti-treatment/'           => 'uti-treatment/no-video-uti-treatment/index.html',
 		'/uti-treatment/uti-antibiotics-online/'           => 'uti-treatment/uti-antibiotics-online/index.html',
 		'/alternatives-to-teladoc/'                        => 'alternatives-to-teladoc/index.html',
+		'/poison-ivy/'                                     => 'poison-ivy/index.html', // kept poison ivy page (2026-10-29)
 	);
 }
 

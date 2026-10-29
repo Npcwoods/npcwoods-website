@@ -1281,7 +1281,7 @@ a{color:inherit}
     <div class="stars-row">
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
-    <h2>80+ Five-Star Google Reviews</h2>
+    <h2>80+ five-star Google reviews. Here’s what patients say on Facebook.</h2>
     <p>5.0★ on Google · 100% recommend on Facebook</p>
   </div>
   <div class="scroll-mask">
@@ -1389,7 +1389,7 @@ a{color:inherit}
       <a class="treat" href="https://npcwoods.com/learn/acne/">Acne</a>
       <a class="treat" href="https://npcwoods.com/yeast-infection-treatment/">Yeast infection</a>
       <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
-      <a class="treat" href="https://npcwoods.com/conditions/poison-ivy-treatment/">Poison ivy</a>
+      <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
       <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
       <a class="treat" href="https://npcwoods.com/services/">Medication refills</a>
       <a class="treat" href="https://npcwoods.com/glp1-weight-loss/">GLP-1 consult <small>fit and safety, drug cost separate</small></a>
@@ -1491,7 +1491,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
           <li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li>
           <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
           <li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li>
-          <li><a href="https://npcwoods.com/conditions/poison-ivy-treatment/">Poison Ivy</a></li>
+          <li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li>
           <li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li>
           <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
         </ul>

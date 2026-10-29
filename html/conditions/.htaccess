@@ -1,0 +1,7 @@
+DirectoryIndex index.html
+# 2026-10-29 duplicate poison ivy plate retired (Chris: "Fix this please").
+# The old index.html stays on disk (no deletes), so Apache would serve it before
+# WordPress runs. This 301 fires first. Mirrors mu-plugin npcwoods-redirects.php.
+<IfModule mod_alias.c>
+RedirectMatch 301 ^/conditions/poison-ivy-treatment(/|/index\.html)?$ https://npcwoods.com/poison-ivy/
+</IfModule>
