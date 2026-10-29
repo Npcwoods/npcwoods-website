@@ -69,6 +69,7 @@ add_action( "template_redirect", function() {
     "conejos-county-text-visit" => "conejos-county-text-visit/index.html",
     "mineral-county-text-visit" => "mineral-county-text-visit/index.html",
     "rich-county-text-visit" => "rich-county-text-visit/index.html",
+    "island-county-text-visit" => "island-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
     );
 
