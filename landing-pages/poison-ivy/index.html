@@ -23,679 +23,184 @@
   <meta name="twitter:image" content="https://npcwoods.com/poison-ivy/assets/poison-ivy-share-1200x630.jpg">
   <meta name="twitter:image:alt" content="Botanical illustration of poison ivy — leaves of three">
   <link rel="stylesheet" href="/assets/css/site.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --white: #ffffff;
-      --off-white: #f7f8fa;
-      --warm-white: #fdf8f4;
-      --paper: #fbfcfe;
-      --text-primary: #1a1a2e;
-      --text-body: #4a4a5a;
-      --text-muted: #8e8e9a;
-      --brand: #2563eb;
-      --brand-hover: #1d4ed8;
-      --brand-light: #eff6ff;
-      --brand-soft: #dbeafe;
-      --success: #16a34a;
-      --success-light: #dcfce7;
-      --gold: #f59e0b;
-      --amber-soft: #fff7ed;
-      --danger: #dc2626;
-      --danger-light: #fee2e2;
-      --border: #e5e7eb;
-      --shadow: 0 18px 54px rgba(26, 26, 46, 0.1);
-      --shadow-soft: 0 8px 28px rgba(15, 23, 42, 0.1);
-      --container-max: 1180px;
-      --side-pad: 24px;
-      --nav-height: 72px;
-      --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-display: "DM Sans", "DM Sans", sans-serif;
-    }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+@font-face{font-family:"DM Serif Display";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/dm-serif-display-400.woff2") format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url("/assets/fonts/dm-sans-400-600.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/assets/fonts/inter-latin-var.woff2") format("woff2")}
+:root{--ink:#1A1A2E;--muted:#33384a;--blue:#2563EB;--blue-dark:#1D4ED8;--blue-soft:#DBEAFE;--blue-light:#EFF6FF;--cream:#F6F3EE;--night:#05060a;--leaf:#4ade80;--leaf-dark:#15803d;--leaf-soft:#dcfce7;--shadow:0 20px 50px rgba(26,26,46,.12);--serif:'DM Serif Display',Georgia,serif;--sans:Inter,'DM Sans',system-ui,-apple-system,sans-serif;--max:1120px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-color:#fff;background-image:linear-gradient(180deg,#05060a 0%,#05060a 9%,#071a3a 16%,#0a84ff 30%,#0a84ff 44%,#5eb8ff 54%,#F6F3EE 68%,#fff 100%);background-repeat:no-repeat;background-size:100% 100%}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue)}
+.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:1rem;top:1rem;z-index:99999;background:#fff;padding:.5rem 1rem}
+.wrap{width:min(100% - 2rem,var(--max));margin-inline:auto}
+/* HERO */
+.gh{position:relative;overflow:hidden;color:#fff;background:radial-gradient(620px 520px at 74% 52%,rgba(0,113,227,.42),transparent 70%),radial-gradient(500px 360px at 12% 0%,rgba(41,151,255,.14),transparent 70%),var(--night)}
+.gh-wrap{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:72px 64px 64px;display:grid;grid-template-columns:1.15fr .85fr;align-items:end;min-height:660px}
+.gh-copy{align-self:center;padding-bottom:20px;min-width:0}
+.gh-pill{display:inline-flex;gap:.6rem;align-items:center;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e4e4ea;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);padding:.55rem .95rem;border-radius:999px}
+.gh-pill i{width:8px;height:8px;border-radius:50%;background:#19a463;box-shadow:0 0 10px #19a463;flex:none}
+.gh h1{font-weight:900;font-size:clamp(56px,7.4vw,108px);line-height:.92;letter-spacing:-.05em;margin:26px 0 22px;color:#fff}
+.gh h1 .gh-grad{display:block;background:linear-gradient(180deg,#fff 10%,#9fd0ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gh h1 .gh-pop{display:inline-block;color:var(--night);background:var(--leaf);padding:0 .14em .06em;border-radius:.12em;transform:rotate(-2deg);margin-top:.08em}
+.gh-sub{font-size:20px;line-height:1.5;color:#d6d6dd;max-width:520px}
+.gh-ctas{display:flex;gap:14px;align-items:center;margin-top:30px;flex-wrap:wrap}
+.gh-btn{display:inline-flex;align-items:center;gap:.6rem;background:#0071e3;color:#fff!important;text-decoration:none;font-weight:700;font-size:18px;padding:18px 28px;border-radius:999px;box-shadow:0 12px 34px rgba(0,113,227,.5)}
+.gh-btn svg{width:20px;height:20px;flex:none}
+.gh-ghostbtn{color:#fff!important;text-decoration:none;font-weight:600;font-size:16px;padding:16px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.28)}
+.gh a:focus-visible{outline:3px solid #9fd0ff;outline-offset:3px}
+.gh-fine{margin:22px 0 0;font-size:13px;line-height:1.5;color:#b4b4bd;max-width:520px}
+.gh-photo{position:relative;align-self:end;justify-self:center;margin-bottom:-64px}
+.gh-photo img{display:block;height:600px;width:auto;max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
+.gh-sticker{position:absolute;z-index:3;font-weight:700;font-size:15px;line-height:1.25;padding:11px 16px;border-radius:20px 20px 20px 6px;white-space:nowrap}
+.gh-sticker::after{content:"";position:absolute;bottom:-1px;left:14px;width:12px;height:12px;transform:rotate(45deg);border-radius:0 0 3px 0}
+.gh-sticker--blue{background:#007AFF;color:#fff;border:1.5px solid #fff;box-shadow:0 12px 28px rgba(0,122,255,.28),0 8px 20px rgba(0,0,0,.28)}
+.gh-sticker--blue::after{background:#007AFF;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff}
+.gh-sticker--black{background:#000;color:#fff;border:1.5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.gh-sticker--black::after{background:#000;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff}
+/* bubbles sit on the shirt/arms, never the face (face is roughly top 42%, middle 35-70%) */
+.gh-s1{top:48%;left:-120px;transform:rotate(-4deg)}
+.gh-s2{bottom:150px;right:-70px;transform:rotate(3deg);border-radius:20px 20px 6px 20px}
+.gh-s2::after{left:auto;right:16px}
+@media (max-width:900px) and (min-width:641px){.gh-wrap{padding:56px 32px 48px;min-height:0}.gh-photo{margin-bottom:-48px}.gh-photo img{height:460px}.gh-s1{left:-60px}.gh-s2{right:-20px;bottom:110px}}
+@media (max-width:640px){
+.gh{background:radial-gradient(420px 380px at 60% 78%,rgba(0,113,227,.45),transparent 70%),var(--night)}
+.gh-wrap{grid-template-columns:1fr;padding:30px 22px 0;min-height:0}
+.gh h1{font-size:58px;margin:16px 0 12px}
+.gh-pill{font-size:10.5px;padding:.45rem .75rem}
+.gh-sub{font-size:17px}
+.gh-ctas{margin-top:20px}
+.gh-btn{font-size:17px;padding:16px 22px;width:100%;justify-content:center}
+.gh-ghostbtn{display:none}
+.gh-fine{font-size:12px;margin-top:12px}
+.gh-photo{margin:14px auto 0;width:100%;display:flex;justify-content:center}
+.gh-photo img{height:380px}
+.gh-sticker{font-size:13px;padding:9px 12px}
+.gh-s1{top:auto;bottom:150px;left:0}
+.gh-s2{bottom:56px;right:0}
+}
+@media (max-width:360px){.gh h1{font-size:50px}.gh-photo img{height:340px}}
+/* stats + byline */
+.stats{background:#fff;color:var(--muted);border-radius:24px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;padding:1.5rem 1.25rem;margin:1.75rem auto 2rem;position:relative;z-index:5;width:min(100% - 2rem,var(--max))}
+@media (min-width:720px){.stats{grid-template-columns:repeat(4,1fr);padding:1.75rem 2rem}}
+.stat{text-align:center}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3vw,2.2rem);color:var(--ink);line-height:1.1}
+.stat span{font-size:.88rem;color:#4b5060;font-weight:500}
+.byline{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:1rem 1.2rem;margin:0 auto 2rem;width:min(100% - 2rem,720px);font-size:.92rem;color:#25364f}
+.byline .badge{display:inline-block;background:var(--blue-light);color:var(--blue-dark);font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .65rem;border-radius:999px;margin-bottom:.5rem}
+.crumbs{font-size:.85rem;color:#4b5d7a;margin-top:.4rem}.crumbs a{color:var(--blue-dark)}
+/* story */
+main.wrap{padding-bottom:2rem}
+.section-title{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,2.7rem);line-height:1.12;color:var(--ink);margin-bottom:.85rem}
+.story p{margin-bottom:1rem;font-size:1.06rem}
+.imsg-thread{display:grid;gap:1rem;align-items:start;margin:0 0 2rem}
+@media (min-width:560px){.imsg-thread{grid-template-columns:72px 1fr}}
+.imsg-thread img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.imsg-stack{display:flex;flex-direction:column;gap:.55rem;align-items:flex-start;min-width:0}
+.imsg{display:inline-block;background:#007AFF;color:#fff;font-weight:600;font-size:1.05rem;line-height:1.45;padding:.75rem 1rem;border-radius:20px 20px 20px 6px;border:1.5px solid #fff;box-shadow:0 8px 22px rgba(0,122,255,.18);margin:0!important;max-width:36rem}
+.imsg--black{background:#000;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.imsg--me{align-self:flex-end;border-radius:20px 20px 6px 20px}
+.imsg a{color:#fff;text-decoration:underline}
+.panel{background:#fff;color:var(--muted);border-radius:28px;box-shadow:var(--shadow);padding:1.5rem 1.25rem 1.75rem;margin:1.5rem 0 2rem}
+@media (min-width:720px){.panel{padding:2.1rem 2.2rem 2.3rem}}
+.panel p{color:var(--muted)}
+.panel h3{font-family:var(--serif);font-weight:400;color:var(--ink);font-size:1.3rem;margin-bottom:.3rem}
+.dark{background:#10131c;color:#eef0f7;border-radius:24px;padding:1.6rem 1.4rem;margin:0 0 2.25rem;border:1px solid rgba(255,255,255,.08)}
+.dark h2{font-family:var(--serif);font-weight:400;color:#fff;font-size:1.7rem;margin-bottom:.75rem}
+.dark ul{padding-left:1.2rem}.dark li{margin-bottom:.5rem;color:#eef0f7}
+.dark strong{color:#9fd0ff}
+.dark a{color:#9fd0ff}
+.grid{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:960px){.grid.g3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--blue-light);border:1px solid var(--blue-soft);border-radius:18px;padding:1.1rem 1.15rem}
+.card p{margin:0;font-size:1rem}
+.card .ico{font-size:1.6rem;line-height:1;margin-bottom:.4rem}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:1rem;margin-top:.5rem}
+.tbl th,.tbl td{text-align:left;padding:.85rem .8rem;border-bottom:1px solid #e5e7eb;vertical-align:top;color:var(--ink)}
+.tbl thead th{background:#10131c;color:#fff;font-weight:700}
+.tbl thead th:first-child{border-radius:12px 0 0 0}.tbl thead th:last-child{border-radius:0 12px 0 0}
+.tbl tbody th{font-family:var(--serif);font-weight:400;font-size:1.15rem}
+@media (max-width:640px){.tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}.tbl tr{border:1px solid var(--blue-soft);border-radius:16px;padding:.6rem .4rem;margin-bottom:.8rem;background:var(--blue-light)}.tbl th,.tbl td{border:0;padding:.3rem .6rem}.tbl td::before{content:attr(data-l)": ";font-weight:700;color:var(--blue-dark)}}
+.flags{background:#fff4f6;border:2px solid #ffb3c2;border-radius:22px;padding:1.4rem 1.3rem;margin:1.5rem 0}
+.flags h3{color:#9b1239;font-family:var(--serif);font-weight:400;font-size:1.45rem;margin-bottom:.5rem}
+.flags ul{padding-left:1.2rem;color:var(--ink)}.flags li{margin-bottom:.35rem}
+.flags p{color:var(--ink);margin:.6rem 0 0}
+/* road map */
+.road{list-style:none;counter-reset:s;display:grid;gap:1rem;margin-top:1rem}
+@media (min-width:800px){.road{grid-template-columns:repeat(4,1fr)}}
+.road li{position:relative;background:#fff;border:2px solid var(--blue-soft);border-radius:16px;padding:1rem 1rem 1.05rem}
+.road li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:.9rem;margin-bottom:.5rem}
+.road li.here{border-color:var(--leaf);background:linear-gradient(180deg,#f0fdf4,#fff)}
+.road li.here::before{background:var(--leaf);color:var(--night)}
+.road h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;color:var(--ink);margin-bottom:.2rem}
+.road p{font-size:.92rem;color:#4b5060;margin:0}
+/* FAQ */
+.faq details{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:1rem 1.15rem;margin-bottom:.7rem}
+.faq summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:1.05rem}
+.faq details p{margin:.6rem 0 0;color:var(--muted)}
+.sources ol{padding-left:1.2rem;color:var(--muted);font-size:.95rem}.sources li{margin-bottom:.4rem}
+.cta-band{background:#10131c;color:#fff;border-radius:28px;padding:2rem 1.5rem;text-align:center;margin:2rem 0 1rem}
+.cta-band h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.6rem);color:#fff;margin-bottom:.5rem}
+.cta-band p{color:#d6d6dd!important;margin:0 auto 1.2rem;max-width:34rem}
+.cta-band a{display:inline-flex;background:#0071e3;color:#fff!important;font-weight:800;text-decoration:none;padding:16px 26px;border-radius:999px;font-size:1.1rem}
+.cta-band a.cta-band-state{display:inline;background:none;padding:0;border-radius:0;font-size:1rem;font-weight:600;text-decoration:underline;color:#9cc7ff!important}
+/* sticky Text bar */
+.ep-sticky{position:fixed;left:0;right:0;bottom:0;z-index:9000;display:flex;justify-content:center;padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);pointer-events:none}
+.ep-sticky[hidden]{display:none!important}
+.ep-sticky-inner{pointer-events:auto;width:100%;max-width:720px;margin:0 .65rem .65rem;display:flex;align-items:center;gap:.65rem;background:rgba(5,6,10,.95);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:.65rem .8rem;box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.ep-sticky-meta{flex:1 1 auto;min-width:0;font-size:.8rem;line-height:1.3;color:#d6d6dd}
+.ep-sticky-meta strong{display:block;font-size:.92rem;color:#fff}
+.ep-sticky-cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:#0071e3;color:#fff!important;text-decoration:none;font-weight:800;font-size:.92rem;padding:.72rem 1rem;border-radius:999px;white-space:nowrap}
+.ep-sticky-x{flex:0 0 auto;width:40px;height:40px;border:0;border-radius:999px;background:rgba(255,255,255,.12);color:#e4e4ea;font-size:1.15rem;cursor:pointer}
+body.has-ep-sticky{padding-bottom:5.5rem}
+@media (min-width:900px){.ep-sticky-inner{max-width:820px;margin-bottom:.85rem}}
+@media (max-width:640px){
+.gh-wrap{padding-top:22px}
+.gh h1{font-size:46px;line-height:.95;margin:14px 0 12px}
+.gh h1 .gh-pop{font-size:.82em}
+.gh-sub{font-size:16px;line-height:1.45}
+.gh-ctas{margin-top:16px}
+.gh-btn{padding:14px 20px}
+.gh-photo img{height:340px}
+.gh-s1{bottom:170px}
+.gh-s2{bottom:70px}
+.ep-sticky-meta span{display:none}
+.ep-sticky-inner{padding:.55rem .65rem}
+}
+@media (max-width:360px){.gh h1{font-size:40px}}
+@media (max-width:640px){
+.gh-sticker{white-space:normal;max-width:124px;font-size:12.5px;padding:8px 11px}
+.gh-s1{top:26px;bottom:auto;left:0}
+.gh-s2{top:118px;bottom:auto;right:0}
+}
+@media (max-width:640px){.gh-s1{top:6px}.gh-s2{top:96px;left:0;right:auto;border-radius:20px 20px 20px 6px}.gh-s2::after{left:14px;right:auto}}
+  
+/* poison ivy additions (same system) */
+@media (min-width:641px){.gh h1{font-size:clamp(52px,6.2vw,92px)}.gh h1 .gh-pop{font-size:.74em}}
+.gh-photo img{max-width:none}
+.leaf-card{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:18px;padding:1.1rem 1.15rem}
+.leaf-card b{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:.25rem}
+.leaf-card span{display:block;color:var(--muted);font-size:1rem;line-height:1.55}
+.leaf-card .ico{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--leaf-dark);color:#fff;font-weight:800;font-size:.9rem;margin-bottom:.5rem}
+.myth .ico{background:#10131c}
+.plant-photo{margin:1.25rem 0 0;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.plant-photo img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.plant-photo figcaption{background:#fff;color:#4b5060;font-size:.85rem;padding:.6rem .9rem}
+.callout{background:#f0fdf4;border-left:4px solid var(--leaf-dark);border-radius:14px;padding:.9rem 1rem;color:var(--ink);margin:1rem 0 0}
+.checklist{list-style:none;display:grid;gap:.55rem;margin-top:.5rem}
+.checklist li{position:relative;padding-left:1.9rem;color:var(--ink)}
+.checklist li::before{content:"\2713";position:absolute;left:0;top:0;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--leaf-dark);color:#fff;font-size:.8rem;font-weight:800;display:grid;place-items:center}
+.checklist.arrow li::before{content:"\2192";background:var(--blue)}
+.flags .fl-item{margin-bottom:.7rem}.flags .fl-item b{display:block;color:var(--ink)}.flags .fl-item span{color:var(--muted)}
+.clin{display:grid;gap:1.1rem;align-items:center}
+@media (min-width:720px){.clin{grid-template-columns:200px 1fr}}
+.clin img{width:200px;max-width:100%;border-radius:22px;object-fit:cover}
+.sources p{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+@media (max-width:640px){.road li{padding:.9rem}}
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--nav-height);
-      font-size: 16px;
-    }
-
-    body {
-      background: var(--white);
-      color: var(--text-body);
-      font-family: var(--font);
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 8px; }
-
-    .top-strip {
-      background: var(--brand);
-      color: var(--white);
-      font-size: .85rem;
-      font-weight: 700;
-    }
-
-    .top-strip-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 8px var(--side-pad);
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .nav {
-      min-height: var(--nav-height);
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 36px;
-      z-index: 35;
-    }
-
-    .nav-inner {
-      max-width: var(--container-max);
-      min-height: var(--nav-height);
-      margin: 0 auto;
-      padding: 0 var(--side-pad);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-primary);
-      font-weight: 800;
-      font-size: 1.02rem;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--brand);
-      color: var(--white);
-      font-size: .8rem;
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-      color: var(--text-body);
-      font-size: .92rem;
-      font-weight: 600;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 24px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--brand); color: var(--white); box-shadow: var(--shadow-soft); }
-    .btn-primary:hover { background: var(--brand-hover); box-shadow: 0 8px 24px rgba(15, 23, 42, .24); }
-    .btn-secondary { background: var(--white); color: var(--brand); border-color: var(--brand); }
-    .btn-secondary:hover { background: var(--brand-light); }
-    .btn-gold { background: var(--gold); color: #231407; }
-
-    .hero {
-      padding: 76px var(--side-pad) 82px;
-      background:
-        radial-gradient(circle at top left, rgba(219,234,254,.8), transparent 34rem),
-        linear-gradient(180deg, var(--paper), var(--white));
-    }
-
-    .hero-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.04fr .96fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      width: fit-content;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--success-light);
-      color: #166534;
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      max-width: 700px;
-      color: var(--text-primary);
-      font-family: var(--font-display);
-      font-size: 4rem;
-      line-height: 1.04;
-      letter-spacing: 0;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .hero-copy {
-      max-width: 640px;
-      color: var(--text-body);
-      font-size: 1.2rem;
-      line-height: 1.7;
-      margin-bottom: 26px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .trust-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--text-primary);
-    }
-
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      min-height: 34px;
-      padding: 0 12px;
-      border-radius: 999px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      box-shadow: 0 3px 14px rgba(26,26,46,.04);
-      font-size: .82rem;
-      font-weight: 700;
-    }
-
-    .visual-panel {
-      position: relative;
-      min-height: 560px;
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .visual-plant {
-      height: 260px;
-      background:
-        linear-gradient(180deg, rgba(26,26,46,.05), rgba(26,26,46,.52)),
-        url("assets/poison-ivy-hero.jpg") center / cover no-repeat;
-    }
-
-    .price-card {
-      position: absolute;
-      top: 196px;
-      left: 22px;
-      right: 22px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 22px;
-      border-radius: 22px;
-      background: var(--white);
-      box-shadow: 0 22px 60px rgba(26,26,46,.18);
-      border: 1px solid var(--border);
-    }
-
-    .price {
-      color: var(--brand);
-      font-size: 4.2rem;
-      font-weight: 800;
-      line-height: .9;
-    }
-
-    .price-card b {
-      display: block;
-      color: var(--text-primary);
-      font-size: 1.02rem;
-      line-height: 1.35;
-      margin-bottom: 5px;
-    }
-
-    .price-card span {
-      display: block;
-      color: var(--text-muted);
-      font-size: .9rem;
-      line-height: 1.5;
-    }
-
-    .phone-mock {
-      position: absolute;
-      left: 42px;
-      right: 42px;
-      bottom: 28px;
-      padding: 18px;
-      border-radius: 24px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-    }
-
-    .chat-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 14px;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--brand-soft);
-      flex: 0 0 auto;
-    }
-
-    .chat-head b { display: block; color: var(--text-primary); line-height: 1.2; }
-    .chat-head span { display: block; color: var(--success); font-size: .8rem; font-weight: 700; }
-
-    .bubble {
-      width: fit-content;
-      max-width: 88%;
-      padding: 10px 13px;
-      border-radius: 16px;
-      font-size: .92rem;
-      line-height: 1.45;
-      margin-top: 9px;
-    }
-
-    .bubble.patient {
-      margin-left: auto;
-      background: var(--brand);
-      color: var(--white);
-      border-bottom-right-radius: 5px;
-    }
-
-    .bubble.chris {
-      background: var(--white);
-      color: var(--text-body);
-      border: 1px solid var(--border);
-      border-bottom-left-radius: 5px;
-    }
-
-    .section {
-      padding: 92px var(--side-pad);
-    }
-
-    .section.alt { background: var(--off-white); }
-
-    .section-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-    }
-
-    .section-header {
-      max-width: 720px;
-      margin-bottom: 44px;
-    }
-
-    .overline {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--brand);
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      color: var(--text-primary);
-      font-family: var(--font-display);
-      font-size: 2.75rem;
-      line-height: 1.12;
-      letter-spacing: 0;
-      margin-bottom: 14px;
-    }
-
-    .section-header p,
-    .lead {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.75;
-    }
-
-    .fit-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .fit-card {
-      min-height: 184px;
-      padding: 22px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(26,26,46,.04);
-    }
-
-    .fit-icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      margin-bottom: 18px;
-      background: var(--brand-light);
-      color: var(--brand);
-      font-weight: 800;
-    }
-
-    .fit-card b {
-      display: block;
-      color: var(--text-primary);
-      font-size: 1rem;
-      margin-bottom: 8px;
-      line-height: 1.35;
-    }
-
-    .fit-card span {
-      color: var(--text-muted);
-      font-size: .95rem;
-      line-height: 1.55;
-    }
-
-    .steps-shell {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .steps-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      padding: 22px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .step-number {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--brand);
-      color: var(--white);
-      font-weight: 800;
-    }
-
-    .step b { display: block; color: var(--text-primary); margin-bottom: 4px; }
-    .step span { color: var(--text-muted); }
-
-    .clinician-panel {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 22px;
-      align-items: center;
-      padding: 24px;
-      border-radius: 24px;
-      background: var(--warm-white);
-      border: 1px solid #f3e2d4;
-    }
-
-    .clinician-panel img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 22px;
-    }
-
-    .clinician-panel h3 {
-      color: var(--text-primary);
-      font-size: 1.4rem;
-      line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .clinician-panel p {
-      color: var(--text-body);
-      line-height: 1.65;
-    }
-
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .compare-panel {
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: var(--white);
-    }
-
-    .compare-panel.good {
-      background: var(--brand-light);
-      border-color: var(--brand-soft);
-    }
-
-    .compare-panel h3 {
-      color: var(--text-primary);
-      font-size: 1.2rem;
-      margin-bottom: 18px;
-    }
-
-    .compare-row {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 13px 0;
-      border-top: 1px solid rgba(26,26,46,.09);
-    }
-
-    .compare-row b {
-      color: var(--text-primary);
-      line-height: 1.4;
-    }
-
-    .mark {
-      width: 24px;
-      height: 24px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      font-size: .82rem;
-      font-weight: 800;
-    }
-
-    .mark.no { background: var(--danger-light); color: var(--danger); }
-    .mark.yes { background: var(--success-light); color: var(--success); }
-
-    .warning-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 42px;
-      align-items: start;
-    }
-
-    .red-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .red-item {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--white);
-      border: 1px solid var(--border);
-    }
-
-    .red-item .mark { margin-top: 2px; }
-    .red-item b { display: block; color: var(--text-primary); margin-bottom: 2px; }
-    .red-item span { color: var(--text-muted); }
-
-    .final-cta {
-      padding: 86px var(--side-pad);
-      background:
-        linear-gradient(135deg, rgba(15, 23, 42, .96), rgba(29,78,216,.96)),
-        url("assets/poison-ivy-hero.jpg") center / cover no-repeat;
-      color: var(--white);
-    }
-
-    .final-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .final-cta h2 {
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .final-cta p {
-      max-width: 760px;
-      color: rgba(255,255,255,.82);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .source {
-      padding: 24px var(--side-pad) 44px;
-      color: var(--text-muted);
-      font-size: .8rem;
-      text-align: center;
-      background: var(--white);
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 980px) {
-      .hero-inner,
-      .steps-shell,
-      .warning-grid,
-      .final-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 { font-size: 3.2rem; }
-      .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .compare { grid-template-columns: 1fr; }
-      .final-inner .btn { width: fit-content; }
-    }
-
-    @media (max-width: 720px) {
-      :root { --side-pad: 18px; }
-      .top-strip-inner { gap: 12px; font-size: .78rem; }
-      .nav { top: 36px; }
-      .nav-links a:not(.btn) { display: none; }
-      .hero { padding-top: 38px; padding-bottom: 32px; }
-      .hero-inner { gap: 28px; }
-      .hero h1 { font-size: 2.25rem; margin-bottom: 14px; }
-      .hero-copy { font-size: 1rem; margin-bottom: 18px; }
-      .eyebrow { margin-bottom: 14px; }
-      .hero-actions { margin-bottom: 16px; }
-      .btn { width: 100%; }
-      .trust-row { gap: 8px; }
-      .trust-pill { min-height: 30px; font-size: .78rem; padding: 0 10px; }
-      .visual-panel { min-height: 610px; border-radius: 22px; }
-      .price-card {
-        grid-template-columns: 1fr;
-        gap: 6px;
-        top: 186px;
-      }
-      .price { font-size: 3.4rem; }
-      .phone-mock { left: 18px; right: 18px; bottom: 18px; }
-      .section { padding-top: 66px; padding-bottom: 66px; }
-      h2 { font-size: 2.05rem; }
-      .fit-grid { grid-template-columns: 1fr; }
-      .step { grid-template-columns: 42px 1fr; padding: 18px; }
-      .step-number { width: 42px; height: 42px; }
-      .clinician-panel { grid-template-columns: 1fr; }
-      .clinician-panel img { width: 100%; height: 260px; }
-      .final-inner .btn { width: 100%; }
-    }
-    /* 2026-10-30: long-form sections (cause, myths, timeline, FAQ, sources) */
-    .skip-link{position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:100001}
-    .skip-link:focus{left:12px;top:12px}
-    .prose { max-width: 820px; }
-    .prose p { color: var(--text-body); font-size: 1.08rem; line-height: 1.75; margin-bottom: 14px; }
-    .prose p a, .clinician-panel p a, .sources a { color: var(--brand); text-decoration: underline; }
-    .callout { margin-top: 18px; padding: 18px 20px; border-radius: 16px; background: var(--amber-soft); border: 1px solid #fde2c3; color: var(--text-primary); line-height: 1.65; }
-    .faq-list { display: grid; gap: 12px; margin-top: 18px; }
-    .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px; }
-    .faq-item summary { cursor: pointer; color: var(--text-primary); font-weight: 700; font-size: 1.05rem; min-height: 44px; display: flex; align-items: center; }
-    .faq-item p { margin: 10px 0 4px; }
-    .sources { padding: 36px var(--side-pad) 44px; background: var(--white); }
-    .sources p { color: var(--text-muted); font-size: .85rem; line-height: 1.6; margin-bottom: 10px; text-align: center; }
-    .compare-panel .mark.yes { flex: 0 0 auto; }
-    @media (max-width: 720px) {
-      /* stack the price card and the text example so neither hides the other on phones */
-      .visual-panel { min-height: 0; }
-      .price-card { position: relative; top: auto; left: auto; right: auto; margin: -64px 18px 0; }
-      .phone-mock { position: relative; left: auto; right: auto; bottom: auto; margin: 16px 18px 18px; }
-    }
   </style>
   <script type="application/ld+json">
 {
@@ -871,479 +376,441 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="top-strip">
-    <div class="top-strip-inner">
-      <span>13 states, including Florida by telehealth registration</span>
-      <span>$59 flat visit</span>
-      <span>Text-based visit</span>
+<!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
+<!-- Copy this block into every page right after <body> -->
+<!-- Last updated: May 2026 — CSS/JS moved to external files -->
+
+<!-- Shared site-wide stylesheet (nav, footer, reviews, save-contact) -->
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<!-- SVG icon definitions (hidden) -->
+<svg style="display:none;">
+  <defs>
+    <symbol id="npc-icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="npc-icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+    <symbol id="npc-icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="npc-icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="npc-icon-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="npc-icon-pill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 1.5H8A6.5 6.5 0 001.5 8v8A6.5 6.5 0 008 22.5h8a6.5 6.5 0 006.5-6.5v-2.5"/><path d="M16 2l-6 6"/></symbol>
+    <symbol id="npc-icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+    <symbol id="npc-icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+    <symbol id="npc-icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="npc-icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="npc-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  </defs>
+</svg>
+
+<nav class="npc-nav" aria-label="Main navigation">
+  <div class="npc-nav-inner">
+    <a href="https://npcwoods.com" class="npc-nav-logo">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="38" height="38">
+      <div class="npc-nav-logo-text">
+        <span class="npc-nav-logo-name">NPCWoods</span>
+        <span class="npc-nav-logo-tag">Telemedicine</span>
+      </div>
+    </a>
+
+    <ul class="npc-nav-links">
+      <li>
+        <a href="https://npcwoods.com/conditions/">Conditions <span class="nav-arrow">&#9662;</span></a>
+        <div class="npc-dropdown">
+          <a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a>
+          <a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a>
+          <a href="https://npcwoods.com/dental-pain/">Dental Pain</a>
+          <a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a>
+          <a href="https://npcwoods.com/ed-treatment/">ED Treatment</a>
+          <a href="https://npcwoods.com/conditions/">View All Conditions</a>
+        </div>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/how-it-works/">How It Works</a>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/pricing/">Pricing</a>
+      </li>
+      <li>
+        <a href="#">States <span class="nav-arrow">&#9662;</span></a>
+        <div class="npc-dropdown">
+          <a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
+          <a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+          <a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
+          <a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
+          <a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
+          <a href="https://npcwoods.com/montana-telemedicine/">Montana</a>
+          <a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a>
+          <a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a>
+          <a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a>
+          <a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a>
+          <a href="https://npcwoods.com/utah-telemedicine/">Utah</a>
+          <a href="https://npcwoods.com/washington-telemedicine/">Washington</a>
+          <a href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida (telehealth reg.)</a>
+        </div>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/blog/">Blog</a>
+      </li>
+      <li>
+        <a href="https://npcwoods.com/credentials/">Credentials</a>
+      </li>
+      <li>
+        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-nav-cta">
+          <span class="npc-cta-dot"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          $59. Text Chris Now
+        </a>
+      </li>
+    </ul>
+
+    <button class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Slide-out overlay -->
+<div class="npc-menu-overlay" id="npcOverlay"></div>
+
+<!-- Slide-out navigation panel -->
+<div class="npc-slide-panel" id="npcSlidePanel" role="dialog" aria-label="Navigation menu">
+  <div class="npc-panel-header">
+    <div class="npc-panel-logo">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
+      NPCWoods
     </div>
+    <button class="npc-panel-close" id="npcPanelClose" aria-label="Close menu">
+      <svg><use href="#npc-icon-x"/></svg>
+    </button>
+  </div>
+  <div class="npc-panel-body">
+
+    <!-- Navigate -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Navigate</div>
+      <a href="https://npcwoods.com/how-it-works/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-zap"/></svg></div>
+        <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee, one price, one promise</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
+        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 13 states, including Florida by telehealth registration</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/learn/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">After Your Visit<div class="npc-panel-link-sub">Patient education library</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/blog/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">Blog<div class="npc-panel-link-sub">Health tips &amp; insights</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/about/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
+        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC, double board-certified</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- States We Serve -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">States We Serve</div>
+      <div class="npc-states-grid">
+        <a href="https://npcwoods.com/arizona-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Arizona</a>
+        <a href="https://npcwoods.com/colorado-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Colorado</a>
+        <a href="https://npcwoods.com/georgia-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Georgia</a>
+        <a href="https://npcwoods.com/idaho-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Idaho</a>
+        <a href="https://npcwoods.com/iowa-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Iowa</a>
+        <a href="https://npcwoods.com/montana-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Montana</a>
+        <a href="https://npcwoods.com/nevada-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Nevada</a>
+        <a href="https://npcwoods.com/new-mexico-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> New Mexico</a>
+        <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
+        <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
+        <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
+        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
+        <a href="https://npcwoods.com/florida-vacation-sick-text-visit/" class="npc-state-link"><span class="npc-state-dot"></span> Florida (telehealth reg.)</a>
+      </div>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- Common Services -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Common Services</div>
+      <a href="https://npcwoods.com/uti-treatment/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-pill"/></svg></div>
+        <div class="npc-panel-link-text">UTI Treatment</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/sinus-infection-treatment/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Sinus Infection</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/dental-pain/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
+        <div class="npc-panel-link-text">Dental Pain Relief</div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
+        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
+        <div class="npc-panel-link-text">All Conditions<div class="npc-panel-link-sub">Full list of what we treat</div></div>
+        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
+      </a>
+    </div>
+
+    <div class="npc-panel-divider"></div>
+
+    <!-- Get Care Now -->
+    <div class="npc-panel-section">
+      <div class="npc-panel-section-label">Get Care Now</div>
+      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-panel-cta">
+        <svg><use href="#npc-icon-message"/></svg>
+        Text Chris. Start My $59 Visit
+      </a>
+      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20ask%20about%20a%20%2459%20visit." class="npc-panel-phone">
+        <div class="npc-panel-phone-icon"><svg><use href="#npc-icon-phone"/></svg></div>
+        <div class="npc-panel-link-text">Text (480) 639-4722<div class="npc-panel-link-sub">Same number, real practice</div></div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Shared site-wide JavaScript (nav, CWV, save-contact, fade-in) -->
+<script src="/assets/js/site.js" defer></script>
+<!-- ===== END SITE HEADER ===== -->
+<main id="main">
+  <header class="gh" aria-labelledby="gh-title">
+    <div class="gh-wrap">
+      <div class="gh-copy">
+        <span class="gh-pill"><i aria-hidden="true"></i>Text visit · $59 flat · No video</span>
+        <h1 id="gh-title"><span class="gh-grad">Poison ivy rash?</span> <span class="gh-pop">Text me a photo.</span></h1>
+        <p class="gh-sub">Hi, I&rsquo;m Chris Woods. I&rsquo;m a nurse practitioner. Got an itchy rash from poison ivy, poison oak, or poison sumac? Text me a few photos. I look at them myself. Then I tell you what I think it is and what to do next.</p>
+        <div class="gh-ctas">
+          <a class="gh-btn" href="sms:4806394722?body=Poison%20ivy%20visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Start the $59 visit</a>
+          <a class="gh-ghostbtn" href="#red-flags">Check red flags first ↓</a>
+        </div>
+        <p class="gh-fine">✓ I read every text &nbsp;·&nbsp; ✓ No waiting room &nbsp;·&nbsp; ✓ No app, no video &nbsp;·&nbsp; ✓ Pay only if I can treat you</p>
+      </div>
+      <div class="gh-photo">
+        <img src="/learn/pink-eye/assets/chris-cutout-600.webp?v=2" srcset="/learn/pink-eye/assets/chris-cutout-600.webp?v=2 600w, /learn/pink-eye/assets/chris-cutout-900.webp?v=2 900w" sizes="(max-width: 640px) 272px, (max-width: 900px) 329px, 429px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling" fetchpriority="high" decoding="async">
+        <span class="gh-sticker gh-sticker--black gh-s1">Pulled weeds. Now I itch. <span aria-hidden="true">🌿</span></span>
+        <span class="gh-sticker gh-sticker--blue gh-s2">Send me a pic. I got you <span aria-hidden="true">📱</span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><b>$59</b><span>flat. Only pay if I can treat you</span></div>
+    <div class="stat" role="listitem"><b>3 plants</b><span>ivy, oak, and sumac. Same oil</span></div>
+    <div class="stat" role="listitem"><b>1&ndash;3 wks</b><span>how long many rashes last</span></div>
+    <div class="stat" role="listitem"><b>13</b><span>states, including Florida by telehealth registration</span></div>
   </div>
 
-  <nav class="nav" aria-label="Primary navigation">
-    <div class="nav-inner">
-      <a class="brand" href="https://npcwoods.com/">
-        <span class="brand-mark">NP</span>
-        <span>NPCWoods</span>
-      </a>
-      <div class="nav-links">
-        <a href="#cause">What it is</a>
-        <a href="#home-care">Home care</a>
-        <a href="#red-flags">Red flags</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn-primary" href="sms:4806394722?body=Poison%20ivy%20visit">Text to start</a>
+  <div class="byline" aria-label="Clinician review attribution">
+    <div class="badge">Clinician reviewed</div>
+    <p><strong>Written and reviewed by <a href="https://npcwoods.com/about/">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a></strong>. Licensed Nurse Practitioner, double board certified. Licensed in 13 states, including Florida by telehealth registration. Last reviewed <time datetime="2026-10-30">October 30, 2026</time>.</p>
+    <p class="crumbs"><a href="https://npcwoods.com/">Home</a> / <a href="https://npcwoods.com/conditions/">Conditions</a> / Poison Ivy</p>
+  </div>
+
+  <div class="wrap story">
+    <div class="imsg-thread" aria-label="Text visit example">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="Chris Woods" width="72" height="72" loading="lazy">
+      <div class="imsg-stack">
+        <p class="imsg imsg--black">I think I got poison ivy pulling weeds. It&rsquo;s spreading and it itches like crazy.</p>
+        <p class="imsg imsg--me">Sorry, that&rsquo;s miserable. Send me a few clear photos and tell me when it started. I&rsquo;ll look at it myself.</p>
+        <p class="imsg imsg--me">One flat fee for a plant rash text visit: $59. If you need something from the pharmacy, you pay the pharmacy for it.</p>
       </div>
     </div>
-  </nav>
 
-  <main id="main">
-    <section class="hero">
-      <div class="hero-inner">
-        <div data-reveal>
-          <div class="eyebrow">Text visit &middot; $59 flat</div>
-          <h1>Poison ivy rash? Text me a photo.</h1>
-          <p class="hero-copy">
-            Hi, I&rsquo;m Chris Woods. I&rsquo;m a nurse practitioner. Got an itchy rash from poison ivy, poison oak, or poison sumac? Text me a few photos. I look at them myself. Then I tell you what I think it is and what to do next.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="sms:4806394722?body=Poison%20ivy%20visit">Start the $59 visit</a>
-            <a class="btn btn-secondary" href="#red-flags">Check red flags first</a>
-          </div>
-          <div class="trust-row" aria-label="NPCWoods trust markers">
-            <span class="trust-pill">✓ I read every text</span>
-            <span class="trust-pill">✓ No waiting room</span>
-            <span class="trust-pill">✓ No app, no video</span>
-            <span class="trust-pill">✓ Pay only if I can treat you</span>
-          </div>
+    <section class="panel" id="cause" aria-labelledby="cause-title">
+      <h2 class="section-title" id="cause-title">What causes the rash?</h2>
+      <div class="imsg-stack">
+        <p class="imsg">Poison ivy, poison oak, and poison sumac all have the same oil. It&rsquo;s called urushiol (you-ROO-shee-all).</p>
+        <p class="imsg">When it touches your skin, most people get a red, itchy rash. It often makes blisters too.</p>
+        <p class="imsg imsg--black">The oil soaks into your skin fast. That&rsquo;s why washing right away helps so much.</p>
+        <p class="imsg">The rash itself may not show up for a while. If you&rsquo;ve had it before, it can show up in a few hours to a few days.</p>
+        <p class="imsg">The first time you ever get it, it can take up to 2 or 3 weeks. So it can be hard to know where you got it.</p>
+      </div>
+      <div class="callout"><b>Heads up:</b> The oil sticks to things. Gloves, shoes, tools, golf clubs, dog leashes, and pet fur can all carry it. Touch them later and you can get a brand new rash. Wash them too.</div>
+    </section>
+
+    <section class="panel" id="spot" aria-labelledby="spot-title">
+      <h2 class="section-title" id="spot-title">How to spot them.</h2>
+      <p>You don&rsquo;t have to be a plant expert. These simple tips help.</p>
+      <div class="grid">
+        <div class="leaf-card"><span class="ico">1</span><b>Poison ivy</b><span>&ldquo;Leaves of three, let it be.&rdquo; It grows as a vine or a small bush. The leaves can be shiny or dull. They often turn red in the fall.</span></div>
+        <div class="leaf-card"><span class="ico">2</span><b>Poison oak</b><span>It also has leaves in groups of three. The edges are bumpy, a bit like an oak leaf. It grows as a bush or a vine.</span></div>
+        <div class="leaf-card"><span class="ico">3</span><b>Poison sumac</b><span>A shrub or small tree that likes wet, swampy ground. Each stem has rows of leaves in pairs, with one leaf at the tip.</span></div>
+        <div class="leaf-card"><span class="ico">4</span><b>Dead plants count too</b><span>Dry vines and roots still have the oil. Never burn them. The smoke can carry the oil into your nose, throat, and lungs.</span></div>
+      </div>
+      <figure class="plant-photo">
+        <img src="assets/poison-ivy-hero.jpg" alt="Poison ivy leaves in groups of three" width="1200" height="750" loading="lazy">
+        <figcaption>Leaves of three, let it be.</figcaption>
+      </figure>
+    </section>
+
+    <section class="panel" id="myths" aria-labelledby="myths-title">
+      <h2 class="section-title" id="myths-title">Four things people get wrong.</h2>
+      <p>I hear these a lot. Here&rsquo;s the truth.</p>
+      <div class="grid">
+        <div class="leaf-card myth"><span class="ico">✗</span><b>&ldquo;Scratching spreads it.&rdquo;</b><span>No. The fluid in the blisters does not spread the rash. New spots pop up because some skin got less oil and reacts later. Still, try not to scratch. It can let germs in.</span></div>
+        <div class="leaf-card myth"><span class="ico">✗</span><b>&ldquo;You can catch it from me.&rdquo;</b><span>No. You can&rsquo;t catch a poison ivy rash from another person&rsquo;s rash. You only get it from the oil, on the plant or on something it touched.</span></div>
+        <div class="leaf-card myth"><span class="ico">✗</span><b>&ldquo;Dead plants are safe.&rdquo;</b><span>No. The oil stays on dead leaves, vines, and roots for a long time. Wear gloves when you clear brush, even in winter.</span></div>
+        <div class="leaf-card myth"><span class="ico">✗</span><b>&ldquo;I never get it, so I&rsquo;m safe.&rdquo;</b><span>Not always. Your body can change. Some people get the rash for the first time as adults.</span></div>
+      </div>
+    </section>
+
+    <section class="panel" id="timeline" aria-labelledby="timeline-title">
+      <h2 class="section-title" id="timeline-title">How the rash usually goes.</h2>
+      <div class="imsg-stack">
+        <p class="imsg">Every rash is a little different. This is a common pattern.</p>
+        <p class="imsg imsg--black">It can look like it&rsquo;s spreading. Most of the time, it&rsquo;s just new spots showing up where there was less oil.</p>
+      </div>
+      <ol class="road">
+        <li><h3>The itch starts</h3><p>Your skin itches where the oil touched. Then red patches, lines, or bumps show up.</p></li>
+        <li><h3>Blisters may form</h3><p>Small or big blisters can fill with clear fluid and leak. The itch can be bad enough to wake you up at night.</p></li>
+        <li><h3>It crusts over</h3><p>The blisters dry up and crust. The itch slowly calms down.</p></li>
+        <li><h3>It fades</h3><p>For many people the rash clears on its own in 1 to 3 weeks. The first time you get it, it can last longer.</p></li>
+      </ol>
+    </section>
+
+    <section class="panel" id="home-care" aria-labelledby="home-title">
+      <h2 class="section-title" id="home-title">What you can do at home.</h2>
+      <p>A small, mild rash can often be handled at home. Only do this if you&rsquo;re sure it&rsquo;s from one of these plants.</p>
+      <div class="grid">
+        <div class="leaf-card">
+          <b>Try these first</b>
+          <ul class="checklist">
+            <li>Wash your skin gently with soap and water as soon as you can. Rinse well with cool water. Clean under your nails.</li>
+            <li>Put on gloves. Wash your clothes, shoes, tools, and your pet.</li>
+            <li>Lay a cool, wet washcloth on the itchy spots.</li>
+            <li>Take short, cool showers, or a short bath with oatmeal or baking soda in it.</li>
+            <li>Leave blisters alone. If one opens, keep the skin on top. It protects the spot underneath.</li>
+          </ul>
         </div>
-
-        <div class="visual-panel" data-reveal aria-label="Poison ivy visit example">
-          <div class="visual-plant"></div>
-          <div class="price-card">
-            <div class="price">$59</div>
-            <div>
-              <b>One flat fee for a plant rash text visit.</b>
-              <span>If you need something from the pharmacy, you pay the pharmacy for it.</span>
-            </div>
-          </div>
-          <div class="phone-mock" aria-label="Text visit example">
-            <div class="chat-head">
-              <div class="avatar"><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-400.webp" alt="Chris Woods" width="42" height="42"></div>
-              <div>
-                <b>Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</b>
-                <span>Reads every text</span>
-              </div>
-            </div>
-            <div class="bubble patient">I think I got poison ivy pulling weeds. It&rsquo;s spreading and it itches like crazy.</div>
-            <div class="bubble chris">Sorry, that&rsquo;s miserable. Send me a few clear photos and tell me when it started. I&rsquo;ll look at it myself.</div>
-          </div>
+        <div class="card">
+          <b>Text me if</b>
+          <ul class="checklist arrow">
+            <li>The rash is in more than one or two spots.</li>
+            <li>The itch is hard to live with.</li>
+            <li>Home care isn&rsquo;t helping after a few days.</li>
+            <li>You&rsquo;re not sure it&rsquo;s poison ivy. Lots of rashes look alike.</li>
+            <li>It&rsquo;s your first time getting a plant rash.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="cause">
-      <div class="section-inner prose" data-reveal>
-        <span class="overline">What it is</span>
-        <h2>What causes the rash?</h2>
-        <p>Poison ivy, poison oak, and poison sumac all have the same oil. It&rsquo;s called urushiol (you-ROO-shee-all). When it touches your skin, most people get a red, itchy rash. It often makes blisters too.</p>
-        <p>The oil soaks into your skin fast. That&rsquo;s why washing right away helps so much. The rash itself may not show up for a while. If you&rsquo;ve had it before, it can show up in a few hours to a few days. The first time you ever get it, it can take up to 2 or 3 weeks. So it can be hard to know where you got it.</p>
-        <div class="callout"><b>Heads up:</b> The oil sticks to things. Gloves, shoes, tools, golf clubs, dog leashes, and pet fur can all carry it. Touch them later and you can get a brand new rash. Wash them too.</div>
+    <section class="panel" id="works" aria-labelledby="works-title">
+      <h2 class="section-title" id="works-title">How a text visit with me works.</h2>
+      <div class="imsg-stack">
+        <p class="imsg">No app. No video call. No waiting room.</p>
+        <p class="imsg">You text from your phone, and I read it myself.</p>
+      </div>
+      <ol class="road">
+        <li class="here"><h3>Text me</h3><p>Text (480) 639-4722. Tell me what happened and when the rash started.</p></li>
+        <li><h3>Send clear photos</h3><p>Use good light. Send one close up and one from a little farther back. Tell me what you&rsquo;ve tried.</p></li>
+        <li><h3>I look at your case</h3><p>I read your story and look at your photos. I may ask a few questions.</p></li>
+        <li><h3>You get a plan</h3><p>I tell you what I think it is and what to do next. If you need something from the pharmacy, I send it to the one you pick. If I can&rsquo;t safely help by text, I tell you where to go, and you don&rsquo;t pay.</p></li>
+      </ol>
+    </section>
+
+    <section class="flags" id="red-flags" aria-labelledby="flags-title">
+      <h3 id="flags-title">When to skip a text visit.</h3>
+      <p style="margin:0 0 .9rem">A text visit is not for emergencies. If any of these are true, get care in person now. Don&rsquo;t wait on a text.</p>
+      <div class="fl-item"><b>! Trouble breathing or swallowing</b><span>Or your throat feels tight. This can happen if you breathed in smoke from burning plants. Call 911.</span></div>
+      <div class="fl-item"><b>! Swelling of your face</b><span>Most of all if an eye is swollen shut. Go to the ER.</span></div>
+      <div class="fl-item"><b>! Rash around your eyes, mouth, or private parts</b><span>These spots need to be seen in person.</span></div>
+      <div class="fl-item"><b>! Rash over most of your body, or a fever</b><span>These are signs of a bad reaction. Get seen in person today.</span></div>
+      <div class="fl-item"><b>! Signs of infection</b><span>Pus, yellow crusts, warmth, more pain, or redness that keeps growing. Get it checked in person.</span></div>
+    </section>
+
+    <section class="panel" id="prevent" aria-labelledby="prevent-title">
+      <h2 class="section-title" id="prevent-title">How to avoid the next one.</h2>
+      <p>A few habits go a long way, in the yard or on the trail.</p>
+      <div class="grid">
+        <div class="leaf-card"><span class="ico">1</span><b>Learn the plants</b><span>Show your kids too. &ldquo;Leaves of three, let it be&rdquo; is easy to remember.</span></div>
+        <div class="leaf-card"><span class="ico">2</span><b>Cover up</b><span>Wear long sleeves, long pants, boots, and gloves when you work in brush.</span></div>
+        <div class="leaf-card"><span class="ico">3</span><b>Wash fast</b><span>Wash gently with soap and water right after you touch a plant. Rinse well. Fast washing may make the rash smaller, or even stop it.</span></div>
+        <div class="leaf-card"><span class="ico">4</span><b>Wash your gear</b><span>Clothes, shoes, gloves, tools, and leashes. Wear gloves while you do it. Bathe your dog if it ran through the brush.</span></div>
       </div>
     </section>
 
-    <section class="section" id="spot">
-      <div class="section-inner">
-        <div class="section-header" data-reveal>
-          <span class="overline">Know the plants</span>
-          <h2>How to spot them.</h2>
-          <p>You don&rsquo;t have to be a plant expert. These simple tips help.</p>
-        </div>
-        <div class="fit-grid" data-reveal>
-          <div class="fit-card">
-            <div class="fit-icon">1</div>
-            <b>Poison ivy</b>
-            <span>&ldquo;Leaves of three, let it be.&rdquo; It grows as a vine or a small bush. The leaves can be shiny or dull. They often turn red in the fall.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">2</div>
-            <b>Poison oak</b>
-            <span>It also has leaves in groups of three. The edges are bumpy, a bit like an oak leaf. It grows as a bush or a vine.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">3</div>
-            <b>Poison sumac</b>
-            <span>A shrub or small tree that likes wet, swampy ground. Each stem has rows of leaves in pairs, with one leaf at the tip.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">4</div>
-            <b>Dead plants count too</b>
-            <span>Dry vines and roots still have the oil. Never burn them. The smoke can carry the oil into your nose, throat, and lungs.</span>
-          </div>
-        </div>
-      </div>
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <h2 class="section-title" id="faq-title">Poison ivy questions I get a lot.</h2>
+      <details><summary>Can you help with poison ivy by text?</summary><p>Often, yes. A plant rash is easy to see in a clear photo. I look at your photos and your story myself. If I think you need to be seen in person, I tell you, and you don&rsquo;t pay.</p></details>
+      <details><summary>How much does it cost?</summary><p>$59 flat for the visit. If you need something from the pharmacy, you pay the pharmacy for that.</p></details>
+      <details><summary>Is poison ivy contagious?</summary><p>No. You can&rsquo;t get it from another person&rsquo;s rash or from blister fluid. You only get it from the plant oil. That oil can be on clothes, tools, or a pet, so wash those.</p></details>
+      <details><summary>How long does a poison ivy rash last?</summary><p>For many people, 1 to 3 weeks. If it&rsquo;s your first time, it can last longer.</p></details>
+      <details><summary>Do you help with poison oak and poison sumac too?</summary><p>Yes. All three plants have the same oil and cause the same kind of rash. It&rsquo;s the same $59 text visit.</p></details>
+      <details><summary>Where can I use NPCWoods?</summary><p>I&rsquo;m licensed in 13 states, including Florida by telehealth registration. You need to be in one of those states when you text. You can see the full list on my <a href="https://npcwoods.com/credentials/">credentials page</a>.</p></details>
     </section>
 
-    <section class="section alt" id="myths">
-      <div class="section-inner">
-        <div class="section-header" data-reveal>
-          <span class="overline">Myths</span>
-          <h2>Four things people get wrong.</h2>
-          <p>I hear these a lot. Here&rsquo;s the truth.</p>
-        </div>
-        <div class="fit-grid" data-reveal>
-          <div class="fit-card">
-            <div class="fit-icon">✗</div>
-            <b>&ldquo;Scratching spreads it.&rdquo;</b>
-            <span>No. The fluid in the blisters does not spread the rash. New spots pop up because some skin got less oil and reacts later. Still, try not to scratch. It can let germs in.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">✗</div>
-            <b>&ldquo;You can catch it from me.&rdquo;</b>
-            <span>No. You can&rsquo;t catch a poison ivy rash from another person&rsquo;s rash. You only get it from the oil, on the plant or on something it touched.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">✗</div>
-            <b>&ldquo;Dead plants are safe.&rdquo;</b>
-            <span>No. The oil stays on dead leaves, vines, and roots for a long time. Wear gloves when you clear brush, even in winter.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">✗</div>
-            <b>&ldquo;I never get it, so I&rsquo;m safe.&rdquo;</b>
-            <span>Not always. Your body can change. Some people get the rash for the first time as adults.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="timeline">
-      <div class="section-inner steps-shell">
-        <div data-reveal>
-          <span class="overline">What to expect</span>
-          <h2>How the rash usually goes.</h2>
-          <p class="lead">Every rash is a little different. This is a common pattern. It can look like it&rsquo;s spreading. Most of the time, it&rsquo;s just new spots showing up where there was less oil.</p>
-        </div>
-        <div class="steps-list" data-reveal>
-          <div class="step">
-            <div class="step-number">1</div>
-            <div><b>The itch starts</b><span>Your skin itches where the oil touched. Then red patches, lines, or bumps show up.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div><b>Blisters may form</b><span>Small or big blisters can fill with clear fluid and leak. The itch can be bad enough to wake you up at night.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div><b>It crusts over</b><span>The blisters dry up and crust. The itch slowly calms down.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <div><b>It fades</b><span>For many people the rash clears on its own in 1 to 3 weeks. The first time you get it, it can last longer.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="home-care">
-      <div class="section-inner">
-        <div class="section-header" data-reveal>
-          <span class="overline">Home care</span>
-          <h2>What you can do at home.</h2>
-          <p>A small, mild rash can often be handled at home. Only do this if you&rsquo;re sure it&rsquo;s from one of these plants.</p>
-        </div>
-        <div class="compare" data-reveal>
-          <div class="compare-panel good">
-            <h3>Try these first</h3>
-            <div class="compare-row"><span class="mark yes">✓</span><b>Wash your skin gently with soap and water as soon as you can. Rinse well with cool water. Clean under your nails.</b></div>
-            <div class="compare-row"><span class="mark yes">✓</span><b>Put on gloves. Wash your clothes, shoes, tools, and your pet.</b></div>
-            <div class="compare-row"><span class="mark yes">✓</span><b>Lay a cool, wet washcloth on the itchy spots.</b></div>
-            <div class="compare-row"><span class="mark yes">✓</span><b>Take short, cool showers, or a short bath with oatmeal or baking soda in it.</b></div>
-            <div class="compare-row"><span class="mark yes">✓</span><b>Leave blisters alone. If one opens, keep the skin on top. It protects the spot underneath.</b></div>
-          </div>
-          <div class="compare-panel">
-            <h3>Text me if</h3>
-            <div class="compare-row"><span class="mark yes">→</span><b>The rash is in more than one or two spots.</b></div>
-            <div class="compare-row"><span class="mark yes">→</span><b>The itch is hard to live with.</b></div>
-            <div class="compare-row"><span class="mark yes">→</span><b>Home care isn&rsquo;t helping after a few days.</b></div>
-            <div class="compare-row"><span class="mark yes">→</span><b>You&rsquo;re not sure it&rsquo;s poison ivy. Lots of rashes look alike.</b></div>
-            <div class="compare-row"><span class="mark yes">→</span><b>It&rsquo;s your first time getting a plant rash.</b></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="works">
-      <div class="section-inner steps-shell">
-        <div data-reveal>
-          <span class="overline">How it works</span>
-          <h2>How a text visit with me works.</h2>
-          <p class="lead">No app. No video call. No waiting room. You text from your phone, and I read it myself.</p>
-        </div>
-        <div class="steps-list" data-reveal>
-          <div class="step">
-            <div class="step-number">1</div>
-            <div><b>Text me</b><span>Text (480) 639-4722. Tell me what happened and when the rash started.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div><b>Send clear photos</b><span>Use good light. Send one close up and one from a little farther back. Tell me what you&rsquo;ve tried.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div><b>I look at your case</b><span>I read your story and look at your photos. I may ask a few questions.</span></div>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <div><b>You get a plan</b><span>I tell you what I think it is and what to do next. If you need something from the pharmacy, I send it to the one you pick. If I can&rsquo;t safely help by text, I tell you where to go, and you don&rsquo;t pay.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="red-flags">
-      <div class="section-inner warning-grid">
-        <div data-reveal>
-          <span class="overline">Red flags</span>
-          <h2>When to skip a text visit.</h2>
-          <p class="lead">A text visit is not for emergencies. If any of these are true, get care in person now. Don&rsquo;t wait on a text.</p>
-        </div>
-        <div class="red-list" data-reveal>
-          <div class="red-item"><span class="mark no">!</span><div><b>Trouble breathing or swallowing</b><span>Or your throat feels tight. This can happen if you breathed in smoke from burning plants. Call 911.</span></div></div>
-          <div class="red-item"><span class="mark no">!</span><div><b>Swelling of your face</b><span>Most of all if an eye is swollen shut. Go to the ER.</span></div></div>
-          <div class="red-item"><span class="mark no">!</span><div><b>Rash around your eyes, mouth, or private parts</b><span>These spots need to be seen in person.</span></div></div>
-          <div class="red-item"><span class="mark no">!</span><div><b>Rash over most of your body, or a fever</b><span>These are signs of a bad reaction. Get seen in person today.</span></div></div>
-          <div class="red-item"><span class="mark no">!</span><div><b>Signs of infection</b><span>Pus, yellow crusts, warmth, more pain, or redness that keeps growing. Get it checked in person.</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="prevent">
-      <div class="section-inner">
-        <div class="section-header" data-reveal>
-          <span class="overline">Prevention</span>
-          <h2>How to avoid the next one.</h2>
-          <p>A few habits go a long way, in the yard or on the trail.</p>
-        </div>
-        <div class="fit-grid" data-reveal>
-          <div class="fit-card">
-            <div class="fit-icon">1</div>
-            <b>Learn the plants</b>
-            <span>Show your kids too. &ldquo;Leaves of three, let it be&rdquo; is easy to remember.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">2</div>
-            <b>Cover up</b>
-            <span>Wear long sleeves, long pants, boots, and gloves when you work in brush.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">3</div>
-            <b>Wash fast</b>
-            <span>Wash gently with soap and water right after you touch a plant. Rinse well. Fast washing may make the rash smaller, or even stop it.</span>
-          </div>
-          <div class="fit-card">
-            <div class="fit-icon">4</div>
-            <b>Wash your gear</b>
-            <span>Clothes, shoes, gloves, tools, and leashes. Wear gloves while you do it. Bathe your dog if it ran through the brush.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="faq">
-      <div class="section-inner prose" data-reveal>
-        <span class="overline">Questions</span>
-        <h2>Poison ivy questions I get a lot.</h2>
-        <div class="faq-list">
-          <details class="faq-item"><summary>Can you help with poison ivy by text?</summary><p>Often, yes. A plant rash is easy to see in a clear photo. I look at your photos and your story myself. If I think you need to be seen in person, I tell you, and you don&rsquo;t pay.</p></details>
-          <details class="faq-item"><summary>How much does it cost?</summary><p>$59 flat for the visit. If you need something from the pharmacy, you pay the pharmacy for that.</p></details>
-          <details class="faq-item"><summary>Is poison ivy contagious?</summary><p>No. You can&rsquo;t get it from another person&rsquo;s rash or from blister fluid. You only get it from the plant oil. That oil can be on clothes, tools, or a pet, so wash those.</p></details>
-          <details class="faq-item"><summary>How long does a poison ivy rash last?</summary><p>For many people, 1 to 3 weeks. If it&rsquo;s your first time, it can last longer.</p></details>
-          <details class="faq-item"><summary>Do you help with poison oak and poison sumac too?</summary><p>Yes. All three plants have the same oil and cause the same kind of rash. It&rsquo;s the same $59 text visit.</p></details>
-          <details class="faq-item"><summary>Where can I use NPCWoods?</summary><p>I&rsquo;m licensed in 13 states, including Florida by telehealth registration. You need to be in one of those states when you text. You can see the full list on my <a href="https://npcwoods.com/credentials/">credentials page</a>.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-inner clinician-panel" data-reveal>
-        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Licensed Nurse Practitioner" loading="lazy">
+    <section class="panel" aria-labelledby="clin-title">
+      <div class="clin">
+        <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, Licensed Nurse Practitioner" width="200" height="200" loading="lazy">
         <div>
-          <span class="overline">Meet your clinician</span>
-          <h3>Hi, I&rsquo;m Chris. I read every text myself.</h3>
-          <p>I&rsquo;m Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. I&rsquo;m a nurse practitioner with two board certifications. I&rsquo;m not a chatbot. When you text NPCWoods, you get me. I wrote and reviewed this page. Last reviewed <time datetime="2026-10-30">October 30, 2026</time>. <a href="https://npcwoods.com/about/">About me</a> &middot; <a href="https://npcwoods.com/credentials/">My credentials</a></p>
+          <h2 class="section-title" id="clin-title">Hi, I&rsquo;m Chris. I read every text myself.</h2>
+          <div class="imsg-stack">
+            <p class="imsg">I&rsquo;m Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. I&rsquo;m a nurse practitioner with two board certifications.</p>
+            <p class="imsg imsg--black">I&rsquo;m not a chatbot. When you text NPCWoods, you get me.</p>
+          </div>
+          <p style="margin-top:1rem">I wrote and reviewed this page. Last reviewed <time datetime="2026-10-30">October 30, 2026</time>. <a href="https://npcwoods.com/about/">About me</a> &middot; <a href="https://npcwoods.com/credentials/">My credentials</a></p>
         </div>
       </div>
     </section>
 
-    <section class="final-cta">
-      <div class="final-inner" data-reveal>
-        <div>
-          <h2>Itchy plant rash? Text me.</h2>
-          <p>$59 flat for the visit. You only pay if I can treat you. A text visit is not for emergencies. If you have trouble breathing, call 911.</p>
-        </div>
-        <a class="btn btn-gold" href="sms:4806394722?body=Poison%20ivy%20visit">Text (480) 639-4722</a>
-      </div>
+    <div class="cta-band">
+      <h2>Itchy plant rash? Text me.</h2>
+      <p>$59 flat for the visit. You only pay if I can treat you. A text visit is not for emergencies. If you have trouble breathing, call 911.</p>
+      <a href="sms:4806394722?body=Poison%20ivy%20visit">Text (480) 639-4722</a>
+    </div>
+
+    <section class="sources panel" aria-labelledby="src-title">
+      <h2 class="section-title" id="src-title">Sources</h2>
+      <ol>
+        <li><a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/" target="_blank" rel="noopener">American Academy of Dermatology: Poison ivy, oak, and sumac</a></li>
+        <li><a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/what-rash-looks-like" target="_blank" rel="noopener">What does the rash look like?</a></li>
+        <li><a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/treat-rash" target="_blank" rel="noopener">How to treat the rash</a></li>
+        <li><a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/touch-plant" target="_blank" rel="noopener">What to do if you touch a plant</a></li>
+        <li><a href="https://www.fda.gov/consumers/consumer-updates/outsmarting-poison-ivy-and-other-poisonous-plants" target="_blank" rel="noopener">U.S. FDA: Outsmarting poison ivy</a></li>
+      </ol>
+      <p style="margin-top:.8rem">This page is for learning. It does not replace care from a clinician who can see you. If you have an emergency, call 911.</p>
+      <p>Photo: poison ivy by U.S. Fish &amp; Wildlife Service Midwest Region, public domain via Wikimedia Commons.</p>
     </section>
+  </div>
+</main>
 
-    <section class="sources">
-      <div class="section-inner">
-        <p><b>Sources:</b>
-          <a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/" target="_blank" rel="noopener">American Academy of Dermatology: Poison ivy, oak, and sumac</a> &middot;
-          <a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/what-rash-looks-like" target="_blank" rel="noopener">What does the rash look like?</a> &middot;
-          <a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/treat-rash" target="_blank" rel="noopener">How to treat the rash</a> &middot;
-          <a href="https://www.aad.org/public/everyday-care/itchy-skin/poison-ivy/touch-plant" target="_blank" rel="noopener">What to do if you touch a plant</a> &middot;
-          <a href="https://www.fda.gov/consumers/consumer-updates/outsmarting-poison-ivy-and-other-poisonous-plants" target="_blank" rel="noopener">U.S. FDA: Outsmarting poison ivy</a>
-        </p>
-        <p>This page is for learning. It does not replace care from a clinician who can see you. If you have an emergency, call 911.</p>
-        <p>Photo: poison ivy by U.S. Fish &amp; Wildlife Service Midwest Region, public domain via Wikimedia Commons.</p>
-      </div>
-    </section>
-  </main>
+<div class="ep-sticky" id="ep-sticky" hidden role="region" aria-label="Text Chris">
+  <div class="ep-sticky-inner">
+    <div class="ep-sticky-meta"><strong>Plant rash? Text Chris.</strong><span>$59 flat. Only pay if I can treat you.</span></div>
+    <a class="ep-sticky-cta" href="sms:4806394722?body=Poison%20ivy%20visit">Text (480) 639-4722</a>
+    <button type="button" class="ep-sticky-x" id="ep-sticky-x" aria-label="Dismiss text bar">×</button>
+  </div>
+</div>
+<script>
+(function(){var bar=document.getElementById('ep-sticky'),btn=document.getElementById('ep-sticky-x'),hero=document.querySelector('.gh');if(!bar)return;var off=false;try{off=sessionStorage.getItem('piStickyDismissed')==='1';}catch(e){}if(off)return;
+function show(v){if(off)return;bar.hidden=!v;document.body.classList.toggle('has-ep-sticky',v);}
+if('IntersectionObserver' in window&&hero){new IntersectionObserver(function(es){show(!es[0].isIntersecting);}).observe(hero);}else{show(true);}
+if(btn)btn.addEventListener('click',function(){off=true;bar.hidden=true;document.body.classList.remove('has-ep-sticky');try{sessionStorage.setItem('piStickyDismissed','1');}catch(e){}});})();
+</script>
 
-  <script>
-    const revealItems = document.querySelectorAll("[data-reveal]");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion) {
-      revealItems.forEach((item) => item.classList.add("is-visible"));
-    } else {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.14 });
-      revealItems.forEach((item) => observer.observe(item));
-    }
-  </script>
 
 <!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
-<!-- Copy this block into every page before </body> -->
-<!-- Last updated: August 2026 — CSS moved to /assets/css/site.css -->
-
-<footer class="npc-site-footer">
-  <div class="npc-footer-inner">
-    <div class="npc-footer-grid">
-
-      <!-- Brand Column -->
-      <div class="npc-footer-brand">
-        <div class="npc-footer-brand-name">
-          <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods" width="36" height="36">
-          NPCWoods Telemedicine
-        </div>
-        <p>Text-based telehealth visits, $59 flat, no paperwork, no hassle. No waiting room. Just text us what's going on and a licensed nurse practitioner will take care of you.</p>
-        <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-footer-cta">Text (480) 639-4722</a>
-      </div>
-
-      <!-- Conditions Column -->
-      <div class="npc-footer-col">
-        <h4>Conditions We Treat</h4>
-        <ul>
-          <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
-          <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
-          <li><a href="https://npcwoods.com/dental-pain/">Dental Pain</a></li>
-          <li><a href="https://npcwoods.com/ear-infection-treatment/">Ear Infection</a></li>
-          <li><a href="https://npcwoods.com/learn/covid-flu/">Cold &amp; Flu</a></li>
-          <li><a href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a></li>
-          <li><a href="https://npcwoods.com/learn/skin-infection/">Skin Rashes</a></li>
-          <li><a href="https://npcwoods.com/ed-treatment/">ED Treatment</a></li>
-          <li><a href="https://npcwoods.com/strep-throat-treatment/">Strep Throat</a></li>
-          <li><a href="https://npcwoods.com/poison-ivy/">Poison Ivy</a></li>
-          <li><a href="https://npcwoods.com/glp1-weight-loss/">GLP-1 Weight Loss</a></li>
-          <li><a href="https://npcwoods.com/conditions/">View All &rarr;</a></li>
-        </ul>
-      </div>
-
-      <!-- States Column -->
-      <div class="npc-footer-col">
-        <h4>States We Serve</h4>
-        <ul>
-          <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
-          <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
-          <li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li>
-          <li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li>
-          <li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li>
-          <li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li>
-          <li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li>
-          <li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li>
-          <li><a href="https://npcwoods.com/nevada-telemedicine/">Nevada</a></li>
-          <li><a href="https://npcwoods.com/oregon-telemedicine/">Oregon</a></li>
-          <li><a href="https://npcwoods.com/utah-telemedicine/">Utah</a></li>
-          <li><a href="https://npcwoods.com/washington-telemedicine/">Washington</a></li>
-          <li><a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" target="_blank" rel="noopener">Florida</a></li>
-        </ul>
-      </div>
-
-      <!-- Quick Links Column -->
-      <div class="npc-footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="https://npcwoods.com/">Home</a></li>
-          <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>
-          <li><a href="https://npcwoods.com/pricing/">Pricing, $59</a></li>
-          <li><a href="https://npcwoods.com/faq/">FAQ</a></li>
-          <li><a href="https://npcwoods.com/credentials/">Credentials &amp; Licenses</a></li>
-          <li><a href="https://npcwoods.com/learn/">Patient Education</a></li>
-          <li><a href="https://npcwoods.com/medications/">Medications</a></li>
-          <li><a href="https://npcwoods.com/blog/">Blog</a></li>
-          <li><a href="https://npcwoods.com/employers/">For Employers</a></li>
-          <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <hr class="npc-footer-divider">
-
-    <div class="npc-footer-bottom">
-      <span>&copy; 2026 NPCWoods Telehealth. All rights reserved.</span>
-      <span><a href="https://npcwoods.com">npcwoods.com</a></span>
-    </div>
-
-    <div class="npc-footer-trust">
-      <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
-        <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
-      </a><br>
-      Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Double Board-Certified Nurse Practitioner<br>
-      Licensed in 13 states, including Florida by telehealth registration (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>
-      Florida telehealth provider registration TPAN3355. <a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" target="_blank" rel="noopener">Verify with the Florida Department of Health</a><br>
-      NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
-      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
-      <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
-    </div>
-  </div>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "@id": "https://npcwoods.com/#medical-business",
-    "name": "NPCWoods",
-    "alternateName": ["NPCWoods Telemedicine", "Nurse Practitioner Chris Woods"],
-    "founder": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
-    "employee": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
-    "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
-    "telephone": "+14806394722",
-    "url": "https://npcwoods.com",
-    "logo": "https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg",
-    "priceRange": "$59",
-    "sameAs": [
-      "https://share.google/XlmNvRT4vihOJ8KBH",
-      "https://www.facebook.com/people/NPCWoods-Telemed-Clinic/61576036816823/",
-      "https://www.legitscript.com/websites/?checker_keywords=npcwoods.com"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "3550 N Goldwater Blvd #1119",
-      "addressLocality": "Scottsdale",
-      "addressRegion": "AZ",
-      "postalCode": "85251",
-      "addressCountry": "US"
-    }
-  }
-  </script>
-</footer>
-<!-- ===== END SITE FOOTER ===== -->
-</body>
+<!-- Copy this block into every page before </body>
 </html>
