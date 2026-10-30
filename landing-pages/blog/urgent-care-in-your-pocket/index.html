@@ -42,6 +42,13 @@
     .pocket-cta a { display:inline-block; margin-top:12px; background:linear-gradient(135deg,#e49150 0%,#bf5a2b 100%); color:#fff; text-decoration:none; font-weight:800; font-size:18px; padding:16px 36px; border-radius:14px; }
     .pocket .byline { font-size:14px; color:#6B7280; text-align:center; margin:-24px 0 32px; }
     .pocket .byline a { color:#2563eb; text-decoration:none; }
+    .pocket .pk-thread { display:flex; flex-direction:column; gap:8px; margin:14px 0 20px; }
+    .pocket .pk-bubble { max-width:82%; margin:0; padding:11px 16px; font-size:17px; line-height:1.45; font-weight:500; color:#fff; border-radius:20px; }
+    .pocket .pk-bubble--blue { align-self:flex-end; background:#007AFF; border-radius:20px 20px 6px 20px; box-shadow:0 6px 16px rgba(0,122,255,.22); }
+    .pocket .pk-bubble--black { align-self:flex-start; background:#000; border:1.5px solid #fff; border-radius:20px 20px 20px 6px; box-shadow:0 6px 16px rgba(0,0,0,.25); }
+    .pocket .pk-steps, .pocket .pk-list { margin:8px 0 14px; padding-left:24px; }
+    .pocket .pk-steps li, .pocket .pk-list li { font-size:18px; line-height:1.7; color:#3f4148; margin:0 0 6px; }
+    .pocket .pk-faq h3 { font-size:19px; margin:20px 0 4px; color:#111114; }
   </style>
   <script type="application/ld+json">
 {
@@ -153,19 +160,125 @@
     <p class="byline">By <a href="https://npcwoods.com/about/">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a> &middot; Updated <time datetime="2026-10-30">October 30, 2026</time></p>
   </div>
   <p class="lead">That’s the whole practice, in one line. Not a clinic you drive to. Not a portal. A text to me.</p>
-  <p>I built this for my own family. A real nurse practitioner. One honest price. No chatbot pretending it’s care.</p>
-    <h2>If it’s Sunday night and everything else is closed</h2>
-    <p>Kid’s ear. Tooth that won’t quit. You do not want a two-hour wait. Text me. If it’s safe to treat this way, I send a plan and a pharmacy order when it makes sense.</p>
-    <h2>If you hate the waiting room</h2>
-    <p>Drive, sit, copay, fluorescent lights. Or a text. $59. I read it. You get a written plan.</p>
-    <h2>If you already know me</h2>
-    <p>You already have the number. This is the reminder. Same visit. I still read it myself.</p>
-    <h2>If you’re down the road</h2>
-    <p>North Georgia, western NC, and the other states I’m licensed in. If you’re in one of them, this is local enough. Text. I send it to your pharmacy.</p>
-    <h2>What this is not</h2>
-    <p>Not an ER. Not chest pain, trouble breathing, a baby who looks wrong, or anything that needs hands on you tonight. I’ll tell you if you need to go in. If I can’t safely treat you by text, you don’t pay. If it’s an emergency, call 911.</p>
-    <h2>How a visit works</h2>
-    <p>You text me what’s going on, in your own words. I actually read it. I ask what I need. You get a plan. If medication is appropriate, I send it to your pharmacy. $59. No membership. No app.</p>
+  <div class="pk-thread" aria-label="Texts from Chris">
+    <p class="pk-bubble pk-bubble--blue">Hey, it’s Chris. I’m the nurse practitioner on the other end of that number.</p>
+    <p class="pk-bubble pk-bubble--blue">When you text me, I read it. Not a bot. Not a call center. Me.</p>
+    <p class="pk-bubble pk-bubble--blue">I built this for my own family first. Then friends kept asking for the number, so I opened it up.</p>
+  </div>
+  <p>One real person. One honest price. No chatbot pretending it’s care. That was the whole idea, and it still is.</p>
+
+  <h2>Why a text?</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">A text fits into your day. You can send it from the car line, the break room, or the couch.</p>
+    <p class="pk-bubble pk-bubble--blue">You don’t have to sit in a waiting room feeling awful next to other people who feel awful.</p>
+    <p class="pk-bubble pk-bubble--blue">You don’t have to get dressed or drive. No app to download. No password to forget.</p>
+    <p class="pk-bubble pk-bubble--blue">Just type what’s wrong in your own words. Spelling doesn’t count.</p>
+  </div>
+
+  <h2>Things people text me about</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">Burning when you pee. A stuffy, achy face that won’t clear up. A sore throat. Pink, crusty eyes.</p>
+    <p class="pk-bubble pk-bubble--blue">Poison ivy from pulling weeds. A rash you can’t figure out. A cold sore that’s starting to tingle.</p>
+    <p class="pk-bubble pk-bubble--blue">Not sure if yours fits? Text me anyway. If it’s not a good fit for text, I’ll tell you, and you don’t pay.</p>
+  </div>
+  <p>A lot of what sends people to urgent care is common stuff. It still feels awful when it’s you. Most of the time, good questions and a clear photo tell me a lot.</p>
+
+  <h2>If it’s Sunday night and everything else is closed</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">Your kid’s ear hurts. Or a tooth won’t quit. You do not want a two-hour wait.</p>
+    <p class="pk-bubble pk-bubble--blue">Text me. If it’s safe to handle this way, I’ll send you a plan. If you need something from the pharmacy, I send it to the one you pick.</p>
+    <p class="pk-bubble pk-bubble--blue">If it’s not safe to handle by text, I’ll tell you straight and point you to the right place.</p>
+  </div>
+
+  <h2>If you hate the waiting room</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">Drive. Park. Sign in. Sit under those bright lights. Wait some more.</p>
+    <p class="pk-bubble pk-bubble--blue">Or send a text. $59. I read it. You get a written plan you can look back at later.</p>
+  </div>
+
+  <h2>If you already know me</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">You already have the number. This is your reminder. Save it as “Chris” so you don’t have to dig for it.</p>
+    <p class="pk-bubble pk-bubble--blue">Same visit as always. I still read every one myself.</p>
+  </div>
+
+  <h2>If you’re down the road</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">My office is in Murphy, North Carolina. North Georgia and western NC are my backyard.</p>
+    <p class="pk-bubble pk-bubble--blue">But you don’t have to live close. If you’re in one of my states, this is local enough.</p>
+  </div>
+
+  <h2>Where I can see you</h2>
+  <p>I’m licensed in 13 states, including Florida by telehealth registration. The list is Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah and Washington, plus Florida.</p>
+  <p>You need to be in one of those states when you text me. If you’re on a trip somewhere else, I can’t take your visit that day. I’ll tell you that up front so you don’t lose time.</p>
+
+  <h2>How a text visit works</h2>
+  <ol class="pk-steps">
+    <li><strong>Text (480) 639-4722.</strong> Tell me what’s going on, in your own words.</li>
+    <li><strong>I read it and ask questions.</strong> I ask what I need to know. Sometimes I’ll ask for a photo.</li>
+    <li><strong>I decide if text is safe for this.</strong> If it isn’t, I tell you where to go, and you don’t pay.</li>
+    <li><strong>You get a written plan.</strong> If you need something from the pharmacy, I send it to the one you choose.</li>
+    <li><strong>You pay $59.</strong> No membership. No app. No video call.</li>
+  </ol>
+
+  <h2>What to put in your first text</h2>
+  <ul class="pk-list">
+    <li>Your name and the state you’re in right now.</li>
+    <li>What’s bothering you, and when it started.</li>
+    <li>Anything you’ve already tried.</li>
+    <li>Any health problems you have, and anything you take every day.</li>
+    <li>Any allergies.</li>
+    <li>The name of your pharmacy and the town it’s in.</li>
+  </ul>
+  <p>Don’t stress about getting it perfect. If I need more, I’ll ask. Here’s what a first text can look like:</p>
+  <div class="pk-thread" aria-label="Example text visit">
+    <p class="pk-bubble pk-bubble--black">Hi Chris, I’d like to start a $59 visit. My ear started hurting last night. I’m in Georgia.</p>
+    <p class="pk-bubble pk-bubble--blue">Sorry, that’s no fun. I’ve got a few quick questions. Any fever? Is anything draining from the ear?</p>
+    <p class="pk-bubble pk-bubble--black">No fever. A little drainage this morning.</p>
+    <p class="pk-bubble pk-bubble--blue">Okay, thanks. Which pharmacy do you use, and what town is it in?</p>
+  </div>
+
+  <h2>What this is not</h2>
+  <p>This is not an ER. Please don’t text me for any of these. Call 911 or go to the nearest ER instead:</p>
+  <ul class="pk-list">
+    <li>Chest pain or pressure</li>
+    <li>Trouble breathing</li>
+    <li>A baby or small child who looks very sick to you</li>
+    <li>Sudden weakness, a drooping face, or trouble talking</li>
+    <li>Bleeding that won’t stop</li>
+    <li>Anything that needs hands on you tonight</li>
+  </ul>
+  <p>I’ll tell you if you need to go in. If I can’t safely treat you by text, you don’t pay. If it’s an emergency, call 911.</p>
+
+  <h2>What it costs</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">$59. That’s it. One flat price for the visit.</p>
+    <p class="pk-bubble pk-bubble--blue">If you need something from the pharmacy, you pay the pharmacy for that part.</p>
+    <p class="pk-bubble pk-bubble--blue">No membership. No monthly fee. And if I can’t treat you by text, you don’t pay me.</p>
+  </div>
+
+  <h2>Why I read every text myself</h2>
+  <div class="pk-thread">
+    <p class="pk-bubble pk-bubble--blue">Some places hand you off to whoever is free. I don’t do that.</p>
+    <p class="pk-bubble pk-bubble--blue">When you text this number, you get me. I’d rather hear your story from you than read about it in a chart later.</p>
+    <p class="pk-bubble pk-bubble--blue">And if something isn’t right for a text visit, I’ll say so. That part matters most to me.</p>
+  </div>
+
+  <h2>Quick questions</h2>
+  <div class="pk-faq">
+    <h3>Do I need an app?</h3>
+    <p>No. You use the texting app that’s already on your phone.</p>
+    <h3>Do I have to do a video call?</h3>
+    <p>No. It’s all by text. A photo can help sometimes, and I’ll ask if I need one.</p>
+    <h3>Who reads my text?</h3>
+    <p>I do. Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Not a bot and not a front desk.</p>
+    <h3>What if I’m traveling?</h3>
+    <p>You need to be in one of my 13 states when you text. If you’re somewhere else, I can’t take the visit that day.</p>
+    <h3>What if text isn’t safe for my problem?</h3>
+    <p>Then I tell you where to go, and you don’t pay.</p>
+  </div>
+
+  <p>Save the number now, before you need it. Then when something comes up on a Sunday night, you already know who to text.</p>
   <div class="pocket-cta">
     <p>Text (480) 639-4722.</p>
     <p>Hi Chris, I'd like to start a $59 visit</p>
