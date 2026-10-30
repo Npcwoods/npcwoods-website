@@ -70,6 +70,7 @@ add_action( "template_redirect", function() {
     "mineral-county-text-visit" => "mineral-county-text-visit/index.html",
     "rich-county-text-visit" => "rich-county-text-visit/index.html",
     "island-county-text-visit" => "island-county-text-visit/index.html",
+    "rio-arriba-county-text-visit" => "rio-arriba-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
     );
 
