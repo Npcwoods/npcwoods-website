@@ -1111,8 +1111,11 @@ a{color:inherit}
   body{padding-bottom:calc(72px + env(safe-area-inset-bottom, 0px))}
 }
 
+.skip-link{position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:100001}
+.skip-link:focus{left:12px;top:12px}
 </style>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== Sticky header / nav (UTI page pattern) ===== -->
 <nav class="npc-nav" aria-label="Main navigation">
   <div class="npc-nav-inner">
@@ -1173,7 +1176,7 @@ a{color:inherit}
   </div>
 </nav>
 
-<main>
+<main id="main">
 
 <!-- HERO: UTI split layout + homepage messaging (no antibiotics / drug names) -->
 <section class="hero hero--cutout">
@@ -1309,6 +1312,7 @@ a{color:inherit}
 
 <!-- HOW IT WORKS (homepage content, UTI section rhythm) -->
 <section id="how-it-works" class="section section-light dark-to-light">
+  <span id="how" aria-hidden="true"></span>
   <div class="section-inner">
     <span class="section-kicker">How it works</span>
     <h2 class="section-title">Three texts from feeling better.</h2>
