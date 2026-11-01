@@ -18,7 +18,7 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("cpc", params["utm_medium"])
         self.assertEqual("mesa-test", params["utm_campaign"])
         self.assertEqual("TESTGCLID", params["gclid"])
-        self.assertEqual("google-cpc-mesa-test-gclid-TESTGCLID", params["client_reference_id"])
+        self.assertEqual("google-cpc-mesa-test-st-AZ-gclid-TESTGCLID", params["client_reference_id"])
 
     def test_stored_landing_page_attribution_survives_plain_pay_visit(self):
         stored_touch = {
@@ -37,7 +37,7 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("cpc", params["utm_medium"])
         self.assertEqual("stored-campaign", params["utm_campaign"])
         self.assertEqual("STOREDGCLID", params["gclid"])
-        self.assertEqual("google-cpc-stored-campaign-gclid-STOREDGCLID", params["client_reference_id"])
+        self.assertEqual("google-cpc-stored-campaign-st-AZ-gclid-STOREDGCLID", params["client_reference_id"])
 
     def test_plain_pay_still_defaults_to_manual_spruce_reference(self):
         redirect = run_pay_submit("")
@@ -46,7 +46,7 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("spruce", params["utm_source"])
         self.assertEqual("text", params["utm_medium"])
         self.assertEqual("manual-payment", params["utm_campaign"])
-        self.assertEqual("spruce-manual-payment", params["client_reference_id"])
+        self.assertEqual("spruce-manual-payment-st-AZ", params["client_reference_id"])
 
     def test_optional_heard_source_tags_plain_referral_payment(self):
         redirect = run_pay_submit("", heard_source="friend_family")
@@ -55,7 +55,7 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("referral", params["utm_source"])
         self.assertEqual("wordofmouth", params["utm_medium"])
         self.assertEqual("heard-friend-family", params["utm_campaign"])
-        self.assertEqual("referral-wordofmouth-heard-friend-family", params["client_reference_id"])
+        self.assertEqual("referral-wordofmouth-heard-friend-family-st-AZ", params["client_reference_id"])
 
     def test_optional_heard_source_does_not_override_google_click_params(self):
         redirect = run_pay_submit(
@@ -68,10 +68,24 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("cpc", params["utm_medium"])
         self.assertEqual("mesa-test", params["utm_campaign"])
         self.assertEqual("TESTGCLID", params["gclid"])
-        self.assertEqual("google-cpc-mesa-test-gclid-TESTGCLID", params["client_reference_id"])
+        self.assertEqual("google-cpc-mesa-test-st-AZ-gclid-TESTGCLID", params["client_reference_id"])
+
+    def test_attested_state_reaches_stripe_reference_only(self):
+        for state in ("FL", "WA"):
+            with self.subTest(state=state):
+                params = run_pay_submit("", state=state)["params"]
+                self.assertEqual(f"spruce-manual-payment-st-{state}", params["client_reference_id"])
+                others = {k: v for k, v in params.items() if k != "client_reference_id"}
+                self.assertNotIn(state, " ".join(others.values()).split("-"))
+                self.assertEqual({"utm_source", "utm_medium", "utm_campaign", "client_reference_id"}, set(params))
+
+    def test_state_sits_before_click_id_so_click_parsing_is_unchanged(self):
+        params = run_pay_submit("?utm_source=google&utm_medium=cpc&utm_campaign=mesa-test&gclid=Cj0K-st-XY_long", state="FL")["params"]
+        self.assertEqual("google-cpc-mesa-test-st-FL-gclid-Cj0K-st-XY_long", params["client_reference_id"])
+        self.assertTrue(params["client_reference_id"].endswith("-gclid-" + params["gclid"]))
 
 
-def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: str = "") -> dict:
+def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: str = "", state: str = "AZ") -> dict:
     runner = textwrap.dedent(
         """
         const fs = require('fs');
@@ -79,6 +93,7 @@ def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: s
         const query = process.argv[2] || '';
         const storedTouch = process.argv[3] ? JSON.parse(process.argv[3]) : null;
         const heardSource = process.argv[4] || '';
+        const payState = process.argv[5] || 'AZ';
         const html = fs.readFileSync(pagePath, 'utf8');
         const match = html.match(/<script>\\s*(\\(function\\(\\) \\{[\\s\\S]*?\\}\\)\\(\\);)\\s*<\\/script>\\s*<\\/body>/);
         if (!match) throw new Error('pay submit script not found');
@@ -158,7 +173,7 @@ def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: s
           const chipListener = listeners['heardChip:' + heardSource + ':click'];
           if (chipListener) chipListener({ preventDefault() {} });
         }
-        elements.stateSelect.value = 'AZ';
+        elements.stateSelect.value = payState;
         listeners['stateSelect:change']();
         elements.chkLocation.checked = true;
         elements.chkFee.checked = true;
@@ -177,7 +192,7 @@ def run_pay_submit(query: str, stored_touch: dict | None = None, heard_source: s
         """
     )
     completed = subprocess.run(
-        ["node", "-e", runner, str(PAY_PAGE), query, json.dumps(stored_touch) if stored_touch else "", heard_source],
+        ["node", "-e", runner, str(PAY_PAGE), query, json.dumps(stored_touch) if stored_touch else "", heard_source, state],
         check=True,
         capture_output=True,
         text=True,
