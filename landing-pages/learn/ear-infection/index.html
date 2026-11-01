@@ -12,7 +12,7 @@
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Ear Infection: Your Complete Guide After Diagnosis | NPCWoods">
-  <meta property="og:description" content="Complete ear infection (otitis media) guide from NPCWoods nurse practitioner. Learn about symptoms, antibiotics, red flags, home care tips, and when to seek emergency care.">
+  <meta property="og:description" content="Plain-English ear infection guide from Chris Woods, NP: what is happening in your ear, pain care at home, red flags, and when to get seen. $59 text visit.">
   <meta property="og:url" content="https://npcwoods.com/learn/ear-infection/">
   <meta property="og:image" content="https://npcwoods.com/assets/img/share/learn-ear-infection-1200x630.jpg">
   <meta property="og:image:secure_url" content="https://npcwoods.com/assets/img/share/learn-ear-infection-1200x630.jpg">
@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://npcwoods.com/assets/img/share/learn-ear-infection-1200x630.jpg">
   <meta name="twitter:image:alt" content="Ear Infection, explained: Pain care and when to worry. Plain-English guide by Chris Woods, NP. $59 text visit, NPCWoods.">
   <meta name="twitter:title" content="Ear Infection: Your Complete Guide After Diagnosis | NPCWoods">
-  <meta name="twitter:description" content="Complete ear infection (otitis media) guide from NPCWoods nurse practitioner. Learn about symptoms, antibiotics, red flags, home care tips, and when to seek emergency care.">
+  <meta name="twitter:description" content="Plain-English ear infection guide from Chris Woods, NP: what is happening in your ear, pain care at home, red flags, and when to get seen. $59 text visit.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
@@ -304,16 +304,24 @@
     gap: 10px;
     background: var(--white);
     color: var(--primary);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 16px 36px;
-    border-radius: 100px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding: 18px 28px;
+    border-radius: 999px;
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     animation: fadeInUp 0.8s ease 0.4s backwards;
     border: none;
     cursor: pointer;
+  }
+
+  /* Size inline SVG icons in CTAs; an <svg> with no width/height renders at 300x150. */
+  .hero-cta svg,
+  .cta-section a svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
   }
 
   .hero-cta:hover {
@@ -1211,7 +1219,7 @@
     <h1>Ear Infection</h1>
     <p class="subtitle">Everything you need to know after diagnosis, from what's actually happening to your ear, to how to manage pain and when to worry.</p>
     <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="hero-cta">
-      <svg><use href="#npc-icon-message"/></svg>
+      <svg aria-hidden="true" focusable="false"><use href="#npc-icon-message"/></svg>
       Text Chris, $59 Flat
     </a>
   </div>
@@ -1547,7 +1555,7 @@
     <h2>Questions About Your Ear Infection?</h2>
     <p>Text us anytime. Chris will review your symptoms and help you feel better faster, $59 flat, no paperwork, no hassle.</p>
     <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">
-      <svg><use href="#npc-icon-message"/></svg>
+      <svg aria-hidden="true" focusable="false"><use href="#npc-icon-message"/></svg>
       Text Chris Now
     </a>
     <div class="cta-signature">. Chris Woods, FNP-C, AGACNP-BC</div>
