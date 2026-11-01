@@ -570,12 +570,15 @@
         const clickRef = cleanRef(outputParams.get(clickType));
 
         // Create safe, non-PHI client_reference_id in the parser shape:
-        // source-medium-campaign[-gclid|gbraid|wbraid-clickid]
-        const refParts = [sourceLabel, mediumLabel, campaignLabel];
+        // source-medium-campaign[-st-XX][-gclid|gbraid|wbraid-clickid]
+        // Attested state (two-letter code only) rides in the ref as -st-XX, placed before
+        // any click ID so the end-anchored click-ID parsing stays the same. Stripe only.
+        const stateParts = /^[A-Z]{2}$/.test(stateSelect.value) ? ['st', stateSelect.value] : [];
+        const refParts = [sourceLabel, mediumLabel, campaignLabel, ...stateParts];
         if (clickType && clickRef) refParts.push(clickType, clickRef);
         const ref = (
           sourceLabel === 'spruce' && mediumLabel === 'text' && campaignLabel === 'manual-payment' && !clickRef
-            ? 'spruce-manual-payment'
+            ? ['spruce-manual-payment', ...stateParts].join('-')
             : refParts.join('-')
         ).slice(0, 180);
         outputParams.set('client_reference_id', ref);

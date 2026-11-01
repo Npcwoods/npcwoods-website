@@ -64,8 +64,9 @@ function smsBodyFromHref(href) {
   return new URLSearchParams(String(href).slice(qmark + 1)).get('body') || '';
 }
 
-function expectedStripeReference(clickId) {
-  return `google-cpc-manual-payment-gclid-${clickId}`;
+function expectedStripeReference(clickId, payState = '') {
+  const stateTag = payState ? `-st-${payState}` : '';
+  return `google-cpc-manual-payment${stateTag}-gclid-${clickId}`;
 }
 
 function playwrightCliPath() {
@@ -147,6 +148,10 @@ function runSelfTest() {
   assert.equal(
     expectedStripeReference('CLICK123'),
     'google-cpc-manual-payment-gclid-CLICK123',
+  );
+  assert.equal(
+    expectedStripeReference('CLICK123', 'FL'),
+    'google-cpc-manual-payment-st-FL-gclid-CLICK123',
   );
   assert.deepEqual(parseCase('mesa|https://npcwoods.com/x/|AZ'), {
     name: 'mesa',
@@ -233,7 +238,7 @@ function verifyCase(testCase, args, outDir) {
     }
 
     function expectedStripeReference(id) {
-      return 'google-cpc-manual-payment-gclid-' + id;
+      return 'google-cpc-manual-payment-st-' + testCase.payState + '-gclid-' + id;
     }
 
     function check(condition, message) {
