@@ -24,6 +24,10 @@ add_action( 'template_redirect', function() {
         '/learn/dental-abscess/dentist-vs-text/'      => 'learn/dental-abscess/dentist-vs-text/index.html',
         '/learn/dental-abscess/why-it-comes-back/'    => 'learn/dental-abscess/why-it-comes-back/index.html',
         '/learn/dental-abscess/myths/'                => 'learn/dental-abscess/myths/index.html',
+        // Condition red-flags pages (when to go to the ER), built by scripts/build-red-flags-pages.py
+        '/learn/sinus-infection/red-flags/'           => 'learn/sinus-infection/red-flags/index.html',
+        '/learn/ear-infection/red-flags/'             => 'learn/ear-infection/red-flags/index.html',
+        '/learn/skin-infection/red-flags/'            => 'learn/skin-infection/red-flags/index.html',
     );
 
     if ( isset( $path_map[ $path ] ) ) {

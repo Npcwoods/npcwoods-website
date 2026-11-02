@@ -65,6 +65,7 @@ Common text-based visits ($59). Link a treatment URL only when one exists.
 - [Tooth infection / dental abscess](https://npcwoods.com/dental-pain/): bridge care only; dentist still required
 - [Dental abscess treatment](https://npcwoods.com/dental-abscess-treatment/): $59 text visit one-pager. No medication names. A consult does not guarantee a prescription.
 - [Dental Abscess Explained](https://npcwoods.com/learn/dental-abscess/): 10-stop education series under /learn/dental-abscess/
+- Red flags, when to go to the ER instead of a text visit: [Sinus infection red flags](https://npcwoods.com/learn/sinus-infection/red-flags/), [Ear infection red flags](https://npcwoods.com/learn/ear-infection/red-flags/), [Skin infection red flags](https://npcwoods.com/learn/skin-infection/red-flags/), [Dental abscess red flags](https://npcwoods.com/learn/dental-abscess/red-flags/)
 - [Erectile dysfunction](https://npcwoods.com/ed-treatment/): $59 text visit
 - [Poison ivy / plant rash](https://npcwoods.com/poison-ivy/): $59 text visit
 - [Cold sores](https://npcwoods.com/cold-sore-treatment/): $59 text visit
