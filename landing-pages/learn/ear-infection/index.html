@@ -1064,6 +1064,39 @@
     .ex-cta .gh-btn { width: 100%; justify-content: center; font-size: 16.5px; padding: 16px 20px; }
     .ex-cta .gh-ghostbtn { width: 100%; text-align: center; }
   }
+  /* ===== EAR INFECTION v3 (2026-11-02 kitchen): softer slate background + stronger text contrast (WCAG AA), pictures ===== */
+  body { background: #1a1e27; }
+  .gh { --gh-bg:#141821; --gh-body:#dcdde3; }
+  .gh-pill { color: #e4e5ea; }
+  .gh-fine { color: #b8bac4; }
+  .gh-sticker--blue { background: #0060D6; box-shadow: 0 12px 28px rgba(0,96,214,.3), 0 8px 20px rgba(0,0,0,.28); }
+  .gh-sticker--blue::after { background: #0060D6; }
+  html body .reviews-banner { background: #1a1e27; border-color: rgba(255,255,255,.08); }
+  html body .reviews-banner-subtitle { color: #bfc1ca; }
+  html body .review-card { background: #252b37; border-color: rgba(255,255,255,.12); }
+  html body .review-card-text { color: #d8d9e0; }
+  main.ex { --ex-bg:#1a1e27; --ex-panel:#252b37; --ex-line:rgba(255,255,255,.12); --ex-body:#d3d5dd; }
+  .ex-crumb { color: #b3b5bf; } .ex-crumb a { color: #c3c5ce; }
+  .ex-jump a { color: #e4e5ea; background: rgba(255,255,255,.03); }
+  .ex-flags .ex-flags-foot { color: #fdc4c4; }
+  .ex-cta { background: radial-gradient(520px 360px at 85% 80%, rgba(0,113,227,.4), transparent 70%), radial-gradient(420px 300px at 0% 0%, rgba(34,211,238,.14), transparent 70%), #141821; }
+  .ex-cta-sig { color: #b8bac4 !important; }
+  .ex-sources h2 { color: #c3c5ce; } .ex-sources li { color: #b8bac4; }
+  .ex-fig { margin: 26px 0 0; max-width: 640px; }
+  .ex-fig img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .ex-fig a { display: block; border-radius: 18px; }
+  .ex-fig figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: #c3c5ce; }
+  .ex-meet { margin: 22px 0 0; max-width: 760px; display: grid; grid-template-columns: 200px 1fr; gap: 0; align-items: stretch; background: var(--ex-panel); border: 1px solid var(--ex-line); border-radius: 18px; overflow: hidden; }
+  .ex-meet img { display: block; width: 100%; height: 100%; min-height: 200px; object-fit: cover; object-position: 50% 20%; }
+  .ex-meet-copy { padding: 22px 24px; align-self: center; }
+  .ex-meet-copy p { margin-top: 6px; }
+  .ex-meet-copy .gh-btn { margin-top: 16px; font-size: 16px; padding: 14px 20px; }
+  @media (max-width: 640px) {
+    .ex-meet { grid-template-columns: 1fr; }
+    .ex-meet img { height: 300px; min-height: 0; }
+    .ex-meet-copy { padding: 18px 18px 20px; }
+    .ex-meet-copy .gh-btn { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -1444,10 +1477,18 @@
     <p class="ex-kicker">The basics</p>
     <h2 id="what-is-title">What is an ear infection?</h2>
     <p class="ex-lead">A middle ear infection (otitis media) happens when fluid gets trapped behind your eardrum and germs start growing in it. That trapped fluid pushes on the eardrum, and that pressure is the deep, throbbing ache you feel. It usually follows a cold, allergies, or sinus congestion that swells the small tube (the Eustachian tube) that normally drains your ear.</p>
+    <figure class="ex-fig">
+      <a href="/assets/img/learn/ear-infection/ear-anatomy-map.svg" target="_blank" rel="noopener"><img src="/assets/img/learn/ear-infection/ear-anatomy-map.svg" width="640" height="600" loading="lazy" decoding="async" alt="Labeled drawing of the inside of the ear. Outer ear: the part you see, plus the ear canal, where swimmer's ear happens. Eardrum: a thin, stretchy wall at the end of the canal. Middle ear: a small air space with three tiny bones. Inner ear: the hearing spiral and balance loops, connected to the hearing nerve. Eustachian tube: drains the middle ear to the throat. A red circle marks fluid trapped behind the eardrum, which is what an ear infection is."></a>
+      <figcaption>Inside your ear. A middle ear infection is fluid trapped behind the eardrum, in the small space with the tiny bones.</figcaption>
+    </figure>
     <div class="ex-grid ex-grid--2">
       <div class="ex-card"><h3>Kids and adults both get them</h3><p>They're most common in young kids, but adults get them too, especially right after a cold or a sinus infection.</p></div>
       <div class="ex-card"><h3>Not the same as swimmer's ear</h3><p>Swimmer's ear is an infection of the outer ear canal. This guide covers middle ear infections, the kind behind the eardrum.</p></div>
     </div>
+    <figure class="ex-fig">
+      <a href="/assets/img/learn/ear-infection/ear-infection-vs-swimmers-ear.svg" target="_blank" rel="noopener"><img src="/assets/img/learn/ear-infection/ear-infection-vs-swimmers-ear.svg" width="640" height="590" loading="lazy" decoding="async" alt="Side-by-side comparison. Middle ear infection: behind the eardrum; feels like deep, throbbing pressure and muffled hearing; often after a cold, allergies, or sinus congestion; tugging your ear usually doesn't change the pain. Swimmer's ear: the outer ear canal; feels like an itchy, sore canal that can look red or swollen; often after water stays in the ear or scratching the canal; tugging your ear hurts more."></a>
+      <figcaption>Middle ear infection or swimmer's ear? Where it hurts, and whether tugging your ear makes it worse, are good clues.</figcaption>
+    </figure>
     <div class="ex-note"><strong>Bottom line:</strong> Most ear infections settle down with the right care. A bad one left alone can spread, or the pressure can tear the eardrum, so don't tough out pain that keeps getting worse.</div>
   </section>
 
@@ -1517,6 +1558,14 @@
       <li><span class="ex-road-n">3</span><div><h3>Your plan</h3><p>Home care, or a prescription sent to your pharmacy if it needs one. You only pay if I can treat you.</p></div></li>
       <li><span class="ex-road-n">4</span><div><h3>Check in</h3><p>Not better in 48 to 72 hours, or something new shows up? Text me back and we adjust.</p></div></li>
     </ol>
+    <div class="ex-meet">
+      <img src="/assets/homepage-v2/chris-400.webp" srcset="/assets/homepage-v2/chris-400.webp 400w, /assets/homepage-v2/chris-1000.webp 768w" sizes="(max-width: 640px) 100vw, 200px" width="400" height="400" loading="lazy" decoding="async" alt="Chris Woods, nurse practitioner, smiling with arms crossed and a stethoscope around his neck">
+      <div class="ex-meet-copy">
+        <h3>You'll be texting me, not a call center</h3>
+        <p>I'm Chris Woods, a board-certified nurse practitioner. I read every message and write every plan myself. If your ear is still hurting, text me what's going on.</p>
+        <a class="gh-btn" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M4 5h16v11H8l-4 4z" stroke-linejoin="round"/></svg>Text Chris · $59 visit</a>
+      </div>
+    </div>
     <div class="ex-note">Text me again if your symptoms don't improve after 2 to 3 days, the fever comes back, your hearing gets worse, you get dizzy, or ear infections keep coming back (3 or more a year).</div>
   </section>
 
