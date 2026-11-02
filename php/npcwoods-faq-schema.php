@@ -37,7 +37,7 @@ function npcwoods_homepage_output_guardrail() {
 function npcwoods_homepage_output_guardrail_replacements($html) {
     $replacements = array(
         '$59 text-based telemedicine from a licensed NP. No insurance needed, no waiting room. Serving AZ, GA, & NC. Same-day response.' =>
-            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, and Washington.',
+            '$59 text-based telemedicine from a licensed NP. No paperwork, no waiting room. Serving AZ, CO, CT, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, and Washington.',
         'Does NPCWoods accept insurance?' =>
             'How does NPCWoods pricing work?',
         'We are a direct-pay practice. We do not bill insurance. The $59 flat fee covers your entire visit — no copays, no deductibles, no billing headaches.' =>
@@ -182,7 +182,7 @@ function npcwoods_meta_descriptions($desc) {
         'greensboro-nc'=>'Greensboro, NC','wilmington-nc'=>'Wilmington, NC'
     );
     $descriptions = array(
-        63=>'NPCWoods offers $59 telemedicine visits by text message. No hassle, no video calls, no waiting rooms. Treat UTIs, sinus infections, strep, ED and more. Serving 13 states.',
+        63=>'NPCWoods offers $59 telemedicine visits by text message. No hassle, no video calls, no waiting rooms. Treat UTIs, sinus infections, strep, ED and more. Serving 14 states.',
         184=>'Online urgent care for UTIs, sinus infections, strep throat, ear infections, and ED. $59 flat fee per visit. Text-based telemedicine — no paperwork, no waiting rooms.',
         192=>'Online ear infection treatment for $59. A licensed NP evaluates your symptoms by text and sends prescriptions to your pharmacy. No video call, no hassle.',
         198=>'Affordable telemedicine in Arizona — $59 flat fee for urgent care by text message. Treat UTIs, sinus infections, strep, and ED from home. No paperwork.',

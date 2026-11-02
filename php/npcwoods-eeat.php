@@ -32,7 +32,7 @@ function npcwoods_clinician_profile() {
         'aanpcb_url' => 'https://www.aanpcert.org/',
         'organization_id' => home_url('/#medical-business'),
         'person_id' => home_url('/#chris-woods'),
-        'states' => 'AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT',
+        'states' => '14 states, including Florida by telehealth registration (AZ, CO, CT, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355)',
     );
 }
 

@@ -28,8 +28,8 @@ SITE = "https://npcwoods.com"
 # to it, refuse to build rather than re-plate an 11-state footer onto the series.
 STALE_FOOTER_LICENSE_LINE = "Licensed in AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT<br>"
 CURRENT_FOOTER_LICENSE_LINE = (
-    "Licensed in 13 states, including Florida by telehealth registration "
-    "(AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>"
+    "Licensed in 14 states, including Florida by telehealth registration "
+    "(AZ, CO, CT, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>"
 )
 
 
@@ -694,7 +694,7 @@ def check_footer(footer: str) -> None:
     licensing line so a stale snippet can't bring the 11-state footer back."""
     if STALE_FOOTER_LICENSE_LINE in footer or CURRENT_FOOTER_LICENSE_LINE not in footer:
         raise SystemExit(
-            "html/shared/footer-snippet.html does not carry the current 13-state "
+            "html/shared/footer-snippet.html does not carry the current 14-state "
             "licensing line; fix the shared footer before rebuilding the series."
         )
 

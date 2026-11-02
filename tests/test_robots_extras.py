@@ -27,7 +27,7 @@ class RobotsExtrasTest(unittest.TestCase):
 
     def test_license_line_names_washington_and_florida(self):
         self.assertIn(
-            "13 states (AZ, CO, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA)",
+            "14 states (AZ, CO, CT, FL, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA)",
             self.text,
         )
         self.assertIn("Florida counts via out-of-state telehealth registration TPAN3355", self.text)
