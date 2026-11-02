@@ -449,6 +449,336 @@ def upload_assets(sftp, assets: list[AssetPlan], state: dict[str, str]) -> dict[
     return results
 
 
+
+# --------------------------------------------------------------------------
+# --file: a FIXED allow-list of non-page files (homepage template, four
+# mu-plugins, the menu script, llms*.txt, the shared header/footer snippets).
+# Chris approved adding this to the house tools on 2026-11-02 13:59 ET:
+# "Add homepage/menu/footer/llms.txt upload to the house tools with backups".
+# Overwrite in place only: the server file must already exist. Never creates,
+# never deletes, never renames. One PHP file per run.
+# --------------------------------------------------------------------------
+
+MU_PLUGINS_REMOTE = f"{REMOTE_PREFIX}/wp-content/mu-plugins"
+HOMEPAGE_TEMPLATE_REMOTE = f"{REMOTE_PREFIX}/wp-content/themes/twentytwentyfour/page-npcwoods-home.php"
+FILE_TARGETS = {
+    # repo-relative path -> server path (relative to the SFTP home)
+    "homepage/page-npcwoods-home.php": HOMEPAGE_TEMPLATE_REMOTE,
+    "php/npcwoods-compliance-footer.php": f"{MU_PLUGINS_REMOTE}/npcwoods-compliance-footer.php",
+    "php/npcwoods-eeat.php": f"{MU_PLUGINS_REMOTE}/npcwoods-eeat.php",
+    "php/npcwoods-faq-schema.php": f"{MU_PLUGINS_REMOTE}/npcwoods-faq-schema.php",
+    "php/npcwoods-robots-extras.php": f"{MU_PLUGINS_REMOTE}/npcwoods-robots-extras.php",
+    "assets/js/npc-menu.js": f"{REMOTE_PREFIX}/assets/js/npc-menu.js",
+    "llms.txt": f"{REMOTE_PREFIX}/llms.txt",
+    "llms-full.txt": f"{REMOTE_PREFIX}/llms-full.txt",
+    "html/shared/footer-snippet.html": f"{REMOTE_PREFIX}/shared/footer-snippet.html",
+    "html/shared/header-snippet.html": f"{REMOTE_PREFIX}/shared/header-snippet.html",
+}
+# Files whose public URL serves the exact bytes (sha-checked after purge).
+FILE_PUBLIC_URLS = {
+    "assets/js/npc-menu.js": f"{SITE}/assets/js/npc-menu.js",
+    "llms.txt": f"{SITE}/llms.txt",
+    "llms-full.txt": f"{SITE}/llms-full.txt",
+    "html/shared/footer-snippet.html": f"{SITE}/shared/footer-snippet.html",
+    "html/shared/header-snippet.html": f"{SITE}/shared/header-snippet.html",
+}
+# Rendered pages to check after a file that changes PHP output (or that the
+# homepage template reads, like the shared footer snippet). The homepage is
+# always checked; a PHP error or a lost template restores the backup.
+# WP_RENDERED_CHECK_URL: a page WordPress itself renders through the block
+# theme (date archive), so mu-plugin output (compliance footer, schema) shows up.
+WP_RENDERED_CHECK_URL = f"{SITE}/2026/"
+RENDER_CHECK_URLS = {
+    "homepage/page-npcwoods-home.php": [f"{SITE}/"],
+    "php/npcwoods-compliance-footer.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
+    "php/npcwoods-eeat.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
+    "php/npcwoods-faq-schema.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
+    "php/npcwoods-robots-extras.php": [f"{SITE}/", f"{SITE}/robots.txt"],
+    "html/shared/footer-snippet.html": [f"{SITE}/"],
+    "html/shared/header-snippet.html": [f"{SITE}/"],
+}
+PHP_ERROR_MARKERS = (
+    b"Parse error", b"Fatal error", b"There has been a critical error",
+    b"Warning</b>:", b"Notice</b>:", b"Deprecated</b>:",
+)
+
+
+@dataclass
+class FilePlan:
+    rel: str            # repo-relative, e.g. php/npcwoods-eeat.php
+    local: Path
+    remote: str
+    size: int = 0
+    sha256: str = ""
+
+    @property
+    def is_php(self) -> bool:
+        return self.rel.endswith(".php")
+
+    @property
+    def is_mu_plugin(self) -> bool:
+        return self.remote.startswith(MU_PLUGINS_REMOTE + "/")
+
+
+def normalize_file(raw: str) -> str:
+    p = raw.strip().lstrip("/")
+    if ".." in p.split("/"):
+        raise ValueError(f"refusing path traversal in --file: {raw!r}")
+    if p not in FILE_TARGETS:
+        allowed = ", ".join(sorted(FILE_TARGETS))
+        raise ValueError(f"--file {raw!r} is not on the allow-list. Allowed: {allowed}")
+    return p
+
+
+def collect_files(args) -> list[str]:
+    seen, out = set(), []
+    for chunk in getattr(args, "file", None) or []:
+        for r in chunk.split(","):
+            if r.strip():
+                f = normalize_file(r)
+                if f not in seen:
+                    seen.add(f)
+                    out.append(f)
+    return out
+
+
+def php_function_names(php: str) -> set[str]:
+    """Named PHP functions (same rule county_ship.py uses for mu-plugins)."""
+    return set(re.findall(r"^\s*function\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(", php, re.M))
+
+
+def php_lint(path: Path) -> str | None:
+    """`php -l`; None when clean, else the reason. A missing php CLI blocks."""
+    try:
+        proc = subprocess.run(["php", "-l", str(path)], capture_output=True, text=True, timeout=60)
+    except FileNotFoundError:
+        return "php CLI not found; cannot lint"
+    if proc.returncode != 0:
+        return (proc.stdout + proc.stderr).strip()[:400]
+    return None
+
+
+def build_file_plan(files: list[str]) -> list[FilePlan]:
+    plan, problems = [], []
+    if sum(f.endswith(".php") for f in files) > 1:
+        problems.append("one PHP file per run (ship the homepage template, verify, then each mu-plugin)")
+    for rel in files:
+        local = ROOT / rel
+        item = FilePlan(rel=rel, local=local, remote=FILE_TARGETS[rel])
+        try:
+            local.resolve().relative_to(ROOT.resolve())
+        except ValueError:
+            problems.append(f"{rel}: resolves outside the repo (symlink?)")
+            continue
+        if not local.is_file():
+            problems.append(f"{rel}: local file missing: {local}")
+            continue
+        data = local.read_bytes()
+        item.size, item.sha256 = len(data), hashlib.sha256(data).hexdigest()
+        if item.is_php:
+            lint = php_lint(local)
+            if lint:
+                problems.append(f"{rel}: php -l failed: {lint}")
+        else:
+            lower = data.decode("utf-8", errors="replace").lower()
+            for bad in FORBIDDEN_MARKERS:
+                if bad.lower() in lower:
+                    problems.append(f"{rel}: contains forbidden marker {bad!r}")
+        plan.append(item)
+    if problems:
+        raise RuntimeError("file plan blocked:\n  " + "\n  ".join(problems))
+    return plan
+
+
+def print_file_plan(files: list[FilePlan]) -> None:
+    if not files:
+        return
+    print(f"File plan — {len(files)} allow-listed file(s) (overwrite in place only, backup first):")
+    for f in files:
+        print(f"  [file] {f.rel}")
+        print(f"       -> {f.remote}  ({f.size:,} bytes, sha256 {f.sha256[:12]}…)")
+
+
+def remote_file_state(sftp, item: FilePlan) -> str:
+    """Read-only. 'missing' | 'same' | 'differs <sha12> (<bytes> bytes)'."""
+    try:
+        with sftp.file(item.remote, "rb") as rf:
+            data = rf.read()
+    except IOError:
+        return "missing"
+    sha = hashlib.sha256(data).hexdigest()
+    return "same" if sha == item.sha256 else f"differs {sha[:12]} ({len(data):,} bytes)"
+
+
+def duplicate_function_problem(item: FilePlan, other_php: dict[str, str]) -> str | None:
+    """other_php: {server filename: text} of every OTHER .php in mu-plugins.
+    Refuse if the file we are about to upload defines a function another
+    mu-plugin already defines (two definitions = site-wide 500)."""
+    mine = php_function_names(item.local.read_text(errors="replace"))
+    clashes = {}
+    for name, text in other_php.items():
+        both = mine & php_function_names(text)
+        if both:
+            clashes[name] = sorted(both)
+    if clashes:
+        return f"{item.rel}: functions already defined in other mu-plugins: {clashes}"
+    return None
+
+
+def read_other_mu_plugins(sftp, skip_remote: str) -> dict[str, str]:
+    out = {}
+    skip = posixpath.basename(skip_remote)
+    for name in sftp.listdir(MU_PLUGINS_REMOTE):
+        if not name.endswith(".php") or name == skip:
+            continue
+        with sftp.file(f"{MU_PLUGINS_REMOTE}/{name}", "rb") as rf:
+            out[name] = rf.read().decode("utf-8", errors="replace")
+    return out
+
+
+def render_check(url: str, title_before: str | None = None) -> tuple[bool, str, dict]:
+    """Clean-URL GET of a rendered page after a PHP/snippet change."""
+    proc = subprocess.run(["curl", "-s", "-A", UA, "--max-time", "45", "-w", "\n%{http_code}", url],
+                          capture_output=True, timeout=60)
+    body, _, code = (proc.stdout or b"").rpartition(b"\n")
+    status = int(code or 0) if code.strip().isdigit() else 0
+    info = {"status": status, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}
+    if status != 200:
+        return False, f"HTTP {status}", info
+    hits = [m.decode() for m in PHP_ERROR_MARKERS if m in body]
+    if hits:
+        return False, f"PHP error text in page: {hits}", info
+    if url.rstrip("/") == SITE:
+        if not (b'class="hero' in body and b"wp-site-blocks" not in body):
+            return False, "homepage lost the custom PHP template (hero missing / wp-site-blocks present)", info
+        m = re.search(rb"<title>([^<]*)</title>", body)
+        title = m.group(1).decode("utf-8", "replace") if m else ""
+        if title_before is not None and title != title_before:
+            return False, f"homepage title changed: {title_before!r} -> {title!r}", info
+    return True, "ok", info
+
+
+def run_file_deploy(args, files: list[FilePlan], head: str | None) -> int:
+    """Live path for --file. Same guards as pages (clean main == origin/main,
+    confirmation phrase, key-only SFTP, one attempt)."""
+    if not confirm_live(args.confirmation):
+        return 2
+    print(f"\n[about to upload] main @ {head} from {SCRIPT_ROOT}")
+    for f in files:
+        print(f"  {f.rel} -> {f.remote}  (overwrite in place, sha256 {f.sha256[:12]}…)")
+    env = load_env()
+    missing = [k for k in ("ROCKET_SFTP_HOST", "ROCKET_SFTP_USER", "ROCKET_SFTP_KEY_PATH") if not env.get(k)]
+    if missing:
+        print(f"[blocked] .env is missing {', '.join(missing)}. Nothing uploaded.", file=sys.stderr)
+        return 2
+    homepage_before = homepage_snapshot(f"{SITE}/")
+    print(f"[homepage before] {homepage_before['status']} {homepage_before['bytes']:,} bytes "
+          f"sha256 {homepage_before['sha256'][:12]}… title {homepage_before['title']!r}")
+    if homepage_before["status"] != 200 or not homepage_before["custom_hero"]:
+        print("[blocked] homepage is not healthy BEFORE deploy. Nothing uploaded.", file=sys.stderr)
+        return 2
+
+    print(f"\n[sftp] connecting to Rocket {env['ROCKET_SFTP_HOST']}:{env.get('ROCKET_SFTP_PORT') or 22}")
+    sftp, transport = sftp_connect(env)
+    uploaded, backups, results = [], {}, {}
+    try:
+        # every check happens before the first byte is written
+        problems = []
+        for f in files:
+            state = remote_file_state(sftp, f)
+            if state == "missing":
+                problems.append(f"{f.rel}: {f.remote} does not exist on the server; --file only overwrites "
+                                f"in place (never creates{' mu-plugins' if f.is_mu_plugin else ''} files)")
+            elif state == "same":
+                results[f.rel] = "same (already live, not re-uploaded)"
+            if f.is_php:
+                others = read_other_mu_plugins(sftp, f.remote if f.is_mu_plugin else "")
+                dup = duplicate_function_problem(f, others)
+                if dup:
+                    problems.append(dup)
+        if problems:
+            print("[blocked] nothing uploaded:\n  " + "\n  ".join(problems), file=sys.stderr)
+            return 2
+        for f in files:
+            if f.rel in results:
+                print(f"  [same] {f.remote} already matches kitchen; not re-uploaded")
+                continue
+            bak = sftp_backup(sftp, f.remote)
+            if not bak:
+                print(f"[blocked] backup of {f.remote} failed; stopping before upload", file=sys.stderr)
+                break
+            backups[f.rel] = bak
+            print(f"  [backup] {f.remote} -> {bak}")
+            sftp.put(str(f.local), f.remote)
+            with sftp.file(f.remote, "rb") as rf:
+                ok = hashlib.sha256(rf.read()).hexdigest() == f.sha256
+            print(f"  [up] {f.remote} ({f.size:,} bytes) server copy matches kitchen: {ok}")
+            if not ok:
+                results[f.rel] = "FAILED: server copy does not match kitchen after upload"
+                sftp.put(str(bak), f.remote)
+                print(f"  [restore] {f.remote} <- {bak}", file=sys.stderr)
+                break
+            uploaded.append(f)
+
+        # purge: exact public URLs, plus a full-site purge when PHP output or the
+        # snippets the PHP templates read could change rendered pages
+        if uploaded and not args.skip_flush:
+            exact = {FILE_PUBLIC_URLS[f.rel]: f.sha256 for f in uploaded if f.rel in FILE_PUBLIC_URLS}
+            rendered = [f for f in uploaded if f.rel in RENDER_CHECK_URLS]
+            if exact:
+                for url, st in purge_and_confirm(env, exact).items():
+                    rel = next(f.rel for f in uploaded if FILE_PUBLIC_URLS.get(f.rel) == url)
+                    results[rel] = st
+            if rendered:
+                rocket_purge_everything(env)
+                time.sleep(10)
+
+        # rendered-page checks; a failure restores the backup we just took and stops
+        for f in uploaded:
+            failed = None
+            for url in RENDER_CHECK_URLS.get(f.rel, []):
+                ok, why, info = render_check(url, homepage_before["title"])
+                print(f"  [render] {url}: {'ok' if ok else 'FAIL — ' + why} "
+                      f"(HTTP {info['status']}, {info['bytes']:,} bytes, sha256 {info['sha256'][:12]}…)")
+                if not ok:
+                    bak = backups[f.rel]
+                    sftp.put(str(bak), f.remote)
+                    print(f"  [restore] {f.remote} <- {bak} (render check failed)", file=sys.stderr)
+                    rocket_purge_everything(env)
+                    time.sleep(10)
+                    ok2, why2, info2 = render_check(f"{SITE}/", homepage_before["title"])
+                    print(f"  [after restore] homepage {'ok' if ok2 else 'STILL BAD — ' + why2} "
+                          f"(HTTP {info2['status']}, {info2['bytes']:,} bytes)")
+                    results[f.rel] = f"RESTORED from backup: {why}"
+                    failed = why
+                    break
+            if failed:
+                break
+            results.setdefault(f.rel, "ok (uploaded; render checks passed)")
+    finally:
+        sftp.close()
+        transport.close()
+
+    homepage_after = homepage_snapshot(f"{SITE}/")
+    print("\n" + "=" * 70)
+    print(f"FILE DEPLOY REPORT — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    for f in files:
+        print(f"    {f.rel}")
+        print(f"      remote:  {f.remote}")
+        print(f"      backup:  {backups.get(f.rel, '(none)')}")
+        print(f"      result:  {results.get(f.rel, 'not attempted')}")
+    print(f"  homepage before: {homepage_before['status']} {homepage_before['bytes']:,} bytes "
+          f"sha256 {homepage_before['sha256']}")
+    print(f"  homepage after:  {homepage_after['status']} {homepage_after['bytes']:,} bytes "
+          f"sha256 {homepage_after['sha256']} title {homepage_after['title']!r}")
+    bad = [r for r in results.values() if not r.startswith(("ok", "same"))]
+    attempted = all(f.rel in results for f in files)
+    ok = attempted and not bad and homepage_after["status"] == 200 and homepage_after["custom_hero"]
+    print(f"  result: {'ALL GOOD' if ok else 'ATTENTION NEEDED'}")
+    print("=" * 70)
+    return 0 if ok else 1
+
+
 def stub_id_for_page(page: str, stub_ids: dict | None = None) -> int | None:
     """Exact stub match, else the immediate parent only (search-safe child
     pages flush the parent city stub, e.g. /uti-treatment/mesa-az/ id 13).
@@ -491,6 +821,9 @@ def build_plan(pages: list[str], strict: bool = True) -> list[PagePlan]:
     except (OSError, ValueError, KeyError) as e:
         raise RuntimeError(f"facts ledger unreadable at {ledger_path}: {e}")
     allowed_phrases = ledger.get("banned_word_allowed_phrases", [])
+    # Per-page exceptions: {repo-relative file: [exact sentence, ...]}. Each
+    # sentence must appear exactly once on that one page; nowhere else counts.
+    by_page = ledger.get("banned_word_allowed_phrases_by_page", {})
     for page in pages:
         local = local_path_for(page)
         item = PagePlan(page=page, local=local, remote=remote_path_for(page), url=url_for(page))
@@ -515,7 +848,14 @@ def build_plan(pages: list[str], strict: bool = True) -> list[PagePlan]:
             rel = local.resolve().relative_to(ROOT.resolve()).as_posix()
         except ValueError:
             rel = str(local)
-        content_problems = [f"banned word {h}" for h in facts.banned_word_hits(html, allowed_phrases)]
+        page_allowed = list(by_page.get(rel, []))
+        for phrase in page_allowed:
+            n = len(re.findall(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", html, re.IGNORECASE))
+            if n != 1:
+                problems.append(f"{page}: per-page allowed sentence must appear exactly once "
+                                f"(found {n}): {phrase!r} — refusing to deploy")
+        content_problems = [f"banned word {h}" for h in
+                            facts.banned_word_hits(html, list(allowed_phrases) + page_allowed)]
         content_problems += [f"facts drift: {d}" for d in facts.page_drift(rel, html, ledger)]
         for cp in content_problems:
             if strict:
@@ -1088,6 +1428,60 @@ def preflight_block() -> tuple[str | None, str | None]:
     return git_state_block(SCRIPT_ROOT)
 
 
+def main_files(args, file_names: list[str]) -> int:
+    """--file mode: dry-run plan by default; --remote-diff reads server state
+    and runs the duplicate-function check read-only; --live uploads."""
+    try:
+        files = build_file_plan(file_names)
+    except RuntimeError as e:
+        print(f"[blocked] {e}", file=sys.stderr)
+        return 2
+    if args.verify_only:
+        failed = 0
+        for f in files:
+            url = FILE_PUBLIC_URLS.get(f.rel)
+            if url:
+                live = live_fetch(url)
+                ok = live["status"] == 200 and live["sha256"] == f.sha256
+                failed += not ok
+                print(f"  [verify] {url}: {'PASS' if ok else 'FAIL'} (HTTP {live['status']}, "
+                      f"live sha {live['sha256'][:12]} vs kitchen {f.sha256[:12]})")
+            for url in RENDER_CHECK_URLS.get(f.rel, []):
+                ok, why, info = render_check(url)
+                failed += not ok
+                print(f"  [render] {url}: {'ok' if ok else 'FAIL — ' + why} (HTTP {info['status']}, "
+                      f"{info['bytes']:,} bytes, sha256 {info['sha256'][:12]}…)")
+        return 1 if failed else 0
+    head = None
+    if args.live or args.remote_diff:
+        blocked, head = preflight_block()
+        if blocked:
+            print(blocked, file=sys.stderr)
+            return 2
+    print_file_plan(files)
+    print(f"  target: Rocket.net site {ROCKET_SITE_ID_DEFAULT} SFTP (key auth), web root {REMOTE_PREFIX}/")
+    if not args.live:
+        if args.remote_diff:
+            env = load_env()
+            sftp, transport = sftp_connect(env)
+            try:
+                print("\nRemote file check (read-only):")
+                for f in files:
+                    state = remote_file_state(sftp, f)
+                    note = " — would be REFUSED (overwrite in place only)" if state == "missing" else ""
+                    print(f"  [{state.split()[0]}] {f.remote}{note}" + ("" if state in ("missing", "same") else f" — remote {state}"))
+                    if f.is_php:
+                        dup = duplicate_function_problem(
+                            f, read_other_mu_plugins(sftp, f.remote if f.is_mu_plugin else ""))
+                        print(f"  [functions] {f.rel}: {dup or 'no clash with other mu-plugins'}")
+            finally:
+                sftp.close()
+                transport.close()
+        print("\n[dry-run] nothing uploaded. Add --live (and Chris\'s confirmation phrase) to deploy.")
+        return 0
+    return run_file_deploy(args, files, head)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Unified guarded deploy for NPCWoods landing pages. DRY-RUN BY DEFAULT.")
@@ -1097,6 +1491,10 @@ def main(argv=None) -> int:
     parser.add_argument("--asset", action="append",
                         help="repo-relative file under assets/ to upload as a NEW file to "
                              "public_html/assets/... (repeatable; never overwrites)")
+    parser.add_argument("--file", action="append",
+                        help="allow-listed non-page file to overwrite in place (homepage template, "
+                             "four mu-plugins, npc-menu.js, llms*.txt, shared snippets); "
+                             "one PHP file per run; cannot be combined with --pages/--asset")
     parser.add_argument("--live", action="store_true",
                         help="actually deploy (still requires the confirmation phrase)")
     parser.add_argument("--confirm-live-deploy", dest="confirmation", default=None,
@@ -1116,12 +1514,18 @@ def main(argv=None) -> int:
     try:
         pages = collect_pages(args)
         asset_names = collect_assets(args)
+        file_names = collect_files(args)
     except (ValueError, OSError) as e:
         print(f"[err] {e}", file=sys.stderr)
         return 2
+    if file_names:
+        if pages or asset_names:
+            print("[err] --file runs alone: ship pages/assets in a separate run", file=sys.stderr)
+            return 2
+        return main_files(args, file_names)
     if not pages and not asset_names:
         parser.print_usage()
-        print("[err] nothing given — use --pages, --manifest and/or --asset", file=sys.stderr)
+        print("[err] nothing given — use --pages, --manifest, --asset or --file", file=sys.stderr)
         return 2
 
     try:

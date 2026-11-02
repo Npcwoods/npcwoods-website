@@ -129,6 +129,12 @@
     "American Family Physician"
   ],
   "banned_word_allowed_phrases_rule": "Exact phrases Chris approved on 2026-10-14 despite the word 'physician': GA/NC collaborative-agreement and 'not a physician' disclosures, and source-citation organization names. Matched case-insensitively as whole phrases; the same word anywhere else still blocks. Add more only after Chris says yes to each one.",
+  "banned_word_allowed_phrases_by_page": {
+    "landing-pages/washington-uti-treatment/index.html": [
+      "NPCWoods doesn&rsquo;t take insurance, so there&rsquo;s nothing to file."
+    ]
+  },
+  "banned_word_allowed_phrases_by_page_rule": "One-page, one-sentence exceptions to the banned-word guard. Chris, 2026-11-02 13:59 ET: \"Keep the insurance line on the Washington UTI page and OK a one-time pass past the lock to push it live.\" deploy.py requires the sentence to appear exactly once on that page; any other banned word on the page, or this sentence on any other page, still blocks. Add entries only after Chris says yes to each one.",
   "credential_line": "MSN, APRN, FNP-C, AGACNP-BC",
   "page_must_not_match_regex": [
     "(?<![A-Za-z])ACNP-BC"

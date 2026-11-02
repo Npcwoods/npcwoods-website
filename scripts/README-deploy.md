@@ -87,9 +87,11 @@ Variations that lived in individual dated scripts and are out of scope here:
 - **IndexNow pings** — run `scripts/indexnow-submit.py` separately for
   indexable pages.
 - **Sitemap-exclusion (faq-schema) patching** for noindex pages.
-- **Non-landing-page code** (mu-plugins, `tracking.js`, `llms.txt`) and
-  anything outside `assets/`. Pages ship from `landing-pages/**/index.html`;
-  new image/asset files ship with `--asset` (below).
+- **Non-landing-page code beyond a fixed allow-list.** Pages ship from
+  `landing-pages/**/index.html`; new image/asset files ship with `--asset`;
+  the homepage template, four mu-plugins, `npc-menu.js`, `llms*.txt` and the
+  shared header/footer snippets ship with `--file` (below). Anything else
+  (`tracking.js`, the route file, other mu-plugins, `wp-config.php`) is refused.
 - **Page-specific forbidden-word lists** (the search-safe scripts blocked
   drug names). deploy.py enforces the universal guards (Meta pixel,
   "insurance" warning); campaign-specific wordlists stay in review.
@@ -126,6 +128,64 @@ python3 scripts/deploy.py --pages learn/ear-infection \
 - `--verify-only --asset ...` checks the public URL sha with no upload.
 - Nothing is ever deleted.
 
+## Allow-listed site files (`--file`, added 2026-11-02)
+
+Chris, 2026-11-02 13:59 ET: "Add homepage/menu/footer/llms.txt upload to the
+house tools with backups." `--file` overwrites one of these files **in place**:
+
+| repo file | server path |
+|---|---|
+| `homepage/page-npcwoods-home.php` | `public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php` |
+| `php/npcwoods-compliance-footer.php` | `public_html/wp-content/mu-plugins/npcwoods-compliance-footer.php` |
+| `php/npcwoods-eeat.php` | `public_html/wp-content/mu-plugins/npcwoods-eeat.php` |
+| `php/npcwoods-faq-schema.php` | `public_html/wp-content/mu-plugins/npcwoods-faq-schema.php` |
+| `php/npcwoods-robots-extras.php` | `public_html/wp-content/mu-plugins/npcwoods-robots-extras.php` |
+| `assets/js/npc-menu.js` | `public_html/assets/js/npc-menu.js` |
+| `llms.txt`, `llms-full.txt` | `public_html/llms.txt`, `public_html/llms-full.txt` |
+| `html/shared/footer-snippet.html`, `html/shared/header-snippet.html` | `public_html/shared/...` |
+
+```bash
+python3 scripts/deploy.py --file homepage/page-npcwoods-home.php                 # dry-run plan
+python3 scripts/deploy.py --file homepage/page-npcwoods-home.php --remote-diff   # + read-only server check
+python3 scripts/deploy.py --file homepage/page-npcwoods-home.php --live \
+    --confirm-live-deploy "CHRIS APPROVED LIVE DEPLOY"
+python3 scripts/deploy.py --file llms.txt,llms-full.txt --live --confirm-live-deploy "CHRIS APPROVED LIVE DEPLOY"
+```
+
+Rules the tool enforces:
+
+- Anything not in the table is refused (no path rewriting, no traversal).
+- `--file` runs alone (no `--pages`/`--asset` in the same run) and takes
+  **one PHP file per run**: homepage template first, verify, then each mu-plugin.
+- PHP must pass `php -l` before any server contact.
+- The server file must already exist: it never creates files (so never a new
+  mu-plugin, never a `copy 1.php`), never renames, never deletes.
+- Before uploading a PHP file it reads every other `.php` in `mu-plugins/`
+  and refuses if any of them defines a function the new file defines.
+- A dated backup of the server copy is downloaded to
+  `content-output/deploy-backups/<date>/` before the upload, and the uploaded
+  server copy is read back and sha-checked.
+- Same clean-main / HEAD == origin/main / kitchen-counter guard and the same
+  live confirmation phrase as pages.
+- After upload: exact-URL purge + live sha check for the public files
+  (`npc-menu.js`, `llms*.txt`, snippets), and a full-site purge for anything
+  that changes rendered pages (PHP, snippets). Then it renders the homepage
+  (200, custom hero, same title, no PHP error text) and, for mu-plugins, a
+  page WordPress renders itself (`/2026/`). If a render check fails, the backup
+  it just took goes straight back, the site is purged again, and the run ends
+  `ATTENTION NEEDED`.
+- `--verify-only --file ...` re-runs the sha and render checks with no upload.
+
+## One-page banned-word exceptions
+
+`facts/practice.json` → `banned_word_allowed_phrases_by_page` maps one repo
+page to exact sentences Chris approved on that page only. deploy.py requires
+each sentence to appear **exactly once** on that page; any other banned word
+on the page, or the same sentence on any other page, still blocks. There is
+no bypass flag. Current entry (Chris, 2026-11-02 13:59 ET, "OK a one-time pass
+past the lock"): `landing-pages/washington-uti-treatment/index.html` →
+"NPCWoods doesn't take insurance, so there's nothing to file."
+
 ## Tests
 
 ```bash
@@ -135,4 +195,7 @@ python3 -m unittest tests/test_deploy_tool.py -v
 Covers path resolution, manifest parsing, dry-run-makes-no-SFTP-calls,
 backup path generation, stub resolution, the live-confirmation guard, and
 `--asset` (assets/-only paths, new-only uploads, matching/skip reporting,
-assets before pages, skipped asset holds pages, no remote deletes).
+assets before pages, skipped asset holds pages, no remote deletes), `--file`
+(allow-list, one PHP per run, php -l, no new files, duplicate-function refusal,
+backup then overwrite, render failure restores the backup, purge + sha check),
+and the one-page banned-word exception (exactly once, that page only).
