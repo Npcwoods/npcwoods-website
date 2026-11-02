@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "practice_facts.py"
 LEDGER = ROOT / "facts" / "practice.json"
 
-STATES = ["AZ", "CO", "FL", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"]
-LICENSES = ["AZ", "CO", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"]
+STATES = ["AZ", "CO", "CT", "FL", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"]
+LICENSES = ["AZ", "CO", "CT", "GA", "ID", "IA", "MT", "NV", "NM", "NC", "OR", "UT", "WA"]
 
 
 def load_module():
@@ -79,8 +79,8 @@ class PracticeFactsTest(unittest.TestCase):
                 "landing-pages/credentials/index.html",
             ],
         )
-        self.assertEqual(self.ledger["surface_must_contain"], ["13 states", "TPAN3355", "AGACNP-BC"])
-        self.assertEqual(self.ledger["surface_must_not_contain"], ["11 states", "12 states", "plus a Florida telehealth registration", "+ FL telehealth reg"])
+        self.assertEqual(self.ledger["surface_must_contain"], ["14 states", "TPAN3355", "AGACNP-BC"])
+        self.assertEqual(self.ledger["surface_must_not_contain"], ["11 states", "12 states", "13 states", "plus a Florida telehealth registration", "+ FL telehealth reg"])
         self.assertEqual(self.m.surface_mismatches(ROOT, self.ledger), [])
 
     def test_eleven_state_copy_is_a_mismatch(self):
@@ -107,10 +107,11 @@ class PageChecksTest(unittest.TestCase):
         self.assertTrue(self.m.page_drift("landing-pages/x/index.html", "12 states + FL telehealth reg.", self.ledger))
         self.assertTrue(self.m.page_drift("landing-pages/x/index.html", "plus a Florida telehealth registration", self.ledger))
         self.assertTrue(self.m.page_drift("landing-pages/x/index.html", "Florida-licensed", self.ledger))
-        self.assertEqual(self.m.page_drift("landing-pages/x/index.html", "Licensed in 13 states, including Florida by telehealth registration (TPAN3355)", self.ledger), [])
+        self.assertTrue(self.m.page_drift("landing-pages/x/index.html", "Licensed in 13 states, including Florida by telehealth registration (TPAN3355)", self.ledger))
+        self.assertEqual(self.m.page_drift("landing-pages/x/index.html", "Licensed in 14 states, including Florida by telehealth registration (TPAN3355)", self.ledger), [])
 
     def test_surface_pages_must_carry_roster(self):
-        problems = self.m.page_drift("landing-pages/credentials/index.html", "Licensed in 13 states, including Florida by telehealth registration", self.ledger)
+        problems = self.m.page_drift("landing-pages/credentials/index.html", "Licensed in 14 states, including Florida by telehealth registration", self.ledger)
         self.assertTrue(any("TPAN3355" in p for p in problems))
 
     ALLOWED = [

@@ -2,8 +2,8 @@
 /**
  * Template Name: NPCWoods Homepage
  * Hybrid V3 Homelander. Public URL: https://npcwoods.com/
- * UTI-look plate: approved preview body. 13 states, including Florida by telehealth
- * registration (TPAN3355); 12 NP licenses incl. Washington.
+ * UTI-look plate: approved preview body. 14 states, including Florida by telehealth
+ * registration (TPAN3355); 13 NP licenses incl. Washington.
  * 2026-10-06: Meta Pixel REMOVED (HIPAA hard rule: no tracking tags). Do not re-add.
  * 2026-10-06: GA4 / Google tag REMOVED (HIPAA hard rule: no Google tags on the site).
  * Do not re-add any Google tag here.
@@ -1146,6 +1146,7 @@ a{color:inherit}
         <div class="npc-dropdown">
           <a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
           <a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+          <a href="https://npcwoods.com/credentials/#connecticut">Connecticut</a>
           <a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
           <a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
           <a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
@@ -1406,11 +1407,12 @@ a{color:inherit}
 <section class="states-section" id="states">
   <div class="states-inner">
     <span class="section-kicker">Where I can help</span>
-    <h2 class="section-title" style="color:#fff;font-family:'DM Serif Display',serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:400;margin:8px 0 8px">13 states, including Florida.</h2>
-    <p style="color:var(--body);max-width:50ch;margin:0 auto">13 states, including Florida by telehealth registration. You have to be physically in one of these states at the time of the visit.</p>
+    <h2 class="section-title" style="color:#fff;font-family:'DM Serif Display',serif;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:400;margin:8px 0 8px">14 states, including Florida.</h2>
+    <p style="color:var(--body);max-width:50ch;margin:0 auto">14 states, including Florida by telehealth registration. You have to be physically in one of these states at the time of the visit.</p>
     <div class="states-pills">
         <a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a>
         <a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a>
+        <a class="state-pill" href="https://npcwoods.com/credentials/#connecticut">Connecticut</a>
         <a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a>
         <a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a>
         <a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a>
@@ -1423,7 +1425,7 @@ a{color:inherit}
         <a class="state-pill" href="https://npcwoods.com/washington-telemedicine/">Washington</a>
         <a class="state-pill" href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida <small style="font-weight:500;opacity:.75;margin-left:4px">telehealth reg.</small></a>
     </div>
-    <p style="color:var(--muted);font-size:14px;margin-top:22px">Licensed in Arizona, Colorado, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington. Florida by Out-of-State Telehealth Provider registration (TPAN3355).</p>
+    <p style="color:var(--muted);font-size:14px;margin-top:22px">Licensed in Arizona, Colorado, Connecticut, Georgia, Idaho, Iowa, Montana, Nevada, New Mexico, North Carolina, Oregon, Utah, and Washington. Florida by Out-of-State Telehealth Provider registration (TPAN3355).</p>
     <h3 style="color:#fff;font-family:'DM Serif Display',serif;font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:400;margin:40px 0 6px">Rural shortage areas</h3>
     <p style="color:var(--body);max-width:56ch;margin:0 auto">Long drive to the nearest clinic? These counties have few local options. A $59 text works the same there.</p>
     <div class="states-pills">
@@ -1508,6 +1510,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
           <li><a href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a></li>
           <li><a href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a></li>
           <li><a href="https://npcwoods.com/colorado-telemedicine/">Colorado</a></li>
+          <li><a href="https://npcwoods.com/credentials/#connecticut">Connecticut</a></li>
           <li><a href="https://npcwoods.com/idaho-telemedicine/">Idaho</a></li>
           <li><a href="https://npcwoods.com/iowa-telemedicine/">Iowa</a></li>
           <li><a href="https://npcwoods.com/montana-telemedicine/">Montana</a></li>
@@ -1544,7 +1547,7 @@ if ($npcwoods_footer && is_readable($npcwoods_footer)) {
         <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Double Board-Certified Nurse Practitioner<br>
-      Licensed in 13 states, including Florida by telehealth registration (AZ, CO, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>
+      Licensed in 14 states, including Florida by telehealth registration (AZ, CO, CT, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>
       NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
       <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>

@@ -70,7 +70,7 @@ TRACKING_MARKERS = [
 ]
 
 STATES = [
-    "Arizona", "Colorado", "Georgia", "Idaho", "Iowa", "Montana", "Nevada",
+    "Arizona", "Colorado", "Connecticut", "Georgia", "Idaho", "Iowa", "Montana", "Nevada",
     "New Mexico", "North Carolina", "Oregon", "Utah", "Washington", "Florida",
 ]
 
@@ -125,7 +125,7 @@ class EmployersPageTest(unittest.TestCase):
         self.assertEqual(prices, {"$59"}, prices)
 
     def test_states_line_and_exact_list(self):
-        self.assertIn("13 states, including Florida by telehealth registration", self.visible)
+        self.assertIn("14 states, including Florida by telehealth registration", self.visible)
         for state in STATES:
             self.assertIn(state, self.visible)
 

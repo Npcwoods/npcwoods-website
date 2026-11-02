@@ -5,6 +5,7 @@
   "states_served": [
     "AZ",
     "CO",
+    "CT",
     "FL",
     "GA",
     "ID",
@@ -20,6 +21,7 @@
   "aprn_licenses": [
     "AZ",
     "CO",
+    "CT",
     "GA",
     "ID",
     "IA",
@@ -37,10 +39,20 @@
     "not": "Florida APRN license",
     "public_url": "https://flhealthsource.gov/telehealth/"
   },
+  "connecticut": {
+    "aprn_license": "18681",
+    "board": "Connecticut Department of Public Health",
+    "public_lookup": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx",
+    "lookup_record_2026_11_02": "CHRISTOPHER WOODS, credential 12.018681, Advanced Practice Registered Nurse, ACTIVE / CURRENT, granted 11/02/2026, expires 11/30/2027",
+    "print_number_on": [
+      "landing-pages/credentials/index.html"
+    ],
+    "settled_by": "Chris, 2026-11-02 (\"We now have Connecticut! 18681 - CT APRN license number!\")"
+  },
   "license_line": {
-    "standard": "13 states, including Florida by telehealth registration",
-    "rule": "Write '13 states, including Florida by telehealth registration' (12 APRN licenses + Florida TPAN3355 out-of-state telehealth registration). Never '12 states', 'plus a Florida telehealth registration', '+ FL telehealth reg.', or 'Florida-licensed'.",
-    "settled_by": "Chris, 2026-10-24 (replaces the 2026-10-21 '12 states / never 13 states' rule)"
+    "standard": "14 states, including Florida by telehealth registration",
+    "rule": "Write '14 states, including Florida by telehealth registration' (13 APRN licenses + Florida TPAN3355 out-of-state telehealth registration). Never '12 states', '13 states', 'plus a Florida telehealth registration', '+ FL telehealth reg.', or 'Florida-licensed'.",
+    "settled_by": "Chris, 2026-11-02 (adds Connecticut APRN 18681; replaces the 2026-10-24 '13 states' line)"
   },
   "washington_public_page": {
     "rule": "Print the Washington ARNP license number ARNP.AP.61670388-NP on /washington-telemedicine/ and /credentials/. Do not remove or redact it.",
@@ -82,13 +94,14 @@
     "landing-pages/credentials/index.html"
   ],
   "surface_must_contain": [
-    "13 states",
+    "14 states",
     "TPAN3355",
     "AGACNP-BC"
   ],
   "surface_must_not_contain": [
     "11 states",
     "12 states",
+    "13 states",
     "plus a Florida telehealth registration",
     "+ FL telehealth reg"
   ],
@@ -96,6 +109,8 @@
     "11 states",
     "12 states",
     "twelve states",
+    "13 states",
+    "thirteen states",
     "plus a florida telehealth registration",
     "plus florida by telehealth registration",
     "+ fl telehealth reg",
@@ -114,6 +129,12 @@
     "American Family Physician"
   ],
   "banned_word_allowed_phrases_rule": "Exact phrases Chris approved on 2026-10-14 despite the word 'physician': GA/NC collaborative-agreement and 'not a physician' disclosures, and source-citation organization names. Matched case-insensitively as whole phrases; the same word anywhere else still blocks. Add more only after Chris says yes to each one.",
+  "banned_word_allowed_phrases_by_page": {
+    "landing-pages/washington-uti-treatment/index.html": [
+      "NPCWoods doesn&rsquo;t take insurance, so there&rsquo;s nothing to file."
+    ]
+  },
+  "banned_word_allowed_phrases_by_page_rule": "One-page, one-sentence exceptions to the banned-word guard. Chris, 2026-11-02 13:59 ET: \"Keep the insurance line on the Washington UTI page and OK a one-time pass past the lock to push it live.\" deploy.py requires the sentence to appear exactly once on that page; any other banned word on the page, or this sentence on any other page, still blocks. Add entries only after Chris says yes to each one.",
   "credential_line": "MSN, APRN, FNP-C, AGACNP-BC",
   "page_must_not_match_regex": [
     "(?<![A-Za-z])ACNP-BC"

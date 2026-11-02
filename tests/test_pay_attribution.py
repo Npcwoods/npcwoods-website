@@ -70,8 +70,14 @@ class PayAttributionTest(unittest.TestCase):
         self.assertEqual("TESTGCLID", params["gclid"])
         self.assertEqual("google-cpc-mesa-test-st-AZ-gclid-TESTGCLID", params["client_reference_id"])
 
+    def test_state_picker_lists_connecticut(self):
+        page = PAY_PAGE.read_text(encoding="utf-8")
+        self.assertIn('<option value="CT">Connecticut</option>', page)
+        self.assertLess(page.index('value="CO"'), page.index('value="CT"'))
+        self.assertLess(page.index('value="CT"'), page.index('value="FL"'))
+
     def test_attested_state_reaches_stripe_reference_only(self):
-        for state in ("FL", "WA"):
+        for state in ("FL", "WA", "CT"):
             with self.subTest(state=state):
                 params = run_pay_submit("", state=state)["params"]
                 self.assertEqual(f"spruce-manual-payment-st-{state}", params["client_reference_id"])
