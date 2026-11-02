@@ -20,6 +20,14 @@ Pipeline per page:
      tracking run if playwright is installed), then the homepage is
      re-checked against the step-2 baseline.
 
+ASSETS (--asset assets/<path>, repeatable; added 2026-11-02): repo files under
+assets/ go to public_html/assets/<path> over the same SFTP session, BEFORE any
+page. NEW files only: if the remote file already exists it is never
+overwritten (reported "matching" when its sha equals the kitchen copy,
+otherwise SKIPPED, and then no page in that run is uploaded because pages may
+point at it). Uploaded/matching assets are purged and their public URL sha
+verified exactly like pages. Same guards; nothing is ever deleted.
+
 HOST: npcwoods.com moved from GoDaddy Managed WordPress to Rocket.net on
 2026-10-26 (site id 354775). GoDaddy (html/ prefix, password SFTP, WP stub
 touch for Varnish) is kept below as commented fallback only. Do not use it
@@ -33,6 +41,8 @@ Usage:
   python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe
   python3 scripts/deploy.py --manifest batch.txt --live
   python3 scripts/deploy.py --pages uti-treatment/mesa-az/search-safe --verify-only
+  python3 scripts/deploy.py --pages learn/ear-infection \
+      --asset assets/img/share/learn-ear-infection-v2-1200x630.jpg
 """
 from __future__ import annotations
 
@@ -62,6 +72,7 @@ KITCHEN = Path("/Users/macmini/Desktop/Chris-HQ")
 COUNTER_CARD = KITCHEN / "KITCHEN-COUNTERS.json"
 GIT_TIMEOUT_S = 90
 LANDING_DIR = "landing-pages"
+ASSETS_DIR = "assets"  # --asset files must live under <repo>/assets/
 # Rocket.net web root, relative to the SFTP home (/home/<user>/public_html).
 REMOTE_PREFIX = "public_html"
 # REMOTE_PREFIX = "html"  # GoDaddy Managed WP — do not use since 2026-10-26
@@ -248,6 +259,16 @@ class PagePlan:
 
 
 @dataclass
+class AssetPlan:
+    rel: str                      # repo-relative, e.g. assets/img/share/x-1200x630.jpg
+    local: Path                   # absolute local file
+    remote: str                   # public_html/assets/...
+    url: str                      # https://npcwoods.com/assets/...
+    size: int = 0
+    sha256: str = ""
+
+
+@dataclass
 class VerificationResult:
     status: str
     marker_tracking_status: str = ""
@@ -323,6 +344,109 @@ def collect_pages(args) -> list[str]:
             seen.add(p)
             out.append(p)
     return out
+
+
+def normalize_asset(raw: str) -> str:
+    """Repo-relative path under assets/ (leading slash tolerated). Refuses
+    anything else, traversal, and directories-by-name."""
+    p = raw.strip().lstrip("/")
+    parts = p.split("/")
+    if ".." in parts or "." in parts or "" in parts:
+        raise ValueError(f"refusing odd or traversing asset path: {raw!r}")
+    if parts[0] != ASSETS_DIR or len(parts) < 2:
+        raise ValueError(f"--asset must be a file under {ASSETS_DIR}/ in the repo, got {raw!r}")
+    return p
+
+
+def collect_assets(args) -> list[str]:
+    seen, out = set(), []
+    for chunk in getattr(args, "asset", None) or []:
+        for r in chunk.split(","):
+            if not r.strip():
+                continue
+            a = normalize_asset(r)
+            if a not in seen:
+                seen.add(a)
+                out.append(a)
+    return out
+
+
+def build_asset_plan(assets: list[str]) -> list[AssetPlan]:
+    plan, problems = [], []
+    base = (ROOT / ASSETS_DIR).resolve()
+    for rel in assets:
+        local = ROOT / rel
+        item = AssetPlan(rel=rel, local=local, remote=f"{REMOTE_PREFIX}/{rel}", url=f"{SITE}/{rel}")
+        try:
+            local.resolve().relative_to(base)
+        except ValueError:
+            problems.append(f"{rel}: resolves outside {ASSETS_DIR}/ (symlink?)")
+            continue
+        if not local.is_file():
+            problems.append(f"{rel}: local file missing: {local}")
+            continue
+        data = local.read_bytes()
+        item.size = len(data)
+        item.sha256 = hashlib.sha256(data).hexdigest()
+        plan.append(item)
+    if problems:
+        raise RuntimeError("asset plan blocked:\n  " + "\n  ".join(problems))
+    return plan
+
+
+def print_asset_plan(assets: list[AssetPlan]) -> None:
+    if not assets:
+        return
+    print(f"Asset plan — {len(assets)} file(s) (new files only, never overwritten):")
+    for a in assets:
+        print(f"  [asset] {a.rel}")
+        print(f"       -> {a.remote}  ({a.size:,} bytes, sha256 {a.sha256[:12]}…)")
+
+
+def check_remote_assets(sftp, assets: list[AssetPlan]) -> dict[str, str]:
+    """Read-only. {rel: 'new' | 'matching' | 'differs <sha12> (<bytes> bytes)'}"""
+    out = {}
+    for a in assets:
+        try:
+            with sftp.file(a.remote, "rb") as rf:
+                data = rf.read()
+        except IOError:
+            out[a.rel] = "new"
+            continue
+        sha = hashlib.sha256(data).hexdigest()
+        out[a.rel] = "matching" if sha == a.sha256 else f"differs {sha[:12]} ({len(data):,} bytes)"
+    return out
+
+
+def upload_assets(sftp, assets: list[AssetPlan], state: dict[str, str]) -> dict[str, str]:
+    """Upload only assets whose remote state is 'new'. Never overwrites, never deletes.
+    Returns {rel: 'uploaded' | 'matching (already live, not re-uploaded)' |
+    'SKIPPED: ...' | 'FAILED: ...'}"""
+    results = {}
+    for a in assets:
+        st = state.get(a.rel, "")
+        if st == "matching":
+            results[a.rel] = "matching (already on server, not re-uploaded)"
+            print(f"  [asset] {a.remote}: already on server with matching sha, not re-uploaded")
+            continue
+        if st != "new":
+            results[a.rel] = f"SKIPPED: remote exists and {st}; not overwritten"
+            print(f"  [asset] {a.remote}: SKIPPED, remote exists and {st}; not overwritten", file=sys.stderr)
+            continue
+        try:
+            sftp_mkdirs(sftp, posixpath.dirname(a.remote))
+            sftp.put(str(a.local), a.remote)
+            size = sftp.stat(a.remote).st_size
+            if size != a.size:
+                results[a.rel] = f"FAILED: remote size {size} != local {a.size}"
+                print(f"  [err] {a.remote}: {results[a.rel]}")
+                continue
+            results[a.rel] = "uploaded"
+            print(f"  [up] {a.remote} ({size:,} bytes)")
+        except Exception as e:  # noqa: BLE001 — report at the end
+            results[a.rel] = f"FAILED: {e}"
+            print(f"  [err] {a.rel}: {e}")
+    return results
 
 
 def stub_id_for_page(page: str, stub_ids: dict | None = None) -> int | None:
@@ -970,6 +1094,9 @@ def main(argv=None) -> int:
     parser.add_argument("--pages", action="append",
                         help="comma-separated page paths relative to landing-pages/ (repeatable)")
     parser.add_argument("--manifest", help="text file of page paths, one per line, # comments OK")
+    parser.add_argument("--asset", action="append",
+                        help="repo-relative file under assets/ to upload as a NEW file to "
+                             "public_html/assets/... (repeatable; never overwrites)")
     parser.add_argument("--live", action="store_true",
                         help="actually deploy (still requires the confirmation phrase)")
     parser.add_argument("--confirm-live-deploy", dest="confirmation", default=None,
@@ -988,16 +1115,18 @@ def main(argv=None) -> int:
 
     try:
         pages = collect_pages(args)
+        asset_names = collect_assets(args)
     except (ValueError, OSError) as e:
         print(f"[err] {e}", file=sys.stderr)
         return 2
-    if not pages:
+    if not pages and not asset_names:
         parser.print_usage()
-        print("[err] no pages given — use --pages and/or --manifest", file=sys.stderr)
+        print("[err] nothing given — use --pages, --manifest and/or --asset", file=sys.stderr)
         return 2
 
     try:
         plan = build_plan(pages, strict=not args.verify_only)
+        assets = build_asset_plan(asset_names)
     except RuntimeError as e:
         print(f"[blocked] {e}", file=sys.stderr)
         return 2
@@ -1006,12 +1135,22 @@ def main(argv=None) -> int:
 
     # ---- verify-only -----------------------------------------------------
     if args.verify_only:
-        print(f"[verify-only] checking {len(plan)} live page(s), no upload")
-        results = run_verification(plan)
-        proof_report = write_verification_proof_report(plan, results, mode="verify-only")
-        failed = [p for p, r in results.items() if r.startswith("FAIL")]
-        print(f"[proof] wrote verification report: {proof_report}")
-        print(f"\n[done] {len(plan) - len(failed)}/{len(plan)} pages passed verification")
+        print(f"[verify-only] checking {len(plan)} live page(s), {len(assets)} asset(s), no upload")
+        failed = []
+        if plan:
+            results = run_verification(plan)
+            proof_report = write_verification_proof_report(plan, results, mode="verify-only")
+            failed = [p for p, r in results.items() if r.startswith("FAIL")]
+            print(f"[proof] wrote verification report: {proof_report}")
+        for a in assets:
+            live = live_fetch(a.url)
+            ok = live["status"] == 200 and live["sha256"] == a.sha256
+            print(f"  [verify] {a.url}: {'PASS' if ok else 'FAIL'} (HTTP {live['status']}, "
+                  f"live sha {live['sha256'][:12]} vs kitchen {a.sha256[:12]})")
+            if not ok:
+                failed.append(a.rel)
+        label = "pages" if not assets else "pages+assets"
+        print(f"\n[done] {len(plan) + len(assets) - len(failed)}/{len(plan) + len(assets)} {label} passed verification")
         return 1 if failed else 0
 
     # ---- counter + git guard: before .env loads, before any server contact --
@@ -1023,8 +1162,10 @@ def main(argv=None) -> int:
             return 2
 
     print_plan(plan, stub_table, head)
+    print_asset_plan(assets)
     print(f"  target: Rocket.net site {ROCKET_SITE_ID_DEFAULT} SFTP (key auth), web root {REMOTE_PREFIX}/")
-    print(f"  after upload: Rocket CDN purge of {len(plan)} URL(s): " + ", ".join(i.url for i in plan))
+    purge_urls = [a.url for a in assets] + [i.url for i in plan]
+    print(f"  after upload: Rocket CDN purge of {len(purge_urls)} URL(s): " + ", ".join(purge_urls))
 
     # ---- dry-run (default) ----------------------------------------------
     if not args.live:
@@ -1033,6 +1174,10 @@ def main(argv=None) -> int:
             sftp, transport = sftp_connect(env)
             try:
                 remote_diff(sftp, plan)
+                if assets:
+                    print("\nRemote asset check (read-only):")
+                    for rel, st in check_remote_assets(sftp, assets).items():
+                        print(f"  [{st.split()[0]}] {rel}" + ("" if st in ("new", "matching") else f" — remote {st}; would be SKIPPED"))
             finally:
                 sftp.close()
                 transport.close()
@@ -1044,6 +1189,8 @@ def main(argv=None) -> int:
         return 2
 
     print(f"\n[about to upload] main @ {head} from {SCRIPT_ROOT}")
+    for a in assets:
+        print(f"  {a.rel} -> {a.remote}  (asset, new-only, sha256 {a.sha256[:12]}…)")
     for item in plan:
         print(f"  {item.local.relative_to(ROOT)} -> {item.remote}  (sha256 {item.sha256[:12]}…)")
     env = load_env()
@@ -1060,8 +1207,18 @@ def main(argv=None) -> int:
     print(f"\n[sftp] connecting to Rocket {env['ROCKET_SFTP_HOST']}:{env.get('ROCKET_SFTP_PORT') or 22}")
     sftp, transport = sftp_connect(env)
     uploaded, backups, failed_uploads = [], {}, []
+    asset_results: dict[str, str] = {}
+    hold_pages = False
     try:
-        for item in plan:
+        if assets:
+            asset_state = check_remote_assets(sftp, assets)
+            asset_results = upload_assets(sftp, assets, asset_state)
+            bad = [r for r, v in asset_results.items() if v.startswith(("SKIPPED", "FAILED"))]
+            if bad and plan:
+                hold_pages = True
+                print(f"  [hold] {len(bad)} asset(s) not live as planned; no page uploaded this run "
+                      f"(pages may point at them): {', '.join(bad)}", file=sys.stderr)
+        for item in ([] if hold_pages else plan):
             try:
                 bak = sftp_backup(sftp, item.remote)
                 backups[item.page] = bak
@@ -1083,12 +1240,20 @@ def main(argv=None) -> int:
     # cache flush: Rocket CDN purge of exactly the uploaded URLs.
     flush_results = {}
     stale_pages = []
-    if not args.skip_flush and uploaded:
-        confirmed = purge_and_confirm(env, {item.url: item.sha256 for item in uploaded})
+    live_assets = [a for a in assets if asset_results.get(a.rel, "").startswith(("uploaded", "matching"))]
+    asset_cache: dict[str, str] = {}
+    if not args.skip_flush and (uploaded or live_assets):
+        expected = {a.url: a.sha256 for a in live_assets}
+        expected.update({item.url: item.sha256 for item in uploaded})
+        confirmed = purge_and_confirm(env, expected)
         for item in uploaded:
             flush_results[item.page] = confirmed.get(item.url, "not checked")
             if not flush_results[item.page].startswith("ok"):
                 stale_pages.append(item.page)
+        for a in live_assets:
+            asset_cache[a.rel] = confirmed.get(a.url, "not checked")
+            if not asset_cache[a.rel].startswith("ok"):
+                stale_pages.append(a.rel)
 
     # GoDaddy fallback — do not use since 2026-10-26.
     # GoDaddy WPaaS ran a FULL-SITE ban on any publish->publish stub update,
@@ -1126,7 +1291,14 @@ def main(argv=None) -> int:
     # ---- final report ------------------------------------------------------
     print("\n" + "=" * 70)
     print(f"DEPLOY REPORT — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"  uploaded: {len(uploaded)}/{len(plan)}")
+    for a in assets:
+        print(f"    asset {a.rel}")
+        print(f"      remote:  {a.remote}")
+        print(f"      result:  {asset_results.get(a.rel, 'not attempted')}")
+        print(f"      cache:   {asset_cache.get(a.rel, 'skipped')}")
+    if hold_pages:
+        print("  pages HELD: an asset was skipped or failed, so no page was uploaded")
+    print(f"  uploaded: {len(uploaded)}/{len(plan)} page(s)")
     for item in uploaded:
         bak = backups.get(item.page)
         print(f"    {item.page}")
@@ -1144,7 +1316,9 @@ def main(argv=None) -> int:
     print(f"  homepage: {'unchanged vs baseline' if not hp_problem else 'CHANGED — ' + hp_problem}")
     if stale_pages:
         print(f"  STALE AT EDGE (live sha != kitchen): {', '.join(stale_pages)}")
-    ok = not failed_uploads and not failed_verify and not hp_problem and not stale_pages
+    bad_assets = [r for r, v in asset_results.items() if v.startswith(("SKIPPED", "FAILED"))]
+    ok = (not failed_uploads and not failed_verify and not hp_problem and not stale_pages
+          and not bad_assets and not hold_pages)
     print(f"  result: {'ALL GOOD' if ok else 'ATTENTION NEEDED'}")
     print("=" * 70)
     return 0 if ok else 1

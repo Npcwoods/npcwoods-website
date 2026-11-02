@@ -87,11 +87,44 @@ Variations that lived in individual dated scripts and are out of scope here:
 - **IndexNow pings** — run `scripts/indexnow-submit.py` separately for
   indexable pages.
 - **Sitemap-exclusion (faq-schema) patching** for noindex pages.
-- **Non-landing-page assets** (mu-plugins, `tracking.js`, `llms.txt`).
-  deploy.py only ships `landing-pages/**/index.html`.
+- **Non-landing-page code** (mu-plugins, `tracking.js`, `llms.txt`) and
+  anything outside `assets/`. Pages ship from `landing-pages/**/index.html`;
+  new image/asset files ship with `--asset` (below).
 - **Page-specific forbidden-word lists** (the search-safe scripts blocked
   drug names). deploy.py enforces the universal guards (Meta pixel,
   "insurance" warning); campaign-specific wordlists stay in review.
+
+## New asset files (`--asset`, added 2026-11-02)
+
+For a page's new share card or picture, add `--asset` with the repo-relative
+path under `assets/` (repeatable, or comma-separated):
+
+```bash
+python3 scripts/deploy.py --pages learn/ear-infection \
+    --asset assets/img/share/learn-ear-infection-v2-1200x630.jpg            # dry-run plan
+python3 scripts/deploy.py --pages learn/ear-infection \
+    --asset assets/img/share/learn-ear-infection-v2-1200x630.jpg --remote-diff  # + read-only server check
+python3 scripts/deploy.py --pages learn/ear-infection \
+    --asset assets/img/share/learn-ear-infection-v2-1200x630.jpg \
+    --live --confirm-live-deploy "CHRIS APPROVED LIVE DEPLOY"
+```
+
+- Only paths under `assets/` in the repo; they go to `public_html/assets/...`
+  over the same key-only SFTP session. Anything else (php/, landing-pages/,
+  `..`, symlinks out of assets/) is refused.
+- Same guards as pages: the counter, clean main == origin/main, and the
+  confirmation phrase for `--live`. Dry-run prints the plan and touches nothing.
+- **Assets go up first, and only as NEW files.** If the remote file already
+  exists it is never overwritten: reported `matching` when its sha equals the
+  kitchen copy, otherwise `SKIPPED`. A skipped or failed asset holds every
+  page in that run (nothing else is uploaded; result ATTENTION NEEDED), since
+  pages usually point at it. To replace an image, give it a new file name
+  (e.g. `-v2`).
+- Uploaded/matching assets are purged and their clean public URL sha is
+  checked against the kitchen file exactly like pages (single-URL purge, then
+  full-site fallback, STALE on mismatch).
+- `--verify-only --asset ...` checks the public URL sha with no upload.
+- Nothing is ever deleted.
 
 ## Tests
 
@@ -100,4 +133,6 @@ python3 -m unittest tests/test_deploy_tool.py -v
 ```
 
 Covers path resolution, manifest parsing, dry-run-makes-no-SFTP-calls,
-backup path generation, stub resolution, and the live-confirmation guard.
+backup path generation, stub resolution, the live-confirmation guard, and
+`--asset` (assets/-only paths, new-only uploads, matching/skip reporting,
+assets before pages, skipped asset holds pages, no remote deletes).
