@@ -695,5 +695,187 @@ class KitchenCounterTest(unittest.TestCase):
             self.assertIs(row["plate"], False, row)
 
 
+class FakeSFTP:
+    """In-memory SFTP: {remote_path: bytes}. Records puts; has no remove()."""
+
+    def __init__(self, files=None):
+        self.files = dict(files or {})
+        self.puts = []
+        self.dirs = set()
+
+    def file(self, path, mode="rb"):
+        if path not in self.files:
+            raise IOError(path)
+        return io.BytesIO(self.files[path])
+
+    def stat(self, path):
+        if path in self.files:
+            return mock.Mock(st_size=len(self.files[path]))
+        if path in self.dirs or any(f.startswith(path + "/") for f in self.files):
+            return mock.Mock(st_size=0)
+        raise IOError(path)
+
+    def mkdir(self, path):
+        self.dirs.add(path)
+
+    def put(self, local, remote):
+        self.puts.append(remote)
+        self.files[remote] = Path(local).read_bytes()
+
+    def close(self):
+        pass
+
+
+ASSET = "assets/img/share/clean-plate-1200x630.jpg"
+ASSET_BYTES = b"\xff\xd8\xff fake jpeg"
+
+
+def write_asset(root: Path, rel: str = ASSET, data: bytes = ASSET_BYTES) -> None:
+    path = root / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+
+
+class AssetOptionTest(unittest.TestCase):
+    """--asset: repo files under assets/ -> public_html/assets/..., new files only."""
+
+    def setUp(self):
+        self.m = load_module()
+
+    def test_normalize_asset_accepts_only_assets_paths(self):
+        self.assertEqual(self.m.normalize_asset("/" + ASSET), ASSET)
+        for bad in ("landing-pages/x/index.html", "assets", "assets/", "assets/../php/x.php",
+                    "php/npcwoods-static-pages.php", "assets//x.jpg", "wp-config.php"):
+            with self.assertRaises(ValueError, msg=bad):
+                self.m.normalize_asset(bad)
+
+    def test_build_asset_plan_maps_to_public_html_and_hashes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root):
+                [a] = self.m.build_asset_plan([ASSET])
+                with self.assertRaises(RuntimeError):
+                    self.m.build_asset_plan(["assets/img/missing.jpg"])
+        self.assertEqual(a.remote, f"public_html/{ASSET}")
+        self.assertEqual(a.url, f"https://npcwoods.com/{ASSET}")
+        self.assertEqual(a.size, len(ASSET_BYTES))
+
+    def test_upload_assets_new_matching_and_differs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root, "assets/a.jpg", b"new")
+            write_asset(root, "assets/b.jpg", b"same")
+            write_asset(root, "assets/c.jpg", b"kitchen")
+            sftp = FakeSFTP({"public_html/assets/b.jpg": b"same", "public_html/assets/c.jpg": b"other"})
+            with mock.patch.object(self.m, "ROOT", root):
+                plan = self.m.build_asset_plan(["assets/a.jpg", "assets/b.jpg", "assets/c.jpg"])
+                state = self.m.check_remote_assets(sftp, plan)
+                with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                    res = self.m.upload_assets(sftp, plan, state)
+        self.assertEqual(res["assets/a.jpg"], "uploaded")
+        self.assertTrue(res["assets/b.jpg"].startswith("matching"))
+        self.assertTrue(res["assets/c.jpg"].startswith("SKIPPED"))
+        self.assertEqual(sftp.puts, ["public_html/assets/a.jpg"])  # never overwrites
+        self.assertEqual(sftp.files["public_html/assets/c.jpg"], b"other")
+
+    def test_dry_run_with_asset_shows_plan_and_loads_nothing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m, "sftp_connect") as sftp_connect:
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0)
+        load_env.assert_not_called()
+        sftp_connect.assert_not_called()
+        self.assertIn(f"-> public_html/{ASSET}", out.getvalue())
+        self.assertIn("[dry-run] nothing uploaded", out.getvalue())
+
+    def test_asset_outside_assets_dir_is_refused(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            code = self.m.main(["deploy.py", "--asset", "php/npcwoods-static-pages.php"])
+        self.assertEqual(code, 2)
+
+    def test_live_asset_without_phrase_is_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m.sys.stdin, "isatty", return_value=False), \
+                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                code = self.m.main(["deploy.py", "--asset", ASSET, "--live"])
+        self.assertEqual(code, 2)
+        load_env.assert_not_called()
+
+    def _live(self, root, sftp, argv):
+        homepage = {"status": 200, "bytes": 1, "sha256": "h", "title": "t", "custom_hero": True}
+        purge_calls = []
+
+        def fake_purge(env, expected):
+            purge_calls.append(dict(expected))
+            return {u: "ok (test)" for u in expected}
+
+        out, err = io.StringIO(), io.StringIO()
+        with mock.patch.object(self.m, "ROOT", root), \
+             mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+             mock.patch.object(self.m, "load_env", return_value={
+                 "ROCKET_SFTP_HOST": "h", "ROCKET_SFTP_USER": "u", "ROCKET_SFTP_KEY_PATH": "k"}), \
+             mock.patch.object(self.m, "homepage_snapshot", return_value=homepage), \
+             mock.patch.object(self.m, "sftp_connect", return_value=(sftp, mock.Mock())), \
+             mock.patch.object(self.m, "purge_and_confirm", side_effect=fake_purge), \
+             mock.patch.object(self.m, "backup_root", return_value=root / "bak"), \
+             mock.patch.object(self.m, "backup_path_for", side_effect=lambda r: root / "bak" / r.replace("/", "__")), \
+             redirect_stdout(out), redirect_stderr(err):
+            code = self.m.main(argv + ["--live", "--confirm-live-deploy", CONFIRM, "--skip-verify"])
+        return code, purge_calls, out.getvalue(), err.getvalue()
+
+    def test_live_uploads_asset_before_page_and_purges_both(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP()
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [f"public_html/{ASSET}", f"public_html/{CLEAN_PAGE}/index.html"])
+        self.assertIn(f"https://npcwoods.com/{ASSET}", purges[0])
+        self.assertIn(f"https://npcwoods.com/{CLEAN_PAGE}/", purges[0])
+
+    def test_live_differing_remote_asset_is_skipped_and_holds_pages(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP({f"public_html/{ASSET}": b"someone else's image"})
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 1)
+        self.assertEqual(sftp.puts, [])
+        self.assertEqual(sftp.files[f"public_html/{ASSET}"], b"someone else's image")
+        self.assertIn("SKIPPED", out + err)
+        self.assertIn("ATTENTION NEEDED", out)
+
+    def test_live_matching_remote_asset_is_reported_and_page_goes_up(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP({f"public_html/{ASSET}": ASSET_BYTES})
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [f"public_html/{CLEAN_PAGE}/index.html"])
+        self.assertIn("matching", out)
+
+    def test_deploy_source_never_deletes_remote_files(self):
+        src = SCRIPT.read_text()
+        self.assertNotRegex(src, r"sftp\.(remove|unlink|rmdir)\(")
+
+
 if __name__ == "__main__":
     unittest.main()
