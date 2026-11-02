@@ -695,5 +695,436 @@ class KitchenCounterTest(unittest.TestCase):
             self.assertIs(row["plate"], False, row)
 
 
+class FakeSFTP:
+    """In-memory SFTP: {remote_path: bytes}. Records puts; has no remove()."""
+
+    def __init__(self, files=None):
+        self.files = dict(files or {})
+        self.puts = []
+        self.dirs = set()
+
+    def file(self, path, mode="rb"):
+        if path not in self.files:
+            raise IOError(path)
+        return io.BytesIO(self.files[path])
+
+    def stat(self, path):
+        if path in self.files:
+            return mock.Mock(st_size=len(self.files[path]))
+        if path in self.dirs or any(f.startswith(path + "/") for f in self.files):
+            return mock.Mock(st_size=0)
+        raise IOError(path)
+
+    def mkdir(self, path):
+        self.dirs.add(path)
+
+    def put(self, local, remote):
+        self.puts.append(remote)
+        self.files[remote] = Path(local).read_bytes()
+
+    def close(self):
+        pass
+
+
+ASSET = "assets/img/share/clean-plate-1200x630.jpg"
+ASSET_BYTES = b"\xff\xd8\xff fake jpeg"
+
+
+def write_asset(root: Path, rel: str = ASSET, data: bytes = ASSET_BYTES) -> None:
+    path = root / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+
+
+class AssetOptionTest(unittest.TestCase):
+    """--asset: repo files under assets/ -> public_html/assets/..., new files only."""
+
+    def setUp(self):
+        self.m = load_module()
+
+    def test_normalize_asset_accepts_only_assets_paths(self):
+        self.assertEqual(self.m.normalize_asset("/" + ASSET), ASSET)
+        for bad in ("landing-pages/x/index.html", "assets", "assets/", "assets/../php/x.php",
+                    "php/npcwoods-static-pages.php", "assets//x.jpg", "wp-config.php"):
+            with self.assertRaises(ValueError, msg=bad):
+                self.m.normalize_asset(bad)
+
+    def test_build_asset_plan_maps_to_public_html_and_hashes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root):
+                [a] = self.m.build_asset_plan([ASSET])
+                with self.assertRaises(RuntimeError):
+                    self.m.build_asset_plan(["assets/img/missing.jpg"])
+        self.assertEqual(a.remote, f"public_html/{ASSET}")
+        self.assertEqual(a.url, f"https://npcwoods.com/{ASSET}")
+        self.assertEqual(a.size, len(ASSET_BYTES))
+
+    def test_upload_assets_new_matching_and_differs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root, "assets/a.jpg", b"new")
+            write_asset(root, "assets/b.jpg", b"same")
+            write_asset(root, "assets/c.jpg", b"kitchen")
+            sftp = FakeSFTP({"public_html/assets/b.jpg": b"same", "public_html/assets/c.jpg": b"other"})
+            with mock.patch.object(self.m, "ROOT", root):
+                plan = self.m.build_asset_plan(["assets/a.jpg", "assets/b.jpg", "assets/c.jpg"])
+                state = self.m.check_remote_assets(sftp, plan)
+                with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                    res = self.m.upload_assets(sftp, plan, state)
+        self.assertEqual(res["assets/a.jpg"], "uploaded")
+        self.assertTrue(res["assets/b.jpg"].startswith("matching"))
+        self.assertTrue(res["assets/c.jpg"].startswith("SKIPPED"))
+        self.assertEqual(sftp.puts, ["public_html/assets/a.jpg"])  # never overwrites
+        self.assertEqual(sftp.files["public_html/assets/c.jpg"], b"other")
+
+    def test_dry_run_with_asset_shows_plan_and_loads_nothing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m, "sftp_connect") as sftp_connect:
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0)
+        load_env.assert_not_called()
+        sftp_connect.assert_not_called()
+        self.assertIn(f"-> public_html/{ASSET}", out.getvalue())
+        self.assertIn("[dry-run] nothing uploaded", out.getvalue())
+
+    def test_asset_outside_assets_dir_is_refused(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            code = self.m.main(["deploy.py", "--asset", "php/npcwoods-static-pages.php"])
+        self.assertEqual(code, 2)
+
+    def test_live_asset_without_phrase_is_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_asset(root)
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m.sys.stdin, "isatty", return_value=False), \
+                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                code = self.m.main(["deploy.py", "--asset", ASSET, "--live"])
+        self.assertEqual(code, 2)
+        load_env.assert_not_called()
+
+    def _live(self, root, sftp, argv):
+        homepage = {"status": 200, "bytes": 1, "sha256": "h", "title": "t", "custom_hero": True}
+        purge_calls = []
+
+        def fake_purge(env, expected):
+            purge_calls.append(dict(expected))
+            return {u: "ok (test)" for u in expected}
+
+        out, err = io.StringIO(), io.StringIO()
+        with mock.patch.object(self.m, "ROOT", root), \
+             mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+             mock.patch.object(self.m, "load_env", return_value={
+                 "ROCKET_SFTP_HOST": "h", "ROCKET_SFTP_USER": "u", "ROCKET_SFTP_KEY_PATH": "k"}), \
+             mock.patch.object(self.m, "homepage_snapshot", return_value=homepage), \
+             mock.patch.object(self.m, "sftp_connect", return_value=(sftp, mock.Mock())), \
+             mock.patch.object(self.m, "purge_and_confirm", side_effect=fake_purge), \
+             mock.patch.object(self.m, "backup_root", return_value=root / "bak"), \
+             mock.patch.object(self.m, "backup_path_for", side_effect=lambda r: root / "bak" / r.replace("/", "__")), \
+             redirect_stdout(out), redirect_stderr(err):
+            code = self.m.main(argv + ["--live", "--confirm-live-deploy", CONFIRM, "--skip-verify"])
+        return code, purge_calls, out.getvalue(), err.getvalue()
+
+    def test_live_uploads_asset_before_page_and_purges_both(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP()
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [f"public_html/{ASSET}", f"public_html/{CLEAN_PAGE}/index.html"])
+        self.assertIn(f"https://npcwoods.com/{ASSET}", purges[0])
+        self.assertIn(f"https://npcwoods.com/{CLEAN_PAGE}/", purges[0])
+
+    def test_live_differing_remote_asset_is_skipped_and_holds_pages(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP({f"public_html/{ASSET}": b"someone else's image"})
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 1)
+        self.assertEqual(sftp.puts, [])
+        self.assertEqual(sftp.files[f"public_html/{ASSET}"], b"someone else's image")
+        self.assertIn("SKIPPED", out + err)
+        self.assertIn("ATTENTION NEEDED", out)
+
+    def test_live_matching_remote_asset_is_reported_and_page_goes_up(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root)
+            write_asset(root)
+            sftp = FakeSFTP({f"public_html/{ASSET}": ASSET_BYTES})
+            code, purges, out, err = self._live(root, sftp, ["deploy.py", "--pages", CLEAN_PAGE, "--asset", ASSET])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [f"public_html/{CLEAN_PAGE}/index.html"])
+        self.assertIn("matching", out)
+
+    def test_deploy_source_never_deletes_remote_files(self):
+        src = SCRIPT.read_text()
+        self.assertNotRegex(src, r"sftp\.(remove|unlink|rmdir)\(")
+
+
+
+class FakeSFTPDir(FakeSFTP):
+    """FakeSFTP plus listdir, for the mu-plugins duplicate-function check."""
+
+    def listdir(self, path):
+        prefix = path.rstrip("/") + "/"
+        return sorted({f[len(prefix):].split("/")[0] for f in self.files if f.startswith(prefix)})
+
+
+MU = "public_html/wp-content/mu-plugins"
+EEAT_REL = "php/npcwoods-eeat.php"
+EEAT_REMOTE = f"{MU}/npcwoods-eeat.php"
+GOOD_PHP = "<?php\nfunction npcwoods_test_profile() { return 14; }\n"
+
+
+def write_file(root: Path, rel: str, data) -> None:
+    path = root / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if isinstance(data, bytes):
+        path.write_bytes(data)
+    else:
+        path.write_text(data)
+
+
+class FileOptionTest(unittest.TestCase):
+    """--file: fixed allow-list of non-page files, overwrite in place only."""
+
+    def setUp(self):
+        self.m = load_module()
+
+    def test_allow_list_is_exactly_the_approved_files(self):
+        self.assertEqual(self.m.FILE_TARGETS, {
+            "homepage/page-npcwoods-home.php": "public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php",
+            "php/npcwoods-compliance-footer.php": f"{MU}/npcwoods-compliance-footer.php",
+            "php/npcwoods-eeat.php": f"{MU}/npcwoods-eeat.php",
+            "php/npcwoods-faq-schema.php": f"{MU}/npcwoods-faq-schema.php",
+            "php/npcwoods-robots-extras.php": f"{MU}/npcwoods-robots-extras.php",
+            "assets/js/npc-menu.js": "public_html/assets/js/npc-menu.js",
+            "llms.txt": "public_html/llms.txt",
+            "llms-full.txt": "public_html/llms-full.txt",
+            "html/shared/footer-snippet.html": "public_html/shared/footer-snippet.html",
+            "html/shared/header-snippet.html": "public_html/shared/header-snippet.html",
+        })
+
+    def test_normalize_file_refuses_anything_off_the_list(self):
+        self.assertEqual(self.m.normalize_file("/llms.txt"), "llms.txt")
+        for bad in ("wp-config.php", "php/npcwoods-static-pages.php", "php/npcwoods-eeat copy 1.php",
+                    "landing-pages/pay/index.html", "php/../wp-config.php", ".htaccess",
+                    "html/shared/eeat-clinician-byline.html"):
+            with self.assertRaises(ValueError, msg=bad):
+                self.m.normalize_file(bad)
+
+    def test_one_php_file_per_run(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, EEAT_REL, GOOD_PHP)
+            write_file(root, "php/npcwoods-robots-extras.php", "<?php\n")
+            with mock.patch.object(self.m, "ROOT", root), mock.patch.object(self.m, "php_lint", return_value=None):
+                with self.assertRaisesRegex(RuntimeError, "one PHP file per run"):
+                    self.m.build_file_plan([EEAT_REL, "php/npcwoods-robots-extras.php"])
+
+    @unittest.skipUnless(shutil.which("php"), "php CLI not installed")
+    def test_php_lint_failure_blocks(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, EEAT_REL, "<?php\nfunction broken( {\n")
+            with mock.patch.object(self.m, "ROOT", root):
+                with self.assertRaisesRegex(RuntimeError, "php -l failed"):
+                    self.m.build_file_plan([EEAT_REL])
+
+    def test_file_cannot_ride_with_pages(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            code = self.m.main(["deploy.py", "--file", "llms.txt", "--pages", "pay"])
+        self.assertEqual(code, 2)
+
+    def test_dry_run_file_loads_nothing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, "llms.txt", "# NPCWoods\n")
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m, "sftp_connect") as sftp_connect:
+                out = io.StringIO()
+                with redirect_stdout(out):
+                    code = self.m.main(["deploy.py", "--file", "llms.txt"])
+        self.assertEqual(code, 0)
+        load_env.assert_not_called()
+        sftp_connect.assert_not_called()
+        self.assertIn("-> public_html/llms.txt", out.getvalue())
+
+    def test_live_file_without_phrase_is_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, "llms.txt", "# NPCWoods\n")
+            with mock.patch.object(self.m, "ROOT", root), \
+                 mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+                 mock.patch.object(self.m, "load_env") as load_env, \
+                 mock.patch.object(self.m.sys.stdin, "isatty", return_value=False), \
+                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                code = self.m.main(["deploy.py", "--file", "llms.txt", "--live"])
+        self.assertEqual(code, 2)
+        load_env.assert_not_called()
+
+    def _live(self, root, sftp, argv, render=None):
+        homepage = {"status": 200, "bytes": 1, "sha256": "h", "title": "t", "custom_hero": True}
+        calls = {"purge": [], "purge_all": 0}
+
+        def fake_purge(env, expected):
+            calls["purge"].append(dict(expected))
+            return {u: "ok (test)" for u in expected}
+
+        def fake_purge_all(env):
+            calls["purge_all"] += 1
+            return True
+
+        render = render or (lambda url, title=None: (True, "ok", {"status": 200, "bytes": 1, "sha256": "x"}))
+        out, err = io.StringIO(), io.StringIO()
+        with mock.patch.object(self.m, "ROOT", root), \
+             mock.patch.object(self.m, "php_lint", return_value=None), \
+             mock.patch.object(self.m, "preflight_block", return_value=(None, "abc")), \
+             mock.patch.object(self.m, "load_env", return_value={
+                 "ROCKET_SFTP_HOST": "h", "ROCKET_SFTP_USER": "u", "ROCKET_SFTP_KEY_PATH": "k"}), \
+             mock.patch.object(self.m, "homepage_snapshot", return_value=homepage), \
+             mock.patch.object(self.m, "sftp_connect", return_value=(sftp, mock.Mock())), \
+             mock.patch.object(self.m, "purge_and_confirm", side_effect=fake_purge), \
+             mock.patch.object(self.m, "rocket_purge_everything", side_effect=fake_purge_all), \
+             mock.patch.object(self.m, "render_check", side_effect=render), \
+             mock.patch.object(self.m.time, "sleep"), \
+             mock.patch.object(self.m, "backup_path_for", side_effect=lambda r: root / "bak" / r.replace("/", "__")), \
+             redirect_stdout(out), redirect_stderr(err):
+            code = self.m.main(argv + ["--live", "--confirm-live-deploy", CONFIRM])
+        return code, calls, out.getvalue(), err.getvalue()
+
+    def test_live_refuses_to_create_a_new_mu_plugin(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, EEAT_REL, GOOD_PHP)
+            sftp = FakeSFTPDir({f"{MU}/npcwoods-static-pages.php": b"<?php\n"})
+            code, calls, out, err = self._live(root, sftp, ["deploy.py", "--file", EEAT_REL])
+        self.assertEqual(code, 2)
+        self.assertEqual(sftp.puts, [])
+        self.assertIn("does not exist on the server", err)
+
+    def test_live_refuses_duplicate_functions_across_mu_plugins(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, EEAT_REL, GOOD_PHP)
+            sftp = FakeSFTPDir({
+                EEAT_REMOTE: b"<?php\n",
+                f"{MU}/npcwoods-eeat copy 1.php": b"<?php\nfunction npcwoods_test_profile() {}\n",
+            })
+            code, calls, out, err = self._live(root, sftp, ["deploy.py", "--file", EEAT_REL])
+        self.assertEqual(code, 2)
+        self.assertEqual(sftp.puts, [])
+        self.assertIn("npcwoods_test_profile", err)
+
+    def test_live_mu_plugin_backs_up_overwrites_purges_and_checks_render(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, EEAT_REL, GOOD_PHP)
+            sftp = FakeSFTPDir({EEAT_REMOTE: b"<?php\n// old\n", f"{MU}/other.php": b"<?php\nfunction other() {}\n"})
+            seen = []
+            code, calls, out, err = self._live(root, sftp, ["deploy.py", "--file", EEAT_REL],
+                                               render=lambda url, title=None: (seen.append(url) or True, "ok",
+                                                                               {"status": 200, "bytes": 1, "sha256": "x"}))
+            backup = (root / "bak" / EEAT_REMOTE.replace("/", "__")).read_bytes()
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [EEAT_REMOTE])
+        self.assertEqual(sftp.files[EEAT_REMOTE], GOOD_PHP.encode())
+        self.assertEqual(backup, b"<?php\n// old\n")
+        self.assertEqual(calls["purge_all"], 1)
+        self.assertIn("https://npcwoods.com/", seen)
+
+    def test_live_render_failure_restores_the_backup(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, "homepage/page-npcwoods-home.php", "<?php echo 'broken';\n")
+            remote = "public_html/wp-content/themes/twentytwentyfour/page-npcwoods-home.php"
+            sftp = FakeSFTPDir({remote: b"<?php echo 'good';\n"})
+            code, calls, out, err = self._live(
+                root, sftp, ["deploy.py", "--file", "homepage/page-npcwoods-home.php"],
+                render=lambda url, title=None: (False, "HTTP 500", {"status": 500, "bytes": 0, "sha256": "x"}))
+        self.assertEqual(code, 1)
+        self.assertEqual(sftp.files[remote], b"<?php echo 'good';\n")  # restored
+        self.assertIn("RESTORED", out)
+
+    def test_live_static_file_is_purged_and_sha_confirmed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, "llms.txt", "# NPCWoods 14 states\n")
+            sftp = FakeSFTPDir({"public_html/llms.txt": b"# NPCWoods 13 states\n"})
+            code, calls, out, err = self._live(root, sftp, ["deploy.py", "--file", "llms.txt"])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, ["public_html/llms.txt"])
+        self.assertIn("https://npcwoods.com/llms.txt", calls["purge"][0])
+
+    def test_live_identical_file_is_not_reuploaded(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_file(root, "llms.txt", "same\n")
+            sftp = FakeSFTPDir({"public_html/llms.txt": b"same\n"})
+            code, calls, out, err = self._live(root, sftp, ["deploy.py", "--file", "llms.txt"])
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(sftp.puts, [])
+
+
+WA_REL = "landing-pages/washington-uti-treatment/index.html"
+WA_SENTENCE = "NPCWoods doesn&rsquo;t take insurance, so there&rsquo;s nothing to file."
+
+
+class PerPageAllowedSentenceTest(unittest.TestCase):
+    """banned_word_allowed_phrases_by_page: one sentence, one page, exactly once."""
+
+    def setUp(self):
+        self.m = load_module()
+
+    def _plan(self, page, body):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_clean_landing(root, page, f"<!DOCTYPE html><html><body><p>{body}</p></body></html>")
+            with mock.patch.object(self.m, "ROOT", root):
+                return self.m.build_plan([page])
+
+    def test_ledger_entry_is_exactly_the_washington_sentence(self):
+        ledger = json.loads(LEDGER.read_text())
+        self.assertEqual(ledger["banned_word_allowed_phrases_by_page"], {WA_REL: [WA_SENTENCE]})
+
+    def test_sentence_once_on_that_page_passes(self):
+        [item] = self._plan("washington-uti-treatment", f"Cash-pay. {WA_SENTENCE}")
+        self.assertEqual(item.page, "washington-uti-treatment")
+
+    def test_sentence_twice_blocks(self):
+        with self.assertRaisesRegex(RuntimeError, "exactly once"):
+            self._plan("washington-uti-treatment", f"{WA_SENTENCE} {WA_SENTENCE}")
+
+    def test_any_other_insurance_mention_on_that_page_blocks(self):
+        with self.assertRaisesRegex(RuntimeError, "insurance"):
+            self._plan("washington-uti-treatment", f"{WA_SENTENCE} We also bill insurance.")
+
+    def test_same_sentence_on_another_page_blocks(self):
+        with self.assertRaisesRegex(RuntimeError, "insurance"):
+            self._plan("oregon-uti-treatment", WA_SENTENCE)
+
+    def test_real_washington_page_passes_the_guard(self):
+        [item] = self.m.build_plan(["washington-uti-treatment"])
+        html = item.local.read_text()
+        self.assertEqual(len(re.findall(r"insurance", html, re.I)), 1)
+
+
 if __name__ == "__main__":
     unittest.main()
