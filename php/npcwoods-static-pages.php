@@ -73,6 +73,7 @@ add_action( "template_redirect", function() {
     "rio-arriba-county-text-visit" => "rio-arriba-county-text-visit/index.html",
     "dolores-county-text-visit" => "dolores-county-text-visit/index.html",
     "liberty-county-text-visit" => "liberty-county-text-visit/index.html",
+    "greene-county-text-visit" => "greene-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
     );
 
