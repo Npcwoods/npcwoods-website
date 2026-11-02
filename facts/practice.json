@@ -5,6 +5,7 @@
   "states_served": [
     "AZ",
     "CO",
+    "CT",
     "FL",
     "GA",
     "ID",
@@ -20,6 +21,7 @@
   "aprn_licenses": [
     "AZ",
     "CO",
+    "CT",
     "GA",
     "ID",
     "IA",
@@ -37,10 +39,20 @@
     "not": "Florida APRN license",
     "public_url": "https://flhealthsource.gov/telehealth/"
   },
+  "connecticut": {
+    "aprn_license": "18681",
+    "board": "Connecticut Department of Public Health",
+    "public_lookup": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx",
+    "lookup_record_2026_11_02": "CHRISTOPHER WOODS, credential 12.018681, Advanced Practice Registered Nurse, ACTIVE / CURRENT, granted 11/02/2026, expires 11/30/2027",
+    "print_number_on": [
+      "landing-pages/credentials/index.html"
+    ],
+    "settled_by": "Chris, 2026-11-02 (\"We now have Connecticut! 18681 - CT APRN license number!\")"
+  },
   "license_line": {
-    "standard": "13 states, including Florida by telehealth registration",
-    "rule": "Write '13 states, including Florida by telehealth registration' (12 APRN licenses + Florida TPAN3355 out-of-state telehealth registration). Never '12 states', 'plus a Florida telehealth registration', '+ FL telehealth reg.', or 'Florida-licensed'.",
-    "settled_by": "Chris, 2026-10-24 (replaces the 2026-10-21 '12 states / never 13 states' rule)"
+    "standard": "14 states, including Florida by telehealth registration",
+    "rule": "Write '14 states, including Florida by telehealth registration' (13 APRN licenses + Florida TPAN3355 out-of-state telehealth registration). Never '12 states', '13 states', 'plus a Florida telehealth registration', '+ FL telehealth reg.', or 'Florida-licensed'.",
+    "settled_by": "Chris, 2026-11-02 (adds Connecticut APRN 18681; replaces the 2026-10-24 '13 states' line)"
   },
   "washington_public_page": {
     "rule": "Print the Washington ARNP license number ARNP.AP.61670388-NP on /washington-telemedicine/ and /credentials/. Do not remove or redact it.",
@@ -82,13 +94,14 @@
     "landing-pages/credentials/index.html"
   ],
   "surface_must_contain": [
-    "13 states",
+    "14 states",
     "TPAN3355",
     "AGACNP-BC"
   ],
   "surface_must_not_contain": [
     "11 states",
     "12 states",
+    "13 states",
     "plus a Florida telehealth registration",
     "+ FL telehealth reg"
   ],
@@ -96,6 +109,8 @@
     "11 states",
     "12 states",
     "twelve states",
+    "13 states",
+    "thirteen states",
     "plus a florida telehealth registration",
     "plus florida by telehealth registration",
     "+ fl telehealth reg",
