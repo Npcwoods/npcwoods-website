@@ -105,9 +105,10 @@
       color: var(--charcoal);
       border-radius: 100px;
       min-height: 44px;
-      padding: 10px 12px;
+      padding: 8px 12px;
       font-size: 0.92rem;
       font-weight: 600;
+      line-height: 1.2;
       cursor: pointer;
       transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
     }
@@ -301,10 +302,13 @@
         <p class="optional-note">Answering is totally optional, but it helps us know what avenues or platforms are working so we can help more people.</p>
         <input type="hidden" id="heardSelect" value="">
         <div class="source-chip-grid" aria-label="How did you hear about NPCWoods?">
-          <button class="source-chip" type="button" data-source="google_search" aria-pressed="false">Google</button>
-          <button class="source-chip" type="button" data-source="friend_family" aria-pressed="false">Friend / family</button>
-          <button class="source-chip" type="button" data-source="facebook_instagram" aria-pressed="false">Facebook / Instagram</button>
-          <button class="source-chip" type="button" data-source="returning_visitor" aria-pressed="false">Returning visitor</button>
+          <button class="source-chip" type="button" data-source="friend_family" aria-pressed="false">Friend or family</button>
+          <button class="source-chip" type="button" data-source="returning_visitor" aria-pressed="false">Returning patient</button>
+          <button class="source-chip" type="button" data-source="google_search" aria-pressed="false">Google search</button>
+          <button class="source-chip" type="button" data-source="instagram" aria-pressed="false">Instagram</button>
+          <button class="source-chip" type="button" data-source="facebook" aria-pressed="false">Facebook</button>
+          <button class="source-chip" type="button" data-source="x_twitter" aria-pressed="false">X (Twitter)</button>
+          <button class="source-chip" type="button" data-source="ai_assistant" aria-pressed="false">ChatGPT or AI assistant</button>
           <button class="source-chip" type="button" data-source="other" aria-pressed="false">Other</button>
         </div>
       </div>
@@ -519,11 +523,29 @@
               campaign: 'heard-friend-family',
               content: 'heard-friend-family'
             },
-            facebook_instagram: {
-              source: 'meta',
+            instagram: {
+              source: 'instagram',
               medium: 'organic_social',
-              campaign: 'heard-facebook-instagram',
-              content: 'heard-facebook-instagram'
+              campaign: 'heard-instagram',
+              content: 'heard-instagram'
+            },
+            facebook: {
+              source: 'facebook',
+              medium: 'organic_social',
+              campaign: 'heard-facebook',
+              content: 'heard-facebook'
+            },
+            x_twitter: {
+              source: 'x',
+              medium: 'organic_social',
+              campaign: 'heard-x',
+              content: 'heard-x'
+            },
+            ai_assistant: {
+              source: 'chatgpt',
+              medium: 'ai_assistant',
+              campaign: 'heard-ai-assistant',
+              content: 'heard-ai-assistant'
             },
             returning_visitor: {
               source: 'npcwoods',
