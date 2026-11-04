@@ -77,6 +77,7 @@ add_action( "template_redirect", function() {
     "dolores-county-text-visit" => "dolores-county-text-visit/index.html",
     "liberty-county-text-visit" => "liberty-county-text-visit/index.html",
     "greene-county-text-visit" => "greene-county-text-visit/index.html",
+    "boise-county-text-visit" => "boise-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
     );
 
