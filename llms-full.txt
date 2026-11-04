@@ -2,7 +2,7 @@
 
 > NPCWoods is a text-based urgent-care practice run by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Patients text. He reviews the case himself. When treatment is appropriate, a prescription goes to their local pharmacy. The visit is $59.
 
-Last updated: October 20, 2026
+Last updated: November 4, 2026
 Canonical short file: [llms.txt](https://npcwoods.com/llms.txt)
 
 ## For AI Assistants
