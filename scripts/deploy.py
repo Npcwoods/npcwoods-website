@@ -468,6 +468,8 @@ FILE_TARGETS = {
     "php/npcwoods-eeat.php": f"{MU_PLUGINS_REMOTE}/npcwoods-eeat.php",
     "php/npcwoods-faq-schema.php": f"{MU_PLUGINS_REMOTE}/npcwoods-faq-schema.php",
     "php/npcwoods-robots-extras.php": f"{MU_PLUGINS_REMOTE}/npcwoods-robots-extras.php",
+    # Route map for static landing pages. Chris OK'd 2026-11-04 13:32 ET ("Tidy and push it live").
+    "php/npcwoods-static-pages.php": f"{MU_PLUGINS_REMOTE}/npcwoods-static-pages.php",
     "assets/js/npc-menu.js": f"{REMOTE_PREFIX}/assets/js/npc-menu.js",
     "llms.txt": f"{REMOTE_PREFIX}/llms.txt",
     "llms-full.txt": f"{REMOTE_PREFIX}/llms-full.txt",
@@ -494,6 +496,10 @@ RENDER_CHECK_URLS = {
     "php/npcwoods-eeat.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
     "php/npcwoods-faq-schema.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
     "php/npcwoods-robots-extras.php": [f"{SITE}/", f"{SITE}/robots.txt"],
+    "php/npcwoods-static-pages.php": [f"{SITE}/", f"{SITE}/travel-telehealth-text-visit/",
+                                      f"{SITE}/sick-on-vacation-text-visit/",
+                                      f"{SITE}/out-of-town-medication-refill/",
+                                      f"{SITE}/boise-county-text-visit/", f"{SITE}/baca-county-text-visit/"],
     "html/shared/footer-snippet.html": [f"{SITE}/"],
     "html/shared/header-snippet.html": [f"{SITE}/"],
 }
@@ -1493,7 +1499,7 @@ def main(argv=None) -> int:
                              "public_html/assets/... (repeatable; never overwrites)")
     parser.add_argument("--file", action="append",
                         help="allow-listed non-page file to overwrite in place (homepage template, "
-                             "four mu-plugins, npc-menu.js, llms*.txt, shared snippets); "
+                             "five mu-plugins, npc-menu.js, llms*.txt, shared snippets); "
                              "one PHP file per run; cannot be combined with --pages/--asset")
     parser.add_argument("--live", action="store_true",
                         help="actually deploy (still requires the confirmation phrase)")
