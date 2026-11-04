@@ -917,8 +917,31 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
 .pay-note{margin-top:14px;font-size:14px;color:var(--body)}
 .pay-note a{color:var(--blue-bright);text-decoration:underline}
 </style>
+
+<style>
+.place-photo{margin:0 0 28px;max-width:760px}
+.place-photo img{width:100%;height:auto;border-radius:20px;display:block}
+.place-photo figcaption{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}
+.section-light .place-photo a,.section-white .place-photo a,.photo-credits a{color:var(--blue)}
+.pill-box{margin:0 0 24px;max-width:340px}
+.pill-box svg{width:100%;height:auto;display:block}
+.clinician-card{display:flex;gap:20px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:28px;max-width:760px}
+.clinician-card img{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--blue);flex-shrink:0}
+.clinician-card p{margin:0 0 6px;font-size:15px;color:var(--body);line-height:1.5}
+.clinician-card .name{font-weight:800;color:#111;font-size:18px}
+@media(max-width:480px){.clinician-card{flex-direction:column;align-items:flex-start;padding:18px}}
+.photo-credits{margin-top:28px;font-size:12px;line-height:1.5;color:var(--muted)}
+body{isolation:isolate}
+.ghost-scene{position:fixed;inset:0;width:100%;height:100vh;max-width:none;object-fit:cover;object-position:right top;z-index:0;pointer-events:none;opacity:1;
+  -webkit-mask-image:linear-gradient(to bottom left,#000 0%,rgba(0,0,0,.98) 18%,rgba(0,0,0,.78) 40%,rgba(0,0,0,.46) 58%,rgba(0,0,0,.2) 76%,transparent 92%);
+  mask-image:linear-gradient(to bottom left,#000 0%,rgba(0,0,0,.98) 18%,rgba(0,0,0,.78) 40%,rgba(0,0,0,.46) 58%,rgba(0,0,0,.2) 76%,transparent 92%)}
+.hero{background:transparent;z-index:1}
+.hero-inner,.phone-float{position:relative;z-index:2}
+.npc-atf-answer,.stats-band,.eeat-byline,main,.bottom-cta,.npc-site-footer{position:relative;z-index:2}
+</style>
 </head>
 <body>
+<img class="ghost-scene" src="beach-umbrellas-ghost.webp" alt="" width="1000" height="683" aria-hidden="true" decoding="async">
 <a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
@@ -1080,6 +1103,10 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
   <div class="section-inner">
     <span class="section-kicker">What people text me about on trips</span>
     <h2 class="section-title">The trip keeps going. You can too.</h2>
+    <figure class="place-photo">
+      <img src="beach-umbrella.webp" alt="A beach umbrella and a red lounger on the sand" width="1200" height="801" loading="lazy" decoding="async">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Cha_Am_Beach_Thailand_(153903959).jpeg">Joe Desousa</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>. A beach day you would rather not lose.</figcaption>
+    </figure>
     <div class="symptom-grid"><article class="bento-card"><h3>Sore throat</h3><p>It hurts to swallow, and it came on fast. <a href="https://npcwoods.com/strep-throat-treatment/">Sore throat by text</a>.</p></article><article class="bento-card"><h3>Ear pain after the pool</h3><p>Full, sore, or drippy after swimming. <a href="https://npcwoods.com/ear-pain-after-swimming-swimmers-ear/">Swimmer&rsquo;s ear</a>.</p></article><article class="bento-card"><h3>Sinus pressure after a flight</h3><p>Face pain and stuffy nose that will not let up. <a href="https://npcwoods.com/sinus-infection-treatment/">Sinus care by text</a>.</p></article><article class="bento-card"><h3>Burning when you pee</h3><p>Going a lot, and it burns. <a href="https://npcwoods.com/uti-treatment/">UTI care by text</a>.</p></article><article class="bento-card"><h3>Red, goopy eye</h3><p>Woke up with it stuck shut. <a href="https://npcwoods.com/pink-eye-treatment/">Pink eye by text</a>.</p></article><article class="bento-card"><h3>Stomach bug</h3><p>Throwing up or running to the bathroom. <a href="https://npcwoods.com/learn/stomach-bug/">Stomach bug basics</a>.</p></article><article class="bento-card"><h3>Rash or bug bite</h3><p>Itchy, red, or a hot tub rash after a cabin weekend. <a href="https://npcwoods.com/infected-bug-bite-signs/">Bug bite signs</a>.</p></article><article class="bento-card"><h3>Forgot your meds</h3><p>Left them at home? A short-term refill may fit, at my judgment. No controlled substances. <a href="https://npcwoods.com/out-of-town-medication-refill/">Forgot your meds out of town</a>.</p></article></div>
   </div>
 </section>
@@ -1087,6 +1114,10 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
   <div class="section-inner">
     <span class="section-kicker">What to text me</span>
     <h2 class="section-title">Send me these five things.</h2>
+    <figure class="place-photo">
+      <img src="hotel-room-window.webp" alt="A hotel bed by a window at night" width="1200" height="900" loading="lazy" decoding="async">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Bed_and_window_at_Elite_Hotel_Ideon_Lund_on_an_evening_in_September_2024.jpg">JIP</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. A hotel room at night. Text me from right there.</figcaption>
+    </figure>
     <ul class="facts-list"><li>Where you are right now: city and state.</li><li>What is wrong, and when it started.</li><li>Any fever, and how bad it feels.</li><li>Your age, and any health problems or allergies.</li><li>A pharmacy near your hotel or rental.</li></ul><p class="section-body">If a prescription fits, I can send it to a pharmacy near where you are staying. A prescription is never promised. If you need to be seen in person, I tell you that first, and you don&rsquo;t pay.</p>
   </div>
 </section>
@@ -1099,6 +1130,14 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
       <div class="bento-card"><div class="step-num">1</div><h3>Text me</h3><p>Tell me where you are, what is wrong, and when it started. Your phone is all you need.</p></div>
       <div class="bento-card"><div class="step-num">2</div><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods, nurse practitioner" width="52" height="52"><h3>I read it and ask questions</h3><p>I read your text myself. I may ask a few questions to make sure a text visit is safe for you.</p></div>
       <div class="bento-card"><div class="step-num">3</div><h3>You get a plan</h3><p>You get a straight plan: care at home, a prescription to a pharmacy near you if it fits, or a clear &ldquo;go be seen.&rdquo; You only pay if I can treat you.</p></div>
+    </div>
+    <div class="clinician-card">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, nurse practitioner" width="112" height="112" loading="lazy" decoding="async">
+      <div>
+        <p class="name">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</p>
+        <p>I am a double board-certified nurse practitioner. I read every text myself.</p>
+        <p>14 states, including Florida by telehealth registration. 80+ five-star Google reviews.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1128,6 +1167,7 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
     <p class="city-note">Trip pages for a few places people text me from:</p>
     <div class="states-pills"><a class="state-pill" href="https://npcwoods.com/florida-vacation-sick-text-visit/">Sick on a Florida trip</a><a class="state-pill" href="https://npcwoods.com/florida-beach-sick-text-visit/">Sick on a Florida beach day</a><a class="state-pill" href="https://npcwoods.com/panama-city-beach-text-visit/">Panama City Beach</a><a class="state-pill" href="https://npcwoods.com/vegas-strip-text-visit/">The Las Vegas Strip</a><a class="state-pill" href="https://npcwoods.com/salt-lake-ski-text-visit/">A Salt Lake ski day</a></div>
     <p class="city-note"><a href="https://npcwoods.com/">NPCWoods home</a> &middot; <a href="https://npcwoods.com/how-it-works/">How it works</a> &middot; <a href="https://npcwoods.com/pricing/">Pricing</a> &middot; <a href="https://npcwoods.com/pay/">Pay for a visit</a></p>
+    <p class="photo-credits">Photo credits. Background: Morning On The Beach (263999951).jpeg, by <a href="https://commons.wikimedia.org/wiki/File:Morning_On_The_Beach_(263999951).jpeg">Ruslan Keba</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>; Photo: Cha Am Beach Thailand (153903959).jpeg, by <a href="https://commons.wikimedia.org/wiki/File:Cha_Am_Beach_Thailand_(153903959).jpeg">Joe Desousa</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>; Photo: Bed and window at Elite Hotel Ideon Lund on an evening in September 2024.jpg, by <a href="https://commons.wikimedia.org/wiki/File:Bed_and_window_at_Elite_Hotel_Ideon_Lund_on_an_evening_in_September_2024.jpg">JIP</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Photos from Wikimedia Commons. No place in these photos is a partner.</p>
   </div>
 </section>
 <section class="section section-white" id="faq">

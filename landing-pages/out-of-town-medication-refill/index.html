@@ -917,8 +917,31 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
 .pay-note{margin-top:14px;font-size:14px;color:var(--body)}
 .pay-note a{color:var(--blue-bright);text-decoration:underline}
 </style>
+
+<style>
+.place-photo{margin:0 0 28px;max-width:760px}
+.place-photo img{width:100%;height:auto;border-radius:20px;display:block}
+.place-photo figcaption{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}
+.section-light .place-photo a,.section-white .place-photo a,.photo-credits a{color:var(--blue)}
+.pill-box{margin:0 0 24px;max-width:340px}
+.pill-box svg{width:100%;height:auto;display:block}
+.clinician-card{display:flex;gap:20px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:28px;max-width:760px}
+.clinician-card img{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--blue);flex-shrink:0}
+.clinician-card p{margin:0 0 6px;font-size:15px;color:var(--body);line-height:1.5}
+.clinician-card .name{font-weight:800;color:#111;font-size:18px}
+@media(max-width:480px){.clinician-card{flex-direction:column;align-items:flex-start;padding:18px}}
+.photo-credits{margin-top:28px;font-size:12px;line-height:1.5;color:var(--muted)}
+body{isolation:isolate}
+.ghost-scene{position:fixed;inset:0;width:100%;height:100vh;max-width:none;object-fit:cover;object-position:right top;z-index:0;pointer-events:none;opacity:1;
+  -webkit-mask-image:linear-gradient(to bottom left,#000 0%,rgba(0,0,0,.98) 18%,rgba(0,0,0,.78) 40%,rgba(0,0,0,.46) 58%,rgba(0,0,0,.2) 76%,transparent 92%);
+  mask-image:linear-gradient(to bottom left,#000 0%,rgba(0,0,0,.98) 18%,rgba(0,0,0,.78) 40%,rgba(0,0,0,.46) 58%,rgba(0,0,0,.2) 76%,transparent 92%)}
+.hero{background:transparent;z-index:1}
+.hero-inner,.phone-float{position:relative;z-index:2}
+.npc-atf-answer,.stats-band,.eeat-byline,main,.bottom-cta,.npc-site-footer{position:relative;z-index:2}
+</style>
 </head>
 <body>
+<img class="ghost-scene" src="plane-wing-clouds-ghost.webp" alt="" width="1000" height="664" aria-hidden="true" decoding="async">
 <a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
@@ -1080,6 +1103,10 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
   <div class="section-inner">
     <span class="section-kicker">Try this first</span>
     <h2 class="section-title">Call your home pharmacy before you text me.</h2>
+    <figure class="place-photo">
+      <img src="suitcase-hotel-bed.webp" alt="Two red suitcases on a hotel bed" width="1200" height="848" loading="lazy" decoding="async">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:P%C3%A1tzcuaro_(2013)_01.jpg">LBM1948</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. A hotel room, mid-trip.</figcaption>
+    </figure>
     <p class="section-body">This step is free, and it is often the fastest fix. Many pharmacies can move your prescription to a store near where you are staying. Call them, tell them where you are, and ask. If it works, you may not need me at all.</p><p class="section-body">If your pharmacy can&rsquo;t help, or your prescription is out of refills, text me. That is what I am here for.</p>
   </div>
 </section>
@@ -1087,6 +1114,7 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
   <div class="section-inner">
     <span class="section-kicker">What to text me</span>
     <h2 class="section-title">Send me these six things.</h2>
+    <div class="pill-box"><svg role="img" aria-label="A seven-day pill box with one empty day" viewBox="0 0 344 136" width="344" height="136"><title>A seven-day pill box with one empty day</title><rect x="6" y="30" width="332" height="96" rx="16" fill="#fff" stroke="#c9d8ec" stroke-width="2"/><rect x="18" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="18" y="40" width="38" height="16" rx="5" fill="#0071e3"/><rect x="62" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="62" y="40" width="38" height="16" rx="5" fill="#3d8ff0"/><rect x="106" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="106" y="40" width="38" height="16" rx="5" fill="#0071e3"/><rect x="150" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="150" y="40" width="38" height="16" rx="5" fill="#3d8ff0"/><rect x="194" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="194" y="40" width="38" height="16" rx="5" fill="#0071e3"/><rect x="238" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="238" y="40" width="38" height="16" rx="5" fill="#3d8ff0"/><rect x="282" y="58" width="38" height="58" rx="9" fill="#e9f2fd" stroke="#0071e3" stroke-width="2"/><rect x="282" y="40" width="38" height="16" rx="5" fill="#0071e3"/><circle cx="37" cy="98" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/><circle cx="81" cy="92" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/><circle cx="125" cy="92" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/><circle cx="169" cy="98" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/><circle cx="213" cy="92" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/><circle cx="257" cy="92" r="6" fill="#fff" stroke="#9bbbe6" stroke-width="1.5"/></svg></div>
     <ul class="facts-list"><li>Where you are right now: city and state.</li><li>The name and dose on the label. Type it out the way it is printed.</li><li>How long you have taken it, and who usually prescribes it.</li><li>When you ran out, or when you will run out.</li><li>When you will be home.</li><li>A pharmacy near you, with its street or zip code.</li></ul><p class="city-note">That is it. I read it myself and I will ask if I need more.</p>
   </div>
 </section>
@@ -1109,12 +1137,24 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
       <div class="bento-card"><div class="step-num">2</div><img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" class="chris-avatar" alt="Chris Woods, nurse practitioner" width="52" height="52"><h3>I read it and ask questions</h3><p>I check that a short bridge is safe for you. I may ask a few questions, like when you last took a dose and how you feel.</p></div>
       <div class="bento-card"><div class="step-num">3</div><h3>You get a plan</h3><p>If it fits, I send a short-term refill to a pharmacy near you. If it does not, I tell you why and what to do next. You only pay if I can treat you.</p></div>
     </div>
+    <div class="clinician-card">
+      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-1000.webp" alt="Chris Woods, nurse practitioner" width="112" height="112" loading="lazy" decoding="async">
+      <div>
+        <p class="name">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</p>
+        <p>I am a double board-certified nurse practitioner. I read every text myself.</p>
+        <p>14 states, including Florida by telehealth registration. 80+ five-star Google reviews.</p>
+      </div>
+    </div>
   </div>
 </section>
 <section class="section section-white" id="where-you-need-to-be">
   <div class="section-inner">
     <span class="section-kicker">Where you need to be</span>
     <h2 class="section-title">You must be in one of my states when you text.</h2>
+    <figure class="place-photo">
+      <img src="airport-gate-seats.webp" alt="Empty seats at an airport gate" width="800" height="600" loading="lazy" decoding="async">
+      <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:MSP_Terminal_2_gate_seating.jpg">Nic McPhee</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. An airport gate on a layover. On a layover, check that you are in one of my states before you text.</figcaption>
+    </figure>
     <p class="section-body">This rule is the law, and I follow it. I can only treat you if you are physically in one of these states during the text visit. It does not matter where you live. It matters where you are standing when we text.</p>
     <div class="states-pills" aria-label="States where you can text from"><a class="state-pill" href="https://npcwoods.com/arizona-telemedicine/">Arizona</a><a class="state-pill" href="https://npcwoods.com/colorado-telemedicine/">Colorado</a><a class="state-pill" href="https://npcwoods.com/credentials/#connecticut">Connecticut</a><a class="state-pill" href="https://npcwoods.com/florida-vacation-sick-text-visit/">Florida</a><a class="state-pill" href="https://npcwoods.com/georgia-telemedicine/">Georgia</a><a class="state-pill" href="https://npcwoods.com/idaho-telemedicine/">Idaho</a><a class="state-pill" href="https://npcwoods.com/iowa-telemedicine/">Iowa</a><a class="state-pill" href="https://npcwoods.com/montana-telemedicine/">Montana</a><a class="state-pill" href="https://npcwoods.com/nevada-telemedicine/">Nevada</a><a class="state-pill" href="https://npcwoods.com/new-mexico-telemedicine/">New Mexico</a><a class="state-pill" href="https://npcwoods.com/north-carolina-telemedicine/">North Carolina</a><a class="state-pill" href="https://npcwoods.com/oregon-telemedicine/">Oregon</a><a class="state-pill" href="https://npcwoods.com/utah-telemedicine/">Utah</a><a class="state-pill" href="https://npcwoods.com/washington-telemedicine/">Washington</a></div>
     <p class="city-note">That is 14 states, including Florida by telehealth registration (TPAN3355). If you are in a state that is not on this list, I can&rsquo;t treat you while you are there. I will tell you that up front, and you will not pay.</p>
@@ -1137,6 +1177,7 @@ a.state-pill{text-decoration:none;min-height:44px;display:inline-flex;align-item
     <p class="city-note">Trip pages for a few places people text me from:</p>
     <div class="states-pills"><a class="state-pill" href="https://npcwoods.com/florida-vacation-sick-text-visit/">Sick on a Florida trip</a><a class="state-pill" href="https://npcwoods.com/florida-beach-sick-text-visit/">Sick on a Florida beach day</a><a class="state-pill" href="https://npcwoods.com/panama-city-beach-text-visit/">Panama City Beach</a><a class="state-pill" href="https://npcwoods.com/vegas-strip-text-visit/">The Las Vegas Strip</a><a class="state-pill" href="https://npcwoods.com/salt-lake-ski-text-visit/">A Salt Lake ski day</a></div>
     <p class="city-note"><a href="https://npcwoods.com/">NPCWoods home</a> &middot; <a href="https://npcwoods.com/how-it-works/">How it works</a> &middot; <a href="https://npcwoods.com/pricing/">Pricing</a> &middot; <a href="https://npcwoods.com/pay/">Pay for a visit</a></p>
+    <p class="photo-credits">Photo credits. Background: A wing tip of an airplane (40118125441).jpg, by <a href="https://commons.wikimedia.org/wiki/File:A_wing_tip_of_an_airplane_(40118125441).jpg">U.S. Department of Agriculture</a>, <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public domain</a>; Photo: Pátzcuaro (2013) 01.jpg, by <a href="https://commons.wikimedia.org/wiki/File:P%C3%A1tzcuaro_(2013)_01.jpg">LBM1948</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>; Photo: MSP Terminal 2 gate seating.jpg, by <a href="https://commons.wikimedia.org/wiki/File:MSP_Terminal_2_gate_seating.jpg">Nic McPhee</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Photos from Wikimedia Commons. No place in these photos is a partner.</p>
   </div>
 </section>
 <section class="section section-white" id="faq">
