@@ -718,8 +718,10 @@ body.has-ep-sticky{padding-bottom:5.5rem}
 /* Perf: skip style/layout for below-the-fold blocks until they near the viewport */
 main#main > section.section:nth-of-type(n+3), main#main > section.cta-band, .npc-site-footer { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 </style>
+<style>.skip-link{position:absolute;left:-999px;top:0}.skip-link:focus{left:8px;top:8px;z-index:100000;background:#fff;color:#111;padding:8px 12px}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <link rel="stylesheet" href="/assets/css/site.css">
 <!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
 <!-- Copy this block into every page right after <body> -->
