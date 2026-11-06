@@ -395,8 +395,9 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function() {
         // UTI Treatment city pages (GA/NC) + Albuquerque - Atlanta (264), Charlotte (284), Albuquerque (411) re-added
         // Mix wave re-added: Savannah (268), Augusta (272), Raleigh (288)
         276, 280, 292, 296, 300,
-        // Sinus Infection Treatment city pages (AZ) - Phoenix (21) re-added; Tucson (22) included; Mesa (23) excluded until served correctly
-        23, 24, 25, 26, 27, 28, 29, 30,
+        // Sinus Infection Treatment city pages (AZ) - Phoenix (21), Tucson (22), Mesa (23), Chandler (24), Scottsdale (27) included; others still excluded for crawl budget
+        // Mesa (23), Chandler (24), Scottsdale (27) re-added to page sitemap 2026-11-06 (Site Audit P2; pages are live 200 plates)
+        25, 26, 28, 29, 30,
         // Sinus Infection Treatment city pages (GA/NC)
         265, 269, 273, 277, 281, 285, 289, 293, 297, 301,
         // Strep Throat/Ear Infection city pages (AZ)
