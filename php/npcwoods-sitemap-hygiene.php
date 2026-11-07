@@ -86,7 +86,7 @@ add_filter(
 			$content .= "\t<url>\n\t\t<loc>" . esc_url( $loc ) . "</loc>\n\t\t<lastmod>"
 				. gmdate( 'Y-m-d\TH:i:s+00:00', (int) filemtime( $file ) ) . "</lastmod>\n\t</url>\n";
 		}
-				foreach ( npcwoods_smh_extra_page_urls() as $path ) {
+		foreach ( npcwoods_smh_extra_page_urls() as $path ) {
 			$loc = home_url( $path );
 			if ( false !== strpos( $content, '<loc>' . $loc . '</loc>' ) ) {
 				continue;
@@ -94,6 +94,6 @@ add_filter(
 			$content .= "\t<url>\n\t\t<loc>" . esc_url( $loc ) . "</loc>\n\t\t<lastmod>"
 				. gmdate( 'Y-m-d\TH:i:s+00:00' ) . "</lastmod>\n\t</url>\n";
 		}
-return $content;
+		return $content;
 	}
 );
