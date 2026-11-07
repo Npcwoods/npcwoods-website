@@ -467,6 +467,7 @@ FILE_TARGETS = {
     "php/npcwoods-compliance-footer.php": f"{MU_PLUGINS_REMOTE}/npcwoods-compliance-footer.php",
     "php/npcwoods-eeat.php": f"{MU_PLUGINS_REMOTE}/npcwoods-eeat.php",
     "php/npcwoods-faq-schema.php": f"{MU_PLUGINS_REMOTE}/npcwoods-faq-schema.php",
+    "php/npcwoods-sitemap-hygiene.php": f"{MU_PLUGINS_REMOTE}/npcwoods-sitemap-hygiene.php",
     "php/npcwoods-robots-extras.php": f"{MU_PLUGINS_REMOTE}/npcwoods-robots-extras.php",
     # Route map for static landing pages. Chris OK'd 2026-11-04 13:32 ET ("Tidy and push it live").
     "php/npcwoods-static-pages.php": f"{MU_PLUGINS_REMOTE}/npcwoods-static-pages.php",
@@ -495,6 +496,7 @@ RENDER_CHECK_URLS = {
     "php/npcwoods-compliance-footer.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
     "php/npcwoods-eeat.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
     "php/npcwoods-faq-schema.php": [f"{SITE}/", WP_RENDERED_CHECK_URL],
+    "php/npcwoods-sitemap-hygiene.php": [f"{SITE}/", WP_RENDERED_CHECK_URL, f"{SITE}/page-sitemap.xml"],
     "php/npcwoods-robots-extras.php": [f"{SITE}/", f"{SITE}/robots.txt"],
     "php/npcwoods-static-pages.php": [f"{SITE}/", f"{SITE}/travel-telehealth-text-visit/",
                                       f"{SITE}/sick-on-vacation-text-visit/",

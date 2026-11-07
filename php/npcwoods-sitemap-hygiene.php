@@ -44,6 +44,19 @@ function npcwoods_smh_static_pages() {
 	);
 }
 
+
+/**
+ * Indexable URLs that should appear in page-sitemap.xml even when Yoast
+ * would only list them under post-sitemap (or not at all). Used for the
+ * yeast offer plate (WP post 534) so Site Audit page-sitemap checks pass.
+ * lastmod falls back to gmdate when no static file exists.
+ */
+function npcwoods_smh_extra_page_urls() {
+	return array(
+		'/yeast-infection-treatment-online/',
+	);
+}
+
 add_filter(
 	'wpseo_exclude_from_sitemap_by_post_ids',
 	function ( $ids ) {
@@ -72,6 +85,14 @@ add_filter(
 			}
 			$content .= "\t<url>\n\t\t<loc>" . esc_url( $loc ) . "</loc>\n\t\t<lastmod>"
 				. gmdate( 'Y-m-d\TH:i:s+00:00', (int) filemtime( $file ) ) . "</lastmod>\n\t</url>\n";
+		}
+		foreach ( npcwoods_smh_extra_page_urls() as $path ) {
+			$loc = home_url( $path );
+			if ( false !== strpos( $content, '<loc>' . $loc . '</loc>' ) ) {
+				continue;
+			}
+			$content .= "\t<url>\n\t\t<loc>" . esc_url( $loc ) . "</loc>\n\t\t<lastmod>"
+				. gmdate( 'Y-m-d\TH:i:s+00:00' ) . "</lastmod>\n\t</url>\n";
 		}
 		return $content;
 	}

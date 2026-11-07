@@ -1114,6 +1114,14 @@ a{color:inherit}
 .skip-link{position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:100001}
 .skip-link:focus{left:12px;top:12px}
 </style>
+<style>
+/* Site Audit P2 2026-11-06: match /how-it-works/ ATF panel */
+.npc-atf-answer{max-width:var(--max,1100px);margin:0 auto 24px;padding:18px 22px;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;font-size:16px;line-height:1.6;color:var(--body)}
+@media (max-width:640px){.npc-atf-answer{margin:0 16px 20px;padding:16px 18px}}
+.npc-atf-answer p{margin:0}
+.npc-atf-answer strong{color:inherit}
+.npc-atf-answer a{color:var(--blue-bright);font-weight:600}
+</style>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== Sticky header / nav (UTI page pattern) ===== -->
@@ -1391,8 +1399,8 @@ a{color:inherit}
       <a class="treat" href="https://npcwoods.com/learn/cold-sores/">Cold sores</a>
       <a class="treat" href="https://npcwoods.com/learn/covid-flu/">COVID / flu</a>
       <a class="treat" href="https://npcwoods.com/learn/allergic-reaction/">Allergies</a>
-      <a class="treat" href="https://npcwoods.com/learn/acne/">Acne</a>
-      <a class="treat" href="https://npcwoods.com/yeast-infection-treatment/">Yeast infection</a>
+      <a class="treat" href="https://npcwoods.com/learn/skin-infection/">Acne</a>
+      <a class="treat" href="https://npcwoods.com/yeast-infection-treatment-online/">Yeast infection</a>
       <a class="treat" href="https://npcwoods.com/learn/ingrown-toenail/">Ingrown toenail</a>
       <a class="treat" href="https://npcwoods.com/poison-ivy/">Poison ivy</a>
       <a class="treat" href="https://npcwoods.com/ed-treatment/">ED</a>
