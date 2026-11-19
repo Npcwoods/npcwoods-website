@@ -997,6 +997,39 @@
       .ep-sticky-inner { max-width: 820px; margin-bottom: .85rem; }
     }
 
+
+    /* Timely Thanksgiving FAQ card */
+    .holiday-card {
+      margin: 0 0 1.25rem;
+      padding: 1.35rem 1.4rem 1.3rem;
+      border-radius: 24px;
+      background: #0b0d14;
+      color: #e9e9ee;
+      border: 2px solid #f5a524;
+      box-shadow: var(--shadow);
+    }
+    .holiday-card-kicker {
+      margin: 0 0 .35rem;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #f5a524;
+    }
+    .holiday-card h2 {
+      margin: 0 0 .45rem;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: #fff;
+    }
+    .holiday-card h2 a { color: #fff; text-decoration: none; }
+    .holiday-card h2 a:hover, .holiday-card h2 a:focus-visible { text-decoration: underline; }
+    .holiday-card p { margin: 0; max-width: 40rem; font-size: 1.02rem; color: #d7d7de; }
+    @media (min-width: 800px) {
+      .holiday-card { padding: 1.55rem 1.75rem 1.45rem; }
+    }
+
     /* Slim full road map so strip + map don't feel duplicate */
     .roadmap.roadmap--slim {
       margin-top: .5rem;
@@ -1602,6 +1635,12 @@
     </script>
 
     <p class="bridge">You're on page one of the map. Here's where we go next — live stops you can open now, and stops I'm still writing.</p>
+
+    <aside class="holiday-card" aria-labelledby="holiday-card-title">
+      <p class="holiday-card-kicker">Timely · Thanksgiving is November 26</p>
+      <h2 id="holiday-card-title"><a href="https://npcwoods.com/learn/glp1/thanksgiving/">Thanksgiving on a GLP-1</a></h2>
+      <p>Will you still enjoy dinner? Should you skip or lower your shot to eat more? My plain-talk plan: small plate, protein first, and don't change your dose on your own.</p>
+    </aside>
 
     <section class="roadmap roadmap--slim" id="series-roadmap" aria-labelledby="roadmap-title">
       <h2 class="section-title" id="roadmap-title">Your GLP-1 road map</h2>

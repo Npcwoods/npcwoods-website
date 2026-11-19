@@ -20,6 +20,7 @@ add_action( 'template_redirect', function() {
         '/learn/glp1/who-shouldnt/'       => 'learn/glp1/who-shouldnt/index.html',
         '/learn/glp1/cost/'               => 'learn/glp1/cost/index.html',
         '/learn/glp1/myths/'              => 'learn/glp1/myths/index.html',
+        '/learn/glp1/thanksgiving/'       => 'learn/glp1/thanksgiving/index.html',
     );
 
     $html_rel = null;
@@ -38,6 +39,7 @@ add_action( 'template_redirect', function() {
             'who-shouldnt'     => 'learn/glp1/who-shouldnt/index.html',
             'cost'             => 'learn/glp1/cost/index.html',
             'myths'            => 'learn/glp1/myths/index.html',
+            'thanksgiving'     => 'learn/glp1/thanksgiving/index.html',
         );
         $slug = get_post_field( 'post_name', get_queried_object_id() );
         if ( is_page() && isset( $slug_map[ $slug ] ) ) {
