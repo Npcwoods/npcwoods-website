@@ -16,7 +16,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05060a" />
-  <title>Telehealth Urgent Care by Text, $59 Flat | NPCWoods</title>
+  <title>Urgent Care by Text, Wherever You Are | $59 Flat | NPCWoods</title>
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg" />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-serif-display-400.woff2" crossorigin />
   <link rel="preload" as="image" href="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" imagesrcset="https://npcwoods.com/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, https://npcwoods.com/learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" imagesizes="(max-width: 360px) 244px, (max-width: 900px) 272px, (max-width: 1100px) 343px, 429px" fetchpriority="high" />

@@ -163,7 +163,7 @@ function npcwoods_meta_descriptions($desc) {
     if (is_singular('page') || is_front_page()) {
         global $post;
         if ($post && $post->ID == 63) {
-            return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
+            return 'Telehealth urgent care by text, wherever you are. Skip the waiting room and text a board-certified nurse practitioner from your couch. $59 flat, no app.';
         }
     }
     if (!empty($desc)) return $desc;
@@ -294,35 +294,35 @@ function npcwoods_speed_hints() {
 
 add_filter('wpseo_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
+        return 'Urgent Care by Text, Wherever You Are | $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
+        return 'Urgent Care by Text, Wherever You Are | $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_opengraph_desc', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
+        return 'Telehealth urgent care by text, wherever you are. Skip the waiting room and text a board-certified nurse practitioner from your couch. $59 flat, no app.';
     }
     return $desc;
 }, 20);
 
 add_filter('wpseo_twitter_title', function($title) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Telehealth Urgent Care by Text, $59 Flat | NPCWoods';
+        return 'Urgent Care by Text, Wherever You Are | $59 Flat | NPCWoods';
     }
     return $title;
 }, 20);
 
 add_filter('wpseo_twitter_description', function($desc) {
     if (is_front_page() || (is_page() && get_the_ID() == 63)) {
-        return 'Text Chris Woods, a board-certified nurse practitioner, at (480) 639-4722. $59 flat, cash-pay, no video, no app. You pay only if he can treat you.';
+        return 'Telehealth urgent care by text, wherever you are. Skip the waiting room and text a board-certified nurse practitioner from your couch. $59 flat, no app.';
     }
     return $desc;
 }, 20);
