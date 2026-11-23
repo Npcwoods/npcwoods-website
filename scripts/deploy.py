@@ -644,8 +644,13 @@ def read_other_mu_plugins(sftp, skip_remote: str) -> dict[str, str]:
     return out
 
 
-def render_check(url: str, title_before: str | None = None) -> tuple[bool, str, dict]:
-    """Clean-URL GET of a rendered page after a PHP/snippet change."""
+def render_check(url: str, title_before: str | None = None,
+                 expect_title: str | None = None) -> tuple[bool, str, dict]:
+    """Clean-URL GET of a rendered page after a PHP/snippet change.
+
+    expect_title (opt-in, --expect-home-title): the one approved new homepage
+    <title>. When set, the homepage passes only if its live <title> equals it
+    exactly; any other title (including the unchanged old one) still FAILS."""
     proc = subprocess.run(["curl", "-s", "-A", UA, "--max-time", "45", "-w", "\n%{http_code}", url],
                           capture_output=True, timeout=60)
     body, _, code = (proc.stdout or b"").rpartition(b"\n")
@@ -661,7 +666,10 @@ def render_check(url: str, title_before: str | None = None) -> tuple[bool, str, 
             return False, "homepage lost the custom PHP template (hero missing / wp-site-blocks present)", info
         m = re.search(rb"<title>([^<]*)</title>", body)
         title = m.group(1).decode("utf-8", "replace") if m else ""
-        if title_before is not None and title != title_before:
+        if expect_title is not None:
+            if title != expect_title:
+                return False, f"homepage title {title!r} != expected {expect_title!r}", info
+        elif title_before is not None and title != title_before:
             return False, f"homepage title changed: {title_before!r} -> {title!r}", info
     return True, "ok", info
 
@@ -745,7 +753,8 @@ def run_file_deploy(args, files: list[FilePlan], head: str | None) -> int:
         for f in uploaded:
             failed = None
             for url in RENDER_CHECK_URLS.get(f.rel, []):
-                ok, why, info = render_check(url, homepage_before["title"])
+                ok, why, info = render_check(url, homepage_before["title"],
+                                             expect_title=args.expect_home_title)
                 print(f"  [render] {url}: {'ok' if ok else 'FAIL — ' + why} "
                       f"(HTTP {info['status']}, {info['bytes']:,} bytes, sha256 {info['sha256'][:12]}…)")
                 if not ok:
@@ -1511,12 +1520,18 @@ def main(argv=None) -> int:
                         help="skip upload; just run live verification for the pages")
     parser.add_argument("--remote-diff", action="store_true",
                         help="dry-run extra: read-only SFTP checksum diff vs remote")
+    parser.add_argument("--expect-home-title", dest="expect_home_title", default=None,
+                        help="--file live mode: the exact Chris-approved new homepage <title>; "
+                             "the render check passes only if the live title equals it exactly")
     parser.add_argument("--skip-flush", action="store_true", help="live mode: skip Rocket CDN purge")
     parser.add_argument("--skip-verify", action="store_true", help="live mode: skip post-deploy verification")
     args = parser.parse_args((argv or sys.argv)[1:])
 
     if args.live and args.verify_only:
         print("[err] --live and --verify-only are mutually exclusive", file=sys.stderr)
+        return 2
+    if args.expect_home_title is not None and (not args.expect_home_title.strip() or not args.file):
+        print("[err] --expect-home-title needs a non-empty title and a --file run", file=sys.stderr)
         return 2
 
     try:
