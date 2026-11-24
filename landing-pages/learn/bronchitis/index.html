@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bronchitis: Your Complete Guide After Diagnosis | NPCWoods</title>
@@ -31,13 +30,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="https://npcwoods.com/wp-content/uploads/2026/03/npcwoods-logo.jpg">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (same stack as the dental abscess series) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap">
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
@@ -138,809 +134,632 @@
 }
 </script>
 
-  <style>
-  /* ===== CSS VARIABLES ===== */
-  :root {
-    --primary: #2563EB;
-    --primary-hover: #1D4ED8;
-    --primary-light: #EFF6FF;
-    --primary-soft: #DBEAFE;
-    --warm-white: #FAF8F5;
-    --charcoal: #2A2A2A;
-    --text-body: #4A4A5A;
-    --text-muted: #8E8E9A;
-    --amber: #D4933F;
-    --success: #16A34A;
-    --warning: #D4574E;
-    --white: #FFFFFF;
-    --border-light: #E5E7EB;
-
-    --font-serif: 'DM Serif Display', serif;
-    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-signature: 'Caveat', cursive;
-  }
-
-  /* ===== GLOBAL STYLES ===== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: var(--font-sans);
-    color: var(--text-body);
-    background: var(--warm-white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* ===== KEYFRAME ANIMATIONS ===== */
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* ===== HERO SECTION ===== */
-  .hero {
-    background: linear-gradient(160deg, #1a4fd4 0%, #2563EB 25%, #3b82f6 50%, #60a5fa 75%, #93c5fd 100%);
-    color: var(--white);
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg"><path d="M 0 200 Q 300 100, 600 200 T 1200 200" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/><path d="M 0 250 Q 300 150, 600 250 T 1200 250" stroke="rgba(255,255,255,0.08)" stroke-width="2" fill="none"/></svg>') no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.5;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 24px;
-    animation: fadeInDown 0.8s ease 0.1s backwards;
-  }
-
-  .hero-badge svg {
-    width: 16px;
-    height: 16px;
-    opacity: 0.9;
-  }
-
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    animation: fadeInDown 0.8s ease 0.2s backwards;
-  }
-
-  .hero .subtitle {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 36px;
-    animation: fadeInUp 0.8s ease 0.3s backwards;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--white);
-    color: var(--primary);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 16px 36px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    animation: fadeInUp 0.8s ease 0.4s backwards;
-    border: none;
-    cursor: pointer;
-  }
-
-  .hero-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  /* ===== MAIN LAYOUT ===== */
-  main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 20px;
-  }
-
-  /* ===== BREADCRUMB ===== */
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-  }
-
-  .breadcrumb a {
-    color: var(--primary);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .breadcrumb a:hover {
-    color: var(--primary-hover);
-  }
-
-  .breadcrumb span {
-    color: var(--text-muted);
-  }
-
-  /* ===== REVIEWED BADGE ===== */
-  .reviewed-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    background: linear-gradient(135deg, var(--primary-light) 0%, #E0E7FF 100%);
-    border-left: 4px solid var(--primary);
-    border-radius: 8px;
-    margin-bottom: 48px;
-    font-size: 0.9rem;
-    color: var(--text-body);
-  }
-
-  .reviewed-badge svg {
-    width: 20px;
-    height: 20px;
-    color: var(--primary);
-    flex-shrink: 0;
-  }
-
-  .reviewed-badge strong {
-    color: var(--charcoal);
-  }
-
-  /* ===== SECTION HEADING ===== */
-  .section-heading {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    margin-bottom: 32px;
-    margin-top: 48px;
-  }
-
-  .section-heading:first-of-type {
-    margin-top: 0;
-  }
-
-  /* ===== INTRO TEXT ===== */
-  .intro-text {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--text-body);
-    margin-bottom: 32px;
-  }
-
-  /* ===== CALLOUT BOX ===== */
-  .callout {
-    background: linear-gradient(135deg, var(--primary-light) 0%, #E0E7FF 100%);
-    border-left: 5px solid var(--primary);
-    padding: 20px 24px;
-    border-radius: 8px;
-    margin: 24px 0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .callout.warning {
-    background: linear-gradient(135deg, #FEE2E2 0%, #FCA5A5 100%);
-    border-left-color: var(--warning);
-  }
-
-  .callout.success {
-    background: linear-gradient(135deg, #DCFCE7 0%, #86EFAC 100%);
-    border-left-color: var(--success);
-  }
-
-  /* ===== CARD GRID ===== */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin: 32px 0;
-  }
-
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    padding: 28px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15);
-    border-color: var(--primary-soft);
-  }
-
-  .card-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-soft) 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    color: var(--primary);
-    font-size: 1.5rem;
-  }
-
-  .card-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--charcoal);
-    margin-bottom: 12px;
-  }
-
-  .card-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-body);
-  }
-
-  /* ===== MEDICATION CARDS ===== */
-  .med-card {
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-left: 5px solid var(--primary);
-    border-radius: 8px;
-    padding: 24px;
-    margin: 20px 0;
-    transition: all 0.3s ease;
-  }
-
-  .med-card:hover {
-    border-left-color: var(--primary-hover);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
-  }
-
-  .med-card-name {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--charcoal);
-    margin-bottom: 8px;
-  }
-
-  .med-card-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-
-  .med-card-row {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 16px;
-    margin-bottom: 12px;
-  }
-
-  .med-card-label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    font-size: 0.75rem;
-  }
-
-  .med-card-value {
-    font-size: 0.95rem;
-    color: var(--text-body);
-    line-height: 1.5;
-  }
-
-  .med-card a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-
-  .med-card a:hover {
-    color: var(--primary-hover);
-  }
-
-  /* ===== RED FLAGS SECTION ===== */
-  .red-flags {
-    background: linear-gradient(135deg, #FEE2E2 0%, #FCA5A5 100%);
-    border-left: 5px solid var(--warning);
-    padding: 32px;
-    border-radius: 12px;
-    margin: 40px 0;
-  }
-
-  .red-flags-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #7F1D1D;
-    margin-bottom: 20px;
-  }
-
-  .red-flags-title svg {
-    width: 28px;
-    height: 28px;
-    color: var(--warning);
-  }
-
-  .red-flags ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .red-flags li {
-    padding: 12px 0;
-    padding-left: 32px;
-    position: relative;
-    color: #7F1D1D;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .red-flags li::before {
-    content: '✕';
-    position: absolute;
-    left: 8px;
-    font-weight: 700;
-    color: var(--warning);
-  }
-
-  .red-flags .footer-note {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 2px solid rgba(212, 87, 78, 0.2);
-    font-weight: 600;
-    color: #7F1D1D;
-  }
-
-  /* ===== HOME CARE LIST ===== */
-  .home-care-list {
-    list-style: none;
-    padding: 0;
-    margin: 24px 0;
-  }
-
-  .home-care-list li {
-    padding: 14px 0;
-    padding-left: 32px;
-    position: relative;
-    color: var(--text-body);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .home-care-list li:last-child {
-    border-bottom: none;
-  }
-
-  .home-care-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 8px;
-    font-weight: 700;
-    color: var(--success);
-  }
-
-  /* ===== TIMELINE SECTION ===== */
-  .timeline {
-    position: relative;
-    padding-left: 40px;
-    margin: 32px 0;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 12px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--primary-soft);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 32px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -35px;
-    top: 0;
-    width: 14px;
-    height: 14px;
-    background: var(--primary);
-    border: 3px solid var(--warm-white);
-    border-radius: 50%;
-  }
-
-  .timeline-label {
-    font-weight: 700;
-    color: var(--primary);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .timeline-text {
-    font-size: 0.95rem;
-    color: var(--text-body);
-    line-height: 1.6;
-  }
-
-  /* ===== ACCORDION ===== */
-  .accordion {
-    margin: 32px 0;
-  }
-
-  .accordion-item {
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-
-  .accordion-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .accordion-button {
-    width: 100%;
-    background: var(--white);
-    border: none;
-    padding: 20px;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--charcoal);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.2s;
-  }
-
-  .accordion-button:hover {
-    background: var(--primary-light);
-  }
-
-  .accordion-button.active {
-    background: var(--primary-light);
-    color: var(--primary);
-  }
-
-  .accordion-icon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-    flex-shrink: 0;
-    font-weight: bold;
-  }
-
-  .accordion-button.active .accordion-icon {
-    transform: rotate(180deg);
-  }
-
-  .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 20px;
-  }
-
-  .accordion-content.active {
-    max-height: 500px;
-    padding: 0 20px 20px;
-  }
-
-  .accordion-text {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--text-body);
-  }
-
-  /* ===== CTA SECTION ===== */
-  .cta-section {
-    background: linear-gradient(160deg, var(--primary) 0%, #3b82f6 100%);
-    color: var(--white);
-    padding: 48px 32px;
-    border-radius: 16px;
-    text-align: center;
-    margin: 48px 0;
-  }
-
-  .cta-section h2 {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    margin-bottom: 12px;
-  }
-
-  .cta-section p {
-    font-size: 1.05rem;
-    margin-bottom: 28px;
-    line-height: 1.6;
-    opacity: 0.95;
-  }
-
-  .cta-section a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--white);
-    color: var(--primary);
-    font-weight: 600;
-    padding: 16px 36px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.3s;
-    font-size: 1rem;
-  }
-
-  .cta-section a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  }
-
-  .cta-signature {
-    font-family: var(--font-signature);
-    font-size: 1.5rem;
-    color: var(--white);
-    margin-top: 28px;
-    opacity: 0.9;
-  }
-
-  /* ===== CITATIONS ===== */
-  .citations {
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    padding: 28px;
-    border-radius: 12px;
-    margin: 40px 0;
-  }
-
-  .citations h3 {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--charcoal);
-    margin-bottom: 16px;
-  }
-
-  .citations ol {
-    padding-left: 20px;
-  }
-
-  .citations li {
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--text-body);
-  }
-
-  .citations a {
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  .citations a:hover {
-    color: var(--primary-hover);
-  }
-
-  /* ===== FLOATING CTA (MOBILE) ===== */
-  .floating-cta {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border-top: 2px solid var(--border-light);
-    padding: 12px 20px;
-    z-index: 1000;
-  }
-
-  .floating-cta a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--primary);
-    color: var(--white);
-    font-weight: 600;
-    padding: 14px 24px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.3s;
-    font-size: 0.95rem;
-  }
-
-  .floating-cta a:hover {
-    background: var(--primary-hover);
-  }
-
-  /* ===== RESPONSIVE DESIGN ===== */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 60px 20px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-
-    .hero .subtitle {
-      font-size: 1.05rem;
-    }
-
-    main {
-      padding: 40px 20px;
-    }
-
-    .section-heading {
-      font-size: 1.8rem;
-    }
-
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .med-card-row {
-      grid-template-columns: 1fr;
-    }
-
-    .timeline {
-      padding-left: 30px;
-    }
-
-    .cta-section {
-      padding: 32px 20px;
-    }
-
-    .cta-section h2 {
-      font-size: 1.5rem;
-    }
-
-    .floating-cta {
-      display: flex;
-    }
-
-    body {
-      padding-bottom: 80px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .hero .subtitle {
-      font-size: 0.95rem;
-    }
-
-    .section-heading {
-      font-size: 1.5rem;
-    }
-
-    .card-grid {
-      gap: 16px;
-    }
-
-    .card {
-      padding: 20px;
-    }
-  }
-  
-/* Phoenix-style site header on dark gold plates — light bar, always on top of the hero */
-.npc-nav{
-  position:sticky;top:0;z-index:10000;
-  background:#ffffff !important;
-  border-bottom:1px solid #e5e7eb;
+<style>
+/* Look copied from landing-pages/learn/dental-abscess/_shared/series.css + art.css.
+   Inlined so this standalone learn page does not depend on the dental series path. */
+/* Dental Abscess mini-series — homepage brand + one red accent (#B42318). */
+:root {
+  --ink: #1A1A2E;
+  --muted: #3A3A3A;
+  --body: #4A4A5A;
+  --blue: #2563EB;
+  --blue-dark: #1D4ED8;
+  --cream: #F6F3EE;
+  --white: #FFFFFF;
+  --line: rgba(26, 26, 46, 0.08);
+  --success: #16A34A;
+  --accent: #B42318;
+  --accent-soft: #F3E8E8;
+  --accent-wash: #FFF1F0;
+  --accent-deep: #7A271A;
+  --imsg-blue: #007AFF;
+  --shadow: 0 20px 50px rgba(26, 26, 46, 0.12);
 }
-.npc-nav-inner{height:64px}
-.npc-nav-logo-name,
-.npc-nav-links > li > a:not(.npc-nav-cta){
-  color:#1A1A2E !important;
-  -webkit-text-fill-color:#1A1A2E !important;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body.series-page {
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  padding-bottom: 88px;
 }
-.npc-nav-logo-tag{
-  color:#2563EB !important;
-  -webkit-text-fill-color:#2563EB !important;
+img { max-width: 100%; display: block; }
+a { color: var(--blue); }
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 2000;
+  padding: 10px 16px; background: #fff; color: #000; font-weight: 700;
 }
-.npc-nav-links > li > a.npc-nav-cta,
-.npc-nav-cta,
-.npc-nav-cta-mobile{
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
+.skip-link:focus { left: 14px; }
+.series-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+.series-wide { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.series-sticky {
+  position: sticky; top: 64px; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 18px;
+  background: rgba(246, 243, 238, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
 }
-.npc-nav-cta svg,
-.npc-nav-cta-mobile svg{
-  stroke:#FFFFFF !important;
-  color:#FFFFFF !important;
+.series-sticky-ep {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--accent);
 }
-.npc-nav-toggle span{background:#1A1A2E !important}
-.hero{padding-top:28px}
+.series-sticky-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 8px 16px; border-radius: 100px;
+  background: var(--blue); color: #fff !important; -webkit-text-fill-color: #fff;
+  text-decoration: none; font-weight: 700; font-size: 0.86rem;
+}
+
+.hero {
+  padding: 36px 0 12px;
+}
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 14px;
+}
+.hero-kicker .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+}
+h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  line-height: 1.05; letter-spacing: -0.02em; font-weight: 400;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.lede { margin-top: 16px; font-size: 1.12rem; color: var(--muted); max-width: 38rem; }
+
+.accent-block {
+  margin: 28px 0 8px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+}
+.accent-block h2,
+.accent-block p { color: #fff; }
+.accent-block h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 10px;
+}
+.ink-block {
+  margin: 28px 0;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 24px;
+}
+.ink-block h2 { color: #fff; font-family: "DM Serif Display", Georgia, serif; font-size: 1.7rem; margin-bottom: 10px; }
+.ink-block p { color: #D9E7FF; }
+
+.chris-card {
+  display: grid; gap: 16px; align-items: center;
+  background: #fff; border-radius: 22px; padding: 18px;
+  box-shadow: var(--shadow); margin: 24px 0;
+}
+.chris-card img {
+  width: 88px; height: 88px; border-radius: 16px; object-fit: cover; object-position: 50% 18%;
+}
+.chris-card strong { display: block; font-size: 1.05rem; }
+.chris-card span { color: var(--body); font-size: 0.92rem; }
+
+.thread {
+  max-width: 440px;
+  margin: 28px 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.bubble {
+  max-width: 86%;
+  padding: 11px 16px;
+  border-radius: 18px;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.bubble-blue {
+  align-self: flex-end;
+  background: var(--imsg-blue);
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+.bubble-black {
+  align-self: flex-start;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 1px #000;
+  border-bottom-left-radius: 6px;
+}
+.bubble-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #8E8E9A; padding: 4px 2px;
+}
+
+.prose { margin: 28px 0; }
+.prose h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 36px 0 12px;
+}
+.prose p { margin: 0 0 16px; color: var(--body); font-size: 1.05rem; line-height: 1.7; }
+.prose ul, .prose ol { margin: 0 0 18px 1.2rem; color: var(--body); }
+.prose li { margin: 8px 0; line-height: 1.6; }
+
+.roadmap {
+  margin: 36px 0;
+  padding: 24px 20px 12px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(26, 26, 46, 0.06);
+}
+.roadmap h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.roadmap-lead { color: var(--body); margin-bottom: 18px; }
+.roadmap-list { list-style: none; position: relative; padding: 0; }
+.roadmap-list:before {
+  content: "";
+  position: absolute;
+  left: 11px; top: 8px; bottom: 8px;
+  border-left: 2px dotted var(--accent);
+}
+.roadmap-item { position: relative; padding: 0 0 18px 36px; }
+.roadmap-item a { text-decoration: none; color: inherit; display: block; }
+.roadmap-dot {
+  position: absolute; left: 4px; top: 6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; border: 2px solid var(--accent);
+}
+.roadmap-item.is-here .roadmap-dot,
+.roadmap-item.is-hub.is-here .roadmap-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.roadmap-ep { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.roadmap-title { font-weight: 700; font-size: 1.05rem; }
+.roadmap-item.is-here .roadmap-title { color: var(--accent); }
+.you-are-here {
+  display: inline-block; margin-left: 6px;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #fff; background: var(--accent);
+  padding: 2px 7px; border-radius: 999px;
+}
+
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  margin: 28px 0;
+}
+.stat {
+  background: #fff; border-radius: 18px; padding: 18px 14px;
+  border: 1px solid var(--line);
+}
+.stat-num {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.8rem; color: var(--accent); line-height: 1;
+}
+.stat-label { margin-top: 8px; font-size: 0.88rem; color: var(--body); }
+
+.safety {
+  background: var(--accent-wash);
+  border: 2px solid #fda29b;
+  border-radius: 22px;
+  padding: 24px;
+  margin: 28px 0;
+}
+.safety b {
+  display: block; color: var(--accent);
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.safety h2 { margin: 8px 0 12px; color: var(--accent-deep); font-size: clamp(1.5rem, 4vw, 2rem); font-family: "DM Serif Display", Georgia, serif; }
+.safety p, .safety li { color: var(--accent-deep); }
+.safety ul { margin: 8px 0 0 1.1rem; }
+
+.faq { margin: 40px 0; }
+.faq h2 { font-family: "DM Serif Display", Georgia, serif; font-size: 2rem; margin-bottom: 16px; }
+.faq details {
+  background: #fff; border-radius: 14px; padding: 14px 16px; margin: 10px 0;
+  border: 1px solid var(--line);
+}
+.faq summary { font-weight: 700; cursor: pointer; }
+.faq p { margin-top: 10px; color: var(--body); }
+
+.sources { margin: 40px 0 20px; color: var(--body); font-size: 0.92rem; }
+.sources h2 { font-family: "DM Serif Display", Georgia, serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 10px; }
+.sources ol { margin-left: 1.2rem; }
+.sources li { margin: 6px 0; }
+
+.prev-next {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin: 36px 0 20px;
+}
+.prev-next a {
+  display: block; background: #fff; border-radius: 16px; padding: 16px;
+  text-decoration: none; color: inherit; border: 1px solid var(--line);
+}
+.prev-next .label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.prev-next .title { font-weight: 700; margin-top: 4px; }
+.prev-next .span-2 { grid-column: 1 / -1; }
+
+.cta-band {
+  margin: 36px 0;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.cta-band h2 { font-family: "DM Serif Display", Georgia, serif; font-size: 1.8rem; color: #fff; }
+.cta-band p { color: #D9E7FF; margin: 10px 0 18px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 12px 22px; border-radius: 100px;
+  background: #fff; color: var(--ink) !important; -webkit-text-fill-color: var(--ink);
+  text-decoration: none; font-weight: 800;
+}
+.btn-blue {
+  background: var(--blue); color: #fff !important; -webkit-text-fill-color: #fff;
+}
+
+.plain-cards { display: grid; gap: 14px; margin: 24px 0; }
+@media (min-width: 720px) {
+  .plain-cards { grid-template-columns: 1fr 1fr; }
+  .chris-card { grid-template-columns: 88px 1fr; }
+  .stats { grid-template-columns: repeat(3, 1fr); }
+}
+.plain-card {
+  background: #fff; border-radius: 18px; padding: 20px;
+  border-top: 5px solid var(--accent); text-decoration: none; color: inherit;
+  display: block;
+}
+.plain-card span {
+  display: block; font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+}
+.plain-card strong { display: block; margin: 6px 0; font-size: 1.15rem; }
+.plain-card p { color: var(--body); font-size: 0.95rem; }
+
+.offer-hero {
+  padding: 40px 0 20px;
+}
+.offer-price {
+  display: inline-block; margin-top: 16px;
+  background: var(--accent); color: #fff;
+  font-weight: 800; padding: 8px 14px; border-radius: 999px;
+}
+.split { display: grid; gap: 14px; margin: 24px 0; }
+@media (min-width: 720px) { .split { grid-template-columns: 1fr 1fr; } }
+.yes { border-top: 5px solid var(--success); background: #fff; border-radius: 18px; padding: 20px; }
+.no { border-top: 5px solid #F59E0B; background: #fff; border-radius: 18px; padding: 20px; }
+.yes h3, .no h3 { margin-bottom: 10px; }
+.yes li, .no li { margin: 8px 0 8px 1.1rem; color: var(--body); }
+
+@media (max-width: 640px) {
+  .stats { grid-template-columns: 1fr; }
+  .prev-next { grid-template-columns: 1fr; }
+  .series-sticky { top: 56px; }
+}
+
+/* ===== Background parity with the GLP-1 series (2026-10-07) =====
+   Each page type copies its GLP-1 twin:
+   - Hub   (series-hub)   = /learn/glp1/ : full-page vertical night -> neon blue
+     -> cream -> white body gradient, dark neon-glow hero, white cards behind
+     every block of text so nothing sits bare on a mid or low band.
+   - Stop  (series-stop)  = /learn/glp1/<stop>/ : dark neon-glow hero band
+     (same radial stack as the GLP .gh hero), then a plain white page.
+   - Offer (series-offer) = /glp1-weight-loss/ : brand-blue gradient hero band,
+     then a plain white page. Stops held in the deep-blue range so white hero
+     text stays WCAG AA.
+   Red stays on accent elements only. */
+html { overflow-x: hidden; }
+
+body.series-page.series-hub {
+  background-color: #FFFFFF;
+  background-image: linear-gradient(
+    180deg,
+    #05060a 0%,
+    #05060a 10%,
+    #071a3a 18%,
+    #0a84ff 34%,
+    #0a84ff 48%,
+    #5eb8ff 58%,
+    #F6F3EE 72%,
+    #FFFFFF 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+body.series-page.series-stop,
+body.series-page.series-offer { background: #FFFFFF; }
+
+/* Full-bleed hero bands (pseudo-element, so markup and copy stay the same) */
+body.series-hub .hero,
+body.series-stop .hero,
+body.series-offer .offer-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 56px 0 52px;
+  margin-bottom: 28px;
+  color: #fff;
+}
+body.series-hub .hero::before,
+body.series-stop .hero::before,
+body.series-offer .offer-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+}
+body.series-hub .hero::before,
+body.series-stop .hero::before {
+  background:
+    radial-gradient(620px 520px at 74% 52%, rgba(0,113,227,.42), transparent 70%),
+    radial-gradient(500px 360px at 12% 0%, rgba(41,151,255,.14), transparent 70%),
+    #05060a;
+}
+body.series-offer .offer-hero::before {
+  background: linear-gradient(160deg, #1a4fd4 0%, #1D4ED8 35%, #2563EB 100%);
+}
+/* Hub only: fade the band into the black top of the body gradient (no seam) */
+body.series-hub .hero::before {
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+}
+@media (max-width: 640px) {
+  body.series-hub .hero::before,
+  body.series-stop .hero::before {
+    background: radial-gradient(420px 380px at 60% 78%, rgba(0,113,227,.45), transparent 70%), #05060a;
+  }
+  body.series-hub .hero,
+  body.series-stop .hero,
+  body.series-offer .offer-hero { padding: 40px 0 40px; }
+}
+body.series-hub .hero h1,
+body.series-stop .hero h1,
+body.series-offer .offer-hero h1 { color: #fff; }
+body.series-hub .hero .lede,
+body.series-stop .hero .lede { color: #c7c7ce; }
+body.series-offer .offer-hero .lede { color: #fff; }
+body.series-hub .hero-kicker,
+body.series-stop .hero-kicker,
+body.series-offer .hero-kicker {
+  color: #f5f7ff;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  padding: .5rem .9rem;
+  border-radius: 999px;
+}
+body.series-hub .hero-kicker .dot,
+body.series-stop .hero-kicker .dot,
+body.series-offer .hero-kicker .dot {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.85), 0 0 10px var(--accent);
+}
+body.series-offer .offer-price { box-shadow: 0 0 0 1.5px #fff, 0 10px 24px rgba(0,0,0,.18); }
+
+/* Readable labels on white (was #8E8E9A, under AA) */
+.bubble-label { color: #5f5f68; }
+
+/* Hub: white cards behind every loose text block, like the GLP-1 hub panels */
+body.series-hub .thread,
+body.series-hub .prose,
+body.series-hub .faq,
+body.series-hub .sources {
+  background: #fff;
+  color: var(--muted);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 22px 20px;
+}
+body.series-hub .thread { max-width: 480px; }
+body.series-hub .prose > h2:first-child,
+body.series-hub .faq > h2:first-child,
+body.series-hub .sources > h2:first-child { margin-top: 0; }
+body.series-hub .prose > :last-child { margin-bottom: 0; }
+body.series-hub .roadmap { box-shadow: var(--shadow); }
+body.series-hub .ink-block,
+body.series-stop .ink-block { border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+@media (min-width: 560px) {
+  body.series-hub .thread,
+  body.series-hub .prose,
+  body.series-hub .faq,
+  body.series-hub .sources { padding: 26px 26px; }
+}
+
+/* Stop + offer: white page, so give white cards a visible edge */
+body.series-offer .yes,
+body.series-offer .no,
+body.series-offer .plain-card,
+body.series-stop .stat {
+  box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(26,26,46,.06);
+}
+
+
+/* ===== Editorial hero + body figures (2026-10-08) =====
+   Explainer pages only (hub + stops). The offer page does not load this.
+   Matches the GLP-1 / UTI explainer hero: real clinician cutout on the
+   right, two iMessage bubbles kept off the face, a topic ghost graphic
+   behind the headline. Nothing starts hidden. No entrance animations. */
+body.series-hub .hero.hero-art,
+body.series-stop .hero.hero-art {
+  padding: 0;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.hero-ghost {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto;
+  padding: 56px 40px 0;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
+  align-items: end; min-height: 560px;
+}
+.hero-copy { align-self: center; padding-bottom: 56px; min-width: 0; }
+.hero-copy .lede { max-width: 34rem; }
+.hero-photo { position: relative; justify-self: center; align-self: end; }
+.hero-photo img {
+  display: block; height: 520px; width: auto; max-width: none;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55));
+}
+.hero-bubble {
+  position: absolute; z-index: 3;
+  color: #fff; font-weight: 700; font-size: 15px; line-height: 1.25;
+  padding: 11px 16px; border-radius: 20px 20px 20px 6px;
+  max-width: 200px; white-space: normal;
+  box-shadow: 0 12px 28px rgba(0,0,0,.32);
+}
+.hero-bubble.hb-black {
+  background: #000; border: 1.5px solid #fff;
+  top: 6px; left: -92px; transform: rotate(-4deg);
+}
+.hero-bubble.hb-blue {
+  background: #007AFF; border: 1.5px solid #fff;
+  bottom: 96px; left: -104px; transform: rotate(3deg);
+  border-radius: 20px 20px 6px 20px;
+  box-shadow: 0 12px 28px rgba(0,122,255,.28), 0 8px 20px rgba(0,0,0,.28);
+}
+@media (max-width: 900px) and (min-width: 641px) {
+  .hero-inner { padding: 48px 28px 0; min-height: 0; }
+  .hero-photo img { height: 420px; }
+  .hero-bubble.hb-black { left: -70px; }
+  .hero-bubble.hb-blue { left: -80px; bottom: 70px; }
+}
+@media (max-width: 640px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 34px 20px 0; min-height: 0; gap: 0; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-photo { margin: 64px auto 0; }
+  .hero-photo img { height: 360px; }
+  .hero-bubble { font-size: 13px; padding: 9px 12px; max-width: 168px; }
+  .hero-bubble.hb-black { top: -50px; left: -18px; }
+  .hero-bubble.hb-blue { bottom: 30px; left: -18px; }
+}
+@media (max-width: 360px) { .hero-photo img { height: 320px; } }
+
+/* Body figures */
+.art-fig { margin: 32px auto; max-width: 640px; }
+.art-fig img { width: 100%; height: auto; display: block; border-radius: 18px; }
+.art-fig figcaption {
+  margin-top: 10px; font-size: .92rem; line-height: 1.45; color: var(--body);
+  text-align: center;
+}
+body.series-hub .art-fig {
+  background: #fff; border-radius: 24px; padding: 14px 14px 16px;
+  box-shadow: var(--shadow);
+}
+body.series-stop .art-fig img { box-shadow: 0 0 0 1px var(--line); }
+
+
+
+/* Bronchitis extras: same dental-series system, single guide (not a 10-stop series). */
+.crumb {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 0.86rem; color: var(--body); margin: 4px 0 8px;
+}
+.crumb a { text-decoration: none; font-weight: 600; }
+.crumb [aria-current="page"] { color: var(--ink); font-weight: 700; }
+.hero-copy .btn { margin-top: 24px; }
+.hero-copy .btn:hover { filter: brightness(0.97); }
+.med-card {
+  background: #fff; border-radius: 18px; padding: 20px 22px; margin: 16px 0;
+  border: 1px solid var(--line); border-left: 5px solid var(--blue);
+  box-shadow: 0 8px 24px rgba(26,26,46,.06);
+}
+.med-card h3 { font-size: 1.15rem; margin: 0 0 4px; color: var(--ink); }
+.med-note { font-size: 0.9rem; color: var(--body); font-style: italic; margin: 0 0 12px; }
+.med-row { display: grid; grid-template-columns: 140px 1fr; gap: 6px 16px; margin: 8px 0; }
+.med-label {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); padding-top: 3px;
+}
+.med-value { color: var(--body); font-size: 0.98rem; line-height: 1.55; }
+.prose .home-care,
+.home-care { list-style: none; margin: 0 0 8px; padding: 0; }
+.home-care li {
+  position: relative; padding: 12px 0 12px 28px;
+  border-bottom: 1px solid var(--line); line-height: 1.65; color: var(--body);
+}
+.home-care li:last-child { border-bottom: none; }
+.home-care li::before {
+  content: "✓"; position: absolute; left: 0; top: 12px;
+  color: var(--success); font-weight: 800;
+}
+.tl {
+  list-style: none; position: relative; padding: 0; margin: 18px 0 8px;
+}
+.tl::before {
+  content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
+  border-left: 2px dotted var(--accent);
+}
+.tl li { position: relative; padding: 0 0 20px 36px; }
+.tl li:last-child { padding-bottom: 4px; }
+.tl-dot {
+  position: absolute; left: 4px; top: 5px; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; border: 2px solid var(--accent);
+}
+.tl-label {
+  display: block; font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 4px;
+}
+.tl-text { color: var(--body); line-height: 1.6; }
+.symptom-grid { display: grid; gap: 14px; margin: 20px 0 8px; }
+@media (min-width: 720px) { .symptom-grid { grid-template-columns: 1fr 1fr; } }
+.symptom-card {
+  background: #fff; border-radius: 18px; padding: 20px;
+  border-top: 5px solid var(--blue);
+  box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(26,26,46,.06);
+}
+.symptom-card strong { display: block; margin: 0 0 6px; font-size: 1.08rem; color: var(--ink); }
+.symptom-card p { color: var(--body); font-size: 0.95rem; margin: 0; line-height: 1.55; }
+.faq details p + p { margin-top: 10px; }
+.faq ul { margin: 10px 0 0 1.2rem; color: var(--body); }
+.faq li { margin: 6px 0; line-height: 1.55; }
+.ink-block p + p { margin-top: 10px; }
+.npc-clinician-byline {
+  margin: 28px 0;
+  padding: 14px 18px;
+  border: 1px solid #dbe5f5;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  font-size: 0.92rem;
+  color: #25364f;
+}
+.npc-clinician-byline .npc-byline-badge {
+  display: inline-flex; margin-bottom: 8px; padding: 4px 10px; border-radius: 999px;
+  background: #e8f1ff; color: #1d4ed8; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.npc-clinician-byline a { color: #1d4ed8; font-weight: 600; }
+.npc-clinician-byline .npc-byline-main { margin: 0 0 6px; }
+.npc-clinician-byline .npc-byline-meta { margin: 0; font-size: 0.82rem; color: #4b5d7a; }
+.npc-clinician-byline .npc-byline-real { font-weight: 600; color: #13233f; }
+@media (max-width: 640px) {
+  .med-row { grid-template-columns: 1fr; }
+}
 
 </style>
 </head>
-<body>
-<link rel="stylesheet" href="/assets/css/site.css">
+<body class="series-page series-stop">
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- ===== NPCWOODS SITE HEADER (Shared Component) ===== -->
+<!-- Copy this block into every page right after <body> -->
+<!-- Last updated: 2026-10-15 — menu panel now comes from /assets/js/npc-menu.js -->
 
-  <!-- SHARED HEADER --><!-- Copy this block into every page right after <body> -->
-<!-- Last updated: March 2026, v3 premium redesign -->
+<!-- Shared site-wide stylesheet (nav, footer, reviews, save-contact) -->
+<link rel="stylesheet" href="/assets/css/site.css">
 
 <!-- SVG icon definitions (hidden) -->
 <svg style="display:none;">
@@ -958,9 +777,6 @@
     <symbol id="npc-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
   </defs>
 </svg>
-
-<!-- nav CSS: now in /assets/css/site.css -->
-
 
 <nav class="npc-nav" aria-label="Main navigation">
   <div class="npc-nav-inner">
@@ -1024,556 +840,332 @@
       </li>
     </ul>
 
-    <button class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false">
+    <button type="button" class="npc-nav-toggle" id="npcHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="npcMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Slide-out overlay -->
-<div class="npc-menu-overlay" id="npcOverlay"></div>
+<!-- Slide-out menu panel: rendered by /assets/js/npc-menu.js (loaded by site.js).
+     Do NOT paste panel markup here or on pages. Edit the MENU list in npc-menu.js. -->
 
-<!-- Slide-out navigation panel -->
-<div class="npc-slide-panel" id="npcSlidePanel" role="dialog" aria-label="Navigation menu">
-  <div class="npc-panel-header">
-    <div class="npc-panel-logo">
-      <img src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="NPCWoods">
-      NPCWoods
-    </div>
-    <button class="npc-panel-close" id="npcPanelClose" aria-label="Close menu">
-      <svg><use href="#npc-icon-x"/></svg>
-    </button>
-  </div>
-  <div class="npc-panel-body">
-
-    <!-- Navigate -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Navigate</div>
-      <a href="https://npcwoods.com/how-it-works/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-zap"/></svg></div>
-        <div class="npc-panel-link-text">How It Works<div class="npc-panel-link-sub">3 simple steps to care</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/pricing/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">Pricing<div class="npc-panel-link-sub">$59 flat fee, one price, one promise</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/credentials/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-shield"/></svg></div>
-        <div class="npc-panel-link-text">Credentials<div class="npc-panel-link-sub">NPI, board cert, 14 states, including Florida by telehealth registration</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Conditions We Treat<div class="npc-panel-link-sub">UTI, sinus, strep &amp; more</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/learn/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">After Your Visit<div class="npc-panel-link-sub">Patient education library</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/blog/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">Blog<div class="npc-panel-link-sub">Health tips &amp; insights</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/about/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-user"/></svg></div>
-        <div class="npc-panel-link-text">About Chris<div class="npc-panel-link-sub">MSN, APRN, FNP-C, AGACNP-BC, double board-certified</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- States We Serve -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">States We Serve</div>
-      <div class="npc-states-grid">
-        <a href="https://npcwoods.com/arizona-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Arizona</a>
-        <a href="https://npcwoods.com/colorado-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Colorado</a>
-        <a href="https://npcwoods.com/credentials/#connecticut" class="npc-state-link"><span class="npc-state-dot"></span> Connecticut</a>
-        <a href="https://npcwoods.com/georgia-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Georgia</a>
-        <a href="https://npcwoods.com/idaho-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Idaho</a>
-        <a href="https://npcwoods.com/iowa-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Iowa</a>
-        <a href="https://npcwoods.com/montana-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Montana</a>
-        <a href="https://npcwoods.com/nevada-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Nevada</a>
-        <a href="https://npcwoods.com/new-mexico-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> New Mexico</a>
-        <a href="https://npcwoods.com/north-carolina-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> North Carolina</a>
-        <a href="https://npcwoods.com/oregon-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Oregon</a>
-        <a href="https://npcwoods.com/utah-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Utah</a>
-        <a href="https://npcwoods.com/washington-telemedicine/" class="npc-state-link"><span class="npc-state-dot"></span> Washington</a>
-        <a href="https://npcwoods.com/florida-vacation-sick-text-visit/" class="npc-state-link"><span class="npc-state-dot"></span> Florida (telehealth reg.)</a>
-      </div>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- Common Services -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Common Services</div>
-      <a href="https://npcwoods.com/uti-treatment/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-pill"/></svg></div>
-        <div class="npc-panel-link-text">UTI Treatment</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/sinus-infection-treatment/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Sinus Infection</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/dental-pain/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-heart"/></svg></div>
-        <div class="npc-panel-link-text">Dental Pain Relief</div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-      <a href="https://npcwoods.com/conditions/" class="npc-panel-link">
-        <div class="npc-panel-link-icon"><svg><use href="#npc-icon-list"/></svg></div>
-        <div class="npc-panel-link-text">All Conditions<div class="npc-panel-link-sub">Full list of what we treat</div></div>
-        <svg class="npc-panel-link-arrow" width="16" height="16"><use href="#npc-icon-chevron"/></svg>
-      </a>
-    </div>
-
-    <div class="npc-panel-divider"></div>
-
-    <!-- Get Care Now -->
-    <div class="npc-panel-section">
-      <div class="npc-panel-section-label">Get Care Now</div>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="npc-panel-cta">
-        <svg><use href="#npc-icon-message"/></svg>
-        Text Chris. Start My $59 Visit
-      </a>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20ask%20about%20a%20%2459%20visit." class="npc-panel-phone">
-        <div class="npc-panel-phone-icon"><svg><use href="#npc-icon-phone"/></svg></div>
-        <div class="npc-panel-link-text">Text (480) 639-4722<div class="npc-panel-link-sub">Same number, real practice</div></div>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<!-- nav JS: now in /assets/js/site.js -->
-
-<!-- CWV JS: now in /assets/js/site.js -->
+<!-- Shared site-wide JavaScript (nav, CWV, save-contact, fade-in) -->
+<script src="/assets/js/site.js" defer></script>
 <!-- ===== END SITE HEADER ===== -->
 
-<!-- reviews CSS: now in /assets/css/site.css -->
-<!-- ===== SCROLLING REVIEWS BANNER ===== -->
-<section class="reviews-banner">
-<div class="reviews-banner-header">
-<p class="reviews-banner-title">80+ five-star Google reviews. Here’s what patients say on Facebook. <span class="reviews-banner-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></p>
+<div class="series-sticky" role="navigation" aria-label="Page bar"><span class="series-sticky-ep">After Your Visit · Bronchitis</span><a class="series-sticky-cta" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris</a></div>
+<main id="main">
+<header class="hero hero-art">
+<svg class="hero-ghost" focusable="false" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><line x1="0" y1="90" x2="1440" y2="90" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="180" x2="1440" y2="180" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="270" x2="1440" y2="270" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="360" x2="1440" y2="360" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="540" x2="1440" y2="540" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="0" y1="630" x2="1440" y2="630" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="120" y1="0" x2="120" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="240" y1="0" x2="240" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="360" y1="0" x2="360" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="480" y1="0" x2="480" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="600" y1="0" x2="600" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="720" y1="0" x2="720" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="840" y1="0" x2="840" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="960" y1="0" x2="960" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1080" y1="0" x2="1080" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1200" y1="0" x2="1200" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/><line x1="1320" y1="0" x2="1320" y2="720" stroke="rgba(255,255,255,.05)" stroke-dasharray="2 10"/></svg>
+<div class="hero-inner">
+<div class="hero-copy">
+<div class="hero-kicker"><span class="dot"></span> After Your Visit · Bronchitis</div>
+<h1>Bronchitis</h1>
+<p class="lede">Your complete recovery guide. Everything you need to know about symptoms, why antibiotics usually don't help, and how to feel better faster.</p>
+<a class="btn" href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris. Get Care Now</a>
 </div>
-<p class="reviews-banner-subtitle">5.0★ on Google · 100% recommend on Facebook</p>
-<div class="scroll-container">
-<div class="scroll-track">
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Chris texted me back within seconds and had my prescription over to the pharmacy within minutes..so simple and easy definitely beats sitting in a waiting room. Recommend 100%!"</p>
-<div class="review-card-footer"><span class="review-card-author">J.R.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Very fast and convenient. I first messaged Chris at 10:08am and I was picking up my prescriptions from the pharmacy at 10:52am same day! Cannot recommend enough!!!!"</p>
-<div class="review-card-footer"><span class="review-card-author">A.H.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Fast, easy, no waiting, very professional. I recommend him to everyone."</p>
-<div class="review-card-footer"><span class="review-card-author">D.C.D.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Easiest ever! Fast responses, so quick and simple."</p>
-<div class="review-card-footer"><span class="review-card-author">H.S.J.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Messaged Chris he responded in a timely manner. Very professional. Easy to talk to about our concerns. It was nice to be able to stay at home and get quality care."</p>
-<div class="review-card-footer"><span class="review-card-author">T.P.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"I had a great experience with NPCWoods Telemed Clinic! Chris was incredibly efficient and genuinely helpful. He made the whole process quick and stress-free."</p>
-<div class="review-card-footer"><span class="review-card-author">H.P.W.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"What a wonderful service to the community! Fast response time, no sitting in the waiting room or waiting hours for a call back. I highly recommend!!"</p>
-<div class="review-card-footer"><span class="review-card-author">J.D.Q.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Literally cannot recommend enough! My daughter had the worst cough ever and it was so bad on a Saturday night after midnight, I text Chris, he replied immediately."</p>
-<div class="review-card-footer"><span class="review-card-author">A.A.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Chris texted me back within seconds and had my prescription over to the pharmacy within minutes..so simple and easy definitely beats sitting in a waiting room. Recommend 100%!"</p>
-<div class="review-card-footer"><span class="review-card-author">J.R.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Very fast and convenient. I first messaged Chris at 10:08am and I was picking up my prescriptions from the pharmacy at 10:52am same day! Cannot recommend enough!!!!"</p>
-<div class="review-card-footer"><span class="review-card-author">A.H.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Fast, easy, no waiting, very professional. I recommend him to everyone."</p>
-<div class="review-card-footer"><span class="review-card-author">D.C.D.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Easiest ever! Fast responses, so quick and simple."</p>
-<div class="review-card-footer"><span class="review-card-author">H.S.J.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Messaged Chris he responded in a timely manner. Very professional. Easy to talk to about our concerns. It was nice to be able to stay at home and get quality care."</p>
-<div class="review-card-footer"><span class="review-card-author">T.P.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"I had a great experience with NPCWoods Telemed Clinic! Chris was incredibly efficient and genuinely helpful. He made the whole process quick and stress-free."</p>
-<div class="review-card-footer"><span class="review-card-author">H.P.W.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"What a wonderful service to the community! Fast response time, no sitting in the waiting room or waiting hours for a call back. I highly recommend!!"</p>
-<div class="review-card-footer"><span class="review-card-author">J.D.Q.</span><span class="review-card-source">Facebook</span></div>
-</div>
-<div class="review-card">
-<div class="review-card-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-<p class="review-card-text">"Literally cannot recommend enough! My daughter had the worst cough ever and it was so bad on a Saturday night after midnight, I text Chris, he replied immediately."</p>
-<div class="review-card-footer"><span class="review-card-author">A.A.</span><span class="review-card-source">Facebook</span></div>
+<div class="hero-photo">
+<img class="hero-cutout" src="/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms" srcset="/learn/glp1/assets/chris-cutout-600.webp?v=20261006arms 600w, /learn/glp1/assets/chris-cutout-900.webp?v=20261006arms 900w" sizes="(max-width: 640px) 258px, (max-width: 900px) 301px, 372px" width="900" height="1258" alt="Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling with a stethoscope" fetchpriority="high" decoding="async">
+<span class="hero-bubble hb-black">Cough can linger 2–3 weeks</span>
+<span class="hero-bubble hb-blue">Trouble breathing? Get seen</span>
 </div>
 </div>
-</div>
+</header>
+
+<article class="series-wrap">
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="https://npcwoods.com">Home</a>
+  <span aria-hidden="true">&rsaquo;</span>
+  <a href="https://npcwoods.com/learn/">After Your Visit</a>
+  <span aria-hidden="true">&rsaquo;</span>
+  <span aria-current="page">Bronchitis</span>
+</nav>
+
+<section class="npc-clinician-byline" aria-label="Clinician review attribution and freshness">
+  <div class="npc-byline-inner">
+    <div class="npc-byline-badge" aria-hidden="true">Clinician reviewed</div>
+    <p class="npc-byline-main">
+      Clinically reviewed by
+      <a href="https://npcwoods.com/about/" rel="author">Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</a>
+      — Double board-certified Nurse Practitioner. Licensed in 14 states, including Florida by telehealth registration (TPAN3355).
+    </p>
+    <p class="npc-byline-meta">
+      <strong>Last reviewed: <time datetime="2026-03-01">March 2026</time></strong>.
+      Licensed nurse practitioner, board certified. This page reflects Chris's real clinical experience treating patients via NPCWoods Telemedicine.
+      <span class="npc-byline-real">Real clinician. No AI.</span>
+      <a href="https://npcwoods.com/credentials/" class="npc-byline-verify">Verify credentials</a>
+    </p>
+  </div>
 </section>
-<!-- ===== END SCROLLING REVIEWS ===== -->
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>After Your Visit</span>
-      </div>
-      <h1>Bronchitis</h1>
-      <p class="subtitle">Your complete recovery guide. Everything you need to know about symptoms, why antibiotics usually don't help, and how to feel better faster.</p>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit" class="hero-cta">Text Chris. Get Care Now</a>
-    </div>
-  </section>
+<div class="thread" aria-label="Sample texts">
+<div class="bubble-label">You</div>
+<div class="bubble bubble-blue">This cough has been going two weeks. Is that still bronchitis?</div>
+<div class="bubble-label">Chris</div>
+<div class="bubble bubble-black">Yes. The cough can last 2–3 weeks even after the infection clears. Your airways are still healing. That is completely normal.</div>
+</div>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-      <a href="https://npcwoods.com">Home</a>
-      <span>&rsaquo;</span>
-      <a href="https://npcwoods.com/learn/">After Your Visit</a>
-      <span>&rsaquo;</span>
-      <span>Bronchitis</span>
-    </div>
+<div class="prose">
+<h2>What is Bronchitis?</h2>
+<p>Acute bronchitis is inflammation of the airways (bronchial tubes) in your lungs. When these tubes get inflamed, they swell and produce mucus, and that's why you can't stop coughing. Here's the thing most people don't realize: <strong>90% of acute bronchitis is caused by viruses</strong>. That means antibiotics usually won't help.</p>
+</div>
 
-    <!-- Reviewed Badge -->
-    <div class="reviewed-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m7 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <div><strong>Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC</strong>. Licensed nurse practitioner, board certified. Last updated March 2026.</div>
-    </div>
+<div class="ink-block">
+<h2>Critical Education Point</h2>
+<p>We know you're coughing your lungs out and want antibiotics. We get it. But prescribing antibiotics for a viral infection doesn't speed recovery, it just creates side effects and contributes to antibiotic resistance. Most bronchitis patients leave our visit WITHOUT an antibiotic prescription, and that's actually good care. We focus on controlling your symptoms and letting your body fight the virus.</p>
+</div>
 
-    <!-- What is Bronchitis Section -->
-    <h2 class="section-heading">What is Bronchitis?</h2>
-    <p class="intro-text">Acute bronchitis is inflammation of the airways (bronchial tubes) in your lungs. When these tubes get inflamed, they swell and produce mucus, and that's why you can't stop coughing. Here's the thing most people don't realize: <strong>90% of acute bronchitis is caused by viruses</strong>. That means antibiotics usually won't help.</p>
+<div class="prose">
+<p>One important thing to understand: <strong>the cough can last 2-3 weeks</strong> even after the infection clears. This is completely normal and doesn't mean something is wrong. Your airways are still healing.</p>
+</div>
 
-    <div class="callout warning">
-      <strong>Critical Education Point:</strong> We know you're coughing your lungs out and want antibiotics. We get it. But prescribing antibiotics for a viral infection doesn't speed recovery, it just creates side effects and contributes to antibiotic resistance. Most bronchitis patients leave our visit WITHOUT an antibiotic prescription, and that's actually good care. We focus on controlling your symptoms and letting your body fight the virus.
-    </div>
+<div class="prose">
+<h2>Symptoms of Bronchitis</h2>
+<p>You might experience any or all of these:</p>
+</div>
+<div class="symptom-grid">
+  <div class="symptom-card">
+    <strong>Persistent Cough</strong>
+    <p>A cough that produces mucus (phlegm). It may be clear, white, yellowish, or greenish.</p>
+  </div>
+  <div class="symptom-card">
+    <strong>Chest Soreness</strong>
+    <p>Your chest feels sore or achy, especially when coughing. This is from the muscles working overtime.</p>
+  </div>
+  <div class="symptom-card">
+    <strong>Fatigue</strong>
+    <p>You feel tired and worn out, even with rest. Your body is using energy to fight the infection.</p>
+  </div>
+  <div class="symptom-card">
+    <strong>Low-Grade Fever</strong>
+    <p>Usually under 100.4°F. May come and go over several days.</p>
+  </div>
+  <div class="symptom-card">
+    <strong>Mild Body Aches</strong>
+    <p>General achiness throughout your body, common with viral infections.</p>
+  </div>
+  <div class="symptom-card">
+    <strong>Shortness of Breath</strong>
+    <p>You may feel slightly short of breath, especially with activity.</p>
+  </div>
+</div>
 
-    <p class="intro-text">One important thing to understand: <strong>the cough can last 2-3 weeks</strong> even after the infection clears. This is completely normal and doesn't mean something is wrong. Your airways are still healing.</p>
+<div class="prose">
+<h2>Medications That Help</h2>
+<p>We may have prescribed one or more of these medications to manage your symptoms:</p>
+</div>
 
-    <!-- Symptoms Section -->
-    <h2 class="section-heading">Symptoms of Bronchitis</h2>
-    <p class="intro-text">You might experience any or all of these:</p>
+<div class="med-card">
+  <h3>Azithromycin (Z-Pack)</h3>
+  <p class="med-note">Only if bacterial bronchitis suspected</p>
+  <div class="med-row">
+    <div class="med-label">What It Does</div>
+    <div class="med-value">This is an antibiotic. We only prescribe it if we suspect a bacterial infection based on your symptoms and exam findings.</div>
+  </div>
+  <div class="med-row">
+    <div class="med-label">How to Use</div>
+    <div class="med-value">Take exactly as prescribed. Complete the full course even if you feel better.</div>
+  </div>
+  <div class="med-row">
+    <div class="med-label">More Info</div>
+    <div class="med-value"><a href="https://npcwoods.com/medications/azithromycin/">Read about Azithromycin</a></div>
+  </div>
+</div>
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">🌬️</div>
-        <div class="card-title">Persistent Cough</div>
-        <div class="card-text">A cough that produces mucus (phlegm). It may be clear, white, yellowish, or greenish.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">💔</div>
-        <div class="card-title">Chest Soreness</div>
-        <div class="card-text">Your chest feels sore or achy, especially when coughing. This is from the muscles working overtime.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">😴</div>
-        <div class="card-title">Fatigue</div>
-        <div class="card-text">You feel tired and worn out, even with rest. Your body is using energy to fight the infection.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤒</div>
-        <div class="card-title">Low-Grade Fever</div>
-        <div class="card-text">Usually under 100.4°F. May come and go over several days.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">💪</div>
-        <div class="card-title">Mild Body Aches</div>
-        <div class="card-text">General achiness throughout your body, common with viral infections.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">😮‍💨</div>
-        <div class="card-title">Shortness of Breath</div>
-        <div class="card-text">You may feel slightly short of breath, especially with activity.</div>
-      </div>
-    </div>
+<div class="med-card">
+  <h3>Benzonatate (Tessalon)</h3>
+  <p class="med-note">For cough suppression</p>
+  <div class="med-row">
+    <div class="med-label">What It Does</div>
+    <div class="med-value">This is a non-narcotic cough suppressant that numbs the cough reflex. It's helpful when your cough is keeping you awake.</div>
+  </div>
+  <div class="med-row">
+    <div class="med-label">How to Use</div>
+    <div class="med-value">Take 100-200mg three times daily as needed. Swallow whole, don't chew (it will numb your mouth).</div>
+  </div>
+  <div class="med-row">
+    <div class="med-label">More Info</div>
+    <div class="med-value"><a href="https://npcwoods.com/medications/benzonatate/">Read about Benzonatate</a></div>
+  </div>
+</div>
 
-    <!-- Medications Section -->
-    <h2 class="section-heading">Medications That Help</h2>
-    <p class="intro-text">We may have prescribed one or more of these medications to manage your symptoms:</p>
+<div class="ink-block">
+<h2>Important Callout</h2>
+<p>Most bronchitis patients leave our visit WITHOUT an antibiotic prescription, and that's actually good care. We focus on controlling your symptoms and letting your body fight the virus.</p>
+</div>
 
-    <div class="med-card">
-      <div class="med-card-name">Azithromycin (Z-Pack)</div>
-      <div class="med-card-note">Only if bacterial bronchitis suspected</div>
-      <div class="med-card-row">
-        <div class="med-card-label">What It Does</div>
-        <div class="med-card-value">This is an antibiotic. We only prescribe it if we suspect a bacterial infection based on your symptoms and exam findings.</div>
-      </div>
-      <div class="med-card-row">
-        <div class="med-card-label">How to Use</div>
-        <div class="med-card-value">Take exactly as prescribed. Complete the full course even if you feel better.</div>
-      </div>
-      <div class="med-card-row">
-        <div class="med-card-label">More Info</div>
-        <div class="med-card-value"><a href="https://npcwoods.com/medications/azithromycin/">Read about Azithromycin</a></div>
-      </div>
-    </div>
+<div class="thread" aria-label="Sample texts about antibiotics">
+<div class="bubble-label">You</div>
+<div class="bubble bubble-blue">I want antibiotics. This cough is brutal.</div>
+<div class="bubble-label">Chris</div>
+<div class="bubble bubble-black">We get it. 90% of acute bronchitis is viral. Antibiotics will not speed recovery. We treat the symptoms while your immune system does the work.</div>
+</div>
 
-    <div class="med-card">
-      <div class="med-card-name">Benzonatate (Tessalon)</div>
-      <div class="med-card-note">For cough suppression</div>
-      <div class="med-card-row">
-        <div class="med-card-label">What It Does</div>
-        <div class="med-card-value">This is a non-narcotic cough suppressant that numbs the cough reflex. It's helpful when your cough is keeping you awake.</div>
-      </div>
-      <div class="med-card-row">
-        <div class="med-card-label">How to Use</div>
-        <div class="med-card-value">Take 100-200mg three times daily as needed. Swallow whole, don't chew (it will numb your mouth).</div>
-      </div>
-      <div class="med-card-row">
-        <div class="med-card-label">More Info</div>
-        <div class="med-card-value"><a href="https://npcwoods.com/medications/benzonatate/">Read about Benzonatate</a></div>
-      </div>
-    </div>
+<div class="prose">
+<h2>Home Care: Your Heavy Hitter</h2>
+<p>Here's the truth: how you care for yourself at home matters more than medication. Most of your recovery depends on rest, hydration, and smart symptom management.</p>
+<ul class="home-care">
+  <li><strong>Honey</strong> (1-2 teaspoons). This is actually a proven cough suppressant. Taking a spoonful of raw honey has science behind it. It's as effective as cough syrup for many people.</li>
+  <li><strong>Humidifier</strong>, Cool or warm mist helps ease congestion and soothe inflamed airways. Run it while you sleep and during the day.</li>
+  <li><strong>Hydration</strong>. Drink lots of water, herbal tea, warm lemon water, or broth. Staying hydrated helps thin mucus and makes it easier to cough up.</li>
+  <li><strong>Rest</strong>, Your body heals when you sleep. Get 8+ hours per night. Naps are allowed. Don't try to push through this.</li>
+  <li><strong>OTC Cough Suppressants</strong>, Dextromethorphan (DM) products like Robitussin work for nighttime cough. Use before bed so you can sleep.</li>
+  <li><strong>Throat Lozenges</strong>, Zinc lozenges or honey lozenges can provide comfort. Some people find these helpful.</li>
+  <li><strong>Avoid Irritants</strong>, Stay away from smoke, strong fumes, pollution, and air quality issues. These will make your cough worse.</li>
+  <li><strong>Elevate Your Head</strong>, Sleep with an extra pillow or raise the head of your bed. This helps drainage and reduces nighttime cough.</li>
+</ul>
+</div>
 
-    <div class="callout success">
-      <strong>Important Callout:</strong> Most bronchitis patients leave our visit WITHOUT an antibiotic prescription, and that's actually good care. We focus on controlling your symptoms and letting your body fight the virus.
-    </div>
+<section class="safety" aria-labelledby="red-flags-title">
+  <b>Red flags</b>
+  <h2 id="red-flags-title">Red Flags: When to Get Emergency Care</h2>
+  <p>Most bronchitis cases resolve on their own. But these signs mean you need urgent or emergency evaluation:</p>
+  <p><strong>Seek Emergency Care or Call 911 If You Have:</strong></p>
+  <ul>
+    <li>Fever over 100.4°F lasting more than 3 days</li>
+    <li>Coughing up blood or blood-tinged mucus</li>
+    <li>Severe shortness of breath or difficulty breathing</li>
+    <li>Chest pain that's not just soreness from coughing</li>
+    <li>Wheezing that's getting noticeably worse</li>
+    <li>Symptoms lasting longer than 3 weeks</li>
+    <li>If you're elderly, have COPD, are immunocompromised, or have other serious health conditions</li>
+  </ul>
+  <p style="margin-top:14px;font-weight:700;">These symptoms can indicate pneumonia or other serious conditions that need immediate attention.</p>
+</section>
 
-    <!-- Home Care Section -->
-    <h2 class="section-heading">Home Care: Your Heavy Hitter</h2>
-    <p class="intro-text">Here's the truth: how you care for yourself at home matters more than medication. Most of your recovery depends on rest, hydration, and smart symptom management.</p>
+<div class="prose">
+<h2>What to Expect: Timeline</h2>
+<p>Understanding the typical course helps you know what's normal:</p>
+</div>
+<ol class="tl">
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Days 1-3</span>
+    <span class="tl-text">Peak symptoms. You'll likely feel worst during this window. The cough is intense, you may have fever, and you'll feel fatigued.</span>
+  </li>
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Days 4-7</span>
+    <span class="tl-text">Improvement begins. Fever usually breaks. You'll start feeling more energy. The cough is still there but feels slightly less intense.</span>
+  </li>
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Week 2</span>
+    <span class="tl-text">Noticeable improvement. The productive cough continues, but you feel more like yourself. Most people are back to light activity.</span>
+  </li>
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Week 3+</span>
+    <span class="tl-text">The lingering cough. You feel fine, but the cough sticks around. This is normal. Your airways are still healing. It can take another 1-2 weeks to fully resolve.</span>
+  </li>
+</ol>
 
-    <ul class="home-care-list">
-      <li><strong>Honey</strong> (1-2 teaspoons). This is actually a proven cough suppressant. Taking a spoonful of raw honey has science behind it. It's as effective as cough syrup for many people.</li>
-      <li><strong>Humidifier</strong>, Cool or warm mist helps ease congestion and soothe inflamed airways. Run it while you sleep and during the day.</li>
-      <li><strong>Hydration</strong>. Drink lots of water, herbal tea, warm lemon water, or broth. Staying hydrated helps thin mucus and makes it easier to cough up.</li>
-      <li><strong>Rest</strong>, Your body heals when you sleep. Get 8+ hours per night. Naps are allowed. Don't try to push through this.</li>
-      <li><strong>OTC Cough Suppressants</strong>, Dextromethorphan (DM) products like Robitussin work for nighttime cough. Use before bed so you can sleep.</li>
-      <li><strong>Throat Lozenges</strong>, Zinc lozenges or honey lozenges can provide comfort. Some people find these helpful.</li>
-      <li><strong>Avoid Irritants</strong>, Stay away from smoke, strong fumes, pollution, and air quality issues. These will make your cough worse.</li>
-      <li><strong>Elevate Your Head</strong>, Sleep with an extra pillow or raise the head of your bed. This helps drainage and reduces nighttime cough.</li>
-    </ul>
+<div class="prose">
+<h2>Can Allergies Cause a Cough, or Is It Bronchitis?</h2>
+<p>Yes, allergies can cause a cough, usually from post-nasal drip and throat irritation. A few clues help sort it out:</p>
+</div>
+<ol class="tl">
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Leans Allergies</span>
+    <span class="tl-text">More throat clearing or a tickle than a heavy chest cough. Clear drainage, sneezing, and itchy eyes, nose, or throat. Worse outside, after mowing or hiking, or first thing in the morning.</span>
+  </li>
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Leans Bronchitis</span>
+    <span class="tl-text">A deeper chest cough that started after a cold, with chest soreness and feeling tired or washed out, and not much itching or sneezing.</span>
+  </li>
+  <li>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <span class="tl-label">Good to Know</span>
+    <span class="tl-text">Itching points to allergies; bronchitis does not usually make your eyes or nose itchy. Mucus color alone does not prove you need antibiotics. A cough that lasts more than 3 weeks, or keeps getting worse, deserves a closer look.</span>
+  </li>
+</ol>
 
-    <!-- Red Flags Section -->
-    <h2 class="section-heading">Red Flags: When to Get Emergency Care</h2>
-    <p class="intro-text">Most bronchitis cases resolve on their own. But these signs mean you need urgent or emergency evaluation:</p>
+<section class="faq" id="faq">
+<h2>Frequently Asked Questions</h2>
+<details>
+<summary>Why won't you prescribe antibiotics for bronchitis?</summary>
+<p>90% of acute bronchitis is caused by viruses, not bacteria. Antibiotics only work against bacteria. Taking antibiotics for viral bronchitis:</p>
+<ul>
+  <li>Doesn't speed recovery or reduce symptoms</li>
+  <li>Causes unnecessary side effects (nausea, diarrhea, allergic reactions)</li>
+  <li>Contributes to antibiotic resistance, a serious public health problem</li>
+</ul>
+<p>The best medicine is your immune system. We manage your symptoms while your body fights the virus.</p>
+</details>
+<details>
+<summary>How long will this cough last?</summary>
+<p>The cough from acute bronchitis can last <strong>2-3 weeks or longer</strong>, even after the infection clears. This is completely normal.</p>
+<p>Most people see improvement within 7-10 days, but the cough can linger. Your airways have inflammation that needs time to heal. Don't panic if you're still coughing after a week, this is expected.</p>
+</details>
+<details>
+<summary>Is bronchitis contagious?</summary>
+<p>Yes, acute bronchitis is contagious, usually for about a week from when symptoms start. You spread it through respiratory droplets (coughs, sneezes, close contact).</p>
+<p>Practice good hand hygiene and avoid being around very young children, elderly people, or immunocompromised individuals. Stay home for at least the first 3-5 days.</p>
+</details>
+<details>
+<summary>What's the difference between bronchitis and pneumonia?</summary>
+<p><strong>Bronchitis</strong> inflames the airways (bronchial tubes) in your lungs. <strong>Pneumonia</strong> infects the air sacs (alveoli) deeper in your lungs, preventing them from exchanging oxygen efficiently.</p>
+<p>Pneumonia is more serious and typically requires antibiotics. Signs of pneumonia include high fever, difficulty breathing, chest pain, or blood in sputum. If you're concerned, contact us immediately.</p>
+</details>
+<details>
+<summary>When should I worry about my cough?</summary>
+<p>Seek emergency care if you experience:</p>
+<ul>
+  <li>Fever over 100.4°F lasting more than 3 days</li>
+  <li>Coughing up blood</li>
+  <li>Severe shortness of breath</li>
+  <li>Chest pain (not just cough soreness)</li>
+  <li>Wheezing that's getting worse</li>
+  <li>Symptoms lasting over 3 weeks</li>
+  <li>If you're at high risk (elderly, COPD, immunocompromised)</li>
+</ul>
+<p>Otherwise, coughing for 2-3 weeks is normal. Contact us if symptoms aren't improving or you have other concerns.</p>
+</details>
+</section>
 
-    <div class="red-flags">
-      <div class="red-flags-title">
-        ⚠️ Seek Emergency Care or Call 911 If You Have:
-      </div>
-      <ul>
-        <li>Fever over 100.4°F lasting more than 3 days</li>
-        <li>Coughing up blood or blood-tinged mucus</li>
-        <li>Severe shortness of breath or difficulty breathing</li>
-        <li>Chest pain that's not just soreness from coughing</li>
-        <li>Wheezing that's getting noticeably worse</li>
-        <li>Symptoms lasting longer than 3 weeks</li>
-        <li>If you're elderly, have COPD, are immunocompromised, or have other serious health conditions</li>
-      </ul>
-      <div class="footer-note">These symptoms can indicate pneumonia or other serious conditions that need immediate attention.</div>
-    </div>
+<section class="cta-band">
+  <h2>Still Have Questions?</h2>
+  <p>Text Chris anytime with questions about your recovery. We're here to help.</p>
+  <a class="btn" href="sms:4806394722?body=Hi%20Chris%2C%20I%20have%20a%20question%20about%20my%20bronchitis%20recovery">Text Us Now</a>
+</section>
 
-    <!-- Timeline Section -->
-    <h2 class="section-heading">What to Expect: Timeline</h2>
-    <p class="intro-text">Understanding the typical course helps you know what's normal:</p>
+<section class="sources" id="sources">
+<h2>Citations &amp; References</h2>
+<ol>
+  <li><a href="https://www.aafp.org/" target="_blank" rel="noopener">American Academy of Family Physicians (AAFP)</a>, Guidelines on acute bronchitis and antibiotic stewardship</li>
+  <li><a href="https://www.cdc.gov/" target="_blank" rel="noopener">Centers for Disease Control and Prevention (CDC)</a>, Appropriate antibiotic use recommendations</li>
+  <li><a href="https://www.acpjc.org/" target="_blank" rel="noopener">American College of Physicians (ACP)</a>, Evidence-based clinical practice guidelines</li>
+  <li><a href="https://www.cochranelibrary.com/" target="_blank" rel="noopener">Cochrane Review</a>, Systematic review of treatments for acute bronchitis</li>
+  <li><a href="https://www.uptodate.com/" target="_blank" rel="noopener">UpToDate</a>, Medical information and clinical decision support</li>
+</ol>
+</section>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-label">Days 1-3</div>
-        <div class="timeline-text">Peak symptoms. You'll likely feel worst during this window. The cough is intense, you may have fever, and you'll feel fatigued.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Days 4-7</div>
-        <div class="timeline-text">Improvement begins. Fever usually breaks. You'll start feeling more energy. The cough is still there but feels slightly less intense.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Week 2</div>
-        <div class="timeline-text">Noticeable improvement. The productive cough continues, but you feel more like yourself. Most people are back to light activity.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Week 3+</div>
-        <div class="timeline-text">The lingering cough. You feel fine, but the cough sticks around. This is normal. Your airways are still healing. It can take another 1-2 weeks to fully resolve.</div>
-      </div>
-    </div>
+<div class="prose">
+<h2>Related Conditions</h2>
+<p>If you're interested in learning more about similar conditions, check out these guides:</p>
+</div>
+<div class="plain-cards">
+  <a class="plain-card" href="https://npcwoods.com/learn/sinus-infection/">
+    <span>Related</span>
+    <strong>Sinus Infection</strong>
+    <p>Learn about bacterial vs. viral sinus infections and when antibiotics actually help.</p>
+  </a>
+  <a class="plain-card" href="https://npcwoods.com/learn/covid-flu/">
+    <span>Related</span>
+    <strong>Cold &amp; Flu</strong>
+    <p>Understand the difference between cold and flu, and what you can do at home.</p>
+  </a>
+</div>
 
-    <!-- Allergy cough vs bronchitis -->
-    <h2 class="section-heading">Can Allergies Cause a Cough, or Is It Bronchitis?</h2>
-    <p class="intro-text">Yes, allergies can cause a cough, usually from post-nasal drip and throat irritation. A few clues help sort it out:</p>
+</article>
+</main>
+<!-- ===== NPCWOODS SITE FOOTER (Shared Component) ===== -->
+<!-- Copy this block into every page before </body> -->
+<!-- Last updated: August 2026 — CSS moved to /assets/css/site.css -->
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-label">Leans Allergies</div>
-        <div class="timeline-text">More throat clearing or a tickle than a heavy chest cough. Clear drainage, sneezing, and itchy eyes, nose, or throat. Worse outside, after mowing or hiking, or first thing in the morning.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Leans Bronchitis</div>
-        <div class="timeline-text">A deeper chest cough that started after a cold, with chest soreness and feeling tired or washed out, and not much itching or sneezing.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Good to Know</div>
-        <div class="timeline-text">Itching points to allergies; bronchitis does not usually make your eyes or nose itchy. Mucus color alone does not prove you need antibiotics. A cough that lasts more than 3 weeks, or keeps getting worse, deserves a closer look.</div>
-      </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <h2 class="section-heading">Frequently Asked Questions</h2>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-button" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active');">
-          <span>Why won't you prescribe antibiotics for bronchitis?</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-text">
-            <p>90% of acute bronchitis is caused by viruses, not bacteria. Antibiotics only work against bacteria. Taking antibiotics for viral bronchitis:</p>
-            <ul style="margin: 12px 0 0 20px;">
-              <li>Doesn't speed recovery or reduce symptoms</li>
-              <li>Causes unnecessary side effects (nausea, diarrhea, allergic reactions)</li>
-              <li>Contributes to antibiotic resistance, a serious public health problem</li>
-            </ul>
-            <p style="margin-top: 12px;">The best medicine is your immune system. We manage your symptoms while your body fights the virus.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-button" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active');">
-          <span>How long will this cough last?</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-text">
-            <p>The cough from acute bronchitis can last <strong>2-3 weeks or longer</strong>, even after the infection clears. This is completely normal.</p>
-            <p style="margin-top: 12px;">Most people see improvement within 7-10 days, but the cough can linger. Your airways have inflammation that needs time to heal. Don't panic if you're still coughing after a week, this is expected.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-button" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active');">
-          <span>Is bronchitis contagious?</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-text">
-            <p>Yes, acute bronchitis is contagious, usually for about a week from when symptoms start. You spread it through respiratory droplets (coughs, sneezes, close contact).</p>
-            <p style="margin-top: 12px;">Practice good hand hygiene and avoid being around very young children, elderly people, or immunocompromised individuals. Stay home for at least the first 3-5 days.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-button" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active');">
-          <span>What's the difference between bronchitis and pneumonia?</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-text">
-            <p><strong>Bronchitis</strong> inflames the airways (bronchial tubes) in your lungs. <strong>Pneumonia</strong> infects the air sacs (alveoli) deeper in your lungs, preventing them from exchanging oxygen efficiently.</p>
-            <p style="margin-top: 12px;">Pneumonia is more serious and typically requires antibiotics. Signs of pneumonia include high fever, difficulty breathing, chest pain, or blood in sputum. If you're concerned, contact us immediately.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-button" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active');">
-          <span>When should I worry about my cough?</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-text">
-            <p>Seek emergency care if you experience:</p>
-            <ul style="margin: 12px 0 0 20px;">
-              <li>Fever over 100.4°F lasting more than 3 days</li>
-              <li>Coughing up blood</li>
-              <li>Severe shortness of breath</li>
-              <li>Chest pain (not just cough soreness)</li>
-              <li>Wheezing that's getting worse</li>
-              <li>Symptoms lasting over 3 weeks</li>
-              <li>If you're at high risk (elderly, COPD, immunocompromised)</li>
-            </ul>
-            <p style="margin-top: 12px;">Otherwise, coughing for 2-3 weeks is normal. Contact us if symptoms aren't improving or you have other concerns.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <h2>Still Have Questions?</h2>
-      <p>Text Chris anytime with questions about your recovery. We're here to help.</p>
-      <a href="sms:4806394722?body=Hi%20Chris%2C%20I%20have%20a%20question%20about%20my%20bronchitis%20recovery">Text Us Now</a>
-      <div class="cta-signature">. Chris</div>
-    </section>
-
-    <!-- Citations -->
-    <div class="citations">
-      <h3>Citations & References</h3>
-      <ol>
-        <li><a href="https://www.aafp.org/" target="_blank">American Academy of Family Physicians (AAFP)</a>, Guidelines on acute bronchitis and antibiotic stewardship</li>
-        <li><a href="https://www.cdc.gov/" target="_blank">Centers for Disease Control and Prevention (CDC)</a>, Appropriate antibiotic use recommendations</li>
-        <li><a href="https://www.acpjc.org/" target="_blank">American College of Physicians (ACP)</a>, Evidence-based clinical practice guidelines</li>
-        <li><a href="https://www.cochranelibrary.com/" target="_blank">Cochrane Review</a>, Systematic review of treatments for acute bronchitis</li>
-        <li><a href="https://www.uptodate.com/" target="_blank">UpToDate</a>, Medical information and clinical decision support</li>
-      </ol>
-    </div>
-
-    <!-- Related Conditions -->
-    <h2 class="section-heading">Related Conditions</h2>
-    <p class="intro-text">If you're interested in learning more about similar conditions, check out these guides:</p>
-    <div class="card-grid" style="margin-bottom: 48px;">
-      <div class="card">
-        <div class="card-icon">👃</div>
-        <div class="card-title">Sinus Infection</div>
-        <div class="card-text">Learn about bacterial vs. viral sinus infections and when antibiotics actually help.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🌡️</div>
-        <div class="card-title">Cold & Flu</div>
-        <div class="card-text">Understand the difference between cold and flu, and what you can do at home.</div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- SHARED FOOTER -->
-  <!-- footer CSS: now in /assets/css/site.css -->
-
-  <footer class="npc-site-footer">
+<footer class="npc-site-footer">
   <div class="npc-footer-inner">
     <div class="npc-footer-grid">
 
@@ -1639,6 +1231,7 @@
           <li><a href="https://npcwoods.com/learn/">Patient Education</a></li>
           <li><a href="https://npcwoods.com/medications/">Medications</a></li>
           <li><a href="https://npcwoods.com/blog/">Blog</a></li>
+          <li><a href="https://npcwoods.com/employers/">For Employers</a></li>
           <li><a href="https://npcwoods.com/sitemap/">Site Map</a></li>
         </ul>
       </div>
@@ -1654,12 +1247,13 @@
 
     <div class="npc-footer-trust">
       <a href="https://www.legitscript.com/websites/?checker_keywords=npcwoods.com" target="_blank" title="Verify LegitScript Approval for www.npcwoods.com" style="display:inline-block; margin-bottom:12px;">
-        <img src="https://static.legitscript.com/seals/45807860.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" />
+        <img src="/assets/img/legitscript-seal.png" alt="Verify Approval for www.npcwoods.com" width="73" height="79" loading="lazy" decoding="async" />
       </a><br>
       Reviewed by Chris Woods, MSN, APRN, FNP-C, AGACNP-BC. Double Board-Certified Nurse Practitioner<br>
       Licensed in 14 states, including Florida by telehealth registration (AZ, CO, CT, GA, ID, IA, MT, NV, NM, NC, OR, UT, WA, plus FL TPAN3355).<br>
-      NPI: 1285125468 &bull; Mailing: Scottsdale, AZ &bull; Phone: (480) 639-4722<br>
-      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
+      Florida telehealth provider registration TPAN3355. <a href="https://mqa-internet.doh.state.fl.us/MQASearchServices/Telehealth/LicenseVerification?LicInd=4155&amp;Procde=9603" target="_blank" rel="noopener">Verify with the Florida Department of Health</a><br>
+      NPI: 1285125468 &bull; Mailing address: 3550 N Goldwater Blvd #1119, Scottsdale, AZ 85251 &bull; Phone: (480) 639-4722<br>
+      <a href="https://npcwoods.com/about/">About Chris</a> &bull; <a href="https://npiregistry.cms.hhs.gov/" target="_blank" rel="noopener">Verify NPI</a> &bull; <a href="https://npcwoods.com/medical-disclaimer/">Medical Disclaimer</a> &bull; <a href="https://npcwoods.com/privacy-policy/">Privacy Policy</a> &bull; <a href="https://npcwoods.com/notice-of-privacy-practices/">Notice of Privacy Practices</a> &bull; <a href="https://npcwoods.com/terms-of-service/">Terms of Service</a> &bull; <span class="npc-footer-hipaa-badge">HIPAA Compliant</span>
       <p class="npc-footer-emergency">Text-based telehealth is not for emergencies. If you have chest pain, trouble breathing, or other emergency symptoms, call 911.</p>
     </div>
   </div>
@@ -1670,7 +1264,9 @@
     "@type": "MedicalBusiness",
     "@id": "https://npcwoods.com/#medical-business",
     "name": "NPCWoods",
-    "alternateName": "NPCWoods Telemedicine",
+    "alternateName": ["NPCWoods Telemedicine", "Nurse Practitioner Chris Woods"],
+    "founder": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
+    "employee": { "@type": "Person", "@id": "https://npcwoods.com/#chris-woods", "name": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC" },
     "image": "https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp",
     "telephone": "+14806394722",
     "url": "https://npcwoods.com",
@@ -1692,45 +1288,6 @@
   }
   </script>
 </footer>
-
-  <!-- Floating CTA for mobile -->
-  <div class="floating-cta">
-    <a href="sms:4806394722?body=Hi%20Chris%2C%20I%27d%20like%20to%20start%20a%20%2459%20visit">Text Chris, $59 Visit</a>
-  </div>
-
-<!-- NPCWoods Contact Save -->
-<!-- save-contact CSS: now in /assets/css/site.css -->
-
-<div class="npc-save-wrap" id="npcSaveWrap">
-  <!-- Collapsed: circle icon button -->
-  <button class="npc-save-btn" id="npcSaveBtn" aria-label="Save contact info">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
-    <span class="npc-save-dot"></span>
-  </button>
-
-  <!-- Expanded card -->
-  <div class="npc-save-card" id="npcSaveCard">
-    <button class="npc-save-card-close" id="npcSaveDismiss" aria-label="Dismiss">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-    </button>
-    <div class="npc-save-card-profile">
-      <img class="npc-save-card-avatar" src="https://npcwoods.com/wp-content/uploads/2026/04/chris-woods-headshot-160.webp" alt="Chris Woods" width="48" height="48" loading="lazy">
-      <div>
-        <div class="npc-save-card-name">Chris Woods, NP</div>
-        <div class="npc-save-card-title">NPCWoods Telemedicine</div>
-      </div>
-    </div>
-    <div class="npc-save-card-msg"><strong>Not sick right now?</strong> Save my number for later, just search "sick guy" in your contacts when you need me.</div>
-    <a class="npc-save-card-dl" id="npcSaveDownload" href="/chris-woods.vcf" download="Chris Woods - NPCWoods.vcf">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>Save Contact
-    </a>
-    <div class="npc-save-card-hint">Saves to your phone contacts, search "sick guy" or "urgent care" anytime</div>
-  </div>
-</div>
-
-<!-- save-contact JS: now in /assets/js/site.js -->
-<!-- END NPCWoods Contact Save -->
-
-<script src="/assets/js/site.js" defer></script>
+<!-- ===== END SITE FOOTER ===== -->
 </body>
 </html>
