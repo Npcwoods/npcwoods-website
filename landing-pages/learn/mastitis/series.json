@@ -1,0 +1,102 @@
+{
+  "id": "mastitis",
+  "name": "Mastitis Explained",
+  "kicker": "Mastitis series",
+  "tagline": "A plain-talk series from Chris Woods, NP. One story. Eight stops.",
+  "reviewed": "2026-11-24",
+  "reviewed_display": "November 24, 2026",
+  "accent": {
+    "name": "red",
+    "hex": "#B42318"
+  },
+  "ghost_base": "drop",
+  "og_alt_suffix": "Chris Woods, NP, with a soft milk-drop outline",
+  "license_line": "14 states, including Florida by telehealth registration (TPAN3355)",
+  "sms": {
+    "number": "4806394722",
+    "display": "(480) 639-4722",
+    "prefill": "Hi Chris, I'm breastfeeding and think I might have mastitis. I'd like a $59 text visit."
+  },
+  "cta_band": {
+    "heading": "Sore, red, and worn out? Text me.",
+    "body": "Tell me how many days since the birth, which side hurts, your temperature, and how you feel overall. I read it myself and tell you if this fits a text visit or needs in-person care. You only pay the $59 if I can treat you by text."
+  },
+  "hub": {
+    "slug": "",
+    "path": "/learn/mastitis/",
+    "title": "Mastitis Explained",
+    "nav_label": "The big picture",
+    "episode": 1
+  },
+  "one_pager": {
+    "path": "/mastitis-treatment/",
+    "title": "Mastitis treatment by text",
+    "nav_label": "$59 text visit"
+  },
+  "stops": [
+    {
+      "slug": "",
+      "path": "/learn/mastitis/",
+      "title": "Mastitis Explained",
+      "nav_label": "The big picture",
+      "episode": 1,
+      "kind": "hub"
+    },
+    {
+      "slug": "how-it-starts",
+      "path": "/learn/mastitis/how-it-starts/",
+      "title": "How mastitis starts",
+      "nav_label": "How it starts",
+      "episode": 2,
+      "kind": "stop"
+    },
+    {
+      "slug": "what-it-feels-like",
+      "path": "/learn/mastitis/what-it-feels-like/",
+      "title": "What mastitis feels like",
+      "nav_label": "What it feels like",
+      "episode": 3,
+      "kind": "stop"
+    },
+    {
+      "slug": "lookalikes",
+      "path": "/learn/mastitis/lookalikes/",
+      "title": "Lookalikes: engorgement, clogs, and more",
+      "nav_label": "Lookalikes",
+      "episode": 4,
+      "kind": "stop"
+    },
+    {
+      "slug": "comfort-at-home",
+      "path": "/learn/mastitis/comfort-at-home/",
+      "title": "Comfort at home: what helps, what to skip",
+      "nav_label": "Comfort at home",
+      "episode": 5,
+      "kind": "stop"
+    },
+    {
+      "slug": "red-flags",
+      "path": "/learn/mastitis/red-flags/",
+      "title": "Red flags: when mastitis is an emergency",
+      "nav_label": "Red flags",
+      "episode": 6,
+      "kind": "stop"
+    },
+    {
+      "slug": "keep-feeding",
+      "path": "/learn/mastitis/keep-feeding/",
+      "title": "Can I keep breastfeeding?",
+      "nav_label": "Keep feeding",
+      "episode": 7,
+      "kind": "stop"
+    },
+    {
+      "slug": "text-vs-in-person",
+      "path": "/learn/mastitis/text-vs-in-person/",
+      "title": "Text visit vs in person: who fits",
+      "nav_label": "Text vs in person",
+      "episode": 8,
+      "kind": "stop"
+    }
+  ]
+}

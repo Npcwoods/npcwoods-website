@@ -1,0 +1,149 @@
+{
+ "version": "20261124",
+ "asset_base": "/learn/mastitis/assets/",
+ "cutout": {
+  "src600": "/assets/img/people/chris-cutout-600.webp",
+  "src900": "/assets/img/people/chris-cutout-900.webp",
+  "width": 900,
+  "height": 1258,
+  "alt": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling with a stethoscope"
+ },
+ "pages": {
+  "hub": {
+   "ghost": "hub",
+   "stickers": [
+    "Hey! I'm Chris",
+    "Not your fault. Let's fix it 💛"
+   ],
+   "figures": [
+    {
+     "src": "mastitis-spectrum.svg",
+     "after_section": 0,
+     "alt": "The mastitis spectrum from mild to serious: narrowed duct, inflammatory mastitis, bacterial mastitis, and abscess.",
+     "caption": "Mastitis is a spectrum. Most cases stay on the left side of it.",
+     "height": 545,
+     "width": 640
+    }
+   ]
+  },
+  "how-it-starts": {
+   "ghost": "rings",
+   "stickers": [
+    "Swelling pinches the straws",
+    "Gentle beats hard 🧊"
+   ],
+   "figures": [
+    {
+     "src": "swelling-loop.svg",
+     "after_section": 0,
+     "alt": "Swelling loop: tissue swells, ducts narrow, milk slows, pressure builds, more swelling. Calming the swelling breaks the loop.",
+     "caption": "Calm the swelling and the loop starts to break.",
+     "height": 540,
+     "width": 640
+    }
+   ]
+  },
+  "what-it-feels-like": {
+   "ghost": "wave",
+   "stickers": [
+    "Flu feeling + sore spot",
+    "Take your temp 🌡️"
+   ],
+   "figures": [
+    {
+     "src": "symptom-map.svg",
+     "after_section": 1,
+     "alt": "Two columns. In the breast: warm, tender wedge, red or darker skin, firm area, pain while feeding. In the body: fever 100.4 or higher, chills, aches, wiped out.",
+     "caption": "One sore spot plus flu-like aches is the classic pair.",
+     "height": 323,
+     "width": 640
+    }
+   ]
+  },
+  "lookalikes": {
+   "ghost": "checkx",
+   "stickers": [
+    "Both sides? Often engorgement",
+    "One hot wedge? Think mastitis"
+   ],
+   "figures": [
+    {
+     "src": "lookalikes-table.svg",
+     "after_section": 0,
+     "alt": "Comparison: engorgement affects both sides early on; narrowed duct is a tender lump without fever; mastitis is a hot red wedge with fever; abscess is a lump that stays or grows and needs an ultrasound.",
+     "caption": "Quick sort for a sore breast while feeding.",
+     "height": 428,
+     "width": 640
+    }
+   ]
+  },
+  "comfort-at-home": {
+   "ghost": "path",
+   "stickers": [
+    "Cold, not hot 🧊",
+    "Feed like normal"
+   ],
+   "figures": [
+    {
+     "src": "comfort-do-skip.svg",
+     "after_section": 1,
+     "alt": "Two columns. Helps: feed on demand, cold packs, feather-light strokes toward the armpit, supportive bra, rest. Skip: deep massage, long heat, extra pumping, stopping feeds suddenly.",
+     "caption": "Gentle care that calms swelling. General education, not a personal plan.",
+     "height": 396,
+     "width": 640
+    }
+   ]
+  },
+  "red-flags": {
+   "ghost": "warning",
+   "stickers": [
+    "103°F? Go now",
+    "The ER beats a text here"
+   ],
+   "figures": [
+    {
+     "src": "red-flags-er.svg",
+     "after_section": 0,
+     "alt": "Red warning list: fever 103 or higher, spreading red streaks, pus or a growing lump, shaking chills, racing heart, faint or confused. Go to the ER or call 911.",
+     "caption": "Any of these? Skip the text. Go to the ER or call 911.",
+     "height": 453,
+     "width": 640
+    }
+   ]
+  },
+  "keep-feeding": {
+   "ghost": "loop",
+   "stickers": [
+    "Your milk is safe 🍼",
+    "Keep your rhythm"
+   ],
+   "figures": [
+    {
+     "src": "feeding-tips.svg",
+     "after_section": 1,
+     "alt": "Feeding tips: start on the comfortable side, point the baby's chin toward the sore spot, feed on demand, no extra pumping, hand express just for comfort.",
+     "caption": "Small changes that make feeding easier while you heal.",
+     "height": 428,
+     "width": 640
+    }
+   ]
+  },
+  "text-vs-in-person": {
+   "ghost": "split",
+   "stickers": [
+    "Right door, right care",
+    "Text me the story 📲"
+   ],
+   "figures": [
+    {
+     "src": "text-vs-in-person.svg",
+     "after_section": 1,
+     "alt": "Two doors. Text visit: one sore red area, fever under 103, eating and drinking, no pus or lump. In person or ER: any red flag, a growing lump, not better after 48 hours, not breastfeeding.",
+     "caption": "Where your story fits. When in doubt, go in.",
+     "height": 376,
+     "width": 640
+    }
+   ]
+  }
+ }
+}

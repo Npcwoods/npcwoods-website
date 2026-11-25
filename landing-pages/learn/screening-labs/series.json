@@ -1,0 +1,110 @@
+{
+  "id": "screening-labs",
+  "name": "Screening Labs Explained",
+  "kicker": "Screening labs series",
+  "tagline": "A plain-talk series from Chris Woods, NP. One story. Eight stops.",
+  "reviewed": "2026-11-24",
+  "reviewed_display": "November 24, 2026",
+  "accent": {
+    "name": "blue",
+    "hex": "#0369A1"
+  },
+  "brand": {
+    "ink": "#1A1A2E",
+    "blue": "#2563EB",
+    "cream": "#F6F3EE",
+    "accent_soft": "#E0F0FA",
+    "accent_wash": "#F0F8FD",
+    "accent_deep": "#0C4A6E"
+  },
+  "ghost_base": "vial",
+  "og_alt_suffix": "Chris Woods, NP, with a lab tube outline",
+  "license_line": "14 states, including Florida by telehealth registration (TPAN3355)",
+  "sms": {
+    "number": "4806394722",
+    "display": "(480) 639-4722",
+    "prefill": "Hi Chris, I have a question about screening labs and want a $59 text visit."
+  },
+  "cta_band": {
+    "heading": "Want a second set of eyes on your labs?",
+    "body": "Text me your age, your family history, how you feel, and what you want checked. I read it myself and tell you what makes sense, what can wait, and what needs an in-person visit. You only pay the $59 if a text visit is the right fit."
+  },
+  "hub": {
+    "slug": "",
+    "path": "/learn/screening-labs/",
+    "title": "Screening Labs Explained",
+    "nav_label": "The big picture",
+    "episode": 1
+  },
+  "one_pager": {
+    "path": "/screening-labs/",
+    "title": "Screening labs by text",
+    "nav_label": "$59 text visit"
+  },
+  "stops": [
+    {
+      "slug": "",
+      "path": "/learn/screening-labs/",
+      "title": "Screening Labs Explained",
+      "nav_label": "The big picture",
+      "episode": 1,
+      "kind": "hub"
+    },
+    {
+      "slug": "metabolic-panel",
+      "path": "/learn/screening-labs/metabolic-panel/",
+      "title": "The metabolic panel: kidneys, liver, salts, and sugar",
+      "nav_label": "Metabolic panel",
+      "episode": 2,
+      "kind": "stop"
+    },
+    {
+      "slug": "cholesterol",
+      "path": "/learn/screening-labs/cholesterol/",
+      "title": "Cholesterol: the fats riding in your blood",
+      "nav_label": "Cholesterol",
+      "episode": 3,
+      "kind": "stop"
+    },
+    {
+      "slug": "a1c",
+      "path": "/learn/screening-labs/a1c/",
+      "title": "A1c: your three-month sugar report card",
+      "nav_label": "A1c",
+      "episode": 4,
+      "kind": "stop"
+    },
+    {
+      "slug": "thyroid",
+      "path": "/learn/screening-labs/thyroid/",
+      "title": "Thyroid tests: the body's thermostat",
+      "nav_label": "Thyroid",
+      "episode": 5,
+      "kind": "stop"
+    },
+    {
+      "slug": "cbc",
+      "path": "/learn/screening-labs/cbc/",
+      "title": "The CBC: counting your blood cells",
+      "nav_label": "CBC",
+      "episode": 6,
+      "kind": "stop"
+    },
+    {
+      "slug": "who-and-how-often",
+      "path": "/learn/screening-labs/who-and-how-often/",
+      "title": "Who should get labs, and how often",
+      "nav_label": "Who and how often",
+      "episode": 7,
+      "kind": "stop"
+    },
+    {
+      "slug": "reading-results",
+      "path": "/learn/screening-labs/reading-results/",
+      "title": "How to read your lab results",
+      "nav_label": "Reading results",
+      "episode": 8,
+      "kind": "stop"
+    }
+  ]
+}

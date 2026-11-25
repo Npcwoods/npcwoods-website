@@ -1,0 +1,75 @@
+/* ===== Editorial hero + body figures (2026-10-08) =====
+   Explainer pages only (hub + stops). The offer page does not load this.
+   Matches the GLP-1 / UTI explainer hero: real clinician cutout on the
+   right, two iMessage bubbles kept off the face, a topic ghost graphic
+   behind the headline. Nothing starts hidden. No entrance animations. */
+body.series-hub .hero.hero-art,
+body.series-stop .hero.hero-art {
+  padding: 0;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.hero-ghost {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto;
+  padding: 56px 40px 0;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
+  align-items: end; min-height: 560px;
+}
+.hero-copy { align-self: center; padding-bottom: 56px; min-width: 0; }
+.hero-copy .lede { max-width: 34rem; }
+.hero-photo { position: relative; justify-self: center; align-self: end; }
+.hero-photo img {
+  display: block; height: 520px; width: auto; max-width: none;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55));
+}
+.hero-bubble {
+  position: absolute; z-index: 3;
+  color: #fff; font-weight: 700; font-size: 15px; line-height: 1.25;
+  padding: 11px 16px; border-radius: 20px 20px 20px 6px;
+  max-width: 200px; white-space: normal;
+  box-shadow: 0 12px 28px rgba(0,0,0,.32);
+}
+.hero-bubble.hb-black {
+  background: #000; border: 1.5px solid #fff;
+  top: 6px; left: -92px; transform: rotate(-4deg);
+}
+.hero-bubble.hb-blue {
+  background: #007AFF; border: 1.5px solid #fff;
+  bottom: 96px; left: -104px; transform: rotate(3deg);
+  border-radius: 20px 20px 6px 20px;
+  box-shadow: 0 12px 28px rgba(0,122,255,.28), 0 8px 20px rgba(0,0,0,.28);
+}
+@media (max-width: 900px) and (min-width: 641px) {
+  .hero-inner { padding: 48px 28px 0; min-height: 0; }
+  .hero-photo img { height: 420px; }
+  .hero-bubble.hb-black { left: -70px; }
+  .hero-bubble.hb-blue { left: -80px; bottom: 70px; }
+}
+@media (max-width: 640px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 34px 20px 0; min-height: 0; gap: 0; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-photo { margin: 64px auto 0; }
+  .hero-photo img { height: 360px; }
+  .hero-bubble { font-size: 13px; padding: 9px 12px; max-width: 168px; }
+  .hero-bubble.hb-black { top: -50px; left: -18px; }
+  .hero-bubble.hb-blue { bottom: 30px; left: -18px; }
+}
+@media (max-width: 360px) { .hero-photo img { height: 320px; } }
+
+/* Body figures */
+.art-fig { margin: 32px auto; max-width: 640px; }
+.art-fig img { width: 100%; height: auto; display: block; border-radius: 18px; }
+.art-fig figcaption {
+  margin-top: 10px; font-size: .92rem; line-height: 1.45; color: var(--body);
+  text-align: center;
+}
+body.series-hub .art-fig {
+  background: #fff; border-radius: 24px; padding: 14px 14px 16px;
+  box-shadow: var(--shadow);
+}
+body.series-stop .art-fig img { box-shadow: 0 0 0 1px var(--line); }
