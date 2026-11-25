@@ -1078,6 +1078,25 @@ img{display:block;max-width:100%}
 /* condition-offer additions on the gold UTI lander look */
 .symptom-icon.txt{width:auto;min-width:34px;padding:0 7px;font-size:11px;font-weight:800;letter-spacing:.02em;color:var(--blue-bright)}
 .drug-card .brand{display:none}
+/* WCAG AA contrast (dark bands) */
+.stat-l,.vs-head p,.alt-bg .section-inner > p,#pricing .section-inner > p,.clinician-line,.clinician-line strong,.clinician-line time,.eeat-byline time,.reviews-head p,.vs-feature,.vs-them{color:#a1a1aa}
+.eeat-byline p[style*="--muted"],.alt-bg .section-inner > p[style*="--muted"],#pricing .section-inner > p[style*="--muted"]{color:#a1a1aa!important}
+/* WCAG AA contrast (light bands) */
+#compare .section-kicker,#er-warning .section-kicker,#explained .section-kicker,#faq .section-kicker,#how-it-works .section-kicker,#what-is .section-kicker,#who-its-for .section-kicker,.section-white .section-kicker{color:#0058b0}
+.bento-card p a{color:#0058b0}
+.er-box h3,.fit-bad .fit-label{color:#c0262d}
+.fit-good .fit-label{color:#12784a}
+.section .compare-table .treat-us,.treat-us{color:#12784a!important}
+.section .compare-table .treat-maybe,.treat-maybe{color:#9a5b00!important}
+.section .compare-table .treat-er,.treat-er{color:#55555c!important}
+.explained-card strong{color:#a35c00}
+.explained-card span,.symptom-card span{color:#55555c}
+.symptom-icon.txt{color:#004f9e}
+.cta-section .fine,.fine{color:#fff}
+/* shared footer: AA contrast + h3 column headings (these pages only; site.css untouched) */
+.npc-footer-bottom,.npc-footer-bottom span,.npc-footer-bottom a,.npc-footer-trust,.npc-footer-trust a,.npc-footer-emergency{color:#a3a3b8!important}
+.npc-footer-bottom a:hover,.npc-footer-trust a:hover{color:#fff!important}
+.npc-footer-col h3.npc-footer-h{font-family:inherit;font-size:.75rem;font-weight:700;line-height:inherit;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin:0 0 16px}
 
 </style>
 </head>
@@ -1624,7 +1643,7 @@ img{display:block;max-width:100%}
 
       <!-- Conditions Column -->
       <div class="npc-footer-col">
-        <h4>Conditions We Treat</h4>
+        <h3 class="npc-footer-h">Conditions We Treat</h3>
         <ul>
           <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
           <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
@@ -1643,7 +1662,7 @@ img{display:block;max-width:100%}
 
       <!-- States Column -->
       <div class="npc-footer-col">
-        <h4>States We Serve</h4>
+        <h3 class="npc-footer-h">States We Serve</h3>
         <ul>
           <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
           <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
@@ -1664,7 +1683,7 @@ img{display:block;max-width:100%}
 
       <!-- Quick Links Column -->
       <div class="npc-footer-col">
-        <h4>Quick Links</h4>
+        <h3 class="npc-footer-h">Quick Links</h3>
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>

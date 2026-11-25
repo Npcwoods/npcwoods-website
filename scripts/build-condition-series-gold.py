@@ -324,7 +324,18 @@ SERIES_EXTRA_CSS = """
 .ex-split .ex-fig{max-width:none}
 .ex-card-fig{padding:0;background:transparent;box-shadow:none;border-radius:0}
 .ex-fig figcaption{padding:0 4px}
+.ex-night .ex-card-fig figcaption{color:#c7c7ce}
 }
+/* WCAG AA contrast */
+.ex-bub.you p{background:#0062cc}
+.gh-sticker,.gh-sticker::after{background:#0062cc}
+.ex-tldr.on-cream h2 em,.hub-intro .ex-tldr h2 em{color:#b45309}
+.hub-cta .fine{opacity:1;color:#fff}
+.ex-cta #cta-title span,.hub-cta #cta-title span{color:#ffe1a3}
+/* shared footer: AA contrast + h3 column headings (these pages only; site.css untouched) */
+.npc-footer-bottom,.npc-footer-bottom span,.npc-footer-bottom a,.npc-footer-trust,.npc-footer-trust a,.npc-footer-emergency{color:#a3a3b8!important}
+.npc-footer-bottom a:hover,.npc-footer-trust a:hover{color:#fff!important}
+.npc-footer-col h3.npc-footer-h{font-family:inherit;font-size:.75rem;font-weight:700;line-height:inherit;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin:0 0 16px}
 """
 
 
@@ -463,7 +474,32 @@ OFFER_EXTRA_CSS = """
 /* condition-offer additions on the gold UTI lander look */
 .symptom-icon.txt{width:auto;min-width:34px;padding:0 7px;font-size:11px;font-weight:800;letter-spacing:.02em;color:var(--blue-bright)}
 .drug-card .brand{display:none}
+/* WCAG AA contrast (dark bands) */
+.stat-l,.vs-head p,.alt-bg .section-inner > p,#pricing .section-inner > p,.clinician-line,.clinician-line strong,.clinician-line time,.eeat-byline time,.reviews-head p,.vs-feature,.vs-them{color:#a1a1aa}
+.eeat-byline p[style*="--muted"],.alt-bg .section-inner > p[style*="--muted"],#pricing .section-inner > p[style*="--muted"]{color:#a1a1aa!important}
+/* WCAG AA contrast (light bands) */
+#compare .section-kicker,#er-warning .section-kicker,#explained .section-kicker,#faq .section-kicker,#how-it-works .section-kicker,#what-is .section-kicker,#who-its-for .section-kicker,.section-white .section-kicker{color:#0058b0}
+.bento-card p a{color:#0058b0}
+.er-box h3,.fit-bad .fit-label{color:#c0262d}
+.fit-good .fit-label{color:#12784a}
+.section .compare-table .treat-us,.treat-us{color:#12784a!important}
+.section .compare-table .treat-maybe,.treat-maybe{color:#9a5b00!important}
+.section .compare-table .treat-er,.treat-er{color:#55555c!important}
+.explained-card strong{color:#a35c00}
+.explained-card span,.symptom-card span{color:#55555c}
+.symptom-icon.txt{color:#004f9e}
+.cta-section .fine,.fine{color:#fff}
+/* shared footer: AA contrast + h3 column headings (these pages only; site.css untouched) */
+.npc-footer-bottom,.npc-footer-bottom span,.npc-footer-bottom a,.npc-footer-trust,.npc-footer-trust a,.npc-footer-emergency{color:#a3a3b8!important}
+.npc-footer-bottom a:hover,.npc-footer-trust a:hover{color:#fff!important}
+.npc-footer-col h3.npc-footer-h{font-family:inherit;font-size:.75rem;font-weight:700;line-height:inherit;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin:0 0 16px}
 """
+
+
+def page_footer(footer: str) -> str:
+    """Shared footer with its column headings as h3 (the page's last section heading
+    is an h2, so h4 skips a level). Done here so the site-wide snippet stays as is."""
+    return re.sub(r"<h4>(.*?)</h4>", r'<h3 class="npc-footer-h">\1</h3>', footer)
 
 
 def sms_cta(cta: str, style: str = "") -> str:
@@ -820,6 +856,7 @@ def main() -> None:
     header = (ROOT / "html" / "shared" / "header-snippet.html").read_text(encoding="utf-8")
     footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8")
     ccs.check_footer(footer)
+    footer = page_footer(footer)
     for index, stop in enumerate(series["stops"]):
         out = sdir / stop["slug"] / "index.html" if stop["slug"] else sdir / "index.html"
         ccs.write(out, build_series_page(series, content, gold, art, header, footer, stop, index))

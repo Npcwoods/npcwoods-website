@@ -74,6 +74,7 @@ OFFER_NEEDLES = ('class="hero-inner hero-split"', 'class="stats-band"', 'class="
 class ConditionSeriesTest(unittest.TestCase):
     def test_gold_structure_schema_and_footer(self):
         footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8").strip()
+        footer = re.sub(r"<h4>(.*?)</h4>", r'<h3 class="npc-footer-h">\1</h3>', footer)  # h3 on these pages
         for sid in SERIES_IDS:
             ps = pages(sid)
             for i, path in enumerate(ps):
