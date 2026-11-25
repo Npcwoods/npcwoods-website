@@ -68,11 +68,37 @@ def _gold_chunk(start_marker: str, *, end: str = "</section>") -> str:
     return text[s:e + len(end)]
 
 
+RCARD_RE = re.compile(r'<div class="rcard">.*?<span class="rcard-source">[^<]*</span></div></div>', re.S)
+# Chris 2026-11-24 (t858u): "Trim it to general reviews please." Drop any card that names a
+# condition, symptom, body part, or medicine. Kept cards are copied from the gold lander verbatim.
+CONDITION_RE = re.compile(
+    r"\b(uti|utis|bladder|urinary|kidney|cough\w*|cold|flu|fever|sinus|strep|throat|ear|infection\w*|rash|"
+    r"yeast|tooth|teeth|dental|pink ?eye|stye|allerg\w*|asthma|weight|glp|antibiotic\w*|\w+cillin|"
+    r"macrobid|bactrim|keflex|ozempic|wegovy|mounjaro|semaglutide|tirzepatide)\b", re.I)
+
+
 def gold_reviews() -> str:
+    """The gold review carousel, trimmed to general reviews (no condition/medicine talk).
+    Each kept card is byte-for-byte from the gold lander; the set is doubled for the loop."""
     m = re.search(r'<!-- REVIEWS -->\s*(<section class="reviews">.*?</section>)', GOLD_LANDER.read_text(encoding="utf-8"), re.S)
     if not m:
         raise SystemExit("gold lander is missing the reviews section")
-    return m.group(1)
+    section = m.group(1)
+    kept: list[str] = []
+    quotes: list[str] = []
+    for card in RCARD_RE.findall(section):
+        q = re.search(r'<p class="rcard-text">(.*?)</p>', card, re.S)
+        quote = (q.group(1) if q else re.sub(r"<[^>]+>", " ", card)).strip().strip('"').rstrip('.')
+        # skip the loop's repeats, including the gold loop's shortened repeat of a longer review
+        if CONDITION_RE.search(quote) or any(quote in old for old in quotes):
+            continue
+        kept.append(card)
+        quotes.append(quote)
+    if len(kept) < 3:
+        raise SystemExit(f"only {len(kept)} general reviews left in the gold carousel")
+    head = section[: section.index('<div class="scroll-track">') + len('<div class="scroll-track">')]
+    track = "".join(f"\n      {c}" for c in kept + kept)
+    return f"{head}{track}\n    </div>\n  </div>\n</section>"
 
 
 def gold_atf_style() -> str:

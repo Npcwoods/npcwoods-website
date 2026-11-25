@@ -29,7 +29,7 @@ series = {
     "license_line": LIC,
     "sms": {"number": "4806394722", "display": "(480) 639-4722",
             "prefill": "Hi Chris, I have a question about screening labs and want a $59 text visit."},
-    "cta_band": {"heading": "Want a second set of eyes on your labs?",
+    "cta_band": {"heading": "Wondering which labs you need?",
                  "body": "Text me your age, your family history, how you feel, and what you want checked. I read it myself and tell you what makes sense, what can wait, and what needs an in-person visit. The $59 covers my consultation and your lab order, and I walk you through the results by text. The lab bills its own fee."},
     "hub": {"slug": "", "path": HUB, "title": "Screening Labs Explained", "nav_label": "The big picture", "episode": 1},
     "one_pager": {"path": "/screening-labs/", "title": "Screening labs by text", "nav_label": "$59 text visit"},
@@ -288,7 +288,7 @@ C["reading-results"] = {
  "meta_description": "Reference ranges, H and L flags, and what to do when a number is off. Chris Woods, NP, explains how to read your blood work without panicking.",
  "h1": "How to read your lab results",
  "lede": "Results often hit your phone before anyone explains them. A wall of numbers with red H and L flags can feel scary. Most of the time, it is less dramatic than it looks. Here is how I read the page.",
- "bubbles": b("My portal shows six red flags. Should I freak out?", "Not yet. Most flags are a hair outside the range. Send me the page and your story. We go line by line."),
+ "bubbles": b("My results came back with six red flags. Should I freak out?", "Not yet. Most flags are a hair outside the range. For labs I ordered, we go line by line together."),
  "sections": [
   prose("What a reference range really is",
    "Each lab tests a big group of healthy people. The middle 95% becomes the normal range. That means 1 in 20 healthy people lands just outside it on any single test, just by chance. Run 20 tests and a flag or two is expected.",
@@ -306,7 +306,7 @@ C["reading-results"] = {
    "If a lab calls you about a critical result, or you have chest pain, trouble breathing, fainting, confusion, or heavy bleeding, call 911 or go to the ER now."),
  ],
  "faqs": [
-  {"q": "Can you look at labs another clinic ordered?", "a": "Yes. Text me the results and your story. I will explain what they mean in plain words and tell you if anything needs follow-up."},
+  {"q": "Can you look at labs another clinic ordered?", "a": "No. I only walk through results for labs I ordered. For labs another clinic ordered, the clinic that ordered them is the right place to ask."},
   {"q": "Why do two labs give different ranges?", "a": "Different machines and methods. Always read your number against the range printed on your own report."},
   {"q": "Is a result in range always fine?", "a": "Usually, but a number climbing toward the edge over a few years is worth noticing. Trends matter."},
  ],
@@ -331,9 +331,9 @@ C["one_pager"] = {
  ],
  "fits": {
   "yes_h": "Who often fits a text",
-  "yes": ["Adults who feel well and want a screening plan", "Due for sugar or cholesterol checks", "Mild, steady symptoms like being tired for weeks", "Already have results and want them explained", "Physically in a state I can treat"],
+  "yes": ["Adults who feel well and want a screening plan", "Due for sugar or cholesterol checks", "Mild, steady symptoms like being tired for weeks", "Want a short, sensible lab list, not a long menu", "Physically in a state I can treat"],
   "no_h": "Who needs another door",
-  "no": ["Chest pain, fainting, or trouble breathing: call 911", "A lab called you about a critical result", "Ongoing care for a long-term condition", "A new lump that needs a hands-on exam", "Children (their regular clinic is the right place)"],
+  "no": ["Chest pain, fainting, or trouble breathing: call 911", "Labs another clinic ordered: please ask the clinic that ordered them", "A lab called you about a critical result", "Ongoing care for a long-term condition", "A new lump that needs a hands-on exam", "Children (their regular clinic is the right place)"],
  },
  "plain_cards": [
   {"kicker": "Stop 1", "title": "The big picture", "text": "What five common blood tests check.", "href": HUB},
@@ -347,7 +347,7 @@ C["one_pager"] = {
   {"q": "Which labs can you order?", "a": "Common screening labs like a metabolic panel, cholesterol, A1c, thyroid, and a blood count, when they make sense for you."},
   {"q": "Do I need to fast?", "a": "Only for some tests. Your lab order will say. Cholesterol and A1c usually do not need fasting."},
   {"q": "What states?", "a": "14 states, including Florida by telehealth registration (TPAN3355). You must be in a state I can treat at the time of the visit."},
-  {"q": "Can you replace my regular clinic?", "a": "No. I am a good place to start or to get a second set of eyes. Ongoing care, a hands-on exam, and cancer screenings still need a regular clinic."},
+  {"q": "Can you replace my regular clinic?", "a": "No. I am a good place to start. Ongoing care, a hands-on exam, and cancer screenings still need a regular clinic."},
   {"q": "What if I feel really sick?", "a": "Chest pain, trouble breathing, fainting, or confusion is a 911 call, not a lab order."},
  ],
  "cta_body": "Tell me what you want checked and why. I will tell you what makes sense and what can wait.",
@@ -372,7 +372,7 @@ art = {
     {"src": "cbc-crews.svg", "width": 640, "height": 480, "after_section": 0, "alt": "Three columns: red blood cells deliver oxygen, white blood cells fight germs, platelets plug leaks.", "caption": "The CBC counts the delivery crew, the defense crew, and the repair crew."}]},
   "who-and-how-often": {"ghost": "grid", "stickers": ["Not everyone needs everything", "Let's build your list 📋"], "figures": [
     {"src": "screening-schedule.svg", "width": 640, "height": 600, "after_section": 0, "alt": "Screening schedule for most adults: cholesterol every 4 to 6 years from about age 20, sugar every 3 years from 35 if carrying extra weight, hepatitis C once from 18 to 79, HIV at least once from 15 to 65.", "caption": "A plain starting schedule. Risk factors and symptoms move it earlier."}]},
-  "reading-results": {"ghost": "checkx", "stickers": ["An H is a nudge, not a verdict", "Send me the page 📲"], "figures": [
+  "reading-results": {"ghost": "checkx", "stickers": ["An H is a nudge, not a verdict", "We go line by line"], "figures": [
     {"src": "reference-range.svg", "width": 640, "height": 420, "after_section": 0, "alt": "Bell curve showing the middle 95 percent of healthy people as the normal range, with 1 in 20 healthy people landing just outside it.", "caption": "1 in 20 healthy people lands outside the range on any single test."}]},
  },
 }

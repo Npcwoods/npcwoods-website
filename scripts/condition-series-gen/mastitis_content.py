@@ -28,7 +28,7 @@ series = {
     "sms": {"number": "4806394722", "display": "(480) 639-4722",
             "prefill": "Hi Chris, I'm breastfeeding and think I might have mastitis. I'd like a $59 text visit."},
     "cta_band": {"heading": "Sore, red, and worn out? Text me.",
-                 "body": "Tell me how many days since the birth, which side hurts, your temperature, and how you feel overall. I read it myself and tell you if this fits a text visit or needs in-person care. You only pay the $59 if I can treat you by text."},
+                 "body": "Tell me how many days since the birth, which side hurts, your temperature, and how you feel overall. Words are enough. No photo needed. I read it myself and tell you if this fits a text visit or needs in-person care. You only pay the $59 if I can treat you by text."},
     "hub": {"slug": "", "path": HUB, "title": "Mastitis Explained", "nav_label": "The big picture", "episode": 1},
     "one_pager": {"path": "/mastitis-treatment/", "title": "Mastitis treatment by text", "nav_label": "$59 text visit"},
     "stops": [
@@ -321,6 +321,7 @@ C["one_pager"] = {
  ],
  "faqs": [
   {"q": "How much is the visit?", "a": "$59 flat. You only pay if I can treat you by text."},
+  {"q": "Do I need to send a photo?", "a": "No. A text with words only is fine. Your temperature, which side, how big the sore area is, and how you feel tell me a lot."},
   {"q": "Will I get medicine?", "a": "Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding."},
   {"q": "Can I keep breastfeeding?", "a": "Usually yes. Your milk is safe for your baby, and feeding helps you heal."},
   {"q": "What states?", "a": "14 states, including Florida by telehealth registration (TPAN3355). You must be in a state I can treat at the time of the visit."},

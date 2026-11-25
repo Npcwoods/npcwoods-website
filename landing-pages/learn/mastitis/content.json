@@ -775,6 +775,10 @@
     "a": "$59 flat. You only pay if I can treat you by text."
    },
    {
+    "q": "Do I need to send a photo?",
+    "a": "No. A text with words only is fine. Your temperature, which side, how big the sore area is, and how you feel tell me a lot."
+   },
+   {
     "q": "Will I get medicine?",
     "a": "Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding."
    },

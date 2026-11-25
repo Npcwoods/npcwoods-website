@@ -130,6 +130,37 @@ class ConditionSeriesTest(unittest.TestCase):
             with self.subTest(page=str(path.relative_to(ROOT))):
                 self.assertIn("103°F", path.read_text(encoding="utf-8"))
 
+    def test_offer_reviews_are_general_and_verbatim(self):
+        gold = (ROOT / "landing-pages" / "uti-treatment" / "index.html").read_text(encoding="utf-8")
+        cond = re.compile(r"\b(uti|bladder|urinary|cough|sinus|infection|antibiotic\w*|daughter)\b", re.I)
+        for sid in SERIES_IDS:
+            text = pages(sid)[-1].read_text(encoding="utf-8")
+            section = text.split('<section class="reviews">', 1)[1].split("</section>", 1)[0]
+            cards = re.findall(r'<div class="rcard">.*?<span class="rcard-source">[^<]*</span></div></div>', section, re.S)
+            with self.subTest(series=sid):
+                self.assertGreaterEqual(len(cards), 6)
+                for card in cards:
+                    self.assertIn(card, gold)
+                    self.assertIsNone(cond.search(re.sub(r"<[^>]+>", " ", card)))
+
+    def test_labs_never_offer_to_read_outside_labs(self):
+        bad = re.compile(r"second set of eyes|already have results|send me the page|my portal|"
+                         r"look at labs another clinic ordered\?\s*Yes", re.I)
+        for path in pages("screening-labs"):
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertIsNone(bad.search(visible(path.read_text(encoding="utf-8"))))
+        text = visible(pages("screening-labs")[-1].read_text(encoding="utf-8"))
+        self.assertIn("Labs another clinic ordered: please ask the clinic that ordered them", text)
+
+    def test_mastitis_words_only_and_no_postpartum_cutoff(self):
+        offer = visible(pages("mastitis")[-1].read_text(encoding="utf-8"))
+        self.assertIn("No photo needed", offer)
+        self.assertIn("A text with words only is fine", offer)
+        cutoff = re.compile(r"(within|under|less than|only up to|up to)\s+\d+\s+weeks (postpartum|after (birth|delivery))", re.I)
+        for path in pages("mastitis"):
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertIsNone(cutoff.search(visible(path.read_text(encoding="utf-8"))))
+
     def test_series_pages_have_real_cutout_ghost_figure_and_og(self):
         for sid in SERIES_IDS:
             for path in pages(sid)[:-1]:

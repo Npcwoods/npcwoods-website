@@ -140,7 +140,7 @@
    ]
   ],
   "chat_status": "✓ Plan sent by text",
-  "atf": "<strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner. Text <a href=\"{sms}\">(480) 639-4722</a>. No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit. A prescription is not promised. You only pay if I can treat you by text. Fever of 103°F or higher, spreading redness, or feeling very sick means in-person care now.",
+  "atf": "<strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner. Text <a href=\"{sms}\">(480) 639-4722</a>. No video. No app. No chatbot. No photo needed: a text with words only is fine. You must be physically in a licensed state at the time of the visit. A prescription is not promised. You only pay if I can treat you by text. Fever of 103°F or higher, spreading redness, or feeling very sick means in-person care now.",
   "stats": [
    [
     "$59",
@@ -187,7 +187,7 @@
   "how": [
    [
     "Text Chris",
-    "Text <a href=\"{sms}\">(480) 639-4722</a> with your story: baby's age, which side, when it started, your temperature, and how you feel."
+    "Text <a href=\"{sms}\">(480) 639-4722</a> with your story: baby's age, which side, when it started, your temperature, and how you feel. Words only is fine. No photo needed."
    ],
    [
     "Chris reviews it",

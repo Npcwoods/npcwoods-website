@@ -665,12 +665,12 @@
    {
     "style": "blue",
     "who": "You",
-    "text": "My portal shows six red flags. Should I freak out?"
+    "text": "My results came back with six red flags. Should I freak out?"
    },
    {
     "style": "black",
     "who": "Chris",
-    "text": "Not yet. Most flags are a hair outside the range. Send me the page and your story. We go line by line."
+    "text": "Not yet. Most flags are a hair outside the range. For labs I ordered, we go line by line together."
    }
   ],
   "sections": [
@@ -716,7 +716,7 @@
   "faqs": [
    {
     "q": "Can you look at labs another clinic ordered?",
-    "a": "Yes. Text me the results and your story. I will explain what they mean in plain words and tell you if anything needs follow-up."
+    "a": "No. I only walk through results for labs I ordered. For labs another clinic ordered, the clinic that ordered them is the right place to ask."
    },
    {
     "q": "Why do two labs give different ranges?",
@@ -789,12 +789,13 @@
     "Adults who feel well and want a screening plan",
     "Due for sugar or cholesterol checks",
     "Mild, steady symptoms like being tired for weeks",
-    "Already have results and want them explained",
+    "Want a short, sensible lab list, not a long menu",
     "Physically in a state I can treat"
    ],
    "no_h": "Who needs another door",
    "no": [
     "Chest pain, fainting, or trouble breathing: call 911",
+    "Labs another clinic ordered: please ask the clinic that ordered them",
     "A lab called you about a critical result",
     "Ongoing care for a long-term condition",
     "A new lump that needs a hands-on exam",
@@ -850,7 +851,7 @@
    },
    {
     "q": "Can you replace my regular clinic?",
-    "a": "No. I am a good place to start or to get a second set of eyes. Ongoing care, a hands-on exam, and cancer screenings still need a regular clinic."
+    "a": "No. I am a good place to start. Ongoing care, a hands-on exam, and cancer screenings still need a regular clinic."
    },
    {
     "q": "What if I feel really sick?",
