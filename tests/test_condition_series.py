@@ -172,12 +172,12 @@ class ConditionSeriesTest(unittest.TestCase):
                     figs = re.findall(r'<figure class="ex-fig ex-card-fig"><img src="([^"?]+)', text)
                     self.assertTrue(figs)
                     for src in figs:
-                        self.assertTrue((ROOT / "landing-pages" / src.lstrip("/")).exists(), src)
+                        self.assertTrue((ROOT / src.lstrip("/")).exists(), src)
             for path in pages(sid):
                 text = path.read_text(encoding="utf-8")
                 og = re.search(r'<meta property="og:image" content="https://npcwoods.com/([^"?]+)', text).group(1)
                 with self.subTest(og=og):
-                    local = ROOT / "landing-pages" / og
+                    local = ROOT / og
                     self.assertTrue(local.exists(), og)
                     self.assertLess(local.stat().st_size, 150_000)
 
@@ -205,7 +205,7 @@ class ConditionSeriesTest(unittest.TestCase):
                         self.assertIn('class="ex-thread"', html)
                         self.assertIn('class="ex-bub you"', html)
                         self.assertFalse('ex-chips-two' in html, 'old flat text chips')
-            for svg in (ROOT / "landing-pages" / "learn" / sid / "assets").glob("*.svg"):
+            for svg in (ROOT / "assets" / "learn" / sid).glob("*.svg"):
                 text = svg.read_text(encoding="utf-8")
                 with self.subTest(svg=svg.name):
                     self.assertIn('viewBox="0 0 360 ', text)  # renders ~1:1 on a 390px phone

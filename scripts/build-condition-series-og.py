@@ -67,7 +67,7 @@ def main() -> None:
     art = json.loads((sdir / "art.json").read_text(encoding="utf-8"))
     build.GHOST_ACCENT = series["accent"]["hex"]
     cutout_uri = "data:image/webp;base64," + base64.b64encode(Path(args.cutout).read_bytes()).decode()
-    out_dir = sdir / "assets" / "og"
+    out_dir = ROOT / "assets" / "learn" / args.series_id / "og"  # served at /assets/learn/<id>/og/ (deploy.py --asset)
     out_dir.mkdir(parents=True, exist_ok=True)
     jobs = []
     for stop in series["stops"]:

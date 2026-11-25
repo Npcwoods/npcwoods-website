@@ -4,6 +4,40 @@
  * Description: Serves standalone HTML for state landing pages, conditions hub, and sitemap
  */
 add_action( "template_redirect", function() {
+    // Nested series pages need path matching (their stop slugs repeat across series,
+    // and /learn/screening-labs/ shares a slug with the /screening-labs/ offer page).
+    $path_map = array(
+        "/learn/screening-labs/" => "learn/screening-labs/index.html",
+        "/learn/screening-labs/metabolic-panel/" => "learn/screening-labs/metabolic-panel/index.html",
+        "/learn/screening-labs/cholesterol/" => "learn/screening-labs/cholesterol/index.html",
+        "/learn/screening-labs/a1c/" => "learn/screening-labs/a1c/index.html",
+        "/learn/screening-labs/thyroid/" => "learn/screening-labs/thyroid/index.html",
+        "/learn/screening-labs/cbc/" => "learn/screening-labs/cbc/index.html",
+        "/learn/screening-labs/who-and-how-often/" => "learn/screening-labs/who-and-how-often/index.html",
+        "/learn/screening-labs/reading-results/" => "learn/screening-labs/reading-results/index.html",
+        "/learn/mastitis/" => "learn/mastitis/index.html",
+        "/learn/mastitis/how-it-starts/" => "learn/mastitis/how-it-starts/index.html",
+        "/learn/mastitis/what-it-feels-like/" => "learn/mastitis/what-it-feels-like/index.html",
+        "/learn/mastitis/lookalikes/" => "learn/mastitis/lookalikes/index.html",
+        "/learn/mastitis/comfort-at-home/" => "learn/mastitis/comfort-at-home/index.html",
+        "/learn/mastitis/red-flags/" => "learn/mastitis/red-flags/index.html",
+        "/learn/mastitis/keep-feeding/" => "learn/mastitis/keep-feeding/index.html",
+        "/learn/mastitis/text-vs-in-person/" => "learn/mastitis/text-vs-in-person/index.html",
+    );
+    $req_path = trailingslashit( (string) parse_url( $_SERVER["REQUEST_URI"], PHP_URL_PATH ) );
+    if ( isset( $path_map[ $req_path ] ) ) {
+        $html_file = ABSPATH . $path_map[ $req_path ];
+        if ( file_exists( $html_file ) ) {
+            header( "Content-Type: text/html; charset=UTF-8" );
+            header( "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload" );
+            header( "X-Content-Type-Options: nosniff" );
+            header( "X-Frame-Options: SAMEORIGIN" );
+            header( "Referrer-Policy: strict-origin-when-cross-origin" );
+            readfile( $html_file );
+            exit;
+        }
+    }
+
     $page_map = array(
         "faq" => "faq/index.html",
         "cheap-urgent-care-no-insurance" => "cheap-urgent-care-no-insurance/index.html",
@@ -80,6 +114,8 @@ add_action( "template_redirect", function() {
     "boise-county-text-visit" => "boise-county-text-visit/index.html",
     "eureka-county-text-visit" => "eureka-county-text-visit/index.html",
     "washington-uti-treatment" => "washington-uti-treatment/index.html",
+    "screening-labs" => "screening-labs/index.html",
+    "mastitis-treatment" => "mastitis-treatment/index.html",
     );
 
     $slug = get_post_field( "post_name", get_queried_object_id() );

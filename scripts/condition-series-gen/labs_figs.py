@@ -2,6 +2,7 @@ import json, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from figs import *
 D = pathlib.Path(__file__).resolve().parents[2].joinpath("landing-pages", "learn", "screening-labs")
+ASSETS = pathlib.Path(__file__).resolve().parents[2].joinpath("assets", "learn", "screening-labs")
 A = "#0369A1"; TEAL = "#0E7490"; SLATE = "#334155"
 figs = {}
 figs["panel-lineup.svg"] = rows("Five common screening tests", A, [
@@ -44,8 +45,8 @@ figs["screening-schedule.svg"] = rows("A starting schedule for most adults", A, 
 ], sub="Risk factors and symptoms move these earlier.")
 figs["reference-range.svg"] = bell("What a reference range means", A, sub="1 in 20 healthy people lands just outside the range on any single test.")
 for name, (svg_text, h) in figs.items():
-    (D / "assets").mkdir(parents=True, exist_ok=True)
-    (D / "assets" / name).write_text(svg_text)
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    (ASSETS / name).write_text(svg_text)
 art = json.loads((D / "art.json").read_text())
 for page in art["pages"].values():
     for f in page.get("figures", []):

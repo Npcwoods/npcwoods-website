@@ -354,7 +354,7 @@ C["one_pager"] = {
 }
 art = {
  "version": "20261124",
- "asset_base": "/learn/screening-labs/assets/",
+ "asset_base": "/assets/learn/screening-labs/",
  "cutout": {"src600": "/assets/img/people/chris-cutout-600.webp", "src900": "/assets/img/people/chris-cutout-900.webp", "width": 900, "height": 1258,
             "alt": "Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, smiling with a stethoscope"},
  "pages": {

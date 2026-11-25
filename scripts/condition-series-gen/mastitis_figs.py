@@ -2,6 +2,7 @@ import json, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from figs import *
 D = pathlib.Path(__file__).resolve().parents[2].joinpath("landing-pages", "learn", "mastitis")
+ASSETS = pathlib.Path(__file__).resolve().parents[2].joinpath("assets", "learn", "mastitis")
 A = "#B42318"; ROSE = "#9F1239"; SLATE = "#334155"; SOFT = "#C2410C"
 figs = {}
 figs["mastitis-spectrum.svg"] = flow("The mastitis spectrum", A, [
@@ -46,9 +47,9 @@ figs["text-vs-in-person.svg"] = columns("Which door fits?", A, [
   ("Text visit", BLUE, ["One sore, red, warm area", "Fever under 103°F", "Eating and drinking okay", "No pus, no growing lump", "In a state I treat"]),
   ("In person or ER", A, ["Any red flag", "A lump that stays or grows", "Not better after 48 hours", "Not breastfeeding", "Weak immune system"]),
 ], sub="When in doubt, go in.")
-(D / "assets").mkdir(parents=True, exist_ok=True)
+ASSETS.mkdir(parents=True, exist_ok=True)
 for name, (svg_text, h) in figs.items():
-    (D / "assets" / name).write_text(svg_text)
+    (ASSETS / name).write_text(svg_text)
 art = json.loads((D / "art.json").read_text())
 for page in art["pages"].values():
     for f in page.get("figures", []):

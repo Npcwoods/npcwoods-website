@@ -18,7 +18,7 @@ Cooked 2026-11-24. Rebuilt the same day on the **gold look** (Chris: "do these m
 
 ## How to edit
 
-The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/`. The look is read straight from the gold UTI pages at build time (one look, no copy that drifts). Gold-chassis copy (hero, pricing block, comparison rows, road-map blurbs, short-version bullets) lives in `gold.json`.
+The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/learn/mastitis/` at the repo root (served at `/assets/learn/mastitis/`). The look is read straight from the gold UTI pages at build time (one look, no copy that drifts). Gold-chassis copy (hero, pricing block, comparison rows, road-map blurbs, short-version bullets) lives in `gold.json`.
 The box-side source scripts that generated the JSON and SVG files are saved in `scripts/condition-series-gen/`. Edit the JSON directly from here on.
 
 Rebuild:
@@ -33,24 +33,21 @@ Do not hand-edit the generated `index.html` files.
 
 ## Rules baked in
 
-$59 flat, pay only if text care fits. License line "14 states, including Florida by telehealth registration (TPAN3355)". No medication or class names (the test greps them), no banned words, no trackers, a 911 line on every page. Hero is Chris's real cutout (`/assets/img/people/chris-cutout-*.webp`, unaltered). Each page has its own 1200x630 card in `assets/og/`.
+$59 flat, pay only if text care fits. License line "14 states, including Florida by telehealth registration (TPAN3355)". No medication or class names (the test greps them), no banned words, no trackers, a 911 line on every page. Hero is Chris's real cutout (`/assets/img/people/chris-cutout-*.webp`, unaltered). Each page has its own 1200x630 card in `assets/learn/mastitis/og/`.
 
 ## Answered by Chris (2026-11-24)
 
 - The ER line keeps 103°F as the cutoff.
-
-## Still open (not asked yet)
-
-- Text visits: words only to start (the page says no photo needed). Confirm.
-- Fit list says adults who are breastfeeding or pumping, in a state you treat. Anything to add (e.g. weeks postpartum limit)?
+- A text with words only is fine; no photo needed.
+- No postpartum-weeks cutoff on the fit list.
 
 ## Push live later (Chris says "push it live" first)
 
 First-time URLs: `deploy.py` does not create routes or WordPress stubs.
 
-1. Add path routes for the hub + stops in `php/npcwoods-education-pages.php` and the offer page route (same pattern as dental). One copy of each mu-plugin only.
+1. Routes live in `php/npcwoods-static-pages.php` (the deploy.py allow-listed route map): a `$path_map` for the hub + stops and a slug line for the offer page. Ship it with `deploy.py --file php/npcwoods-static-pages.php`. One copy of each mu-plugin only.
 2. Create WP stubs: child `mastitis` under `learn`, grandchildren for each stop, and root page `mastitis-treatment`.
-3. Upload `assets/` (SVGs + og JPGs) alongside the HTML; `deploy.py` uploads `index.html` only.
+3. Upload the SVGs + og JPGs with `deploy.py --asset assets/learn/mastitis/...` (new files only) in the same run as the pages.
 4. Dry-run, then live with Chris's yes:
 
 ```bash
