@@ -87,7 +87,7 @@ window._fbq = window.fbq;
       "@type": "HowToStep",
       "position": 3,
       "name": "Plan, then pharmacy if needed",
-      "text": "If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. If text is not safe, I tell you to go in."
+      "text": "If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. A prescription, if needed, is a separate fee. If text is not safe, I tell you to go in."
     }
   ]
 }
@@ -118,7 +118,7 @@ window._fbq = window.fbq;
       "name": "Will I get medicine?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding."
+        "text": "Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding. A prescription, if needed, is a separate fee from the $59, and I tell you first."
       }
     },
     {
@@ -1070,6 +1070,25 @@ img{display:block;max-width:100%}
 /* condition-offer additions on the gold UTI lander look */
 .symptom-icon.txt{width:auto;min-width:34px;padding:0 7px;font-size:11px;font-weight:800;letter-spacing:.02em;color:var(--blue-bright)}
 .drug-card .brand{display:none}
+/* WCAG AA contrast (dark bands) */
+.stat-l,.vs-head p,.alt-bg .section-inner > p,#pricing .section-inner > p,.clinician-line,.clinician-line strong,.clinician-line time,.eeat-byline time,.reviews-head p,.vs-feature,.vs-them{color:#a1a1aa}
+.eeat-byline p[style*="--muted"],.alt-bg .section-inner > p[style*="--muted"],#pricing .section-inner > p[style*="--muted"]{color:#a1a1aa!important}
+/* WCAG AA contrast (light bands) */
+#compare .section-kicker,#er-warning .section-kicker,#explained .section-kicker,#faq .section-kicker,#how-it-works .section-kicker,#what-is .section-kicker,#who-its-for .section-kicker,.section-white .section-kicker{color:#0058b0}
+.bento-card p a{color:#0058b0}
+.er-box h3,.fit-bad .fit-label{color:#c0262d}
+.fit-good .fit-label{color:#12784a}
+.section .compare-table .treat-us,.treat-us{color:#12784a!important}
+.section .compare-table .treat-maybe,.treat-maybe{color:#9a5b00!important}
+.section .compare-table .treat-er,.treat-er{color:#55555c!important}
+.explained-card strong{color:#a35c00}
+.explained-card span,.symptom-card span{color:#55555c}
+.symptom-icon.txt{color:#004f9e}
+.cta-section .fine,.fine{color:#fff}
+/* shared footer: AA contrast + h3 column headings (these pages only; site.css untouched) */
+.npc-footer-bottom,.npc-footer-bottom span,.npc-footer-bottom a,.npc-footer-trust,.npc-footer-trust a,.npc-footer-emergency{color:#a3a3b8!important}
+.npc-footer-bottom a:hover,.npc-footer-trust a:hover{color:#fff!important}
+.npc-footer-col h3.npc-footer-h{font-family:inherit;font-size:.75rem;font-weight:700;line-height:inherit;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin:0 0 16px}
 
 </style>
 </head>
@@ -1249,7 +1268,7 @@ img{display:block;max-width:100%}
 <!-- STATS BAND -->
 <div class="stats-band">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-n">$59</div><div class="stat-l">Flat fee, no surprises</div></div><div class="stat"><div class="stat-n">14</div><div class="stat-l">States, including Florida by telehealth registration</div></div><div class="stat"><div class="stat-n">Same NP</div><div class="stat-l">Chris reads every text himself</div></div>
+    <div class="stat"><div class="stat-n">$59</div><div class="stat-l">Flat visit fee, no surprises</div></div><div class="stat"><div class="stat-n">14</div><div class="stat-l">States, including Florida by telehealth registration</div></div><div class="stat"><div class="stat-n">Same NP</div><div class="stat-l">Chris reads every text himself</div></div>
   </div>
 </div>
 
@@ -1340,7 +1359,7 @@ img{display:block;max-width:100%}
       <div class="bento-card">
         <div class="step-num">3</div>
         <h3>Plan, then pharmacy if needed</h3>
-        <p>If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. If text is not safe, I tell you to go in.</p>
+        <p>If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. A prescription, if needed, is a separate fee. If text is not safe, I tell you to go in.</p>
       </div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-top:20px;text-align:center">Care follows Academy of Breastfeeding Medicine guidance on the mastitis spectrum.</p>
@@ -1392,7 +1411,7 @@ img{display:block;max-width:100%}
   <div class="section-inner" style="max-width:1000px">
     <span class="section-kicker">What it costs</span>
     <h2 class="section-title">What the $59 covers</h2>
-    <p class="section-body">One flat fee. Here is what is in it.</p>
+    <p class="section-body">My $59 is for the text visit and your plan. Here is exactly what is in it, and what is not.</p>
     <div class="drug-grid">
       <div class="drug-card">
         <div class="drug-badge badge-blue">Included</div>
@@ -1406,13 +1425,13 @@ img{display:block;max-width:100%}
       </div>
       <div class="drug-card">
         <div class="drug-badge badge-blue">Included</div>
-        <h3>A prescription, if it fits</h3>
-        <p>Sent to your pharmacy, chosen to be considered safe while breastfeeding.</p>
-      </div>
-      <div class="drug-card">
-        <div class="drug-badge badge-blue">Included</div>
         <h3>Follow-up questions</h3>
         <p>Text me if it is not getting better.</p>
+      </div>
+      <div class="drug-card">
+        <div class="drug-badge badge-orange">Separate</div>
+        <h3>A prescription, if needed</h3>
+        <p>If one fits, that is a separate fee. I tell you first, and I choose options considered safe while breastfeeding.</p>
       </div>
       <div class="drug-card">
         <div class="drug-badge badge-orange">Separate</div>
@@ -1498,7 +1517,7 @@ img{display:block;max-width:100%}
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q">How much is the visit?</div><div class="faq-a"><p>$59 flat. You only pay if I can treat you by text.</p></div></div>
       <div class="faq-item"><div class="faq-q">Do I need to send a photo?</div><div class="faq-a"><p>No. A text with words only is fine. Your temperature, which side, how big the sore area is, and how you feel tell me a lot.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Will I get medicine?</div><div class="faq-a"><p>Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Will I get medicine?</div><div class="faq-a"><p>Only if it is the right call. Many cases improve with comfort care. If a prescription fits, I choose options considered safe while breastfeeding. A prescription, if needed, is a separate fee from the $59, and I tell you first.</p></div></div>
       <div class="faq-item"><div class="faq-q">Can I keep breastfeeding?</div><div class="faq-a"><p>Usually yes. Your milk is safe for your baby, and feeding helps you heal.</p></div></div>
       <div class="faq-item"><div class="faq-q">What states?</div><div class="faq-a"><p>14 states, including Florida by telehealth registration (TPAN3355). You must be in a state I can treat at the time of the visit.</p></div></div>
       <div class="faq-item"><div class="faq-q">When do I skip this page and go to the ER?</div><div class="faq-a"><p>Fever of 103°F or higher, shaking chills, fast-spreading red streaks, pus, a growing lump, or feeling faint, confused, or very sick. Call 911 or go now.</p></div></div>
@@ -1614,7 +1633,7 @@ img{display:block;max-width:100%}
 
       <!-- Conditions Column -->
       <div class="npc-footer-col">
-        <h4>Conditions We Treat</h4>
+        <h3 class="npc-footer-h">Conditions We Treat</h3>
         <ul>
           <li><a href="https://npcwoods.com/uti-treatment/">UTI Treatment</a></li>
           <li><a href="https://npcwoods.com/sinus-infection-treatment/">Sinus Infection</a></li>
@@ -1633,7 +1652,7 @@ img{display:block;max-width:100%}
 
       <!-- States Column -->
       <div class="npc-footer-col">
-        <h4>States We Serve</h4>
+        <h3 class="npc-footer-h">States We Serve</h3>
         <ul>
           <li><a href="https://npcwoods.com/arizona-telemedicine/">Arizona</a></li>
           <li><a href="https://npcwoods.com/georgia-telemedicine/">Georgia</a></li>
@@ -1654,7 +1673,7 @@ img{display:block;max-width:100%}
 
       <!-- Quick Links Column -->
       <div class="npc-footer-col">
-        <h4>Quick Links</h4>
+        <h3 class="npc-footer-h">Quick Links</h3>
         <ul>
           <li><a href="https://npcwoods.com/">Home</a></li>
           <li><a href="https://npcwoods.com/how-it-works/">How It Works</a></li>

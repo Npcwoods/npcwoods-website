@@ -144,7 +144,7 @@
   "stats": [
    [
     "$59",
-    "Flat fee, no surprises"
+    "Flat visit fee, no surprises"
    ],
    [
     "14",
@@ -195,7 +195,7 @@
    ],
    [
     "Plan, then pharmacy if needed",
-    "If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. If text is not safe, I tell you to go in."
+    "If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. A prescription, if needed, is a separate fee. If text is not safe, I tell you to go in."
    ]
   ],
   "how_sub": "No app, no portal, no video call — just text. You only pay if I can treat you.",
@@ -294,7 +294,7 @@
   "covers": {
    "kicker": "What it costs",
    "h2": "What the $59 covers",
-   "sub": "One flat fee. Here is what is in it.",
+   "sub": "My $59 is for the text visit and your plan. Here is exactly what is in it, and what is not.",
    "cards": [
     [
      "badge-blue",
@@ -311,14 +311,14 @@
     [
      "badge-blue",
      "Included",
-     "A prescription, if it fits",
-     "Sent to your pharmacy, chosen to be considered safe while breastfeeding."
-    ],
-    [
-     "badge-blue",
-     "Included",
      "Follow-up questions",
      "Text me if it is not getting better."
+    ],
+    [
+     "badge-orange",
+     "Separate",
+     "A prescription, if needed",
+     "If one fits, that is a separate fee. I tell you first, and I choose options considered safe while breastfeeding."
     ],
     [
      "badge-orange",
