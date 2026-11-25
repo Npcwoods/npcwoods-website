@@ -181,6 +181,38 @@ class ConditionSeriesTest(unittest.TestCase):
                     self.assertTrue(local.exists(), og)
                     self.assertLess(local.stat().st_size, 150_000)
 
+    def test_no_status_badges_on_road_map_links(self):
+        for sid in SERIES_IDS:
+            for path in pages(sid):
+                html = path.read_text(encoding="utf-8")
+                with self.subTest(page=str(path.relative_to(ROOT))):
+                    tags = re.findall(r'<span class="tag">([^<]*)</span>', html)
+                    self.assertTrue(set(tags) <= {"You are here"}, tags)
+                    self.assertNotIn("Every stop is live", html)
+                    self.assertNotRegex(visible(html), r"\bLive\b|Read next")
+
+    def test_phone_layout_pieces(self):
+        for sid in SERIES_IDS:
+            for path in pages(sid)[:-1]:
+                html = path.read_text(encoding="utf-8")
+                with self.subTest(page=str(path.relative_to(ROOT))):
+                    # hub bands need the color tokens or dark sections render white-on-white
+                    if 'class="hub-main"' in html:
+                        self.assertIn(".hub-main{--ink:", html)
+                        if "By the numbers" in html:
+                            self.assertIn('class="ex-stat-row"', html)
+                    if "In my texts" in html:
+                        self.assertIn('class="ex-thread"', html)
+                        self.assertIn('class="ex-bub you"', html)
+                        self.assertFalse('ex-chips-two' in html, 'old flat text chips')
+            for svg in (ROOT / "landing-pages" / "learn" / sid / "assets").glob("*.svg"):
+                text = svg.read_text(encoding="utf-8")
+                with self.subTest(svg=svg.name):
+                    self.assertIn('viewBox="0 0 360 ', text)  # renders ~1:1 on a 390px phone
+                    sizes = [float(x) for x in re.findall(r'font-size="([0-9.]+)"', text)]
+                    self.assertGreaterEqual(min(sizes), 16)
+        self.assertNotIn("left side", (ROOT / "landing-pages/learn/mastitis/art.json").read_text(encoding="utf-8"))
+
     def test_rebuild_matches_kitchen_pages(self):
         spec = importlib.util.spec_from_file_location("ccs_gold", ROOT / "scripts" / "build-condition-series-gold.py")
         mod = importlib.util.module_from_spec(spec)

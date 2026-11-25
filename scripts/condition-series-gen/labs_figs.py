@@ -49,6 +49,6 @@ for name, (svg_text, h) in figs.items():
 art = json.loads((D / "art.json").read_text())
 for page in art["pages"].values():
     for f in page.get("figures", []):
-        f["height"] = figs[f["src"]][1]; f["width"] = 640
+        f["height"] = figs[f["src"]][1]; f["width"] = W
 (D / "art.json").write_text(json.dumps(art, indent=1, ensure_ascii=False) + "\n")
 print({k: v[1] for k, v in figs.items()})

@@ -224,12 +224,14 @@ def ex_sections(sections: list[dict], figures: list[dict], art: dict, *, light: 
 def recap_from_bubbles(bubbles: list[dict]) -> str:
     if not bubbles:
         return ""
-    chips = "".join(
-        f'<div class="ex-chip"><h3>{"You text" if b.get("who") == "You" else "I answer"}</h3><p>{esc(b["text"])}</p></div>'
+    msgs = "".join(
+        (f'<li class="ex-bub you"><span class="who">You text</span><p>{esc(b["text"])}</p></li>' if b.get("who") == "You" else
+         f'<li class="ex-bub me"><span class="who">I answer</span><p>{esc(b["text"])}</p></li>')
         for b in bubbles
     )
-    return (f'<section class="ex-recap" aria-labelledby="recap-title"><div class="ex-in"><span class="ex-kick">In my texts</span>'
-            f'<h2 id="recap-title">The kind of text I get.</h2><div class="ex-chips ex-chips-two">{chips}</div></div></section>')
+    return (f'<section class="ex-recap ex-texts" aria-labelledby="recap-title"><div class="ex-in"><span class="ex-kick">In my texts</span>'
+            f'<h2 id="recap-title">The kind of text I get.</h2>'
+            f'<div class="ex-thread"><div class="ex-thread-top">Text visit with Chris</div><ol class="ex-thread-msgs">{msgs}</ol></div></div></section>')
 
 
 def faq_details(faqs: list[dict], klass: str, narrow: bool = True) -> str:
@@ -283,10 +285,46 @@ SERIES_EXTRA_CSS = """
 .ex-fig img{display:block;width:100%;height:auto;border-radius:18px;background:#fff}
 .ex-vs.ex-vs-one{grid-template-columns:1fr;max-width:640px}
 .ex-vs .er p{margin:8px 0 0;color:#fff}
-.ex-chips.ex-chips-two{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(max-width:640px){.ex-chips.ex-chips-two{grid-template-columns:1fr}}
 .ex-src li a{word-break:break-word}
 .hub-faq summary{padding:12px 0;min-height:44px;box-sizing:border-box}
+/* hub sections reuse the explainer bands, so the hub needs the same color tokens */
+.hub-main{--ink:#1d1d1f;--body:#3a3a42;--muted:#5f5f68;--blue:#0071e3;--bright:#2997ff;--green:#148a53;--orange:#f5a524;--cream:#F6F3EE;--night:#05060a;--line:rgba(0,0,0,.09)}
+/* road map cards: fit the content, no status badges */
+.stop-card,a.stop-card{min-height:0}
+.stop-card h3:first-child{margin-top:0}
+/* by the numbers: matches the UTI lander stats band */
+.ex-stats{background:#05060a;color:#c7c7ce;padding:64px 0}
+.ex-stats .ex-kick{color:#f5c36a}
+.ex-stats h2,.ex-texts h2{color:#fff;font-weight:900;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-.045em;margin:10px 0 24px}
+.ex-stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ex-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px 20px;border-radius:20px;background:#10121a;border:1px solid rgba(255,255,255,.1)}
+.ex-stat-n{font-size:clamp(36px,5vw,52px);font-weight:900;letter-spacing:-.05em;line-height:1;background:linear-gradient(120deg,#fff,#2997ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff}
+.ex-stat-l{font-size:16px;line-height:1.4;color:#c7c7ce;max-width:28ch}
+/* in my texts: a real text thread, no dead space */
+.ex-texts{padding:64px 0}
+.ex-thread{max-width:560px;background:#111318;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:0 0 18px;overflow:hidden}
+.ex-thread-top{padding:12px 16px;font-size:13px;font-weight:700;color:#e5e5ea;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(24,24,28,.96)}
+.ex-thread-msgs{list-style:none;margin:0;padding:16px 14px 0;display:flex;flex-direction:column;gap:12px}
+.ex-bub{max-width:84%;display:flex;flex-direction:column;gap:4px}
+.ex-bub .who{font-size:12px;font-weight:700;letter-spacing:.02em;color:#8e8e93;padding:0 6px}
+.ex-bub p{margin:0;padding:10px 14px;border-radius:20px;font-size:17px;line-height:1.45}
+.ex-bub.you{align-self:flex-end;align-items:flex-end}
+.ex-bub.you p{background:#0a84ff;color:#fff;border-bottom-right-radius:6px}
+.ex-bub.me{align-self:flex-start}
+.ex-bub.me p{background:#2c2c2e;color:#f2f2f7;border-bottom-left-radius:6px}
+/* figures: phone-first SVGs, full content width on phones */
+.ex-split .ex-fig{width:100%;max-width:460px;justify-self:center}
+@media(max-width:640px){
+.ex-stats,.ex-texts{padding:52px 0}
+.ex-stat-row{grid-template-columns:1fr;gap:12px}
+.ex-stat{padding:20px 18px;gap:8px}
+.ex-stat-n{font-size:40px}
+.ex-thread{border-radius:24px}
+.ex-bub{max-width:88%}
+.ex-split .ex-fig{max-width:none}
+.ex-card-fig{padding:0;background:transparent;box-shadow:none;border-radius:0}
+.ex-fig figcaption{padding:0 4px}
+}
 """
 
 
@@ -352,16 +390,16 @@ def build_series_page(series, content, gold, art, header, footer, stop, index) -
         stats = page.get("stats", [])
         stat_html = ""
         if stats:
-            chips = "".join(f'<div class="ex-chip"><h3>{esc(s["num"])}</h3><p>{esc(s["label"])}</p></div>' for s in stats)
-            stat_html = (f'<section class="ex-recap" aria-labelledby="num-title"><div class="ex-in"><span class="ex-kick">By the numbers</span>'
-                         f'<h2 id="num-title">Three numbers to know.</h2><div class="ex-chips">{chips}</div></div></section>')
+            chips = "".join(f'<div class="ex-stat"><div class="ex-stat-n">{esc(s["num"])}</div><div class="ex-stat-l">{esc(s["label"])}</div></div>' for s in stats)
+            stat_html = (f'<section class="ex-stats" aria-labelledby="num-title"><div class="ex-in"><span class="ex-kick">By the numbers</span>'
+                         f'<h2 id="num-title">Three numbers to know.</h2><div class="ex-stat-row">{chips}</div></div></section>')
         cards = []
         for i, st in enumerate(series["stops"]):
             here = st["path"] == stop["path"]
-            tag = "You are here" if here else ("Read next" if i == 1 else "Live")
             cur = ' aria-current="page"' if here else ""
-            cards.append(f'<li class="stop {"here" if here else "live"}"><span class="stop-node" aria-hidden="true"></span>'
-                         f'<a class="stop-card" href="{SITE}{st["path"]}"{cur}><span class="tag">{tag}</span>'
+            tag = '<span class="tag">You are here</span>' if here else ""
+            cards.append(f'<li class="stop{" here" if here else ""}"><span class="stop-node" aria-hidden="true"></span>'
+                         f'<a class="stop-card" href="{SITE}{st["path"]}"{cur}>{tag}'
                          f'<h3>{esc(st["title"])}</h3><p>{esc(gold["stops"][st["slug"]]["desc"])}</p></a></li>')
         op_t, op_p = gold["offer"]["hub_onepager"]
         main = "\n".join([
@@ -372,7 +410,7 @@ def build_series_page(series, content, gold, art, header, footer, stop, index) -
             recap_from_bubbles(page.get("bubbles", [])),
             f'<section class="roadmap" id="series-roadmap" aria-labelledby="roadmap-title"><div class="ex-in">'
             f'<h2 class="section-title" id="roadmap-title">Your {esc(gold["short"].lower())} road map</h2>'
-            f'<p class="road-intro">Follow the dotted path. Every stop is live. You\'re standing on the first one.</p>'
+            f'<p class="road-intro">Follow the dotted path. You\'re standing on the first one.</p>'
             f'<ol class="stop-list">{"".join(cards)}</ol></div></section>',
             f'<section class="hub-onepager" aria-labelledby="offer-title"><div class="ex-in"><span class="ex-kick">Need care, not just reading?</span>'
             f'<h2 id="offer-title" style="font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.04em;margin:0 0 16px;color:#1d1d1f">Ready for a visit?</h2>'

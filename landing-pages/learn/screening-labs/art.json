@@ -18,8 +18,8 @@
    "figures": [
     {
      "src": "panel-lineup.svg",
-     "width": 640,
-     "height": 529,
+     "width": 360,
+     "height": 740,
      "after_section": 1,
      "alt": "Chart of five common screening tests and what each checks: metabolic panel for kidneys, liver, salts, and sugar; cholesterol for blood fats; A1c for three-month average sugar; TSH for the thyroid; CBC for red cells, white cells, and platelets.",
      "caption": "Five common screening tests and the question each one answers."
@@ -35,10 +35,10 @@
    "figures": [
     {
      "src": "bmp-vs-cmp.svg",
-     "width": 640,
-     "height": 460,
+     "width": 360,
+     "height": 715,
      "after_section": 0,
-     "alt": "Two columns comparing the basic metabolic panel with 8 tests and the comprehensive metabolic panel, which adds 6 liver and protein tests.",
+     "alt": "Two lists comparing the basic metabolic panel with 8 tests and the comprehensive metabolic panel, which adds 6 liver and protein tests.",
      "caption": "The CMP is the BMP plus liver and protein numbers."
     }
    ]
@@ -52,8 +52,8 @@
    "figures": [
     {
      "src": "lipid-trucks.svg",
-     "width": 640,
-     "height": 441,
+     "width": 360,
+     "height": 630,
      "after_section": 1,
      "alt": "Lipid panel targets for most adults: total cholesterol under 200, LDL under 100, HDL 40 or more for men and 50 or more for women, triglycerides under 150, all in milligrams per deciliter.",
      "caption": "Common targets for most adults. Your own goal depends on your full risk."
@@ -69,8 +69,8 @@
    "figures": [
     {
      "src": "a1c-ranges.svg",
-     "width": 640,
-     "height": 345,
+     "width": 360,
+     "height": 481,
      "after_section": 1,
      "alt": "A1c range bar: below 5.7 percent normal, 5.7 to 6.4 percent prediabetes, 6.5 percent or higher diabetes.",
      "caption": "A1c ranges. Diabetes is confirmed with two tests."
@@ -86,8 +86,8 @@
    "figures": [
     {
      "src": "tsh-thermostat.svg",
-     "width": 640,
-     "height": 560,
+     "width": 360,
+     "height": 668,
      "after_section": 0,
      "alt": "Diagram of the brain sending TSH to the thyroid. High TSH usually means an underactive thyroid. Low TSH usually means an overactive thyroid.",
      "caption": "TSH runs backward: high usually means slow, low usually means fast."
@@ -103,10 +103,10 @@
    "figures": [
     {
      "src": "cbc-crews.svg",
-     "width": 640,
-     "height": 323,
+     "width": 360,
+     "height": 607,
      "after_section": 0,
-     "alt": "Three columns: red blood cells deliver oxygen, white blood cells fight germs, platelets plug leaks.",
+     "alt": "Three groups: red blood cells deliver oxygen, white blood cells fight germs, platelets plug leaks.",
      "caption": "The CBC counts the delivery crew, the defense crew, and the repair crew."
     }
    ]
@@ -120,8 +120,8 @@
    "figures": [
     {
      "src": "screening-schedule.svg",
-     "width": 640,
-     "height": 523,
+     "width": 360,
+     "height": 718,
      "after_section": 0,
      "alt": "Screening schedule for most adults: cholesterol every 4 to 6 years from about age 20, sugar every 3 years from 35 if carrying extra weight, hepatitis C once from 18 to 79, HIV at least once from 15 to 65.",
      "caption": "A plain starting schedule. Risk factors and symptoms move it earlier."
@@ -137,8 +137,8 @@
    "figures": [
     {
      "src": "reference-range.svg",
-     "width": 640,
-     "height": 440,
+     "width": 360,
+     "height": 468,
      "after_section": 0,
      "alt": "Bell curve showing the middle 95 percent of healthy people as the normal range, with 1 in 20 healthy people landing just outside it.",
      "caption": "1 in 20 healthy people lands outside the range on any single test."
