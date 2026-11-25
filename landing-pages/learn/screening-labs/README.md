@@ -1,7 +1,7 @@
 # Screening Labs Explained (kitchen series)
 
 Kitchen food only. **Nothing here is live** until Chris says "push it live". A GitHub save is not the dining room.
-Cooked 2026-11-24 from the dental-abscess layout, using the generic builder `scripts/build-condition-series.py`.
+Cooked 2026-11-24. Rebuilt the same day on the **gold look** (Chris: "do these match our UTI lander as the gold standard?"): the offer page uses the live UTI lander's chassis (`landing-pages/uti-treatment/index.html`) and the series uses the UTI Explained look (`landing-pages/learn/uti/`). Builder: `scripts/build-condition-series-gold.py`.
 
 ## URLs (not live until plated)
 
@@ -18,29 +18,32 @@ Cooked 2026-11-24 from the dental-abscess layout, using the generic builder `scr
 
 ## How to edit
 
-The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/`. The look is in `_shared/series.css` (accent blue #0369A1) and `_shared/art.css`.
+The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/`. The look is read straight from the gold UTI pages at build time (one look, no copy that drifts). Gold-chassis copy (hero, pricing block, comparison rows, road-map blurbs, short-version bullets) lives in `gold.json`.
 The box-side source scripts that generated the JSON and SVG files are saved in `scripts/condition-series-gen/`. Edit the JSON directly from here on.
 
 Rebuild:
 
 ```bash
 python3 scripts/build-condition-series-og.py screening-labs --cutout assets/img/people/chris-cutout-900.webp   # share cards (only if titles change)
-python3 scripts/build-condition-series.py screening-labs
-python3 tests/test_condition_series.py
+python3 scripts/build-condition-series-gold.py screening-labs
+python3 -m unittest discover -s tests -p test_condition_series.py
 ```
 
 Do not hand-edit the generated `index.html` files.
 
 ## Rules baked in
 
-$59 flat, pay only if text care fits. License line "14 states, including Florida by telehealth registration (TPAN3355)". No medication or class names (the test greps them), no banned words, no trackers, a 911 line on every page. Hero is Chris's real cutout (`/assets/img/people/chris-cutout-*.webp`, unaltered). Each page has its own 1200x630 card in `assets/og/`.
+$59 covers the consultation and the lab order, with the results walk-through by text included. The lab bills its own fee. A prescription, if needed, is a separate fee. If labs by text are not the right fit, no charge. License line "14 states, including Florida by telehealth registration (TPAN3355)". No medication or class names (the test greps them), no banned words, no trackers, a 911 line on every page. Hero is Chris's real cutout (`/assets/img/people/chris-cutout-*.webp`, unaltered). Each page has its own 1200x630 card in `assets/og/`.
 
-## Open questions for Chris (do not push until answered)
+## Answered by Chris (2026-11-24)
 
-- How lab orders work today: which lab(s) patients use, how the order gets to them, and which states.
-- Lab fees: the page says the lab charges its own fee, separate from the $59. Confirm, and whether you want a price range shown.
-- Is reviewing the results by text included in the $59, or a new visit?
-- Can you see labs another clinic ordered (the page says yes, by text)?
+- Lab-order process and the generic wording: fine as written.
+- Lab fees: separate, set by the lab. Make it obvious the $59 is for the consultation and lab order. Done on the offer page, FAQs, hub, and share copy.
+- Results review by text: included in the $59. A prescription, if needed, is a separate fee.
+
+## Still open (not asked yet)
+
+- Can you see labs another clinic ordered? The offer fit list still says "Already have results and want them explained."
 
 ## Push live later (Chris says "push it live" first)
 

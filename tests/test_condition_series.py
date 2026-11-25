@@ -1,4 +1,4 @@
-"""Kitchen checks for the generic condition series (screening-labs, mastitis).
+"""Kitchen checks for the condition series (screening-labs, mastitis) on the gold UTI look.
 
 Run: python3 -m unittest tests.test_condition_series
 """
@@ -47,27 +47,57 @@ def pages(sid: str) -> list[Path]:
 
 
 def visible(text: str) -> str:
-    text = text.split('<main id="main">', 1)[-1].split("<footer", 1)[0]
+    text = re.split(r'<main[^>]*id="main"[^>]*>', text, maxsplit=1)[-1].split("<footer", 1)[0]
     text = re.sub(r"<script.*?</script>|<style.*?</style>|<svg.*?</svg>", " ", text, flags=re.S)
     return re.sub(r"<[^>]+>", " ", text)
 
 
+def gold_css(path: Path) -> str:
+    head = path.read_text(encoding="utf-8").split("</head>", 1)[0]
+    return "\n".join(re.findall(r"<style[^>]*>(.*?)</style>", head, re.S))
+
+
+COMMON = ('"@type": "MedicalWebPage"', '"@type": "FAQPage"', '"@type": "BreadcrumbList"',
+          "sms:4806394722", "$59", "14 states, including Florida by telehealth registration", "911",
+          'property="og:image:width" content="1200"', 'name="twitter:card" content="summary_large_image"',
+          "MSN, APRN, FNP-C, AGACNP-BC")
+SERIES_NEEDLES = ('<header class="gh"', 'class="gh-photo"', 'class="ex-byline"', 'class="ex-tldr"',
+                  'class="gh-ghost"')
+HUB_NEEDLES = ('class="hub-intro"', 'class="stop-list"', 'class="hub-onepager"', 'class="hub-cta"')
+STOP_NEEDLES = ('class="ex-faq"', 'class="ex-map"', 'class="ex-intro"', 'class="ex-pn"', 'class="ex-cta"', 'class="ex-src"')
+OFFER_NEEDLES = ('class="hero-inner hero-split"', 'class="stats-band"', 'class="vs-section"', '<section class="reviews">',
+                 'id="how-it-works"', 'class="bento"', 'id="pricing"', 'class="er-box"', 'class="fit-grid"',
+                 'class="faq-list"', 'class="states-pills"', 'class="explained-grid"', 'class="bottom-cta"',
+                 'class="clinician-line"', '"@type": "HowTo"')
+
+
 class ConditionSeriesTest(unittest.TestCase):
-    def test_built_with_schema_bubbles_roadmap_and_footer(self):
+    def test_gold_structure_schema_and_footer(self):
         footer = (ROOT / "html" / "shared" / "footer-snippet.html").read_text(encoding="utf-8").strip()
         for sid in SERIES_IDS:
-            for path in pages(sid):
+            ps = pages(sid)
+            for i, path in enumerate(ps):
                 text = path.read_text(encoding="utf-8")
+                kind = "offer" if path == ps[-1] else ("hub" if i == 0 else "stop")
+                needles = COMMON + {"offer": OFFER_NEEDLES, "hub": SERIES_NEEDLES + HUB_NEEDLES,
+                                    "stop": SERIES_NEEDLES + STOP_NEEDLES}[kind]
                 with self.subTest(page=str(path.relative_to(ROOT))):
-                    self.assertGreater(len(text), 20_000)
-                    for needle in ('"@type": "MedicalWebPage"', '"@type": "FAQPage"', '"@type": "BreadcrumbList"',
-                                   "bubble-blue", "bubble-black", "series-sticky", "sms:4806394722", "$59",
-                                   "14 states, including Florida by telehealth registration", "911",
-                                   'property="og:image:width" content="1200"', 'name="twitter:card" content="summary_large_image"'):
+                    self.assertGreater(len(text), 40_000)
+                    for needle in needles:
                         self.assertIn(needle, text)
                     self.assertEqual(text.count(footer), 1)
                     self.assertIsNone(TRACKER_RE.search(re.sub(r"<!--.*?-->", "", text, flags=re.S)))
                     self.assertNotIn("noindex", text.lower())
+                    self.assertEqual(len(re.findall(r"<h1[ >]", text)), 1)
+
+    def test_pages_carry_the_gold_css_verbatim(self):
+        lander = gold_css(ROOT / "landing-pages" / "uti-treatment" / "index.html")
+        hub = gold_css(ROOT / "landing-pages" / "learn" / "uti" / "index.html")
+        for sid in SERIES_IDS:
+            ps = pages(sid)
+            for path in ps:
+                with self.subTest(page=str(path.relative_to(ROOT))):
+                    self.assertIn(lander if path == ps[-1] else hub, gold_css(path))
 
     def test_zero_medication_or_class_names(self):
         for sid in SERIES_IDS:
@@ -88,17 +118,29 @@ class ConditionSeriesTest(unittest.TestCase):
                 with self.subTest(page=str(path.relative_to(ROOT))):
                     self.assertIsNone(BANNED_RE.search(visible(path.read_text(encoding="utf-8"))))
 
-    def test_explainers_have_real_cutout_ghost_figure_and_og(self):
+    def test_labs_pricing_is_plain(self):
+        text = visible(pages("screening-labs")[-1].read_text(encoding="utf-8"))
+        for needle in ("consultation and the lab order", "Results walk-through", "The lab bills its own fee",
+                       "A prescription, if needed", "separate fee"):
+            self.assertIn(needle, text)
+        self.assertNotIn("only pay if a text visit is the right fit", text)
+
+    def test_mastitis_keeps_103_er_line(self):
+        for path in pages("mastitis"):
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                self.assertIn("103°F", path.read_text(encoding="utf-8"))
+
+    def test_series_pages_have_real_cutout_ghost_figure_and_og(self):
         for sid in SERIES_IDS:
             for path in pages(sid)[:-1]:
                 text = path.read_text(encoding="utf-8")
-                main = text.split('<main id="main">', 1)[1]
                 with self.subTest(page=str(path.relative_to(ROOT))):
-                    self.assertIn('class="hero-cutout" src="/assets/img/people/chris-cutout-600.webp"', main)
-                    ghost = main.split('<svg class="hero-ghost"', 1)[1].split("</svg>", 1)[0]
+                    self.assertIn('<img src="/assets/img/people/chris-cutout-600.webp"', text)
+                    ghost = text.split('<svg class="gh-ghost"', 1)[1].split("</svg>", 1)[0]
                     self.assertNotIn("<text", ghost)
-                    self.assertIn('class="art-fig"', main)
-                    for src in re.findall(r'<figure class="art-fig"><img src="([^"?]+)', main):
+                    figs = re.findall(r'<figure class="ex-fig ex-card-fig"><img src="([^"?]+)', text)
+                    self.assertTrue(figs)
+                    for src in figs:
                         self.assertTrue((ROOT / "landing-pages" / src.lstrip("/")).exists(), src)
             for path in pages(sid):
                 text = path.read_text(encoding="utf-8")
@@ -108,21 +150,19 @@ class ConditionSeriesTest(unittest.TestCase):
                     self.assertTrue(local.exists(), og)
                     self.assertLess(local.stat().st_size, 150_000)
 
-    def test_one_series_accent(self):
-        for sid in SERIES_IDS:
-            css = (ROOT / "landing-pages" / "learn" / sid / "_shared" / "series.css").read_text(encoding="utf-8")
-            self.assertIn(f"--accent: {series(sid)['accent']['hex']};", css)
-            self.assertNotIn("#f5a524", css.lower())
-
     def test_rebuild_matches_kitchen_pages(self):
+        spec = importlib.util.spec_from_file_location("ccs_gold", ROOT / "scripts" / "build-condition-series-gold.py")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
         for sid in SERIES_IDS:
-            spec = importlib.util.spec_from_file_location(f"ccs_{sid}", ROOT / "scripts" / "build-condition-series.py")
-            mod = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(mod)
-            mod.SERIES_DIR = ROOT / "landing-pages" / "learn" / sid
             built = {}
-            mod.write = lambda path, text: built.__setitem__(Path(path), text)
-            mod.main()
+            mod.ccs.write = lambda path, text: built.__setitem__(Path(path), text)
+            old_argv = sys.argv
+            sys.argv = ["build", sid]
+            try:
+                mod.main()
+            finally:
+                sys.argv = old_argv
             self.assertEqual(len(built), len(pages(sid)))
             for path, text in built.items():
                 with self.subTest(page=str(path.relative_to(ROOT))):

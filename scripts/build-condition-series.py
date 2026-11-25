@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Build a condition SEO mini-series (hub + stops) and its $59 offer one-pager.
+"""HELPER MODULE (retired builder). Use scripts/build-condition-series-gold.py.
+
+Build a condition SEO mini-series (hub + stops) and its $59 offer one-pager.
 
 Generic copy of build-dental-abscess-series.py (2026-11-24). Everything
 series-specific lives in the series folder (series.json, content.json,
@@ -711,6 +713,13 @@ def check_footer(footer: str) -> None:
 
 
 def main() -> None:
+    raise SystemExit(
+        "Retired 2026-11-24: the condition series now builds on the gold UTI look. "
+        "Run scripts/build-condition-series-gold.py <series-id>. This file stays as a helper module."
+    )
+
+
+def _legacy_main() -> None:
     global OFFER_DIR, GHOST_ACCENT
     series = load_json(SERIES_DIR / "series.json")
     OFFER_DIR = ROOT / "landing-pages" / series["one_pager"]["path"].strip("/")

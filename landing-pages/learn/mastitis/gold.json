@@ -1,0 +1,382 @@
+{
+ "short": "Mastitis",
+ "pill": "Mastitis Explained",
+ "stops": {
+  "": {
+   "desc": "The big picture, in everyday words.",
+   "h1": [
+    "Mastitis",
+    "Explained Plainly"
+   ],
+   "sub": "Common, treatable, and not your fault. Here is the whole map.",
+   "tldr": [
+    "Mastitis is swelling in the breast, sometimes with infection.",
+    "One sore, warm, red area plus feeling flu-ish is the classic picture.",
+    "Gentle care and keeping your feeding rhythm help most.",
+    "Your milk stays safe for your baby.",
+    "Fever of 103°F or higher, spreading redness, or feeling very sick means go in now."
+   ]
+  },
+  "how-it-starts": {
+   "desc": "Swelling squeezes the ducts. That changes what helps.",
+   "h1": [
+    "How Mastitis",
+    "Starts"
+   ],
+   "sub": "Less like a cork in a bottle. More like swelling squeezing the straws.",
+   "tldr": [
+    "Swelling narrows the milk ducts.",
+    "It runs on a spectrum: engorgement, inflammation, infection.",
+    "Oversupply and pumping to empty are common triggers.",
+    "That is why gentle care beats hard massage."
+   ]
+  },
+  "what-it-feels-like": {
+   "desc": "One sore spot plus feeling like the flu.",
+   "h1": [
+    "What Mastitis",
+    "Feels Like"
+   ],
+   "sub": "One tender area on the breast, and a whole-body flu feeling.",
+   "tldr": [
+    "Usually one side, one warm, tender area.",
+    "Chills, aches, and tiredness can come first.",
+    "On darker skin, redness can be hard to see. Warmth and pain count.",
+    "Track your temperature and the size of the sore area."
+   ]
+  },
+  "lookalikes": {
+   "desc": "Engorgement, clogs, and what needs an exam.",
+   "h1": [
+    "Lookalikes",
+    "Sorting a Sore Breast"
+   ],
+   "sub": "Most causes are common and calm down with care. A few need hands-on eyes.",
+   "tldr": [
+    "Engorgement is both sides, full and firm.",
+    "A clog is a tender, firm spot without whole-body sickness.",
+    "A soft, growing lump can be an abscess. That needs an exam.",
+    "Redness that does not fit the story needs an in-person look."
+   ]
+  },
+  "comfort-at-home": {
+   "desc": "What helps, what to skip.",
+   "h1": [
+    "Comfort at Home",
+    "What Helps"
+   ],
+   "sub": "Treat it like a sprained ankle: calm the swelling, keep things moving.",
+   "tldr": [
+    "Cold packs after feeds can calm swelling.",
+    "Feed on your normal rhythm. Do not pump to empty.",
+    "Skip hard massage and lots of heat.",
+    "If you are not better in 12 to 24 hours, check in."
+   ]
+  },
+  "red-flags": {
+   "desc": "When it is an emergency. Go now.",
+   "h1": [
+    "Red Flags",
+    "When to Go Now"
+   ],
+   "sub": "Most mastitis is manageable. A few cases are not. Know this list.",
+   "tldr": [
+    "Fever of 103°F or higher: go in now.",
+    "Red streaks spreading fast, shaking chills, or a racing heart: go now.",
+    "Feeling faint, confused, or very sick: call 911.",
+    "Pus or a soft, growing lump needs care today."
+   ]
+  },
+  "keep-feeding": {
+   "desc": "Yes, almost always. Here is why.",
+   "h1": [
+    "Can I Keep",
+    "Breastfeeding?"
+   ],
+   "sub": "Short answer: yes, almost always. Your milk is still safe for your baby.",
+   "tldr": [
+    "Keep your normal feeding rhythm.",
+    "Your milk is safe for your baby, even with mastitis.",
+    "Stopping suddenly can make it worse.",
+    "If a prescription fits, I choose options considered safe while breastfeeding."
+   ]
+  },
+  "text-vs-in-person": {
+   "desc": "Who fits a text visit, and who needs hands.",
+   "h1": [
+    "Text vs In Person",
+    "Who Fits"
+   ],
+   "sub": "A lot of mastitis can be handled by text. Some needs hands and an ultrasound.",
+   "tldr": [
+    "One sore area and fever under 103°F often fits text.",
+    "Any red flag means in person or the ER.",
+    "Not better after 48 hours of care means an exam.",
+    "If text is not safe, I tell you where to go. You do not pay."
+   ]
+  }
+ },
+ "offer": {
+  "kicker": "$59 Flat &nbsp;·&nbsp; No Waiting Room &nbsp;·&nbsp; Text from the Couch",
+  "h1": "Sore, red breast while feeding? Text Chris.",
+  "sub": "Text a double board-certified Nurse Practitioner from the couch, baby and all. I tell you if this fits a text visit, give you a clear plan, and tell you plainly when you need in-person care.",
+  "trust3": "🍼 Keep feeding — your milk stays safe",
+  "chat": [
+   [
+    "user",
+    "Day 12 postpartum. Left side is hot, red, and sore. I feel achy and it's 101."
+   ],
+   [
+    "chris",
+    "I'm sorry, that's rough. Any pus, a soft lump, or red streaks spreading?"
+   ],
+   [
+    "user",
+    "No, just one sore red area. Eating and drinking okay."
+   ],
+   [
+    "chris",
+    "Okay. That can fit a text visit. Let's set your plan — and keep feeding."
+   ]
+  ],
+  "chat_status": "✓ Plan sent by text",
+  "atf": "<strong>NPCWoods</strong> is a $59 text visit with Chris Woods, MSN, APRN, FNP-C, AGACNP-BC, a licensed Nurse Practitioner. Text <a href=\"{sms}\">(480) 639-4722</a>. No video. No app. No chatbot. You must be physically in a licensed state at the time of the visit. A prescription is not promised. You only pay if I can treat you by text. Fever of 103°F or higher, spreading redness, or feeling very sick means in-person care now.",
+  "stats": [
+   [
+    "$59",
+    "Flat fee, no surprises"
+   ],
+   [
+    "14",
+    "States, including Florida by telehealth registration"
+   ],
+   [
+    "Same NP",
+    "Chris reads every text himself"
+   ]
+  ],
+  "eeat_note": "This page reflects current guidance on mastitis care for breastfeeding parents through text-based telehealth.",
+  "vs": [
+   [
+    "Price",
+    "$59 flat fee",
+    "Monthly fee + visit fees"
+   ],
+   [
+    "Subscription",
+    "None",
+    "Often required"
+   ],
+   [
+    "Who reads it",
+    "Same NP every time",
+    "Whoever is on shift"
+   ],
+   [
+    "Wait time",
+    "Same day, usually hours",
+    "Days for an opening"
+   ],
+   [
+    "Paperwork",
+    "No paperwork — just text",
+    "Forms &amp; account setup"
+   ]
+  ],
+  "vs_sub": "Text from the couch. A real person reads it. No games.",
+  "how": [
+   [
+    "Text Chris",
+    "Text <a href=\"{sms}\">(480) 639-4722</a> with your story: baby's age, which side, when it started, your temperature, and how you feel."
+   ],
+   [
+    "Chris reviews it",
+    "I read it myself and ask a few follow-up questions. Same nurse practitioner every time."
+   ],
+   [
+    "Plan, then pharmacy if needed",
+    "If text care fits, you get a clear plan. If a prescription is the right call, I send it to your pharmacy, choosing options considered safe while breastfeeding. If text is not safe, I tell you to go in."
+   ]
+  ],
+  "how_sub": "No app, no portal, no video call — just text. You only pay if I can treat you.",
+  "how_note": "Care follows Academy of Breastfeeding Medicine guidance on the mastitis spectrum.",
+  "what": {
+   "kicker": "The basics",
+   "h2": "What mastitis is, in plain language",
+   "body": "Mastitis is swelling in the breast tissue, sometimes with an infection. It is most common in the first six weeks of breastfeeding, but it can happen any time. The newer picture is swelling squeezing the milk ducts, not a cork stuck inside. That is why gentle care helps and hard massage does not.",
+   "cards_h": "The usual signs",
+   "cards": [
+    [
+     "Sore",
+     "One tender area",
+     "Usually one side, often a wedge shape"
+    ],
+    [
+     "Warm",
+     "Warm to the touch",
+     "The sore spot feels hotter"
+    ],
+    [
+     "Red",
+     "Redness or darker skin",
+     "Can be hard to see on darker skin"
+    ],
+    [
+     "Firm",
+     "Swelling",
+     "A firm, puffy area"
+    ],
+    [
+     "Flu",
+     "Body aches and chills",
+     "Can come before the breast pain"
+    ],
+    [
+     "Temp",
+     "Fever",
+     "Often 100.4°F or higher"
+    ]
+   ]
+  },
+  "table": {
+   "kicker": "Sort it out",
+   "h2": "Mastitis vs. engorgement vs. clog vs. abscess",
+   "sub": "A sore breast while feeding has a short list of causes. Here is how to tell what's what.",
+   "head": [
+    "Condition",
+    "Hallmark signs",
+    "What it needs"
+   ],
+   "rows": [
+    [
+     "Mastitis",
+     "One sore, warm, red area plus flu-like aches or fever",
+     [
+      "treat-us",
+      "✓ Often fits a text visit"
+     ]
+    ],
+    [
+     "Engorgement",
+     "Both breasts full, firm, and tender, no fever",
+     [
+      "treat-us",
+      "✓ Comfort care, text if unsure"
+     ]
+    ],
+    [
+     "Clogged duct",
+     "A tender, firm spot, you feel okay otherwise",
+     [
+      "treat-maybe",
+      "Usually comfort care — text me if it lingers"
+     ]
+    ],
+    [
+     "Abscess",
+     "A soft, growing lump, sometimes with pus",
+     [
+      "treat-er",
+      "Needs an in-person exam today"
+     ]
+    ],
+    [
+     "Redness that doesn't fit",
+     "Red, thick, or dimpled skin without feeling sick, or not breastfeeding",
+     [
+      "treat-er",
+      "Needs an in-person exam"
+     ]
+    ]
+   ],
+   "note": "Not sure which one fits? Text me — I will ask the right questions and point you to the right care."
+  },
+  "covers": {
+   "kicker": "What it costs",
+   "h2": "What the $59 covers",
+   "sub": "One flat fee. Here is what is in it.",
+   "cards": [
+    [
+     "badge-blue",
+     "Included",
+     "Text visit with Chris",
+     "I read your story myself and ask what I need."
+    ],
+    [
+     "badge-blue",
+     "Included",
+     "A clear plan",
+     "Comfort care, feeding tips, and what to watch for."
+    ],
+    [
+     "badge-blue",
+     "Included",
+     "A prescription, if it fits",
+     "Sent to your pharmacy, chosen to be considered safe while breastfeeding."
+    ],
+    [
+     "badge-blue",
+     "Included",
+     "Follow-up questions",
+     "Text me if it is not getting better."
+    ],
+    [
+     "badge-orange",
+     "Separate",
+     "Pharmacy cost",
+     "If I send a prescription, the pharmacy charges for it."
+    ],
+    [
+     "badge-green",
+     "No charge",
+     "If text care isn't safe",
+     "I tell you where to go. You do not pay the $59."
+    ]
+   ],
+   "note": "A text visit is not a promise of a prescription. Many cases calm down with good comfort care."
+  },
+  "er_h2": "When to go to the ER instead",
+  "er_intro": "I'm a nurse practitioner, not a salesman. If something more serious is going on, I want you in an ER, not texting me.",
+  "er": [
+   "A fever of 103°F or higher",
+   "Red streaks spreading fast toward the armpit or chest",
+   "Shaking chills that will not stop, or a racing heart or fast breathing",
+   "Feeling faint, dizzy, confused, or very sick all over",
+   "Pus, or a soft lump that keeps growing"
+  ],
+  "er_after": "For one sore, warm area with fever under 103°F — when you can eat, drink, and think clearly — a text visit is often a good place to start.",
+  "fit_sub": "Text care works for a lot of mastitis. It isn't right for everyone. Here is the honest line.",
+  "fit_note": "Not sure where you fall? Text me anyway — I'll point you to the right care, no charge for the honesty.",
+  "extra": {
+   "kicker": "Keep feeding",
+   "h2": "Can I keep breastfeeding?",
+   "p": [
+    "Yes, almost always. Your milk is still safe for your baby, even with mastitis. Keeping your normal feeding rhythm helps your breast heal. Stopping suddenly can make it worse.",
+    "If a prescription is the right call, I choose options considered safe while breastfeeding."
+   ],
+   "small": "A lactation consultant is gold for latch, supply, and pumping questions. If you have one, loop them in."
+  },
+  "explained_h2": "Mastitis, Explained Plainly",
+  "explained_body": "Want the plain-English version before you text? An eight-stop series — how it starts, what it feels like, lookalikes, comfort at home, red flags, feeding, and who fits a text visit.",
+  "bottom_h2": "Ready to get this handled?",
+  "bottom_p": "Text me what is going on. $59 flat, no paperwork. You only pay if I can treat you by text. A real nurse practitioner — not a chatbot — reads every message.",
+  "bottom_trust3": "💊 Sent to your local pharmacy if it fits",
+  "sms_body": "Hi Chris, I'm breastfeeding and think I might have mastitis. I'd like a $59 text visit.",
+  "fine": "Educational info, not medical advice. A text visit is not a promise of a prescription. Fever of 103°F or higher, spreading redness, or feeling very sick: go to the ER or call 911.",
+  "hub_onepager": [
+   "Mastitis treatment by text · $59 →",
+   "Offer page with how the text visit works. Pharmacy cost is separate. A text visit is not a promise of a prescription."
+  ],
+  "hub_cta": [
+   "Sore breast now? ",
+   "Text me."
+  ],
+  "hub_cta_p": "I'm Chris, a nurse practitioner. Tell me what you feel. I'll tell you if this fits a text visit or needs in-person care today.",
+  "stop_cta": [
+   "Not sure what this is? ",
+   "Text me."
+  ],
+  "stop_cta_p": "Tell me your baby's age, which side, your temperature, and how you feel. I'll help sort it out.",
+  "disc": "This page is for learning. It is not medical advice. A text visit is not a promise of a prescription. If you have a fever of 103°F or higher, spreading redness, or feel very sick, go to the ER or call 911. Results vary."
+ }
+}

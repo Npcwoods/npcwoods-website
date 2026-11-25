@@ -27,7 +27,7 @@
    },
    {
     "num": "$59",
-    "label": "flat text visit with me"
+    "label": "covers my consult, your lab order, and results by text"
    }
   ],
   "sections": [
@@ -78,7 +78,7 @@
    },
    {
     "q": "Can you order labs by text?",
-    "a": "If labs make sense for you, I can write a lab order and send it to you, and you get your blood drawn at a lab. The lab charges its own fee, separate from my $59 visit."
+    "a": "Yes, when labs make sense for you. My $59 covers the consultation and the lab order, and I walk you through the results by text. The lab charges its own fee for the draw and the tests. If you end up needing a prescription, that is a separate fee."
    },
    {
     "q": "Are screening labs a full checkup?",
@@ -744,7 +744,7 @@
  },
  "one_pager": {
   "meta_title": "Screening Labs by Text: $59 Visit With an NP | NPCWoods",
-  "meta_description": "Not sure which blood work you need? Text Chris Woods, NP. $59 flat. I review your history and order labs where appropriate. Lab fees are separate.",
+  "meta_description": "Not sure which blood work you need? Text Chris Woods, NP. $59 covers the consultation and lab order, plus results by text. The lab bills its own fee.",
   "h1": "Blood work questions? Text Chris.",
   "lede": "I am Chris Woods, a Nurse Practitioner. Text me your age, your family history, how you feel, and what you want checked. I read it myself, tell you which screening labs make sense, and can order labs where appropriate.",
   "sticky": "Visit · $59 text · Screening labs",
@@ -757,7 +757,7 @@
    {
     "style": "black",
     "who": "Chris",
-    "text": "Text me the story. If labs make sense, I tell you which ones and why. You only pay the $59 if a text visit is the right fit."
+    "text": "Text me the story. If labs make sense, I tell you which ones and why. The $59 covers our consult and your lab order."
    }
   ],
   "accent_block": {
@@ -771,15 +771,15 @@
     "items": [
      "Text (480) 639-4722 with your age, history, symptoms, and what you want checked.",
      "I read it myself and tell you which labs make sense, and which can wait.",
-     "If labs fit, I send you a lab order. You get your blood drawn at a lab.",
-     "When results come back, text them to me and I walk you through them in plain words."
+     "If labs fit, I send you a lab order. That is part of the $59. You get your blood drawn at a lab.",
+     "When results come back, text them to me. I walk you through them in plain words. That is included in the $59."
     ]
    },
    {
     "type": "prose",
     "heading": "What it costs",
     "body": [
-     "My text visit is $59 flat. You only pay if a text visit is the right fit. The lab charges its own fee for the blood draw and the tests, separate from my $59."
+     "My $59 is for the consultation and the lab order. Walking you through the results by text is included. The lab charges its own fee for the blood draw and the tests. If you need a prescription after that, it is a separate fee. If labs by text are not the right fit for you, you do not pay the $59."
     ]
    }
   ],
@@ -829,8 +829,12 @@
   ],
   "faqs": [
    {
-    "q": "How much is the visit?",
-    "a": "$59 flat for the text visit. You only pay if a text visit is the right fit. Lab fees are separate and set by the lab."
+    "q": "What does the $59 cover?",
+    "a": "The $59 is for my consultation and your lab order. When results come back, I walk you through them by text at no extra cost. If labs by text are not the right fit, you do not pay."
+   },
+   {
+    "q": "What costs extra?",
+    "a": "Two things. The lab charges its own fee for the draw and the tests. And if you need a prescription after we look at results, that is a separate fee. I tell you before anything is added."
    },
    {
     "q": "Which labs can you order?",

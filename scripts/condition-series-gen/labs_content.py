@@ -30,7 +30,7 @@ series = {
     "sms": {"number": "4806394722", "display": "(480) 639-4722",
             "prefill": "Hi Chris, I have a question about screening labs and want a $59 text visit."},
     "cta_band": {"heading": "Want a second set of eyes on your labs?",
-                 "body": "Text me your age, your family history, how you feel, and what you want checked. I read it myself and tell you what makes sense, what can wait, and what needs an in-person visit. You only pay the $59 if a text visit is the right fit."},
+                 "body": "Text me your age, your family history, how you feel, and what you want checked. I read it myself and tell you what makes sense, what can wait, and what needs an in-person visit. The $59 covers my consultation and your lab order, and I walk you through the results by text. The lab bills its own fee."},
     "hub": {"slug": "", "path": HUB, "title": "Screening Labs Explained", "nav_label": "The big picture", "episode": 1},
     "one_pager": {"path": "/screening-labs/", "title": "Screening labs by text", "nav_label": "$59 text visit"},
     "stops": [
@@ -73,7 +73,7 @@ C["hub"] = {
  "h1": "Screening labs, explained plainly",
  "lede": "A blood draw is a peek under the hood. A few tubes can show how your kidneys, liver, sugar, fats, thyroid, and blood cells are doing, often before you feel a thing. I will walk you through each one, stop by stop.",
  "bubbles": b("My last checkup was years ago. Which labs do I even need?", "Depends on your age, your family, and how you feel. Text me the story. I will tell you what makes sense and what can wait."),
- "stats": [{"num": "5", "label": "common screening tests in this series"}, {"num": "35+", "label": "age when sugar screening often starts if you carry extra weight"}, {"num": "$59", "label": "flat text visit with me"}],
+ "stats": [{"num": "5", "label": "common screening tests in this series"}, {"num": "35+", "label": "age when sugar screening often starts if you carry extra weight"}, {"num": "$59", "label": "covers my consult, your lab order, and results by text"}],
  "sections": [
   prose("Why check blood when you feel fine?",
    "Most early problems are quiet. High sugar does not hurt. High cholesterol does not hurt. A slow thyroid can feel like being tired, which everyone is. Labs catch the quiet stuff early, while small changes still make a big difference.",
@@ -92,7 +92,7 @@ C["hub"] = {
  ],
  "faqs": [
   {"q": "Do I need to fast before screening labs?", "a": "For many tests, no. Cholesterol is often checked without fasting now. A fasting sugar test needs about 8 hours with only water. Follow the instructions on your lab order."},
-  {"q": "Can you order labs by text?", "a": "If labs make sense for you, I can write a lab order and send it to you, and you get your blood drawn at a lab. The lab charges its own fee, separate from my $59 visit."},
+  {"q": "Can you order labs by text?", "a": "Yes, when labs make sense for you. My $59 covers the consultation and the lab order, and I walk you through the results by text. The lab charges its own fee for the draw and the tests. If you end up needing a prescription, that is a separate fee."},
   {"q": "Are screening labs a full checkup?", "a": "No. Labs are one piece. Blood pressure, weight, cancer screenings, shots, and a hands-on exam still matter. Keep a regular clinic for those."},
   {"q": "What if something comes back high or low?", "a": "Many flags are small and expected. Some need a repeat. A few need care soon. Stop 8 walks through how to read the page, and I can go over it with you."},
  ],
@@ -314,20 +314,20 @@ C["reading-results"] = {
 }
 C["one_pager"] = {
  "meta_title": "Screening Labs by Text: $59 Visit With an NP | NPCWoods",
- "meta_description": "Not sure which blood work you need? Text Chris Woods, NP. $59 flat. I review your history and order labs where appropriate. Lab fees are separate.",
+ "meta_description": "Not sure which blood work you need? Text Chris Woods, NP. $59 covers the consultation and lab order, plus results by text. The lab bills its own fee.",
  "h1": "Blood work questions? Text Chris.",
  "lede": "I am Chris Woods, a Nurse Practitioner. Text me your age, your family history, how you feel, and what you want checked. I read it myself, tell you which screening labs make sense, and can order labs where appropriate.",
  "sticky": "Visit · $59 text · Screening labs",
- "bubbles": b("I have not had blood work in years. Where do I start?", "Text me the story. If labs make sense, I tell you which ones and why. You only pay the $59 if a text visit is the right fit."),
+ "bubbles": b("I have not had blood work in years. Where do I start?", "Text me the story. If labs make sense, I tell you which ones and why. The $59 covers our consult and your lab order."),
  "accent_block": {"h2": "Labs are a tool, not a promise", "p": "I order tests that answer a real question for you, not a long menu. Some results need a repeat, a follow-up test, or an in-person visit. I will tell you which, plainly."},
  "sections": [
   lst("How it works",
    "Text (480) 639-4722 with your age, history, symptoms, and what you want checked.",
    "I read it myself and tell you which labs make sense, and which can wait.",
-   "If labs fit, I send you a lab order. You get your blood drawn at a lab.",
-   "When results come back, text them to me and I walk you through them in plain words."),
+   "If labs fit, I send you a lab order. That is part of the $59. You get your blood drawn at a lab.",
+   "When results come back, text them to me. I walk you through them in plain words. That is included in the $59."),
   prose("What it costs",
-   "My text visit is $59 flat. You only pay if a text visit is the right fit. The lab charges its own fee for the blood draw and the tests, separate from my $59."),
+   "My $59 is for the consultation and the lab order. Walking you through the results by text is included. The lab charges its own fee for the blood draw and the tests. If you need a prescription after that, it is a separate fee. If labs by text are not the right fit for you, you do not pay the $59."),
  ],
  "fits": {
   "yes_h": "Who often fits a text",
@@ -342,7 +342,8 @@ C["one_pager"] = {
   {"kicker": "Stop 8", "title": "Reading results", "text": "What H and L flags really mean.", "href": HUB + "reading-results/"},
  ],
  "faqs": [
-  {"q": "How much is the visit?", "a": "$59 flat for the text visit. You only pay if a text visit is the right fit. Lab fees are separate and set by the lab."},
+  {"q": "What does the $59 cover?", "a": "The $59 is for my consultation and your lab order. When results come back, I walk you through them by text at no extra cost. If labs by text are not the right fit, you do not pay."},
+  {"q": "What costs extra?", "a": "Two things. The lab charges its own fee for the draw and the tests. And if you need a prescription after we look at results, that is a separate fee. I tell you before anything is added."},
   {"q": "Which labs can you order?", "a": "Common screening labs like a metabolic panel, cholesterol, A1c, thyroid, and a blood count, when they make sense for you."},
   {"q": "Do I need to fast?", "a": "Only for some tests. Your lab order will say. Cholesterol and A1c usually do not need fasting."},
   {"q": "What states?", "a": "14 states, including Florida by telehealth registration (TPAN3355). You must be in a state I can treat at the time of the visit."},

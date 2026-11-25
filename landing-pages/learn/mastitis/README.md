@@ -1,7 +1,7 @@
 # Mastitis Explained (kitchen series)
 
 Kitchen food only. **Nothing here is live** until Chris says "push it live". A GitHub save is not the dining room.
-Cooked 2026-11-24 from the dental-abscess layout, using the generic builder `scripts/build-condition-series.py`.
+Cooked 2026-11-24. Rebuilt the same day on the **gold look** (Chris: "do these match our UTI lander as the gold standard?"): the offer page uses the live UTI lander's chassis (`landing-pages/uti-treatment/index.html`) and the series uses the UTI Explained look (`landing-pages/learn/uti/`). Builder: `scripts/build-condition-series-gold.py`.
 
 ## URLs (not live until plated)
 
@@ -18,15 +18,15 @@ Cooked 2026-11-24 from the dental-abscess layout, using the generic builder `scr
 
 ## How to edit
 
-The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/`. The look is in `_shared/series.css` (accent red #B42318) and `_shared/art.css`.
+The copy lives in `content.json`, the metadata in `series.json`, and the pictures in `art.json` plus `assets/`. The look is read straight from the gold UTI pages at build time (one look, no copy that drifts). Gold-chassis copy (hero, pricing block, comparison rows, road-map blurbs, short-version bullets) lives in `gold.json`.
 The box-side source scripts that generated the JSON and SVG files are saved in `scripts/condition-series-gen/`. Edit the JSON directly from here on.
 
 Rebuild:
 
 ```bash
 python3 scripts/build-condition-series-og.py mastitis --cutout assets/img/people/chris-cutout-900.webp   # share cards (only if titles change)
-python3 scripts/build-condition-series.py mastitis
-python3 tests/test_condition_series.py
+python3 scripts/build-condition-series-gold.py mastitis
+python3 -m unittest discover -s tests -p test_condition_series.py
 ```
 
 Do not hand-edit the generated `index.html` files.
@@ -35,9 +35,12 @@ Do not hand-edit the generated `index.html` files.
 
 $59 flat, pay only if text care fits. License line "14 states, including Florida by telehealth registration (TPAN3355)". No medication or class names (the test greps them), no banned words, no trackers, a 911 line on every page. Hero is Chris's real cutout (`/assets/img/people/chris-cutout-*.webp`, unaltered). Each page has its own 1200x630 card in `assets/og/`.
 
-## Open questions for Chris (do not push until answered)
+## Answered by Chris (2026-11-24)
 
-- The ER line uses 103°F as the cutoff. Confirm or change.
+- The ER line keeps 103°F as the cutoff.
+
+## Still open (not asked yet)
+
 - Text visits: words only to start (the page says no photo needed). Confirm.
 - Fit list says adults who are breastfeeding or pumping, in a state you treat. Anything to add (e.g. weeks postpartum limit)?
 
